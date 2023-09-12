@@ -1,0 +1,82 @@
+#MatchingTest7{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest7 .MatchingTest7Wrap{
+    width: 100%;
+}
+
+#MatchingTest7 .MatchingTest7Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content::after{
+    content: "Q7";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .test7Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .test7Img img{
+    max-width: 25%;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-weight: 1.2em;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div:hover{
+    background-color: #639DD7;
+}

@@ -1,0 +1,243 @@
+input:focus{
+    outline: none !important;
+}
+
+#agreeTerms{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#agreeTerms .agreeTermsWrap{
+    width: 100%;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents h5.agreeTermsTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap{
+    width: 100%;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap label#agreeAll{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    justify-content: flex-start;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm input[type="checkbox"]{
+    display: none !important;
+}
+
+#agreeAll:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#agreeAll #showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap label#agreeAll span{
+    color: #222;
+    font-weight: 500;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap .agreeAllText{
+    font-size: 0.9em;
+    color: #535353;
+    text-align: left;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm input#nextBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap{
+    width: 100%;
+    margin: 7% 0;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termsCheck{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    cursor: pointer;
+}
+
+#termsCheck:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span.agreeAll1{
+    color: #555555;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span.agreeAll2{
+    font-size: 0.8em;
+    color: #639DD7;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span a{
+    font-size: 0.7em;
+    color: #9c9c9c;
+    font-weight: 300;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText{
+    width: 100%;
+    text-align: left;
+    background-color: #DAECFF;
+    padding: 3%;
+    border-radius: 6px;
+    height: 170px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText::-webkit-scrollbar-thumb{
+    background-color: #8F8F8F;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText h5{
+    font-size: 0.98em;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText p{
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+
+
+
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm #privacy{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    cursor: pointer;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm #privacy .privacyWrap{
+    width: 100%;
+}
+
+#privacy:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#privacy #showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span.agreeAll1{
+    color: #555555;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span.agreeAll2{
+    font-size: 0.8em;
+    color: #639DD7;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span a{
+    font-size: 0.7em;
+    color: #9c9c9c;
+    font-weight: 300;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText{
+    width: 100%;
+    text-align: left;
+    background-color: #DAECFF;
+    padding: 3%;
+    border-radius: 6px;
+    height: 170px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText::-webkit-scrollbar-thumb{
+    background-color: #8F8F8F;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText p{
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}

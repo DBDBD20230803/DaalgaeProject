@@ -1,0 +1,69 @@
+input:focus{
+    outline: none !important;
+}
+
+#findIdComplete{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#findIdComplete .findIdCompleteWrap{
+    width: 100%;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents{ 
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents h5.findIdCompleteTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents h5.findIdCompleteMessage{
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-bottom: 8%;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .findPwdPage{
+    width: 100%;
+    background-color: #9DC4E7;
+    padding: 3% 2%;
+    border-radius: 2px;
+}
+
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .findPwdPage a{
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .pwdResetCompleteGotoMain{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 3%;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .pwdResetCompleteGotoMain a{
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}

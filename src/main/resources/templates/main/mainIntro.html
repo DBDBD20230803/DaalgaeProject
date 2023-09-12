@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/headerNoBootStrap.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $("#footers").load("../Component/footer.html");
+
+            let imgs;
+            let img_count;
+            let img_position = 1;
+
+            imgs = $(".slide ul");
+            img_count = imgs.children().length;
+
+            //버튼을 클릭했을 때 함수 실행
+            $('#back').click(function () {
+                back();
+            });
+            $('#next').click(function () {
+                next();
+            });
+
+            function back() {
+                if(1<img_position){
+                    imgs.animate({
+                        left:'+=326px'
+                    });
+                    img_position--;
+                }
+            }
+
+            function next() {
+                if(img_count-3>img_position){
+                    imgs.animate({
+                        left:'-=326px'
+                    });
+                    img_position++;
+                }
+            }
+        });
+
+
+
+    </script>
+    <style>
+        #mainBackground {
+            position: relative;
+        }
+        button{
+            background: inherit;
+            border:none;
+            box-shadow:none;
+            border-radius:0;
+            padding:0;
+            overflow:visible;
+            cursor:pointer
+        }
+        /* 슬라이더 로직*/
+
+        .slide{
+            width: 1304px;
+            height: 326px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+        .slide ul{
+            width: 5000px;
+            position: relative;
+            top:0;
+            left:0;
+            font-size: 0;
+        }
+        .slide ul li{
+            display: inline-block;
+        }
+        #back{
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            left: -28px;
+            transform: translateY(-29px);
+            z-index: 1;
+        }
+        #next{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-29px);
+            right: -680px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .imageSliderMain {
+            position: relative;
+            top: -530px;
+            left: 120px;
+        }
+        .imageSlider {
+            width: 652px;
+            position: relative;
+        }
+        li img {
+            position: relative;
+            left: -28px;
+        }
+    </style>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/mobile.css">
+        <link rel="stylesheet" type="text/css" href="../css/sanitize.css">
+        <link rel="stylesheet" type="text/css" href="mainIntro.css">
+    <title>Title</title>
+</head>
+<body>
+
+  <div id="headers"></div>
+  <div id="mainBackgroundSpace">
+      <div id="mainBackground">
+  </div>
+
+      <div id="mainIntroduce">소중한 나의 반려견, 이제 여기서 시작하세요</div>
+      <div id="weatherBox0">
+          <div class="weatherRate0">
+              오늘의 산책지수
+          </div>
+          <div class="weatherGood0">
+              좋음 😄
+          </div>
+          <div class="weatherTemp0">
+              온도 22℃
+          </div>
+          <div class="weatherDog0"></div>
+          <button class="weatherSelectButton0"></button>
+      </div>
+      <div id="weatherBox1">
+          <div class="weatherRate1">
+              오늘의 산책지수
+          </div>
+          <div class="weatherGood1">
+              좋음 😄
+          </div>
+          <div class="weatherTemp1">
+              온도 22℃
+          </div>
+          <div class="weatherDog1"></div>
+          <button class="weatherSelectButton1"></button>
+      </div>
+      <div id="weatherBox2">
+          <div class="weatherRate2">
+              오늘의 산책지수
+          </div>
+          <div class="weatherGood2">
+              좋음 😄
+          </div>
+          <div class="weatherTemp2">
+              온도 22℃
+          </div>
+          <div class="weatherDog2"></div>
+          <button class="weatherSelectButton2"></button>
+      </div>
+  </div>
+
+    <div id="mainInform">
+        <div class="informLeft">
+            <span class="informIcon1"></span>공지사항 &nbsp;&nbsp; | &nbsp;&nbsp;<span class="informIcon2"></span>뉴스
+        </div>
+        <div class="informRight">
+
+
+            <div class="informRightTextButton">
+
+            </div>
+            <div class="informIconBox1"></div>
+            <div class="informIconBox2"></div>
+            <div class="informDown">
+                [뭐든다알개 오픈 이벤트] 추천 관광지 후기 사진을 남기시는 분들에게...
+                <span class="informDate">2023-10-04</span>
+            </div>
+
+            <div class="informSlider">
+                <button class="Silder1"></button><div class="Silder2"></div><button class="Silder3"></button>
+            </div>
+        </div>
+        <div class="s"><span class="informIcon3"></span>공지사항</div>
+    </div>
+    <div id="mainMap">
+        <div id="mainMapContentOne">
+            <div class="mainTourLine"></div>
+            <div class="mainMapFlag"></div>
+            <div class="TourWithYou">TOUR WITH YOU</div>
+            <div class="mainMapDesc">댕댕이와 함께 떠나는 전국팔도 여기저기</div>
+            <div class="mainMapKorea"></div>
+            <div class="daalgaeLogo"></div>
+        </div>
+        <div id="mainMapContentTwo">
+            <div class="MapContentTwoBox">
+                    <div class="mainMapFlag2"></div>
+                    <div class="TourWithYou2">TOUR WITH YOU</div>
+                    <div class="mainMapDesc2">댕댕이와 함께 떠나는 전국팔도 여기저기<div class="daalgaeLogo2"></div>
+                </div>
+            </div>
+            <div class="mainMapKorea2"></div>
+        </div>
+    </div>
+    <div id="mainInfo">
+        <div class="infoHeader">
+            <div class="infoBookImage"></div>
+            <div class="infoText">INFO</div>
+            <div class="infoDesc">더 올바른 방법으로 사랑하는 방법</div>
+        </div>
+        <div class="infoImageBox">
+            <a href="#"></a>
+            <div class="infoImageAndDesc1">
+                <a href="#" class="infoImage1"></a>
+                <div class="infoImageDesc1"><a href="#">입양 전 필수 지식</a></div>
+            </div>
+            <div class="infoImageAndDesc2">
+                <a href="#" class="infoImage2"></a>
+                <div class="infoImageDesc1"><a href="#">양육시 필수 지식</a></div>
+            </div>
+            <div class="infoImageAndDesc3">
+                <a href="#" class="infoImage3"></a>
+                <div class="infoImageDesc1"><a href="#">응급 상황 대처 방법</a></div>
+            </div>
+            <div class="infoImageAndDesc4">
+                <a href="#" class="infoImage4"></a>
+                <div class="infoImageDesc1"><a href="#">함께 실천하는 펫티켓</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="mainGallery">
+        <div class="galleryText1">WHAT’S YOUR</div>
+        <div class="galleryText2">
+            <div class="galleryText2-1">우리강아지</div>
+            <div class="galleryText2-2">자랑갤러리</div>
+        </div>
+        <div class="galleryText3">FAVORITE TODAY</div>
+        <div class="logoInGallery"></div>
+    </div>
+  <div class="imageSliderMain">
+      <div class="imageSlider">
+          <img id="back" src="../images/mainPage/galleryLeftArrow.png" alt="" width="57">
+          <img id="next" src="../images/mainPage/galleryRightArrow.png" alt="" width="57">
+          <div class="slide">
+              <ul>
+                  <li><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></li>
+                  <li><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div id="footers"></div>
+</body>
+</html>

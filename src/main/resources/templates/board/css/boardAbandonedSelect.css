@@ -1,0 +1,288 @@
+.board-abandoned-banner {
+    width: 100%;
+    height: 500px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    background-color: #A6CEF7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-banner-image {
+    position: absolute;
+    top: 46%;
+    left: 77%;
+    width: 300px;
+}
+
+.board-button-back-image {
+    position: absolute;
+    top: 10%;
+    left: 1%;
+}
+.board-abandoned-header-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    background-color: #639DD7;
+}
+
+.board-abandoned-header-menu div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #DBDBDB;
+}
+
+#abandoned-pickupInfo {
+    border-right: 0;
+}
+
+.board-abandoned-header-menu div > a {
+    color: white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.board-abandoned-searchBar {
+    border-top: 1px solid #D8D8D8;
+    border-bottom: 1px solid #D8D8D8;
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.search-buttons {
+    width: 100%;
+    height: 130px;
+    right: 10%;
+    text-align: center;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+}
+
+.search-by-text {
+    background-color: #F6F6F6;
+    width: 250px;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-by-text img {
+    position: relative;
+    right: 5%;
+}
+
+.search-by-text input {
+    background-color: #F6F6F6;
+    width: 60%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #A6CEF7;
+    width: 100px;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.submit-button button {
+    width: 100%;
+    height: 100%;
+    background-color: #A6CEF7;
+    border: 0;
+    border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+    cursor: pointer;
+}
+
+button[type="button"]:hover {
+    cursor: pointer;
+}
+
+.board-abandoned-content-select-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-abandoned-content-title {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    white-space: nowrap;
+}
+
+#postNo {
+    width: 5%;
+    display: block;
+}
+
+#postTitle {
+    width: 40%;
+    display: block;
+}
+
+#postUser {
+    width: 10%;
+    display: block;
+}
+
+#postDate {
+    width: 13%;
+    display: block;
+}
+
+.board-select-content {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.abandoned-dog-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.abandoned-dog-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.abandoned-dog-detail > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    height: 80px;
+    left: 30px;
+    position: relative;
+}
+
+.abandoned-dog-detail div > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border: 0;
+    background-color: #A6CEF7;
+    border-radius: 5px;
+    height: 60px;
+}
+
+.abandoned-dog-detail div > div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 0;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.abandoned-dog-detail-detail {
+    width: 80%;
+    height: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.detail-title {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    left: 20px;
+    position: relative;
+}
+
+.detail-detail {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.detail-detail div div{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.board-select-footer {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back-to-abandoned-list {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-to-abandoned-list a {
+    width: 120px;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #A6CEF7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

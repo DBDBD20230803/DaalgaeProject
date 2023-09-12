@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>boardFree</title>
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+    
+    <!--bootstrap-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--css-->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/sanitize.css">
+    <link rel="stylesheet" href="/board/css/boardFreeSelect.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--js-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <!--favicon--->
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+</head>
+<body>
+    <div class="board-free-banner">
+        <h3>자유게시판</h3>
+        <div>
+            <a href="/board/mainBoard.html" alt="back-arrow-to-main">
+                <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
+            </a>
+        </div>
+        <div>
+            <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+        </div>
+    </div>
+    <div class="board-container">
+        <div class="board-free-searchBar">
+            <div class="search-buttons">
+                <div class="search-by-text">
+                    <img src="/board/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <input type="text" name="textSearching" id="textSearching">
+                </div>
+                <div class="submit-button">
+                    <button type="submit" id="searchButton">검색</button>
+                </div>
+            </div>
+        </div>
+        <div class="board-select-header-buttons">
+            <div class="like-button">
+                <button type="button" id="like-button">
+                    <img src="/board/images/like-button.png" alt="like-button">
+                </button>
+            </div>
+            <div class="report-button">
+                <button type="button" id="report-button">
+                    <img src="/board/images/report-button.png" alt="report-button">
+                </button>
+            </div>
+        </div>
+        <div class="board-free-content-select-container">
+            <div class="board-free-content-title">
+                    <h4 id="postNo">1</h4>
+                    <h4 id="postTitle">집가고싷다시파</h4>
+                    <h4 id="postUser">daalgae</h4>
+                    <h4 id="postDate">2023-09-11</h4>
+            </div>
+            <div class="board-select-content">
+                <div>
+                    <h4>안녕하세요</h4>
+                    <img src="/board/images/board-free-button.png" alt="">
+                    <h4>집가고싶네요</h4>
+                </div>
+            </div>
+        </div>
+        <div class="board-select-footer">
+            <div class="comment-section-title">
+                <img src="/board/images/comment-icon.png" alt="dog-paw">
+                <h4>의견을 남겨주세요</h4>
+            </div>
+            <div class="comment">
+                <h4 id="comment-user">dlthakd(팽이엄마)</h4>
+                <h4 id="comment-date">(2023-09-03 07:14:48)</h4>
+                <button id="comment-report-button">
+                    <img src="/board/images/report-comment-button.png" alt="comment-report-button">
+                </button>
+            </div>
+            <div class="comment-content">
+                <h4>나돜ㅋㅋㅋㅋㅋ</h4>
+            </div>
+            <div class="comment-delete-button">
+                <button type="button">삭제</button>
+            </div>
+            <div class="write-comment">
+                <div class="write-comment-info">
+                    <h4>*내용(0 / 300자)</h4>
+                </div>
+                <div class="write-comment-content">
+                    <textarea name="comment" id="write-comment-textarea" cols="30" rows="10"></textarea>
+                </div>
+                <div class="write-comment-button">
+                    <button type="submit">댓글달기</button>
+                </div>
+            </div>
+            <div class="back-to-free-list">
+                <a href="/board/freeBoard.html">목록</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+</html>

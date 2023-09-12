@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>ImageSilder</title>
+     <style media="screen">
+      *{
+        margin: 0; padding: 0;
+      }
+      .slide{
+        width: 652px;
+        height: 326px;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+      }
+      .slide ul{
+        width: 5000px;
+        position: relative;
+        top:0;
+        left:0;
+        font-size: 0;
+      }
+      .slide ul li{
+        display: inline-block;
+      }
+      #back{
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: -28px;
+        transform: translateY(-29px);
+        z-index: 1;
+      }
+      #next{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-29px);
+        right: -28px;
+        cursor: pointer;
+        z-index: 1;
+      }
+      .imageSliderMain {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .imageSlider {
+        width: 652px;
+        position: relative;
+      }
+     </style>
+  </head>
+  <body>
+    <div class="imageSliderMain">
+      <div class="imageSlider">
+        <img id="back" src="../images/mainPage/galleryLeftArrow.png" alt="" width="57">
+        <img id="next" src="../images/mainPage/galleryRightArrow.png" alt="" width="57">
+        <div class="slide">
+          <ul>
+            <li><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></li>
+            <li><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      let imgs;
+      let img_count;
+      let img_position = 1;
+
+      imgs = $(".slide ul");
+      img_count = imgs.children().length;
+
+      //버튼을 클릭했을 때 함수 실행
+      $('#back').click(function () {
+        back();
+      });
+      $('#next').click(function () {
+        next();
+      });
+
+      function back() {
+        if(1<img_position){
+          imgs.animate({
+            left:'+=326px'
+          });
+          img_position--;
+        }
+      }
+      function next() {
+        if(img_count-1>img_position){
+          imgs.animate({
+            left:'-=326px'
+          });
+          img_position++;
+        }
+      }
+
+
+      //이미지 끝까지 가면 버튼 사라지기
+
+
+      //첫 이미지로 돌아오기
+
+
+    });
+  </script>
+</html>

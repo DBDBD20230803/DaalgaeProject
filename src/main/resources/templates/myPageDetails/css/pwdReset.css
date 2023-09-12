@@ -1,0 +1,66 @@
+input:focus{
+    outline: none !important;
+}
+
+#pwdReset{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#pwdReset .pwdResetWrap{
+    width: 100%;
+}
+
+#pwdReset .pwdResetWrap .pwdResetContents{ 
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#pwdReset .pwdResetWrap .pwdResetContents h5.pwdResetTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#pwdReset .pwdResetWrap .pwdResetContents h5.pwdResetConfirmTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm input.pwdInputs{
+    background: url(../images/lock.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: .3% 0;
+}
+
+
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm input.pwdInputs::placeholder{
+    color: #929292;
+}
+
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm p{
+    font-weight: 300;
+}
+
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm input#pwdResetBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 6%;
+}

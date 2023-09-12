@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>boardAbandonedPickupInfo</title>
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+    
+    <!--bootstrap-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--css-->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/sanitize.css">
+    <link rel="stylesheet" href="/board/css/boardAbandonedPickupInfo.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--js-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <!--favicon--->
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+</head>
+<body>
+    <div class="board-abandoned-banner">
+        <h3>습득시 안내</h3>
+        <div>
+            <a href="/board/mainBoard.html" alt="back-arrow-to-main">
+                <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
+            </a>
+        </div>
+        <div>
+            <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+        </div>
+    </div>
+    <div class="board-abandoned-header-menu">
+        <div class="abandoned-protection">
+            <a href="/board/abandonedBoard.html">보호중인 강아지</a>
+        </div>
+        <div class="abandoned-center">
+            <a href="/board/abandonedBoardCenter.html">동물보호센터</a>
+        </div>
+        <div class="abandoned-adoptInfo">
+            <a href="/board/abandonedBoardAdoptInfo.html">입양안내</a>
+        </div>
+        <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
+            <a href="/board/abandonedBoardPickupInfo.html">습득시 안내</a>
+        </div>
+    </div>
+    <div class="board-container">
+        <div class="board-abandoned-searchBar">
+            <div class="search-buttons">
+                <div class="abandoned-search-category">
+                    <select name="abandoned-search-category" id="abandoned-search-category">
+                        <option value="지역">지역</option>
+                        <option value="제목">제목</option>
+                        <option value="제목내용">제목 + 내용</option>
+                    </select>
+                </div>
+                <div class="search-by-text">
+                    <img src="/board/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <input type="text" name="textSearching" id="textSearching">
+                </div>
+                <div class="submit-button">
+                    <button type="submit" id="searchButton">검색</button>
+                </div>
+            </div>
+        </div>
+        <div class="board-abandoned-content-container">
+            <a href="/board/abandonedBoardSelect.html">
+                <div class="abandoned-content">
+                    <div class="abandoned-content-img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="abandoned-content-detail">
+                        <div class="a-c-title">
+                            <h4>공고번호 : 광주-북구-2023-00650</h4>
+                        </div>
+                        <div class="a-c-location">
+                            <img src="/board/images/abandoned-location.png" alt="writer">
+                            <h5>발견장소 : </h5>
+                            <h5>북구 본촌동</h5>
+                        </div>
+                        <div class="a-c-gender">
+                            <img src="/board/images/abandoned-gender.png" alt="date">
+                            <h5>성별 : </h5>
+                            <h5>수컷</h5>
+                        </div>
+                        <div class="a-c-breed">
+                            <img src="/board/images/abandoned-breed.png" alt="date">
+                            <h5>품종 : </h5>
+                            <h5>믹스견</h5>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="board-paging-button">
+            <button type="button" id="previousPageButton">
+                <img src="/board/images/previousPageButton.png" alt="">
+            </button>
+            <button class="pageNumber">
+                <div id="postPage1">
+                    <div></div>
+                    <h4>1</h4>
+                </div>
+            </button>
+            <button type="button" id="nextPageButton">
+                <img src="/board/images/nextPageButton.png" alt="">
+            </button>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>boardFree</title>
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+    
+    <!--bootstrap-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--css-->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/sanitize.css">
+    <link rel="stylesheet" href="/board/css/boardFree.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--js-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <!--favicon--->
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+</head>
+<body>
+    <div class="board-free-banner">
+        <h3>자유게시판</h3>
+        <div>
+            <a href="/board/mainBoard.html" alt="back-arrow-to-main">
+                <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
+            </a>
+        </div>
+        <div>
+            <img src="/board/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
+        </div>
+    </div>
+    <div class="board-container">
+        <div class="board-free-searchBar">
+            <div class="search-buttons">
+                <div class="free-head-title-category">
+                    <select name="free-head-title-category" id="free-head-title-category">
+                        <option value="말머리" selected>말머리</option>
+                        <option value="용품">용품</option>
+                        <option value="먹거리">먹거리</option>
+                    </select>
+                </div>
+                <div class="free-search-category">
+                    <select name="free-search-category" id="free-search-category">
+                        <option value="제목">제목</option>
+                        <option value="제목내용">제목 + 내용</option>
+                        <option value="작성자">작성자</option>
+                    </select>
+                </div>
+                <div class="search-by-text">
+                    <img src="/board/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <input type="text" name="textSearching" id="textSearching">
+                </div>
+                <div class="submit-button">
+                    <button type="submit" id="searchButton">검색</button>
+                </div>
+            </div>
+        </div>
+        <div class="board-list-container">
+            <div class="board-postCategory">
+                <h4 id="postNo">번호</h4>
+                <h4 id="postTitle">제목</h4>
+                <h4 id="postUser">작성자</h4>
+                <h4 id="postDate">등록일</h4>
+            </div>
+        </div>
+        <div class="postList">
+            <a href="/board/freeBoardSelect.html" class="post">
+                <div class="post-info">
+                    <h4 id="testPost-postNo">1</h4>
+                    <h4 id="testPost-postTitle">집가고싷다시파</h4>
+                    <h4 id="testPost-postUser">daalgae</h4>
+                    <h4 id="testPost-postDate">2023-09-11</h4>
+                </div>
+            </a>
+        </div>
+        <div class="board-admin-write">
+            <a href="freeBoardWrite.html" id="board-write-button" alt="글쓰기">
+                <div class="board-write-text">
+                    <h3>글쓰기</h3>
+                </div>
+            </a>
+        </div>
+        <div class="board-paging-button">
+            <button type="button" id="previousPageButton">
+                <img src="/board/images/previousPageButton.png" alt="">
+            </button>
+            <button class="pageNumber">
+                <div id="postPage1">
+                    <div></div>
+                    <h4>1</h4>
+                </div>
+            </button>
+            <button type="button" id="nextPageButton">
+                <img src="/board/images/nextPageButton.png" alt="">
+            </button>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+</html>
