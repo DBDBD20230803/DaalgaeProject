@@ -30,7 +30,7 @@ p{
 
 #myPage .myPageBg::after{
     content: "";
-    background: url("../images/myPageBgImg.png") no-repeat center;
+    background: url("imagesmg.png") no-repeat center;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -88,7 +88,7 @@ p{
     width: 50px;
     height: 50px;
     position: absolute;
-    background: url(../images/myPageAdd.png) no-repeat center center;
+    background: url(myPageAdd.png) no-repeat center center;
     background-size: contain;
     top: 50%;
     left: 50%;

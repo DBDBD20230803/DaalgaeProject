@@ -2,16 +2,16 @@ input:focus{
     outline: none !important;
 }
 
-#FindPwdFail{
+#FindPwd{
     width: 100%;
     padding: 230px 0;
 }
 
-#FindPwdFail .FindPwdFailWrap{
+#FindPwd .FindPwdWrap{
     width: 100%;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents{ 
+#FindPwd .FindPwdWrap .FindPwdContents{ 
     width: 45%;
     border: 1px solid #DBDBDB;
     border-radius: 10px;
@@ -21,7 +21,7 @@ input:focus{
     text-align: center;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents h5.FindPwdFailTitle{
+#FindPwd .FindPwdWrap .FindPwdContents h5.FindPwdTitle{
     width: 100%;
     position: absolute;
     left: 0;
@@ -30,13 +30,13 @@ input:focus{
 }
 
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents h5.identiTitle{
+#FindPwd .FindPwdWrap .FindPwdContents h5.PutInfoFormforPwdTitle{
     font-weight: 400;
     font-size: 1.2em;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putId{
-    background: url(../images/id.png) no-repeat 13px center;
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putId{
+    background: url(id.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
@@ -46,8 +46,8 @@ input:focus{
     margin: .5% 0;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putEmailAddress{
-    background: url(../images/email.png) no-repeat 13px center;
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putEmailAddress{
+    background: url(email.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
@@ -56,26 +56,19 @@ input:focus{
     background-color: #DAECFF;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm .idNotFound{
-    width: 100%;
-    color: #FF0000;
-    font-size: 0.8em;
-    text-align: right;
-}
-
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putId::placeholder{
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putId::placeholder{
     color: #929292;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putEmailAddress::placeholder{
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putEmailAddress::placeholder{
     color: #929292;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm p{
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm p{
     font-weight: 300;
 }
 
-#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#AuthBtn{
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#AuthBtn{
     background-color: #9DC4E7;
     color: #fff;
     border:none;

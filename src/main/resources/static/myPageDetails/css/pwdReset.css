@@ -2,16 +2,16 @@ input:focus{
     outline: none !important;
 }
 
-#delete{
+#pwdReset{
     width: 100%;
     padding: 230px 0;
 }
 
-#delete .deleteWrap{
+#pwdReset .pwdResetWrap{
     width: 100%;
 }
 
-#delete .deleteWrap .deleteContents{ 
+#pwdReset .pwdResetWrap .pwdResetContents{ 
     width: 45%;
     border: 1px solid #DBDBDB;
     border-radius: 10px;
@@ -21,7 +21,7 @@ input:focus{
     text-align: center;
 }
 
-#delete .deleteWrap .deleteContents h5.deleteTitle{
+#pwdReset .pwdResetWrap .pwdResetContents h5.pwdResetTitle{
     width: 100%;
     position: absolute;
     left: 0;
@@ -30,32 +30,33 @@ input:focus{
 }
 
 
-#delete .deleteWrap .deleteContents h5.deletePwdConfirmTitle{
+#pwdReset .pwdResetWrap .pwdResetContents h5.pwdResetConfirmTitle{
     font-weight: 400;
     font-size: 1.2em;
 }
 
 
-#delete .deleteWrap .deleteContents .deletPwdConfirm input#pwd{
-    background: url(../images/lock.png) no-repeat 13px center;
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm input.pwdInputs{
+    background: url(lock.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
     background-color: #DAECFF;
-    margin: 3% 0;
+    margin: .3% 0;
 }
 
-#delete .deleteWrap .deleteContents .deletPwdConfirm input#pwd::placeholder{
+
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm input.pwdInputs::placeholder{
     color: #929292;
 }
 
-#delete .deleteWrap .deleteContents .deletPwdConfirm p{
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm p{
     font-weight: 300;
 }
 
-#delete .deleteWrap .deleteContents .deletPwdConfirm input#deleteBtn{
+#pwdReset .pwdResetWrap .pwdResetContents .pwdResetForm input#pwdResetBtn{
     background-color: #9DC4E7;
     color: #fff;
     border:none;

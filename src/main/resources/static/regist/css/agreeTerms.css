@@ -46,7 +46,7 @@ input:focus{
 }
 
 #agreeAll:checked + #showCheckbox {
-    background: url(../images/checkbox_checked.png) no-repeat;
+    background: url(checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
@@ -55,7 +55,7 @@ input:focus{
 #agreeAll #showCheckbox {
     width: 18px;
     height: 18px; 
-    background: url(../images/checkbox_normal.png) no-repeat;
+    background: url(checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 
@@ -96,7 +96,7 @@ input:focus{
 }
 
 #termsCheck:checked + #showCheckbox {
-    background: url(../images/checkbox_checked.png) no-repeat;
+    background: url(checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
@@ -105,7 +105,7 @@ input:focus{
 #showCheckbox {
     width: 18px;
     height: 18px; 
-    background: url(../images/checkbox_normal.png) no-repeat;
+    background: url(checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 
@@ -176,7 +176,7 @@ input:focus{
 }
 
 #privacy:checked + #showCheckbox {
-    background: url(../images/checkbox_checked.png) no-repeat;
+    background: url(checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
@@ -185,7 +185,7 @@ input:focus{
 #privacy #showCheckbox {
     width: 18px;
     height: 18px; 
-    background: url(../images/checkbox_normal.png) no-repeat;
+    background: url(checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 

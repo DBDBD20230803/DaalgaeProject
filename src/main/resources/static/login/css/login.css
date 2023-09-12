@@ -50,7 +50,7 @@ input:focus{
 }
 
 #login .logintWrap .loginContents .loginForm .loginFormWrap input.username{
-    background: #fff url(../images/id.png) no-repeat 13px center;
+    background: #fff url(id.png) no-repeat 13px center;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
     margin-bottom: 0.3%;
@@ -59,7 +59,7 @@ input:focus{
 }
 
 #login .logintWrap .loginContents .loginForm .loginFormWrap input.password{ 
-    background: #fff url(../images/lock.png) no-repeat 13px center;
+    background: #fff url(lock.png) no-repeat 13px center;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
     margin-bottom: 0.3%;

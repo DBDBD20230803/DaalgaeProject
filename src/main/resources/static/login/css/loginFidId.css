@@ -37,7 +37,7 @@ input:focus{
 
 
 #FindId .FindIdWrap .FindIdContents .PutemailAdressForm input#putEmailAddress{
-    background: url(../images/email.png) no-repeat 13px center;
+    background: url(email.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
