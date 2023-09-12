@@ -62,620 +62,620 @@
             });
         });
     </script>
-<!--    <script type="text/javascript">-->
-<!--            const ele = document.getElementById('temp');-->
-<!--        $(function() {-->
-<!--            $('input[type=checkbox]').on('change', function() {-->
-<!--                if ($(this).is(':checked')) {-->
-<!--                    $('#aaa').css('background', '#f00');-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
+    <!--    <script type="text/javascript">-->
+    <!--            const ele = document.getElementById('temp');-->
+    <!--        $(function() {-->
+    <!--            $('input[type=checkbox]').on('change', function() {-->
+    <!--                if ($(this).is(':checked')) {-->
+    <!--                    $('#aaa').css('background', '#f00');-->
+    <!--                }-->
+    <!--            });-->
+    <!--        });-->
+    <!--    </script>-->
     <style>
         body {
             top: 100px;
         }
-    /* 초기화 식, sanitize.css로 초기화 하는 것도 있음 */
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-}
-
-#toTop {
-    position: fixed; 	/* 포지션 고정 */
-    right: 54px;
-    bottom: 75px; 		/* 밑에서 100px */
-    display: none; 		/* 보여지지 없음 - 기본적으로 안보여지게 */
-    z-index: 9999; 		/* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
-}
-
-button {
-  background: inherit ;
-  border:none;
-  box-shadow:none;
-  border-radius:0;
-  padding:0;
-  overflow:visible;
-  cursor:pointer
-}
-
-/* 반응형 설정 */
-@media (min-width: 769px) {
-    .mainLogo2 {
-      display: none;
-    }
-    #allMenu2 ol {
-      display: none;
-    }
-    .allMenu2WhiteSpace {
-        display: none;
-    }
-    #hideMenu {
-        display: block;
-    }
-    #hideMenu2 {
-        display: block;
-    }
-}
-
-@media (max-width: 768px) {
-    #MenuWhole #menu ul li {
-        display: none;
-    }
-    .mainLogo img {
-      display: none;
-    }
-    .mainLogo2 {
-      display: block;
-    }
-    #allMenu table {
-      display: none;
-    }
-    #allMenu2 ol {
-        display: block;
-    }
-    .allMenu2WhiteSpace {
-        display: block;
-    }
-    #hideMenu {
-        display: none;
-    }
-    #hideMenu2 {
-        display: none;
-    }
-}
-
-
-/* 메뉴바 세부 목록 */
-
-ul li{
-    list-style: none;
-}
-
-ul {
-    margin-left: 30px;
-}
-a {
-    text-decoration: none;
-    color:#333;
-}
-
-a:hover {
-    text-decoration: none;
-    color:#333;
-}
-
-
-#mainBackground {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 1080px;
-    background-image: url(../images/mainPage/mainPageBackground.png);
-    z-index: -1;
-}
-#menu {
-    font-size: 16px;
-    width:100%;
-    height:50px;
-    background: rgba(90, 161, 221, 0.9);
-    color:black;
-    line-height: 50px; 
-    margin:0 auto;
-    text-align: center;
-    margin-top: -16px;
-}
-
-#menu > ul > li {
-    float:left;
-    margin-left: 40px;
-    position:relative;
-}
-
-
-
-
-#menu > ul > li > ul {
-    width:130px;
-    display:none;
-    position: absolute;
-    font-size: 14px;
-    background: #fff;
-    margin-left: -40px;
-    margin-top: -16px;
-    font-weight: 700;
-    border-radius: 0px 0px 20px 20px;
-    box-shadow: 0px 17px 25px rgba(0, 0, 0, 0.25);
-}
-
-#menu > ul > li:hover > ul {
-    display:block;
-    
-}
-
-/*#menu > ul > li > ul > li:hover {*/
-/*    background: orange;*/
-/*    transition: ease 1s;*/
-/*    }*/
-
-#allMenu {
-    width: 100%;
-}
-
-/* 768px 이하 메뉴 */
-#allMenu2 {
-    width: 100%;
-    display: none;
-}
-
-#allMenu2 > ol > li > ol {
-    display: none;
-}
-.allMenu2WhiteSpace {
-    width: 100%;
-    height: 30px;
-}
-
-ol {
-    list-style: none;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: center;
-    font-size: 24px;
-}
-
-p {
-    font-weight: normal;
-}
-
-/*    이전 내용    */
-/*#allMenu2 > li {*/
-/*    position:relative;*/
-/*    list-style: none;*/
-/*    font-size: 28px;*/
-/*}*/
-
-/*#allMenu2 > li > a{*/
-/*    color: #000;*/
-/*}*/
-
-/*#allMenu2 > li > ul {*/
-/*    display:none;*/
-/*    position: absolute;*/
-/*    font-size:20px;*/
-/*    background: #fff;*/
-/*}*/
-/*#allMenu2 > li:hover > ul {*/
-/*    display:block;*/
-/*    text-align: center;*/
-/*}*/
-
-/*#allMenu2 > li > ul > li:hover {*/
-/*    border-bottom: 1px solid;*/
-/*}*/
-
-
-/* 전체 햄버거 버튼 */
-
-.menu > .allMenu {
-    display:block;
-}
-
-.menu {
-  position: absolute;
-  width: 100%;  
-  max-height: 100%;
-  z-index: 3;
-  background-color: rgba(255, 255, 255, 0.9);
-
-}
-
-#allMenu {
-    display: none;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 0px 0px 30px 30px;
-    box-shadow: 0px 17px 25px rgba(0, 0, 0, 0.25);
-}
-
-
-
-#searchMenu {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 0px 0px 30px 30px;
-    box-shadow: 0px 17px 25px rgba(0, 0, 0, 0.25);
-}
-
-.searchBox121 {
-    position: relative;
-    display: inline-block;
-    border: 1px solid #A6CEF7;
-    top: 80px;
-    background-color: #EAF4FA;
-    border-radius: 10px;
-    width: 70%;
-    height: 95px;
-}
-
-.searchSpace {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.menuSearchInputAndIcon {
-    position: relative;
-    top: 25px;
-    height: 43px;
-    width: 100%;
-}
-
-.menuSearchIconIn {
-    position: relative;
-    background-image: url("../images/header/menuSearchIconIn.png");
-    width: 43px;
-    height: 43px;
-    left: 55px;
-}
-
-.menuSearchInput input {
-    position: relative;
-    border: none;
-    background-color: transparent;
-    margin: auto;
-    width: 60%;
-    top: 3px;
-    font-size: 22px;
-}
-
-.menuSearchInput input:focus {
-    outline: 2px solid #d50000;
-}
-
-.menuSearchInput {
-    top: -39px;
-    left: 130px;
-    position: relative;
-}
-.inputSearchButton {
-    position: relative;
-    display: inline-block;
-    width: 111px;
-    height: 95px;
-    background-color: #639DD7;
-    border-radius: 5px;
-    margin-left: 10px;
-    top: 80px;
-}
-.inputSearchButton a {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 30px;
-    font-size: 22px;
-    color: white;
-}
-
-#hideMenu {
-    position: absolute;
-    top: -50px;
-    left: 0px;
-    width: 370px;
-    height: 50px;
-    z-index: 3;
-}
-
-#hideMenu2 {
-    position: absolute;
-    top: -50px;
-    left: 0px;
-    width: 370px;
-    height: 50px;
-    z-index: 3;
-}
-/* 버거1 */
-.burger-icon {
-  cursor: pointer;
-  display: inline-block;
-  position: absolute;
-  z-index: 2;
-  padding: 8px 0;
-  top: 16px;
-  right: 50px;
-  user-select: none;
-  width: auto;
-  margin: 0;
-}
-
-.burger-icon .burger-sticks {
-  background: #fff;
-  display: block;
-  height: 2px;
-  position: relative;
-  transition: background .2s ease-out;
-  width: 18px;
-}
-
-.burger-icon .burger-sticks:before,
-.burger-icon .burger-sticks:after {
-  background: #fff;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all .2s ease-out;
-  width: 100%;
-}
-
-.burger-icon .burger-sticks:before {
-  top: 5px;
-}
-
-.burger-icon .burger-sticks:after {
-  top: -5px;
-}
-
-.burger-check {
-  display: none;
-}
-
-
-.burger-check:checked~#menu {
-    display: block;
-    z-index: 3;
-}
-
-.burger-check:checked~.menu {
-  max-height: 800px;
-}
-
-.burger-check:checked~.menu #allMenu {
-  display: block;
-}
-
-.burger-check:checked~.menu #allMenu2 {
-    display: block;
-}
-
-.burger-check:checked~.burger-icon .burger-sticks {
-  background: transparent;
-}
-
-.burger-check:checked~.burger-icon .burger-sticks:before {
-  transform: rotate(-45deg);
-}
-
-.burger-check:checked~.burger-icon .burger-sticks:after {
-  transform: rotate(45deg);
-}
-
-.burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
-.burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
-  top: 0;
-}
-
-.burger-check2:checked~.burger-icon2 {
-    filter: invert(75%);
-}
-
-table {
-  margin-top: 50px;
-  margin-left:auto; 
-  margin-right:auto; 
-}
-th {
-  border-bottom: 1px solid #444444;
-  text-align: center;
-  font-size: 30px;
-  width: 600px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-} 
-td {
-  padding-top: 30px;
-  text-align: center;
-  font-size: 24px;
-}
-
-/* 햄버거 버튼 왼쪽의 버튼 */
-.mainLogo {
-    display: inline-block;
-    position: absolute;
-    z-index: 2;
-    top: -2px;
-    transform: translateX(-50%);
-    transform: translateX(-53.2px);
-    margin: 0;
-}
-
-.mainLogo img {
-    height: 40px;
-}
-
-/* 768px이하일 때 메인로고 */
-.mainLogo2 {
-  
-  position: absolute;
-  z-index: 2;
-  top: -2px;
-  left: 20px;
-  margin: 0;
-}
-
-.mainLogo2 img {
-  height: 40px;
-}
-
-
-.loginButton {
-    position: absolute;
-    z-index: 2;
-    padding: 8px 0;
-    top: 6px;
-    right: 260px;
-    width: auto;
-    margin: 0;
-    font-size: 16px;
-}
-
-.loginButton a {
-    color: #fff;
-}
-
-.signupButton {
-    position: absolute;
-    z-index: 2;
-    padding: 8px 0;
-    top: 6px;
-    right: 185px;
-    width: auto;
-    margin: 0;
-    font-size: 16px;
-}
-
-.signupButton a {
-  color: #fff;
-}
-
-.myPageButton {
-    display: inline-block;
-    position: absolute;
-    z-index: 2;
-    padding: 8px 0;
-    top: 2px;
-    right: 140px;
-    width: auto;
-    margin: 0;
-    line-height: 1;
-}
-
-li > p {
-    color: #fff;
-    cursor: pointer;
-}
-
-ol > li > ol > li {
-    font-size: 22px;
-    color: #222;
-    line-height: 2;
-    text-align: center;
-}
-
-
-ol > li > p {
-    
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-weight: 500;
-    color: #222;
-}
-
-ol > li > p  {
-    margin-left: 60px;
-    margin-right: 60px;
-    text-align: left;
-    font-size: 28px;
-    color: #222222;
-    border-bottom: 1px solid #222;
-}
-
-
-/* 버거2*/
-.burger-icon2 {
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-    z-index: 2;
-    padding: 8px 0;
-    top: 10px;
-    right: 90px;
-    user-select: none;
-    width: 29px;
-    height: 29px;
-    margin: 0;
-    background-image: url("../images/header/menuSearch.png");
-}
-
-/*.burger-icon2 .burger-sticks2 {*/
-/*    background: #fff;*/
-/*    display: block;*/
-/*    height: 2px;*/
-/*    position: relative;*/
-/*    transition: background .2s ease-out;*/
-/*    width: 18px;*/
-/*}*/
-
-/*.burger-icon2 .burger-sticks2:before,*/
-/*.burger-icon2 .burger-sticks2:after {*/
-/*    background: #fff;*/
-/*    content: '';*/
-/*    display: block;*/
-/*    height: 100%;*/
-/*    position: absolute;*/
-/*    transition: all .2s ease-out;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.burger-icon2 .burger-sticks2:before {*/
-/*    top: 5px;*/
-/*}*/
-
-/*.burger-icon2 .burger-sticks2:after {*/
-/*    top: -5px;*/
-/*}*/
-
-.burger-check2 {
-    display: none;
-}
-
-
-.burger-check2:checked~#menu {
-    display: block;
-    z-index: 3;
-}
-
-.burger-check2:checked~.menu {
-    max-height: 300px;
-}
-
-.burger-check2:checked~.menu #searchMenu {
-    display: block;
-}
-
-.burger-check2:checked~.burger-check2 {
-
-}
-
-  
+        /* 초기화 식, sanitize.css로 초기화 하는 것도 있음 */
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        }
+
+        #toTop {
+            position: fixed; 	/* 포지션 고정 */
+            right: 54px;
+            bottom: 75px; 		/* 밑에서 100px */
+            display: none; 		/* 보여지지 없음 - 기본적으로 안보여지게 */
+            z-index: 9999; 		/* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
+        }
+
+        button {
+            background: inherit ;
+            border:none;
+            box-shadow:none;
+            border-radius:0;
+            padding:0;
+            overflow:visible;
+            cursor:pointer
+        }
+
+        /* 반응형 설정 */
+        @media (min-width: 769px) {
+            .mainLogo2 {
+                display: none;
+            }
+            #allMenu2 ol {
+                display: none;
+            }
+            .allMenu2WhiteSpace {
+                display: none;
+            }
+            #hideMenu {
+                display: block;
+            }
+            #hideMenu2 {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #MenuWhole #menu ul li {
+                display: none;
+            }
+            .mainLogo img {
+                display: none;
+            }
+            .mainLogo2 {
+                display: block;
+            }
+            #allMenu table {
+                display: none;
+            }
+            #allMenu2 ol {
+                display: block;
+            }
+            .allMenu2WhiteSpace {
+                display: block;
+            }
+            #hideMenu {
+                display: none;
+            }
+            #hideMenu2 {
+                display: none;
+            }
+        }
+
+
+        /* 메뉴바 세부 목록 */
+
+        ul li{
+            list-style: none;
+        }
+
+        ul {
+            margin-left: 30px;
+        }
+        a {
+            text-decoration: none;
+            color:#333;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color:#333;
+        }
+
+
+        #mainBackground {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 1080px;
+            background-image: url(../images/mainPage/mainPageBackground.png);
+            z-index: -1;
+        }
+        #menu {
+            font-size: 16px;
+            width:100%;
+            height:50px;
+            background: rgba(90, 161, 221, 0.9);
+            color:black;
+            line-height: 50px;
+            margin:0 auto;
+            text-align: center;
+            margin-top: -16px;
+        }
+
+        #menu > ul > li {
+            float:left;
+            margin-left: 40px;
+            position:relative;
+        }
+
+
+
+
+        #menu > ul > li > ul {
+            width:130px;
+            display:none;
+            position: absolute;
+            font-size: 14px;
+            background: #fff;
+            margin-left: -40px;
+            margin-top: -16px;
+            font-weight: 700;
+            border-radius: 0px 0px 20px 20px;
+            box-shadow: 0px 17px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        #menu > ul > li:hover > ul {
+            display:block;
+
+        }
+
+        /*#menu > ul > li > ul > li:hover {*/
+        /*    background: orange;*/
+        /*    transition: ease 1s;*/
+        /*    }*/
+
+        #allMenu {
+            width: 100%;
+        }
+
+        /* 768px 이하 메뉴 */
+        #allMenu2 {
+            width: 100%;
+            display: none;
+        }
+
+        #allMenu2 > ol > li > ol {
+            display: none;
+        }
+        .allMenu2WhiteSpace {
+            width: 100%;
+            height: 30px;
+        }
+
+        ol {
+            list-style: none;
+            margin-left:auto;
+            margin-right:auto;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        p {
+            font-weight: normal;
+        }
+
+        /*    이전 내용    */
+        /*#allMenu2 > li {*/
+        /*    position:relative;*/
+        /*    list-style: none;*/
+        /*    font-size: 28px;*/
+        /*}*/
+
+        /*#allMenu2 > li > a{*/
+        /*    color: #000;*/
+        /*}*/
+
+        /*#allMenu2 > li > ul {*/
+        /*    display:none;*/
+        /*    position: absolute;*/
+        /*    font-size:20px;*/
+        /*    background: #fff;*/
+        /*}*/
+        /*#allMenu2 > li:hover > ul {*/
+        /*    display:block;*/
+        /*    text-align: center;*/
+        /*}*/
+
+        /*#allMenu2 > li > ul > li:hover {*/
+        /*    border-bottom: 1px solid;*/
+        /*}*/
+
+
+        /* 전체 햄버거 버튼 */
+
+        .menu > .allMenu {
+            display:block;
+        }
+
+        .menu {
+            position: absolute;
+            width: 100%;
+            max-height: 100%;
+            z-index: 3;
+            background-color: rgba(255, 255, 255, 0.9);
+
+        }
+
+        #allMenu {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0px 0px 30px 30px;
+            box-shadow: 0px 17px 25px rgba(0, 0, 0, 0.25);
+        }
+
+
+
+        #searchMenu {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0px 0px 30px 30px;
+            box-shadow: 0px 17px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .searchBox121 {
+            position: relative;
+            display: inline-block;
+            border: 1px solid #A6CEF7;
+            top: 80px;
+            background-color: #EAF4FA;
+            border-radius: 10px;
+            width: 70%;
+            height: 95px;
+        }
+
+        .searchSpace {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menuSearchInputAndIcon {
+            position: relative;
+            top: 25px;
+            height: 43px;
+            width: 100%;
+        }
+
+        .menuSearchIconIn {
+            position: relative;
+            background-image: url("../images/header/menuSearchIconIn.png");
+            width: 43px;
+            height: 43px;
+            left: 55px;
+        }
+
+        .menuSearchInput input {
+            position: relative;
+            border: none;
+            background-color: transparent;
+            margin: auto;
+            width: 60%;
+            top: 3px;
+            font-size: 22px;
+        }
+
+        .menuSearchInput input:focus {
+            outline: 2px solid #d50000;
+        }
+
+        .menuSearchInput {
+            top: -39px;
+            left: 130px;
+            position: relative;
+        }
+        .inputSearchButton {
+            position: relative;
+            display: inline-block;
+            width: 111px;
+            height: 95px;
+            background-color: #639DD7;
+            border-radius: 5px;
+            margin-left: 10px;
+            top: 80px;
+        }
+        .inputSearchButton a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 30px;
+            font-size: 22px;
+            color: white;
+        }
+
+        #hideMenu {
+            position: absolute;
+            top: -50px;
+            left: 0px;
+            width: 370px;
+            height: 50px;
+            z-index: 3;
+        }
+
+        #hideMenu2 {
+            position: absolute;
+            top: -50px;
+            left: 0px;
+            width: 370px;
+            height: 50px;
+            z-index: 3;
+        }
+        /* 버거1 */
+        .burger-icon {
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 16px;
+            right: 50px;
+            user-select: none;
+            width: auto;
+            margin: 0;
+        }
+
+        .burger-icon .burger-sticks {
+            background: #fff;
+            display: block;
+            height: 2px;
+            position: relative;
+            transition: background .2s ease-out;
+            width: 18px;
+        }
+
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+            background: #fff;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+
+        .burger-icon .burger-sticks:before {
+            top: 5px;
+        }
+
+        .burger-icon .burger-sticks:after {
+            top: -5px;
+        }
+
+        .burger-check {
+            display: none;
+        }
+
+
+        .burger-check:checked~#menu {
+            display: block;
+            z-index: 3;
+        }
+
+        .burger-check:checked~.menu {
+            max-height: 800px;
+        }
+
+        .burger-check:checked~.menu #allMenu {
+            display: block;
+        }
+
+        .burger-check:checked~.menu #allMenu2 {
+            display: block;
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks {
+            background: transparent;
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+            transform: rotate(-45deg);
+        }
+
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+            transform: rotate(45deg);
+        }
+
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+            top: 0;
+        }
+
+        .burger-check2:checked~.burger-icon2 {
+            filter: invert(75%);
+        }
+
+        table {
+            margin-top: 50px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        th {
+            border-bottom: 1px solid #444444;
+            text-align: center;
+            font-size: 30px;
+            width: 600px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        td {
+            padding-top: 30px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* 햄버거 버튼 왼쪽의 버튼 */
+        .mainLogo {
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            top: -2px;
+            transform: translateX(-50%);
+            transform: translateX(-53.2px);
+            margin: 0;
+        }
+
+        .mainLogo img {
+            height: 40px;
+        }
+
+        /* 768px이하일 때 메인로고 */
+        .mainLogo2 {
+
+            position: absolute;
+            z-index: 2;
+            top: -2px;
+            left: 20px;
+            margin: 0;
+        }
+
+        .mainLogo2 img {
+            height: 40px;
+        }
+
+
+        .loginButton {
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 6px;
+            right: 260px;
+            width: auto;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .loginButton a {
+            color: #fff;
+        }
+
+        .signupButton {
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 6px;
+            right: 185px;
+            width: auto;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .signupButton a {
+            color: #fff;
+        }
+
+        .myPageButton {
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 2px;
+            right: 140px;
+            width: auto;
+            margin: 0;
+            line-height: 1;
+        }
+
+        li > p {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        ol > li > ol > li {
+            font-size: 22px;
+            color: #222;
+            line-height: 2;
+            text-align: center;
+        }
+
+
+        ol > li > p {
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #222;
+        }
+
+        ol > li > p  {
+            margin-left: 60px;
+            margin-right: 60px;
+            text-align: left;
+            font-size: 28px;
+            color: #222222;
+            border-bottom: 1px solid #222;
+        }
+
+
+        /* 버거2*/
+        .burger-icon2 {
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 10px;
+            right: 90px;
+            user-select: none;
+            width: 29px;
+            height: 29px;
+            margin: 0;
+            background-image: url("../images/header/menuSearch.png");
+        }
+
+        /*.burger-icon2 .burger-sticks2 {*/
+        /*    background: #fff;*/
+        /*    display: block;*/
+        /*    height: 2px;*/
+        /*    position: relative;*/
+        /*    transition: background .2s ease-out;*/
+        /*    width: 18px;*/
+        /*}*/
+
+        /*.burger-icon2 .burger-sticks2:before,*/
+        /*.burger-icon2 .burger-sticks2:after {*/
+        /*    background: #fff;*/
+        /*    content: '';*/
+        /*    display: block;*/
+        /*    height: 100%;*/
+        /*    position: absolute;*/
+        /*    transition: all .2s ease-out;*/
+        /*    width: 100%;*/
+        /*}*/
+
+        /*.burger-icon2 .burger-sticks2:before {*/
+        /*    top: 5px;*/
+        /*}*/
+
+        /*.burger-icon2 .burger-sticks2:after {*/
+        /*    top: -5px;*/
+        /*}*/
+
+        .burger-check2 {
+            display: none;
+        }
+
+
+        .burger-check2:checked~#menu {
+            display: block;
+            z-index: 3;
+        }
+
+        .burger-check2:checked~.menu {
+            max-height: 300px;
+        }
+
+        .burger-check2:checked~.menu #searchMenu {
+            display: block;
+        }
+
+        .burger-check2:checked~.burger-check2 {
+
+        }
+
+
     </style>
 </head>
 <body>
@@ -709,7 +709,7 @@ ol > li > p  {
             </li>
             <li><p>다알개사전</p>
                 <ul>
-                    <li><a href="../encycle/encycleMain">전체</a></li>
+                    <li><a href="../encycle/mainEncycle">전체</a></li>
                     <li><a href="../encycle/knowBeforeAdopt">입양 전 필수 지식</a></li>
                     <li><a href="../encycle/knowAfterAdopt">양육시 필수 지식</a></li>
                     <li><a href="../encycle/knowEmergency">응급상황 대처 방법</a></li>
