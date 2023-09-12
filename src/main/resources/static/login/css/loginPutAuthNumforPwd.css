@@ -40,6 +40,7 @@ input:focus{
 }
 
 #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putId{
+
     background: url(../images/id.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
@@ -51,6 +52,7 @@ input:focus{
 
 
 #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putEmailAddress{
+
     background: url(../images/email.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
@@ -68,6 +70,7 @@ input:focus{
 }
 
 #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putAuthNum{
+
     background: url(../images/key.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
