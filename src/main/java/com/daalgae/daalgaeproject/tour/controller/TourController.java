@@ -1,4 +1,4 @@
-package com.daalgae.daalgaeproject.board.controller;
+package com.daalgae.daalgaeproject.tour.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
