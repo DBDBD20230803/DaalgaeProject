@@ -1,12 +1,13 @@
-package com.daalgae.daalgaeproject.controller;
+package com.daalgae.daalgaeproject.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/encycle/*")
 public class EncyclopediaController {
-    @GetMapping("/encycleMain")
+    @GetMapping("mainEncycle")
     public String pediaMain() {
         return "/daaalgeEncyclopedia/encyclopediaMain";
     }
@@ -30,4 +31,9 @@ public class EncyclopediaController {
     public String Petiket() {
         return "/daaalgeEncyclopedia/petiket";
     }
+//    @GetMapping("main2")
+//    public String mainLocation() {
+//        return "redirect:../";
+//    }
+
 }

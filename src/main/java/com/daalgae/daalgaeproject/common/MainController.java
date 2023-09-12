@@ -1,4 +1,4 @@
-package com.daalgae.daalgaeproject;
+package com.daalgae.daalgaeproject.common;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ public class MainController {
     public String getLocation() {
         return "/main/mainIntro";
     }
-    @GetMapping("/main")
+    @GetMapping("main")
     public String mainLocation() {
         return "/main/mainIntro";
     }
