@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EncyclopediaController {
     @GetMapping("mainEncycle")
     public String pediaMain() {
-        return "./daaalgeEncyclopedia/encyclopediaMain";
+        return "/daaalgeEncyclopedia/encyclopediaMain";
     }
 
     @GetMapping("knowBeforeAdopt")
     public String KnowBeforeAdopt() {
-        return "./daaalgeEncyclopedia/knowBeforeAdopt";
+        return "/daaalgeEncyclopedia/knowBeforeAdopt";
     }
 
     @GetMapping("knowAfterAdopt")
     public String KnowAfterAdopt() {
-        return "./daaalgeEncyclopedia/knowAfterAdopt";
+        return "/daaalgeEncyclopedia/knowAfterAdopt";
     }
 
     @GetMapping("knowEmergency")
     public String KnowEmergency() {
-        return "./daaalgeEncyclopedia/knowEmergency";
+        return "/daaalgeEncyclopedia/knowEmergency";
     }
 
     @GetMapping("petiket")
     public String Petiket() {
-        return "./daaalgeEncyclopedia/petiket";
+        return "/daaalgeEncyclopedia/petiket";
     }
 //    @GetMapping("main2")
 //    public String mainLocation() {
