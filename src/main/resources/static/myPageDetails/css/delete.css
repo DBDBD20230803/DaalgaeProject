@@ -37,7 +37,8 @@ input:focus{
 
 
 #delete .deleteWrap .deleteContents .deletPwdConfirm input#pwd{
-    background: url(lock.png) no-repeat 13px center;
+
+    background: url(../images/lock.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;

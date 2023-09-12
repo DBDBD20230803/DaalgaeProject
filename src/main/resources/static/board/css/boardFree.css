@@ -1,0 +1,306 @@
+.board-free-banner {
+    width: 100%;
+    height: 500px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    background-color: #A6CEF7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-banner-image-2 {
+    position: absolute;
+    top: 47%;
+    left: 77%;
+    width: 300px;
+}
+
+.board-button-back-image {
+    position: absolute;
+    top: 10%;
+    left: 1%;
+}
+
+.board-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.board-free-searchBar {
+    border-top: 1px solid #D8D8D8;
+    position: relative;
+    margin-top: 150px;
+    width: 100%;
+    height: 100px;
+}
+
+.search-buttons {
+    width: 100%;
+    height: 100%;
+    right: 10%;
+    text-align: center;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+}
+
+.board-write-buttons {
+    display: flex;
+    width: 80%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.free-head-title-category {
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.free-head-title-category select {
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.free-search-category {
+    background-color: #F6F6F6;
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.free-search-category select {
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.search-by-text {
+    background-color: #F6F6F6;
+    width: 250px;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-by-text img {
+    position: relative;
+    right: 5%;
+}
+
+.search-by-text input {
+    background-color: #F6F6F6;
+    width: 60%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.free-write-button button {
+    position: relative;
+    all : inherit;
+}
+
+.submit-button {
+    background-color: #A6CEF7;
+    width: 100px;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.submit-button button {
+    width: 100%;
+    height: 100%;
+    background-color: #A6CEF7;
+    border: 0;
+    border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+    cursor: pointer;
+}
+
+.board-list-container {
+    border-top: 1px solid #DBDBDB;
+    width: 80%;
+    height: 109px;
+    position: relative;
+    overflow: hidden;
+}
+
+.board-postCategory {
+    margin-top: 41px;
+    margin-bottom: 41px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.postList {
+    border-top: 1px solid #DBDBDB;
+    width: 80%;
+    height: 109px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+#postNo {
+    width: 5%;
+    display: block;
+}
+
+#postTitle {
+    width: 40%;
+    display: block;
+}
+
+#postUser {
+    width: 10%;
+    display: block;
+}
+
+#postDate {
+    width: 13%;
+    display: block;
+}
+
+.post {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.post-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.post-info h4 {
+    margin: 0px;
+}
+
+#testPost-postNo {
+    width: 5%;
+    display: block;
+}
+
+#testPost-postTitle {
+    width: 40%;
+    display: block;
+}
+
+#testPost-postUser {
+    width: 10%;
+    display: block;
+}
+
+#testPost-postDate {
+    width: 13%;
+    display: block;
+}
+
+.board-paging-button {
+    display: flex;
+    width: 80%;
+    height: 120px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.board-paging-button button {
+    border: 0;
+}
+
+#postPage1 {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+#postPage1 h4 {
+    position: absolute;
+    left: 40%;
+    top: 27%;
+    color: #FFFFFF;
+}
+
+#postPage1 div {
+    background-color: #787878;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.board-admin-write{
+    border-top: 1px solid #DBDBDB;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
+
+.board-write-text{
+    display:block;
+    width: 120px;
+    height: 60px;
+    background-color: #A6CEF7;
+    border-radius: 5px;
+    border: 0px;
+}
+
+#board-write-button {
+    position: relative;
+    border: 0px;
+    background-color: #FFFFFF;
+    left: 40%;
+    top: 25%;
+}
+
+.board-write-text h3 {
+    position: absolute;
+    left: 28%;
+    top: 16%;
+}
+
+button[type="button"]:hover {
+    cursor: pointer;
+}

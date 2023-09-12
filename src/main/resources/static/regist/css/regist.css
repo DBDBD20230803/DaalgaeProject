@@ -42,7 +42,7 @@ input:focus{
 }
 
 #realName:checked + #showCheckbox {
-    background: url(checkbox_checked.png) no-repeat;
+    background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
@@ -51,7 +51,7 @@ input:focus{
 #realName #showCheckbox {
     width: 18px;
     height: 18px; 
-    background: url(checkbox_normal.png) no-repeat;
+    background: url(../images/checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 
@@ -101,28 +101,28 @@ input:focus{
 
 
 #regist .registWrap .registContents .registForm input#username{
-    background: url(id.png) no-repeat 13px center #DAECFF;
+    background: url(../images/id.png) no-repeat 13px center #DAECFF;
 }
 
 #regist .registWrap .registContents .registForm input#password{
-    background: url(lock.png) no-repeat 13px center #DAECFF;
+    background: url(../images/lock.png) no-repeat 13px center #DAECFF;
 }
 
 #regist .registWrap .registContents .registForm input#passwordConfirm{
-    background: url(lock.png) no-repeat 13px center #DAECFF;
+    background: url(../images/lock.png) no-repeat 13px center #DAECFF;
 }
 
 #regist .registWrap .registContents .registForm input#putEmailAddress{
-    background: url(email.png) no-repeat 13px center #DAECFF;
+    background: url(../images/email.png) no-repeat 13px center #DAECFF;
 }
 
 
 #regist .registWrap .registContents .registForm input#nameUser{
-    background: url(name.png) no-repeat 13px center #DAECFF;
+    background: url(../images/name.png) no-repeat 13px center #DAECFF;
 }
 
 #regist .registWrap .registContents .registForm input#address{
-    background: url(address.png) no-repeat 13px center #DAECFF;
+    background: url(../images/address.png) no-repeat 13px center #DAECFF;
 }
 
 
@@ -173,7 +173,7 @@ input:focus{
 }
 
 #termsCheck:checked + #showCheckbox {
-    background: url(checkbox_checked.png) no-repeat;
+    background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
@@ -182,7 +182,7 @@ input:focus{
 #showCheckbox {
     width: 18px;
     height: 18px; 
-    background: url(checkbox_normal.png) no-repeat;
+    background: url(../images/checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 

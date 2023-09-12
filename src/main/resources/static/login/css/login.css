@@ -16,6 +16,7 @@ input:focus{
 }
 
 
+
 #login .logintWrap .loginTitle{
     color: #222222;
     text-align: center;
@@ -50,6 +51,7 @@ input:focus{
 }
 
 #login .logintWrap .loginContents .loginForm .loginFormWrap input.username{
+
     background: #fff url("../images/id.png") no-repeat 13px center;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
@@ -59,6 +61,7 @@ input:focus{
 }
 
 #login .logintWrap .loginContents .loginForm .loginFormWrap input.password{ 
+
     background: #fff url("../images/lock.png") no-repeat 13px center;
     border: 1px solid #DBDBDB;
     border-radius: 2px;

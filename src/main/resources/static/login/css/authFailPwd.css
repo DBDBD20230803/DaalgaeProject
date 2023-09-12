@@ -40,7 +40,7 @@ input:focus{
 }
 
 #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putId{
-    background: url(id.png) no-repeat 13px center;
+    background: url(../images/id.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
@@ -51,7 +51,7 @@ input:focus{
 
 
 #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putEmailAddress{
-    background: url(email.png) no-repeat 13px center;
+    background: url(../images/email.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
@@ -67,7 +67,7 @@ input:focus{
 }
 
 #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putAuthNum{
-    background: url(key.png) no-repeat 13px center;
+    background: url(../images/key.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
     width: 100%;
