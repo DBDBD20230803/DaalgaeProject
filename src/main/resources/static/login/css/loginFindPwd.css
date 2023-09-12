@@ -36,6 +36,7 @@ input:focus{
 }
 
 #FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putId{
+
     background: url(../images/id.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
@@ -47,6 +48,7 @@ input:focus{
 }
 
 #FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putEmailAddress{
+
     background: url(../images/email.png) no-repeat 13px center;
     text-indent: 30px;
     padding: 3% 2%;
