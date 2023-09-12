@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String getLocation() {
-        return "/main/mainIntro";
+        return "main/mainIntro";
     }
-    @GetMapping("/main")
+    @GetMapping("/**/main")
     public String mainLocation() {
-        return "/main/mainIntro";
+        return "redirect:main";
     }
 }
