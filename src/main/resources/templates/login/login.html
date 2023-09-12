@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
   <head>
     <meta charset="utf-8">
     <title>로그인</title>
@@ -11,14 +14,14 @@
 
       
       <!--bootstrap-->
-      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
       
 
       <!--css-->
-      <link rel="stylesheet" href="../css/index.css">
-      <link rel="stylesheet" href="../../static/login/css/mobile.css">
-      <link rel="stylesheet" href="../css/sanitize.css">
-      <link rel="stylesheet" href="../../static/login/css/login.css">
+      <link rel="stylesheet" href="/css/index.css"/>
+      <link rel="stylesheet" href="/login/css/mobile.css"/>
+      <link rel="stylesheet" href="/css/sanitize.css"/>
+      <link rel="stylesheet" href="/login/css/login.css"/>
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -44,10 +47,10 @@
 
               
 
-              <form class="loginForm" action="/login/login" method="post">
+              <form class="loginForm" th:action="@{/login/login}" method="post">
                 <div class="loginFormWrap">
                     <input type="text" name="username" id="username" class="username" placeholder="아이디"/>
-                    <input type="text" name="password" id="password" class="password" placeholder="비밀번호"/>
+                    <input type="password" name="password" id="password" class="password" placeholder="비밀번호"/>
                     <input type="submit" name="loginBtn" id="loginBtn" value="로그인" />
                 </div>
               </form>
