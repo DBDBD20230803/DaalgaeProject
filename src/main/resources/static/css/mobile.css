@@ -1,0 +1,14 @@
+/* 769px이상일 때 보이는 화면 설정 */
+@media (min-width: 769px) {
+
+}
+/* 768px이하일 때 보이는 화면 설정 */
+@media (max-width: 768px) {
+    
+}
+
+/* 
+href="css.css // 경로를 잘 설정해야 한다.
+mobile은 복사해서 쓰세요. 경로 설정 잘 하셔야 합니다.
+<link rel="stylesheet" type="text/css" href="css.css" />
+*/

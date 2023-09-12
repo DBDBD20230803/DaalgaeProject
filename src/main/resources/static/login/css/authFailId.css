@@ -1,0 +1,129 @@
+input:focus{
+    outline: none !important;
+}
+
+#authFail{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#authFail .authFailWrap{
+    width: 100%;
+}
+
+#authFail .authFailWrap .authFailContents{ 
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm{
+    width: 100%;
+}
+
+#authFail .authFailWrap .authFailContents h5.authFailTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#authFail .authFailWrap .authFailContents h5.identiTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+}
+
+
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putAuthNum{
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #FF0000;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm p{
+    font-weight: 300;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm .authFailInputWrap{
+    width: 100%;
+    position: relative;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm .authFailInputWrap .authFailAlert{
+    width: 100%;
+    color: #FF0000;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+
+#authFail .authFailWrap .authFailContents .authFailForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 3%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px; 
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}

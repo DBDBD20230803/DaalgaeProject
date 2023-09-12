@@ -1,0 +1,265 @@
+@media screen and (max-width:1440px) {
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 55% !important;
+    }
+
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 26% !important;
+    }
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 55% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 55% !important;
+    }
+
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime {
+        width: 30% !important;
+        text-align: right !important;
+    }
+
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 55% !important;
+    }
+
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+        width: 30% !important;
+        text-align: right !important;
+    }
+}
+
+
+
+/*노트북*/
+@media screen and (max-width:1024px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents {
+        width: 55% !important;
+    }
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 60% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 65% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 65% !important;
+    }
+
+
+}
+
+/*아이패드 (768px)*/
+@media screen and (max-width:991px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents {
+        width: 70% !important;
+    }
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 75% !important;
+    }
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 80% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 80% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 80% !important;
+    }
+}
+
+
+
+/*모바일*/
+
+@media screen and (max-width:767px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents {
+        width: 90% !important;
+    }
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 90% !important;
+    }
+
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 28% !important;
+    }
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 100% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 100% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 100% !important;
+    }
+}
+
+
+/*모바일2*/
+
+
+@media screen and (max-width:576px) {
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents h5.registCompleteMessage {
+        font-size: 1em !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#putAuthNum::placeholder {
+        font-size: 0.8em !important;
+    }
+
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime {
+        width: 25% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#putAuthNum::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+        width: 25% !important;
+    }
+
+    /*registFail*/
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 32% !important;
+    }
+
+}
+
+
+
+
+/*모바일3 갤럭시*/
+
+@media screen and (max-width:425px) {
+
+
+    /*regist*/
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 40% !important;
+        margin-left: 5px !important;
+    }
+
+    #regist .registWrap .registContents .registForm .addressBox .searchAddress {
+        width: 30% !important;
+    }
+
+    #regist .registWrap .registContents .registForm #termsCheck {
+        padding: 3% 6% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime {
+        font-size: 0.7em !important;
+        margin-top: -7px;
+    }
+
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#reSendAutNum {
+         font-size: 0.7em !important;
+    }
+
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+        font-size: 0.7em !important;
+        margin-top: -7px;
+    }
+
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#reSendAutNum{
+        font-size: 0.7em !important;
+    }
+
+}
+
+
+
+/*모바일4 아이폰*/
+@media screen and (max-width:375px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termsCheck{
+        font-size: 0.9em !important;
+        font-weight: 500 !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span.agreeAll1 {
+        font-size: 0.9em !important;
+        font-weight: 500 !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText h5 {
+        font-size: 0.8em !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText p {
+        font-size: 0.75em !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap label#agreeAll span{
+        font-size: 0.9em !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText p {
+        font-size: 0.75em !important;
+    }
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 100% !important;
+    }
+
+
+    /*registFail*/
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 43% !important;
+    }
+}
