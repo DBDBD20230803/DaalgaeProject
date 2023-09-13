@@ -3,52 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "0px");
-            $("#footers").load("../Component/footer.html");
-
-            let imgs;
-            let img_count;
-            let img_position = 1;
-
-            imgs = $(".slide ul");
-            img_count = imgs.children().length;
-
-            //버튼을 클릭했을 때 함수 실행
-            $('#back').click(function () {
-                back();
-            });
-            $('#next').click(function () {
-                next();
-            });
-
-            function back() {
-                if(1<img_position){
-                    imgs.animate({
-                        left:'+=326px'
-                    });
-                    img_position--;
-                }
-            }
-
-            function next() {
-                if(img_count-3>img_position){
-                    imgs.animate({
-                        left:'-=326px'
-                    });
-                    img_position++;
-                }
-            }
-        });
-
-
-
-    </script>
     <style>
         #mainBackground {
             position: relative;
@@ -116,6 +70,53 @@
         <link rel="stylesheet" type="text/css" href="../css/sanitize.css">
         <link rel="stylesheet" type="text/css" href="../main/mainIntro.css">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/header.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $('#menu').css("margin-top", "0px");
+            $("#footers").load("../Component/footer.html");
+
+            let imgs;
+            let img_count;
+            let img_position = 1;
+
+            imgs = $(".slide ul");
+            img_count = imgs.children().length;
+
+            //버튼을 클릭했을 때 함수 실행
+            $('#back').click(function () {
+                back();
+            });
+            $('#next').click(function () {
+                next();
+            });
+
+            function back() {
+                if(1<img_position){
+                    imgs.animate({
+                        left:'+=326px'
+                    });
+                    img_position--;
+                }
+            }
+
+            function next() {
+                if(img_count-3>img_position){
+                    imgs.animate({
+                        left:'-=326px'
+                    });
+                    img_position++;
+                }
+            }
+        });
+    </script>
     <title>Title</title>
 </head>
 <body>
