@@ -127,3 +127,1281 @@ input:focus{
     text-align: center;
     margin-top: 1%;
 }
+
+
+/*authFailId*/
+input:focus{
+    outline: none !important;
+}
+
+#authFail{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#authFail .authFailWrap{
+    width: 100%;
+}
+
+#authFail .authFailWrap .authFailContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm{
+    width: 100%;
+}
+
+#authFail .authFailWrap .authFailContents h5.authFailTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#authFail .authFailWrap .authFailContents h5.identiTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+}
+
+
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putAuthNum{
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #FF0000;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm p{
+    font-weight: 300;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm .authFailInputWrap{
+    width: 100%;
+    position: relative;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm .authFailInputWrap .authFailAlert{
+    width: 100%;
+    color: #FF0000;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+
+#authFail .authFailWrap .authFailContents .authFailForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 3%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#authFail .authFailWrap .authFailContents .authFailForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+
+/*authFailPwd*/
+input:focus{
+    outline: none !important;
+}
+
+#authFailPwd{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#authFailPwd .authFailPwdWrap{
+    width: 100%;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm{
+    width: 100%;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents h5.authFailPwdTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents h5.identiTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putId{
+    background: url(../images/id.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: .5% 0;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm .putAuthNumWrap{
+    width: 100%;
+    position: relative;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putAuthNum{
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #FF0000;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putId::placeholder{
+    color: #929292;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm p{
+    font-weight: 300;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 1%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+#authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm .authFailAlert{
+    width: 100%;
+    color: #FF0000;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*findComplete*/
+
+input:focus{
+    outline: none !important;
+}
+
+#findIdComplete{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#findIdComplete .findIdCompleteWrap{
+    width: 100%;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents h5.findIdCompleteTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents h5.findIdCompleteMessage{
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-bottom: 8%;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .findPwdPage{
+    width: 100%;
+    background-color: #9DC4E7;
+    padding: 3% 2%;
+    border-radius: 2px;
+}
+
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .findPwdPage a{
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .pwdResetCompleteGotoMain{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 3%;
+}
+
+#findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .pwdResetCompleteGotoMain a{
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/*loginFindId*/
+
+input:focus{
+    outline: none !important;
+}
+
+#FindId{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#FindId .FindIdWrap{
+    width: 100%;
+}
+
+#FindId .FindIdWrap .FindIdContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#FindId .FindIdWrap .FindIdContents h5.FindIdTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#FindId .FindIdWrap .FindIdContents h5.PutemailAdressTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+
+#FindId .FindIdWrap .FindIdContents .PutemailAdressForm input#putEmailAddress{
+
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+}
+
+#FindId .FindIdWrap .FindIdContents .PutemailAdressForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#FindId .FindIdWrap .FindIdContents .PutemailAdressForm p{
+    font-weight: 300;
+}
+
+#FindId .FindIdWrap .FindIdContents .PutemailAdressForm input#AuthBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 6%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*loginFindPwd*/
+input:focus{
+    outline: none !important;
+}
+
+#FindPwd{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#FindPwd .FindPwdWrap{
+    width: 100%;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents h5.FindPwdTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#FindPwd .FindPwdWrap .FindPwdContents h5.PutInfoFormforPwdTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putId{
+
+    background: url(../images/id.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: .5% 0;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putEmailAddress{
+
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putId::placeholder{
+    color: #929292;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm p{
+    font-weight: 300;
+}
+
+#FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#AuthBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 6%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+
+/*loginFindPwdFail*/
+input:focus{
+    outline: none !important;
+}
+
+#FindPwdFail{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#FindPwdFail .FindPwdFailWrap{
+    width: 100%;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents h5.FindPwdFailTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents h5.identiTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putId{
+
+    background: url(../images/id.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: .5% 0;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putEmailAddress{
+
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm .idNotFound{
+    width: 100%;
+    color: #FF0000;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putId::placeholder{
+    color: #929292;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm p{
+    font-weight: 300;
+}
+
+#FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#AuthBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 6%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*loginPutAuthNumforId*/
+input:focus{
+    outline: none !important;
+}
+
+#putAuthNumber{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#putAuthNumber .putAuthNumberWrap{
+    width: 100%;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm{
+    width: 100%;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents h5.putAuthNumberTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents h5.identiTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#putEmailAddress{
+
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm .putAuthNumWrap{
+    width: 100%;
+    position: relative;
+
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#putAuthNum{
+
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm p{
+    font-weight: 300;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 3%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*loginPutAuthNumforPwd*/
+input:focus{
+    outline: none !important;
+}
+
+#putAuthNumberPwd{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap{
+    width: 100%;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm{
+    width: 100%;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents h5.putAuthNumberPwdTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents h5.identiTitle{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putId{
+
+    background: url(../images/id.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putEmailAddress{
+
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: .5% 0;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm .putAuthNumWrap{
+    width: 100%;
+    position: relative;
+
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putAuthNum{
+
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putId::placeholder{
+    color: #929292;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm p{
+    font-weight: 300;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 1%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*mobile*/
+
+@media screen and (max-width:1440px) {
+
+    /*authFailId*/
+    #authFail .authFailWrap .authFailContents {
+        width: 80% !important;
+    }
+
+    /*authFailPwd*/
+    #authFailPwd .authFailPwdWrap .authFailPwdContents{
+        width: 80% !important;
+    }
+
+
+    /*FindIdComplete*/
+    #findIdComplete .findIdCompleteWrap .findIdCompleteContents {
+        width: 65% !important;
+    }
+
+
+    /*login*/
+    #login .logintWrap .loginContents {
+        width: 65% !important;
+    }
+
+
+    /*loginFindId*/
+    #FindId .FindIdWrap .FindIdContents {
+        width: 55% !important;
+    }
+
+
+    /*loginFindPwd*/
+    #FindPwd .FindPwdWrap .FindPwdContents {
+        width: 55% !important;
+    }
+
+    /*loginFindPwdFail*/
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents{
+        width: 55% !important;
+    }
+
+
+    /*loginPutAuthNumforId*/
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents{
+        width: 65% !important;
+    }
+
+
+    /*loginPutAuthNumforPwd*/
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents{
+        width: 65% !important;
+    }
+}
+
+/*노트북*/
+@media screen and (max-width:1024px) {
+    /*loginFindId*/
+    #FindId .FindIdWrap .FindIdContents {
+        width: 65% !important;
+    }
+
+    /*loginFindPwd*/
+    #FindPwd .FindPwdWrap .FindPwdContents{
+        width: 65% !important;
+    }
+
+    /*loginFindPwdFail*/
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents{
+        width: 65% !important;
+    }
+
+}
+
+/*아이패드 (768px)*/
+@media screen and (max-width:991px) {
+    /*authFailId*/
+    #authFail .authFailWrap .authFailContents {
+        width: 100% !important;
+    }
+
+    /*authFailPwd*/
+    #authFailPwd .authFailPwdWrap .authFailPwdContents {
+        width: 100% !important;
+    }
+
+    /*FindIdComplete*/
+    #findIdComplete .findIdCompleteWrap .findIdCompleteContents {
+        width: 95%;
+        padding: 8% 5%;
+    }
+
+
+    /*login*/
+    #login .logintWrap .loginContents {
+        width: 85% !important;
+    }
+
+    /*loginFindId*/
+    #FindId .FindIdWrap .FindIdContents {
+        width: 75% !important;
+    }
+
+
+    /*loginFindPwd*/
+    #FindPwd .FindPwdWrap .FindPwdContents{
+        width: 75% !important;
+    }
+
+    /*loginFindPwdFail*/
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents{
+        width: 75% !important;
+    }
+
+    /*loginPutAuthNumforId*/
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents {
+        width: 85% !important;
+    }
+
+    /*loginPutAuthNumforPwd*/
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents{
+        width: 85% !important;
+    }
+}
+
+
+
+/*모바일*/
+
+@media screen and (max-width:767px) {
+    /*authFailId*/
+    #authFail .authFailWrap .authFailContents .authFailForm .authTime {
+        width: 22% !important;
+    }
+
+    /*authFailPwd*/
+    #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm .authTime{
+        width: 22% !important;
+    }
+
+    /*FindIdComplete*/
+    #findIdComplete .findIdCompleteWrap .findIdCompleteContents{
+        width: 100% !important;
+    }
+
+
+    /*login*/
+    #login .logintWrap .loginContents {
+        width: 100% !important;
+    }
+
+    #login .logintWrap .loginFormOther {
+        width: 65% !important;
+    }
+
+
+    /*loginFindId*/
+    #FindId .FindIdWrap .FindIdContents {
+        width: 85% !important;
+    }
+
+    /*loginFindPwd*/
+    #FindPwd .FindPwdWrap .FindPwdContents{
+        width: 85% !important;
+    }
+
+    /*loginFindPwdFail*/
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents{
+        width: 85% !important;
+    }
+
+    /*loginPutAuthNumforId*/
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents {
+        width: 100% !important;
+    }
+
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm .authTime {
+        width: 22% !important;
+    }
+
+    /*loginPutAuthNumforPwd*/
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents{
+        width: 100% !important;
+    }
+
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm .authTime{
+        width: 22% !important;
+    }
+}
+
+
+/*모바일2*/
+
+
+@media screen and (max-width:576px) {
+
+    /*authFailId*/
+    #authFail .authFailWrap .authFailContents .authFailForm input#putEmailAddress::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #authFail .authFailWrap .authFailContents .authFailForm input#putAuthNum::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #authFail .authFailWrap .authFailContents .authFailForm .authTime{
+        font-size: 0.7em !important;
+    }
+
+
+
+    /*authFailPwd*/
+    #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putEmailAddress::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#putAuthNum::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm .authTime{
+        font-size: 0.7em !important;
+    }
+
+
+    /*FindIdComplete*/
+    #findIdComplete .findIdCompleteWrap .findIdCompleteContents h5.findIdCompleteMessage {
+        font-size: 1.1em !important;
+    }
+
+    /*login*/
+    #login .logintWrap .loginContents {
+        width: 90% !important;
+    }
+
+    #login .logintWrap .loginFormOther input{
+        font-size: 0.7em !important;
+    }
+
+    #login .logintWrap .loginBottomInfo .loginBottomInfoWrap{
+        font-size: 0.7em !important;
+    }
+
+    #login .logintWrap .loginBottomInfo .copyRight{
+        font-size: 0.6em !important;
+    }
+
+
+    /*loginPutAuthNumforId*/
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm .authTime {
+        width: 26% !important;
+        margin-top: -5px !important;
+    }
+
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#putEmailAddress::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#putAuthNum::placeholder{
+        font-size: 0.8em !important;
+    }
+
+
+    /*loginPutAuthNumforPwd*/
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putId::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putEmailAddress::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#putAuthNum::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm .authTime{
+        width: 26% !important;
+        margin-top: -5px !important;
+        font-size: 0.7em !important;
+    }
+}
+
+
+
+/*모바일3 갤럭시*/
+
+@media screen and (max-width:425px) {
+
+
+    /*authFailId*/
+    #authFail .authFailWrap .authFailContents .authFailForm input#reSendAutNum{
+        width: 36% !important;
+    }
+
+    #authFail .authFailWrap .authFailContents .authFailForm .authTime {
+        margin-top: -7px;
+        width: 24% !important;
+    }
+
+    /*authFailPwd*/
+    #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm input#reSendAutNum{
+        width: 36% !important;
+    }
+
+    #authFailPwd .authFailPwdWrap .authFailPwdContents .authFailPwdForm .authTime{
+        margin-top: -7px;
+        width: 24% !important;
+    }
+
+    /*login*/
+    #login .logintWrap .loginBottomInfo .loginBottomInfoWrap{
+        font-size: 0.55em !important;
+    }
+
+    #login .logintWrap .loginBottomInfo .copyRight{
+        font-size: 0.55em !important;
+    }
+
+
+    /*loginFindId*/
+    #FindId .FindIdWrap .FindIdContents {
+        width: 100% !important;
+    }
+
+    /*loginFindPwd*/
+    #FindPwd .FindPwdWrap .FindPwdContents{
+        width: 100% !important;
+    }
+
+    /*loginFindPwdFail*/
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents{
+        width: 100% !important;
+    }
+
+
+    /*loginPutAuthNumforId*/
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm .authTime{
+        font-size: 0.7em !important;
+        margin-top: -6px !important;
+    }
+
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#reSendAutNum{
+        font-size: 0.8em !important;
+    }
+
+
+    /*loginPutAuthNumforPwd*/
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#reSendAutNum{
+        font-size: 0.8em !important;
+    }
+}
+
+
+
+/*모바일4 아이폰*/
+@media screen and (max-width:375px) {
+    /*loginFindId*/
+    #FindId .FindIdWrap .FindIdContents .PutemailAdressForm input#AuthBtn{
+        width: 40% !important;
+    }
+
+    /*loginFindPwd*/
+    #FindPwd .FindPwdWrap .FindPwdContents .PutInfoFormforPwdForm input#AuthBtn{
+        width: 40% !important;
+    }
+
+    /*loginFindPwdFail*/
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm input#AuthBtn{
+        width: 40% !important;
+    }
+
+    #FindPwdFail .FindPwdFailWrap .FindPwdFailContents .FindPwdFailForm .idNotFound{
+        font-size: 0.7em !important;
+    }
+
+    /*loginPutAuthNumforId*/
+    #putAuthNumber .putAuthNumberWrap .putAuthNumberContents .putAuthNumberForm input#reSendAutNum {
+        font-size: 0.6em !important;
+    }
+
+    /*loginPutAuthNumforPwd*/
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm .authTime{
+        font-size: 0.6em !important;
+        margin-top: -9px !important;
+    }
+
+    #putAuthNumberPwd .putAuthNumberPwdWrap .putAuthNumberPwdContents .putAuthNumberPwdForm input#reSendAutNum{
+        font-size: 0.6em !important;
+    }
+}
+
