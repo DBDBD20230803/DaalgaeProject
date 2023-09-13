@@ -12,4 +12,8 @@ public class TourController {
     public String TourList() {
         return "tourList/tourList";
     }
+    @GetMapping("tourDetail")
+    public String TourDetail() {
+        return "tourDetail/tourDetail";
+    }
 }
