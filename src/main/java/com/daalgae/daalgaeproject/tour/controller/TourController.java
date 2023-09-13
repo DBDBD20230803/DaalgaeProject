@@ -12,8 +12,36 @@ public class TourController {
     public String TourList() {
         return "tourList/tourList";
     }
+
     @GetMapping("tourDetail")
     public String TourDetail() {
         return "tourDetail/tourDetail";
     }
+
+    @GetMapping("place")
+    public String TourPlace() {
+        return "tour/place";
+    }
+
+    @GetMapping("place")
+    public String TourLodgment() {
+        return "tour/lodgment";
+    }
+
+    @GetMapping("place")
+    public String TourMeal() {
+        return "tour/meal";
+    }
+
+    @GetMapping("place")
+    public String TourExperience() {
+        return "tour/experience";
+    }
+
+    @GetMapping("place")
+    public String TourHospital() {
+        return "tour/hospital";
+    }
 }
+
+
