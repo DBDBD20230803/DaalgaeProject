@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head id="header≤">
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://thymeleaf.org">
+<head>
   <meta charset="UTF-8">
 
   <title>웹툰상세페이지</title>
 
-
-
-  <link rel="stylesheet" type="text/css" href="css/webtoonStylesheet.css">
+  <link rel="stylesheet" th:href="@{/webtoon_css/css/webtoon.css}">
   <!--meta-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,6 +34,16 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $("#headers").load("../Component/header.html");
+      $('#headers').css("position", "fixed");
+      $('#headers').css("width", "100%");
+      $('#headers').css("z-index", "5");
+      $("#footers").load("../Component/footer.html");
+      $('#footers').css("z-index", "5");
+    });
+  </script>
 
 
   <!--favicon--->
@@ -46,14 +55,17 @@
 
 </head>
 <body>
+<div id="headers"></div>
 <div id="webtoonBg">
-  <img class="mainImg" src="images/mianImg.png" alt="메인일러스트">
+  <img class="mainImg" src="/webtoon_css/images/mianImg.png" alt="메인일러스트">
   <h3>오늘도 댕댕하개</h3>
 </div>
-<div id="webtoonBox-1" class="container">
-  <br/>
-  <img src="images/doggum.png" alt="보유 개껌 이미지"> 현재 보유한개껌 <span class="webtoonP-1">  60개</span>
-  <hr id="line1">
+<div class="container">
+<div class="webtoonBox1">
+  <img src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+  <div class="webtonntext1">현재 보유한 개껌</div>
+  <div class="webtoonText2">60개</div>
+</div>
 </div>
 <br/><br/><br/>
 <div id="detailBox" class="container">
@@ -63,4 +75,5 @@
 </div>
 <br/><br/><br/><Br/>
 </body>
+<div id="footers"></div>
 </html>
