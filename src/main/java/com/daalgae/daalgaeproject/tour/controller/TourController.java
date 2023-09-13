@@ -20,27 +20,27 @@ public class TourController {
 
     @GetMapping("place")
     public String TourPlace() {
-        return "tour/place";
+        return "tour";
     }
 
-    @GetMapping("place")
+    @GetMapping("lodgment")
     public String TourLodgment() {
-        return "tour/lodgment";
+        return "tour";
     }
 
-    @GetMapping("place")
+    @GetMapping("meal")
     public String TourMeal() {
-        return "tour/meal";
+        return "tour";
     }
 
-    @GetMapping("place")
+    @GetMapping("experience")
     public String TourExperience() {
-        return "tour/experience";
+        return "tour";
     }
 
-    @GetMapping("place")
+    @GetMapping("hospital")
     public String TourHospital() {
-        return "tour/hospital";
+        return "tour";
     }
 }
 
