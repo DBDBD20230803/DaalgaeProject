@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -43,10 +43,27 @@
               $('#headers').css("z-index", "5");
               $("#footers").load("../Component/footer.html");
               $('#footers').css("z-index", "5");
+              let selectNum = $('input[name=selectNum]').val();
+              if(selectNum == 1) {
+                  $('#tourCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 2) {
+                  $('#accomoCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 3) {
+                  $('#foodCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 4) {
+                  $('#activityCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 5) {
+                  $('#hospitalCheck input').prop('checked', 'true');
+              }
           });
       </script>
   </head>
   <body>
+  <input type="hidden" name="selectNum" th:value="${select}">
   <div id="headers"></div>
     <section id="tour">
 

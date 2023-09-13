@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.tour.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,28 +20,33 @@ public class TourController {
     }
 
     @GetMapping("place")
-    public String TourPlace() {
-        return "tour";
+    public String TourPlace(Model model) {
+        model.addAttribute("select", "1");
+        return "tour/tour";
     }
 
     @GetMapping("lodgment")
-    public String TourLodgment() {
-        return "tour";
+    public String TourLodgment(Model model) {
+        model.addAttribute("select", "2");
+        return "tour/tour";
     }
 
     @GetMapping("meal")
-    public String TourMeal() {
-        return "tour";
+    public String TourMeal(Model model) {
+        model.addAttribute("select", "3");
+        return "tour/tour";
     }
 
     @GetMapping("experience")
-    public String TourExperience() {
-        return "tour";
+    public String TourExperience(Model model) {
+        model.addAttribute("select", "4");
+        return "tour/tour";
     }
 
     @GetMapping("hospital")
-    public String TourHospital() {
-        return "tour";
+    public String TourHospital(Model model) {
+        model.addAttribute("select", "5");
+        return "tour/tour";
     }
 }
 
