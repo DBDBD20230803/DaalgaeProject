@@ -1,4 +1,4 @@
-package com.daalgae.daalgaeproject.login.model.service;
+/*package com.daalgae.daalgaeproject.login.model.service;
 
 import com.daalgae.daalgaeproject.login.model.dao.MemberDAO;
 import com.daalgae.daalgaeproject.login.model.dto.AuthorityDTO;
@@ -13,8 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;*/
 
+/*
 @Service
 public class LoginServiceImpl implements LoginService{
 
@@ -45,9 +46,11 @@ public class LoginServiceImpl implements LoginService{
             }
         }
 
+
         UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), authorities);
         user.setDetails(member);
 
         return user;
     }
 }
+*/
