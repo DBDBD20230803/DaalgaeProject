@@ -1,0 +1,148 @@
+#webtoonBg {
+    background-color: #a6cef7;
+    border: 1px solid #dbdbdbdb;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    height: 500px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 50pt;
+    position: relative;
+}
+.mainImg {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+}
+
+
+#payment1{
+    width: 1390px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.paymentBox1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paymentText1{
+    font-size: 40px;
+    font-weight: bold;
+    color: #707070;
+    text-align: center;
+}
+
+.paymentImg1 {
+    width: 30px;
+    height: 30px;
+}
+
+.paymentText2 {
+    font-size: 30px;
+    color: #222222;
+}
+.paymentBox2 {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 80px;
+    background-color: #9dc4e7;
+    justify-content: center;
+}
+.paymentText3 {
+    font-size: 30px;
+    text-align: center;
+    color: #ffffff;
+}
+#paymentLine1 {
+    border: 1px solid #dbdbdbdb;
+    width: 78%;
+    position: relative;
+    margin-top: -40px;
+}
+/*------------------------------------------------------------------------------*/
+#payment2{
+    width: 1390px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#paymentLine2 {
+    border: 1px solid #dbdbdbdb;
+    width: 78%;
+    position: relative;
+    margin-top: -40px;
+}
+/*------------------------------------------------------------------------------*/
+#payment3{
+    width: 1390px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#paymentLine3 {
+    border: 1px solid #dbdbdbdb;
+    width: 78%;
+    position: relative;
+    margin-top: -40px;
+}
+/*------------------------------------------------------------------------------*/
+#payment4{
+    width: 1390px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#paymentLine4 {
+    border: 1px solid #dbdbdbdb;
+    width: 78%;
+    position: relative;
+    margin-top: -40px;
+}
+/*------------------------------------------------------------------------------*/
+#payment5{
+    width: 1390px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#paymentLine5 {
+    border: 1px solid #dbdbdbdb;
+    width: 78%;
+    position: relative;
+    margin-top: -40px;
+}
+.webtoonBox1 {
+    margin-top: 50px;
+    border-bottom: 2px solid#787878;
+    display: flex;
+    align-items: center;
+}
+.webtonntext1 {
+    color: #222222;
+    font-size: 30px;
+}
+.webtoonText2 {
+    font-size: 30px;
+    color: #ffba68;
+}
+.whiteSpace {
+    width: 100%;
+    height: 150px;
+}
