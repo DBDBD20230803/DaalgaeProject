@@ -13,4 +13,18 @@ public class MainController {
     public String mainLocation() {
         return "/main/mainIntro";
     }
+    @GetMapping("encycle")
+    public String Encycle() {
+        return "/daaalgeEncyclopedia/encyclopediaMain";
+    }
+    @GetMapping("tour")
+    public String TourMain() {
+        return "/tour/tour";
+    }
+    @GetMapping("Board")
+    public String Board() {
+        return "/board/mainBoard";
+    }
+
+
 }

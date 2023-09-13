@@ -31,9 +31,5 @@ public class EncyclopediaController {
     public String Petiket() {
         return "/daaalgeEncyclopedia/petiket";
     }
-//    @GetMapping("main2")
-//    public String mainLocation() {
-//        return "redirect:../";
-//    }
 
 }
