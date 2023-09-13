@@ -21,10 +21,4 @@ public class MainController {
     public String TourMain() {
         return "/tour/tour";
     }
-    @GetMapping("Board")
-    public String Board() {
-        return "/board/mainBoard";
-    }
-
-
 }
