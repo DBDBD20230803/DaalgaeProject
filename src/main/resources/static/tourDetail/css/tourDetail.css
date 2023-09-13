@@ -2,11 +2,61 @@
     .imageAndText {
         max-width: 1025px;
     }
+    .introDesc {
+        max-width: 1025px;
+    }
+    .tourLocMap {
+        width: 1025px;
+        height: 300px;
+    }
+    .nearTourImageBox {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .logoInPage {
+        top: -120px;
+    }
+    .shortWhiteSpace {
+        display: none;
+    }
+    .toListSpaceMiddle {
+        width: 1025px;
+    }
+    .toList {
+        float: right;
+    }
 }
 
-@media (max-width: 1049px) {
+@media (max-width: 1050px) {
     .imageAndText {
         max-width: 500px;
+    }
+    .introDesc {
+        max-width: 500px;
+    }
+    .nearTourImageBox {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .nearTourImage {
+        height: 400px;
+    }
+    .tourLocMap {
+        width: 500px;
+        height: 500px;
+    }
+    .logoInPage {
+        top: -169px;
+    }
+    .shortWhiteSpace {
+        display: block;
+    }
+    .toListSpaceMiddle {
+        width: 500px;
+    }
+    .toListSpaceMiddle {
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -182,13 +232,106 @@
 
 
 .imageAndText {
+    position: relative;
     font-size: 22px;
     font-weight: bold;
     margin: 0 auto;
     border-bottom: 1px solid #D8D8D8;
+    padding-bottom: 10px;
+    left: -5px;
+}
+
+.tourPawImage {
+    position: relative;
+    top: -3px;
 }
 
 .px300 {
+    position: relative;
     width: 100%;
-    height: 300px;
+    margin: 0 auto;
+}
+
+.introDesc {
+    position: relative;
+    top: 10px;
+    margin: 0 auto;
+    font-weight: bold;
+    color: #9c9c9c;
+    font-size: 18px;
+}
+
+.tourLocMap {
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid #222;
+}
+
+.nearTourImageBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nearTourImage {
+    border-radius: 7px;
+    margin-left: 12px;
+    margin-right: 13px;
+    margin-bottom: 15px;
+}
+
+.nearImageText {
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 0px;
+}
+
+.shortWhiteSpace {
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.whiteSpaceEncycle {
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+
+.logoInPage {
+    position: absolute;
+    background-image: url("../../tourList/images/bgDAALGAE.png");
+    width: 1135px;
+    height: 182px;
+    right: 0px;
+    z-index: -1;
+}
+
+.toListSpace {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.toListSpaceMiddle {
+    height: 200px;
+}
+
+.toList {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 209px;
+    height: 67px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #A6CEF7;
 }
