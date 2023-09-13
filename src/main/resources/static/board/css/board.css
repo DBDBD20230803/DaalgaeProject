@@ -23,6 +23,8 @@
   width: 300px;
 }
 
+
+
 .board-button-container button {
   border: 0;
 }
@@ -60,12 +62,15 @@
   overflow: hidden;
 }
 
+.board-button-text-title, .board-button-hover-text {
+  color: #ffffff;
+}
+
 .board-button-button:hover .board-button-image-main, .board-button-button:hover .board-button-text-title {
   transform: scale(1.1);
   transition: transform 1s;
   filter: brightness(70%);
 }
-
 
 .board-button-image {
   width: 100%;
@@ -129,6 +134,6 @@
   .box:nth-child(4),
   .box:nth-child(5),
   .box:nth-child(6) {
-      width: calc(50% - 10px); /* 2열 레이아웃을 위한 너비 설정 */
+    width: calc(50% - 10px); /* 2열 레이아웃을 위한 너비 설정 */
   }
 }

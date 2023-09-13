@@ -9,13 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/board/css/boardAnnouncementModify.css">
+    <link rel="stylesheet" href="../board/css/boardAnnouncementModify.css">
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -29,15 +29,23 @@
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/headerNoBootStrap.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+    </script>
+
 </head>
 <body>
+<div id="headers"></div>
     <div class="board-announcement-banner">
         <h3>공지사항</h3>
-        <div>
-            <a href="/board/announcementBoard.html" alt="back-arrow-to-main">
-                <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
-            </a>
-        </div>
         <div>
             <img src="/board/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
@@ -72,7 +80,7 @@
                 <button type="submit" value="수정">수정완료</button>
             </div>
             <div class="announcement-write-cancel">
-                <a href="/board/announcementBoard.html">취소</a>
+                <a href="../board/announcementBoard">취소</a>
             </div>
         </div>
     </div>
@@ -80,5 +88,6 @@
     <script>
 
     </script>
+<div id="footers"></div>
 </body>
 </html>

@@ -2,21 +2,21 @@
 <html lang="ko" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>boardAbandonedPickupInfo</title>
+    <title>boardAbandonedAdoptInfo</title>
 
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="le=edge">
-    
+
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
+<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/board/css/boardAbandonedPickupInfo.css">
-    
+    <link rel="stylesheet" href="../board/css/boardAbandonedAdoptInfo.css">
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
@@ -25,103 +25,67 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    
+
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/headerNoBootStrap.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+    </script>
+
 </head>
 <body>
+<div id="headers"></div>
     <div class="board-abandoned-banner">
-        <h3>습득시 안내</h3>
-        <div>
-            <a href="/board/mainBoard.html" alt="back-arrow-to-main">
-                <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
-            </a>
-        </div>
+        <h3>습득시안내</h3>
         <div>
             <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
     <div class="board-abandoned-header-menu">
         <div class="abandoned-protection">
-            <a href="/board/abandonedBoard.html">보호중인 강아지</a>
+            <a href="../board/abandonedBoard">보호중인 강아지</a>
         </div>
         <div class="abandoned-center">
-            <a href="/board/abandonedBoardCenter.html">동물보호센터</a>
+            <a href="../board/abandonedBoardCenter">동물보호센터</a>
         </div>
         <div class="abandoned-adoptInfo">
-            <a href="/board/abandonedBoardAdoptInfo.html">입양안내</a>
+            <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
         </div>
         <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-            <a href="/board/abandonedBoardPickupInfo.html">습득시 안내</a>
+            <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
         </div>
     </div>
     <div class="board-container">
-        <div class="board-abandoned-searchBar">
-            <div class="search-buttons">
-                <div class="abandoned-search-category">
-                    <select name="abandoned-search-category" id="abandoned-search-category">
-                        <option value="지역">지역</option>
-                        <option value="제목">제목</option>
-                        <option value="제목내용">제목 + 내용</option>
-                    </select>
-                </div>
-                <div class="search-by-text">
-                    <img src="/board/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
-                </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
-                </div>
-            </div>
-        </div>
         <div class="board-abandoned-content-container">
-            <a href="/board/abandonedBoardSelect.html">
-                <div class="abandoned-content">
-                    <div class="abandoned-content-img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="abandoned-content-detail">
-                        <div class="a-c-title">
-                            <h4>공고번호 : 광주-북구-2023-00650</h4>
-                        </div>
-                        <div class="a-c-location">
-                            <img src="/board/images/abandoned-location.png" alt="writer">
-                            <h5>발견장소 : </h5>
-                            <h5>북구 본촌동</h5>
-                        </div>
-                        <div class="a-c-gender">
-                            <img src="/board/images/abandoned-gender.png" alt="date">
-                            <h5>성별 : </h5>
-                            <h5>수컷</h5>
-                        </div>
-                        <div class="a-c-breed">
-                            <img src="/board/images/abandoned-breed.png" alt="date">
-                            <h5>품종 : </h5>
-                            <h5>믹스견</h5>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="board-paging-button">
-            <button type="button" id="previousPageButton">
-                <img src="/board/images/previousPageButton.png" alt="">
-            </button>
-            <button class="pageNumber">
-                <div id="postPage1">
-                    <div></div>
-                    <h4>1</h4>
-                </div>
-            </button>
-            <button type="button" id="nextPageButton">
-                <img src="/board/images/nextPageButton.png" alt="">
-            </button>
+            <div class="board-abandoned-content">
+                <h1 id="headText1">
+                    <span class="greenText">버려진 동물</span>을 발견하면
+                    <span class="blueText">신고</span>하세요</h1>
+                <img src="/board/images/pickUpInfo-image.png" alt="handShake-with-a-dog">
+                <h3>누군가의 반려동물을 보호하고 계신가요?</h3>
+            </div>
+            <div class="board-abandoned-content-2">
+                <h1>습득시 안내</h1>
+                <li>공공장소를 떠돌거나 버려진 동물을 발견한 경우 관할 시ㆍ군ㆍ구청과 해당 유기동물 보호시설에 신고해야 합니다.</li>
+                <li>유기동물을 주인 없는 동물이라 여겨 마음대로 잡아서 팔거나 죽이면 2년 이하의 징역 또는 2천만원 이하의 벌금을 내게 됩니다.</li>
+                <li>시장ㆍ군수ㆍ구청장은 관내에서 발견된 유기동물이 보호받을 수 있도록 필요한 조치를 해야 하며, 주인을 찾을 수 있도록 그 사실을 7 일 이상 공고해야 합니다.</li>
+                <li>공고 후 10일이 지나도 주인을 찾지 못한 경우, 해당 시ㆍ군ㆍ구등이 동물의 소유권을 갖게 되어 개인에게 기증하거나 분양할 수 있습니다.</li>
+            </div>
         </div>
     </div>
 
     <script>
 
     </script>
+<div id="footers"></div>
 </body>
 </html>
