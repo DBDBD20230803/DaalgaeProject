@@ -5,10 +5,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/headerNoBootStrap.html");
+            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
             $('#headers').css("z-index", "5");
+            $('#menu').css("margin-top", "0px");
             $("#footers").load("../Component/footer.html");
 
             let imgs;
@@ -114,10 +115,10 @@
         <link rel="stylesheet" type="text/css" href="../css/mobile.css">
         <link rel="stylesheet" type="text/css" href="../css/sanitize.css">
         <link rel="stylesheet" type="text/css" href="../main/mainIntro.css">
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Title</title>
 </head>
 <body>
-
   <div id="headers"></div>
   <div id="mainBackgroundSpace">
       <div id="mainBackground">
@@ -178,7 +179,7 @@
             <div class="informIconBox1"></div>
             <div class="informIconBox2"></div>
             <div class="informDown">
-                [뭐든다알개 오픈 이벤트] 추천 관광지 후기 사진을 남기시는 분들에게...
+                <a href="#">[뭐든다알개 오픈 이벤트] 추천 관광지 후기 사진을 남기시는 분들에게...</a>
                 <span class="informDate">2023-10-04</span>
             </div>
 

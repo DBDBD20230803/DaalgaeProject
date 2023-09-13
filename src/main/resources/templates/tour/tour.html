@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -43,10 +43,62 @@
               $('#headers').css("z-index", "5");
               $("#footers").load("../Component/footer.html");
               $('#footers').css("z-index", "5");
+              let selectNum = $('input[name=selectNum]').val();
+              if(selectNum == 1) {
+                  $('#tourCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 2) {
+                  $('#accomoCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 3) {
+                  $('#foodCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 4) {
+                  $('#activityCheck input').prop('checked', 'true');
+              }
+              if(selectNum == 5) {
+                  $('#hospitalCheck input').prop('checked', 'true');
+              }
+              $('.listTour1').click(function(){
+                  if( $('#tourCheck input').prop('checked') ) {
+                      $('#tourCheck input').prop('checked', 'false');
+                  } else {
+                      $('#tourCheck input').prop('checked', 'true');
+                  }
+              });
+              $('.listTour2').click(function(){
+                  if( $('#accomoCheck input').prop('checked') ) {
+                      $('#accomoCheck input').prop('checked', 'false');
+                  } else {
+                      $('#accomoCheck input').prop('checked', 'true');
+                  }
+              });
+              $('.listTour3').click(function(){
+                  if( $('#foodCheck input').prop('checked') ) {
+                      $('#foodCheck input').prop('checked', 'false');
+                  } else {
+                      $('#foodCheck input').prop('checked', 'true');
+                  }
+              });
+              $('.listTour4').click(function(){
+                  if( $('#activityCheck input').prop('checked') ) {
+                      $('#activityCheck input').prop('checked', 'false');
+                  } else {
+                      $('#activityCheck input').prop('checked', 'true');
+                  }
+              });
+              $('.listTour5').click(function(){
+                  if( $('#hospitalCheck input').prop('checked') ) {
+                      $('#hospitalCheck input').prop('checked', 'false');
+                  } else {
+                      $('#hospitalCheck input').prop('checked', 'true');
+                  }
+              });
           });
       </script>
   </head>
   <body>
+  <input type="hidden" name="selectNum" th:value="${select}">
   <div id="headers"></div>
     <section id="tour">
 
@@ -144,6 +196,9 @@
 
                 </div>
             </div>
+        </div>
+        <div class="whiteSpaceEncycle">
+            <div class="logoInPage"></div>
         </div>
     </section>
 

@@ -211,3 +211,18 @@ input:focus{
 .toggle{
     left: -22% !important;
 }
+
+.whiteSpaceEncycle {
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+
+.logoInPage {
+    position: absolute;
+    background-image: url("../tour/images/bgDAALGAE.png");
+    width: 1135px;
+    height: 182px;
+    top: -90px;
+    right: 0px;
+}

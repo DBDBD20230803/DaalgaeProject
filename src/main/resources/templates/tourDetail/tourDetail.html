@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+
+
+    <!--bootstrap-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <div class=""></div>
+    <!--css-->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/sanitize.css">
+    <link rel="stylesheet" href="../tourDetail/css/tourDetail.css">
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--js-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!--favicon--->
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/header.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+        function likeClike() {
+
+        }
+    </script>
+</head>
+<body>
+    <div id="headers"></div>
+    <div class="tourBg">
+        <h3>다알개 여행지</h3>
+    </div>
+    <div class="tourDetailtitle"><p class="DetailTitleText">관광지</p></div>
+    <div class="tourDetailWhiteSpace"></div>
+    <div class="tourDetailContent">
+        <img src="../tourDetail/images/dogPhoto1.png" height="500px" alt="관광지 이미지" class="tourPhoto">
+        <div class="tourDescBox">
+            <div class="tourDescText">
+                <button onclick="likeClike()"><img src="../tourDetail/images/likeList.png" class="likeListImage"></button>
+                <span class="descTitle">저스트도그</span><br><br>
+                <span class="descAttrName">주소
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span><span class="addr">강원 원주시 행구로 357</span><br><br>
+                <span class="descAttrName">문의처
+                    &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span><span class="tel">0507-1433-1258</span><br><br>
+                <span class="descAttrName">이용시간
+                    &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span><span class="useTime">매일 13:00-21:00 (주말 22:00까지. 월요일 휴무)</span><br><br>
+                <span class="descAttrName">홈페이지
+                    &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span><a href="https://www.instagram.com/justdog_tang9" target="_blank"><span class="homePage">https://www.instagram.com/justdog_tang9</span></a>
+            </div>
+            <div class="tourImageBox">
+                <div class="tourImage1">
+                    <img src="../tourDetail/images/bathImage.png" height="70px">
+                    <p class="tourImageDesc">목욕</p>
+                </div>
+                <div class="tourImageMargin"></div>
+                <div class="tourImage1">
+                    <img src="../tourDetail/images/dogHouseImage.png" height="70px">
+                    <p class="tourImageDesc">비품제공</p>
+                </div>
+                <div class="tourImageMargin"></div>
+                <div class="tourImage1">
+                    <img src="../tourDetail/images/dogIconImage.png" height="70px" class="tourImageInBox">
+                    <p class="tourImageDesc">펫동반 식당</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tourDetailWhiteSpace"></div>
+    <p class="imageAndText">소개</p>
+    <div id="footers"></div>
+</body>
+
+
