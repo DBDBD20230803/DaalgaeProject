@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
@@ -29,8 +29,21 @@
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/headerNoBootStrap.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+    </script>
+
 </head>
 <body>
+<div id="headers"></div>
     <div class="board-abandoned-banner">
         <h3>당신이 필요한 아이들</h3>
         <div>
@@ -44,16 +57,16 @@
     </div>
     <div class="board-abandoned-header-menu">
         <div class="abandoned-protection">
-            <a href="/board/abandonedBoardProtection.html">보호중인 강아지</a>
+            <a href="../board/abandonedBoard">보호중인 강아지</a>
         </div>
         <div class="abandoned-center">
-            <a href="/board/abandonedBoardCenter.html">동물보호센터</a>
+            <a href="../board/abandonedBoardCenter">동물보호센터</a>
         </div>
         <div class="abandoned-adoptInfo">
-            <a href="/board/abandonedBoardAdoptInfo.html">입양안내</a>
+            <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
         </div>
         <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-            <a href="/board/abandonedBoardPickupInfo.html">습득시 안내</a>
+            <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
         </div>
     </div>
     <div class="board-container">
@@ -174,7 +187,7 @@
         </div>
         <div class="board-select-footer">
             <div class="back-to-abandoned-list">
-                <a href="/board/abandonedBoard.html">목록</a>
+                <a href="/board/abandonedBoard">목록</a>
             </div>
         </div>
     </div>
@@ -182,5 +195,6 @@
     <script>
 
     </script>
+<div id="footers"></div>
 </body>
 </html>

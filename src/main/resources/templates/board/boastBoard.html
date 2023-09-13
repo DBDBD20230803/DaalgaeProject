@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
@@ -29,15 +29,23 @@
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/headerNoBootStrap.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $('#headers').css("z-index", "5");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+    </script>
+
 </head>
 <body>
+<div id="headers"></div>
     <div class="board-boast-banner">
         <h3>자랑갤러리</h3>
-        <div>
-            <a href="/board/mainBoard.html" alt="back-arrow-to-main">
-                <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
-            </a>
-        </div>
         <div>
             <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
@@ -62,7 +70,7 @@
             </div>
         </div>
         <div class="board-boast-content-container">
-            <a href="/board/boastBoardSelect.html">
+            <a href="../board/boastBoardSelect">
                 <div class="boast-content">
                     <div class="boast-content-img">
                         <img src="" alt="">
@@ -84,7 +92,7 @@
             </a>
         </div>
         <div class="board-boast-write">
-            <a href="boastBoardWrite.html" id="board-write-button" alt="글쓰기">
+            <a href="../board/boastBoardWrite" id="board-write-button" alt="글쓰기">
                 <div class="board-write-text">
                     <h3>글쓰기</h3>
                 </div>
@@ -109,5 +117,6 @@
     <script>
 
     </script>
+<div id="footers"></div>
 </body>
 </html>
