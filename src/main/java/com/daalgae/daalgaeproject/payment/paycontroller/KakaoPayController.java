@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("payment")
 public class KakaoPayController {
 
+
     @GetMapping("payments")
     public String goPayment() {
         System.out.println("aaaa");
