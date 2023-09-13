@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebtoonController {
 
 
-    @GetMapping("DongInfo")
+    @GetMapping("dengInfo")
     public String goWebtoonPage() {
-        return "webtoon/DongInfo";
+        return "webtoon/dengInfo";
     }
 
-    @GetMapping("WebtoonDetail")
+    @GetMapping("webtoonDetail")
     public String goWebtoonDetailPage(){
-        return "webtoon/WebtoonDetail";
+        return "webtoon/webtoonDetail";
     }
 
 

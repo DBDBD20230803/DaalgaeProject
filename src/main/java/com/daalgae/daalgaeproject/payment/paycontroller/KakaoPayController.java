@@ -5,13 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("payment/")
-@RequiredArgsConstructor
+@RequestMapping("payment")
 public class KakaoPayController {
 
-    @GetMapping("Payment")
+    @GetMapping("payments")
     public String goPayment() {
-        return "payment/Payment";
+        System.out.println("aaaa");
+        return "payment/payments";
+
     }
 }
 

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html"
-xmlns:th="thymeleaf.org">
+xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
     <title>댕댕정보툰</title>
 
-    <link rel="stylesheet" type="text/css" href="../webtoon/css/webtoonStylesheet.css">
+    <link rel="stylesheet" th:href="@{/webtoon_css/css/Webtoon.css}">
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,17 +57,17 @@ xmlns:th="thymeleaf.org">
 <body>
 <div id="headers"></div>
 <div id="webtoonBg">
-    <img class="mainImg" src="images/mianImg.png" alt="메인일러스트">
+    <img class="mainImg" src="/webtoon_css/images/mianImg.png" alt="메인일러스트">
     <h3>오늘도 댕댕하개</h3>
 </div>
 <div class="container">
     <div class="webtoonBox1">
-        <img src="../webtoon/images/doggum.png" alt="개껌이미지">
+        <img src="/webtoon_css/images/doggum.png" alt="개껌이미지">
         <div class="webtonntext1">현재 보유한 개껌</div>
         <div class="webtoonText2">60개</div>
     </div>
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="../webtoon/images/exampleImg.png">
+        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -86,7 +86,7 @@ xmlns:th="thymeleaf.org">
     </div>
 
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="../webtoon/images/exampleImg.png">
+        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -105,7 +105,7 @@ xmlns:th="thymeleaf.org">
     </div>
 
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="../webtoon/images/exampleImg.png">
+        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -121,14 +121,14 @@ xmlns:th="thymeleaf.org">
 
             <button id="button2" class="webtoonText9">구매하기</button>
             <button
-                    id="payButton1" class="webtoonText8" onclick="location.href='/payment/Payment'">충전하기
+                    id="payButton1" class="webtoonText8" onclick="location.href='/payment/payments'">충전하기
             </button>
 <!--            <button id="payButton1" class="webtoonText8">충전하기</button>-->
         </div>
     </div>
 
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="../webtoon/images/exampleImg.png">
+        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -141,7 +141,7 @@ xmlns:th="thymeleaf.org">
             </div>
         </div>
         <div class="webtoonBox5">
-            <button id="button1" class="webtoonText9" onclick="location.href='WebtoonDetail.html'">무료보기</button>
+            <button id="button1" class="webtoonText9" onclick="location.href='webtoonDetail'">무료보기</button>
         </div>
     </div>
 
