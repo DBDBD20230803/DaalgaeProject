@@ -1,6 +1,7 @@
 <!-- 링크 3개를 지정해야 합니다. -->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -750,7 +751,7 @@
                     <li><a href="../board/freeBoard">자유게시판</a></li>
                     <li><a href="../board/boastBoard">자랑갤러리</a></li>
                     <li><a href="../board/abandonedBoard">유기견 게시판</a></li>
-                    <li><a href="#">반려견 매칭 테스트</a></li>
+                    <li><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></li>
                     <li><a href="../board/announcementBoard">공지사항</a></li>
                     <li><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></li>
                 </ul>
@@ -764,13 +765,13 @@
     <!-- 로고, 로그인, 회원가입, 마이페이지, 검색 -->
 
     <div class="loginButton">
-        <a href="#">로그인</a>
+        <a th:href="@{/login/login}">로그인</a>
     </div>
     <div class="signupButton">
-        <a href="#">회원가입</a>
+        <a th:href="@{/regist/regist}">회원가입</a>
     </div>
     <div class="myPageButton">
-        <a href="#"><img src="../images/header/myPage.png"></a>
+        <a th:href="@{/myPage/mypage}"><img src="../images/header/myPage.png"></a>
     </div>
 
     <!--  검색 버튼  -->
@@ -811,7 +812,7 @@
                 <tr>
                     <td><a href="../tour/experience">체험</a></td>
                     <td><a href="../encycle/petiket">함께 실천하는 펫티켓</a></td>
-                    <td><a href="#">반려견 매칭 테스트</a></td>
+                    <td><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/hospital">동물병원</a></td>
@@ -867,7 +868,7 @@
                         <li><a href="../board/freeBoard">자유게시판</a></li>
                         <li><a href="../board/boastBoard">자랑갤러리</a></li>
                         <li><a href="../board/abandonedBoard">유기견 게시판</a></li>
-                        <li><a href="#">반려견 매칭 테스트</a></li>
+                        <li><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></li>
                         <li><a href="../board/announcementBoard">공지사항</a></li>
                         <li><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></li>
                     </ol>

@@ -17,8 +17,8 @@ public class LoginController {
     }
 
     @GetMapping("/loginFindId")
-    public String loginFindIdForm(){ return "/login/loginFindId"; }
+    public String loginFindIdForm(){ return "login/loginFindId"; }
 
     @GetMapping("/loginFindPwd")
-    public String loginFindFPwdForm(){ return "/login/lgoinFindPwd"; }
+    public String loginFindFPwdForm(){ return "login/loginFindPwd"; }
 }
