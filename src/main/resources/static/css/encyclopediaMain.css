@@ -57,7 +57,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("/images/mainInfoImage1.png");
 }
 
 .infoImage2 {
@@ -70,7 +69,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("/images/mainInfoImage2.png");
 }
 
 .infoImage3 {
@@ -83,7 +81,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("/images/mainInfoImage3.png");
 }
 
 .infoImage4 {
@@ -96,7 +93,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("/images/mainInfoImage4.png");
 }
 
 .infoImageDesc1 {
@@ -137,7 +133,7 @@
     font-weight: 300;
 }
 
-.infoImageDesc1 a {
+.infoImageDesc1 button {
     position: relative;
     top: -175px;
 }

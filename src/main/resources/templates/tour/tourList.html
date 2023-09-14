@@ -12,8 +12,7 @@
       <!--bootstrap-->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
       
-      
-      <div class=""></div>
+
       <!--css-->
     <link th:href="@{/css/index.css}" rel="stylesheet" />
     <link th:href="@{/css/mobile.css}" rel="stylesheet" />
@@ -30,22 +29,11 @@
     <script type="text/javascript" th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
     <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
     <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
-
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
       
     <!--favicon--->
       <link href="favicon.ico" rel="icon">
       <link href="favicon.ico" rel="apple-touch-icon">
-      <script type="text/javascript">
-          $(document).ready( function() {
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "-16px");
-          });
-
-
-
-      </script>
   </head>
   <body>
   <div id="headers">
@@ -77,77 +65,77 @@
   </div>
 
   <div class="tourBoard">
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto1.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto2.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto3.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto4.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto5.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto1.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto2.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto3.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="tourDetail">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
       <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto4.png}" />
       <div class="tourBoardUnitDesc">
         <p class="locationName">장소이름</p>
         <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
         <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
-      </div></a>
+      </div></button>
     </div>
   </div>
   <div class="whiteSpaceTourBoard"></div>

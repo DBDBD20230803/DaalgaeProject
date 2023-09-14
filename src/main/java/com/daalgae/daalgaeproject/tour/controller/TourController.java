@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/tour/*")
+@RequestMapping("tour")
 public class TourController {
     @GetMapping("tourList")
     public String TourList() {
