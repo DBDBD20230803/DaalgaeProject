@@ -15,7 +15,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mobile.css}">
     <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board/board.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 
     <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
     <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
@@ -32,20 +32,21 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
+            $('#headers').css("z-index", "5");
+            $('#menu').css("margin-top", "-16px");
         });
     </script>
 
 </head>
 <body>
 
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="Component/header.html"></th:block>
+</div>
 
-    <div class="board-announcement-banner">
+    <div class="board-banner">
         <h3>공지사항</h3>
         <div>
             <img src="/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
@@ -53,16 +54,16 @@
     </div>
 
     <div class="board-container container">
-        <div class="board-announcement-searchBar">
+        <div class="board-searchBar">
             <div class="search-buttons">
-                <div class="announcement-head-title-category">
+                <div class="head-title-category">
                     <select name="anno-head-title-category" id="anno-head-title-category">
                         <option value="말머리" selected>말머리</option>
                         <option value="공지사항">공지사항</option>
                         <option value="이벤트">이벤트</option>
                     </select>
                 </div>
-                <div class="announcement-search-category">
+                <div class="search-category">
                     <select name="anno-search-category" id="anno-search-category">
                         <option value="제목">제목</option>
                         <option value="제목내용">제목 + 내용</option>
@@ -95,9 +96,9 @@
                 </div>
             </a>
         </div>
-        <div class="board-admin-write">
-            <a href="../board/announcementBoardWrite" id="board-admin-write-button" alt="글쓰기">
-                <div class="board-admin-write-text">
+        <div class="board-write">
+            <a href="../board/announcementBoardWrite" id="board-write-button" alt="글쓰기">
+                <div class="board-write-text">
                     <div>글쓰기</div>
                 </div>
             </a>
@@ -120,6 +121,8 @@
     <script>
 
     </script>
-<div id="footers"></div>
+<div>
+    <th:block th:include="Component/footer.html"></th:block>
+</div>
 </body>
 </html>

@@ -15,7 +15,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mobile.css}">
     <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board/board.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 
     <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
     <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
@@ -32,46 +32,46 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
+            $('#headers').css("z-index", "5");
+            $('#menu').css("margin-top", "-16px");
         });
     </script>
-
 </head>
 <body>
 
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="Component/header.html"></th:block>
+</div>
 
-<div class="board-abandoned-banner">
+<div class="board-banner">
     <h3>당신이 필요한 아이들</h3>
     <div>
         <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
     </div>
 </div>
 
-<div class="board-abandoned-header-menu">
-    <div class="abandoned-protection">
+<div class="board-header-menu">
+    <div class="protection">
         <a href="../board/abandonedBoard">보호중인 강아지</a>
     </div>
-    <div class="abandoned-center">
+    <div class="center">
         <a href="../board/abandonedBoardCenter">동물보호센터</a>
     </div>
-    <div class="abandoned-adoptInfo">
+    <div class="adoptInfo">
         <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
     </div>
-    <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
+    <div class="pickupInfo" id="pickupInfo">
         <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
     </div>
 </div>
 
 <div class="board-container container">
-    <div class="board-abandoned-searchBar">
+    <div class="board-searchBar">
         <div class="search-buttons">
-            <div class="abandoned-search-category">
-                <select name="abandoned-search-category" id="abandoned-search-category">
+            <div class="search-category">
+                <select name="search-category" id="search-category">
                     <option value="지역">지역</option>
                     <option value="수도권">수도권</option>
                     <option value="경상도">경상도</option>
@@ -90,28 +90,217 @@
             </div>
         </div>
     </div>
-    <div class="board-abandoned-content-container">
+    <div class="board-content-container">
         <a href="../board/abandonedBoardSelect">
-            <div class="abandoned-content">
-                <div class="abandoned-content-img">
+            <div class="content">
+                <div class="content-img">
                     <img src="" alt="">
                 </div>
-                <div class="abandoned-content-detail">
+                <div class="content-detail">
                     <div class="a-c-title">
                         <h6>공고번호 : 광주-북구-2023-00650</h6>
                     </div>
                     <div class="a-c-location">
-                        <img src="/images/abandoned-location.png" alt="writer">
+                        <img src="/images/location.png" alt="writer">
                         <h6>발견장소 : </h6>
                         <h6>북구 본촌동</h6>
                     </div>
                     <div class="a-c-gender">
-                        <img src="/images/abandoned-gender.png" alt="date">
+                        <img src="/images/gender.png" alt="date">
                         <h6>성별 : </h6>
                         <h6>수컷</h6>
                     </div>
                     <div class="a-c-breed">
-                        <img src="/images/abandoned-breed.png" alt="date">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../board/abandonedBoardSelect">
+            <div class="content">
+                <div class="content-img">
+                    <img src="" alt="">
+                </div>
+                <div class="content-detail">
+                    <div class="a-c-title">
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
+                    </div>
+                    <div class="a-c-location">
+                        <img src="/images/location.png" alt="writer">
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
+                    </div>
+                    <div class="a-c-gender">
+                        <img src="/images/gender.png" alt="date">
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
+                    </div>
+                    <div class="a-c-breed">
+                        <img src="/images/breed.png" alt="date">
                         <h6>품종 : </h6>
                         <h6>믹스견</h6>
                     </div>
@@ -138,6 +327,8 @@
 <script>
 
 </script>
-<div id="footers"></div>
+<div>
+    <th:block th:include="Component/footer.html"></th:block>
+</div>
 </body>
 </html>

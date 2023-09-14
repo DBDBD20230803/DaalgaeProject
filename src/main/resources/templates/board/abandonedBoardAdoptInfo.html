@@ -9,67 +9,68 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
 
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 
     <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/css/board/boardAbandonedAdoptInfo.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mobile.css}">
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
+    <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"/>
 
     <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
 
     <!--favicon--->
-    <link href="favicon.ico" rel="icon">
-    <link href="favicon.ico" rel="apple-touch-icon">
+    <link th:href="@{favicon.ico}" rel="icon">
+    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
+            $('#headers').css("z-index", "5");
+            $('#menu').css("margin-top", "-16px");
         });
     </script>
 
 </head>
 <body>
 
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="Component/header.html"></th:block>
+</div>
 
-<div class="board-abandoned-banner">
+<div class="board-banner">
     <h3>입양안내</h3>
     <div>
         <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
     </div>
 </div>
 
-<div class="board-abandoned-header-menu">
-    <div class="abandoned-protection">
+<div class="board-header-menu">
+    <div class="protection">
         <a href="../board/abandonedBoard">보호중인 강아지</a>
     </div>
-    <div class="abandoned-center">
+    <div class="center">
         <a href="../board/abandonedBoardCenter">동물보호센터</a>
     </div>
-    <div class="abandoned-adoptInfo">
+    <div class="adoptInfo">
         <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
     </div>
-    <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
+    <div class="pickupInfo" id="pickupInfo">
         <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
     </div>
 </div>
 
 <div class="board-container container">
-    <div class="board-abandoned-content-container">
-        <div class="board-abandoned-content">
+    <div class="board-content-container">
+        <div class="board-content">
             <h1 id="headText1">
                 <span class="greenText">동물</span>을 입양한 당신이
                 <span class="blueText">자랑</span>스럽습니다!</h1>
@@ -78,7 +79,7 @@
                 원하는 동물을 새 식구로 맞이하는 것은 물론 한 생명을 구했다는 자부심으로 가슴이 뿌듯해집니다.
             </h3>
         </div>
-        <div class="board-abandoned-content-2">
+        <div class="board-content-2">
             <h1>입양 전 진지하게 점검해야 할 체크리스트</h1>
             <li>반려동물을 맞이할 환경적 준비, 마음의 각오는 되어 있습니까?</li>
             <li>강아지는 10~15년 이상 삽니다. 결혼, 임신, 유학, 이사 등으로 가정환경이 바뀌어도 한번 인연을 맺은 동물은 끝까지 책임지고 보살피겠다는 결심이 섰습니까?</li>
@@ -100,6 +101,8 @@
 <script>
 
 </script>
-<div id="footers"></div>
+<div>
+    <th:block th:include="Component/footer.html"></th:block>
+</div>
 </body>
 </html>

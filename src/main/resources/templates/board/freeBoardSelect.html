@@ -15,7 +15,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mobile.css}">
     <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board/board.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 
     <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
     <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
@@ -32,20 +32,20 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
+            $('#headers').css("z-index", "5");
+            $('#menu').css("margin-top", "-16px");
         });
     </script>
-
 </head>
 <body>
 
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="Component/header.html"></th:block>
+</div>
 
-    <div class="board-free-banner">
+    <div class="board-banner">
         <h3>자유게시판</h3>
         <div>
             <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
@@ -53,7 +53,7 @@
     </div>
 
     <div class="board-container container">
-        <div class="board-free-searchBar">
+        <div class="board-searchBar">
             <div class="search-buttons">
                 <div class="search-by-text">
                     <img src="/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
@@ -76,8 +76,8 @@
                 </button>
             </div>
         </div>
-        <div class="board-free-content-select-container">
-            <div class="board-free-content-title">
+        <div class="board-content-select-container">
+            <div class="board-content-title">
                     <h6 id="postNo">1</h6>
                     <h6 id="postTitle">집가고싷다시파</h6>
                     <h6 id="postUser">daalgae</h6>
@@ -86,7 +86,7 @@
             <div class="board-select-content">
                 <div>
                     <h6>안녕하세요</h6>
-                    <img src="/images/board-free-button.png" alt="">
+                    <img src="/images/board-matchTest-button.png" alt="">
                     <h6>집가고싶네요</h6>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     <button type="submit">댓글달기</button>
                 </div>
             </div>
-            <div class="back-to-free-list">
+            <div class="back-to-list">
                 <a href="../board/freeBoard">목록</a>
             </div>
         </div>
@@ -129,6 +129,8 @@
     <script>
 
     </script>
-<div id="footers"></div>
+<div>
+    <th:block th:include="Component/footer.html"></th:block>
+</div>
 </body>
 </html>

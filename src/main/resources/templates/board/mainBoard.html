@@ -15,7 +15,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mobile.css}">
     <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board/board.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 
     <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
     <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
@@ -56,7 +56,7 @@
       <div class="board-button-container">
           <div class="board-button">
             <button class="board-button-button" type="button">
-              <a th:href="@{/css/board/announcementBoard}">
+              <a th:href="@{/board/announcementBoard}">
               <div class="board-button-image">
                   <img th:src="@{/images/board-announcement-button.png}" alt="공지사항" class="board-button-image-main">
                 </div>
@@ -71,7 +71,7 @@
 
           <div class="board-button">
             <button class="board-button-button" type="button">
-              <a th:href="@{/css/board/abandonedBoard}">
+              <a th:href="@{/board/abandonedBoard}">
               <div class="board-button-image">
                   <img th:src="@{/images/board-abandonedDog-button.png}" alt="유기견게시판" class="board-button-image-main">
                 </div>
@@ -86,7 +86,7 @@
 
           <div class="board-button">
             <button class="board-button-button" type="button">
-              <a th:href="@{/css/board/boastBoard}">
+              <a th:href="@{/board/boastBoard}">
                 <div class="board-button-image">
                   <img th:src="@{/images/board-boast-button.png}" alt="자랑갤러리" class="board-button-image-main">
                 </div>
@@ -116,7 +116,7 @@
 
           <div class="board-button">
             <button class="board-button-button" type="button">
-              <a th:href="@{/css/board/freeBoard}">
+              <a th:href="@{/board/freeBoard}">
                 <div class="board-button-image">
                   <img th:src="@{/images/board-free-button.png}" alt="자유게시판" class="board-button-image-main">
                 </div>
@@ -169,10 +169,3 @@
     <th:block th:include="Component/footer.html"></th:block>
   </div>
 </body>
-<!--
-  1. 버튼 호버시 버튼 좌측하단 작은 글씨로 '자세히보기', 우측하단 화살표 이미지 띄우기
-  2. 배너 좌측 상단 메인으로 가는 화살표 이미지
-  3. 배너 우측 산책시키는 여자 이미지 넣기
-  4. 버튼 뒤에 'DAALGAE' 이미지 넣기
-  5. '공지사항', '유기견게시판', '자랑갤러리', '반려견매칭테스트', '자유게시판', '댕댕정보툰' 총 6개 페이지 html ㅠㅠ
--->
