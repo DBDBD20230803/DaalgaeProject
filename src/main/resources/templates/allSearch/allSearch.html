@@ -45,6 +45,11 @@
             $('#footers').css("z-index", "5");
         });
     </script>
+    <script>
+        function noData() {
+            alert('더이상 가져올 내용이 없습니다.');
+        }
+    </script>
 </head>
 <body>
 <div id="headers"></div>
@@ -55,7 +60,7 @@
 <div class="tourSelectBar">
     <div class="searchInput">
         <div class="searchIcon"></div>
-        <input placeholder="검색어를 입력해 주세요.">
+        <input placeholder="여행지 검색">
     </div>
     <button onclick="location.href='../allSearch'" class="searchButton">검색</button>
 </div>
@@ -63,11 +68,11 @@
 <div class="allSearchWhiteSpace"></div>
 <div class="optionButtonsSpace">
     <div class="optionButtonsBox">
-        <button class="optionButton">통합</button>
-        <button class="optionButton">관광지(0)</button>
+        <button class="optionButton">전체</button>
+        <button class="optionButton">관광지(3)</button>
         <button class="optionButton">숙박(0)</button>
-        <button class="optionButton">식음료(15)</button>
-        <button class="optionButton">체험(2)</button>
+        <button class="optionButton">식음료(0)</button>
+        <button class="optionButton">체험(0)</button>
         <button class="optionButton">동물병원(0)</button>
     </div>
 </div>
@@ -76,7 +81,12 @@
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>
 <!---->
-<p class="imageAndText"><img class="tourPawImage" src="../tourDetail/images/dogPaw.png">관광지 검색결과 (0)<button class="plusDetail"><img src="../allSearch/images/plusDetail.png"></button></p>
+<p class="imageAndText">
+    <img class="tourPawImage" src="../tourDetail/images/dogPaw.png">관광지 검색결과 (3)
+    <button class="plusDetail">
+        <img src="../allSearch/images/plusDetail.png">
+    </button>
+</p>
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>
 <div class="tourBoard">
@@ -106,6 +116,30 @@
     </div>
 </div>
 
+<p class="imageAndText">
+    <img class="tourPawImage" src="../tourDetail/images/dogPaw.png">숙박 검색결과 (0)
+    <button onclick="noData()" class="plusDetail">
+        <img src="../allSearch/images/plusDetail.png">
+    </button>
+</p>
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
+
+<p class="imageAndText">
+    <img class="tourPawImage" src="../tourDetail/images/dogPaw.png">식음료 검색결과 (0)
+    <button onclick="noData()" class="plusDetail">
+        <img src="../allSearch/images/plusDetail.png">
+    </button>
+</p>
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
+
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace"></div>
 
 <div class="whiteSpaceTourBoard"></div>
 <div class="whiteSpaceEncycle">

@@ -245,5 +245,7 @@ input:focus {
     top: -3px;
 }
 .plusDetail {
+    position: relative;
     float: right;
+    top: 10px;
 }
