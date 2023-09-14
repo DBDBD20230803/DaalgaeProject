@@ -2,7 +2,7 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>아이디찾기</title>
+    <title>회원탈퇴</title>
 
 
     <!--meta-->
@@ -11,14 +11,14 @@
 
       
       <!--bootstrap-->
-      <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
       
 
       <!--css-->
-      <link rel="stylesheet" href="/css/index.css">
-      <link rel="stylesheet" href="/css/mobile.css">
-      <link rel="stylesheet" href="/css/sanitize.css">
-      <link rel="stylesheet" href="/login/css/findIdComplete.css">
+      <link rel="stylesheet" href="../css/index.css">
+      <link rel="stylesheet" href="../myPageDetails/css/mobile.css">
+      <link rel="stylesheet" href="../css/sanitize.css">
+      <link rel="stylesheet" href="../myPageDetails/css/delete.css">
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -35,17 +35,18 @@
       <link href="favicon.ico" rel="apple-touch-icon">
   </head>
   <body>
-        <section id="findIdComplete">
-          <div class="findIdCompleteWrap container">
+        <section id="delete">
+          <div class="deleteWrap container">
 
-            <div class="findIdCompleteContents">
+            <div class="deleteContents">
 
-              <h5 class="findIdCompleteTitle">뭐든 다알개</h5>
+              <h5 class="deleteTitle">뭐든 다알개</h5>
 
-              <form class="findIdCompleteForm" action="" method="post">
-                <h5 class="findIdCompleteMessage">고객님의 아이디는 “dogtype***”입니다.</h5>
-                <div class="findPwdPage" clearfix><a href="">비밀번호 찾기</a></div>
-                <div class="pwdResetCompleteGotoMain"><a href="">메인 페이지로 이동</a></div>
+              <form class="deletPwdConfirm" action="" method="post">
+                <h5 class="deletePwdConfirmTitle">탈퇴 비밀번호 확인</h5>
+                <input type="password" name="password" id="pwd" placeholder="비밀번호"/>
+                <p>탈퇴 시 동일한 이메일로 재가입이 불가능 합니다.😥</p>
+                <input type="submit" name="deleteBtn" id="deleteBtn" value="탈퇴"/>
               </form>
             </div>
           </div>
