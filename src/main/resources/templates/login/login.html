@@ -14,17 +14,16 @@
 
       
       <!--bootstrap-->
-      <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
       
 
       <!--css-->
-      <link rel="stylesheet" href="/css/index.css"/>
-      <link rel="stylesheet" href="/login/css/mobile.css"/>
-      <link rel="stylesheet" href="/css/sanitize.css"/>
-      <link rel="stylesheet" href="/css/login.css"/>
+      <link rel="stylesheet" th:href="@{/css/index.css}"/>
+      <link rel="stylesheet" th:href="@{/css/sanitize.css}"/>
+      <link rel="stylesheet" th:href="@{/css/login.css}"/>
       
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"/>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
       <!--js-->
@@ -32,13 +31,13 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-      
+
     <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
+      <link th:href="@{favicon.ico}" rel="icon"/>
+      <link th:href="@{favicon.ico}" rel="apple-touch-icon"/>
   </head>
   <body>
-  <!--<div th:insert="~{layouts/header :: header}"></div>-->
+        <div th:insert="/component/header"></div>
         <section id="login">
           <div class="logintWrap container">
 
@@ -81,6 +80,8 @@
             </div>
           </div>
         </section>
+
+        <div th:insert="/component/footer"></div>
   </body>
 
 
