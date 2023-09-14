@@ -1,0 +1,1267 @@
+input:focus{
+    outline: none !important;
+}
+
+#regist{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#regist .registWrap{
+    width: 100%;
+}
+
+#regist .registWrap .registContents{ 
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#regist .registWrap .registContents h5.registTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+#regist .registWrap .registContents .registForm label#realName{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+#regist .registWrap .registContents .registForm input[type="checkbox"]{
+    display: none !important;
+}
+
+#realName:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#realName #showCheckbox {
+    width: 18px;
+    height: 18px; 
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+#regist .registWrap .registContents .registForm label#realName span{
+    font-size: 0.8em;
+    color: #969696;
+}
+
+
+#regist .registWrap .registContents .registForm input{
+    display: block;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background: #DAECFF;
+    margin: 3% 0;
+}
+
+#regist .registWrap .registContents .registForm label#birth{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+    padding: 0 2%;
+    color: #b6b6b6;
+}
+
+#regist .registWrap .registContents .registForm label#birth .birthTitle{
+    width: 22%;
+    font-size: 0.9em;
+}
+
+#regist .registWrap .registContents .registForm label input#birth{
+    width: 100%;
+    border: none;
+    border-radius: 2px;
+    margin: 0;
+
+}
+
+
+
+#regist .registWrap .registContents .registForm input#username{
+    background: url(../images/id.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#password{
+    background: url(../images/lock.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#passwordConfirm{
+    background: url(../images/lock.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center #DAECFF;
+}
+
+
+#regist .registWrap .registContents .registForm input#nameUser{
+    background: url(../images/name.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#address{
+    background: url(../images/address.png) no-repeat 13px center #DAECFF;
+}
+
+
+
+#regist .registWrap .registContents .registForm input::placeholder{
+    color: #929292;
+    font-size: 0.9em;
+}
+
+#regist .registWrap .registContents .registForm input#AuthBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#regist .registWrap .registContents .registForm .addressBox{
+    width: 100%;
+    position: relative;
+}
+
+#regist .registWrap .registContents .registForm .addressBox .searchAddress{
+    width: 20%;
+    position: absolute;
+    right: -8.5%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #DBDBDB;
+    padding: 1.5%;
+    color: #969696;
+    border-radius: 2px;
+    font-size: 0.9em;
+}
+
+#regist .registWrap .registContents .registForm #termsCheck{
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background: #DAECFF;
+    padding: 3% 2%;
+    display: flex;
+    cursor: pointer;
+}
+
+#termsCheck:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#showCheckbox {
+    width: 18px;
+    height: 18px; 
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+
+#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll1{
+    color: #555555;
+}
+
+
+#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll2{
+    font-size: 0.8em;
+    color: #639DD7;
+
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+
+/*agreeTerm*/
+
+input:focus{
+    outline: none !important;
+}
+
+#agreeTerms{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#agreeTerms .agreeTermsWrap{
+    width: 100%;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents h5.agreeTermsTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap{
+    width: 100%;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap label#agreeAll{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    justify-content: flex-start;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm input[type="checkbox"]{
+    display: none !important;
+}
+
+#agreeAll:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#agreeAll #showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap label#agreeAll span{
+    color: #222;
+    font-weight: 500;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap .agreeAllText{
+    font-size: 0.9em;
+    color: #535353;
+    text-align: left;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm input#nextBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap{
+    width: 100%;
+    margin: 7% 0;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termsCheck{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    cursor: pointer;
+}
+
+#termsCheck:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span.agreeAll1{
+    color: #555555;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span.agreeAll2{
+    font-size: 0.8em;
+    color: #639DD7;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span a{
+    font-size: 0.7em;
+    color: #9c9c9c;
+    font-weight: 300;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText{
+    width: 100%;
+    text-align: left;
+    background-color: #DAECFF;
+    padding: 3%;
+    border-radius: 6px;
+    height: 170px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText::-webkit-scrollbar-thumb{
+    background-color: #8F8F8F;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText h5{
+    font-size: 0.98em;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText p{
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+
+
+
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm #privacy{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    cursor: pointer;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm #privacy .privacyWrap{
+    width: 100%;
+}
+
+#privacy:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#privacy #showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span.agreeAll1{
+    color: #555555;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span.agreeAll2{
+    font-size: 0.8em;
+    color: #639DD7;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span a{
+    font-size: 0.7em;
+    color: #9c9c9c;
+    font-weight: 300;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText{
+    width: 100%;
+    text-align: left;
+    background-color: #DAECFF;
+    padding: 3%;
+    border-radius: 6px;
+    height: 170px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText::-webkit-scrollbar-thumb{
+    background-color: #8F8F8F;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+}
+
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText p{
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/*registComplete*/
+input:focus{
+    outline: none !important;
+}
+
+p{
+    margin-bottom: 0 !important;
+}
+
+#registComplete{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#registComplete .registCompleteWrap{
+    width: 100%;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents h5.registCompleteTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#registComplete .registCompleteWrap .registCompleteContents h5.registCompleteMessage{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm .message1{
+    margin: 3% 0 6%;
+    color: #639DD7;
+    font-weight: 500;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm .message1 a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    background-color: #639DD7;
+    border-radius: 20px;
+    padding: 0.1% 1%;
+    transition: all .3s;
+    border: 2px solid #639DD7;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm .message1 a:hover{
+    background-color: #fff;
+    color: #639DD7;
+    border: 2px solid #639DD7;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm .message2{
+    font-size: 0.7em;
+    font-weight: 300;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm p{
+    font-weight: 300;
+    font-size: 0.9em;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm .registCompleteGotoMain{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 6%;
+}
+
+#registComplete .registCompleteWrap .registCompleteContents .registCompleteForm .registCompleteGotoMain a{
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+/*registEmailAuth*/
+input:focus{
+    outline: none !important;
+}
+
+#registemailAuth{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#registemailAuth .registemailAuthWrap{
+    width: 100%;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm{
+    width: 100%;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents h5.registemailAuthTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .putAuthNumWrap{
+    width: 100%;
+    position: relative;
+
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#putAuthNum{
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 3%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+
+/*registEmailAuthFail*/
+input:focus{
+    outline: none !important;
+}
+
+#registemailAuthFail{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#registemailAuthFail .registemailAuthFailWrap{
+    width: 100%;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm{
+    width: 100%;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents h5.registemailAuthFailTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .putAuthNumWrap{
+    width: 100%;
+    position: relative;
+
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#putAuthNum{
+    background: url(../images/key.png) no-repeat 13px center;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #FF0000;
+    border-radius: 2px;
+    background-color: #DAECFF;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#putEmailAddress::placeholder{
+    color: #929292;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#putAuthNum::placeholder{
+    color: #929292;
+}
+
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#reSendAutNum{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 30%;
+    margin-top: 3%;
+    text-align: center;
+    float: right;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#AuthComplete{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 2%;
+    width: 100%;
+    margin-top: 6%;
+    border-radius: 2px;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+    width: 18%;
+    position: absolute;
+    right: -5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    color: #acacac;
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+#registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authNumNotFound{
+    width: 100%;
+    color: #FF0000;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+
+/*registFail*/
+
+input:focus{
+    outline: none !important;
+}
+
+#regist{
+    width: 100%;
+    padding: 230px 0;
+}
+
+#regist .registWrap{
+    width: 100%;
+}
+
+#regist .registWrap .registContents{
+    width: 45%;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    padding: 3% 5%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#regist .registWrap .registContents h5.registTitle{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    text-align: left;
+}
+
+#regist .registWrap .registContents .registForm label#realName{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+#regist .registWrap .registContents .registForm input[type="checkbox"]{
+    display: none !important;
+}
+
+#realName:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#realName #showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+#regist .registWrap .registContents .registForm label#realName span{
+    font-size: 0.8em;
+    color: #969696;
+}
+
+
+
+#regist .registWrap .registContents .registForm input{
+    display: block;
+    text-indent: 30px;
+    padding: 3% 2%;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background: #DAECFF;
+    margin: 3% 0;
+}
+
+#regist .registWrap .registContents .registForm label#birth{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background-color: #DAECFF;
+    margin: 3% 0;
+    padding: 0 2%;
+    color: #b6b6b6;
+}
+
+#regist .registWrap .registContents .registForm label#birth .birthTitle{
+    width: 22%;
+    font-size: 0.9em;
+}
+
+#regist .registWrap .registContents .registForm label input#birth{
+    width: 100%;
+    border: none;
+    border-radius: 2px;
+    margin: 0;
+
+}
+
+
+
+#regist .registWrap .registContents .registForm input#username{
+    background: url(../images/id.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#password{
+    background: url(../images/lock.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#passwordConfirm{
+    background: url(../images/lock.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#putEmailAddress{
+    background: url(../images/email.png) no-repeat 13px center #DAECFF;
+    margin-bottom: 1% !important;
+}
+
+
+#regist .registWrap .registContents .registForm input#nameUser{
+    background: url(../images/name.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input#address{
+    background: url(../images/address.png) no-repeat 13px center #DAECFF;
+}
+
+#regist .registWrap .registContents .registForm input::placeholder{
+    color: #929292;
+    font-size: 0.9em;
+}
+
+#regist .registWrap .registContents .registForm .cantUseId{
+    color: #FF0000;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+#regist .registWrap .registContents .registForm input#AuthBtn{
+    background-color: #9DC4E7;
+    color: #fff;
+    border:none;
+    padding: 3% 2%;
+    width: 100%;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+#regist .registWrap .registContents .registForm .addressBox{
+    width: 100%;
+    position: relative;
+}
+
+#regist .registWrap .registContents .registForm .addressBox .searchAddress{
+    width: 20%;
+    position: absolute;
+    right: -8.5%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #DBDBDB;
+    padding: 1.5%;
+    color: #969696;
+    border-radius: 2px;
+    font-size: 0.9em;
+}
+
+#regist .registWrap .registContents .registForm #termsCheck{
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    background: #DAECFF;
+    padding: 3% 2%;
+    display: flex;
+    cursor: pointer;
+}
+
+#termsCheck:checked + #showCheckbox {
+    background: url(../images/checkbox_checked.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+}
+
+#showCheckbox {
+    width: 18px;
+    height: 18px;
+    background: url(../images/checkbox_normal.png) no-repeat;
+    background-size: contain;
+}
+
+
+#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll1{
+    color: #555555;
+}
+
+
+#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll2{
+    font-size: 0.8em;
+    color: #639DD7;
+
+}
+
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+
+
+
+/*mobile*/
+@media screen and (max-width:1440px) {
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 55% !important;
+    }
+
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 26% !important;
+    }
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 55% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 55% !important;
+    }
+
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime {
+        width: 30% !important;
+        text-align: right !important;
+    }
+
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 55% !important;
+    }
+
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+        width: 30% !important;
+        text-align: right !important;
+    }
+}
+
+
+
+/*노트북*/
+@media screen and (max-width:1024px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents {
+        width: 55% !important;
+    }
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 60% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 65% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 65% !important;
+    }
+
+
+}
+
+/*아이패드 (768px)*/
+@media screen and (max-width:991px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents {
+        width: 70% !important;
+    }
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 75% !important;
+    }
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 80% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 80% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 80% !important;
+    }
+}
+
+
+
+/*모바일*/
+
+@media screen and (max-width:767px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents {
+        width: 90% !important;
+    }
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 90% !important;
+    }
+
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 28% !important;
+    }
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents {
+        width: 100% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents {
+        width: 100% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents{
+        width: 100% !important;
+    }
+}
+
+
+/*모바일2*/
+
+
+@media screen and (max-width:576px) {
+
+
+    /*registComplete*/
+    #registComplete .registCompleteWrap .registCompleteContents h5.registCompleteMessage {
+        font-size: 1em !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#putAuthNum::placeholder {
+        font-size: 0.8em !important;
+    }
+
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime {
+        width: 25% !important;
+    }
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#putAuthNum::placeholder{
+        font-size: 0.8em !important;
+    }
+
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+        width: 25% !important;
+    }
+
+    /*registFail*/
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 32% !important;
+    }
+
+}
+
+
+
+
+/*모바일3 갤럭시*/
+
+@media screen and (max-width:425px) {
+
+
+    /*regist*/
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 40% !important;
+        margin-left: 5px !important;
+    }
+
+    #regist .registWrap .registContents .registForm .addressBox .searchAddress {
+        width: 30% !important;
+    }
+
+    #regist .registWrap .registContents .registForm #termsCheck {
+        padding: 3% 6% !important;
+    }
+
+
+    /*registEmailAuth*/
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm .authTime {
+        font-size: 0.7em !important;
+        margin-top: -7px;
+    }
+
+    #registemailAuth .registemailAuthWrap .registemailAuthContents .registemailAuthForm input#reSendAutNum {
+        font-size: 0.7em !important;
+    }
+
+
+    /*registEmailAuthFail*/
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm .authTime{
+        font-size: 0.7em !important;
+        margin-top: -7px;
+    }
+
+    #registemailAuthFail .registemailAuthFailWrap .registemailAuthFailContents .registemailAuthFailForm input#reSendAutNum{
+        font-size: 0.7em !important;
+    }
+
+}
+
+
+
+/*모바일4 아이폰*/
+@media screen and (max-width:375px) {
+
+    /*agreeTerms*/
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termsCheck{
+        font-size: 0.9em !important;
+        font-weight: 500 !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap label#privacy span.agreeAll1 {
+        font-size: 0.9em !important;
+        font-weight: 500 !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText h5 {
+        font-size: 0.8em !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap .termsText p {
+        font-size: 0.75em !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .agreeAllWrap label#agreeAll span{
+        font-size: 0.9em !important;
+    }
+
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .privacyWrap .privacyText p {
+        font-size: 0.75em !important;
+    }
+
+    /*regist*/
+    #regist .registWrap .registContents {
+        width: 100% !important;
+    }
+
+
+    /*registFail*/
+    #regist .registWrap .registContents .registForm label#birth .birthTitle {
+        width: 43% !important;
+    }
+}

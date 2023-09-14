@@ -1,13 +1,16 @@
-/*package com.daalgae.daalgaeproject.login.model.dto;
+/*
+package com.daalgae.daalgaeproject.login.model.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;*/
+import java.util.List;
+*/
 
-/*public class UserImpl extends User{
+/*
+public class UserImpl extends User{
     private int memCode;
     private String memId;
     private String memPwd;
@@ -145,4 +148,5 @@ import java.util.List;*/
     }
 
 
-}*/
+}
+*/

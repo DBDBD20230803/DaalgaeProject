@@ -2,7 +2,7 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>비밀번호재설정</title>
 
 
     <!--meta-->
@@ -18,7 +18,7 @@
       <link rel="stylesheet" href="../css/index.css">
       <link rel="stylesheet" href="../myPageDetails/css/mobile.css">
       <link rel="stylesheet" href="../css/sanitize.css">
-      <link rel="stylesheet" href="../myPageDetails/css/pwdResetComplete.css">
+      <link rel="stylesheet" href="../myPageDetails/css/pwdReset.css">
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -35,17 +35,20 @@
       <link href="favicon.ico" rel="apple-touch-icon">
   </head>
   <body>
-        <section id="pwdResetComplete">
-          <div class="pwdResetCompleteWrap container">
+        <section id="pwdReset">
+          <div class="pwdResetWrap container">
 
-            <div class="pwdResetCompleteContents">
+            <div class="pwdResetContents">
 
-              <h5 class="pwdResetCompleteTitle">뭐든 다알개</h5>
+              <h5 class="pwdResetTitle">뭐든 다알개</h5>
 
-              <form class="pwdResetCompleteForm" action="" method="post">
-                <h5 class="pwdResetCompleteMessage">비밀번호 변경이 완료되었습니다.</h5>
-                <p>다시 로그인 해주세요!</p>
-                <div class="pwdResetCompleteGotoMain"><a href="">메인 페이지로 이동</a></div>
+              <form class="pwdResetForm" action="" method="post">
+                <h5 class="pwdResetConfirmTitle">비밀번호 재설정</h5>
+                <input type="password" name="passwordNow" id="pwdNow" class="pwdInputs" placeholder="현재 비밀번호"/>
+                <input type="password" name="passwordNew" id="pwdNew" class="pwdInputs" placeholder="새 비밀번호"/>
+                <input type="password" name="passwordNewConfirm" id="passwordNewConfirm" class="pwdInputs" placeholder="새 비밀번호 확인"/>
+                <p>탈퇴 시 동일한 이메일로 재가입이 불가능 합니다.😥</p>
+                <input type="submit" name="pwdResetBtn" id="pwdResetBtn" value="비밀번호 재설정"/>
               </form>
             </div>
           </div>

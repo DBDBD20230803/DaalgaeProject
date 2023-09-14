@@ -21,7 +21,7 @@
       <link rel="stylesheet" href="/css/index.css"/>
       <link rel="stylesheet" href="/login/css/mobile.css"/>
       <link rel="stylesheet" href="/css/sanitize.css"/>
-      <link rel="stylesheet" href="/login/css/login.css"/>
+      <link rel="stylesheet" href="/css/login.css"/>
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -38,6 +38,7 @@
       <link href="favicon.ico" rel="apple-touch-icon">
   </head>
   <body>
+  <!--<div th:insert="~{layouts/header :: header}"></div>-->
         <section id="login">
           <div class="logintWrap container">
 
@@ -59,12 +60,12 @@
             </div>
 
 
-            <form class="loginFormOther" action="" method="post">
-                <input type="button" name="OtherRegist" id="OtherRegist" class="OtherRegist" value="회원가입">
-                <input type="button" name="OtherFindId" id="OtherFindId" class="OtherFindId" value="아이디 찾기">
-                <input type="button" name="OtherPwd" id="OtherPwd" class="OtherPwd" value="비밀번호 찾기">
-            </form>
-            
+            <div class="loginFormOther">
+                <input type="button" name="OtherRegist" class="OtherRegist" value="회원가입" onclick="location.href='/regist/regist'">
+                <input type="button" name="OtherFindId" class="OtherFindId" value="아이디 찾기" onclick="location.href='/login/loginFindId'">
+                <input type="button" name="OtherPwd" id="OtherPwd" class="OtherPwd" value="비밀번호 찾기" onclick="location.href='/login/loginFindPwd'">
+            </div>
+
 
 
             <div class="loginBottomInfo">

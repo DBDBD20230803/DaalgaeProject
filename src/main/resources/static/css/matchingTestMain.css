@@ -1,0 +1,1510 @@
+#MatchingTestMain{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTestMain .MatchingTestMainWrap{
+    width: 100%;
+}
+
+#MatchingTestMain .MatchingTestMainWrap h3{
+    width: 100%;
+    color: #639DD7;
+}
+
+#MatchingTestMain .MatchingTestMainWrap .testMainImg{
+    width: 100%;
+    margin: 3% 0;
+}
+
+#MatchingTestMain .MatchingTestMainWrap .testMainImg img{
+    max-width: 40%;
+}
+
+#MatchingTestMain .MatchingTestMainWrap .start{
+    width: 20%;
+    margin: 0 auto;
+    background-color: #A6CEF7;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTestMain .MatchingTestMainWrap .start a{
+    display: block;
+    width: 100%;
+    color: #fff;
+    padding: 5%;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+#MatchingTestMain .MatchingTestMainWrap .start:hover{
+    background-color: #639DD7;
+}
+
+
+
+
+/*matchingTestResult*/
+#MatchingTestResult{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTestResult .MatchingTestResultWrap{
+    width: 100%;
+}
+
+#MatchingTestResult .MatchingTestResultWrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3% 0 3%;
+    position: relative;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent::after{
+    content: "결과";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .testResultDog{
+    color: #639DD7;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultImg {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultImg img{
+    max-width: 25%;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultText{
+    background-color: #A6CEF7;
+    color: #fff;
+    padding: 5%;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultText > span{
+    font-size: 2em;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .retry{
+    width: 15%;
+    background-color: #639DD7;
+    border-radius: 40px;
+    border: none;
+    text-align: center;
+    margin: 2% auto 0;
+    transition: all .5s;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .retry:hover{
+    background-color: #A6CEF7;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .retry a{
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 4% 0;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .retry a .retryImg{
+    display: inline-block;
+    width: 18%;
+}
+
+#MatchingTestResult .MatchingTestResultWrap .retry a .retryImg img{
+    max-width: 80%;
+}
+
+
+/*test1*/
+#MatchingTest1{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest1 .MatchingTest1Wrap{
+    width: 100%;
+}
+
+#MatchingTest1 .MatchingTest1Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content::after{
+    content: "Q1";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .test1Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .test1Img img{
+    max-width: 40%;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-weight: 1.2em;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+/*test2*/
+#MatchingTest2{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest2 .MatchingTest2Wrap{
+    width: 100%;
+}
+
+#MatchingTest2 .MatchingTest2Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content::after{
+    content: "Q2";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .test2Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .test2Img img{
+    max-width: 55%;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-weight: 1.2em;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*test3*/
+#MatchingTest3{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest3 .MatchingTest3Wrap{
+    width: 100%;
+}
+
+#MatchingTest3 .MatchingTest3Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content::after{
+    content: "Q3";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .test3Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .test3Img img:first-child{
+    max-width: 30%;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .test3Img img:last-child{
+    max-width: 30%;
+    margin-top: 3%;
+    margin-left: 8%;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-weight: 1.2em;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*test4*/
+#MatchingTest4{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest4 .MatchingTest4Wrap{
+    width: 100%;
+}
+
+#MatchingTest4 .MatchingTest4Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content::after{
+    content: "Q4";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .test4Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .test4Img img{
+    max-width: 55%;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 27%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-weight: 1.2em;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*test5*/
+#MatchingTest5{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest5 .MatchingTest5Wrap{
+    width: 100%;
+}
+
+#MatchingTest5 .MatchingTest5Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content::after{
+    content: "Q5";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .test5Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .test5Img img{
+    max-width: 45%;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*test6*/
+#MatchingTest6{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest6 .MatchingTest6Wrap{
+    width: 100%;
+}
+
+#MatchingTest6 .MatchingTest6Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content::after{
+    content: "Q6";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .test6Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .test6Img img{
+    max-width: 30%;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*test7*/
+#MatchingTest7{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest7 .MatchingTest7Wrap{
+    width: 100%;
+}
+
+#MatchingTest7 .MatchingTest7Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content::after{
+    content: "Q7";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .test7Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .test7Img img{
+    max-width: 25%;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-weight: 1.2em;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*test8*/
+#MatchingTest8{
+    width: 100%;
+    padding: 130px 0 100px;
+    text-align: center;
+}
+
+#MatchingTest8 .MatchingTest8Wrap{
+    width: 100%;
+}
+
+#MatchingTest8 .MatchingTest8Wrap h4{
+    width: 100%;
+    color: #222;
+    margin-bottom: 4%;
+
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content{
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid #639DD7;
+    border-radius: 10px;
+    padding: 3%;
+    position: relative;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content::after{
+    content: "Q8";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #639DD7;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testQuestion{
+    color: #639DD7;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test3Img {
+    width: 100%;
+    margin: 5% 0;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test8Img img:first-child{
+    max-width: 30%;
+    margin-right: 10%;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test8Img img:last-child{
+    max-width: 30%;
+    margin-top: 3%;
+    margin-left: 8%;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div{
+    background-color: #A6CEF7;
+    width: 18%;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div > a{
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 7%;
+    text-decoration: none;
+}
+
+#MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div:hover{
+    background-color: #639DD7;
+}
+
+
+/*mobile*/
+@media screen and (max-width:1440px) {
+
+    /*test1*/
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div {
+        width: 23% !important;
+    }
+
+
+    /*test2*/
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .test2Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div {
+        width: 27% !important;
+    }
+
+    /*test3*/
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .test3Img img:first-child{
+        display: none;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .test3Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div {
+        width: 27% !important;
+    }
+
+    /*test4*/
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .test4Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div {
+        width: 27% !important;
+    }
+
+
+    /*test5*/
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .test5Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div {
+        width: 27% !important;
+    }
+
+    /*test6*/
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .test6Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div {
+        width: 27% !important;
+    }
+
+    /*test7*/
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .test7Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div {
+        width: 27% !important;
+    }
+
+    /*test8*/
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content {
+        padding: 6% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test8Img img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div {
+        width: 32% !important;
+    }
+}
+
+
+
+/*노트북*/
+@media screen and (max-width:1024px) {
+
+    /*matchingTestMain*/
+    #MatchingTestMain .MatchingTestMainWrap .testMainImg img {
+        max-width: 50% !important;
+    }
+
+
+    /*matchingTestResult*/
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent {
+        width: 100% !important;
+        padding: 6% !important;
+    }
+
+    /*test1*/
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content::after {
+        font-size: 1em !important;
+        padding-top: 14px !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .test1Img img {
+        max-width: 60% !important;
+    }
+
+
+
+    /*test2*/
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .test2Img img {
+        max-width: 100% !important;
+    }
+
+
+    /*test3*/
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .test3Img img {
+        max-width: 100% !important;
+    }
+
+
+    /*test4*/
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .test4Img img {
+        max-width: 100% !important;
+    }
+
+    /*test5*/
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .test5Img img {
+        max-width: 100% !important;
+    }
+
+    /*test6*/
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .test6Img img {
+        max-width: 100% !important;
+    }
+
+
+    /*test7*/
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .test7Img img {
+        max-width: 100% !important;
+    }
+
+    /*test8*/
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content {
+        width: 100% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test8Img img {
+        max-width: 100% !important;
+    }
+}
+
+/*아이패드 (768px)*/
+@media screen and (max-width:991px) {
+
+    /*matchingTestMain*/
+    #MatchingTestMain .MatchingTestMainWrap .testMainImg img {
+        max-width: 60% !important;
+    }
+
+    #MatchingTestMain .MatchingTestMainWrap .start {
+        width: 40% !important;
+    }
+
+
+
+    /*matchingTestResult*/
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent::after {
+        top: -1% !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent {
+        padding: 5% 0 3% !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultText {
+        font-size: 0.9em !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .retry {
+        width: 25% !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .retry a .retryImg {
+        width: 20% !important;
+    }
+
+
+    /*test1*/
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content {
+        width: 100% !important;
+        padding: 8% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .test1Img img {
+        max-width: 80% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div {
+        width: 28% !important;
+    }
+
+
+    /*test2*/
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div {
+        width: 34% !important;
+    }
+
+    /*test3*/
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div {
+        width: 34% !important;
+    }
+
+    /*test4*/
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div {
+        width: 45% !important;
+    }
+
+
+    /*test5*/
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div {
+        width: 45% !important;
+    }
+
+    /*test6*/
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div {
+        width: 45% !important;
+    }
+
+    /*test7*/
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div {
+        width: 45% !important;
+    }
+
+    /*test8*/
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div {
+        width: 45% !important;
+    }
+}
+
+
+
+/*모바일*/
+
+@media screen and (max-width:767px) {
+
+    /*matchingTestMain*/
+    #MatchingTestMain .MatchingTestMainWrap .testMainImg img {
+        max-width: 70% !important;
+    }
+
+    #MatchingTestMain .MatchingTestMainWrap h3 {
+        font-size: 1.2em !important;
+    }
+
+
+    #MatchingTestMain .MatchingTestMainWrap .start a {
+        font-size: 1em !important;
+    }
+
+
+
+    /*matchingTestResult*/
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent {
+        padding: 8% 0 3% !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent::after {
+        font-size: 1em !important;
+        padding-top: 14px !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultImg img {
+        max-width: 45% !important;
+    }
+
+
+    /*test1*/
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .test1Img img {
+        max-width: 100% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div {
+        width: 100% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    /*tes2*/
+    #MatchingTest2 .MatchingTest2Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div{
+        width: 100% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+
+    /*test3*/
+    #MatchingTest3 .MatchingTest3Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div{
+        width: 100% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    /*test4*/
+    #MatchingTest4 .MatchingTes43Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div{
+        width: 100% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    /*test5*/
+    #MatchingTest5 .MatchingTest5Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div{
+        width: 100% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    /*test6*/
+    #MatchingTest6 .MatchingTest6Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div{
+        width: 100% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    /*test7*/
+    #MatchingTest7 .MatchingTest7Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div{
+        width: 100% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    /*test8*/
+    #MatchingTest8 .MatchingTest8Wrap h4 {;
+        margin-bottom: 10% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn{
+        flex-direction: column;
+        margin-top: 15% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div {
+        width: 85% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn .selectBtn1 {
+        margin-bottom: 5% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testBtn > div > a {
+        padding: 4% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test8Img img:first-child{
+        display: none;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .test8Img img:last-child{
+        margin-left: 0 !important;
+    }
+}
+
+
+/*모바일2*/
+
+
+@media screen and (max-width:576px) {
+    /*matchingTestResult*/
+    #MatchingTestResult .MatchingTestResultWrap .retry {
+        width: 35% !important;
+    }
+
+
+    /*test2*/
+    #MatchingTest2 .MatchingTest2Wrap h4 {
+        margin-top: 10% !important;
+    }
+
+
+    /*test3*/
+    #MatchingTest3 .MatchingTest3Wrap h4 {
+        margin-top: 10% !important;
+    }
+
+    /*test4*/
+    #MatchingTest4 .MatchingTest4Wrap h4 {
+        margin-top: 10% !important;
+    }
+
+    /*test5*/
+    #MatchingTest5 .MatchingTest5Wrap h4 {
+        margin-top: 10% !important;
+    }
+
+    /*test6*/
+    #MatchingTest6 .MatchingTest6Wrap h4 {
+        margin-top: 10% !important;
+    }
+
+    /*test7*/
+    #MatchingTest7 .MatchingTest7Wrap h4 {
+        margin-top: 10% !important;
+    }
+
+    /*test8*/
+    #MatchingTest8 .MatchingTest8Wrap h4 {
+        margin-top: 10% !important;
+    }
+}
+/*모바일3 갤럭시*/
+
+@media screen and (max-width:425px) {
+
+    /*matchingTestMain*/
+    #MatchingTestMain .MatchingTestMainWrap .testMainImg img {
+        max-width: 90% !important;
+    }
+
+
+    /*matchingTestResult*/
+    #MatchingTestResult .MatchingTestResultWrap h4 {
+        font-size: 1.3em !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .testResultDog {
+        font-size: 1.7em !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultImg img {
+        max-width: 65% !important;
+    }
+
+    #MatchingTestResult .MatchingTestResultWrap .retry {
+        width: 45% !important;
+    }
+
+
+    /*test1*/
+    #MatchingTest1 .MatchingTest1Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest1 .MatchingTest1Wrap .MatchingTest1Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+    /*test2*/
+    #MatchingTest2 .MatchingTest2Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest2 .MatchingTest2Wrap .MatchingTest2Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+
+    /*test3*/
+    #MatchingTest3 .MatchingTest3Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest3 .MatchingTest3Wrap .MatchingTest3Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+    /*test4*/
+    #MatchingTest4 .MatchingTest4Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest4 .MatchingTest4Wrap .MatchingTest4Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+    /*test5*/
+    #MatchingTest5 .MatchingTest5Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest5 .MatchingTest5Wrap .MatchingTest5Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+    /*test6*/
+    #MatchingTest6 .MatchingTest6Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest6 .MatchingTest6Wrap .MatchingTest6Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+    /*test7*/
+    #MatchingTest7 .MatchingTest7Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest7 .MatchingTest7Wrap .MatchingTest7Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+
+    /*test8*/
+    #MatchingTest8 .MatchingTest8Wrap h4 {
+        margin-bottom: 15% !important;
+    }
+
+    #MatchingTest8 .MatchingTest8Wrap .MatchingTest8Content .testQuestion{
+        font-size: 1.2em !important;
+    }
+}
+
+
+
+/*모바일4 아이폰*/
+@media screen and (max-width:375px) {
+
+    /*matchingTestMain*/
+    #MatchingTestMain .MatchingTestMainWrap .testMainImg img {
+        max-width: 100% !important;
+    }
+
+
+}
