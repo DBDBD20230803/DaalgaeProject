@@ -1,13 +1,13 @@
-package com.daalgae.daalgaeproject.payment.paycontroller;
+package com.daalgae.daalgaeproject.payment.controller;
 
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("payment")
+@RequestMapping("/payment")
 public class KakaoPayController {
-
 
     @GetMapping("payments")
     public String goPayment() {
@@ -16,4 +16,3 @@ public class KakaoPayController {
 
     }
 }
-
