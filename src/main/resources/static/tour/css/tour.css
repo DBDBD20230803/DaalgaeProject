@@ -13,16 +13,16 @@ input:focus{
     position: relative;
 }
 
-#tour .tourBg::after{
-    content: "";
-    background: url(../images/tourBgImg.png) no-repeat;
-    position: absolute;
-    bottom: 0;
-    right: 10%;
-    width: 250px;
-    height: 250px;
-    background-size: contain;
-}
+/*#tour .tourBg::after{*/
+/*    content: "";*/
+/*    background: url(../images/tourBgImg.png) no-repeat;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    right: 10%;*/
+/*    width: 250px;*/
+/*    height: 250px;*/
+/*    background-size: contain;*/
+/*}*/
 
 #tour .tourBg h3{
     text-align: center;
@@ -31,21 +31,21 @@ input:focus{
 
 #tour .tourWrap{
     width: 100%;
-    padding: 5% 0;
+    /*padding: 5% 0;*/
     position: relative;
 }
 
-#tour .tourWrap::after{
-    content: "";
-    position: absolute;
-    background: url(../images/bgDAALGAE.png) no-repeat center;
-    width: 815px;
-    height: 160px;
-    background-size: contain;
-    right: -1.5%;
-    bottom: -5%;
-    z-index: -1;
-}
+/*#tour .tourWrap::after{*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    background: url(../images/bgDAALGAE.png) no-repeat center;*/
+/*    width: 815px;*/
+/*    height: 160px;*/
+/*    background-size: contain;*/
+/*    right: -1.5%;*/
+/*    bottom: -5%;*/
+/*    z-index: -1;*/
+/*}*/
 
 #tour .tourWrap .tourContents{
     width: 100%;
@@ -220,9 +220,23 @@ input:focus{
 
 .logoInPage {
     position: absolute;
-    background-image: url("../tour/images/bgDAALGAE.png");
+    background-image: url("/tour/images/bgDAALGAE.png");
     width: 1135px;
     height: 182px;
-    top: -90px;
+    top: 15px;
     right: 0px;
+    z-index: -5;
+}
+
+.tourTitle {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    top: 60px;
+    justify-content: center;
+    align-content: center;
+    color: #222;
+    font-weight: bold;
+    font-size: 50px;
 }
