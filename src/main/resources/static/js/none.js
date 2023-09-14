@@ -20,7 +20,7 @@ $(document).ready(function (){
                 //결제 실패 시 처리
                 $("#kakaoPay").text('결제에 실패하였습니다.');
                 console.log(rsp);
-            }
+            } 
         });
     });
 });

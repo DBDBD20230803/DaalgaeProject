@@ -8,7 +8,7 @@
     <title>결제페이지</title>
 
     <!--styleSheet-->
-    <link rel="stylesheet" th:href="@{/payment_css/css/payment.css}">
+    <link rel="stylesheet" th:href="@{/css/payment.css}">
 
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
@@ -36,7 +36,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script type="text/javascript">
+   <!-- <script type="text/javascript">
         $(document).ready( function() {
             $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
@@ -45,7 +45,9 @@
             $("#footers").load("../Component/footer.html");
             $('#footers').css("z-index", "5");
         });
-    </script>
+    </script>-->
+    <script th:src="@{/js/ready.js}" type="text/javascript"></script>
+
 
 
     <!--favicon--->
@@ -57,17 +59,17 @@
 
     <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 
     <!--thymeleaf-->
-    <script th:src="@{/js/iampoet.payment-1.1.5.js}" type="text/javascript"></script>
 </head>
 <body>
 <div id="headers"></div>
 
 <div id="webtoonBg">
-    <img class="mainImg" src="/webtoon_css/images/mianImg.png" alt="메인일러스트">
+    <img class="mainImg" th:src="@{/images/mianImg.png}" alt="메인일러스트">
     <h3>구매하기</h3>
+    
 </div>
 <br/><br/><br/>
 <div class="container">
@@ -75,51 +77,22 @@
 </div>
 <div class="container">
     <div class="webtoonBox1">
-        <img src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+        <img th:src="@{/images/denggum.pug}" alt="개껌이미지">
         <div class="webtonntext1">현재 보유한 개껌</div>
         <div class="webtoonText2">60개</div>
     </div>
 </div>
 <div id="payment1" class="container">
-    <div class="paymentBox1"><img class="paymentImg1" src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+    <div class="paymentBox1"><img class="paymentImg1" th:src="@{/images/denggum.png}" alt="개껌이미지">
         <div class="paymentText2"> 개껌 10개</div>
     </div>
-    <button id="kakaoPay" class="paymentBox2">
-        <script>
-            $(document).ready(function (){
-                $("#kakaoPay").click(function (){
-                    var imp = window.IMP;
-                    imp.init('TC0ONETIME');
-
-                    imp.requset_pay({
-                        pg : 'kakao',
-                        pay_method : 'phone', //결제 수단
-                        merchant_uid: 'merchant_' + new Date().getTime(),//주문번호 생성
-                        name: '주문명: 카카오페이 결제', //상품명
-                        amount: 1100,
-                        buyer_name: '구매자 이름',
-                        buyer_tel: '구매자 전화번호',
-                    }, function (rsp) {
-                        if (rsp.success){
-                            //결제 성공 시 처리
-                            var qrCodeUrl = rsp.next_redirect_mobile_url;
-                            $("#qrCode").attr("src", qrCodeUrl).show();
-                            console.log(rsp);
-                        }else{
-                            //결제 실패 시 처리
-                            alert("결제 실패 : " + rsp.error_msg)
-                        }
-                    });
-                });
-            });
-        </script>
-        <div class="paymentText3">1,100원</div>
-    </button>
+    <button id="kakaoPay" class="paymentBox2">1,100원</button>
+        <div class="paymentText3"></div>
 </div>
 <hr id="paymentLine1" class="container">
 
 <div id="payment2" class="container">
-    <div class="paymentBox1"><img class="paymentImg1" src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+    <div class="paymentBox1"><img class="paymentImg1" th:src="@{images/denggum.png}" alt="개껌이미지">
         <div class="paymentText2"> 개껌 20개</div></div>
     <div class="paymentBox2"><span class="paymentText3">2,200원</span>
     </div>
@@ -127,7 +100,7 @@
 <hr id="paymentLine2" class="container">
 
 <div id="payment3" class="container">
-    <div class="paymentBox1"><img class="paymentImg1" src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+    <div class="paymentBox1"><img class="paymentImg1" th:src="@{/images/denggum.png}"alt="개껌이미지">
         <span class="paymentText2"> 개껌 50개</span></div>
     <form method="post" action="/Checkout">
         <button class="paymentBox2">
@@ -139,7 +112,7 @@
 <hr id="paymentLine3" class="container">
 
 <div id="payment4" class="container">
-    <div class="paymentBox1"><img class="paymentImg1" src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+    <div class="paymentBox1"><img class="paymentImg1" th:src="@{images/denggum.png}" alt="개껌이미지">
         <span class="paymentText2"> 개껌 100개</span></div>
     <div class="paymentBox2"><span class="paymentText3">11,000원</span>
     </div>
@@ -147,7 +120,7 @@
 <hr id="paymentLine4" class="container">
 
 <div id="payment5" class="container">
-    <div class="paymentBox1"><img class="paymentImg1" src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+    <div class="paymentBox1"><img class="paymentImg1" th:src="@{images/denggum.png}" alt="개껌이미지">
         <span class="paymentText2"> 개껌 300개</span></div>
     <div class="paymentBox2"><span class="paymentText3">33,000원</span>
     </div>

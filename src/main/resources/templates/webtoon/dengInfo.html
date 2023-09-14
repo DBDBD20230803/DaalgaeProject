@@ -7,7 +7,7 @@ xmlns:th="http://thymeleaf.org">
 
     <title>댕댕정보툰</title>
 
-    <link rel="stylesheet" th:href="@{/webtoon_css/css/Webtoon.css}">
+    <link rel="stylesheet" th:href="@{/css/webtoon.css}">
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,11 +36,11 @@ xmlns:th="http://thymeleaf.org">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
+            $("#headers").load("/Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
             $('#headers').css("z-index", "5");
-            $("#footers").load("../Component/footer.html");
+            $("#footers").load("/Component/footer.html");
             $('#footers').css("z-index", "5");
         });
     </script>
