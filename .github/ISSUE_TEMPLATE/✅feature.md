@@ -15,3 +15,6 @@ assignees: somang1206, peaknicc, ksostuft, lSuns
 - [ ] Todo1
 - [ ] Todo2
 - [ ] Todo3
+
+## 기한
+예시)YYYY-MM-DD 까지
