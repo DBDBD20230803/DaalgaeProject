@@ -21,4 +21,9 @@ public class MainController {
     public String TourMain() {
         return "/tour/tour";
     }
+
+    @GetMapping("allSearch")
+    public String allSearch() {
+        return "/allSearch/allSearch";
+    }
 }
