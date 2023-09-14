@@ -1,0 +1,353 @@
+/*
+@media (max-width: 767px) {
+    .wtBoxInsideText2-5 {
+        position: relative;
+        top: 100px;
+    }
+    .wtBoxInsideText2-7 {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .wtBoxInsideText2-5 {
+    }
+    .wtBoxInsideText2-7 {
+    }
+}
+*/
+
+#webtoonBg {
+    background-color: #a6cef7;
+    border: 1px solid #dbdbdbdb;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    height: 500px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 50pt;
+    position: relative;
+}
+.mainImg {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+}
+
+.line {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+#line1 {
+    border: 2px solid #78787878;
+    width: 100%;
+}
+
+.line2 {
+    width: 50%;
+}
+.webtoonBox1 {
+    margin-top: 50px;
+    border-bottom: 2px solid#787878;
+    display: flex;
+    align-items: center;
+}
+.webtonntext1 {
+    color: #222222;
+    font-size: 30px;
+}
+.webtoonText2 {
+    font-size: 30px;
+    color: #ffba68;
+}
+.webtoonPage1 {
+    border: 1px solid #dbdbdb;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 150px auto;
+    width: 1400px;
+    height: 460px;
+}
+.webtoonImg1 {
+    width: 350px;
+    height: 340px;
+}
+.webtoonBox3 {
+    display: inline-block;
+    margin-right: 50px;
+}
+.webtoonText3 {
+    color: #b1b1b1;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.webtoonText4 {
+    color: #222222;
+    font-size: 35px;
+}
+.webtonnText5 {
+    color: #777777;
+    font-size: 30px;
+}
+
+.webtoonText6 {
+    font-size: 30px;
+    color: #777777;
+}
+.webtoonText7{
+    font-size: 30px;
+    color: #ffba68;
+}
+.webtoonBox4 {
+    display: flex;
+}
+
+.webtoonBox5 {
+    display: block;
+    margin-left: 40px;
+    text-align: center;
+}
+.webtoonBox5 button {
+    display: block;
+}
+.webtoonText8{
+    width: 210px;
+    height: 80px;
+    font-size: 30px;
+    background-color: #9dc4e7;
+    color: #ffffff;
+    margin-top: 40px;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+}
+.webtoonText9{
+    width: 210px;
+    height: 80px;
+    font-size: 30px;
+    background-color: #9dc4e7;
+    color: #ffffff;
+    margin-top: 40px;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+}
+
+#detailBox {
+    border: 1px solid#000000;
+    width: 1000px;
+    height: 2030px;
+    background-color: #8a8a8a8a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailContent {
+    width: 900px;
+    height: 570px;
+    border: 1px solid #ffffff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #ffffff;
+}
+.detailText1 {
+    text-align: center;
+}
+#adminText1 {
+  color: #222222;
+    font-size: 35px;
+}
+.adminLine1 {
+    border: 1.5px solid #222222;
+}
+#adminBox1 {
+    width: 1270px;
+    height: 90px;
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.adminImg1{
+    width: 50px;
+    height: auto;
+
+}
+.adminText2 {
+    color: #bbbbbbbb;
+    font-size: 30px;
+    flex: 1;
+}
+#adminBox2 {
+    border: 1px solid #bbbbbb;
+    width: 1400px;
+    height: 1150px;
+}
+
+#adminBox3 {
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adminText3 {
+    color: #bbbbbbbb;
+    font-size: 30px;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+.adminText4 {
+    font-size: 30px;
+    display: block;
+    width: 200px;
+    height: 60px;
+    color: #ffffff;
+    background-color: #a6cef7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.adminText5 {
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    display: flex;
+    width: 200px;
+    height: 60px;
+    color: #ffffff;
+    background-color: #a6cef7;
+    position: relative;
+    left: 25%;
+    border: none;
+}
+.adminText6 {
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    display: flex;
+    width: 200px;
+    height: 60px;
+    color: #ffffff;
+    background-color: #a6cef7;
+    border: none;
+}
+.purchase2 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    .purchase3 {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .doggamImg {
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .text1 {
+        font-size: 30px;
+        color: #222222;
+    }
+    .text2 {
+        font-size: 30px;
+        color: #ffba68;
+    }
+    .purchaseContent1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+    .purchaseText1, .purchaseText2 {
+        width: 200px;
+        height: 80px;
+        font-size: 30px;
+        background-color: #9dc4e7;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        margin-right: 30px;
+    }
+
+}
+.purchaseLine1 {
+    border: 0.75px solid#777777;
+    width: 315px;
+}
+.purchaseBox1 {
+    border: 1px solid#dbdbdbdb;
+    height: 450px;
+    display: flex;
+    align-items: center;
+}
+.purchaseBox1-1 {
+    position: relative;
+    left: 100px;
+}
+.purchaseBox1-2 {
+    font-size: 30px;
+    color: #b1b1b1;
+}
+.purchaseBox1-3 {
+    font-size: 35px;
+    color: #222222;
+}
+.purchaseBox1-4 {
+    font-size: 30px;
+    color: #777777;
+}
+.purchaseBox1-5 {
+    font-size: 30px;
+    color: #b1b1b1;
+}
+.purchaseBox1-6 {
+    font-size: 30px;
+    color: #ffba68;
+}
+.purchaseBox1-7 {
+    display: flex;
+}
+.empty1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.empty2 {
+    border: 1px solid #dbdbdb;
+    width: 1400px;
+    height: 530px;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    margin-top: 5%;
+    padding-top: 8%;
+}
+.empty3 {
+    font-size: 35px;
+    color: #b1b1b1;
+}
+
+
+
