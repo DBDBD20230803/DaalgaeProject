@@ -1,12 +1,11 @@
-<!-- bootStrap을 사용한 경우 사용 -->
 <!-- 링크 3개를 지정해야 합니다. -->
 <!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
     <title>header</title>
     <script type="text/javascript">
         $(document).ready(function (){
@@ -76,10 +75,6 @@
     <!--        });-->
     <!--    </script>-->
     <style>
-        button:focus{
-            outline: none;
-        }
-
         body {
             top: 100px;
         }
@@ -167,12 +162,12 @@
         }
         a {
             text-decoration: none;
-            color:#333;
+            color:#646464;
         }
 
         a:hover {
             text-decoration: none;
-            color:#333;
+            color:#646464;
         }
 
 
@@ -182,18 +177,19 @@
             left: 0px;
             width: 100%;
             height: 1080px;
-            background-image: url(../../static/images/mainPage/mainPageBackground.png);
-            z-index: -1;
+            background-image: url("../images/mainPage/mainPageBackground.png");
+            z-index: -100;
         }
         #menu {
             font-size: 16px;
             width:100%;
             height:50px;
             background: rgba(90, 161, 221, 0.9);
-            color:black;
+            color:222;
             line-height: 50px;
             margin:0 auto;
             text-align: center;
+
             margin-top: -16px;
         }
 
@@ -348,7 +344,7 @@
 
         .menuSearchIconIn {
             position: relative;
-            background-image: url("../../static/images/header/menuSearchIconIn.png");
+            background-image: url("../images/header/menuSearchIconIn.png");
             width: 43px;
             height: 43px;
             left: 55px;
@@ -365,7 +361,7 @@
         }
 
         .menuSearchInput input:focus {
-            outline: 2px solid #d50000;
+            outline: none;
         }
 
         .menuSearchInput {
@@ -507,6 +503,8 @@
             width: 600px;
             padding-top: 30px;
             padding-bottom: 30px;
+            color: #222222;
+            font-weight: 500;
         }
         td {
             padding-top: 30px;
@@ -570,9 +568,8 @@
             font-size: 16px;
         }
 
-        .signupButton button, .loginButton button {
+        .signupButton a {
             color: #fff;
-            font-weight: 400;
         }
 
         .myPageButton {
@@ -594,7 +591,7 @@
 
         ol > li > ol > li {
             font-size: 22px;
-            color: #222;
+            color: #646464;
             line-height: 2;
             text-align: center;
         }
@@ -613,7 +610,7 @@
             margin-right: 60px;
             text-align: left;
             font-size: 28px;
-            color: #222222;
+            color: #222;
             border-bottom: 1px solid #222;
         }
 
@@ -631,7 +628,7 @@
             width: 29px;
             height: 29px;
             margin: 0;
-            background-image: url("../../static/images/header/menuSearch.png");
+            background-image: url("../images/header/menuSearch.png");
         }
 
         /*.burger-icon2 .burger-sticks2 {*/
@@ -684,34 +681,52 @@
 
         }
         button {
-            color: #333;
-            font-weight: bold;
+            color: #646464;
+            font-weight: 500;
+        }
+        td a {
+            color: #646464;
+            font-weight: 500;
+        }
+        li > ul > li {
+            position: relative;
+            font-weight: 500;
+            color: #646464;
+            z-index: 6;
+        }
+        
+        ul > li > a {
+            font-weight: 500;
+            color: #646464;
         }
 
+        input:focus {
+            outline: none;
+        }
     </style>
 </head>
 <body>
-<div id="MenuWhole" th:fragment="header">
+<div id="MenuWhole">
 
     <!-- 해야 할 일 -->
     <!--
         1. 링크는 레이블을 달아야 좋기는 하겠다.
         2. 메뉴만 만들고 끝이 아니다.
      -->
-    <div id="toTheTop"><a id="toTop" href="#"><img src="../../static/images/mainPage/mainToTop.png"></a></div>
+    <div id="toTheTop"><a id="toTop" href="#"><img src="../images/mainPage/mainToTop.png"></a></div>
     <!-- 메뉴바 목록 -->
     <div id="menu">
         <ul>
             <div class="mainLogo">
-                <a href="../../static/main"><img src="../../static/images/header/logo2_w.png" alt="뭐든다알개 로고"></a>
+                <a href="../main"><img src="../images/header/logo2_w.png" alt="뭐든다알개 로고"></a>
             </div>
             <div class="mainLogo2">
-                <a href="../../static/main"><img src="../../static/images/header/logo2_w.png" alt="뭐든다알개 로고"></a>
+                <a href="../main"><img src="../images/header/logo2_w.png" alt="뭐든다알개 로고"></a>
             </div>
 
             <li><p>여기저기</p>
                 <ul>
-                    <li><a href="../../static/tour">전체</a></li>
+                    <li><a href="../tour">전체</a></li>
                     <li><a href="../tour/place">관광지</a></li>
                     <li><a href="../tour/lodgment">숙박</a></li>
                     <li><a href="../tour/meal">식음료</a></li>
@@ -735,7 +750,7 @@
                     <li><a href="../board/freeBoard">자유게시판</a></li>
                     <li><a href="../board/boastBoard">자랑갤러리</a></li>
                     <li><a href="../board/abandonedBoard">유기견 게시판</a></li>
-                    <li><button onclick="location.href='/matchingTest/matchingTestMain'">반려견 매칭 테스트</button></li>
+                    <li><a href="#">반려견 매칭 테스트</a></li>
                     <li><a href="../board/announcementBoard">공지사항</a></li>
                     <li><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></li>
                 </ul>
@@ -749,16 +764,13 @@
     <!-- 로고, 로그인, 회원가입, 마이페이지, 검색 -->
 
     <div class="loginButton">
-        <!--<button onclick="location.href='/login/login'">로그인</button>-->
-        <a th:href="@{/login/login}">로그인</a>
+        <a href="#">로그인</a>
     </div>
     <div class="signupButton">
-        <!--<button onclick="location.href='/regist/regist'">회원가입</button>-->
-        <a th:href="@{/regist/regist}">회원가입</a>
+        <a href="#">회원가입</a>
     </div>
     <div class="myPageButton">
-        <!--<button onclick="location.href='/myPage/myPage'"><img src="../images/header/myPage.png"></button>-->
-        <a th:href="@{/myPage/myPage}"><img src="../../static/images/header/myPage.png"></a>
+        <a href="#"><img src="../images/header/myPage.png"></a>
     </div>
 
     <!--  검색 버튼  -->
@@ -777,7 +789,7 @@
                     <th scope="col">게시판</td>
                 </tr>
                 <tr>
-                    <td><a href="../../static/tour">전체</a></td>
+                    <td><a href="../tour">전체</a></td>
                     <td><a href="../encycle">전체</a></td>
                     <td><a href="../board/mainBoard">전체</a></td>
                 </tr>
@@ -799,7 +811,7 @@
                 <tr>
                     <td><a href="../tour/experience">체험</a></td>
                     <td><a href="../encycle/petiket">함께 실천하는 펫티켓</a></td>
-                    <td><a href=>반려견 매칭 테스트</a></td>
+                    <td><a href="#">반려견 매칭 테스트</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/hospital">동물병원</a></td>
@@ -829,7 +841,7 @@
                 <li>
                     <p>여기저기</p>
                     <ol>
-                        <li><a href="../../static/tour">전체</a></li>
+                        <li><a href="../tour">전체</a></li>
                         <li><a href="../tour/place">관광지</a></li>
                         <li><a href="../tour/lodgment">숙박</a></li>
                         <li><a href="../tour/meal">식음료</a></li>
@@ -855,7 +867,7 @@
                         <li><a href="../board/freeBoard">자유게시판</a></li>
                         <li><a href="../board/boastBoard">자랑갤러리</a></li>
                         <li><a href="../board/abandonedBoard">유기견 게시판</a></li>
-                        <li><button onclick="location.href='/matchingTest/matchingTestMain'">반려견 매칭 테스트</button></li>
+                        <li><a href="#">반려견 매칭 테스트</a></li>
                         <li><a href="../board/announcementBoard">공지사항</a></li>
                         <li><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></li>
                     </ol>
@@ -870,12 +882,12 @@
                     <div class="menuSearchInputAndIcon">
                         <div class="menuSearchIconIn"></div>
                         <div class="menuSearchInput">
-                            <input type="text" placeholder="검색어를 입력해주세요">
+                            <input type="text" placeholder="여행지 검색">
                         </div>
                     </div>
                 </div>
                 <div class="inputSearchButton">
-                    <a href="#">검색</a>
+                    <a href="../allSearch">검색</a>
                 </div>
             </div>
         </div>

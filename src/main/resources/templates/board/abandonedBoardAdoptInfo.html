@@ -9,13 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
 
     <!--bootstrap-->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/board/css/boardAbandonedAdoptInfo.css">
+    <link rel="stylesheet" href="/css/board/boardAbandonedAdoptInfo.css">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -29,40 +29,51 @@
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/header.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+    </script>
+
 </head>
 <body>
+
+<div id="headers"></div>
+
 <div class="board-abandoned-banner">
     <h3>입양안내</h3>
     <div>
-        <a href="/board/mainBoard.html" alt="back-arrow-to-main">
-            <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
-        </a>
-    </div>
-    <div>
-        <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+        <img src="/css/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
     </div>
 </div>
+
 <div class="board-abandoned-header-menu">
     <div class="abandoned-protection">
-        <a href="/board/abandonedBoard.html">보호중인 강아지</a>
+        <a href="../board/abandonedBoard">보호중인 강아지</a>
     </div>
     <div class="abandoned-center">
-        <a href="/board/abandonedBoardCenter.html">동물보호센터</a>
+        <a href="../board/abandonedBoardCenter">동물보호센터</a>
     </div>
     <div class="abandoned-adoptInfo">
-        <a href="/board/abandonedBoardAdoptInfo.html">입양안내</a>
+        <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
     </div>
     <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-        <a href="/board/abandonedBoardPickupInfo.html">습득시 안내</a>
+        <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
     </div>
 </div>
-<div class="board-container">
+
+<div class="board-container container">
     <div class="board-abandoned-content-container">
         <div class="board-abandoned-content">
             <h1 id="headText1">
                 <span class="greenText">동물</span>을 입양한 당신이
                 <span class="blueText">자랑</span>스럽습니다!</h1>
-            <img src="/board/images/adoptInfo-image.png" alt="handShake-with-a-dog">
+            <img src="/css/images/adoptInfo-image.png" alt="handShake-with-a-dog">
             <h3>강아지를 키우고 싶다면 유기동물 보호시설에서 보호하고있는 유기동물을 입양하는게 어떨까요 ?<br>
                 원하는 동물을 새 식구로 맞이하는 것은 물론 한 생명을 구했다는 자부심으로 가슴이 뿌듯해집니다.
             </h3>
@@ -89,5 +100,6 @@
 <script>
 
 </script>
+<div id="footers"></div>
 </body>
 </html>

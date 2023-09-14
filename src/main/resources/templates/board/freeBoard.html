@@ -9,13 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/board/css/boardFree.css">
+    <link rel="stylesheet" href="/css/board/boardFree.css">
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -32,10 +32,9 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/headerNoBootStrap.html");
+            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
             $("#footers").load("../Component/footer.html");
             $('#footers').css("z-index", "5");
         });
@@ -43,14 +42,17 @@
 
 </head>
 <body>
+
 <div id="headers"></div>
+
     <div class="board-free-banner">
         <h3>자유게시판</h3>
         <div>
-            <img src="/board/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
+            <img src="/css/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
-    <div class="board-container">
+
+    <div class="board-container container">
         <div class="board-free-searchBar">
             <div class="search-buttons">
                 <div class="free-head-title-category">
@@ -68,7 +70,7 @@
                     </select>
                 </div>
                 <div class="search-by-text">
-                    <img src="/board/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <img src="/css/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
                     <input type="text" name="textSearching" id="textSearching">
                 </div>
                 <div class="submit-button">
@@ -78,41 +80,40 @@
         </div>
         <div class="board-list-container">
             <div class="board-postCategory">
-                <h4 id="postNo">번호</h4>
-                <h4 id="postTitle">제목</h4>
-                <h4 id="postUser">작성자</h4>
-                <h4 id="postDate">등록일</h4>
+                <h5 id="postNo">번호</h5>
+                <h5 id="postTitle">제목</h5>
+                <h5 id="postUser">작성자</h5>
+                <h5 id="postDate">등록일</h5>
             </div>
         </div>
         <div class="postList">
             <a href="../board/freeBoardSelect" class="post">
                 <div class="post-info">
-                    <h4 id="testPost-postNo">1</h4>
-                    <h4 id="testPost-postTitle">집가고싷다시파</h4>
-                    <h4 id="testPost-postUser">daalgae</h4>
-                    <h4 id="testPost-postDate">2023-09-11</h4>
+                    <h5 id="testPost-postNo">1</h5>
+                    <h5 id="testPost-postTitle">집가고싷다시파</h5>
+                    <h5 id="testPost-postUser">daalgae</h5>
+                    <h5 id="testPost-postDate">2023-09-11</h5>
                 </div>
             </a>
         </div>
         <div class="board-admin-write">
             <a href="../board/freeBoardWrite" id="board-write-button" alt="글쓰기">
                 <div class="board-write-text">
-                    <h3>글쓰기</h3>
+                    <div>글쓰기</div>
                 </div>
             </a>
         </div>
         <div class="board-paging-button">
             <button type="button" id="previousPageButton">
-                <img src="/board/images/previousPageButton.png" alt="">
+                <img src="/css/images/previousPageButton.png" alt="">
             </button>
             <button class="pageNumber">
                 <div id="postPage1">
-                    <div></div>
-                    <h4>1</h4>
+                    <div>1</div>
                 </div>
             </button>
             <button type="button" id="nextPageButton">
-                <img src="/board/images/nextPageButton.png" alt="">
+                <img src="/css/images/nextPageButton.png" alt="">
             </button>
         </div>
     </div>

@@ -1,0 +1,175 @@
+.board-announcement-banner {
+    width: 100%;
+    height: 500px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    background-color: #A6CEF7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+#headers {
+    z-index: 1;
+}
+
+.board-banner-image-2 {
+    position: absolute;
+    top: 47%;
+    left: 77%;
+    width: 300px;
+}
+
+.board-button-back-image {
+    position: absolute;
+    top: 10%;
+    left: 1%;
+}
+
+.board-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.board-announcement-write-text {
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #222222;
+    display: flex;
+    align-items: center;
+}
+
+.board-announcement-write-text h2 {
+    display: block;
+    position: relative;
+    left: 3%;
+}
+
+.board-write-header {
+    display: flex;
+    width: 80%;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.announcement-category {
+    display: flex;
+    width: 15%;
+}
+
+.announcement-write-title {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+.announcement-imageUpload {
+    display: flex;
+    width: 10%;
+    justify-content: center;
+}
+
+#announcementHeadTitle {
+    width: 100%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #F6F6F6;
+}
+
+#announcementTitle {
+    width: 100%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #F6F6F6;
+}
+
+#imageUpload {
+    width: 100%;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #F6F6F6;
+}
+
+.board-write-content {
+    display: block;
+    width: 80%;
+}
+
+#announcementContent {
+    resize: none;
+}
+
+.board-write-content textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #BDBDBD;
+}
+
+#imageUploadButton:hover {
+    cursor: pointer;
+}
+
+#imageUploadButton {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.board-write-buttons {
+    display: flex;
+    width: 80%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.announcement-write-button {
+    background-color: #A6CEF7;
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.announcement-write-cancel {
+    background-color: #A6CEF7;
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.announcement-write-cancel a{
+    width: 120px;
+    height: 60px;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.announcement-write-button button {
+    position: relative;
+    all : inherit;
+}
+
+button[type="submit"]:hover {
+    cursor: pointer;
+}

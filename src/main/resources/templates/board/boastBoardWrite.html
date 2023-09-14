@@ -9,13 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/mobile.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/board/css/boardBoastWrite.css">
+    <link rel="stylesheet" href="/css/board/boardBoastWrite.css">
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -32,10 +32,9 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/headerNoBootStrap.html");
+            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
             $("#footers").load("../Component/footer.html");
             $('#footers').css("z-index", "5");
         });
@@ -47,10 +46,10 @@
     <div class="board-boast-banner">
         <h3>자랑갤러리</h3>
         <div>
-            <img src="/board/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
+            <img src="/css/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
-    <div class="board-container">
+    <div class="board-container container">
         <div class="board-boast-write-text">
             <h2>글쓰기</h2>
         </div>
@@ -60,7 +59,7 @@
             </div>
             <div class="boast-imageUpload">
                 <label for="imageUpload" class="label-imageUpload" id="imageUploadButton">
-                    <img src="/board/images/imageUpload.png" alt="이미지업로드">
+                    <img src="/css/images/imageUpload.png" alt="이미지업로드">
                 </label>
                 <input type="file" name="imageUpload" id="imageUpload" style="display: none;">
             </div>

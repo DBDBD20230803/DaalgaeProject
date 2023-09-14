@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
@@ -32,10 +32,9 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/headerNoBootStrap.html");
+            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
             $("#footers").load("../Component/footer.html");
             $('#footers').css("z-index", "5");
         });
@@ -43,18 +42,21 @@
 
 </head>
 <body>
+
 <div id="headers"></div>
+
     <div class="board-announcement-banner">
         <h3>공지사항</h3>
         <div>
-            <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+            <img src="/css/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
-    <div class="board-container">
+
+    <div class="board-container container">
         <div class="board-announcement-searchBar">
             <div class="search-buttons">
                 <div class="search-by-text">
-                    <img src="/board/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <img src="/css/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
                     <input type="text" name="textSearching" id="textSearching">
                 </div>
                 <div class="submit-button">
@@ -65,27 +67,27 @@
         <div class="board-select-header-buttons">
             <div class="like-button">
                 <button type="button" id="like-button">
-                    <img src="/board/images/like-button.png" alt="like-button">
+                    <img src="/css/images/like-button.png" alt="like-button">
                 </button>
             </div>
             <div class="report-button">
                 <button type="button" id="report-button">
-                    <img src="/board/images/report-button.png" alt="report-button">
+                    <img src="/css/images/report-button.png" alt="report-button">
                 </button>
             </div>
         </div>
         <div class="board-announcement-content-select-container">
             <div class="board-announcement-content-title">
-                    <h4 id="postNo">1</h4>
-                    <h4 id="postTitle">인생첫공지</h4>
-                    <h4 id="postUser">daalgae</h4>
-                    <h4 id="postDate">2023-09-11</h4>
+                    <h5 id="postNo">1</h5>
+                    <h5 id="postTitle">인생첫공지</h5>
+                    <h5 id="postUser">daalgae</h5>
+                    <h5 id="postDate">2023-09-11</h5>
             </div>
             <div class="board-select-content">
                 <div>
-                    <h4>안녕하세요</h4>
-                    <img src="/board/images/board-dangdanginfotoon-button.png" alt="">
-                    <h4>귀여운 강아지를 자주 봅시다.</h4>
+                    <h5>안녕하세요</h5>
+                    <img src="/css/images/board-dangdanginfotoon-button.png" alt="">
+                    <h5>귀여운 강아지를 자주 봅시다.</h5>
                 </div>
             </div>
         </div>
