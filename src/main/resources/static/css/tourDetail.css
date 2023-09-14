@@ -73,7 +73,7 @@
 
 .tourBg::after{
     content: "";
-    background: url("../images/bgImg.png") no-repeat;
+    background: url("/images/bgImg.png") no-repeat;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -304,7 +304,7 @@
 
 .logoInPage {
     position: absolute;
-    background-image: url("bgDAALGAE.png");
+    background-image: url("/images/bgDAALGAE.png");
     width: 1135px;
     height: 182px;
     right: 0px;

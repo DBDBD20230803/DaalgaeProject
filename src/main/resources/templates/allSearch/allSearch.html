@@ -11,40 +11,31 @@
 
 
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 
 
     <div class=""></div>
     <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="../allSearch/css/allSearch.css">
-
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+    <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+    <link th:href="@{/css/allSearch.css}" rel="stylesheet" />
+    
+    
+    <link th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}" rel="stylesheet" />
+    <link th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}" rel="stylesheet" />
+    <link th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}" rel="stylesheet" />
 
     <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
+    <script type="text/javascript" th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
+    
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
-        });
-    </script>
     <script>
         function noData() {
             alert('더이상 가져올 내용이 없습니다.');
@@ -52,7 +43,9 @@
     </script>
 </head>
 <body>
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
 <div class="tourBg">
     <h3>통합 검색</h3>
 </div>
@@ -62,7 +55,7 @@
         <div class="searchIcon"></div>
         <input placeholder="여행지 검색">
     </div>
-    <button onclick="location.href='../allSearch'" class="searchButton">검색</button>
+    <button onclick="location.href='/allSearch'" class="searchButton">검색</button>
 </div>
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>
@@ -82,7 +75,8 @@
 <div class="allSearchWhiteSpace"></div>
 <!---->
 <p class="imageAndText">
-    <img class="tourPawImage" src="../tourDetail/images/dogPaw.png">관광지 검색결과 (3)
+    
+    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />관광지 검색결과 (3)
     <button class="plusDetail">
         <img src="../allSearch/images/plusDetail.png">
     </button>
@@ -90,36 +84,37 @@
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>
 <div class="tourBoard">
-    <div class="tourBoardUnit"><a href="tour/tourDetail">
-        <img src="../tourList/images/dogPhoto1.png" class="tourBoardUnitThumbnail"></img>
+    
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
+        <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto1.png}" />
         <div class="tourBoardUnitDesc">
             <p class="locationName">장소이름</p>
-            <p class="locationLoc"><img src="../tourList/images/location.png">&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
-            <p class="telNumber"><img src="../tourList/images/phone.png">&nbsp;033-572-3011</p>
-        </div></a>
+            <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
+            <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
+        </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="#">
-        <img src="../tourList/images/dogPhoto2.png" class="tourBoardUnitThumbnail"></img>
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
+        <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto2.png}" />
         <div class="tourBoardUnitDesc">
             <p class="locationName">장소이름</p>
-            <p class="locationLoc"><img src="../tourList/images/location.png">&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
-            <p class="telNumber"><img src="../tourList/images/phone.png">&nbsp;033-572-3011</p>
-        </div></a>
+            <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
+            <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
+        </div></button>
     </div>
-    <div class="tourBoardUnit"><a href="#">
-        <img src="../tourList/images/dogPhoto3.png" class="tourBoardUnitThumbnail"></img>
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
+        <img class="tourBoardUnitThumbnail" th:src="@{/images/dogPhoto3.png}" />
         <div class="tourBoardUnitDesc">
             <p class="locationName">장소이름</p>
-            <p class="locationLoc"><img src="../tourList/images/location.png">&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
-            <p class="telNumber"><img src="../tourList/images/phone.png">&nbsp;033-572-3011</p>
-        </div></a>
+            <p class="locationLoc"><img th:src="@{/images/location.png}" />&nbsp;<span class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</span></p>
+            <p class="telNumber"><img th:src="@{/images/phone.png}" />&nbsp;033-572-3011</p>
+        </div></button>
     </div>
 </div>
 
 <p class="imageAndText">
-    <img class="tourPawImage" src="../tourDetail/images/dogPaw.png">숙박 검색결과 (0)
+    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />숙박 검색결과 (0)
     <button onclick="noData()" class="plusDetail">
-        <img src="../allSearch/images/plusDetail.png">
+        <img th:src="@{/images/plusDetail.png}" />
     </button>
 </p>
 <div class="allSearchWhiteSpace"></div>
@@ -128,9 +123,9 @@
 <div class="allSearchWhiteSpace"></div>
 
 <p class="imageAndText">
-    <img class="tourPawImage" src="../tourDetail/images/dogPaw.png">식음료 검색결과 (0)
+    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />식음료 검색결과 (0)
     <button onclick="noData()" class="plusDetail">
-        <img src="../allSearch/images/plusDetail.png">
+        <img th:src="@{/images/plusDetail.png}" />
     </button>
 </p>
 <div class="allSearchWhiteSpace"></div>
@@ -147,7 +142,9 @@
 </div>
 
 <!---->
-<div id="footers"></div>
+<div>
+    <th:block th:include="component/footer.html"></th:block>
+</div>
 </body>
 
 

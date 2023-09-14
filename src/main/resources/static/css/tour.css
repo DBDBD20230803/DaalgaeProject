@@ -111,7 +111,7 @@ input:focus{
     border-radius: 4px;
     border: none;
     padding: 2% 4%;
-    background: url(../images/search.png) no-repeat 10px center #EEEEEE;
+    background: url("images/search.png") no-repeat 10px center #EEEEEE;
     text-indent: 30px;
 }
 
@@ -222,7 +222,7 @@ input:focus{
 
 .logoInPage {
     position: absolute;
-    background-image: url("/tour/images/bgDAALGAE.png");
+    background-image: url("/images/bgDAALGAE.png");
     width: 1135px;
     height: 182px;
     top: 15px;

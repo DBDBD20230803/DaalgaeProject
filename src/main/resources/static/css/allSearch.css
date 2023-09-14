@@ -33,7 +33,7 @@ input:focus {
 
 .tourBg::after{
     content: "";
-    background: url("../images/bgImg.png") no-repeat;
+    background: url("/images/bgImg.png") no-repeat;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -71,7 +71,7 @@ input:focus {
 
 .searchIcon {
     position: relative;
-    background-image: url("../images/search.png");
+    background-image: url("/images/search.png");
     left: -5px;
     width: 29px;
     height: 29px;
@@ -223,7 +223,7 @@ input:focus {
 
 .logoInPage {
     position: absolute;
-    background-image: url("../../tour/images/bgDAALGAE.png");
+    background-image: url("/images/bgDAALGAE.png");
     width: 1135px;
     height: 182px;
     top: -179px;

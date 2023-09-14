@@ -11,56 +11,46 @@
 
 
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 
 
     <div class=""></div>
     <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="../tourDetail/css/tourDetail.css">
-
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+    <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+    <link th:href="@{/css/tourDetail.css}" rel="stylesheet" />
+    
+    
+    <link th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}" rel="stylesheet" />
+    <link th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}" rel="stylesheet" />
+    <link th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}" rel="stylesheet" />
 
     <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
 
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
-        });
-        function likeClike() {
-
-        }
-    </script>
 </head>
 <body>
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
 <div class="tourBg">
     <h3>다알개 여행지</h3>
 </div>
 <div class="tourDetailtitle"><p class="DetailTitleText">관광지</p></div>
 <div class="tourDetailWhiteSpace"></div>
 <div class="tourDetailContent">
-    <img src="../tourDetail/images/dogPhoto1.png" height="500px" alt="관광지 이미지" class="tourPhoto">
+    <img class="tourPhoto" height="500px" alt="관광지 이미지" th:src="@{/images/dogPhoto1.png}" />
     <div class="tourDescBox">
         <div class="tourDescText">
-            <button onclick="likeClike()"><img src="../tourDetail/images/likeList.png" class="likeListImage"></button>
+            <button onclick="likeClick()"><img class="likeListImage" th:src="@{/images/likeList.png}" /></button>
             <span class="descTitle">저스트도그</span><br><br>
             <span class="descAttrName">주소
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -77,24 +67,24 @@
         </div>
         <div class="tourImageBox">
             <div class="tourImage1">
-                <img src="../tourDetail/images/bathImage.png" height="70px">
+                <img height="70px" th:src="@{/images/bathImage.png}" />
                 <p class="tourImageDesc">목욕</p>
             </div>
             <div class="tourImageMargin"></div>
             <div class="tourImage1">
-                <img src="../tourDetail/images/dogHouseImage.png" height="70px">
+                <img height="70px" th:src="@{/images/dogHouseImage.png}" />
                 <p class="tourImageDesc">비품제공</p>
             </div>
             <div class="tourImageMargin"></div>
             <div class="tourImage1">
-                <img src="../tourDetail/images/dogIconImage.png" height="70px" class="tourImageInBox">
+                <img class="tourImageInBox" height="70px" th:src="@{/images/dogIconImage.png}" />
                 <p class="tourImageDesc">펫동반 식당</p>
             </div>
         </div>
     </div>
 </div>
 <div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" src="../tourDetail/images/dogPaw.png">소개</p>
+<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />소개</p>
 <div class="px300">
     <p class="introDesc">저스트도그는 동물위탁관리업체로, 유치원과 호텔을 함께 운영하는 애견카페입니다.미친듯이 뛰어놀아도 되고,<br>
         얼마든지 짖어도 되고, 공놀이도 하고, 터그놀이도 하고, 신나게 놀길 바라며<br>
@@ -104,24 +94,24 @@
     </p>
 </div>
 <div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" src="../tourDetail/images/dogPaw.png">지도 보기</p>
+<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />지도 보기</p>
 <p class="introDesc">주소: 강원 원주시 행구로 357</p><br>
 <div class="tourLocMap"></div>
 <div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" src="../tourDetail/images/dogPaw.png">주변 여행지</p><br><br>
+<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />주변 여행지</p><br><br>
 <div class="nearTourImageBox">
     <a href="#"><div class="nearImageAndText">
-        <img class="nearTourImage" src="../tourDetail/images/dogPhoto1.png" height="325px">
+        <img class="nearTourImage" height="325px" th:src="@{/images/dogPhoto1.png}" />
         <p class="nearImageText">오크카운티펜션</p>
     </div></a>
     <div class="shortWhiteSpace"></div>
     <a href="#"><div class="nearImageAndText">
-        <img class="nearTourImage" src="../tourDetail/images/dogPhoto1.png" height="325px">
+        <img class="nearTourImage" height="325px" th:src="@{/images/dogPhoto1.png}" />
         <p class="nearImageText">아기사자</p>
     </div></a>
     <div class="shortWhiteSpace"></div>
     <a href="#"><div class="nearImageAndText">
-        <img class="nearTourImage" src="../tourDetail/images/dogPhoto1.png" height="325px">
+        <img class="nearTourImage" height="325px" th:src="@{/images/dogPhoto1.png}" />
         <p class="nearImageText">지니의캠프펜션</p>
     </div></a>
     <div class="shortWhiteSpace"></div>
@@ -134,5 +124,7 @@
         <a href="../tour/tourList"><div class="toList">목록</div></a>
     </div>
 </div>
-<div id="footers"></div>
+<div>
+    <th:block th:include="component/footer.html"></th:block>
+</div>
 </body>

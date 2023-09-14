@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TourController {
     @GetMapping("tourList")
     public String TourList() {
-        return "tourList/tourList";
+        return "tour/tourList";
     }
 
     @GetMapping("tourDetail")
     public String TourDetail() {
-        return "tourDetail/tourDetail";
+        return "tour/tourDetail";
     }
 
     @GetMapping("place")

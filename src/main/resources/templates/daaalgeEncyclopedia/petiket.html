@@ -8,60 +8,50 @@
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-
+    
+    
     <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    
+    
     <div class=""></div>
     <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="../daaalgeEncyclopedia/css/knowAfterAdopt.css">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+    <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+    <link th:href="@{/css/knowAfterAdopt.css}" rel="stylesheet" />
+    
+    <link th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}" rel="stylesheet" />
+    <link th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}" rel="stylesheet" />
+    <link th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}" rel="stylesheet" />
+    
     <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
 
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
-        });
-    </script>
 </head>
 <body>
-<div id="headers"></div>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
 <div class="tourBg">
     <h3>우리 아이와 함께 <br>펫티켓을 만들어 나가요</h3>
 </div>
 <div class="knowAfterAdopt">
 
     <!-- 1페이지-->
-
-    <img class="AfterAdopt1" src="../daaalgeEncyclopedia/images/petiket1.png" height="260px">
+    <img class="AfterAdopt1" height="260px" th:src="@{/images/petiket1.png}" />
     <div class="SubHeading1">반려인</div>
     <div class="Afterdesc1">📌안전하개 행복하개</div>
     </div>
     <div class="AfterText1">
-        <img src="../daaalgeEncyclopedia/images/petiket2.png">
+        <img th:src="@{/images/petiket2.png}" />
         <div class="AfterTextContent1">
             💬외출시 산책줄을 반드시 사용합니다.<br><br>
             
@@ -79,7 +69,7 @@
     <div class="gapBox"></div>
 
     <!-- 2페이지 -->
-    <img class="AfterAdopt2" src="../daaalgeEncyclopedia/images/petiket3.png" height="260px">
+    <img class="AfterAdopt2" height="260px" th:src="@{/images/petiket3.png}" />
 
     <div class="gapBox2"></div>
 
@@ -89,7 +79,7 @@
     </div>
 
     <div class="AfterText1">
-        <img src="../daaalgeEncyclopedia/images/petiket4.png">
+        <img th:src="@{/images/petiket4.png}" />
         <div class="AfterTextContent1">
             💬동물등록과 인식표는 필수입니다.<br><br>
             
@@ -113,14 +103,14 @@
 
     <!-- 3페이지-->
     <div class="gapBox"></div>
-    <img class="AfterAdopt1" src="../daaalgeEncyclopedia/images/petiket5.png" height="260px">
+    <img class="AfterAdopt1" height="260px" th:src="@{/images/petiket5.png}" />
     <div class="SubHeading1">시민</div>
     <div class="Afterdesc1">
         📌강아지가 너무 예쁘지만, 조금만 참아주세요!
     </div>
     </div>
     <div class="AfterText1">
-        <img src="../daaalgeEncyclopedia/images/petiket6.png">
+        <img th:src="@{/images/petiket6.png}" />
         <div class="AfterTextSubstring1"></div>
         <div class="AfterTextContent1">
             💬타인의 반려견을 함부로 만지지 말아야합니다.<br>
@@ -134,7 +124,9 @@
     <div class="whiteSpaceEncycle">
         <div class="logoInPage"></div>
     </div>
-    <div id="footers"></div>
+    <div>
+        <th:block th:include="component/footer.html"></th:block>
+    </div>
 </body>
 
 
