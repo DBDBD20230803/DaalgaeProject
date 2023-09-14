@@ -731,3 +731,10 @@
     left: -82px;
     top: 480px;
 }
+
+.informDown a {
+    color: #222;
+}
+.informDown a:hover {
+    color: #222;
+}
