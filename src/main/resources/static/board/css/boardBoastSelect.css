@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+}
+
+#headers {
+    z-index: 1;
 }
 
 .board-banner-image {
@@ -30,7 +35,7 @@
     position: relative;
 }
 
-.board-free-searchBar {
+.board-boast-searchBar {
     border-top: 1px solid #D8D8D8;
     border-bottom: 1px solid #D8D8D8;
     position: relative;
@@ -191,6 +196,10 @@ button[type="button"]:hover {
     align-items: center;
 }
 
+.board-select-footer > div > h6 {
+    margin: 0;
+}
+
 .comment-section-title {
     width: 80%;
     height: 60px;
@@ -268,6 +277,10 @@ button[type="button"]:hover {
     white-space: nowrap;
 }
 
+.write-comment-info > h6 {
+    margin: 0;
+}
+
 .write-comment-content{
     width: 100%;
     display: flex;
@@ -304,7 +317,7 @@ button[type="button"]:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 100px;
+    margin: 30px;
 }
 
 .back-to-boast-list a {

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
@@ -32,10 +32,9 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/headerNoBootStrap.html");
+            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
             $("#footers").load("../Component/footer.html");
             $('#footers').css("z-index", "5");
         });
@@ -43,25 +42,21 @@
 
 </head>
 <body>
+
 <div id="headers"></div>
+
     <div class="board-boast-banner">
         <h3>자랑갤러리</h3>
         <div>
             <img src="/board/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
-    <div class="board-container">
+
+    <div class="board-container container">
         <div class="board-boast-write-text">
             <h2>글수정</h2>
         </div>
         <div class="board-write-header">
-            <div class="boast-category">
-                <select name="말머리" id="boastHeadTitle">
-                    <option value="default" selected>말머리 선택</option>
-                    <option value="공지">공지사항</option>
-                    <option value="이벤트">이벤트</option>
-                </select>
-            </div>
             <div class="boast-write-title">
                 <input type="text" name="boastTitle" id="boastTitle" placeholder="제목을 입력해주세요.">
             </div>

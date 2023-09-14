@@ -36,10 +36,9 @@
 
     <script type="text/javascript">
       $(document).ready( function() {
-        $("#headers").load("../Component/headerNoBootStrap.html");
+        $("#headers").load("../Component/header.html");
         $('#headers').css("position", "fixed");
         $('#headers').css("width", "100%");
-        $('#headers').css("z-index", "5");
         $("#footers").load("../Component/footer.html");
         $('#footers').css("z-index", "5");
       });
@@ -48,13 +47,15 @@
   </head>
   <body>
   <div id="headers"></div>
+
     <div class="board-banner">
       <h3>게시판</h3>
       <div>
         <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-dog-image">
       </div>
     </div>
-    <div class="board-container">
+
+    <div class="board-container container">
       <div class="board-button-container">
           <div class="board-button">
             <button class="board-button-button" type="button">

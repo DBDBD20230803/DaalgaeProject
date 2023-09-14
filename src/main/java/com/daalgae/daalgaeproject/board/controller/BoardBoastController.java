@@ -14,6 +14,6 @@ public class BoardBoastController {
     @GetMapping("/boastBoardWrite")
     public String writeBoast() { return "/board/boastBoardWrite"; }
 
-//    @GetMapping("/boastBoardModify")
-//    public String modifyBoast() { return "/board/boastBoardModify"; }
+    @GetMapping("/boastBoardModify")
+    public String modifyBoast() { return "/board/boastBoardModify"; }
 }

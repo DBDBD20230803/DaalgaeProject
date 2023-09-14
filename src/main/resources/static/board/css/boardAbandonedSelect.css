@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+}
+
+#headers {
+    z-index: 1;
 }
 
 .board-banner-image {

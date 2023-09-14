@@ -14,7 +14,7 @@ public class BoardAnnoController {
     @GetMapping("/announcementBoardWrite")
     public String writeAnno() { return "/board/announcementBoardWrite"; }
 
-//    @GetMapping("/announcementBoardModify")
-//    public String modifyAnno() { return "/board/announcementBoardModify"; }
+    @GetMapping("/announcementBoardModify")
+    public String modifyAnno() { return "/board/announcementBoardModify"; }
 
 }

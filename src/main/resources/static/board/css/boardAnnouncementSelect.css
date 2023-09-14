@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+}
+
+#headers {
+    z-index: 1;
 }
 
 .board-banner-image {
@@ -157,21 +162,25 @@ button[type="button"]:hover {
 #postNo {
     width: 5%;
     display: block;
+    margin: 0;
 }
 
 #postTitle {
     width: 40%;
     display: block;
+    margin: 0;
 }
 
 #postUser {
     width: 10%;
     display: block;
+    margin: 0;
 }
 
 #postDate {
     width: 13%;
     display: block;
+    margin: 0;
 }
 
 .board-select-content {

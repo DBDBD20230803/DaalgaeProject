@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
     
     <!--bootstrap-->
-<!--    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
@@ -32,10 +32,9 @@
 
     <script type="text/javascript">
         $(document).ready( function() {
-            $("#headers").load("../Component/headerNoBootStrap.html");
+            $("#headers").load("../Component/header.html");
             $('#headers').css("position", "fixed");
             $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
             $("#footers").load("../Component/footer.html");
             $('#footers').css("z-index", "5");
         });
@@ -43,14 +42,17 @@
 
 </head>
 <body>
+
 <div id="headers"></div>
+
     <div class="board-announcement-banner">
         <h3>공지사항</h3>
         <div>
             <img src="/board/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
-    <div class="board-container">
+
+    <div class="board-container container">
         <div class="board-announcement-searchBar">
             <div class="search-buttons">
                 <div class="announcement-head-title-category">
@@ -96,7 +98,7 @@
         <div class="board-admin-write">
             <a href="../board/announcementBoardWrite" id="board-admin-write-button" alt="글쓰기">
                 <div class="board-admin-write-text">
-                    <h3>글쓰기</h3>
+                    <div>글쓰기</div>
                 </div>
             </a>
         </div>
@@ -106,8 +108,7 @@
             </button>
             <button class="pageNumber">
                 <div id="postPage1">
-                    <div></div>
-                    <h4>1</h4>
+                    <div>1</div>
                 </div>
             </button>
             <button type="button" id="nextPageButton">
