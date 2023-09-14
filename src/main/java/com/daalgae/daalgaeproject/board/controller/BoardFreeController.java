@@ -14,7 +14,7 @@ public class BoardFreeController {
     @GetMapping("/freeBoardWrite")
     public String writeFree() { return "/board/freeBoardWrite"; }
 
-//    @GetMapping("/freeBoardModify")
-//    public String modifyFree() { return "/board/freeBoardModify"; }
+    @GetMapping("/freeBoardModify")
+    public String modifyFree() { return "/board/freeBoardModify"; }
 
 }

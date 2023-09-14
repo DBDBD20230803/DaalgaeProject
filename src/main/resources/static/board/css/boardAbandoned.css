@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+}
+
+#headers {
+    z-index: 1;
 }
 
 .board-banner-image {
@@ -249,9 +254,6 @@ button[type="submit"]:hover {
 #postPage1 {
     width: 40px;
     height: 40px;
-    justify-content: center;
-    text-align: center;
-    position: relative;
 }
 
 #postPage1 h4 {
@@ -266,6 +268,10 @@ button[type="submit"]:hover {
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 button[type="button"]:hover {

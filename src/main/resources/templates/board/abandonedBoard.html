@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="le=edge">
 
     <!--bootstrap-->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!--css-->
     <link rel="stylesheet" href="../css/index.css">
@@ -29,34 +29,45 @@
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#headers").load("../Component/header.html");
+            $('#headers').css("position", "fixed");
+            $('#headers').css("width", "100%");
+            $("#footers").load("../Component/footer.html");
+            $('#footers').css("z-index", "5");
+        });
+    </script>
+
 </head>
 <body>
+
+<div id="headers"></div>
+
 <div class="board-abandoned-banner">
     <h3>당신이 필요한 아이들</h3>
-    <div>
-        <a href="/board/mainBoard.html" alt="back-arrow-to-main">
-            <img src="/board/images/board-back-button.png" class="board-button-back-image" alt="back-arrow-to-board-main">
-        </a>
-    </div>
     <div>
         <img src="/board/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
     </div>
 </div>
+
 <div class="board-abandoned-header-menu">
     <div class="abandoned-protection">
-        <a href="/board/abandonedBoard.html">보호중인 강아지</a>
+        <a href="../board/abandonedBoard">보호중인 강아지</a>
     </div>
     <div class="abandoned-center">
-        <a href="/board/abandonedBoardCenter.html">동물보호센터</a>
+        <a href="../board/abandonedBoardCenter">동물보호센터</a>
     </div>
     <div class="abandoned-adoptInfo">
-        <a href="/board/abandonedBoardAdoptInfo.html">입양안내</a>
+        <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
     </div>
     <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-        <a href="/board/abandonedBoardPickupInfo.html">습득시 안내</a>
+        <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
     </div>
 </div>
-<div class="board-container">
+
+<div class="board-container container">
     <div class="board-abandoned-searchBar">
         <div class="search-buttons">
             <div class="abandoned-search-category">
@@ -80,29 +91,29 @@
         </div>
     </div>
     <div class="board-abandoned-content-container">
-        <a href="/board/abandonedBoardSelect.html">
+        <a href="../board/abandonedBoardSelect">
             <div class="abandoned-content">
                 <div class="abandoned-content-img">
                     <img src="" alt="">
                 </div>
                 <div class="abandoned-content-detail">
                     <div class="a-c-title">
-                        <h4>공고번호 : 광주-북구-2023-00650</h4>
+                        <h6>공고번호 : 광주-북구-2023-00650</h6>
                     </div>
                     <div class="a-c-location">
                         <img src="/board/images/abandoned-location.png" alt="writer">
-                        <h5>발견장소 : </h5>
-                        <h5>북구 본촌동</h5>
+                        <h6>발견장소 : </h6>
+                        <h6>북구 본촌동</h6>
                     </div>
                     <div class="a-c-gender">
                         <img src="/board/images/abandoned-gender.png" alt="date">
-                        <h5>성별 : </h5>
-                        <h5>수컷</h5>
+                        <h6>성별 : </h6>
+                        <h6>수컷</h6>
                     </div>
                     <div class="a-c-breed">
                         <img src="/board/images/abandoned-breed.png" alt="date">
-                        <h5>품종 : </h5>
-                        <h5>믹스견</h5>
+                        <h6>품종 : </h6>
+                        <h6>믹스견</h6>
                     </div>
                 </div>
             </div>
@@ -114,8 +125,8 @@
         </button>
         <button class="pageNumber">
             <div id="postPage1">
-                <div></div>
-                <h4>1</h4>
+                <div>1</div>
+                <!--<h6>1</h6>-->
             </div>
         </button>
         <button type="button" id="nextPageButton">
@@ -127,5 +138,6 @@
 <script>
 
 </script>
+<div id="footers"></div>
 </body>
 </html>

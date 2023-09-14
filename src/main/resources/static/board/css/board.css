@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+#headers {
+  z-index: 1;
+}
+
 .board-button-back-image {
   position: absolute;
   top: 10%;

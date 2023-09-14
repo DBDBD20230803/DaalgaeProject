@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+}
+
+#headers {
+    z-index: 1;
 }
 
 .board-banner-image {
@@ -164,6 +169,9 @@ button[type="submit"]:hover {
     margin-left: 5%;
 }
 
+.boast-content-detail > div > h5, h6 {
+    margin: 0;
+}
 .b-c-title {
     display: flex;
     align-items: center;
@@ -199,16 +207,9 @@ button[type="submit"]:hover {
 #postPage1 {
     width: 40px;
     height: 40px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    text-align: center;
-    position: relative;
-}
-
-#postPage1 h4 {
-    position: absolute;
-    left: 40%;
-    top: 27%;
-    color: #FFFFFF;
 }
 
 #postPage1 div {
@@ -216,6 +217,9 @@ button[type="submit"]:hover {
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .board-boast-write{
@@ -227,12 +231,16 @@ button[type="submit"]:hover {
 }
 
 .board-write-text{
-    display:block;
+    display: flex;
     width: 120px;
     height: 60px;
     background-color: #A6CEF7;
     border-radius: 5px;
     border: 0px;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
 }
 
 #board-write-button {
