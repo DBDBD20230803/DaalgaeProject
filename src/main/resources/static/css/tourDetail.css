@@ -7,7 +7,7 @@
     }
     .tourLocMap {
         width: 1025px;
-        height: 300px;
+        height: 600px;
     }
     .nearTourImageBox {
         flex-direction: row;
@@ -264,7 +264,6 @@
 .tourLocMap {
     position: relative;
     margin: 0 auto;
-    border: 1px solid #222;
 }
 
 .nearTourImageBox {

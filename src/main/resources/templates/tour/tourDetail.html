@@ -96,7 +96,17 @@
 <div class="tourDetailWhiteSpace"></div>
 <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />지도 보기</p>
 <p class="introDesc">주소: 강원 원주시 행구로 357</p><br>
-<div class="tourLocMap"></div>
+    <div id="map" class="tourLocMap"></div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cee456796362f003412371bb71c7faa0"></script>
+    <script>
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+
+        var map = new kakao.maps.Map(container, options);
+    </script>
 <div class="tourDetailWhiteSpace"></div>
 <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />주변 여행지</p><br><br>
 <div class="nearTourImageBox">

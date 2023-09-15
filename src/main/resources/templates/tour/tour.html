@@ -52,10 +52,38 @@
                 <div class="tourTitle">
                     전체
                 </div>
-                <div class="mapApi">
-                    <img th:src="@{/images/tourMap.png}" />
+
+
+                <div class="mapSpace">
+                    <div id="map"></div>
                 </div>
 
+                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cee456796362f003412371bb71c7faa0"></script>
+                <script>
+                    $(function(){
+                        w = window.innerWidth - 100;
+                        h = window.innerHeight - 100;
+                        $('#map').css('width',w);
+                        $('#map').css('height',h);
+                        let container = document.getElementById('map');
+                        let options = {
+                            center: new kakao.maps.LatLng(33.450701, 126.570667),
+                            level: 3
+                        };
+
+                        let map = new kakao.maps.Map(container, options);
+                        map.relayout();
+                    });
+                    $(window).on('resize', function() {
+                        w = window.innerWidth - 100;
+                        h = window.innerHeight - 100;
+                        $('#map').css('width',w);
+                        $('#map').css('height',h);
+                    });
+
+
+
+                </script>
                 <div class="mapSearch">
                     <div class="mapSearchWrap">
                         <div class="mapSearchUp">

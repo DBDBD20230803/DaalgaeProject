@@ -53,7 +53,7 @@ input:focus{
 
 #tour .tourWrap .tourContents .mapApi{
     width: 100%;
-    height: 100%;
+    height: 720px;
     position: relative;
 }
 
@@ -243,4 +243,14 @@ input:focus{
     color: #222;
     font-weight: bold;
     font-size: 50px;
+}
+
+.map {
+    position: relative;
+}
+
+.mapSpace {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
