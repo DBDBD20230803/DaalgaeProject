@@ -48,7 +48,7 @@ xmlns:th="http://thymeleaf/org">
 </head>
 <body>
 <div id="webtoonBg">
-  <img class="mainImg" src="images/mianImg.png" alt="메인일러스트">
+  <img class="mainImg" th:href="@{/css/mianImg.png}" alt="메인일러스트">
   <h3>오늘도 댕댕하개</h3>
 </div>
 </br><br/><br><br><br>
@@ -59,7 +59,7 @@ xmlns:th="http://thymeleaf/org">
 <div id="adminBox2" class="container"><div class="adminText3">내용을 입력하세요.</div> </div>
 <br><br>
 <div id="adminBox3" class="container">
-<span class="adminText4">목록</span><button id="adminButton1" class="adminText5">등록</button><button id="adminButton2" class="adminText6">취소</button>
+<div class="adminText4">목록</div><button id="adminButton1" class="adminText5">등록</button><button id="adminButton2" class="adminText6">취소</button>
 </div>
 
 <br/><br/><br/><Br/>

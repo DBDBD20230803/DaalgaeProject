@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html"
-xmlns:th="http://thymeleaf.org">
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
@@ -57,17 +57,17 @@ xmlns:th="http://thymeleaf.org">
 <body>
 <div id="headers"></div>
 <div id="webtoonBg">
-    <img class="mainImg" src="/webtoon_css/images/mianImg.png" alt="메인일러스트">
+    <img class="mainImg" th:href="@{/css/mainImg.png}" alt="메인일러스트">
     <h3>오늘도 댕댕하개</h3>
 </div>
 <div class="container">
     <div class="webtoonBox1">
-        <img src="/webtoon_css/images/doggum.png" alt="개껌이미지">
+        <img th:src="@{/css/doggum.png}" alt="개껌이미지">
         <div class="webtonntext1">현재 보유한 개껌</div>
         <div class="webtoonText2">60개</div>
     </div>
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
+        <img class="webtoonImg1" th:href="@{/css/exampleImg.png}">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -86,7 +86,7 @@ xmlns:th="http://thymeleaf.org">
     </div>
 
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
+        <img class="webtoonImg1" th:href="@{/css/exampleImg.png}">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -105,7 +105,7 @@ xmlns:th="http://thymeleaf.org">
     </div>
 
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
+        <img class="webtoonImg1" th:href="@{/css/exapleImg.png}">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
@@ -128,7 +128,7 @@ xmlns:th="http://thymeleaf.org">
     </div>
 
     <div class="webtoonPage1">
-        <img class="webtoonImg1" src="/webtoon_css/images/exampleImg.png">
+        <img class="webtoonImg1" th:href="@{/css/exampleImg.png}">
         <div class="webtoonBox3">
             <div class="webtoonBox3">
                 <div class="webtoonText3">23.09.05</div>
