@@ -2,134 +2,95 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <style>
-        #mainBackground {
-            position: relative;
-        }
-        button{
-            background: inherit;
-            border:none;
-            box-shadow:none;
-            border-radius:0;
-            padding:0;
-            overflow:visible;
-            cursor:pointer
-        }
-        /* 슬라이더 로직*/
-
-        .slide{
-            width: 1304px;
-            height: 326px;
-            overflow: hidden;
-            position: relative;
-            margin: 0 auto;
-        }
-        .slide ul{
-            width: 5000px;
-            position: relative;
-            top:0;
-            left:0;
-            font-size: 0;
-        }
-        .slide ul li{
-            display: inline-block;
-        }
-        #back{
-            position: absolute;
-            cursor: pointer;
-            top: 50%;
-            left: -28px;
-            transform: translateY(-29px);
-            z-index: 1;
-        }
-        #next{
-            position: absolute;
-            top: 50%;
-            transform: translateY(-29px);
-            right: -680px;
-            cursor: pointer;
-            z-index: 1;
-        }
-        .imageSliderMain {
-            position: relative;
-            top: -530px;
-            left: 120px;
-        }
-        .imageSlider {
-            width: 652px;
-            position: relative;
-        }
-        li img {
-            position: relative;
-            left: -30px;
-        }
-    </style>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" type="text/css" href="../css/mobile.css">
-        <link rel="stylesheet" type="text/css" href="../css/sanitize.css">
-        <link rel="stylesheet" type="text/css" href="../main/mainIntro.css">
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "-16px");
-
-            let imgs;
-            let img_count;
-            let img_position = 1;
-
-            imgs = $(".slide ul");
-            img_count = imgs.children().length;
-
-            //버튼을 클릭했을 때 함수 실행
-            $('#back').click(function () {
-                back();
-            });
-            $('#next').click(function () {
-                next();
-            });
-
-            function back() {
-                if(1<img_position){
-                    imgs.animate({
-                        left:'+=326px'
-                    });
-                    img_position--;
-                }
-            }
-
-            function next() {
-                if(img_count-3>img_position){
-                    imgs.animate({
-                        left:'-=326px'
-                    });
-                    img_position++;
-                }
-            }
-        });
-    </script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+        <link th:href="@{/css/index.css}" rel="stylesheet" />
+        <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+        <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+        <link th:href="@{/css/mainIntro.css}" rel="stylesheet" />
+        <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}" rel="stylesheet" />
+        <link th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}" rel="stylesheet" />
+        <link th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}" rel="stylesheet" />
+        <script type="text/javascript" th:src="@{/js/mainIntro.js}"></script>
+        <script type="text/javascript" th:src="@{/js/header.js}"></script>
     <title>뭐든다알개</title>
 </head>
 <body>
 <div id="headers">
-    <th:block th:include="Component/header.html"></th:block>
+    <th:block th:include="component/header.html"></th:block>
 </div>
-
-  <div id="headers"></div>
   <div id="mainBackgroundSpace">
       <div id="mainBackground">
   </div>
 
       <div id="mainIntroduce">소중한 나의 반려견, 이제 여기서 시작하세요</div>
       <div id="weatherBox0">
-          <img class="weatherImage0" height="270px" src="../main/weatherCloudSun.png">
+          <img class="weatherImage0" height="270px" />
+          <script>
+              $(function(){
+                  $.ajax({
+                      type:"get",
+                      url:"https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=jwzbFiirkPF%2FrzTy3ceQqXb%2BuP8bvOFMVH3CizfiVQsy5EDFZCZekZa4S63aD460NnsTzQP4Ua5sfb5yT9stZg%3D%3D&pageNo=1&numOfRows=1000&dataType=JSON&base_date=20230915&base_time=0500&nx=55&ny=127",
+                      dataType:"json",
+                      success: function(data){
+                          console.log("통신성공");
+                          console.log(data);
+                          console.log(data.response.body.items.item[1].fcstValue);
+                          // let jsonData = JSON.parse(data);
+                          // console.log(jsonData);
+                          // let jsonData = JSON.stringify(data);
+                          // console.log(jsonData);
+                          // str = '<TR>';
+                          // $.each(data , function(i){
+                          //     str += '<TD>' +  + '</TD>' +
+                          //         '<TD>' + data.response.body.items.item[1].baseTime + '</TD>' +
+                          //         '<TD>' + data.response.body.items.item[1].category + '</TD>' +
+                          //         '<TD>' + data.response.body.items.item[1].fcstDate + '</TD>' +
+                          //         '<TD>' + data.response.body.items.item[1].fcstValue + '</TD>' +
+                          //         '<TD>' + data.response.body.items.item[1].nx + '</TD>' +
+                          //         '<TD>'+ data.response.body.items.item[1].ny + '</TD>';
+                          //     str += '</TR>';
+                          // });
+                          // $('.table_body').append(str);
+                      },
+                      error:function(){
+                          console.log("통신에러");
+                      }
+                  });
+                  $.ajax({
+                      type:"get",
+                      url:"https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth?serviceKey=jwzbFiirkPF%2FrzTy3ceQqXb%2BuP8bvOFMVH3CizfiVQsy5EDFZCZekZa4S63aD460NnsTzQP4Ua5sfb5yT9stZg%3D%3D&returnType=json&numOfRows=500&pageNo=1&searchDate=2023-09-10&InformCode=PM10",
+                      dataType:"json",
+                      success: function(data){
+                          console.log("통신성공");
+                          console.log(data);
+                          console.log(data.response.body.items[0].informGrade);
+                          console.log(data.response.body.items[0].informOverall);
+                          // let jsonData = JSON.parse(data);
+                          // console.log(jsonData);
+                          // let jsonData = JSON.stringify(data);
+                          // console.log(jsonData);
+                          str = '<TR>';
+                          $.each(data , function(i){
+                              str += '<TD>' + data.response.body.items[0].informOverall + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>'+ data.response.body.items[0] + '</TD>';
+                              str += '</TR>';
+                          });
+                          $('.table_body').append(str);
+                      },
+                      error:function(){
+                          console.log("통신에러");
+                      }
+                  });
+              });
+
+              $('.weatherImage0').append("th:src=\"@{/images/weatherCloudSun.png}");
+          </script>
           <div class="weatherRate0">
               오늘의 산책지수
           </div>
@@ -143,7 +104,7 @@
           <button class="weatherSelectButton0"></button>
       </div>
       <div id="weatherBox1">
-          <img class="weatherImage1" height="170px" src="../main/weatherCloudSun.png">
+          <img class="weatherImage1" height="170px" th:src="@{/images/weatherCloudSun.png}" />
           <div class="weatherRate1">
               오늘의 산책지수
           </div>
@@ -157,7 +118,7 @@
           <button class="weatherSelectButton1"></button>
       </div>
       <div id="weatherBox2">
-          <img class="weatherImage2" height="100px" src="../main/weatherCloudSun.png">
+          <img class="weatherImage2" height="100px" th:src="@{/images/weatherCloudSun.png}" />
           <div class="weatherRate2">
               오늘의 산책지수
           </div>
@@ -222,20 +183,21 @@
         </div>
         <div class="infoImageBox">
             <div class="infoImageAndDesc1">
-                <a href="../encycle/knowBeforeAdopt" class="infoImage1"></a>
-                <div class="infoImageDesc1"><a href="../encycle/knowBeforeAdopt">입양 전 필수 지식</a></div>
+                <button onclick="location.href='/encycle/knowBeforeAdopt'" class="infoImage1"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowBeforeAdopt'">양육시 필수 지식</button></div>
             </div>
+            
             <div class="infoImageAndDesc2">
-                <a href="../encycle/knowAfterAdopt" class="infoImage2"></a>
-                <div class="infoImageDesc1"><a href="../encycle/knowAfterAdopt">양육시 필수 지식</a></div>
+                <button onclick="location.href='/encycle/knowAfterAdopt'" class="infoImage2"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></div>
             </div>
             <div class="infoImageAndDesc3">
-                <a href="../encycle/knowEmergency" class="infoImage3"></a>
-                <div class="infoImageDesc1"><a href="../encycle/knowEmergency">응급상황 대처 방법</a></div>
+                <button onclick="location.href='/encycle/knowEmergency'" class="infoImage3"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></div>
             </div>
             <div class="infoImageAndDesc4">
-                <a href="../encycle/petiket" class="infoImage4"></a>
-                <div class="infoImageDesc1"><a href="../encycle/petiket">함께 실천하는 펫티켓</a></div>
+                <button onclick="location.href='/encycle/petiket'" class="infoImage4"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></div>
             </div>
         </div>
     </div>
@@ -250,32 +212,32 @@
     </div>
   <div class="imageSliderMain">
       <div class="imageSlider">
-          <img id="back" src="../images/mainPage/galleryLeftArrow.png" alt="" width="57">
-          <img id="next" src="../images/mainPage/galleryRightArrow.png" alt="" width="57">
+          <img id="back" width="57" th:src="@{/images/galleryLeftArrow.png}" />
+          <img id="next" width="57" th:src="@{/images/galleryRightArrow.png}" />
           <div class="slide">
               <ul>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto1.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto2.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto3.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto4.png" alt="" width="326" height="326"></a></li>
-                  <li><a href="#"><img src="../images/mainPage/dogPhoto5.png" alt="" width="326" height="326"></a></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto1.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto2.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto3.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto4.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto5.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto1.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto2.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto3.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto4.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto5.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto1.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto2.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto3.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto4.png}" alt="" width="326" height="326"></button></li>
+                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto5.png}" alt="" width="326" height="326"></button></li>
               </ul>
           </div>
       </div>
   </div>
   <div id="footers"></div>
 <div>
-    <th:block th:include="Component/footer.html"></th:block>
+    <th:block th:include="component/footer.html"></th:block>
 </div>
 </body>
 </html>

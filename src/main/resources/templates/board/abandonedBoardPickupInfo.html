@@ -1,82 +1,44 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardAbandonedAdoptInfo</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-    <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="../board/css/boardAbandonedAdoptInfo.css">
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-    <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-    <!--favicon--->
-    <link href="favicon.ico" rel="icon">
-    <link href="favicon.ico" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
-        });
-    </script>
-
+    <title>습득시 안내</title>
 </head>
-<body>
 
-<div id="headers"></div>
-
-    <div class="board-abandoned-banner">
+<th:block layout:fragment="content">
+    <div class="board-banner">
         <h3>습득시안내</h3>
         <div>
-            <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+            <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
 
-<div class="board-abandoned-header-menu">
-    <div class="abandoned-protection">
-        <a href="../board/abandonedBoard">보호중인 강아지</a>
+<div class="board-header-menu">
+    <div class="protection">
+        <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
     </div>
-    <div class="abandoned-center">
-        <a href="../board/abandonedBoardCenter">동물보호센터</a>
+    <div class="center">
+        <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
     </div>
-    <div class="abandoned-adoptInfo">
-        <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
+    <div class="adoptInfo">
+        <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
     </div>
-    <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-        <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
+    <div class="pickupInfo" id="pickupInfo">
+        <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
     </div>
 </div>
 
     <div class="board-container container">
-        <div class="board-abandoned-content-container">
-            <div class="board-abandoned-content">
+        <div class="board-content-container">
+            <div class="board-content">
                 <h1 id="headText1">
                     <span class="greenText">버려진 동물</span>을 발견하면
                     <span class="blueText">신고</span>하세요</h1>
-                <img src="/images/pickUpInfo-image.png" alt="handShake-with-a-dog">
+                <img th:src="@{/images/pickUpInfo-image.png}" alt="handShake-with-a-dog">
                 <h3>누군가의 반려동물을 보호하고 계신가요?</h3>
             </div>
-            <div class="board-abandoned-content-2">
+            <div class="board-content-2">
                 <h1>습득시 안내</h1>
                 <li>공공장소를 떠돌거나 버려진 동물을 발견한 경우 관할 시ㆍ군ㆍ구청과 해당 유기동물 보호시설에 신고해야 합니다.</li>
                 <li>유기동물을 주인 없는 동물이라 여겨 마음대로 잡아서 팔거나 죽이면 2년 이하의 징역 또는 2천만원 이하의 벌금을 내게 됩니다.</li>
@@ -85,10 +47,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-
-    </script>
-<div id="footers"></div>
-</body>
+</th:block>
 </html>

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/encycle/*")
+@RequestMapping("encycle")
 public class EncyclopediaController {
     @GetMapping("mainEncycle")
     public String pediaMain() {

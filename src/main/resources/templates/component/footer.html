@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,26 +132,32 @@ button {
     }
 }
 
+.footerBoxContent button {
+    color: #f1f1f1;
+    font-weight: lighter;
+}
+
+
 
     </style>
 </head>
 <body>
     <div id="footerBox">
         <div class="footerBoxContent">
-            <div class="footerBoxLogoImage"><a href="../main"><img src="../images/footer/logo2_w.png"></a></div>
+            <div class="footerBoxLogoImage"><button onclick="location.href='/main'"><img th:src="@{/images/logo2_w.png}" /></button></div>
             <div class="footerBoxInfos">
                 <div class="footerInfo1">(주)뭐든다알개 서울특별시 종로구 하이미디어아카데미 대표이사 김유빈 이소망 이선호 강한성</div>
                 <div class="footerInfo2">사업자등록번호 220-81-30038 통신판매신고 제2015-서울종로-00481호 사업자정보확인</div>
                 <div class="footerInfo3">Copyright © 2023 DogType Inc. </div>
-                <span class="footerInfo4"><a href="#">개인정보 처리방침</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="footerInfo4"><a href="#">약관</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="footerInfo4"><a href="#">법적 고지</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="footerInfo4"><a href="#">사이트맵</a></span>
+                <span class="footerInfo4"><button onclick="location.href='#'">개인정보 처리방침</button></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="footerInfo4"><button onclick="location.href='#'">약관</button></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="footerInfo4"><button onclick="location.href='#'">법적 고지</button></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="footerInfo4"><button onclick="location.href='#'">사이트맵</button></span>
                 
             </div>
-            <div class="footerBoxLogoImage2"><a href="../main"><img src="../images/footer/logo2_w.png"></a></div>
-            <div class="footerBoxNotion"><a href="https://www.notion.so/DOGTYPE-fe3882440adf4100a39165e01aad06ef" target="_blank"><img src="../images/footer/notionImage.png"></a></div>
-            <div class="footerBoxGitHub"><a href="https://github.com/DBDBD20230803/DaalgaeProject" target="_blank"><img src="../images/footer/githubImage.png"></a></div>
+            <div class="footerBoxLogoImage2"><button onclick="location.href='/main'"><img th:src="@{/images/logo2_w.png}" /></button></div>
+            <div class="footerBoxNotion"><a href="https://www.notion.so/DOGTYPE-fe3882440adf4100a39165e01aad06ef" target="_blank"><img th:src="@{/images/notionImage.png}" /></a></div>
+            <div class="footerBoxGitHub"><a href="https://github.com/DBDBD20230803/DaalgaeProject" target="_blank"><img th:src="@{/images/githubImage.png}" /></a></div>
         </div>
     </div>
 </body>

@@ -11,7 +11,7 @@
 
 .encycleTitle::after{
     content: "";
-    background: url("../images/tourBgImg.png") no-repeat;
+    background: url("/images/tourBgImg.png") no-repeat;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -57,7 +57,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("../images/mainPage/mainInfoImage1.png");
 }
 
 .infoImage2 {
@@ -70,7 +69,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("../images/mainPage/mainInfoImage2.png");
 }
 
 .infoImage3 {
@@ -83,7 +81,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("../images/mainPage/mainInfoImage3.png");
 }
 
 .infoImage4 {
@@ -96,7 +93,6 @@
     margin-right: 40px;
     border: 1px solid #D8D8D8;
     background-color: #fff;
-    background-image: url("../images/mainPage/mainInfoImage4.png");
 }
 
 .infoImageDesc1 {
@@ -137,7 +133,7 @@
     font-weight: 300;
 }
 
-.infoImageDesc1 a {
+.infoImageDesc1 button {
     position: relative;
     top: -175px;
 }
@@ -173,7 +169,7 @@
 
 .logoInPage {
     position: absolute;
-    background-image: url("../images/DAALGAE_LOGO.png");
+    background-image: url("/images/DAALGAE_LOGO.png");
     width: 1135px;
     height: 182px;
     top: -210px;
