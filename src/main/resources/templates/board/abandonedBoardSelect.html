@@ -1,76 +1,38 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardAbandoned</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-    
-    <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="/css/board/boardAbandonedSelect.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-    <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    
-    <!--favicon--->
-    <link href="favicon.ico" rel="icon">
-    <link href="favicon.ico" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
-        });
-    </script>
-
+    <title>유기견 게시판</title>
 </head>
-<body>
 
-<div id="headers"></div>
-
-    <div class="board-abandoned-banner">
+<th:block layout:fragment="content">
+    <div class="board-banner">
         <h3>당신이 필요한 아이들</h3>
-            <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+            <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
 
-    <div class="board-abandoned-header-menu">
-        <div class="abandoned-protection">
-            <a href="../board/abandonedBoard">보호중인 강아지</a>
+    <div class="board-header-menu">
+        <div class="protection">
+            <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
         </div>
-        <div class="abandoned-center">
-            <a href="../board/abandonedBoardCenter">동물보호센터</a>
+        <div class="center">
+            <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
         </div>
-        <div class="abandoned-adoptInfo">
-            <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
+        <div class="adoptInfo">
+            <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
         </div>
-        <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-            <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
+        <div class="pickupInfo" id="pickupInfo">
+            <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
         </div>
     </div>
 
     <div class="board-container container">
-        <div class="board-abandoned-searchBar">
+        <div class="board-searchBar">
             <div class="search-buttons">
                 <div class="search-by-text">
-                    <img src="/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
                     <input type="text" name="textSearching" id="textSearching">
                 </div>
                 <div class="submit-button">
@@ -78,15 +40,15 @@
                 </div>
             </div>
         </div>
-        <div class="board-abandoned-content-select-container">
-            <div class="board-abandoned-content-title">
+        <div class="board-content-select-container">
+            <div class="board-content-title">
                     <h2>보호중인 동물</h2>
             </div>
             <div class="board-select-content">
-                <div class="abandoned-dog-img">
-                    <img src="/images/board-announcement-button.png" alt="">
+                <div class="dog-img">
+                    <img th:src="@{/images/board-announcement-button.png}" alt="">
                 </div>
-                <div class="abandoned-dog-detail">
+                <div class="dog-detail">
                     <div class="a-c-title">
                         <div class="nameTag">
                             <h4>공고번호</h4>
@@ -129,9 +91,9 @@
                     </div>
                 </div>
             </div>
-            <div class="abandoned-dog-detail-detail">
+            <div class="dog-detail-detail">
                 <div class="detail-title">
-                    <img src="/images/detail-icon.png" alt="">
+                    <img th:src="@{/images/detail-icon.png}" alt="">
                     <h2>상세정보</h2>
                 </div>
                 <div class="detail-detail">
@@ -183,15 +145,10 @@
             </div>
         </div>
         <div class="board-select-footer">
-            <div class="back-to-abandoned-list">
-                <a href="../board/abandonedBoard">목록</a>
+            <div class="back-to-list">
+                <a th:href="@{/board/abandonedBoard}">목록</a>
             </div>
         </div>
     </div>
-
-    <script>
-
-    </script>
-<div id="footers"></div>
-</body>
+</th:block>
 </html>

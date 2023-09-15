@@ -1,77 +1,39 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardAbandonedCenter</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-    
-    <!--bootstrap-->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!--css-->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/mobile.css">
-    <link rel="stylesheet" href="../css/sanitize.css">
-    <link rel="stylesheet" href="../board/css/boardAbandonedCenter.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-    <!--js-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    
-    <!--favicon--->
-    <link href="favicon.ico" rel="icon">
-    <link href="favicon.ico" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $("#headers").load("../Component/header.html");
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $("#footers").load("../Component/footer.html");
-            $('#footers').css("z-index", "5");
-        });
-    </script>
-
+    <title>동물보호센터</title>
 </head>
-<body>
 
-<div id="headers"></div>
-
-    <div class="board-abandoned-banner">
+<th:block layout:fragment="content">
+    <div class="board-banner">
         <h3>동물보호센터</h3>
         <div>
-            <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+            <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
 
-    <div class="board-abandoned-header-menu">
-        <div class="abandoned-protection">
-            <a href="../board/abandonedBoard">보호중인 강아지</a>
+    <div class="board-header-menu">
+        <div class="protection">
+            <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
         </div>
-        <div class="abandoned-center">
-            <a href="../board/abandonedBoardCenter">동물보호센터</a>
+        <div class="center">
+            <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
         </div>
-        <div class="abandoned-adoptInfo">
-            <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
+        <div class="adoptInfo">
+            <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
         </div>
-        <div class="abandoned-pickupInfo" id="abandoned-pickupInfo">
-            <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
+        <div class="pickupInfo" id="pickupInfo">
+            <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
         </div>
     </div>
 
     <div class="board-container container">
-        <div class="board-abandoned-searchBar">
+        <div class="board-searchBar">
             <div class="search-buttons">
-                <div class="abandoned-search-category">
-                    <select name="abandoned-search-category" id="abandoned-search-category">
+                <div class="search-category">
+                    <select name="search-category" id="search-category">
                         <option value="지역">지역</option>
                         <option value="수도권">수도권</option>
                         <option value="경상도">경상도</option>
@@ -82,7 +44,7 @@
                     </select>
                 </div>
                 <div class="search-by-text">
-                    <img src="/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
                     <input type="text" name="textSearching" id="textSearching">
                 </div>
                 <div class="submit-button">
@@ -90,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="board-abandoned-center-content-container">
+        <div class="board-center-content-container">
             <div class="center-table">
                 <div class="jurisdiction-area">
                     <div class="ja-table-header">
@@ -128,7 +90,7 @@
         </div>
         <div class="board-paging-button">
             <button type="button" id="previousPageButton">
-                <img src="/images/previousPageButton.png" alt="">
+                <img th:src="@{/images/previousPageButton.png}" alt="">
             </button>
             <button class="pageNumber">
                 <div id="postPage1">
@@ -136,14 +98,9 @@
                 </div>
             </button>
             <button type="button" id="nextPageButton">
-                <img src="/images/nextPageButton.png" alt="">
+                <img th:src="@{/images/nextPageButton.png}" alt="">
             </button>
         </div>
     </div>
-
-    <script>
-
-    </script>
-<div id="footers"></div>
-</body>
+</th:block>
 </html>

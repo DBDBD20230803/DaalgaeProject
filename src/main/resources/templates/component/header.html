@@ -719,10 +719,10 @@
     <div id="menu">
         <ul>
             <div class="mainLogo">
-                <a href="../main"><img src="../images/header/logo2_w.png" alt="뭐든다알개 로고"></a>
+                <a href="../main"><img src="../images/logo2_w.png" alt="뭐든다알개 로고"></a>
             </div>
             <div class="mainLogo2">
-                <a href="../main"><img src="../images/header/logo2_w.png" alt="뭐든다알개 로고"></a>
+                <a href="../main"><img src="../images/logo2_w.png" alt="뭐든다알개 로고"></a>
             </div>
 
             <li><p>여기저기</p>
@@ -747,12 +747,12 @@
             </li>
             <li><p>게시판<p>
                 <ul>
-                    <li><a href="../board/mainBoard">전체</a></li>
-                    <li><a href="../board/freeBoard">자유게시판</a></li>
-                    <li><a href="../board/boastBoard">자랑갤러리</a></li>
-                    <li><a href="../board/abandonedBoard">유기견 게시판</a></li>
-                    <li><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></li>
-                    <li><a href="../board/announcementBoard">공지사항</a></li>
+                    <li><a th:href="@{/board/}">전체</a></li>
+                    <li><a th:href="@{/board/freeBoard}">자유게시판</a></li>
+                    <li><a th:href="@{/board/boastBoard}">자랑갤러리</a></li>
+                    <li><a th:href="@{/board/abandonedBoard}">유기견 게시판</a></li>
+                    <li><a href="#">반려견 매칭 테스트</a></li>
+                    <li><a th:href="@{/board/announcementBoard}">공지사항</a></li>
                     <li><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></li>
                 </ul>
             </li>
@@ -792,22 +792,22 @@
                 <tr>
                     <td><a href="../tour">전체</a></td>
                     <td><a href="../encycle">전체</a></td>
-                    <td><a href="../board/mainBoard">전체</a></td>
+                    <td><a th:href="@{/board/}">전체</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/place">관광지</a></td>
                     <td><a href="../encycle/knowBeforeAdopt">입양 전 필수 지식</a></td>
-                    <td><a href="../board/freeBoard">자유게시판</a></td>
+                    <td><a th:href="@{/board/freeBoard}">자유게시판</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/lodgment">숙박</a></td>
                     <td><a href="../encycle/knowAfterAdopt">양육시 필수 지식</a></td>
-                    <td><a href="../board/boastBoard">자랑갤러리</a></td>
+                    <td><a th:href="@{/board/boastBoard}">자랑갤러리</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/meal">식음료</a></td>
                     <td><a href="../encycle/knowEmergency">응급상황 대처 방법</a></td>
-                    <td><a href="../board/abandonedBoard">유기견 게시판</a></td>
+                    <td><a th:href="@{/board/abandonedBoard}">유기견 게시판</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/experience">체험</a></td>
@@ -817,7 +817,7 @@
                 <tr>
                     <td><a href="../tour/hospital">동물병원</a></td>
                     <td></td>
-                    <td><a href="../board/announcementBoard">공지사항</a></td>
+                    <td><a th:href="@{/board/announcementBoard}">공지사항</a></td>
                 </tr>
                 <tr>
                     <td><a href="../tour/tourList">여행지 리스트</a></td>
@@ -864,12 +864,12 @@
                 <li>
                     <p>게시판</p>
                     <ol>
-                        <li><a href="../board/mainBoard">전체</a></li>
-                        <li><a href="../board/freeBoard">자유게시판</a></li>
-                        <li><a href="../board/boastBoard">자랑갤러리</a></li>
-                        <li><a href="../board/abandonedBoard">유기견 게시판</a></li>
+                        <li><a th:href="@{/board/}">전체</a></li>
+                        <li><a th:href="@{/board/freeBoard}">자유게시판</a></li>
+                        <li><a th:href="@{/board/boastBoard}">자랑갤러리</a></li>
+                        <li><a th:href="@{/board/abandonedBoard}">유기견 게시판</a></li>
                         <li><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></li>
-                        <li><a href="../board/announcementBoard">공지사항</a></li>
+                        <li><a th:href="@{/board/announcementBoard}">공지사항</a></li>
                         <li><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></li>
                     </ol>
                 </li>
