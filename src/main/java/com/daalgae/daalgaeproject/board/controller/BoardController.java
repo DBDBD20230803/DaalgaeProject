@@ -23,6 +23,7 @@ public class BoardController {
 
     @GetMapping("/boastBoard")
     public ModelAndView boastBoardMain(ModelAndView mv) {
+        System.out.println("무슨일이야!");
         mv.setViewName("board/boastBoard");
         return mv;
     }
@@ -35,6 +36,7 @@ public class BoardController {
 
     @GetMapping("/announcementBoard")
     public ModelAndView announcementBoardMain(ModelAndView mv) {
+        System.out.println("공지사항 페이지로 이동~");
         mv.setViewName("board/announcementBoard");
         return mv;
     }
