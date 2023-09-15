@@ -6,7 +6,7 @@
 
 #mainBackground {
     position: relative;
-    background-image: url("../images/header/mainPageBackground.png");
+    background-image: url("/images/mainPageBackground.png");
 }
 
 @media (min-width: 1108px) {
@@ -147,7 +147,7 @@
 }
 
 #weatherBox0 .weatherDog0 {
-    background-image: url("../images/weather/weatherDog.png");
+    background-image: url("/images/weatherDog.png");
     position: absolute;
     left: 757px;
     top: -187px;
@@ -157,7 +157,7 @@
 }
 
 #weatherBox0 .weatherSelectButton0 {
-    background-image: url("../images/weather/weatherSelectButton.png");
+    background-image: url("/images/weatherSelectButton.png");
     position: relative;
     margin-left: 62px;
     width: 30px;
@@ -201,7 +201,7 @@
 }
 
 #weatherBox1 .weatherDog1 {
-    background-image: url("../images/weather/weatherDog.png");
+    background-image: url("/images/weatherDog.png");
     position: absolute;
     left: 570px;
     top: -140px;
@@ -211,7 +211,7 @@
 }
 
 #weatherBox1 .weatherSelectButton1 {
-    background-image: url("../images/weather/weatherSelectButton.png");
+    background-image: url("/images/weatherSelectButton.png");
     position: relative;
     margin-left: 62px;
     width: 23px;
@@ -257,7 +257,7 @@
 }
 
 #weatherBox2 .weatherDog2 {
-    background-image: url("../images/weather/weatherDog.png");
+    background-image: url("/images/weatherDog.png");
     position: absolute;
     top:-93px;
     left: 380px;
@@ -267,7 +267,7 @@
 }
 
 #weatherBox2 .weatherSelectButton2 {
-    background-image: url("../images/weather/weatherSelectButton.png");
+    background-image: url("/images/weatherSelectButton.png");
     position: relative;
     margin-left: 46px;
     width: 15px;
@@ -306,14 +306,14 @@
 }
 
 .informIcon1 {
-    background-image: url("../images/mainPage/noticeIcon1.png");
+    background-image: url("/images/noticeIcon1.png");
     width: 24px;
     height: 24px;
     margin-right: 10px;
 }
 
 .informIcon2 {
-    background-image: url("../images/mainPage/noticeIcon2.png");
+    background-image: url("/images/noticeIcon2.png");
     width: 20px;
     height: 24px;
     margin-right: 10px;
@@ -327,7 +327,7 @@
 
 .informIcon3 {
     float: left;
-    background-image: url("../images/mainPage/noticeIcon1.png");
+    background-image: url("/images/noticeIcon1.png");
     width: 24px;
     height: 24px;
     margin-right: 10px;
@@ -339,7 +339,7 @@
 }
 
 .informIcon4 {
-    background-image: url("../images/mainPage/noticeIcon2.png");
+    background-image: url("/images/oticeIcon2.png");
     width: 20px;
     height: 24px;
     margin-right: 10px;
@@ -358,7 +358,7 @@
 }
 
 .informIconBox1 {
-    background-image: url("../images/mainPage/informIconBox1.png");
+    background-image: url("/images/informIconBox1.png");
     position: absolute;
     width: 85px;
     height: 29px;
@@ -368,7 +368,7 @@
 }
 
 .informIconBox2 {
-    background-image: url("../images/mainPage/informIconBox2.png");
+    background-image: url("/images/informIconBox2.png");
     position: absolute;
     width: 85px;
     height: 29px;
@@ -378,14 +378,14 @@
 }
 
 .Silder1 {
-    background-image: url("../images/mainPage/informUpButton.png");
+    background-image: url("/images/informUpButton.png");
     width: 22px;
     height: 15px;
     display: block;
 }
 
 .Silder2 {
-    background-image: url("../images/mainPage/informButtonMiddle.png");
+    background-image: url("/images/informButtonMiddle.png");
     width: 24px;
     height: 2px;
     left: 1px;
@@ -393,7 +393,7 @@
 }
 
 .Silder3 {
-    background-image: url("../images/mainPage/informDownButton.png");
+    background-image: url("/images/informDownButton.png");
     width: 22px;
     height: 15px;
     display: block;
@@ -450,7 +450,7 @@
     left: 136px;
     width: 60px;
     height: 60px;
-    background-image: url("../images/mainPage/mainMapFlag.png");
+    background-image: url("/images/mainMapFlag.png");
 }
 
 .TourWithYou {
@@ -477,7 +477,7 @@
 
 .daalgaeLogo {
     position: relative;
-    background-image: url("../images/mainPage/DAALGAE_LOGO.png");
+    background-image: url("/images/DAALGAE_LOGO.png");
     width: 1148px;
     height: 182px;
     left: 0px;
@@ -493,7 +493,7 @@
     right: 100px;
     width: 546px;
     height: 866px;
-    background-image: url("../images/mainPage/mainMapKorean.png");
+    background-image: url("/images/mainMapKorean.png");
     z-index: 3;
 }
 
@@ -512,7 +512,7 @@
     left: -4px;
     width: 45px;
     height: 45px;
-    background-image: url("../images/mainPage/mainMapFlag.png");
+    background-image: url("/images/mainMapFlag.png");
 }
 
 .TourWithYou2 {
@@ -541,13 +541,13 @@
     margin: auto;
     width: 546px;
     height: 866px;
-    background-image: url("../images/mainPage/mainMapKorean.png");
+    background-image: url("/images/mainMapKorean.png");
 }
 .daalgaeLogo2 {
     position: relative;
     top: 750px;
     margin: auto;
-    background-image: url("../images/mainPage/DAALGAE_LOGO.png");
+    background-image: url("/images/DAALGAE_LOGO.png");
     width: 861px;
     height: 136.5px;
     background-size: contain;
@@ -564,7 +564,7 @@
 .infoBookImage {
     position: relative;
     display: inline-block;
-    background-image: url("../images/mainPage/mainInfoBook.png");
+    background-image: url("/images/mainInfoBook.png");
     width: 58px;
     height: 58px;
 }
@@ -610,7 +610,7 @@
     height: 288px;
     margin-left: 25px;
     margin-right: 25px;
-    background-image: url("../images/mainPage/mainInfoImage1.png");
+    background-image: url("/images/mainInfoImage1.png");
 }
 
 .infoImage2 {
@@ -621,7 +621,7 @@
     top: 110px;
     margin-left: 25px;
     margin-right: 25px;
-    background-image: url("../images/mainPage/mainInfoImage2.png");
+    background-image: url("/images/mainInfoImage2.png");
 }
 
 .infoImage3 {
@@ -632,7 +632,7 @@
     top: 115px;
     margin-left: 25px;
     margin-right: 25px;
-    background-image: url("../images/mainPage/mainInfoImage3.png");
+    background-image: url("/images/mainInfoImage3.png");
 }
 
 .infoImage4 {
@@ -643,7 +643,7 @@
     top: 125px;
     margin-left: 25px;
     margin-right: 25px;
-    background-image: url("../images/mainPage/mainInfoImage4.png");
+    background-image: url("/images/mainInfoImage4.png");
 }
 
 .infoImageDesc1 {
@@ -737,7 +737,7 @@
 
 .logoInGallery {
     position: absolute;
-    background-image: url("../images/mainPage/DAALGAE_LOGO.png");
+    background-image: url("/images/DAALGAE_LOGO.png");
     width: 1148px;
     height: 182px;
     left: -82px;
@@ -749,4 +749,65 @@
 }
 .informDown a:hover {
     color: #222;
+}
+
+#mainBackground {
+    position: relative;
+}
+button{
+    background: inherit;
+    border:none;
+    box-shadow:none;
+    border-radius:0;
+    padding:0;
+    overflow:visible;
+    cursor:pointer
+}
+/* 슬라이더 로직*/
+
+.slide{
+    width: 1304px;
+    height: 326px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+.slide ul{
+    width: 5000px;
+    position: relative;
+    top:0;
+    left:0;
+    font-size: 0;
+}
+.slide ul li{
+    display: inline-block;
+}
+#back{
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: -28px;
+    transform: translateY(-29px);
+    z-index: 1;
+}
+#next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-29px);
+    right: -680px;
+    cursor: pointer;
+    z-index: 1;
+}
+.imageSliderMain {
+    position: relative;
+    top: -530px;
+    left: 120px;
+}
+.imageSlider {
+    width: 652px;
+    position: relative;
+}
+li img {
+    position: relative;
+    left: -30px;
 }

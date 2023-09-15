@@ -28,7 +28,7 @@
 
 .tourBg::after{
     content: "";
-    background: url("../images/bgImg.png") no-repeat;
+    background: url("/images/bgImg.png") no-repeat;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -96,7 +96,7 @@ select {
 
 .searchArrow {
     position: absolute;
-    background-image: url("../images/arrow.png");
+    background-image: url("/images/arrow.png");
     width: 24px;
     height: 24px;
     z-index: 1;
@@ -125,7 +125,7 @@ select {
 
 .searchIcon {
     position: relative;
-    background-image: url("../images/search.png");
+    background-image: url("/images/search.png");
     left: -5px;
     width: 29px;
     height: 29px;
@@ -191,6 +191,10 @@ select {
     width: 326px;
     height: 150px;
     background-color: #fff;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .whiteSpaceTourBoard {
@@ -236,7 +240,7 @@ select {
 
 .logoInPage {
     position: absolute;
-    background-image: url("bgDAALGAE.png");
+    background-image: url("/images/bgDAALGAE.png");
     width: 1135px;
     height: 182px;
     top: -179px;

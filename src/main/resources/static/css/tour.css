@@ -53,7 +53,7 @@ input:focus{
 
 #tour .tourWrap .tourContents .mapApi{
     width: 100%;
-    height: 100%;
+    height: 720px;
     position: relative;
 }
 
@@ -111,7 +111,7 @@ input:focus{
     border-radius: 4px;
     border: none;
     padding: 2% 4%;
-    background: url(../images/search.png) no-repeat 10px center #EEEEEE;
+    background: url("images/search.png") no-repeat 10px center #EEEEEE;
     text-indent: 30px;
 }
 
@@ -202,11 +202,13 @@ input:focus{
     padding: 3% 0;
     box-shadow: 2px 2px 2px #393939;
     cursor: pointer;
+
 }
 
 
 #tour .tourWrap .tourContents .mapSearch .mapSearchWrap .mapSearchDown  .tourArrow img{
     max-width: 100%;
+    transform: rotate(90deg);
 }
 
 
@@ -222,7 +224,7 @@ input:focus{
 
 .logoInPage {
     position: absolute;
-    background-image: url("/tour/images/bgDAALGAE.png");
+    background-image: url("/images/bgDAALGAE.png");
     width: 1135px;
     height: 182px;
     top: 15px;
@@ -241,4 +243,14 @@ input:focus{
     color: #222;
     font-weight: bold;
     font-size: 50px;
+}
+
+.map {
+    position: relative;
+}
+
+.mapSpace {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }

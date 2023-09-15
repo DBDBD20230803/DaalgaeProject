@@ -45,7 +45,7 @@
 
 .tourBg::after{
     content: "";
-    background: url("../images/tourBgImg.png") no-repeat;
+    background: url("/images/tourBgImg.png") no-repeat;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -150,7 +150,7 @@
 
 .logoInPage {
     position: absolute;
-    background-image: url("../images/DAALGAE_LOGO.png");
+    background-image: url("/images/DAALGAE_LOGO.png");
     width: 1135px;
     height: 182px;
     top: -90px;

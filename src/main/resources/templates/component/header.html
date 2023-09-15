@@ -178,7 +178,7 @@
             left: 0px;
             width: 100%;
             height: 1080px;
-            background-image: url("../images/mainPage/mainPageBackground.png");
+            background-image: url("/images/mainPageBackground.png");
             z-index: -100;
         }
         #menu {
@@ -345,7 +345,7 @@
 
         .menuSearchIconIn {
             position: relative;
-            background-image: url("../images/header/menuSearchIconIn.png");
+            background-image: url("/images/menuSearchIconIn.png");
             width: 43px;
             height: 43px;
             left: 55px;
@@ -629,7 +629,7 @@
             width: 29px;
             height: 29px;
             margin: 0;
-            background-image: url("../images/header/menuSearch.png");
+            background-image: url("/images/menuSearch.png");
         }
 
         /*.burger-icon2 .burger-sticks2 {*/
@@ -714,35 +714,35 @@
         1. 링크는 레이블을 달아야 좋기는 하겠다.
         2. 메뉴만 만들고 끝이 아니다.
      -->
-    <div id="toTheTop"><a id="toTop" href="#"><img src="../images/mainPage/mainToTop.png"></a></div>
+    <div id="toTheTop"><a id="toTop" href="#"><img th:src="@{/images/mainToTop.png}" /></a></div>
     <!-- 메뉴바 목록 -->
     <div id="menu">
         <ul>
             <div class="mainLogo">
-                <a href="../main"><img src="../images/logo2_w.png" alt="뭐든다알개 로고"></a>
+                <button onclick="location.href='/main'"><img th:src="@{/images/logo2_w.png}" /></button>
             </div>
             <div class="mainLogo2">
-                <a href="../main"><img src="../images/logo2_w.png" alt="뭐든다알개 로고"></a>
+                <button onclick="location.href='/main'"><img th:src="@{/images/logo2_w.png}" /></button>
             </div>
 
             <li><p>여기저기</p>
                 <ul>
-                    <li><a href="../tour">전체</a></li>
-                    <li><a href="../tour/place">관광지</a></li>
-                    <li><a href="../tour/lodgment">숙박</a></li>
-                    <li><a href="../tour/meal">식음료</a></li>
-                    <li><a href="../tour/experience">체험</a></li>
-                    <li><a href="../tour/hospital">동물병원</a></li>
-                    <li><a href="../tour/tourList">여행지 리스트</a></li>
+                    <li><button onclick="location.href='/tour'">전체</button></li>
+                    <li><button onclick="location.href='/tour/place'">관광지</button></li>
+                    <li><button onclick="location.href='/tour/lodgment'">숙박</button></li>
+                    <li><button onclick="location.href='/tour/meal'">식음료</button></li>
+                    <li><button onclick="location.href='/tour/experience'">체험</button></li>
+                    <li><button onclick="location.href='/tour/hospital'">동물병원</button></li>
+                    <li><button onclick="location.href='/tour/tourList'">여행지 리스트</button></li>
                 </ul>
             </li>
             <li><p>다알개사전</p>
                 <ul>
-                    <li><a href="../encycle">전체</a></li>
-                    <li><a href="../encycle/knowBeforeAdopt">입양 전 필수 지식</a></li>
-                    <li><a href="../encycle/knowAfterAdopt">양육시 필수 지식</a></li>
-                    <li><a href="../encycle/knowEmergency">응급상황 대처 방법</a></li>
-                    <li><a href="../encycle/petiket">함께 실천하는 펫티켓</a></li>
+                    <li><button onclick="location.href='/encycle'">전체</button></li>
+                    <li><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></li>
+                    <li><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></li>
+                    <li><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></li>
+                    <li><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></li>
                 </ul>
             </li>
             <li><p>게시판<p>
@@ -790,37 +790,37 @@
                     <th scope="col">게시판</td>
                 </tr>
                 <tr>
-                    <td><a href="../tour">전체</a></td>
-                    <td><a href="../encycle">전체</a></td>
-                    <td><a th:href="@{/board/}">전체</a></td>
+                    <td><button onclick="location.href='/tour'">전체</button></td>
+                    <td><button onclick="location.href='/encycle'">전체</button></td>
+                    <td><a href="../board/mainBoard">전체</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../tour/place">관광지</a></td>
-                    <td><a href="../encycle/knowBeforeAdopt">입양 전 필수 지식</a></td>
-                    <td><a th:href="@{/board/freeBoard}">자유게시판</a></td>
+                    <td><button onclick="location.href='/tour/place'">관광지</button></td>
+                    <td><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></td>
+                    <td><a href="../board/freeBoard">자유게시판</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../tour/lodgment">숙박</a></td>
-                    <td><a href="../encycle/knowAfterAdopt">양육시 필수 지식</a></td>
-                    <td><a th:href="@{/board/boastBoard}">자랑갤러리</a></td>
+                    <td><button onclick="location.href='/tour/lodgment'">숙박</button></td>
+                    <td><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></td>
+                    <td><a href="../board/boastBoard">자랑갤러리</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../tour/meal">식음료</a></td>
-                    <td><a href="../encycle/knowEmergency">응급상황 대처 방법</a></td>
-                    <td><a th:href="@{/board/abandonedBoard}">유기견 게시판</a></td>
+                    <td><button onclick="location.href='/tour/meal'">식음료</button></td>
+                    <td><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></td>
+                    <td><a href="../board/abandonedBoard">유기견 게시판</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../tour/experience">체험</a></td>
-                    <td><a href="../encycle/petiket">함께 실천하는 펫티켓</a></td>
-                    <td><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></td>
+                    <td><button onclick="location.href='/tour/experience'">체험</button></td>
+                    <td><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></td>
+                    <td><a href="#">반려견 매칭 테스트</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../tour/hospital">동물병원</a></td>
+                    <td><button onclick="location.href='/tour/hospital'">동물병원</button></td>
                     <td></td>
                     <td><a th:href="@{/board/announcementBoard}">공지사항</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../tour/tourList">여행지 리스트</a></td>
+                    <td><button onclick="location.href='/tour/tourList'">여행지 리스트</button></td>
                     <td></td>
                     <td><button onclick="location.href='/webtoon/dengInfo'">댕댕툰 보러가기</button></td>
                 </tr>
@@ -842,23 +842,23 @@
                 <li>
                     <p>여기저기</p>
                     <ol>
-                        <li><a href="../tour">전체</a></li>
-                        <li><a href="../tour/place">관광지</a></li>
-                        <li><a href="../tour/lodgment">숙박</a></li>
-                        <li><a href="../tour/meal">식음료</a></li>
-                        <li><a href="../tour/experience">체험</a></li>
-                        <li><a href="../tour/hospital">동물병원</a></li>
-                        <li><a href="../tour/tourList">여행지 리스트</a></li>
+                        <li><button onclick="location.href='/tour'">전체</button></li>
+                        <li><button onclick="location.href='/tour/place'">관광지</button></li>
+                        <li><button onclick="location.href='/tour/lodgment'">숙박</button></li>
+                        <li><button onclick="location.href='/tour/meal'">식음료</button></li>
+                        <li><button onclick="location.href='/tour/experience'">체험</button></li>
+                        <li><button onclick="location.href='/tour/hospital'">동물병원</button></li>
+                        <li><button onclick="location.href='/tour/tourList'">여행지 리스트</button></li>
                     </ol>
                 </li>
                 <li>
                     <p>다알개사전</p>
                     <ol>
-                        <li><a href="../encycle">전체</a></li>
-                        <li><a href="../encycle/knowBeforeAdopt">입양 전 필수 지식</a></li>
-                        <li><a href="../encycle/knowAfterAdopt">양육시 필수 지식</a></li>
-                        <li><a href="../encycle/knowEmergency">응급상황 대처 방법</a></li>
-                        <li><a href="../encycle/petiket">함께 실천하는 펫티켓</a></li>
+                        <li><button onclick="location.href='/encycle'">전체</button></li>
+                        <li><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></li>
+                        <li><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></li>
+                        <li><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></li>
+                        <li><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></li>
                     </ol>
                 </li>
                 <li>
