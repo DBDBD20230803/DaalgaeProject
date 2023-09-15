@@ -23,10 +23,67 @@
       <div id="mainBackground">
   </div>
 
+      <script>
+          (function() {
+              window.onload = function() {
+                  let startPos;
+                  let geoSuccess = function(position) {
+                      startPos = position;
+                      let latitudeValue = parseInt(startPos.coords.latitude);
+                      let longitudeValue = parseInt(startPos.coords.longitude);
+                  };
+                  navigator.geolocation.getCurrentPosition(geoSuccess);
+              };
+          })();
+      </script>
+
       <div id="mainIntroduce">소중한 나의 반려견, 이제 여기서 시작하세요</div>
       <div id="weatherBox0">
-          <img class="weatherImage0" height="270px" />
+          <img class="weatherImage0" height="270px" th:src="@{/images/weatherCloudSun.png}"/>
           <script>
+              function getLocation() {
+                  let startPos;
+                  let geoSuccess = function(position) {
+                      startPos = position;
+                      let latitudeValue = startPos.coords.latitude;
+                      let longitudeValue = startPos.coords.longitude;
+                      alert((latitudeValue));
+                      let makeUrl1 = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=jwzbFiirkPF%2FrzTy3ceQqXb%2BuP8bvOFMVH3CizfiVQsy5EDFZCZekZa4S63aD460NnsTzQP4Ua5sfb5yT9stZg%3D%3D&pageNo=1&numOfRows=1000&dataType=JSON&base_date=20230915&base_time=0500&nx=";
+                      makeUrl1 += latitudeValue;
+                      makeUrl1 += "&ny=";
+                      makeUrl1 += longitudeValue;
+                      $.ajax({
+                          type:"get",
+                          url:makeUrl1,
+                          dataType:"json",
+                          success: function(data){
+                              console.log("통신성공");
+                              console.log(data);
+                              console.log(data.response.body.items.item[1].fcstValue);
+                              // let jsonData = JSON.parse(data);
+                              // console.log(jsonData);
+                              // let jsonData = JSON.stringify(data);
+                              // console.log(jsonData);
+                              // str = '<TR>';
+                              // $.each(data , function(i){
+                              //     str += '<TD>' +  + '</TD>' +
+                              //         '<TD>' + data.response.body.items.item[1].baseTime + '</TD>' +
+                              //         '<TD>' + data.response.body.items.item[1].category + '</TD>' +
+                              //         '<TD>' + data.response.body.items.item[1].fcstDate + '</TD>' +
+                              //         '<TD>' + data.response.body.items.item[1].fcstValue + '</TD>' +
+                              //         '<TD>' + data.response.body.items.item[1].nx + '</TD>' +
+                              //         '<TD>'+ data.response.body.items.item[1].ny + '</TD>';
+                              //     str += '</TR>';
+                              // });
+                              // $('.table_body').append(str);
+                          },
+                          error:function(){
+                              console.log("통신에러");
+                          }
+                      });
+                  };
+                  navigator.geolocation.getCurrentPosition(geoSuccess);
+              };
               $(function(){
                   $.ajax({
                       type:"get",
@@ -88,12 +145,11 @@
                       }
                   });
               });
-
-              $('.weatherImage0').append("th:src=\"@{/images/weatherCloudSun.png}");
           </script>
           <div class="weatherRate0">
               오늘의 산책지수
           </div>
+          <button onclick="getLocation()">sss</button>
           <div class="weatherGood0">
               좋음 😄
           </div>
