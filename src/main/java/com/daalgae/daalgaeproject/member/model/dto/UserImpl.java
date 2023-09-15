@@ -10,6 +10,11 @@ import java.util.List;
 */
 
 /*
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserImpl extends User{
     private int memCode;
     private String memId;

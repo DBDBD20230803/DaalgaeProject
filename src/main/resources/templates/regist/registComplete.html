@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>회원가입</title>
 
 
     <!--meta-->
@@ -11,14 +12,14 @@
 
       
       <!--bootstrap-->
-      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
       
 
       <!--css-->
-      <link rel="stylesheet" href="../css/index.css">
-      <link rel="stylesheet" href="../regist/css/mobile.css">
-      <link rel="stylesheet" href="../css/sanitize.css">
-      <link rel="stylesheet" href="../regist/css/registComplete.css">
+      <link rel="stylesheet" th:href="@{/css/index.css}">
+      <link rel="stylesheet" th:href="@{/regist/css/mobile.css}">
+      <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+      <link rel="stylesheet" th:href="@{/regist/css/registComplete.css}">
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -31,8 +32,8 @@
 
       
     <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
+      <link th:href="@{favicon.ico}" rel="icon">
+      <link th:href="@{favicon.ico}" rel="apple-touch-icon">
   </head>
   <body>
         <section id="registComplete">
