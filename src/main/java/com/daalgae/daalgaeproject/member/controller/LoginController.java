@@ -1,8 +1,7 @@
-package com.daalgae.daalgaeproject.login.controller;
+package com.daalgae.daalgaeproject.member.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -17,8 +16,8 @@ public class LoginController {
     }
 
     @GetMapping("/loginFindId")
-    public String loginFindIdForm(){ return "/login/loginFindId"; }
+    public String loginFindIdForm(){ return "login/loginFindId"; }
 
     @GetMapping("/loginFindPwd")
-    public String loginFindFPwdForm(){ return "/login/lgoinFindPwd"; }
+    public String loginFindFPwdForm(){ return "login/loginFindPwd"; }
 }

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>회원가입</title>
 
 
     <!--meta-->
@@ -11,14 +12,13 @@
 
       
       <!--bootstrap-->
-      <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
       
 
       <!--css-->
-      <link rel="stylesheet" href="/css/index.css">
-      <link rel="stylesheet" href="/regist/css/mobile.css">
-      <link rel="stylesheet" href="/css/sanitize.css">
-      <link rel="stylesheet" href="/css/regist.css">
+      <link rel="stylesheet" th:href="@{/css/index.css}">
+      <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+      <link rel="stylesheet" th:href="@{/css/regist.css}">
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -31,10 +31,12 @@
 
       
     <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
+      <link th:href="@{favicon.ico}" rel="icon">
+      <link th:href="@{favicon.ico}" rel="apple-touch-icon">
   </head>
   <body>
+
+  <div th:insert="/component/header"></div>
         <section id="regist">
           <div class="registWrap container">
 
@@ -55,7 +57,7 @@
                 <input type="text" name="putEmailAddress" id="putEmailAddress" placeholder="이메일" required/>
                 <input type="text" name="nameUser" id="nameUser" placeholder="이름" required/>
                 <label id="birth">
-                    <div class="birthTitle"><span><img src="../regist/images/birth.png" alt="birth"></span> 생년월일</div>
+                    <div class="birthTitle"><span><img th:src="@{/images/birth.png}" alt="birth"></span> 생년월일</div>
                     <input type="date" name="birth" id="birth" value="생년월일" required/>
                 </label>
                 <div class="addressBox">
@@ -72,6 +74,7 @@
             </div>
           </div>
         </section>
+  <div th:insert="/component/footer"></div>
   </body>
 
 
