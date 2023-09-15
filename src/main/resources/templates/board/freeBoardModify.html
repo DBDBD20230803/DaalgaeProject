@@ -1,55 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardFreeModify</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-    <!--bootstrap-->
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
-
-    <!--css-->
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/mobile.css}">
-    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board.css}">
-
-    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
-    <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"/>
-
-    <!--js-->
-    <script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
-    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
-
-    <!--favicon--->
-    <link th:href="@{favicon.ico}" rel="icon">
-    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "-16px");
-        });
-    </script>
-
+    <title>자유게시판 글 수정</title>
 </head>
-<body>
 
-<div id="headers">
-    <th:block th:include="Component/header.html"></th:block>
-</div>
-
+<th:block layout:fragment="content">
     <div class="board-banner">
         <h3>자유게시판</h3>
         <div>
-            <img src="/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
+            <img th:src="@{/images/board-banner-image-2.png}" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
 
@@ -70,7 +31,7 @@
             </div>
             <div class="imageUpload">
                 <label for="imageUpload" class="label-imageUpload" id="imageUploadButton">
-                    <img src="/images/imageUpload.png" alt="이미지업로드">
+                    <img th:src="@{/images/imageUpload.png}" alt="이미지업로드">
                 </label>
                 <input type="file" name="imageUpload" id="imageUpload" style="display: none;">
             </div>
@@ -83,16 +44,10 @@
                 <button type="submit" value="수정">수정완료</button>
             </div>
             <div class="write-cancel">
-                <a href="../board/freeBoard">취소</a>
+                <a th:href="@{/board/freeBoard}">취소</a>
             </div>
         </div>
     </div>
 
-    <script>
-
-    </script>
-<div>
-    <th:block th:include="Component/footer.html"></th:block>
-</div>
-</body>
+</th:block>
 </html>

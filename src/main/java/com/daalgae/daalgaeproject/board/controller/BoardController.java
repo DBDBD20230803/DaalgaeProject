@@ -3,24 +3,40 @@ package com.daalgae.daalgaeproject.board.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
 
-    @GetMapping("/mainBoard")
-    public String boardMain() { return "/board/mainBoard"; }
+    @GetMapping("/")
+    public ModelAndView testBoard(ModelAndView mv) {
+        mv.setViewName("board/board");
+        return mv;
+    }
 
     @GetMapping("/freeBoard")
-    public String freeBoardMain() { return "/board/freeBoard"; }
+    public ModelAndView freeBoardMain(ModelAndView mv) {
+        mv.setViewName("board/freeBoard");
+        return mv;
+    }
 
     @GetMapping("/boastBoard")
-    public String boastBoardMain() { return "/board/boastBoard"; }
+    public ModelAndView boastBoardMain(ModelAndView mv) {
+        mv.setViewName("board/boastBoard");
+        return mv;
+    }
 
     @GetMapping("/abandonedBoard")
-    public String abandonedBoardMain() { return "/board/abandonedBoard"; }
+    public ModelAndView abandonedBoardMain(ModelAndView mv) {
+        mv.setViewName("board/abandonedBoard");
+        return mv;
+    }
 
     @GetMapping("/announcementBoard")
-    public String announcementBoardMain() { return "/board/announcementBoard"; }
+    public ModelAndView announcementBoardMain(ModelAndView mv) {
+        mv.setViewName("board/announcementBoard");
+        return mv;
+    }
 
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
+
+    <th:block layout:fragment="content">
+      <div class="board-banner">
+          <h3>게시판</h3>
+          <div>
+              <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-dog-image">
+          </div>
+      </div>
+
+      <div class="board-container container">
+          <div class="board-button-container">
+              <div class="board-button">
+                  <button class="board-button-button" type="button">
+                      <a th:href="@{/board/announcementBoard}">
+                          <div class="board-button-image">
+                              <img th:src="@{/images/board-announcement-button.png}" alt="공지사항" class="board-button-image-main">
+                          </div>
+                          <div class="board-button-text">
+                              <h5 id="board-announcement" class="board-button-text-title">공지사항</h5>
+                          </div>
+                          <div><h5 class="board-button-hover-text">자세히보기</h5></div>
+                          <div><img th:src="@{/images/board-button-arrow.png}" class="board-button-arrow-image" alt="board-detail"></div>
+                      </a>
+                  </button>
+              </div>
+
+              <div class="board-button">
+                  <button class="board-button-button" type="button">
+                      <a th:href="@{/board/abandonedBoard}">
+                          <div class="board-button-image">
+                              <img th:src="@{/images/board-abandonedDog-button.png}" alt="유기견게시판" class="board-button-image-main">
+                          </div>
+                          <div class="board-button-text">
+                              <h5 id="board-abandonedDog" class="board-button-text-title">유기견게시판</h5>
+                          </div>
+                          <div><h5 class="board-button-hover-text">자세히보기</h5></div>
+                          <div><img th:src="@{/images/board-button-arrow.png}" class="board-button-arrow-image" alt="board-detail"></div>
+                      </a>
+                  </button>
+              </div>
+
+              <div class="board-button">
+                  <button class="board-button-button" type="button">
+                      <a th:href="@{/board/boastBoard}">
+                          <div class="board-button-image">
+                              <img th:src="@{/images/board-boast-button.png}" alt="자랑갤러리" class="board-button-image-main">
+                          </div>
+                          <div class="board-button-text">
+                              <h5 id="board-boast" class="board-button-text-title">자랑갤러리</h5>
+                          </div>
+                          <div><h5 class="board-button-hover-text">자세히보기</h5></div>
+                          <div><img th:src="@{/images/board-button-arrow.png}" class="board-button-arrow-image" alt="board-detail"></div>
+                      </a>
+                  </button>
+              </div>
+
+              <div class="board-button">
+                  <button class="board-button-button" type="button">
+                      <a th:href="@{#}">
+                          <div class="board-button-image">
+                              <img th:src="@{/images/board-matchTest-button.png}" alt="반려견매칭테스트" class="board-button-image-main">
+                          </div>
+                          <div class="board-button-text">
+                              <h5 id="board-matchTest" class="board-button-text-title">반려견매칭테스트</h5>
+                          </div>
+                          <div><h5 class="board-button-hover-text">자세히보기</h5></div>
+                          <div><img th:src="@{/images/board-button-arrow.png}" class="board-button-arrow-image" alt="board-detail"></div>
+                      </a>
+                  </button>
+              </div>
+
+              <div class="board-button">
+                  <button class="board-button-button" type="button">
+                      <a th:href="@{/board/freeBoard}">
+                          <div class="board-button-image">
+                              <img th:src="@{/images/board-free-button.png}" alt="자유게시판" class="board-button-image-main">
+                          </div>
+                          <div class="board-button-text">
+                              <h5 id="board-free"  class="board-button-text-title">자유게시판</h5>
+                          </div>
+                          <div><h5 class="board-button-hover-text">자세히보기</h5></div>
+                          <div><img th:src="@{/images/board-button-arrow.png}" class="board-button-arrow-image" alt="board-detail"></div>
+                      </a>
+                  </button>
+              </div>
+
+              <div class="board-button">
+                  <button id="board-dangdanginfotoon-button" class="board-button-button" type="button">
+                      <a th:href="@{#}">
+                          <div class="board-button-image">
+                              <img th:src="@{/images/board-dangdanginfotoon-button.png}" alt="댕댕정보툰" class="board-button-image-main">
+                          </div>
+                          <div class="board-button-text">
+                              <h5 id="board-dangdanginfotoon" class="board-button-text-title">댕댕정보툰</h5>
+                          </div>
+                          <div><h5 class="board-button-hover-text">자세히보기</h5></div>
+                          <div><img th:src="@{/images/board-button-arrow.png}" class="board-button-arrow-image" alt="board-detail"></div>
+                      </a>
+                  </button>
+              </div>
+
+          </div>
+      </div>
+    </th:block>
+
+</html>

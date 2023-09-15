@@ -1,70 +1,31 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardAbandonedAdoptInfo</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-    <!--bootstrap-->
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
-
-    <!--css-->
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/mobile.css}">
-    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board.css}">
-
-    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
-    <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"/>
-
-    <!--js-->
-    <script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
-    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
-
-    <!--favicon--->
-    <link th:href="@{favicon.ico}" rel="icon">
-    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "-16px");
-        });
-    </script>
-
+    <title>습득시 안내</title>
 </head>
-<body>
 
-<div id="headers">
-    <th:block th:include="Component/header.html"></th:block>
-</div>
-
+<th:block layout:fragment="content">
     <div class="board-banner">
         <h3>습득시안내</h3>
         <div>
-            <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+            <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
 
 <div class="board-header-menu">
     <div class="protection">
-        <a href="../board/abandonedBoard">보호중인 강아지</a>
+        <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
     </div>
     <div class="center">
-        <a href="../board/abandonedBoardCenter">동물보호센터</a>
+        <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
     </div>
     <div class="adoptInfo">
-        <a href="../board/abandonedBoardAdoptInfo">입양안내</a>
+        <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
     </div>
     <div class="pickupInfo" id="pickupInfo">
-        <a href="../board/abandonedBoardPickupInfo">습득시 안내</a>
+        <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
     </div>
 </div>
 
@@ -74,7 +35,7 @@
                 <h1 id="headText1">
                     <span class="greenText">버려진 동물</span>을 발견하면
                     <span class="blueText">신고</span>하세요</h1>
-                <img src="/images/pickUpInfo-image.png" alt="handShake-with-a-dog">
+                <img th:src="@{/images/pickUpInfo-image.png}" alt="handShake-with-a-dog">
                 <h3>누군가의 반려동물을 보호하고 계신가요?</h3>
             </div>
             <div class="board-content-2">
@@ -86,12 +47,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-
-    </script>
-<div>
-    <th:block th:include="Component/footer.html"></th:block>
-</div>
-</body>
+</th:block>
 </html>

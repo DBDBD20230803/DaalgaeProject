@@ -1,55 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardAnnouncement</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-    <!--bootstrap-->
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
-
-    <!--css-->
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/mobile.css}">
-    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board.css}">
-
-    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
-    <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"/>
-
-    <!--js-->
-    <script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
-    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
-
-    <!--favicon--->
-    <link th:href="@{favicon.ico}" rel="icon">
-    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "-16px");
-        });
-    </script>
-
+    <title>공지사항</title>
 </head>
-<body>
 
-<div id="headers">
-    <th:block th:include="Component/header.html"></th:block>
-</div>
+<th:block layout:fragment="content">
 
     <div class="board-banner">
         <h3>공지사항</h3>
         <div>
-            <img src="/images/board-banner-image-2.png" class="board-banner-image-2" alt="play-with-dog-image">
+            <img th:src="@{/images/board-banner-image-2.png}" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
 
@@ -70,7 +32,7 @@
                     </select>
                 </div>
                 <div class="search-by-text">
-                    <img src="/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
                     <input type="text" name="textSearching" id="textSearching">
                 </div>
                 <div class="submit-button">
@@ -80,24 +42,24 @@
         </div>
         <div class="board-list-container">
             <div class="board-postCategory">
-                <h4 id="postNo">번호</h4>
-                <h4 id="postTitle">제목</h4>
-                <h4 id="postUser">작성자</h4>
-                <h4 id="postDate">등록일</h4>
+                <h5 id="postNo">번호</h5>
+                <h5 id="postTitle">제목</h5>
+                <h5 id="postUser">작성자</h5>
+                <h5 id="postDate">등록일</h5>
             </div>
         </div>
         <div class="postList">
-            <a href="../board/announcementBoardSelect" class="post">
+            <a th:href="@{/board/announcementBoardSelect}" class="post">
                 <div class="post-info">
-                    <h4 id="testPost-postNo">1</h4>
-                    <h4 id="testPost-postTitle">인생첫공지</h4>
-                    <h4 id="testPost-postUser">admin</h4>
-                    <h4 id="testPost-postDate">2023-09-11</h4>
+                    <h5 id="testPost-postNo">1</h5>
+                    <h5 id="testPost-postTitle">인생첫공지</h5>
+                    <h5 id="testPost-postUser">admin</h5>
+                    <h5 id="testPost-postDate">2023-09-11</h5>
                 </div>
             </a>
         </div>
         <div class="board-write">
-            <a href="../board/announcementBoardWrite" id="board-write-button" alt="글쓰기">
+            <a th:href="@{/board/announcementBoardWrite}" id="board-write-button" alt="글쓰기">
                 <div class="board-write-text">
                     <div>글쓰기</div>
                 </div>
@@ -105,7 +67,7 @@
         </div>
         <div class="board-paging-button">
             <button type="button" id="previousPageButton">
-                <img src="/images/previousPageButton.png" alt="">
+                <img th:src="@{/images/previousPageButton.png}" alt="">
             </button>
             <button class="pageNumber">
                 <div id="postPage1">
@@ -113,16 +75,9 @@
                 </div>
             </button>
             <button type="button" id="nextPageButton">
-                <img src="/images/nextPageButton.png" alt="">
+                <img th:src="@{/images/nextPageButton.png}" alt="">
             </button>
         </div>
     </div>
-
-    <script>
-
-    </script>
-<div>
-    <th:block th:include="Component/footer.html"></th:block>
-</div>
-</body>
+</th:block>
 </html>

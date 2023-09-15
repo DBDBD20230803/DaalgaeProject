@@ -1,54 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{board/layouts/boardLayout}">
 <head>
-    <meta charset="utf-8">
-    <title>boardFree</title>
-
-    <!--meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-    <!--bootstrap-->
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
-
-    <!--css-->
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/mobile.css}">
-    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/board.css}">
-
-    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
-    <link rel="stylesheet" th:href="@{http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css}">
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"/>
-
-    <!--js-->
-    <script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
-    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
-
-    <!--favicon--->
-    <link th:href="@{favicon.ico}" rel="icon">
-    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $('#headers').css("position", "fixed");
-            $('#headers').css("width", "100%");
-            $('#headers').css("z-index", "5");
-            $('#menu').css("margin-top", "-16px");
-        });
-    </script>
+    <title>자유게시판</title>
 </head>
-<body>
 
-<div id="headers">
-    <th:block th:include="Component/header.html"></th:block>
-</div>
-
+<th:block layout:fragment="content">
     <div class="board-banner">
         <h3>자유게시판</h3>
         <div>
-            <img src="/images/board-banner-image.png" class="board-banner-image" alt="walking-with-a-dog-image">
+            <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
 
@@ -56,7 +18,7 @@
         <div class="board-searchBar">
             <div class="search-buttons">
                 <div class="search-by-text">
-                    <img src="/images/reading-glasses.png" alt="readingGlasses" id="readingGlassesImage">
+                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
                     <input type="text" name="textSearching" id="textSearching">
                 </div>
                 <div class="submit-button">
@@ -67,12 +29,12 @@
         <div class="board-select-header-buttons">
             <div class="like-button">
                 <button type="button" id="like-button">
-                    <img src="/images/like-button.png" alt="like-button">
+                    <img th:src="@{/images/like-button.png}" alt="like-button">
                 </button>
             </div>
             <div class="report-button">
                 <button type="button" id="report-button">
-                    <img src="/images/report-button.png" alt="report-button">
+                    <img th:src="@{/images/report-button.png}" alt="report-button">
                 </button>
             </div>
         </div>
@@ -86,21 +48,21 @@
             <div class="board-select-content">
                 <div>
                     <h6>안녕하세요</h6>
-                    <img src="/images/board-matchTest-button.png" alt="">
+                    <img th:src="@{/images/board-matchTest-button.png}" alt="">
                     <h6>집가고싶네요</h6>
                 </div>
             </div>
         </div>
         <div class="board-select-footer">
             <div class="comment-section-title">
-                <img src="/images/comment-icon.png" alt="dog-paw">
+                <img th:src="@{/images/comment-icon.png}" alt="dog-paw">
                 <h6>의견을 남겨주세요</h6>
             </div>
             <div class="comment">
                 <h6 id="comment-user">dlthakd(팽이엄마)</h6>
                 <h6 id="comment-date">(2023-09-03 07:14:48)</h6>
                 <button id="comment-report-button">
-                    <img src="/images/report-comment-button.png" alt="comment-report-button">
+                    <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                 </button>
             </div>
             <div class="comment-content">
@@ -121,16 +83,10 @@
                 </div>
             </div>
             <div class="back-to-list">
-                <a href="../board/freeBoard">목록</a>
+                <a th:href="@{/board/freeBoard}">목록</a>
             </div>
         </div>
     </div>
 
-    <script>
-
-    </script>
-<div>
-    <th:block th:include="Component/footer.html"></th:block>
-</div>
-</body>
+</th:block>
 </html>
