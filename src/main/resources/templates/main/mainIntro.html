@@ -57,6 +57,36 @@
                           console.log("통신에러");
                       }
                   });
+                  $.ajax({
+                      type:"get",
+                      url:"https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth?serviceKey=jwzbFiirkPF%2FrzTy3ceQqXb%2BuP8bvOFMVH3CizfiVQsy5EDFZCZekZa4S63aD460NnsTzQP4Ua5sfb5yT9stZg%3D%3D&returnType=json&numOfRows=500&pageNo=1&searchDate=2023-09-10&InformCode=PM10",
+                      dataType:"json",
+                      success: function(data){
+                          console.log("통신성공");
+                          console.log(data);
+                          console.log(data.response.body.items[0].informGrade);
+                          console.log(data.response.body.items[0].informOverall);
+                          // let jsonData = JSON.parse(data);
+                          // console.log(jsonData);
+                          // let jsonData = JSON.stringify(data);
+                          // console.log(jsonData);
+                          str = '<TR>';
+                          $.each(data , function(i){
+                              str += '<TD>' + data.response.body.items[0].informOverall + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>' + data.response.body.items[0] + '</TD>' +
+                                  '<TD>'+ data.response.body.items[0] + '</TD>';
+                              str += '</TR>';
+                          });
+                          $('.table_body').append(str);
+                      },
+                      error:function(){
+                          console.log("통신에러");
+                      }
+                  });
               });
 
               $('.weatherImage0').append("th:src=\"@{/images/weatherCloudSun.png}");
