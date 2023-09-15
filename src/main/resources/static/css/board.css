@@ -619,22 +619,32 @@ button[type="submit"]:hover {
   margin-bottom: 10px;
 }
 
-#postNo {
+.postNo {
   width: 5%;
   display: block;
 }
 
-#postTitle {
-  width: 40%;
-  display: block;
-}
-
-#postUser {
+.postCategory {
   width: 10%;
   display: block;
 }
 
-#postDate {
+.postTitle {
+  width: 20%;
+  display: block;
+}
+
+.postUser {
+  width: 10%;
+  display: block;
+}
+
+.postCount {
+  width: 10%;
+  display: block;
+}
+
+.postDate {
   width: 13%;
   display: block;
 }
@@ -663,22 +673,32 @@ button[type="submit"]:hover {
   white-space: nowrap;
 }
 
-#testPost-postNo {
+.testPost-postNo {
   width: 5%;
   display: block;
 }
 
-#testPost-postTitle {
-  width: 40%;
-  display: block;
-}
-
-#testPost-postUser {
+.testPost-postCategory {
   width: 10%;
   display: block;
 }
 
-#testPost-postDate {
+.testPost-postTitle {
+  width: 20%;
+  display: block;
+}
+
+.testPost-postUser {
+  width: 10%;
+  display: block;
+}
+
+.testPost-postCount {
+  width: 10%;
+  display: block;
+}
+
+.testPost-postDate {
   width: 13%;
   display: block;
 }

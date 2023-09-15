@@ -22,6 +22,7 @@
                         <option value="말머리" selected>말머리</option>
                         <option value="용품">용품</option>
                         <option value="먹거리">먹거리</option>
+                        <option value="일상">일상</option>
                     </select>
                 </div>
                 <div class="search-category">
@@ -42,22 +43,23 @@
         </div>
         <div class="board-list-container">
             <div class="board-postCategory">
-                <h5 id="postNo">번호</h5>
-                <h5 id="postTitle">제목</h5>
-                <h5 id="postUser">작성자</h5>
-                <h5 id="postDate">등록일</h5>
+                <h5 class="postNo">번호</h5>
+                <h5 class="postCategory">말머리</h5>
+                <h5 class="postTitle">제목</h5>
+                <h5 class="postUser">작성자</h5>
+                <h5 class="postCount">조회수</h5>
+                <h5 class="postDate">등록일</h5>
             </div>
         </div>
-        <div class="postList">
-            <a th:href="@{/board/freeBoardSelect}" class="post">
-                <div class="post-info">
-                    <h5 id="testPost-postNo">1</h5>
-                    <h5 id="testPost-postTitle">집가고싷다시파</h5>
-                    <h5 id="testPost-postUser">daalgae</h5>
-                    <h5 id="testPost-postDate">2023-09-11</h5>
-                </div>
-            </a>
+        <div class="postList" th:each="board : ${ boardList }">
+                    <h5 class="testPost-postNo" th:text="${board.no}"></h5>
+                    <h5 class="testPost-postCategory" th:text="${board.category.name}"></h5>
+                    <h5 class="testPost-postTitle" th:text="${board.title}"></h5>
+                    <h5 class="testPost-postUser" th:text="${board.writer.memName}"></h5>
+                    <h5 class="testPost-postCount" th:text="${board.count}"></h5>
+                    <h5 class="testPost-postDate" th:text="${board.createdDate}"></h5>
         </div>
+
         <div class="board-write">
             <a th:href="@{/board/freeBoardWrite}" id="board-write-button" alt="글쓰기">
                 <div class="board-write-text">
@@ -65,17 +67,44 @@
                 </div>
             </a>
         </div>
+
         <div class="board-paging-button">
-            <button type="button" id="previousPageButton">
-                <img th:src="@{/images/previousPageButton.png}" alt="">
+            <!-- 맨 앞으로 이동 버튼 -->
+            <button
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.startPage}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == 1}"
+            >
+                <img th:src="@{/images/firstPageButton.png}" alt="firstPageButton">
             </button>
-            <button class="pageNumber">
-                <div id="postPage1">
-                    <div>1</div>
-                </div>
+            <!-- 이전 페이지 버튼 -->
+            <button
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.pageNo - 1}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == 1}"
+            >
+                <img th:src="@{/images/previousPageButton.png}" alt="previousPageButton">
             </button>
-            <button type="button" id="nextPageButton">
-                <img th:src="@{/images/nextPageButton.png}" alt="">
+            <!-- 숫자 버튼 -->
+            <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
+                <button
+                        th:text="${ page }"
+                        th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${page}} + '\''"
+                        th:disabled="${ selectCriteria.pageNo eq page }">
+                </button>
+            </th:block>
+
+            <!-- 다음 페이지 버튼 -->
+            <button
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.pageNo + 1}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+            >
+                <img th:src="@{/images/nextPageButton.png}" alt="nextPageButton">
+            </button>
+            <!-- 마지막 페이지로 이동 버튼 -->
+            <button
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.maxPage}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+            >
+                <img th:src="@{/images/lastPageButton.png}" alt="lastPageButton">
             </button>
         </div>
     </div>
