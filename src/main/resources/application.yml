@@ -1,22 +1,26 @@
 server:
   port: 8001
 
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://mysql.coffit.today:3306/daalgae
-#    username: Hlkdt6
-#    password: Hlkdt6
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/thymeleafspringboot
-    username: ohgiraffers
-    password: ohgiraffers
-#mybatis:
-#  mapper-locations: mappers/**/*.xml
+    url: jdbc:mysql://mysql.coffit.today:3306/daalgae
+    username: Hlkdt6
+    password: Hlkdt6
+
 mybatis:
-  mapper-locations: mybatis/mapper/**/*.xml
-  type-aliases-package: com.daalgae.daalgaeproject
-  configuration:
-    map-underscore-to-camel-case: true
+  mapper-locations: mappers/**/*.xml
+
+# Test DBsource
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost/thymeleafspringboot
+#    username: ohgiraffers
+#    password: ohgiraffers
+
+#mybatis:
+#  mapper-locations: mybatis/mapper/**/*.xml
+#  type-aliases-package: com.daalgae.daalgaeproject
+#  configuration:
+#    map-underscore-to-camel-case: true
