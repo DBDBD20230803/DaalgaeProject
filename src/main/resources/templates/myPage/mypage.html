@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title>마이페이지</title>
@@ -11,14 +12,13 @@
 
       
       <!--bootstrap-->
-      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
       
 
       <!--css-->
-      <link rel="stylesheet" href="../css/index.css">
-      <link rel="stylesheet" href="../myPage/css/mobile.css">
-      <link rel="stylesheet" href="../css/sanitize.css">
-      <link rel="stylesheet" href="../myPage/css/mypage.css">
+      <link rel="stylesheet" th:href="@{/css/index.css}">
+      <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+      <link rel="stylesheet" th:href="@{/css/mypage.css}">
       
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -31,12 +31,12 @@
 
       
     <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
+      <link th:href="@{favicon.ico}" rel="icon">
+      <link th:href="@{favicon.ico}" rel="apple-touch-icon">
 
   </head>
   <body>
-
+  <div th:insert="/component/header"></div>
         <section id="myPage">
             <div class="myPageBg"><h3>마이페이지</h3></div>
 
@@ -48,7 +48,7 @@
                             <div class="myPageProfileImgBox">
                                     <div class="profileImg"></div> 
 
-                                    <div class="gum"><a href="">100 <img src="../myPage/images/gum.png" alt="gum"></a></div>
+                                    <div class="gum"><a href="">100 <img src="/images/gum.png" alt="gum"></a></div>
                                     <form action="single-file" method="post" enctype="multipart/form-data">
                                         <label for="profileChange">
                                             <div class="changeFileImgage">프로필 사진 변경</div> 
@@ -57,12 +57,12 @@
                                         <div class="introPet">
                                             <p class="introPetTitle">
                                                 <span>
-                                                    <img src="../myPage/images/paw.png" alt="paw">
+                                                    <img src="/images/paw.png" alt="paw">
                                                 </span>
                                                 반려견 소개
                                             </p>
                                             <label for="introPetEdit">
-                                                <div class="petEditIcon"><img src="../myPage/images/complete.png" alt="edit"></div>
+                                                <div class="petEditIcon"><img src="/images/complete.png" alt="edit"></div>
                                             </label>
                                             <input type="submit" name="introPetEdit" value="introPetEdit" id="introPetEdit"/>
                                         </div>
@@ -96,7 +96,7 @@
                                 <form action="" method="post">
 
                                     <div class="myInfo1">
-                                        <div class="myInfoTitle"><img src="../myPage/images/email.png" alt="email"> &nbsp;&nbsp;이메일</div>
+                                        <div class="myInfoTitle"><img src="/images/email.png" alt="email"> &nbsp;&nbsp;이메일</div>
                                     
                                         <div class="myInfoInputs myInfo1Inputs">
                                             <label for="myEmail"></label>
@@ -105,7 +105,7 @@
                                     </div>
                                     
                                     <div class="myInfo2">
-                                        <div class="myInfoTitle"><img src="../myPage/images/name.png" alt="name"> &nbsp;&nbsp;이름</div>
+                                        <div class="myInfoTitle"><img src="/images/name.png" alt="name"> &nbsp;&nbsp;이름</div>
 
                                         <div class="myInfoInputs myInfo2Inputs">
                                             <label for="myName"></label>
@@ -114,7 +114,7 @@
                                     </div>
 
                                     <div class="myInfo3">
-                                        <div class="myInfoTitle"><img src="../myPage/images/adress.png" alt="adress"> &nbsp;&nbsp;주소지</div>
+                                        <div class="myInfoTitle"><img src="/images/adress.png" alt="adress"> &nbsp;&nbsp;주소지</div>
 
                                         <div class="myInfoInputs myInfo3Inputs">
                                             <label for="myAdress"></label>
@@ -123,7 +123,7 @@
                                     </div>
 
                                     <div class="myInfo4">
-                                        <div class="myInfoTitle"><img src="../myPage/images/birth.png" alt="birth"> &nbsp;&nbsp;생년월일</div>
+                                        <div class="myInfoTitle"><img src="/images/birth.png" alt="birth"> &nbsp;&nbsp;생년월일</div>
                                         
                                         <div class="myInfoInputs myInfo4Inputs">
                                             <label for="myBirth"></label>
@@ -132,7 +132,7 @@
                                     </div>
 
                                     <div class="myInfo5">
-                                        <div class="myInfoTitle"><img src="../myPage/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+                                        <div class="myInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
 
                                         <div class="myInfoInputs myInfo5Inputs">
                                             <label for="myPet"></label>
@@ -154,12 +154,12 @@
 
                                         <div class="petInfo1">
                                             <div class="petName">
-                                                <div class="dogInfoTitle"><img src="../myPage/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+                                                <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
                                                 <input type="text" name="petName" id="petName" class="petInput"/>
                                             </div>
         
                                             <div class="petBreed">
-                                                <div class="dogInfoTitle"><img src="../myPage/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
+                                                <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
                                                 <input type="text" name="petBreedName" id="petBreedName" class="petInput"/>
                                             </div>
                                         </div>
@@ -167,12 +167,12 @@
 
                                         <div class="petInfo2">
                                             <div class="petBirth">
-                                                <div class="dogInfoTitle"><img src="../myPage/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
+                                                <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
                                                 <input type="date" name="petBirthDay" id="petBirthDay" class="petInput"/>
                                             </div>
         
                                             <div class="petGender">
-                                                <div class="dogInfoTitle"><img src="../myPage/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
+                                                <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
                                                 <select name="petGenderAnswer" id="petGenderAnswer" class="petSelect">
                                                     <option value="female">female</option>
                                                     <option value="male">male</option>
@@ -183,7 +183,7 @@
 
                                         <div class="petInfo3">
                                             <div class="petOper">
-                                                <div class="dogInfoTitle"><img src="../myPage/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
+                                                <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
                                                 <select name="petOperAnswer" id="petOperAnswer" class="petSelect">
                                                     <option value="Y">Y</option>
                                                     <option value="N">N</option>
@@ -191,7 +191,7 @@
                                             </div>
         
                                             <div class="petWeight">
-                                                <div class="dogInfoTitle"><img src="../myPage/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
+                                                <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
                                                 <input type="text" name="petWeightAnswer" id="petWeightAnswer" class="petInput"/>
                                             </div>
                                         </div>    
@@ -216,7 +216,7 @@
                  
                     
 
-                        <div class="goToMain"><a href="">메인 페이지로 돌아가기</a></div>
+                        <div class="goToMain"><a th:href="@{/}">메인 페이지로 돌아가기</a></div>
 
                     </div>    
 
@@ -224,7 +224,8 @@
             </div>
         </section>
 
-        <script src="../../static/js/mypage.js"></script>
+        <script src="/js/mypage.js"></script>
+        <div th:insert="/component/footer"></div>
   </body>
 
 
