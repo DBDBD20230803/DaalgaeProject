@@ -26,7 +26,7 @@ public class BoardController {
     }
 
     @GetMapping("/")
-    public ModelAndView testBoard(ModelAndView mv) {
+    public ModelAndView boardMain(ModelAndView mv) {
         mv.setViewName("board/board");
         return mv;
     }

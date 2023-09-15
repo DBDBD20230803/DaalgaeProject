@@ -39,18 +39,30 @@
             </div>
         </div>
         <div class="board-content-select-container">
-            <div class="board-content-title">
-                    <h6 id="postNo">1</h6>
-                    <h6 id="postCategory">일상</h6>
-                    <h6 id="postTitle">집!</h6>
-                    <h6 id="postUser">daalgae</h6>
-                    <h6 id="postDate">2023-09-11</h6>
+            <div class="board-content-title" th:each="board : ${ boardList }">
+                <h6 class="postNo" th:text="${board.no}"></h6>
+                <h6 class="postCategory" th:text="${board.category.name}"></h6>
+                <h6 class="postTitle" th:text="${board.title}"></h6>
+                <h6 class="postUser" th:text="${board.writer.memName}"></h6>
+                <h6 class="postCount" th:text="${board.count}"></h6>
+                <h6 class="postDate" th:text="${board.createdDate}"></h6>
             </div>
             <div class="board-select-content">
                 <div>
                     <h6>안녕하세요</h6>
                     <img th:src="@{/images/board-matchTest-button.png}" alt="">
                     <h6>집가고싶네요</h6>
+                    <textarea
+                            name="body"
+                            cols="60"
+                            rows="15"
+                            style="resize: none;"
+                            readonly
+                            th:text="${board.body}"
+                    >
+                    </textarea>
+                    <!-- 여기까지함 freeBoardSelect.html
+                     BoardFreeController 뭐 등등 세팅해야함~ -->
                 </div>
             </div>
         </div>
