@@ -10,4 +10,7 @@ public class registController {
 
     @GetMapping("/regist")
     public String registForm(){ return "regist/regist"; }
+
+    @GetMapping("/agreeTerms")
+    public String agreeTerms(){ return "regist/agreeTerms"; }
 }

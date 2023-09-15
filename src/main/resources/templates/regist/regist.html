@@ -44,13 +44,23 @@
 
               <h5 class="registTitle">뭐든 다알개</h5>
 
-              <form class="registForm" action="" method="post">
+              <form class="registForm" th:action="@{/regist/regist}" method="post">
                 
-                <label id="realName">
+                <label id="realNameId">
                     <input type="checkbox" name="realName" value="실명 인증된 아이디로 가입" id="realName" required/>
-                    <div id="showCheckbox"></div>
+                    <div class="showCheckbox" onclick="testFunction1()"></div>
                     <span>실명 인증된 아이디로 가입</span>
                 </label>
+                  <script type="text/javascript">
+                      function testFunction1(){
+                          const testCheck = $("#realName")
+                          if(testCheck.prop("checked")) {
+                              testCheck.attr("checked", true);
+                          }else{
+                              testCheck.attr("checked", false);
+                          }
+                      }
+                  </script>
                 <input type="text" name="username" id="username" placeholder="아이디" required/>
                 <input type="password" name="password" id="password" placeholder="비밀번호" required/>
                 <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="비밀번호 재확인" required/>
@@ -58,16 +68,32 @@
                 <input type="text" name="nameUser" id="nameUser" placeholder="이름" required/>
                 <label id="birth">
                     <div class="birthTitle"><span><img th:src="@{/images/birth.png}" alt="birth"></span> 생년월일</div>
-                    <input type="date" name="birth" id="birth" value="생년월일" required/>
+                    <input type="date" name="birth" class="birth" value="yyyy-MM-dd" required/>
                 </label>
                 <div class="addressBox">
-                    <input type="text" name="address" id="address" placeholder="주소지" required/>
-                    <div class="searchAddress">주소 검색</div>
+                    <input type="text" name="address1" id="address1" class="address" placeholder="주소지"/>
+                    <button class="searchAddress" id="searchAddress">주소 검색</button>
                 </div>
-                <label id="termsCheck" onclick="location.href='/regist/agreeTerms'">
-                    <input type="checkbox" name="termsCheck" id="termsCheck" value="인증 약관 전체동의" required/> 
-                    <div id="showCheckbox"></div>
-                    <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
+                  <div class="addressBox">
+                      <input type="text" name="address2" id="address2" class="address" placeholder="주소지"/>
+                  </div>
+                <label id="termCheck">
+                    <input type="checkbox" name="termsCheck" id="termsCheck" value="인증 약관 전체동의" required/>
+                    <div class="showCheckbox" onclick="testFunction()"></div>
+                    <script type="text/javascript">
+                        function testFunction() {
+                            const testCheck = $("#termsCheck");
+                            console.log(testCheck.prop("checked"));
+                            if(testCheck.prop("checked")) {
+                                console.log(111);
+                                testCheck.attr("checked", false);
+                            } else {
+                                console.log(222);
+                                testCheck.attr("checked", true);
+                            }
+                        }
+                    </script>
+                    <span class="agreeAll1" th:onclick="|location.href='@{/regist/agreeTerms}'|"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
                 </label>
                 <input type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
               </form>
@@ -75,6 +101,23 @@
           </div>
         </section>
   <div th:insert="/component/footer"></div>
+
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script th:inline="javascript">
+
+    const $searchAddress = document.getElementById("searchAddress");
+
+    $searchAddress.onclick = function() {
+
+        new daum.Postcode ({
+            oncomplete: function (data){
+                document.getElementById("address1").value = data.address;
+                document.getElementById("address2").focus();
+            }
+        }).open();
+    }
+
+  </script>
   </body>
 
 
