@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="board-content-select-container">
-            <div class="board-content-title" th:each="board : ${ boardList }">
+            <div class="board-content-title" th:each="board : ${ board }">
                 <h6 class="postNo" th:text="${board.no}"></h6>
                 <h6 class="postCategory" th:text="${board.category.name}"></h6>
                 <h6 class="postTitle" th:text="${board.title}"></h6>
@@ -48,23 +48,16 @@
                 <h6 class="postDate" th:text="${board.createdDate}"></h6>
             </div>
             <div class="board-select-content">
-                <div>
-                    <h6>안녕하세요</h6>
-                    <img th:src="@{/images/board-matchTest-button.png}" alt="">
-                    <h6>집가고싶네요</h6>
+                <div class="board-textarea">
                     <textarea
                             name="body"
-                            cols="60"
+                            cols="120"
                             rows="15"
-                            style="resize: none;"
                             readonly
                             th:text="${board.body}"
                     >
                     </textarea>
-                    <!-- 여기까지함 freeBoardSelect.html
-                     BoardFreeController 뭐 등등 세팅해야함~
-                     내가 바꿔둔 공통 코드 주석 풀고
-                     테스트 용도로 만든거 주석해두기-->
+
                 </div>
             </div>
         </div>
@@ -73,35 +66,178 @@
                 <img th:src="@{/images/comment-icon.png}" alt="dog-paw">
                 <h6>의견을 남겨주세요</h6>
             </div>
-            <div class="comment">
-                <h6 id="comment-user">dlthakd(팽이엄마)</h6>
-                <h6 id="comment-date">(2023-09-03 07:14:48)</h6>
-                <button id="comment-report-button">
-                    <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
-                </button>
-            </div>
-            <div class="comment-content">
-                <h6>나돜ㅋㅋㅋㅋㅋ</h6>
-            </div>
-            <div class="comment-delete-button">
-                <button type="button">삭제</button>
-            </div>
-            <div class="write-comment">
+
+            <div class="write-comment" id="replyWrite">
+                <input type="hidden" id="boardNo" th:value="${board.no}">
                 <div class="write-comment-info">
                     <h6>*내용(0 / 300자)</h6>
                 </div>
                 <div class="write-comment-content">
-                    <textarea name="comment" id="write-comment-textarea" cols="30" rows="10"></textarea>
+                    <textarea name="comment" id="replyBody" cols="30" rows="10"></textarea>
                 </div>
                 <div class="write-comment-button">
-                    <button type="submit">댓글달기</button>
+                    <button type="button" id="registReply">댓글달기</button>
                 </div>
             </div>
+
+            <div class="comment" id="replyResult">
+                <th:block th:if="${ replyList != null }">
+
+                    <th:block th:each="reply : ${replyList}">
+
+                    <div class="replyListTr comment-content">
+                        <input type="hidden" id="${ reply.no }" th:value="${ reply.no }">
+                        <div id="reply-writer" th:text="${ reply.writer.memName }"></div>
+                        <div id="reply-body" th:text="${ reply.body }"></div>
+                        <div id="reply-date" th:text="${ reply.createdDate }"></div>
+                        <div id="comment-delete-button">
+<!--                            <th:block-->
+<!--                                    sec:authorize="isAuthenticated()"-->
+<!--                                    th:if="${ #authentication.getPrincipal().getMemberNo() == reply.writer.memberNo }"-->
+<!--                            >-->
+                            <button
+                                    type="button"
+                                    th:replyNo="${ reply.no }"
+                                    th:onclick="removeReply(this.getAttribute('replyNo'))"
+                            >
+                                댓글삭제
+                            </button>
+<!--                            </th:block>-->
+                        </div>
+                        <div id="comment-report-button">
+                            <button>
+                                <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
+                            </button>
+                        </div>
+                    </div>
+                    </th:block>
+                </th:block>
+
+            </div>
+
             <div class="back-to-list">
                 <a th:href="@{/board/freeBoard}">목록</a>
             </div>
+
         </div>
     </div>
 
+    <script th:inline="javascript">
+
+        /* 댓글 작성 이벤트 처리 */
+        if(document.getElementById("registReply")) {
+
+            const $registReply = document.getElementById("registReply");
+            const $replyBody = document.getElementById("replyBody");
+
+            $registReply.onclick = function() {
+
+                if($replyBody.value.trim() == ""){
+                    alert('댓글을 입력해 주십시오');
+                    return ;
+                }
+
+                let boardNo = document.getElementById("boardNo").value;
+                let replyBody = document.getElementById("replyBody").value;
+
+                console.log('BoardNo : ', boardNo);
+                console.log('replyBody : ', replyBody);
+
+                fetch("/board/registReply", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    },
+                    body: JSON.stringify(
+                        {
+                            writerMemberNo: '[[${#authentication.getPrincipal().getMemberNo()}]]',
+                            refBoardNo: boardNo,
+                            body: replyBody
+                        }
+                    )
+                })
+                    .then(result => result.json())
+                    .then(data => {
+                        const $table = $("#replyResult");
+                        $table.html("");
+
+                        data.map((reply) => {
+                            $div = $("<div>");
+                            $bodyTd = $("<div>").text(reply.body);
+                            $writerTd = $("<div>").text(reply.writer.memName);
+                            $createDateTd = $("<div>").text(reply.createdDate);
+
+                            // if(reply.writerMemberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
+                            //     $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
+                            // } else {
+                            //     $removeTd = $("<td>");
+                            // }
+
+                            $div.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");
+                            $div.append($bodyTd);
+                            $div.append($writerTd);
+                            $div.append($createDateTd);
+                            $div.append($removeTd);
+
+                            $table.append($div);
+                        });
+
+                    })
+                    .catch((error) => error.text().then((res) => alert(res)));
+            }
+        }
+
+
+
+        /* 댓글 삭제 이벤트 처리 함수*/
+        function removeReply(replyNo){
+
+            let boardNo = document.getElementById("boardNo").value;
+
+            fetch("/board/removeReply", {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                body: JSON.stringify(
+                    {
+                        refBoardNo:boardNo,
+                        no:replyNo
+                    }
+                )
+            })
+                .then(result => result.json())
+                .then(data => {
+                    console.table(data);
+
+                    const $table = $("#replyResult");
+                    $table.html("");
+
+                    data.map((reply) => {
+                        $tr = $("<tr>");
+                        $bodyTd = $("<td>").text(reply.body);
+                        $writerTd = $("<td>").text(reply.writer.memName);
+                        $createDateTd = $("<td>").text(reply.createdDate);
+                        if(reply.writer.memberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
+                            $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
+                        } else {
+                            $removeTd = $("<td>");
+                        }
+
+                        $tr.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");
+                        $tr.append($bodyTd);
+                        $tr.append($writerTd);
+                        $tr.append($createDateTd);
+                        $tr.append($removeTd);
+
+                        $table.append($tr);
+
+                    })
+
+
+                })
+                .catch((error) => error.text().then((res) => alert(res)));
+        }
+    </script>
 </th:block>
 </html>

@@ -20,7 +20,7 @@
     </resultMap>
 
     <resultMap type="MemberDTO" id="memberResultMap">
-        <id property="memberNo" column="MEMBER_NO"/>
+        <id property="memCode" column="MEMBER_NO"/>
         <result property="memberId" column="MEMBER_ID"/>
         <result property="memberPwd" column="MEMBER_PWD"/>
         <result property="memName" column="NICKNAME"/>
