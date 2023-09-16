@@ -51,7 +51,7 @@
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 200) {
                     $('#toTop').fadeIn();
-                    $('#toTop').css('left', $('#sidebar').offset().left);
+                    // $('#toTop').css('left', $('#sidebar').offset().left);
                 } else {
                     $('#toTop').fadeOut();
                 }
@@ -771,7 +771,7 @@
         <a th:href="@{/regist/regist}">회원가입</a>
     </div>
     <div class="myPageButton">
-        <a th:href="@{/myPage/mypage}"><img src="../images/header/myPage.png"></a>
+        <a th:href="@{/myPage/mypage}"><img th:src="@{/images/myPage.png}" /></a>
     </div>
 
     <!--  검색 버튼  -->
