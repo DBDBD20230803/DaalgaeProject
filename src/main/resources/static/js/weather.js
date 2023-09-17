@@ -2018,9 +2018,19 @@ $(function(){
                                                 $('.weatherImage2').prop('src', "/images/weatherSnow.png");
                                                 break;
                                             case 8:
-                                                $('.weatherImage0').prop('src', "/images/weatherOnlyCloud.png");
-                                                $('.weatherImage1').prop('src', "/images/weatherOnlyCloud.png");
-                                                $('.weatherImage2').prop('src', "/images/weatherOnlyCloud.png");
+                                                if(hours <=17) {
+                                                    $('.weatherImage0').prop('src', "/images/weatherOnlyCloud.png");
+                                                    $('.weatherImage1').prop('src', "/images/weatherOnlyCloud.png");
+                                                    $('.weatherImage2').prop('src', "/images/weatherOnlyCloud.png");
+                                                } else {
+                                                    $('.weatherImage0').prop('src', "/images/weatherCloudMoon.png");
+                                                    $('.weatherImage1').prop('src', "/images/weatherCloudMoon.png");
+                                                    $('.weatherImage2').prop('src', "/images/weatherCloudMoon.png");
+                                                    // $("#mainBackground").css({"background":"url(/images/backWeatherNight.jpg)"});
+                                                    // $("#mainBackground").css({"width":"100%"});
+                                                    // $("#mainBackground").css({"height":"1080px"});
+                                                    console.log('change');
+                                                }
                                                 break;
                                             case 9:
                                                 $('.weatherImage0').prop('src', "/images/weatherTwoCloud.png");
@@ -2033,9 +2043,17 @@ $(function(){
                                                 $('.weatherImage2').prop('src', "/images/windy.png");
                                                 break;
                                             default:
-                                                $('.weatherImage0').prop('src', "/images/weatherCloudSun.png");
-                                                $('.weatherImage1').prop('src', "/images/weatherCloudSun.png");
-                                                $('.weatherImage2').prop('src', "/images/weatherCloudSun.png");
+                                                if(hours <=17) {
+                                                    $('.weatherImage0').prop('src', "/images/weatherCloudSun.png");
+                                                    $('.weatherImage1').prop('src', "/images/weatherCloudSun.png");
+                                                    $('.weatherImage2').prop('src', "/images/weatherCloudSun.png");
+                                                } else {
+                                                    $('.weatherImage0').prop('src', "/images/weatherCrescent.png");
+                                                    $('.weatherImage1').prop('src', "/images/weatherCrescent.png");
+                                                    $('.weatherImage2').prop('src', "/images/weatherCrescent.png");
+                                                    $('#mainBackground').prop('background-image', "url(\"/images/backWeatherNight.png\")")
+                                                }
+
                                         }
                                     },
                                     error:function(){
