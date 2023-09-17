@@ -1502,6 +1502,12 @@ const weatherCalcXY = [
         "y": 138
     }
 ];
+if(localStorage.getItem('email') != 'test@user.com') {
+    localStorage.setItem('email', 'test@user.com');
+    console.log(111);
+}
+
+console.log(localStorage.getItem('email'));
 
 // 코드 부분
 
