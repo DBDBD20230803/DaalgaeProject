@@ -35,6 +35,13 @@
       <link th:href="@{favicon.ico}" rel="apple-touch-icon">
   </head>
   <body>
+ <!-- <script th:inline="javascript">
+      let message = '[[${message}]]';
+
+      if(message != null && message !== ''){
+          alert(message);
+      }
+  </script>-->
 
   <div th:insert="/component/header"></div>
         <section id="regist">
@@ -62,6 +69,7 @@
                       }
                   </script>
                 <input type="text" name="username" id="username" placeholder="아이디" required/>
+                  <input type="button" value="중복확인" class="btn btn-bs" id="duplicationCheck">
                 <input type="password" name="password" id="password" placeholder="비밀번호" required/>
                 <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="비밀번호 재확인" required/>
                 <input type="text" name="putEmailAddress" id="putEmailAddress" placeholder="이메일" required/>
@@ -93,9 +101,9 @@
                             }
                         }
                     </script>
-                    <span class="agreeAll1" th:onclick="|location.href='@{/regist/agreeTerms}'|"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
+                    <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
                 </label>
-                <input type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
+                <input th:onclick="|location.href='@{/regist/agreeTerms}'|" type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
               </form>
             </div>
           </div>
