@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class KakaoPayController {
 
-    @Autowired
-    private KakaoApproveResponse result;
+/*    @Autowired
+    private KakaoApproveResponse result;*/
 
     @Autowired
     private final KakaoPayService kakaoPayService;
@@ -42,7 +42,7 @@ public class KakaoPayController {
         model.addAttribute("totalAmount", totalAmount);
 
 
-        System.out.println(result);
+/*        System.out.println(result);*/
         return "redirect:" + kakaoPayService
                 .kakaoPayReady(itemName, quantity, totalAmount)
                 .getNext_redirect_pc_url();

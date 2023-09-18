@@ -1,40 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/registLayout.html}">
   <head>
     <meta charset="utf-8">
     <title>회원가입</title>
-
-
-    <!--meta-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-      
-      <!--bootstrap-->
-      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-      
-
-      <!--css-->
-      <link rel="stylesheet" th:href="@{/css/index.css}">
-      <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-      <link rel="stylesheet" th:href="@{/css/regist.css}">
-      
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-      <!--js-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-      
-    <!--favicon--->
-      <link th:href="@{favicon.ico}" rel="icon">
-      <link th:href="@{favicon.ico}" rel="apple-touch-icon">
   </head>
-  <body>
+
+  <th:block layout:fragment="content">
  <!-- <script th:inline="javascript">
       let message = '[[${message}]]';
 
@@ -43,7 +17,7 @@
       }
   </script>-->
 
-  <div th:insert="/component/header"></div>
+
         <section id="regist">
           <div class="registWrap container">
 
@@ -79,7 +53,7 @@
                     <input type="date" name="birth" class="birth" value="yyyy-MM-dd" required/>
                 </label>
                 <div class="addressBox">
-                    <input type="text" name="address1" id="address1" class="address" placeholder="주소지"/>
+                    <input type="text" name="address1" id="address1" class="address" placeholder="주소지" required/>
                     <button class="searchAddress" id="searchAddress">주소 검색</button>
                 </div>
                   <div class="addressBox">
@@ -103,12 +77,12 @@
                     </script>
                     <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
                 </label>
-                <input th:onclick="|location.href='@{/regist/agreeTerms}'|" type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
+                <input th:onclick="|location.href='@{/auth/signup}'|" type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
               </form>
             </div>
           </div>
         </section>
-  <div th:insert="/component/footer"></div>
+
 
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script th:inline="javascript">
@@ -126,7 +100,9 @@
     }
 
   </script>
-  </body>
+  </th:block>
+
+</html>
 
 
  

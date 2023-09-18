@@ -79,7 +79,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public boolean selectMemberById(String memId) {
-        String result = memberDAO.selectMemberId(memId);
+        String result = memberDAO.selectMemberById(memId);
 
         return result != null? true : false;
     }

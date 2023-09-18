@@ -25,4 +25,12 @@
                 ,#{ memAdresDetail }
                )
     </insert>
+
+    <select id="selectMemberById" resultType="string">
+        SELECT
+            A.MEMBER_ID
+        FROM MEM_INFO A
+        WHERE A.MEMBER_STATUS = 'Y'
+        AND A.MEMBER_ID = #{ memId }
+    </select>
 </mapper>
