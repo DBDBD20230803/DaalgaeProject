@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"
-xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-widtg, initial-scale=1.0">
-    <title>결제성공페이지</title>
+    <title>Title</title>
 </head>
 <body>
-<h1>결제성공</h1>
-<p>pg_token : <span th:text="${pgToken}"></span></p>
-<p>ID : <span th:text="${tid}"></span></p>
+<h1>결제 완료</h1>
+
+<form action="" method="get">
+<h1 th:text="${kakaoApprove.tid}"></h1>
+    <input type="submit" value="q`bb">
+</form>
+
 </body>
 </html>

@@ -9,9 +9,10 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class KakaoReadyResponse {
+public class KakaoReady {
  // 결제 요청시 카카오에게 받음
     private String tid;
     private String next_redirect_pc_url;
     private String created_at;
+
 }
