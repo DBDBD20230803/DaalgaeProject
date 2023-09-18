@@ -1733,8 +1733,6 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
         }
     });
 } else {
-    localStorage.setItem('savedChoDanHours', choDanHours);
-    localStorage.setItem('savedDanHours', DanHours);
     // 주소와 날씨 좌표
     let addressLevel1;
     let addressLevel2;
@@ -2206,6 +2204,8 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                     }
 
                                             }
+                                            localStorage.setItem('savedChoDanHours', choDanHours);
+                                            localStorage.setItem('savedDanHours', DanHours);
                                         },
                                         error:function(){
                                             // console.log("통신에러3");
