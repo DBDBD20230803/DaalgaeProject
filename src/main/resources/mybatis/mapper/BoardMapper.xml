@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.daalgae.thymeleafspringboot.board.dao.BoardMapper">
+<mapper namespace="com.daalgae.daalgaeproject.board.dao.BoardMapper">
 
     <resultMap type="BoardDTO" id="generalBoardResultMap">
         <id property="no" column="BOARD_NO"/>
@@ -20,10 +20,10 @@
     </resultMap>
 
     <resultMap type="MemberDTO" id="memberResultMap">
-        <id property="memberNo" column="MEMBER_NO"/>
+        <id property="memCode" column="MEMBER_NO"/>
         <result property="memberId" column="MEMBER_ID"/>
         <result property="memberPwd" column="MEMBER_PWD"/>
-        <result property="nickname" column="NICKNAME"/>
+        <result property="memName" column="NICKNAME"/>
         <result property="phone" column="PHONE"/>
         <result property="email" column="EMAIL"/>
         <result property="address" column="ADDRESS"/>

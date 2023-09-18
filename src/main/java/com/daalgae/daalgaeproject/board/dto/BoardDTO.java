@@ -2,6 +2,8 @@ package com.daalgae.daalgaeproject.board.dto;
 
 // import com.daalgae.thymeleafspringboot.member.dto.MemberDTO;
 
+import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class BoardDTO {
     private String title;
     private String body;
     private Long writerMemberNo;
-    //private MemberDTO writer;		            // MemberTable과 join하는 경우 1:1 조인이 될 것이기 때문에 MemberDTO 타입으로 생성
+    private MemberDTO writer;		            // MemberTable과 join하는 경우 1:1 조인이 될 것이기 때문에 MemberDTO 타입으로 생성
     private int count;
     private Date createdDate;
     private Date modifiedDate;
@@ -89,7 +91,7 @@ public class BoardDTO {
         this.body = body;
     }
 
-    public Long getWriterMemberNo() {
+    public Long getWriterMemberNo(Long writerMemberNo) {
         return writerMemberNo;
     }
 
@@ -97,13 +99,13 @@ public class BoardDTO {
         this.writerMemberNo = writerMemberNo;
     }
 
-//    public MemberDTO getWriter() {
-//        return writer;
-//    }
-//
-//    public void setWriter(MemberDTO writer) {
-//        this.writer = writer;
-//    }
+    public MemberDTO getWriter() {
+        return writer;
+    }
+
+    public void setWriter(MemberDTO writer) {
+        this.writer = writer;
+    }
 
     public int getCount() {
         return count;
@@ -155,7 +157,7 @@ public class BoardDTO {
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
                 ", writerMemberNo=" + writerMemberNo +
-                //", writer=" + writer +
+                ", writer=" + writer +
                 ", count=" + count +
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +

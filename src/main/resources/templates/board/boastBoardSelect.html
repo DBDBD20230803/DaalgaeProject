@@ -38,21 +38,38 @@
                 </button>
             </div>
         </div>
+
         <div class="board-content-select-container">
             <div class="board-content-title">
-                    <h6 id="postNo">1</h6>
-                    <h6 id="postTitle">인생첫글</h6>
-                    <h6 id="postUser">daalgae</h6>
-                    <h6 id="postDate">2023-09-11</h6>
+                    <h6 id="postNo" th:text="${ thumbnail.no }"></h6>
+                    <h6 id="postTitle" th:text="${ thumbnail.title }"></h6>
+                    <h6 id="postUser" th:text="${ thumbnail.writer.memName }"></h6>
+                    <h6 id="postDate" th:text="${ thumbnail.createdDate }"></h6>
             </div>
             <div class="board-select-content">
                 <div>
-                    <h6>안녕하세요</h6>
-                    <img th:src="@{/images/board-announcement-button.png}" alt="">
-                    <h6>귀엽죠? ㅠㅠ</h6>
+                    <th:block th:if="${ thumbnail.attachmentList[0].thumbnailPath != null}">
+                        <img id="titleImg" width="500" height="300" th:src="@{|/thumbPath${thumbnail.attachmentList[0].getThumbnailPath()}|}"/>
+                        <a th:href="@{|/imagePath/${thumbnail.attachmentList[0].savedName}|}" 저장><span th:text="${ thumbnail.attachmentList[0].originalName }"></span></a>
+                    </th:block>
+                    <th:block th:if="${ thumbnail.attachmentList.size() >= 2 }">
+                        <img id="detailImg1" class="detailImg" width="250" height="180" th:src="@{|/thumbPath${thumbnail.attachmentList[1].getThumbnailPath()}|}"/><br>
+                        <a th:href="@{|/imagePath/${thumbnail.attachmentList[1].savedName}|}" 저장><span th:text="${ thumbnail.attachmentList[1].originalName }"></span></a>
+                    </th:block>
+                    <th:block th:if="${ thumbnail.attachmentList.size() >= 3 }">
+                        <img id="detailImg2" class="detailImg" width="250" height="180" th:src="@{|/thumbPath${thumbnail.attachmentList[2].getThumbnailPath()}|}"/><br>
+                        <a th:href="@{|/imagePath/${thumbnail.attachmentList[2].savedName}|}" 저장><span th:text="${ thumbnail.attachmentList[2].originalName }"></span></a>
+                    </th:block>
+                    <th:block th:if="${ thumbnail.attachmentList.size() >= 4 }">
+                        <img id="detailImg3" class="detailImg" width="250" height="180" th:src="@{|/thumbPath${thumbnail.attachmentList[3].getThumbnailPath()}|}"/><br>
+                        <a th:href="@{|/imagePath/${thumbnail.attachmentList[3].savedName}|}" 저장><span th:text="${ thumbnail.attachmentList[3].originalName }"></span></a>
+                    </th:block>
+                    <h6 id="contentArea" th:text="${ thumbnail.body }"></h6>
                 </div>
             </div>
         </div>
+
+
         <div class="board-select-footer">
             <div class="comment-section-title">
                 <img th:src="@{/images/comment-icon.png}" alt="dog-paw">
@@ -82,10 +99,12 @@
                     <button type="submit">댓글달기</button>
                 </div>
             </div>
-            <div class="back-to-list">
-                <a th:href="@{/board/boastBoard}">목록</a>
-            </div>
         </div>
+
+        <div class="back-to-list">
+            <a th:href="@{/board/boastBoard}">목록</a>
+        </div>
+
     </div>
 </th:block>
 </html>
