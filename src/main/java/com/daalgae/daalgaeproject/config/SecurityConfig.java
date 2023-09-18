@@ -1,7 +1,7 @@
-/*
+
 package com.daalgae.daalgaeproject.config;
 
-import com.daalgae.daalgaeproject.login.model.service.LoginService;
+import com.daalgae.daalgaeproject.member.model.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,19 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-*/
 
-/*
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private LoginService loginService;
-
-    @Autowired
-    public SecurityConfig(LoginService loginService){
-        this.loginService = loginService;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -64,14 +58,6 @@ public class SecurityConfig {
                 .and().build();
     }
 
-    @Bean
-    public AuthenticationManager authManager(HttpSecurity http) throws Exception{
 
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(loginService)
-                .passwordEncoder(passwordEncoder())
-                .and()
-                .build();
-    }
 }
-*/
+

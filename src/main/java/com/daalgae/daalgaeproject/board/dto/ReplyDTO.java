@@ -2,6 +2,8 @@ package com.daalgae.daalgaeproject.board.dto;
 
 //import com.daalgae.thymeleafspringboot.member.dto.MemberDTO;
 
+import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
+
 import java.sql.Date;
 
 public class ReplyDTO {
@@ -9,7 +11,7 @@ public class ReplyDTO {
     private Long refBoardNo;
     private String body;
     private Long writerMemberNo;
-    //private MemberDTO writer;		            // MemberTable과 join하는 경우 1:1 조인이 될 것이기 때문에 MemberDTO 타입으로 생성
+    private MemberDTO writer;		            // MemberTable과 join하는 경우 1:1 조인이 될 것이기 때문에 MemberDTO 타입으로 생성
     private String status;
 
     private Date createdDate;
@@ -61,13 +63,13 @@ public class ReplyDTO {
         this.writerMemberNo = writerMemberNo;
     }
 
-//    public MemberDTO getWriter() {
-//        return writer;
-//    }
-//
-//    public void setWriter(MemberDTO writer) {
-//        this.writer = writer;
-//    }
+    public MemberDTO getWriter() {
+        return writer;
+    }
+
+    public void setWriter(MemberDTO writer) {
+        this.writer = writer;
+    }
 
     public String getStatus() {
         return status;
@@ -92,7 +94,7 @@ public class ReplyDTO {
                 ", refBoardNo=" + refBoardNo +
                 ", body='" + body + '\'' +
                 ", writerMemberNo=" + writerMemberNo +
-                //", writer=" + writer +
+                ", writer=" + writer +
                 ", status='" + status + '\'' +
                 ", createdDate=" + createdDate +
                 '}';

@@ -39,22 +39,27 @@
             </div>
         </div>
         <div class="board-content-select-container">
-            <div class="board-content-title">
-                    <h5 id="postNo">1</h5>
-                    <h5 id="postTitle">인생첫공지</h5>
-                    <h5 id="postUser">daalgae</h5>
-                    <h5 id="postDate">2023-09-11</h5>
+            <div class="board-content-title" th:each="board : ${ board }">
+                <h6 class="postNo" th:text="${board.no}"></h6>
+                <h6 class="postCategory" th:text="${board.category.name}"></h6>
+                <h6 class="postTitle" th:text="${board.title}"></h6>
+                <h6 class="postUser" th:text="${board.writer.memName}"></h6>
+                <h6 class="postCount" th:text="${board.count}"></h6>
+                <h6 class="postDate" th:text="${board.createdDate}"></h6>
             </div>
             <div class="board-select-content">
-                <div>
-                    <h5>안녕하세요</h5>
-                    <img th:src="@{/images/board-dangdanginfotoon-button.png}" alt="">
-                    <h5>귀여운 강아지를 자주 봅시다.</h5>
-                </div>
+                <div class="board-textarea">
+                    <textarea
+                            name="body"
+                            cols="120"
+                            rows="15"
+                            readonly
+                            th:text="${board.body}"
+                    >
+                    </textarea>
             </div>
         </div>
         <div class="board-select-footer">
-            <div class="back-to-list">
             <div class="back-to-list">
                 <a th:href="@{/board/announcementBoard}">목록</a>
             </div>
