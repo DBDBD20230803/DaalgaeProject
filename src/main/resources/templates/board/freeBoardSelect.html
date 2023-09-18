@@ -167,11 +167,11 @@
                             $writerTd = $("<div>").text(reply.writer.memName);
                             $createDateTd = $("<div>").text(reply.createdDate);
 
-                            // if(reply.writerMemberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
-                            //     $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
-                            // } else {
-                            //     $removeTd = $("<td>");
-                            // }
+                            if(reply.writerMemberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
+                                $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
+                            } else {
+                                $removeTd = $("<td>");
+                            }
 
                             $div.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");
                             $div.append($bodyTd);
@@ -186,7 +186,6 @@
                     .catch((error) => error.text().then((res) => alert(res)));
             }
         }
-
 
 
         /* 댓글 삭제 이벤트 처리 함수*/

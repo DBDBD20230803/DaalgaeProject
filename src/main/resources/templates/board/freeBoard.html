@@ -16,31 +16,40 @@
 
     <div class="board-container container">
         <div class="board-searchBar">
+            <form id="searchForm"
+                  th:action="@{/board/freeBoard}"
+                  method="get"
+                  style="display: inline-block"
+            >
             <div class="search-buttons">
-                <div class="head-title-category">
-                    <select name="head-title-category" id="head-title-category">
-                        <option value="말머리" selected>말머리</option>
-                        <option value="용품">용품</option>
-                        <option value="먹거리">먹거리</option>
-                        <option value="일상">일상</option>
-                    </select>
-                </div>
+<!--                <div class="head-title-category">-->
+<!--                    <select name="head-title-category" id="head-title-category">-->
+<!--                        <option value="" selected>말머리</option>-->
+<!--                        <option value="1">용품</option>-->
+<!--                        <option value="2">먹거리</option>-->
+<!--                        <option value="3">일상</option>-->
+<!--                         script 넣을때 카테고리 코드 정해야 이걸 쓸 수 있을듯-->
+<!--                    </select>-->
+<!--                </div>-->
                 <div class="search-category">
-                    <select name="search-category" id="search-category">
-                        <option value="제목">제목</option>
-                        <option value="제목내용">제목 + 내용</option>
-                        <option value="작성자">작성자</option>
+                    <input type="hidden" name="currentPage" value="1">
+                    <select id="searchCondition" name="searchCondition">
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                        <option value="writer">작성자</option>
                     </select>
                 </div>
                 <div class="search-by-text">
                     <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
+                    <input type="text" name="searchValue" id="searchValue">
                 </div>
                 <div class="submit-button">
                     <button type="submit" id="searchButton">검색</button>
                 </div>
             </div>
+            </form>
         </div>
+
         <div class="board-list-container">
             <div class="board-postCategory">
                 <h5 class="postNo">번호</h5>
@@ -51,6 +60,7 @@
                 <h5 class="postDate">등록일</h5>
             </div>
         </div>
+
         <div class="postList" th:each="board : ${ boardList }">
                     <h6 class="testPost-postNo" th:text="${board.no}"></h6>
                     <h6 class="testPost-postCategory" th:text="${board.category.name}"></h6>
@@ -108,6 +118,7 @@
             </button>
         </div>
     </div>
+
     <script th:inline="javascript">
 
         // let message = '[[${message}]]';
@@ -136,5 +147,6 @@
             }
         }
     </script>
+
 </th:block>
 </html>

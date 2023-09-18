@@ -78,7 +78,35 @@ public class BoardController {
     }
 
     @GetMapping("/announcementBoard")
-    public ModelAndView announcementBoardMain(ModelAndView mv) {
+    public ModelAndView announcementBoardMain(HttpServletRequest request
+                                            , @RequestParam(required = false) String searchCondition
+                                            , @RequestParam(required = false) String searchValue
+                                            , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
+                                            , ModelAndView mv) {
+
+        Map<String, String> searchMap = new HashMap<>();
+        searchMap.put("searchCondition", searchCondition);
+        searchMap.put("searchValue", searchValue);
+
+        int totalCount = boardServiceImpl.selectTotalCount(searchMap);
+
+        int limit = 10;
+
+        int buttonAmount = 5;
+
+        SelectCriteria selectCriteria = null;
+
+        if(searchCondition != null && !"".equals(searchCondition)) {
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
+        } else {
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
+        }
+
+        List<BoardDTO> boardList = boardServiceImpl.selectBoardList(selectCriteria);
+
+        mv.addObject("boardList", boardList);
+        mv.addObject("selectCriteria", selectCriteria);
+
         mv.setViewName("board/announcementBoard");
         return mv;
     }

@@ -59,11 +59,13 @@ public class BoardFreeController {
     @GetMapping("/freeBoardWrite")
     public ModelAndView writeFree(ModelAndView mv) {
         mv.setViewName("board/freeBoardWrite");
-        return mv; }
+        return mv;
+    }
 
     @GetMapping("/freeBoardModify")
     public ModelAndView modifyFree(ModelAndView mv) {
         mv.setViewName("board/freeBoardModify");
-        return mv; }
+        return mv;
+    }
 
 }
