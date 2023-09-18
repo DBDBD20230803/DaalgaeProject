@@ -5,8 +5,11 @@
 }
 
 #mainBackground {
-    position: relative;
+    position: absolute;
+    width: 100%;
+    height: 1080px;
     background-image: url("/images/mainPageBackground.png");
+    z-index: -100;
 }
 
 @media (min-width: 1108px) {
@@ -143,7 +146,7 @@
 #weatherBox0 .weatherTemp0 {
     font-size: 25px;
     font-weight: 300;
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 #weatherBox0 .weatherDog0 {
@@ -156,15 +159,15 @@
 
 }
 
-#weatherBox0 .weatherSelectButton0 {
-    background-image: url("/images/weatherSelectButton.png");
-    position: relative;
-    margin-left: 62px;
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    background-size: contain;
-}
+/*#weatherBox0 .weatherSelectButton0 {*/
+/*    background-image: url("/images/weatherSelectButton.png");*/
+/*    position: relative;*/
+/*    margin-left: 62px;*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    background-color: transparent;*/
+/*    background-size: contain;*/
+/*}*/
 
 .weatherImage1 {
     position: absolute;
@@ -197,7 +200,7 @@
 #weatherBox1 .weatherTemp1 {
     font-size: 19px;
     font-weight: 300;
-    margin-left: 75px;
+    margin-left: 40px;
 }
 
 #weatherBox1 .weatherDog1 {
@@ -210,15 +213,15 @@
     background-size: contain;
 }
 
-#weatherBox1 .weatherSelectButton1 {
-    background-image: url("/images/weatherSelectButton.png");
-    position: relative;
-    margin-left: 62px;
-    width: 23px;
-    height: 23px;
-    background-color: transparent;
-    background-size: contain;
-}
+/*#weatherBox1 .weatherSelectButton1 {*/
+/*    background-image: url("/images/weatherSelectButton.png");*/
+/*    position: relative;*/
+/*    margin-left: 62px;*/
+/*    width: 23px;*/
+/*    height: 23px;*/
+/*    background-color: transparent;*/
+/*    background-size: contain;*/
+/*}*/
 
 /* #weatherBox2 */
 
@@ -253,7 +256,7 @@
 #weatherBox2 .weatherTemp2 {
     font-size: 12px;
     font-weight: 300;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 #weatherBox2 .weatherDog2 {
@@ -266,15 +269,15 @@
     background-size: contain;
 }
 
-#weatherBox2 .weatherSelectButton2 {
-    background-image: url("/images/weatherSelectButton.png");
-    position: relative;
-    margin-left: 46px;
-    width: 15px;
-    height: 15px;
-    background-color: transparent;
-    background-size: contain;
-}
+/*#weatherBox2 .weatherSelectButton2 {*/
+/*    background-image: url("/images/weatherSelectButton.png");*/
+/*    position: relative;*/
+/*    margin-left: 46px;*/
+/*    width: 15px;*/
+/*    height: 15px;*/
+/*    background-color: transparent;*/
+/*    background-size: contain;*/
+/*}*/
 
 /* Inform */
 
@@ -751,9 +754,6 @@
     color: #222;
 }
 
-#mainBackground {
-    position: relative;
-}
 button{
     background: inherit;
     border:none;
