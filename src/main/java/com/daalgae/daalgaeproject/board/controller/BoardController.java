@@ -65,12 +65,6 @@ public class BoardController {
         return mv;
     }
 
-    @GetMapping("/boastBoard")
-    public ModelAndView boastBoardMain(ModelAndView mv) {
-        mv.setViewName("board/boastBoard");
-        return mv;
-    }
-
     @GetMapping("/abandonedBoard")
     public ModelAndView abandonedBoardMain(ModelAndView mv) {
         mv.setViewName("board/abandonedBoard");

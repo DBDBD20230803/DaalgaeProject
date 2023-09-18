@@ -34,26 +34,49 @@
             </div>
         </div>
         <div class="board-content-container">
-            <a th:href="@{/board/boastBoardSelect}">
-                <div class="content">
-                    <div class="content-img">
-                        <img th:src="@{/images/petiket3.png}" alt="DOG" style="width: 100%">
+<!--            <a th:href="@{/board/boastBoardSelect}">-->
+<!--                <div class="content">-->
+<!--                    <div class="content-img">-->
+<!--                        <img th:src="@{/images/petiket3.png}" alt="DOG" style="width: 100%">-->
+<!--                    </div>-->
+<!--                    <div class="content-detail">-->
+<!--                        <div class="b-c-title">-->
+<!--                            <h5>인생첫글</h5>-->
+<!--                        </div>-->
+<!--                        <div class="b-c-user">-->
+<!--                            <img th:src="@{/images/writer.png}" alt="writer">-->
+<!--                            <h6>작성자</h6>-->
+<!--                        </div>-->
+<!--                        <div class="b-c-date">-->
+<!--                            <img th:src="@{/images/date.png}" alt="date">-->
+<!--                            <h6>2023-09-11</h6>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+
+                <th:block th:each="thumbnail : ${ thumbnailList }">
+                    <div class="content" id="thumbnailArea">
+                        <div class="content-img">
+                            <label th:text="${ thumbnail.no }" style="display: none"></label>
+                            <img th:src="@{|/thumbPath${thumbnail.attachmentList[0].getThumbnailPath()}|}" width="300px" height="200px">
+                        </div>
+                        <div class="content-detail">
+                            <div class="b-c-title">
+                                <span th:text="${ thumbnail.title }"></span>
+                            </div>
+                            <div class="b-c-user">
+                                <img th:src="@{/images/writer.png}" alt="writer">
+                                <span th:text="|작성자 : ${ thumbnail.writer.memName }|"></span>
+                            </div>
+                            <div class="b-c-date">
+                                <img th:src="@{/images/date.png}" alt="date">
+                                <span th:text="|작성일자 : ${ thumbnail.createdDate }|"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="content-detail">
-                        <div class="b-c-title">
-                            <h5>인생첫글</h5>
-                        </div>
-                        <div class="b-c-user">
-                            <img th:src="@{/images/writer.png}" alt="writer">
-                            <h6>작성자</h6>
-                        </div>
-                        <div class="b-c-date">
-                            <img th:src="@{/images/date.png}" alt="date">
-                            <h6>2023-09-11</h6>
-                        </div>
-                    </div>
-                </div>
-            </a>
+                </th:block>
+
         </div>
         <div class="board-write">
             <a th:href="@{/board/boastBoardWrite}" id="board-write-button" alt="글쓰기">
@@ -76,5 +99,16 @@
             </button>
         </div>
     </div>
+
+    <script th:inline="javascript">
+
+        $("#thumbnailArea > div").click(function(){
+            const no = $(this).find("label").text();
+            console.log(no);
+            location.href = "/board/boastBoardSelect?no=" + no;
+        });
+
+    </script>
+
 </th:block>
 </html>
