@@ -120,10 +120,9 @@ xmlns:th="http://www.thymeleaf.org">
         <div class="webtoonBox5">
 
             <button id="button2" class="webtoonText9">구매하기</button>
-            <button
-                    id="payButton1" class="webtoonText8" onclick="location.href='/payment/payments'">충전하기
-            </button>
-<!--            <button id="payButton1" class="webtoonText8">충전하기</button>-->
+            <form action="/payment/payments" method="post">
+            <button id="payButton1" class="webtoonText8">충전하기</button>
+            </form>
         </div>
     </div>
 

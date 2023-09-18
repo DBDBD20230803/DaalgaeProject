@@ -31,5 +31,7 @@ document.getElementById("kakaoPay1").addEventListener("click", function () {
         });*!/
 
 });*/
-
+function  goPay() {
+   window.open("/payment/ready", "_blank");
+}
 

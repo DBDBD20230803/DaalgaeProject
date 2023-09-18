@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widtg, initial-scale=1.0">
     <title>결제성공페이지</title>
 </head>
 <body>
 <h1>결제성공</h1>
+<p>pg_token : <span th:text="${pgToken}"></span></p>
+<p>ID : <span th:text="${tid}"></span></p>
 </body>
 </html>
