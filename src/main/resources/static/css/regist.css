@@ -29,7 +29,7 @@ input:focus{
     text-align: left;
 }
 
-#regist .registWrap .registContents .registForm label#realName{
+#regist .registWrap .registContents .registForm label#realNameId{
     display: flex;
     align-items: center;
     gap: 8px;
@@ -41,21 +41,21 @@ input:focus{
     display: none !important;
 }
 
-#realName:checked + #showCheckbox {
+#realName:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#realName #showCheckbox {
+#realName .showCheckbox {
     width: 18px;
     height: 18px; 
     background: url(../images/checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 
-#regist .registWrap .registContents .registForm label#realName span{
+#regist .registWrap .registContents .registForm label#realNameId span{
     font-size: 0.8em;
     color: #969696;
 }
@@ -90,7 +90,7 @@ input:focus{
     font-size: 0.9em;
 }
 
-#regist .registWrap .registContents .registForm label input#birth{
+#regist .registWrap .registContents .registForm label input.birth{
     width: 100%;
     border: none;
     border-radius: 2px;
@@ -121,7 +121,7 @@ input:focus{
     background: url(../images/name.png) no-repeat 13px center #DAECFF;
 }
 
-#regist .registWrap .registContents .registForm input#address{
+#regist .registWrap .registContents .registForm input.address{
     background: url(../images/address.png) no-repeat 13px center #DAECFF;
 }
 
@@ -162,7 +162,7 @@ input:focus{
     font-size: 0.9em;
 }
 
-#regist .registWrap .registContents .registForm #termsCheck{
+#regist .registWrap .registContents .registForm #termCheck{
     width: 100%;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
@@ -172,27 +172,27 @@ input:focus{
     cursor: pointer;
 }
 
-#termsCheck:checked + #showCheckbox {
+#termsCheck:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#showCheckbox {
+.showCheckbox {
     width: 18px;
     height: 18px; 
-    background: url(../images/checkbox_normal.png) no-repeat;
+    background: url(/images/checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 
 
-#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll1{
+#regist .registWrap .registContents .registForm label#termCheck span.agreeAll1{
     color: #555555;
 }
 
 
-#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll2{
+#regist .registWrap .registContents .registForm label#termCheck span.agreeAll2{
     font-size: 0.8em;
     color: #639DD7;
 
@@ -255,14 +255,14 @@ input:focus{
     display: none !important;
 }
 
-#agreeAll:checked + #showCheckbox {
+#Allagree:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#agreeAll #showCheckbox {
+#Allagree .showCheckbox {
     width: 18px;
     height: 18px;
     background: url(../images/checkbox_normal.png) no-repeat;
@@ -298,21 +298,21 @@ input:focus{
 }
 
 
-#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termsCheck{
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termCheck{
     width: 100%;
     border-radius: 2px;
     display: flex;
     cursor: pointer;
 }
 
-#termsCheck:checked + #showCheckbox {
+#termCheck:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#showCheckbox {
+.showCheckbox {
     width: 18px;
     height: 18px;
     background: url(../images/checkbox_normal.png) no-repeat;
@@ -320,17 +320,17 @@ input:focus{
 }
 
 
-#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span.agreeAll1{
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termCheck span.agreeAll1{
     color: #555555;
 }
 
 
-#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span.agreeAll2{
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termCheck span.agreeAll2{
     font-size: 0.8em;
     color: #639DD7;
 }
 
-#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termsCheck span a{
+#agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap label#termCheck span a{
     font-size: 0.7em;
     color: #9c9c9c;
     font-weight: 300;
@@ -385,14 +385,14 @@ input:focus{
     width: 100%;
 }
 
-#privacy:checked + #showCheckbox {
+#privacyUse:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#privacy #showCheckbox {
+#privacyUse .showCheckbox {
     width: 18px;
     height: 18px;
     background: url(../images/checkbox_normal.png) no-repeat;
@@ -814,7 +814,7 @@ input:focus{
     text-align: left;
 }
 
-#regist .registWrap .registContents .registForm label#realName{
+#regist .registWrap .registContents .registForm label#realNameId{
     display: flex;
     align-items: center;
     gap: 8px;
@@ -826,21 +826,21 @@ input:focus{
     display: none !important;
 }
 
-#realName:checked + #showCheckbox {
-    background: url(../images/checkbox_checked.png) no-repeat;
+#realName:checked + .showCheckbox {
+    background: url(/images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#realName #showCheckbox {
+#realName .showCheckbox {
     width: 18px;
     height: 18px;
-    background: url(../images/checkbox_normal.png) no-repeat;
+    background: url(/images/checkbox_normal.png) no-repeat;
     background-size: contain;
 }
 
-#regist .registWrap .registContents .registForm label#realName span{
+#regist .registWrap .registContents .registForm label#realNameId span{
     font-size: 0.8em;
     color: #969696;
 }
@@ -908,7 +908,7 @@ input:focus{
     background: url(../images/name.png) no-repeat 13px center #DAECFF;
 }
 
-#regist .registWrap .registContents .registForm input#address{
+#regist .registWrap .registContents .registForm input.address{
     background: url(../images/address.png) no-repeat 13px center #DAECFF;
 }
 
@@ -953,7 +953,7 @@ input:focus{
     font-size: 0.9em;
 }
 
-#regist .registWrap .registContents .registForm #termsCheck{
+#regist .registWrap .registContents .registForm #termCheck{
     width: 100%;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
@@ -963,14 +963,14 @@ input:focus{
     cursor: pointer;
 }
 
-#termsCheck:checked + #showCheckbox {
+#termCheck:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;
     width: 18px;
     height: 18px;
     background-size: contain;
 }
 
-#showCheckbox {
+#termsCheck .showCheckbox {
     width: 18px;
     height: 18px;
     background: url(../images/checkbox_normal.png) no-repeat;
@@ -978,12 +978,12 @@ input:focus{
 }
 
 
-#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll1{
+#regist .registWrap .registContents .registForm label#termCheck span.agreeAll1{
     color: #555555;
 }
 
 
-#regist .registWrap .registContents .registForm label#termsCheck span.agreeAll2{
+#regist .registWrap .registContents .registForm label#termCheck span.agreeAll2{
     font-size: 0.8em;
     color: #639DD7;
 
@@ -1194,7 +1194,7 @@ input:focus{
         width: 30% !important;
     }
 
-    #regist .registWrap .registContents .registForm #termsCheck {
+    #regist .registWrap .registContents .registForm #termCheck {
         padding: 3% 6% !important;
     }
 
@@ -1228,7 +1228,7 @@ input:focus{
 @media screen and (max-width:375px) {
 
     /*agreeTerms*/
-    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termsCheck{
+    #agreeTerms .agreeTermsWrap .agreeTermsContents .agreeTermsForm .termsCheckWrap #termCheck{
         font-size: 0.9em !important;
         font-weight: 500 !important;
     }

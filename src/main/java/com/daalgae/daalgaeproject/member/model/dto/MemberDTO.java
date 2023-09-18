@@ -24,4 +24,5 @@ public class MemberDTO {
     private int memDogGum;
     private List<MemberRoleDTO> memberRoleList;
 
+
 }

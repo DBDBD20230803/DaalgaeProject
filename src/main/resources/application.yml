@@ -4,12 +4,31 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql.coffit.today:3306/daalgae
-    username: Hlkdt6
-    password: Hlkdt6
+    #url: jdbc:mysql://mysql.coffit.today:3306/daalgae
+    #username: Hlkdt6
+    #password: Hlkdt6
+
+    url: jdbc:mysql://localhost:3306/daalgaeSample
+    username : ohgiraffers
+    password : 1234sm
+
+    mail:
+      host: smtp.gmail.com
+      port: 465
+      username:
+      password:
+      properties:
+        mail:
+          smtp:
+            auth: true
+            timeout: 5000
+            starttle:
+              enable: true
+
 
 mybatis:
   mapper-locations: mappers/**/*.xml
+
 
 # ===== Test DBsource =====
 #spring:
