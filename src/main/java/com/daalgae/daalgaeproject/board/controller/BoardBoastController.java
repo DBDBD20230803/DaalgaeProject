@@ -42,7 +42,7 @@ public class BoardBoastController {
     @GetMapping("/boastBoardSelect")
     public String selectBoast(HttpServletRequest request, Model model) {
 
-        Long no = Long.valueOf(request.getParameter("no"));
+        int no = Integer.parseInt(request.getParameter("no"));
 
         BoardDTO thumbnailDetail = boardServiceImpl.selectThumbnailDetail(no);
 

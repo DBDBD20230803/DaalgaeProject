@@ -79,7 +79,9 @@ public class BoardController {
                                             , ModelAndView mv) {
 
         Map<String, String> searchMap = new HashMap<>();
+        searchCondition = "postSort";
         searchMap.put("searchCondition", searchCondition);
+        searchValue = "공지";
         searchMap.put("searchValue", searchValue);
 
         int totalCount = boardServiceImpl.selectTotalCount(searchMap);

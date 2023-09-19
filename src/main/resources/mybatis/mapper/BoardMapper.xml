@@ -25,7 +25,7 @@
         <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
         <result property="memDogGum" column="MEM_DOG_GUM"/>
         <result property="memRole" column="MEM_ROLE"/>
-        <result property="memStatus" column="MEM_STATUS"/>
+        <result property="memStatus" column="MEM_BAN_STATUS"/>
         <result property="mailAuth" column="MAIL_AUTH"/>
         <result property="mailKey" column="MAIL_KEY"/>
     </resultMap>
@@ -50,122 +50,102 @@
     <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
                 COUNT(*)
-          FROM  TBL_BOARD A
-        <if test="searchCondition == 'category'">
-            JOIN TBL_CATEGORY B ON(A.CATEGORY_CODE = B.CATEGORY_CODE)
-        </if>
-        <if test="searchCondition == 'writer'">
-            JOIN TBL_MEMBER B ON(A.BOARD_WRITER_MEMBER_NO = B.MEMBER_NO)
+          FROM  POST_INFO A
+        <if test="searchCondition == 'refMemCode'">
+            JOIN MEM_INFO B ON(A.MEM_CODE = B.MEM_CODE)
         </if>
         <where>
-            <if test="searchCondition == 'category'">
-                B.CATEGORY_NAME = #{ searchValue }
+            <if test="searchCondition == 'postSort'">
+                A.POST_SORT = #{ searchValue }
             </if>
-            <if test="searchCondition == 'writer'">
-                B.NICKNAME LIKE CONCAT('%', #{ searchValue }, '%')
+            <if test="searchCondition == 'refMemCode'">
+                B.MEM_NAME LIKE CONCAT('%', #{ searchValue }, '%')
             </if>
-            <if test="searchCondition == 'title'">
-                A.BOARD_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+            <if test="searchCondition == 'postTitle'">
+                A.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
             </if>
-            <if test="searchCondition == 'content'">
-                A.BOARD_BODY LIKE CONCAT('%', #{ searchValue }, '%')
+            <if test="searchCondition == 'postContent'">
+                A.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
             </if>
-            AND A.BOARD_STATUS = 'Y'
         </where>
     </select>
 
-    <select id="selectBoardList" resultMap="generalBoardResultMap">
+    <select id="selectBoardList" resultMap="boardResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardList() */
-                A.BOARD_NO
-                , A.BOARD_TYPE
-                , A.CATEGORY_CODE
-                , D.CATEGORY_NAME
-                , A.BOARD_TITLE
-                , A.BOARD_BODY
-                , A.BOARD_WRITER_MEMBER_NO
-                , E.NICKNAME
-                , A.BOARD_COUNT
-                , A.CREATED_DATE
-                , A.BOARD_STATUS
+                A.POST_CODE
+                , A.POST_SORT
+                , A.POST_TITLE
+                , A.POST_CONTENT
+                , A.POST_DATE
+                , E.MEM_ID
           FROM (
-                SELECT  B.BOARD_NO
-                        , B.BOARD_TYPE
-                        , B.CATEGORY_CODE
-                        , B.BOARD_TITLE
-                        , B.BOARD_BODY
-                        , B.BOARD_WRITER_MEMBER_NO
-                        , B.BOARD_COUNT
-                        , B.CREATED_DATE
-                        , B.BOARD_STATUS
-                  FROM  TBL_BOARD B
-                <if test="searchCondition == 'category'">
-                    JOIN TBL_CATEGORY C ON(B.CATEGORY_CODE = C.CATEGORY_CODE)
+                SELECT  B.POST_CODE
+                        , B.POST_SORT
+                        , B.POST_TITLE
+                        , B.POST_CONTENT
+                        , E.MEM_ID
+                        , B.POST_DATE
+                  FROM  POST_INFO B
+                <if test="searchCondition == 'postSort'">
+                    JOIN POST_INFO C ON(B.POST_SORT = C.POST_SORT)
                 </if>
-                <if test="searchCondition == 'writer'">
-                    JOIN TBL_MEMBER C ON(B.BOARD_WRITER_MEMBER_NO = C.MEMBER_NO)
+                <if test="searchCondition == 'refMemCode'">
+                    JOIN MEM_INFO C ON(B.MEM_CODE = C.MEM_CODE)
                 </if>
                 <where>
-                    <if test="searchCondition == 'category'">
-                        C.CATEGORY_NAME = #{ searchValue }
+                    <if test="searchCondition == 'postSort'">
+                        C.POST_SORT = #{ searchValue }
                     </if>
-                    <if test="searchCondition == 'writer'">
-                        C.NICKNAME LIKE CONCAT('%', #{ searchValue }, '%')
+                    <if test="searchCondition == 'refMemCode'">
+                        C.MEM_ID LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
-                    <if test="searchCondition == 'title'">
-                        B.BOARD_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+                    <if test="searchCondition == 'postTitle'">
+                        B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
-                    <if test="searchCondition == 'content'">
-                        B.BOARD_BODY LIKE CONCAT('%', #{ searchValue }, '%')
+                    <if test="searchCondition == 'postContent'">
+                        B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
-                    AND B.BOARD_STATUS = 'Y'
-                    AND B.BOARD_TYPE = 1
                 </where>
                 ) A
-          JOIN  TBL_CATEGORY D ON (A.CATEGORY_CODE = D.CATEGORY_CODE)
-          JOIN  TBL_MEMBER E ON(A.BOARD_WRITER_MEMBER_NO = E.MEMBER_NO)
-        ORDER BY B.BOARD_NO DESC
+          JOIN  MEM_INFO E ON(A.MEM_CODE = E.MEM_CODE)
+        ORDER BY B.POST_CODE DESC
          LIMIT  #{ startRow }, 10
     </select>
 
-    <select id="selectBoardDetail" resultMap="generalBoardResultMap">
+    <select id="selectBoardDetail" resultMap="boardResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardDetail() */
-                 A.BOARD_NO
-                 , A.BOARD_TITLE
-                 , A.BOARD_BODY
-                 , A.BOARD_WRITER_MEMBER_NO
-                 , B.NICKNAME
-                 , A.BOARD_COUNT
-                 , A.CREATED_DATE
-                 , C.CATEGORY_NAME
-          FROM  TBL_BOARD A
-          JOIN  TBL_MEMBER B ON (A.BOARD_WRITER_MEMBER_NO = B.MEMBER_NO)
-          JOIN  TBL_CATEGORY C ON (A.CATEGORY_CODE = C.CATEGORY_CODE)
-         WHERE  A.BOARD_STATUS = 'Y'
-           AND  A.BOARD_NO = #{ no }
+                 A.POST_CODE
+                 , A.POST_TITLE
+                 , A.POST_CONTENT
+                 , A.MEM_CODE
+                 , B.MEM_ID
+                 , A.POST_DATE
+          FROM  POST_INFO A
+          JOIN  MEM_INFO B ON (A.MEM_CODE = B.MEM_CODE)
+           AND  A.POST_CODE = #{ no }
     </select>
 
     <select id="selectReplyList" resultMap="replyResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectReplyList() */
-                 A.REPLY_NO
-                 , A.REF_BOARD_NO
-                 , A.REPLY_BODY
-                 , A.REPLY_WRITER_MEMBER_NO
-                 , A.CREATED_DATE
-                 , B.MEMBER_NO
-                 , B.NICKNAME
-          FROM  TBL_REPLY A
-          JOIN  TBL_MEMBER B ON (A.REPLY_WRITER_MEMBER_NO = B.MEMBER_NO)
-         WHERE  A.REPLY_STATUS = 'Y'
-           AND  A.REF_BOARD_NO = #{ refBoardNo }
-        ORDER BY A.REPLY_NO
+                 A.POST_REPLY_CODE
+                 , A.POST_CODE
+                 , A.POST_REPLY_CON
+                 , A.POST_REPLY_WRITER
+                 , A.POST_REPLY_DATE
+                 , B.MEM_CODE
+                 , B.MEM_ID
+          FROM  POST_REPLY A
+          JOIN  MEM_INFO B ON (A.POST_REPLY_WRITER = B.MEM_CODE)
+         WHERE   A.POST_CODE = #{ refBoardNo }
+        ORDER BY A.POST_REPLY_CODE
     </select>
 
     <insert id="insertReply">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertReply() */
-        INTO TBL_REPLY   (
-                           REF_BOARD_NO
-                         , REPLY_BODY
-                         , REPLY_WRITER_MEMBER_NO
+        INTO POST_REPLY   (
+                           POST_CODE
+                         , POST_REPLY_CON
+                         , POST_REPLY_WRITER
                          )
         VALUES  (
                 #{ refBoardNo }
@@ -174,119 +154,63 @@
                 )
     </insert>
 
-    <delete id="deleteReply" parameterType="long">
+    <delete id="deleteReply" parameterType="_int">
         DELETE  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#deleteReply() */
-          FROM  TBL_REPLY
-         WHERE  REPLY_NO = #{ replyNo }
+          FROM  POST_REPLY
+         WHERE  POST_REPLY_CODE = #{ replyNo }
     </delete>
 
-    <insert id="insertBoard">
+    <insert id="insertBoard" parameterType="_int">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertBoard() */
-        INTO TBL_BOARD      (
-                              BOARD_TYPE
-                            , CATEGORY_CODE
-                            , BOARD_TITLE
-                            , BOARD_BODY
-                            , BOARD_WRITER_MEMBER_NO
+        INTO POST_INFO      (
+                              POST_SORT
+                            , POST_TITLE
+                            , POST_CONTENT
+                            , MEM_CODE
                             )
         VALUES  (
-                1
-                , #{ categoryCode }
+                  #{ categoryCode }
                 , #{ title }
                 , #{ body }
                 , #{ writerMemberNo }
                 )
     </insert>
 
-    <select id="selectAllThumbnailList" resultMap="thumbnailBoardResultMap">
-        SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectAllThumbnailList() */
-                  A.BOARD_NO
-                , A.BOARD_TITLE
-                , B.NICKNAME
-                , A.BOARD_COUNT
-                , A.CREATED_DATE
-                , C.ATTACHMENT_NO
-                , C.ORIGINAL_NAME
-                , C.SAVED_NAME
-                , C.SAVE_PATH
-                , C.THUMBNAIL_PATH
-          FROM  TBL_BOARD A
-          JOIN  TBL_MEMBER B ON (A.BOARD_WRITER_MEMBER_NO = B.MEMBER_NO)
-          JOIN  TBL_ATTACHMENT C ON (A.BOARD_NO = C.REF_BOARD_NO)
-         WHERE  A.BOARD_STATUS = 'Y'
-           AND  C.ATTACHMENT_STATUS = 'Y'
-           AND  C.FILE_TYPE = 'TITLE'
-        ORDER BY A.BOARD_NO DESC
-    </select>
-
-
-    <insert id="insertThumbnailContent" >
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertThumbnailContent() */
-        INTO TBL_BOARD      (
-                              BOARD_TYPE
-                            , BOARD_TITLE
-                            , BOARD_BODY
-                            , BOARD_WRITER_MEMBER_NO
-                            )
-        VALUES  (
-                2
-                , #{ title }
-                , #{ body }
-                , #{ writerMemberNo }
-                )
-        <selectKey keyProperty="no" resultType="long" order="AFTER">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-    </insert>
-
-    <insert id="insertAttachment">
+    <insert id="insertAttachment" parameterType="_int">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertAttachment() */
-        INTO TBL_ATTACHMENT     (
-                                  REF_BOARD_NO
-                                , ORIGINAL_NAME
-                                , SAVED_NAME
-                                , SAVE_PATH
-                                , FILE_TYPE
-                                , THUMBNAIL_PATH
+        INTO ATTACHMENT_FILE    (
+                                  POST_CODE
+                                , ATTACH_ORIGIN_NAME
+                                , ATTACH_DB_NAME
+                                , ATTACH_ORIGIN_ADDR
+                                , ATTACH_THUMB_ADDR
                                 )
         VALUES  (
                   #{ refBoardNo }
                 , #{ originalName }
                 , #{ savedName }
                 , #{ savePath }
-                , #{ fileType }
                 , #{ thumbnailPath }
                 )
     </insert>
 
-    <update id="incrementBoardCount">
-        UPDATE  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#incrementBoardCount() */
-                TBL_BOARD
-           SET  BOARD_COUNT = BOARD_COUNT + 1
-         WHERE  BOARD_NO = #{ no }
-    </update>
-
-    <select id="selectThumbnailDetail" resultMap="thumbnailBoardResultMap">
+    <select id="selectThumbnailDetail" resultMap="boardResultMap">
         SELECT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectThumbnailDetail() */
-               A.BOARD_NO
-             , A.BOARD_TITLE
-             , A.BOARD_BODY
-             , A.BOARD_WRITER_MEMBER_NO
-             , B.NICKNAME
-             , A.BOARD_COUNT
-             , A.CREATED_DATE
+               A.POST_CODE
+             , A.POST_TITLE
+             , A.POST_CONTENT
+             , A.POST_CONTENT
+             , B.MEM_ID
+             , A.POST_DATE
              , C.ATTACHMENT_NO
-             , C.ORIGINAL_NAME
-             , C.SAVED_NAME
-             , C.SAVE_PATH
-             , C.FILE_TYPE
-             , C.THUMBNAIL_PATH
-        FROM TBL_BOARD A
-         JOIN TBL_MEMBER B ON (A.BOARD_WRITER_MEMBER_NO = B.MEMBER_NO)
-         JOIN TBL_ATTACHMENT C ON (A.BOARD_NO = C.REF_BOARD_NO)
-        WHERE A.BOARD_STATUS = 'Y'
-          AND C.ATTACHMENT_STATUS = 'Y'
-          AND A.BOARD_NO = #{ no }
+             , C.ATTACH_CODE_SEQ
+             , C.ATTACH_DB_NAME
+             , C.ATTACH_ORIGIN_ADDR
+             , C.ATTACH_THUMB_ADDR
+        FROM POST_INFO A
+         JOIN MEM_INFO B ON (A.MEM_CODE = B.MEM_CODE)
+         JOIN ATTACHMENT_FILE C ON (A.POST_CODE = C.POST_CODE)
+        WHERE A.POST_CODE = #{ no }
     </select>
 
 </mapper>

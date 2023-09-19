@@ -25,7 +25,7 @@ public class BoardAnnoController {
     @GetMapping("/announcementBoardSelect")
     public String selectAnno(HttpServletRequest request, Model model) {
 
-        Long no = Long.valueOf(request.getParameter("no"));
+        int no = Integer.parseInt(request.getParameter("no"));
         BoardDTO boardDetail = boardServiceImpl.selectBoardDetail(no);
 
         model.addAttribute("board", boardDetail);

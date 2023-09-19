@@ -4,6 +4,8 @@ import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -16,5 +18,5 @@ public class BoardDTO {
     private String postContent;
     private Date postDate;
     private MemberDTO refMemCode;
-
+    private List<AttachmentDTO> attachmentList;
 }
