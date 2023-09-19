@@ -25,6 +25,9 @@
     .toList {
         float: right;
     }
+    .middleButtonList {
+        float: right;
+    }
 }
 
 @media (max-width: 1050px) {
@@ -334,3 +337,8 @@
     font-weight: bold;
     background-color: #A6CEF7;
 }
+
+.toListSpaceMiddle button {
+    color: #fff;
+}
+
