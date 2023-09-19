@@ -22,8 +22,8 @@ public class MemberDTO {
     private String memAdresDetail;
     private Date memWithdrawal;
     private int memDogGum;
-    private List<MemberRoleDTO> memberRoleList;
+    private String memRole;
+    private String memStatus;
+    private int mailAuth;
     private String mailKey;
-
-
 }
