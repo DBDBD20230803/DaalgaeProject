@@ -28,8 +28,7 @@ private final EncyclopediaService encyclopediaService;
 
     @GetMapping("knowBeforeAdopt")
     public String KnowBeforeAdopt(Model model) {
-        List<EncyclopediaDTO> findList = encyclopediaService.findList("before");
-        System.out.println(findList);
+        model.addAttribute("getUrl", "getKnowAfterAdopt");
         return "/daaalgeEncyclopedia/knowBeforeAdopt";
     }
 

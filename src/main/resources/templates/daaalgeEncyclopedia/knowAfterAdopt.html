@@ -30,38 +30,12 @@
     <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
     <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/header.js}"></script>
-
+    <script type="text/javascript" th:src="@{/js/encyclopedia.js}"></script>
+    
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
-    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
-    <script>
-        $(function () {
-            $.ajax({
-                url: "getKnowAfterAdopt",
-                success: function(data, status, xhr) {
-                    console.log(data);
-                    console.log(data[0].encycleImage);
-                    console.log(data[0].encycleTitle);
-                    console.log(data[0].encycleOrder);
-                    let a = data[0].encycleOrder;
-                    let b = a.substring(2, 3);
-                    let c = a.substring(4, 5);
-                    console.log(b);
-                    console.log(c);
-                    // for(let replace of data) {
-                    //
-                    // }
-                    // $('.AfterText1 img').prop('src' , data[0].encycleImage);
-                    // $('.AfterTextSubstring1').text(data[0].encycleTitle);
-                    // $('.AfterTextContent1').text(data[0].encycleContent);
-                },
-                error: function(xhr, status, error) {
-                    console.log(error);
-                }
-            });
-        });
-    </script>
+    
 </head>
 <body>
 <div id="headers">
@@ -70,7 +44,7 @@
 <div class="tourBg">
     <h3>우리 아이와 함께<br>펫티켓을 만들어 나가요</h3>
 </div>
-<div class="knowAfterAdopt">
+<div class="knowAfterAdopt"></div>
 
     <!-- 1페이지-->
     <img class="AfterAdopt1" height="260px" th:src="@{/images/knowAfterAdopt1.png}" />
@@ -78,8 +52,8 @@
     <div class="Afterdesc1">📌일반적으로 강아지의 성장기는 1세까지입니다. 단, 대형견은 1.5~2세까지 성장해요. 강아지 성장기의 가장 중요한 시점은
         바로 생후 2~4개월인데요. 이때 한 경험,으로 성격이 형성되기 때문이에요. 이 시기를 사회화 시기라고 합니다.<br>
         따라서 이 시기에는 다양한 사람, 동물, 소리, 환경 등의 자극을 긍정적으로 생각할 수 있도록 훈련하는 게 매우 중요합니다.</div>
-    </div>
-    <div class="AfterText1">
+    
+    <!--<div class="AfterText1">
         <img th:src="@{/images/knowAfterAdopt2.png}" />
         <div class="AfterTextSubstring1">작고 약한 이빨</div>
         <div class="AfterTextContent1">
@@ -111,7 +85,7 @@
             예를 들어, 선천성 심장 기형인 동맥관개종증(PDA)는 생후 1년 이내에 발견하면 대부분 치료가 가능한데요.<br>
             치료하지 않으면 생후 2~3년 이내에 사망할 확률이 약 70%나 됩니다.<br>
         </div>
-    </div>
+    </div>-->
     <div class="gapBox"></div>
 
     <!-- 2페이지 -->
@@ -124,7 +98,7 @@
     <div class="Afterdesc1">📌강아지는 1년간의 폭풍 성장을 마치면 성견이 되는데요. 성견이 되었다고 해서 갑자기 의젓해지는 것은 아닙니다.</div>
     </div>
 
-    <div class="AfterText1">
+    <!--<div class="AfterText1">
         <img th:src="@{/images/knowAfterAdopt5.png}" />
         <div class="AfterTextSubstring1">개춘기</div>
         <div class="AfterTextContent1">
@@ -161,7 +135,7 @@
             이 시기에는 가장 기본적인 건강검진 항목만 해보는 것도 방법이에요. 이 시기에는 건강을 위해 꾸준한 운동,<br>
             균형 잡힌 식사 급여 그리고 양치질을 잘 해주는 정도의 관리를 해주면 좋습니다.
         </div>
-    </div>
+    </div>-->
 
     <!-- 3페이지-->
     <div class="gapBox"></div>
@@ -172,7 +146,7 @@
         예를 들어, 예전처럼 에너지가 넘치지 않고 행동이 느려지게 됩니다. 피부에는 검버섯이 생기기도 하며, 시력과 청력이 떨어지고 이빨도 많이 약해집니다.
     </div>
     </div>
-    <div class="AfterText1">
+    <!--<div class="AfterText1">
         <img th:src="@{/images/knowAfterAdopt8.png}" />
         <div class="AfterTextSubstring1">노년기 (8세~)</div>
         <div class="AfterTextContent1">
@@ -199,7 +173,7 @@
             💬강아지 눈이 탁해졌다면, 크게는 백내장 그리고 핵경화증 두 가지를 의심해 볼 수 있습니다. 핵경화증은 단순히 노화로 인한 증상으로 시력에는 큰 문제가 없습니다. 다만, 백내장의 경우 실명이나 다른 안과 질환으로 이어질 수 있습니다.<br>
             이 두 가지 질병은 전문가가 아니라면 구분이 어렵습니다. 그러니 눈이 탁해 보인다면 우선 병원에서 확인해 보는 게 좋습니다.
         </div>
-    </div>
+    </div>-->
     <div class="whiteSpaceEncycle">
         <div class="logoInPage"></div>
     </div>

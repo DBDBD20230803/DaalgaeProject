@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>입양 전 필수 지식</title>
@@ -30,7 +30,7 @@
     <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
     <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/header.js}"></script>
-
+    <script type="text/javascript" th:src="@{/js/encyclopedia.js}"></script>
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
@@ -42,13 +42,13 @@
 <div class="tourBg">
     <h3>우리 아이<br>입양 전, 무엇을 해야 할까요?</h3>
 </div>
-<div class="knowAfterAdopt">
+<div class="knowAfterAdopt"></div>
 
     <!-- 1페이지-->
     <img class="AfterAdopt1" height="260px" th:src="@{/images/knowBeforeAdopt1.png}" />
     <div class="SubHeading1">마음가짐</div>
     <div class="Afterdesc1">📌강아지 입양 전, 가장 중요한 것은 무엇보다도 마음가짐! 내가 평생 책임질 수 있는지 꼭 돌아보기.</div>
-    </div>
+    
     <div class="AfterText1">
         <div class="AfterTextSubstring1">꼭꼭! 체크리스트</div>
         <div class="AfterTextContent1">
@@ -100,7 +100,7 @@
     <div class="SubHeading2">견종 선택</div>
     <div class="gapBox3"></div>
     <div class="Afterdesc1">📌나와 평생 함께 할 반려견, 그만큼 나와 잘 맞는 성격인지가 매우 중요하다! 나랑은 어떤 친구가 잘 맞을까?</div>
-    </div>
+    </input>
 
     <div class="AfterText1">
         <div class="AfterTextSubstring1">개춘기</div>
