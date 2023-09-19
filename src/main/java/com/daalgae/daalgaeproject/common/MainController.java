@@ -11,14 +11,17 @@ public class MainController {
     public String getLocation() {
         return "/main/mainIntro";
     }
+
     @GetMapping("main")
     public String mainLocation() {
         return "/main/mainIntro";
     }
+
     @GetMapping("encycle")
     public String Encycle() {
         return "/daaalgeEncyclopedia/encyclopediaMain";
     }
+
     @GetMapping("tour")
     public String TourMain() {
         return "/tour/tour";
@@ -34,18 +37,19 @@ public class MainController {
     public String webtoon() {
         return "/webtoon/dengInfo";
     }
+
     @GetMapping("webtoon/webtoonDetail")
-    public String goWebtoonDetailPage(){
+    public String goWebtoonDetailPage() {
         return "webtoon/webtoonDetail";
     }
+
     @PostMapping("payment/payments")
     public String goPayment() {
         return "payment/payments";
     }
-    @GetMapping("payment/success")
-    public String success () {
 
+/*    @GetMapping("payment/success")
+    public String success() {
         return "payment/success";
-    }
-
+    }*/
 }
