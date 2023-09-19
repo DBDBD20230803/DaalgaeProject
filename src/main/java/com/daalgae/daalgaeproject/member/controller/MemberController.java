@@ -9,9 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -29,7 +31,7 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginForm(){
+    public String loginForm(String id, MemberDTO memberDTO, Model model){
         return "login/login";
     }
 
@@ -46,7 +48,7 @@ public class MemberController {
     public String registForm(){ return "regist/regist"; }
 
     @PostMapping("/regist")
-    public String registMember(@ModelAttribute MemberDTO member, HttpServletRequest request, RedirectAttributes rttr) throws MemberRegistException {
+    public String registMember(@ModelAttribute MemberDTO member, HttpServletRequest request, RedirectAttributes rttr) throws MemberRegistException, MessagingException {
         log.info("");
         log.info("");
         log.info("[MemberController] registMember ==========================================================");
@@ -97,6 +99,12 @@ public class MemberController {
 
 
 
+    @GetMapping("/registEmailAuth")
+    public String emailConfirm(MemberDTO memberDTO) {
+        loginService.updateMailAuth(memberDTO);
+
+        return "/regist/registComplete";
+    }
 
 
     @GetMapping("/mypage")

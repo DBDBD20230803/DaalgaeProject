@@ -33,4 +33,30 @@
         WHERE A.MEMBER_STATUS = 'Y'
         AND A.MEMBER_ID = #{ memId }
     </select>
+
+
+    <update id="updateMailKey" parameterType="MemberDTO">
+        UPDATE
+            MEM_INFO
+        SET
+            MAIL_KEY = #{ mailKey }
+        WHERE MEM_EMAIL = #{ memEmail } AND MEM_ID = #{ memId }
+    </update>
+
+    <update id="updateMailAuth" parameterType="MemberDTO">
+        UPDATE
+            MEM_INFO
+        SET
+            MAIL_AUTH = 1
+        WHERE MEM_EMAIL = #{ memEmail } AND MAIL_KEY = #{ mailKey }
+    </update>
+
+
+    <select id="emailAuthFail" parameterType="String" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId } AND MAIL_AUTH = 1
+    </select>
+
 </mapper>

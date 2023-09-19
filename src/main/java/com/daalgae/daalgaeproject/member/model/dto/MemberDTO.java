@@ -23,6 +23,7 @@ public class MemberDTO {
     private Date memWithdrawal;
     private int memDogGum;
     private List<MemberRoleDTO> memberRoleList;
+    private String mailKey;
 
 
 }
