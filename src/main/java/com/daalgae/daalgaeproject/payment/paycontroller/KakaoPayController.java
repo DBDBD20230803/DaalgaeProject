@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("payment")
 @RequiredArgsConstructor
@@ -20,7 +22,6 @@ public class KakaoPayController {
 
     // 결제 요청??
     @PostMapping("ready")
-
     public String readyToKakaoPay(Model model
             , @RequestParam String itemName
             , @RequestParam int quantity
@@ -39,13 +40,21 @@ public class KakaoPayController {
 
     //결제완료 승인
     @GetMapping("success")
-    public String Success(@RequestParam("pg_token") String pgToken) {
+    public String Success( KakaoApprove kakaoApprove, @RequestParam("pg_token") String pgToken) {
 
-        KakaoApprove res = kakaoPayService.approve(pgToken);
+        kakaoApprove = kakaoPayService.approve(pgToken);
 
-        /*요청 결과에 대해서 데이터 베이스에 저장 또는 업데이트 할 로직 추가 */
 
-        return "payment/success";
+        System.out.println("값은 다 담아왔냐 ?");
+        System.out.println(kakaoApprove);
+        kakaoPayService.registKakaoPay(kakaoApprove);
+        System.out.println("나 실행됐냐 ??");
+
+        /*res.getTid();*/
+        System.out.println("나 디비에좀 들어가자 ㅡㅡ");
+
+
+        return "payment/successPage";
     }
 
     //결제 진행 중 취소
