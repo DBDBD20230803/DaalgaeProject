@@ -31,7 +31,21 @@ document.getElementById("kakaoPay1").addEventListener("click", function () {
         });*!/
 
 });*/
-function  goPay() {
-   window.open("/payment/ready", "_blank");
+function  openNewWindow() {
+
+   var newWindowUrl = "/payment/ready";
+
+  var  newWindow = window.open(newWindow, "_blank");
+
+  if (newWindow ) {
+     newWindow.onload = function () {
+        var form = newWindow.document.getElementById("openNewWindow");
+        if (form) {
+           form.submit();
+        }
+     };
+  }else {
+     alert("팝업 차단이 활성화되어 있습니다. 팝업파단을 해제하고 다시시도하세요.")
+  }
 }
 
