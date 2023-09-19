@@ -1940,7 +1940,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                         let itemSelect = data.response.body.items.item[a];
                                         // console.log(date1);
                                         if(itemSelect.fcstDate == date1 && itemSelect.fcstTime == hourString) {
-                                            console.log(itemSelect.category);
+                                            // console.log(itemSelect.category);
                                             if(itemSelect.category == 'SNO') {
                                                 if(itemSelect.fcstValue >= 5) {
                                                     if (weatherLevel < 3) {
@@ -1983,7 +1983,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                             // 0
                                             let a = data.response.body.items[0].informGrade.split(",");
                                             for(let b of a) {
-                                                if(b.substring(0, 2) === addressLevel1.substring(0, 2)) {
+                                                if(b.substring(0, 2) == addressLevel1.substring(0, 2)) {
                                                     let c = b.indexOf(":");
                                                     if(b.substring(c+2) == '좋음') {
                                                         if(weatherLevel < 1) {
@@ -2020,7 +2020,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                             // 2
                                             let f = data.response.body.items[2].informGrade.split(",");
                                             for(let b of f) {
-                                                if(b.substring(0, 2) === addressLevel1.substring(0, 2)) {
+                                                if(b.substring(0, 2) == addressLevel1.substring(0, 2)) {
                                                     let c = b.indexOf(":");
                                                     if(b.substring(c+2) == '좋음') {
                                                         if(weatherLevel < 1) {
@@ -2054,11 +2054,13 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                     break;
                                                 }
                                             }
-                                            // 4
-                                            let d = data.response.body.items[4].informGrade.split(",");
+                                            // 4 // 오존이 오류가 있어서 안 쓰기로 했습니다.
+                                            /*let d = data.response.body.items[4].informGrade.split(",");
+                                            console.log(d);
                                             for(let b of d) {
-                                                if(b.substring(0, 2) === addressLevel1.substring(0, 2)) {
+                                                if(b.substring(0, 2) == addressLevel1.substring(0, 2)) {
                                                     let c = b.indexOf(":");
+                                                    console.log(67);
                                                     if(b.substring(c+2) == '좋음') {
                                                         if(weatherLevel < 1) {
                                                             weatherLevel = 1;
@@ -2067,6 +2069,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                             fineDustLevel = 1;
                                                         }
                                                     } else if(b.substring(c+2) == '보통') {
+                                                        console.log(78);
                                                         if(weatherLevel < 2) {
                                                             weatherLevel = 2;
                                                         }
@@ -2074,6 +2077,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                             fineDustLevel = 2;
                                                         }
                                                     } else if(b.substring(c+2) == '나쁨') {
+                                                        console.log(89);
                                                         if(weatherLevel < 3) {
                                                             weatherLevel = 3;
                                                         }
@@ -2081,6 +2085,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                             fineDustLevel = 3;
                                                         }
                                                     } else if(b.substring(c+2) == '매우') {
+                                                        console.log(90);
                                                         if(weatherLevel < 3) {
                                                             weatherLevel = 3;
                                                         }
@@ -2090,7 +2095,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                     }
                                                     break;
                                                 }
-                                            }
+                                            }*/
                                             localStorage.setItem('savedWeatherLevel', weatherLevel);
                                             localStorage.setItem('savedFineDustLevel', fineDustLevel);
                                             localStorage.setItem('savedWeatherNo', weatherNo);
@@ -2124,10 +2129,10 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                     $('.weatherTemp1').append("대기질 보통");
                                                     $('.weatherTemp2').append("대기질 보통");
                                                     break;
+                                                case 3:
                                                     $('.weatherTemp0').append("대기질 나쁨");
                                                     $('.weatherTemp1').append("대기질 나쁨");
                                                     $('.weatherTemp2').append("대기질 나쁨");
-                                                case 3:
                                                     break;
                                             }
                                             switch (weatherNo) {
