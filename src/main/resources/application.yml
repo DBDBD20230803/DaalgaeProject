@@ -8,37 +8,13 @@ spring:
     username: HIkdt6
     password: HIkdt6
 
-#    url: jdbc:mysql://localhost:3306/daalgaeSample
-#    username : ohgiraffers
-#    password : 1234sm
-
-    mail:
-      host: smtp.gmail.com
-      port: 465
-      username:
-      password:
-      properties:
-        mail:
-          smtp:
-            auth: true
-            timeout: 5000
-            starttle:
-              enable: true
-
 mybatis:
-  mapper-locations: mappers/**/*.xml
+  mapper-locations: mybatis/mapper/**/*.xml
 
 
 # ===== Test DBsource =====
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost/thymeleafspringboot
-#    username: ohgiraffers
-#    password: ohgiraffers
-#
+
 #mybatis:
-#  mapper-locations: mybatis/mapper/**/*.xml
 #  type-aliases-package: com.daalgae.daalgaeproject
 #  configuration:
 #    map-underscore-to-camel-case: true
