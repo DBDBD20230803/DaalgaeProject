@@ -26,6 +26,4 @@ public class MemberDTO {
     private String memStatus;
     private int mailAuth;
     private String mailKey;
-
-
 }
