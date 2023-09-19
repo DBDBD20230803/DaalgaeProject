@@ -38,11 +38,11 @@ public class BoardController {
                                     , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                         , ModelAndView mv) {
 
-        Map<String, String> searchMap = new HashMap<>();
-        searchMap.put("searchCondition", searchCondition);
-        searchMap.put("searchValue", searchValue);
+//        Map<String, String> searchMap = new HashMap<>();
+//        searchMap.put("searchCondition", searchCondition);
+//        searchMap.put("searchValue", searchValue);
 
-        int totalCount = boardServiceImpl.selectTotalCount(searchMap);
+        int totalCount = boardServiceImpl.selectTotalCount(searchCondition, searchValue);
 
         int limit = 10;
 
@@ -78,13 +78,14 @@ public class BoardController {
                                             , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                             , ModelAndView mv) {
 
-        Map<String, String> searchMap = new HashMap<>();
         searchCondition = "postSort";
-        searchMap.put("searchCondition", searchCondition);
         searchValue = "공지";
-        searchMap.put("searchValue", searchValue);
+//        Map<String, String> searchMap = new HashMap<>();
+//        searchMap.put("searchCondition", searchCondition);
+//        searchMap.put("searchValue", searchValue);
 
-        int totalCount = boardServiceImpl.selectTotalCount(searchMap);
+        System.out.println("BoardController 도달");
+        int totalCount = boardServiceImpl.selectTotalCount(searchCondition, searchValue);
 
         int limit = 10;
 

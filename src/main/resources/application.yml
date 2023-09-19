@@ -9,7 +9,8 @@ spring:
     password: HIkdt6
 
 mybatis:
-  mapper-locations: mapper/**/*.xml
+  mapper-locations: mybatis/mapper/**/*.xml
+  type-aliases-package: com.daalgae.daalgaeproject
 
 # ===== Test DBsource =====
 

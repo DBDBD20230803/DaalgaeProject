@@ -47,7 +47,7 @@
         <association property="refPostCode" resultMap="boardResultMap"/>
     </resultMap>
 
-    <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+    <select id="selectTotalCount" resultType="_int" parameterType="java.lang.String">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
                 COUNT(*)
           FROM  POST_INFO A
@@ -77,20 +77,20 @@
                 , A.POST_TITLE
                 , A.POST_CONTENT
                 , A.POST_DATE
-                , E.MEM_ID
+                , C.MEM_ID
           FROM (
                 SELECT  B.POST_CODE
                         , B.POST_SORT
                         , B.POST_TITLE
                         , B.POST_CONTENT
-                        , E.MEM_ID
                         , B.POST_DATE
+                        , B.REF_POST_WRITER
                   FROM  POST_INFO B
                 <if test="searchCondition == 'postSort'">
                     JOIN POST_INFO C ON(B.POST_SORT = C.POST_SORT)
                 </if>
                 <if test="searchCondition == 'refMemCode'">
-                    JOIN MEM_INFO C ON(B.MEM_CODE = C.MEM_CODE)
+                    JOIN MEM_INFO C ON(B.REF_POST_WRITER = C.MEM_CODE)
                 </if>
                 <where>
                     <if test="searchCondition == 'postSort'">
@@ -107,9 +107,9 @@
                     </if>
                 </where>
                 ) A
-          JOIN  MEM_INFO E ON(A.MEM_CODE = E.MEM_CODE)
-        ORDER BY B.POST_CODE DESC
-         LIMIT  #{ startRow }, 10
+            JOIN  MEM_INFO C ON(A.REF_POST_WRITER = C.MEM_CODE)
+            ORDER BY B.POST_CODE DESC
+            LIMIT  #{ startRow }, 10
     </select>
 
     <select id="selectBoardDetail" resultMap="boardResultMap">

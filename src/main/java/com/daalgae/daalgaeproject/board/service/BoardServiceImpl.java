@@ -9,11 +9,11 @@ import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
 import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
 import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -26,9 +26,10 @@ public class BoardServiceImpl implements BoardService{
 
     /* 해당 게시글 전체 갯수 조회용 메소드 */
     @Override
-    public int selectTotalCount(Map<String, String> searchMap) {
+    public int selectTotalCount(@Param("searchCondition") String searchCondition, @Param("searchValue") String searchValue) {
+        System.out.println("BoardServiceImpl 도달");
 
-        int result = mapper.selectTotalCount(searchMap);
+        int result = mapper.selectTotalCount(searchCondition, searchValue);
 
         return result;
     }

@@ -7,6 +7,7 @@ import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
 import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
 import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,9 @@ import java.util.Map;
 public interface BoardService {
 
     /* 해당 게시글 전체 갯수 조회용 메소드 */
-    public int selectTotalCount(Map<String, String> searchMap);
+    public int selectTotalCount(@Param("searchCondition") String searchCondition, @Param("searchValue") String searchValue);
+
+    /* 해당 게시글 전체 갯수 조회용 메소드 */
 
     /* 게시글 전체 조회용 메소드 */
     public List<BoardDTO> selectBoardList(SelectCriteria selectCriteria);

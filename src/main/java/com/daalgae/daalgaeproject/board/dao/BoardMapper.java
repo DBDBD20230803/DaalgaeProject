@@ -5,6 +5,7 @@ import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Map;
 @Mapper
 public interface BoardMapper {
 
-    int selectTotalCount(Map<String, String> searchMap);
+    int selectTotalCount(@Param("searchCondition") String searchCondition, @Param("searchValue") String searchValue);
     List<BoardDTO> selectBoardList(SelectCriteria selectCriteria);
 
     BoardDTO selectBoardDetail(int no);
