@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.payment.service;
 
 
+import com.daalgae.daalgaeproject.payment.dao.ApproveMapper;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.KakaoReady;
 import groovy.util.logging.Slf4j;
@@ -18,13 +19,14 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 @Slf4j
 public class KakaoPayService {
     static final String cid = "TC0ONETIME";
     static final String admin_Key = "7785656bcca2241ab970a65883853a10";
 
+    private final ApproveMapper approveMapper;
     private KakaoReady kakaoReady;
+
 
 
     // 요기가 지금 결제 준비 단계!!
@@ -58,6 +60,7 @@ public class KakaoPayService {
 
     }
 
+
     //결제 완료 승인
     public KakaoApprove approve(String pgToken) {
 
@@ -77,10 +80,10 @@ public class KakaoPayService {
 
         HttpEntity<Map> requset = new HttpEntity<>(payParams, headers);
         // 외부에 보낼 url
-        RestTemplate template = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         String url = "https://kapi.kakao.com/v1/payment/approve";
 
-        KakaoApprove res = template.
+        KakaoApprove res = restTemplate.
                 postForObject(url, requset, KakaoApprove.class);
 
         return res;
@@ -96,5 +99,12 @@ public class KakaoPayService {
         httpHeaders.set("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
         return httpHeaders;
 
+    }
+
+    @Transactional
+    public void registKakaoPay(KakaoApprove kakaoApprove) {
+        System.out.println("나왔냐 ?");
+        System.out.println(kakaoApprove);
+        approveMapper.registKakaoPay(kakaoApprove);
     }
 }
