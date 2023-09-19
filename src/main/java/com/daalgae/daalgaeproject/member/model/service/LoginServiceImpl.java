@@ -48,14 +48,14 @@ public class LoginServiceImpl implements LoginService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        if(member.getMemberRoleList() != null){
-            List<MemberRoleDTO> roleList = member.getMemberRoleList();
-
-            for(int i = 0; i < roleList.size(); i++){
-                AuthorityDTO authority = roleList.get(i).getAuthority();
-                authorities.add(new SimpleGrantedAuthority(authority.getAuthName()));
-            }
-        }
+//        if(member.getMemberRoleList() != null){
+//            List<MemberRoleDTO> roleList = member.getMemberRoleList();
+//
+//            for(int i = 0; i < roleList.size(); i++){
+//                AuthorityDTO authority = roleList.get(i).getAuthority();
+//                authorities.add(new SimpleGrantedAuthority(authority.getAuthName()));
+//            }
+//        }
 
 
         UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), authorities);
