@@ -31,7 +31,6 @@ public class KakaoPayController {
         model.addAttribute("quantity", quantity);
         model.addAttribute("totalAmount", totalAmount);
 
-
         return "redirect:" + kakaoPayService
                 .kakaoPayReady(itemName, quantity, totalAmount)
                 .getNext_redirect_pc_url();
