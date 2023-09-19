@@ -15,6 +15,6 @@ public class BoardDTO {
     private String postTitle;
     private String postContent;
     private Date postDate;
-    private MemberDTO memCode;
+    private MemberDTO refMemCode;
 
 }

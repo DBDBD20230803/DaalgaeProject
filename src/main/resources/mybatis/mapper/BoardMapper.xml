@@ -10,7 +10,7 @@
         <result property="postTitle" column="POST_TITLE"/>
         <result property="postContent" column="POST_CONTENT"/>
         <result property="postDate" column="POST_DATE"/>
-        <association property="memCode" resultMap="memberResultMap"/>
+        <association property="refMemCode" resultMap="memberResultMap"/>
     </resultMap>
 
     <resultMap type="MemberDTO" id="memberResultMap">
@@ -34,8 +34,8 @@
         <id property="replyCode" column="POST_REPLY_CODE"/>
         <result property="replyCon" column="POST_REPLY_CON"/>
         <result property="replyDate" column="POST_REPLY_DATE"/>
-        <association property="memCode" resultMap="memberResultMap"/>
-        <association property="postCode" resultMap="boardResultMap"/>
+        <association property="refMemCode" resultMap="memberResultMap"/>
+        <association property="refPostCode" resultMap="boardResultMap"/>
     </resultMap>
 
     <resultMap type="AttachmentDTO" id="attachmentFileResultMap">
@@ -44,7 +44,7 @@
         <result property="attachDbName" column="ATTACH_DB_NAME"/>
         <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
         <result property="attachOriginAddr" column="ATTACH_ORIGIN_ADDR"/>
-        <association property="postCode" resultMap="boardResultMap"/>
+        <association property="refPostCode" resultMap="boardResultMap"/>
     </resultMap>
 
     <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
