@@ -1,37 +1,27 @@
 package com.daalgae.daalgaeproject.payment.paycontroller;
 
-import com.daalgae.daalgaeproject.payment.dto.KakaoApproveResponse;
-import com.daalgae.daalgaeproject.payment.dto.KakaoReadyResponse;
+import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.service.KakaoPayService;
-import groovy.util.Expando;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("payment")
 @RequiredArgsConstructor
 public class KakaoPayController {
 
-/*    @Autowired
-    private KakaoApproveResponse result;*/
 
-    @Autowired
     private final KakaoPayService kakaoPayService;
-    private String pgToken;
-    private Model model;
 
 
     // 결제 요청??
     @PostMapping("ready")
-
     public String readyToKakaoPay(Model model
             , @RequestParam String itemName
             , @RequestParam int quantity
@@ -41,20 +31,29 @@ public class KakaoPayController {
         model.addAttribute("quantity", quantity);
         model.addAttribute("totalAmount", totalAmount);
 
-
-/*        System.out.println(result);*/
         return "redirect:" + kakaoPayService
                 .kakaoPayReady(itemName, quantity, totalAmount)
                 .getNext_redirect_pc_url();
     }
 
-    @PostMapping("/success")
-    public ResponseEntity paymentSuccess  (@RequestParam("pg_token") String pgToken, Model model){
 
-        KakaoApproveResponse kakaoApprove = kakaoPayService.kakaoApproveResponse(pgToken);
+    //결제완료 승인
+    @GetMapping("success")
+    public String Success( KakaoApprove kakaoApprove, @RequestParam("pg_token") String pgToken) {
 
-        return new ResponseEntity<>(kakaoApprove, HttpStatus.OK);
+        kakaoApprove = kakaoPayService.approve(pgToken);
 
+
+        System.out.println("값은 다 담아왔냐 ?");
+        System.out.println(kakaoApprove);
+        kakaoPayService.registKakaoPay(kakaoApprove);
+        System.out.println("나 실행됐냐 ??");
+
+        /*res.getTid();*/
+        System.out.println("나 디비에좀 들어가자 ㅡㅡ");
+
+
+        return "payment/successPage";
     }
 
     //결제 진행 중 취소
@@ -74,4 +73,3 @@ public class KakaoPayController {
     }
 
 }
-
