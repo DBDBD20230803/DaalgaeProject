@@ -13,17 +13,17 @@ import lombok.ToString;
 public class KakaoApproveResponse {
 
     private String aid;
-    private String tid;
+    private String tid; // notnull. PK
     private String cid;
-    private String Partner_order_id;
-    private String partner_user_id;
-    private String payment_method_type;
-    private Amount amount;
-    private String item_name;
+    private String partner_order_id;
+    private String partner_user_id;  // 회원코드 FK
+    private String payment_method_type; // 결제 수단
+    private Amount amount;  //결제금액
+    private String item_name; //개껌 10 또는 개껌 20개
     private String item_code;
-    private int quantity;
-    private String created_at;
+    private int quantity; // 수량
+    private String created_at; // 결제일자
     private String approved_at;
-    private String patload;
+    private String payload;
 
 }
