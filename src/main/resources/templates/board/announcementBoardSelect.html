@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{board/layouts/boardLayout}">
+      layout:decorate="~{layouts/boardLayout}">
 <head>
     <title>공지사항</title>
 </head>
@@ -40,12 +40,12 @@
         </div>
         <div class="board-content-select-container">
             <div class="board-content-title" th:each="board : ${ board }">
-                <h6 class="postNo" th:text="${board.no}"></h6>
-                <h6 class="postCategory" th:text="${board.category.name}"></h6>
-                <h6 class="postTitle" th:text="${board.title}"></h6>
-                <h6 class="postUser" th:text="${board.writer.memName}"></h6>
-                <h6 class="postCount" th:text="${board.count}"></h6>
-                <h6 class="postDate" th:text="${board.createdDate}"></h6>
+                <h6 class="postNo" th:text="${board.postCode}"></h6>
+                <h6 class="postCategory" th:text="${board.postSort}"></h6>
+                <h6 class="postTitle" th:text="${board.postTitle}"></h6>
+                <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
+                <h6 class="postCount" th:text="${board.postCount}"></h6>
+                <h6 class="postDate" th:text="${board.postDate}"></h6>
             </div>
             <div class="board-select-content">
                 <div class="board-textarea">
@@ -54,7 +54,7 @@
                             cols="120"
                             rows="15"
                             readonly
-                            th:text="${board.body}"
+                            th:text="${board.postContent}"
                     >
                     </textarea>
             </div>
