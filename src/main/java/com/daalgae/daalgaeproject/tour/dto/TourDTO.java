@@ -14,7 +14,7 @@ public class TourDTO {
     private String addr;
     private String tel;
     private String mapx;
-    private int mapy;
+    private String mapy;
     private String tourCategory;
     private String time;
     private String page;
