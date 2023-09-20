@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>입양 전 필수 지식</title>
@@ -30,7 +30,7 @@
     <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"></script>
     <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/header.js}"></script>
-
+    <script type="text/javascript" th:src="@{/js/encyclopedia.js}"></script>
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
@@ -42,14 +42,15 @@
 <div class="tourBg">
     <h3>우리 아이<br>입양 전, 무엇을 해야 할까요?</h3>
 </div>
-<div class="knowAfterAdopt">
+<input type="hidden" name="getUrl" th:value="${getUrl}">
+<div class="knowAfterAdopt"></div>
 
     <!-- 1페이지-->
     <img class="AfterAdopt1" height="260px" th:src="@{/images/knowBeforeAdopt1.png}" />
     <div class="SubHeading1">마음가짐</div>
     <div class="Afterdesc1">📌강아지 입양 전, 가장 중요한 것은 무엇보다도 마음가짐! 내가 평생 책임질 수 있는지 꼭 돌아보기.</div>
-    </div>
-    <div class="AfterText1">
+    
+    <!--<div class="AfterText1">
         <div class="AfterTextSubstring1">꼭꼭! 체크리스트</div>
         <div class="AfterTextContent1">
             <br>
@@ -89,7 +90,7 @@
             강아지를 입양하기 전, 자녀에게 알레르기 테스트를 해보는 것이 좋다. 만약 알레르기가 있다 하더라도 심한 수준이 아니라면 저알레르기 반응을 일으키는 견종을 잠시 위탁하거나 애견카페 등에서 반응을 살펴보자. 저알레르기 견종일 경우라도 특정 알레르기 유발체가 자녀에게 작용할 수 있기 때문이다.<br>
             이런 고비를 잘 넘긴다면 자녀에게 유년시절을 따뜻하게 떠올릴 수 있는 좋은 친구를 만들어 줄 수 있을 것이다.<br>
         </div>
-    </div>
+    </div>-->
     <div class="gapBox"></div>
 
     <!-- 2페이지 -->
@@ -100,9 +101,9 @@
     <div class="SubHeading2">견종 선택</div>
     <div class="gapBox3"></div>
     <div class="Afterdesc1">📌나와 평생 함께 할 반려견, 그만큼 나와 잘 맞는 성격인지가 매우 중요하다! 나랑은 어떤 친구가 잘 맞을까?</div>
-    </div>
+    </input>
 
-    <div class="AfterText1">
+    <!--<div class="AfterText1">
         <div class="AfterTextSubstring1">개춘기</div>
         <div class="AfterTextContent1">
             <br>
@@ -137,7 +138,7 @@
             ※ 위 사항을 준수하지 않은 사람에게는 300만 원 이하의 과태료가 부과되거나 사람에게 신체적 피해를 주는 경우 소유자 동의 없이 맹견에 대한 격리조치 가능<br>
         </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- 3페이지-->
     <div class="gapBox"></div>
@@ -147,7 +148,7 @@
         📌나의 소중한 강아지 친구! 어떤 식으로 데려올지도 아주 중요합니다! 나의 반려견과의 첫 스타트! 과연?
     </div>
     </div>
-    <div class="AfterText1"></br>
+    <!--<div class="AfterText1"></br>
         <div class="AfterTextSubstring1">달라진 일상</div>
         <div class="AfterTextContent1">
             충분한 고민을 거쳐 강아지를 책임질 수 있는지 따져보고, 자신에게 맞는 견종을 골랐다면 입양 경로를 선택해 야 한다.</br>
@@ -181,7 +182,7 @@
             특히 반려견을 데려올 때는 해당 동물판매업소가 동물 판매업 등록이 되어 있는 곳인지 확인하는 것이 중요하다.</br>
             「동물보호법」은 소비자를 보호하기 위해 일정한 시설과 인력을 갖추고, 시장·군수·구청장(자치구의 구청장을 말함)에게 동물판매업 등록을 한 업자에게만 반려동물을 판매할 수 있도록 하고 있다. 이처럼 법적인 책임이 요구되는 곳에서 반려동물을 구입해야만 이후 예상치 못한 분쟁이 발생했을 때 훨씬 대처하기 쉽다. 동물판매업 등록 여부는 영업장 내에 게시된 동물판매업 등록증으로 확인할 수 있다.</br>
         </div>
-    </div>
+    </div>-->
     <div class="gapBox"></div>
     <!-- 4페이지-->
     <img class="AfterAdopt2" height="260px" th:src="@{/images/knowBeforeAdopt4.png}" />
@@ -193,7 +194,7 @@
     <div class="Afterdesc1">📌입양 경로를 선택했다면 새 식구를 맞이하기 위해 구체적인 계획을 세우고 실행할 때다. 강아지의 연령이나 과거에 개별차가 있지만, 공통으로 확인해야할 사항은 분명 존재한다. 자신이 데려올 강아지에 대해 알아 둘 수 있는 정보는 모두 알아 두는 게 좋다.</div>
     </div>
     
-    <div class="AfterText1">
+    <!--<div class="AfterText1">
         <div class="AfterTextContent1">
             💬입양 전 한 번 더 점검해요!<br>
             - 유기견 보호소에서 데려온 경우, 머문 기간은 어떻게 되는지<br>
@@ -249,7 +250,7 @@
             
             ▶ 시장·군수·구청장은 필요한 경우 관할 지역 내에 있는 모든 동물등록대행자에 대하여 해당 동물등록대행자가 판매하는 무선식별장치의 제품명과 판매가격을 동물보호관리시스템에 게재하게 하고 해당 영업소 안의 눈에 띄기 쉬운 곳에 게시하도록 할 수 있다.
         </div>
-    </div>
+    </div>-->
     </div>
     <div class="whiteSpaceEncycle">
         <div class="logoInPage"></div>
