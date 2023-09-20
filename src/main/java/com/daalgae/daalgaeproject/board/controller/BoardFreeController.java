@@ -1,12 +1,10 @@
 package com.daalgae.daalgaeproject.board.controller;
 
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
-
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
 import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
 import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
-import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +27,7 @@ public class BoardFreeController {
     @GetMapping("/freeBoardSelect")
     public String selectFree(HttpServletRequest request, Model model) {
 
-        Long no = Long.valueOf(request.getParameter("no"));
+        int no = Integer.parseInt(request.getParameter("no"));
         BoardDTO boardDetail = boardServiceImpl.selectBoardDetail(no);
 
         model.addAttribute("board", boardDetail);

@@ -1,6 +1,6 @@
 package com.daalgae.daalgaeproject.member.controller;
 
-import com.daalgae.daalgaeproject.exception.member.EmailAuthException;
+//import com.daalgae.daalgaeproject.exception.member.EmailAuthException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
