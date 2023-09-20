@@ -1,9 +1,10 @@
 package com.daalgae.daalgaeproject.payment.service;
 
 
-import com.daalgae.daalgaeproject.payment.dao.ApproveMapper;
+import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.KakaoReady;
+import com.daalgae.daalgaeproject.payment.dto.OrderPay;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -14,6 +15,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -24,7 +26,7 @@ public class KakaoPayService {
     static final String cid = "TC0ONETIME";
     static final String admin_Key = "7785656bcca2241ab970a65883853a10";
 
-    private final ApproveMapper approveMapper;
+    private final OrderPayMapper orderPayMapper;
     private KakaoReady kakaoReady;
 
 
@@ -36,7 +38,7 @@ public class KakaoPayService {
 
         parameters.add("cid", cid);
         parameters.add("partner_order_id", "가맹점 주문 번호");
-        parameters.add("partner_user_id", "가맹점 회원 ID");
+        parameters.add("partner_user_id", 1);
         parameters.add("item_name", itemName);
         parameters.add("quantity", String.valueOf(quantity));
         parameters.add("total_amount", String.valueOf(totalAmount));
@@ -75,7 +77,7 @@ public class KakaoPayService {
         payParams.add("cid", cid);
         payParams.add("tid", kakaoReady.getTid());
         payParams.add("partner_order_id", "가맹점 주문 번호");
-        payParams.add("partner_user_id", "가맹점 회원 ID");
+        payParams.add("partner_user_id", 1);
         payParams.add("pg_token", pgToken);
 
         HttpEntity<Map> requset = new HttpEntity<>(payParams, headers);
@@ -102,9 +104,20 @@ public class KakaoPayService {
     }
 
     @Transactional
-    public void registKakaoPay(KakaoApprove kakaoApprove) {
+    public void orderRegist(OrderPay orderPay) {
         System.out.println("나왔냐 ?");
-        System.out.println(kakaoApprove);
-        approveMapper.registKakaoPay(kakaoApprove);
+        System.out.println(orderPay);
+        orderPayMapper.orderRegist(orderPay);
+    }
+
+/**/
+
+
+    public List<KakaoApprove> findAllPay() {
+
+//        List<KakaoApprove> k = orderPayMapper.findAllPay();
+
+        return  null;
+
     }
 }

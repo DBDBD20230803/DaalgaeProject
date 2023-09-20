@@ -18,23 +18,20 @@
 }
 */
 
-#webtoonBg {
-    background-color: #a6cef7;
-    border: 1px solid #dbdbdbdb;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
+.webtoonBg{
     width: 100%;
     height: 500px;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 50pt;
+    background-color: #A6CEF7;
     position: relative;
 }
-.mainImg {
+.webtoonBg h3{
+    text-align: center;
+    padding-top: 200px;
+}
+
+.webtoonBg::after{
     content: "";
+    background: url("/images/bgImg.png") no-repeat;
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -63,7 +60,7 @@
     display: flex;
     align-items: center;
 }
-.webtonntext1 {
+.webtoontext1 {
     color: #222222;
     font-size: 30px;
 }
@@ -251,103 +248,3 @@
     background-color: #a6cef7;
     border: none;
 }
-.purchase2 {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    .purchase3 {
-        display: flex;
-        justify-content: flex-start;
-    }
-    .doggamImg {
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
-    .text1 {
-        font-size: 30px;
-        color: #222222;
-    }
-    .text2 {
-        font-size: 30px;
-        color: #ffba68;
-    }
-    .purchaseContent1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-    .purchaseText1, .purchaseText2 {
-        width: 200px;
-        height: 80px;
-        font-size: 30px;
-        background-color: #9dc4e7;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #ffffff;
-        margin-right: 30px;
-    }
-
-}
-.purchaseLine1 {
-    border: 0.75px solid#777777;
-    width: 315px;
-}
-.purchaseBox1 {
-    border: 1px solid#dbdbdbdb;
-    height: 450px;
-    display: flex;
-    align-items: center;
-}
-.purchaseBox1-1 {
-    position: relative;
-    left: 100px;
-}
-.purchaseBox1-2 {
-    font-size: 30px;
-    color: #b1b1b1;
-}
-.purchaseBox1-3 {
-    font-size: 35px;
-    color: #222222;
-}
-.purchaseBox1-4 {
-    font-size: 30px;
-    color: #777777;
-}
-.purchaseBox1-5 {
-    font-size: 30px;
-    color: #b1b1b1;
-}
-.purchaseBox1-6 {
-    font-size: 30px;
-    color: #ffba68;
-}
-.purchaseBox1-7 {
-    display: flex;
-}
-.empty1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.empty2 {
-    border: 1px solid #dbdbdb;
-    width: 1400px;
-    height: 530px;
-    display: inline-block;
-    text-align: center;
-    align-items: center;
-    margin-top: 5%;
-    padding-top: 8%;
-}
-.empty3 {
-    font-size: 35px;
-    color: #b1b1b1;
-}
-
-
-
