@@ -5,6 +5,13 @@ $(document).ready( function() {
     $('#menu').css("margin-top", "-16px");
 
     let selectNum = $('input[name=selectNum]').val();
+    if(selectNum == 0) {
+        $('#tourCheck input').prop('checked', 'true');
+        $('#accomoCheck input').prop('checked', 'true');
+        $('#foodCheck input').prop('checked', 'true');
+        $('#activityCheck input').prop('checked', 'true');
+        $('#hospitalCheck input').prop('checked', 'true');
+    }
     if(selectNum == 1) {
         $('#tourCheck input').prop('checked', 'true');
     }

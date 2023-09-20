@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.common;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -10,19 +11,17 @@ public class MainController {
     public String getLocation() {
         return "/main/mainIntro";
     }
-
     @GetMapping("main")
     public String mainLocation() {
         return "/main/mainIntro";
     }
-
     @GetMapping("encycle")
     public String Encycle() {
         return "/daaalgeEncyclopedia/encyclopediaMain";
     }
-
     @GetMapping("tour")
-    public String TourMain() {
+    public String TourMain(Model model) {
+        model.addAttribute("select", "0");
         return "/tour/tour";
     }
 
@@ -36,12 +35,10 @@ public class MainController {
     public String webtoon() {
         return "/webtoon/dengInfo";
     }
-
     @GetMapping("webtoon/webtoonDetail")
-    public String goWebtoonDetailPage() {
+    public String goWebtoonDetailPage(){
         return "webtoon/webtoonDetail";
     }
-
     @PostMapping("payment/payments")
     public String goPayment() {
         return "payment/payments";
@@ -51,4 +48,8 @@ public class MainController {
     public String useHistory(){
         return "payment/useHistory";
     }
+
+    
+
+
 }
