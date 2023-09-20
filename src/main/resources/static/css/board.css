@@ -854,7 +854,8 @@ button[type="submit"]:hover {
 }
 
 .back-to-list {
-  width: 80%;
+  border-top: 1px solid #DBDBDB;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;

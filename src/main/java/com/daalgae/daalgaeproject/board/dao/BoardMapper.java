@@ -5,6 +5,7 @@ import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -15,13 +16,13 @@ public interface BoardMapper {
     int selectTotalCount(Map<String, String> searchMap);
     List<BoardDTO> selectBoardList(SelectCriteria selectCriteria);
 
-    BoardDTO selectBoardDetail(Long no);
+    BoardDTO selectBoardDetail(int no);
 
-    List<ReplyDTO> selectReplyList(Long boardNo);
+    List<ReplyDTO> selectReplyList(int boardNo);
 
     int insertReply(ReplyDTO registReply);
 
-    int deleteReply(Long no);
+    int deleteReply(int no);
 
     int insertBoard(BoardDTO board);
 
@@ -31,7 +32,7 @@ public interface BoardMapper {
 
     int insertAttachment(AttachmentDTO attachmentDTO);
 
-    int incrementBoardCount(Long no);
+    int incrementBoardCount(int no);
 
-    BoardDTO selectThumbnailDetail(Long no);
+    BoardDTO selectThumbnailDetail(int no);
 }

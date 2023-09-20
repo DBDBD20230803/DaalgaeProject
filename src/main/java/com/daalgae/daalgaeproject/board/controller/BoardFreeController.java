@@ -29,7 +29,7 @@ public class BoardFreeController {
     @GetMapping("/freeBoardSelect")
     public String selectFree(HttpServletRequest request, Model model) {
 
-        Long no = Long.valueOf(request.getParameter("no"));
+        int no = Integer.parseInt(request.getParameter("no"));
         BoardDTO boardDetail = boardServiceImpl.selectBoardDetail(no);
 
         model.addAttribute("board", boardDetail);

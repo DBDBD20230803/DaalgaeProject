@@ -12,11 +12,12 @@ public class SelectCriteria {
     private int endRow;					//DB 조회 시 최신글부터 조회해야 하는 행의 마지막 수
     private String searchCondition;		//검색 조건
     private String searchValue;			//검색어
+    private String postType;			//게시판 타입
 
     public SelectCriteria() {}
 
     public SelectCriteria(int pageNo, int totalCount, int limit, int buttonAmount, int maxPage, int startPage,
-                          int endPage, int startRow, int endRow, String searchCondition, String searchValue) {
+                          int endPage, int startRow, int endRow, String searchCondition, String searchValue, String postType) {
         super();
         this.pageNo = pageNo;
         this.totalCount = totalCount;
@@ -29,6 +30,7 @@ public class SelectCriteria {
         this.endRow = endRow;
         this.searchCondition = searchCondition;
         this.searchValue = searchValue;
+        this.postType = postType;
     }
 
     public int getPageNo() {
@@ -119,11 +121,19 @@ public class SelectCriteria {
         this.searchValue = searchValue;
     }
 
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
     @Override
     public String toString() {
         return "SelectCriteria [pageNo=" + pageNo + ", totalCount=" + totalCount + ", limit=" + limit
                 + ", buttonAmount=" + buttonAmount + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
                 + endPage + ", startRow=" + startRow + ", endRow=" + endRow + ", searchCondition=" + searchCondition
-                + ", searchValue=" + searchValue + "]";
+                + ", searchValue=" + searchValue + ", postType=" + postType + "]";
     }
 }
