@@ -1,11 +1,8 @@
 $(function () {
+    let getUrl = $('input[name=getUrl]').val();
     $.ajax({
-        url: "getKnowAfterAdopt",
+        url: getUrl,
         success: function(data, status, xhr) {
-            console.log(data);
-            console.log(data[0].encycleImage);
-            console.log(data[0].encycleTitle);
-            console.log(data[0].encycleOrder);
             // let a = data[0].encycleOrder;
             // let b = a.substring(2, 3);
             // let c = a.substring(4, 5);
@@ -24,20 +21,18 @@ $(function () {
                 let a = data[i].encycleOrder;
                 let b = a.substring(2, 3);
                 let c = a.substring(4, 5);
-                console.log(b);
-                console.log(d);
-                console.log("--");
-                console.log(c);
-                console.log(e);
-                console.log("--");
                 if(d < b) {
                     $('.Afterdesc1').eq(b-1).after("<div class=\"AfterText1\">");
                     d++;
                 }
-                $('.AfterText1').last().append("<img>");
-                $('.AfterText1 img').last().prop('src' , data[i].encycleImage);
-                $('.AfterText1').last().append("<div class=\"AfterTextSubstring1\"></div>");
-                $('.AfterTextSubstring1').last().append(data[i].encycleTitle);
+                if(data[i].encycleImage != 'none') {
+                    $('.AfterText1').last().append("<img>");
+                    $('.AfterText1 img').last().prop('src' , data[i].encycleImage);
+                }
+                if(data[i].encycleTitle != 'none') {
+                    $('.AfterText1').last().append("<div class=\"AfterTextSubstring1\"></div>");
+                    $('.AfterTextSubstring1').last().append(data[i].encycleTitle);
+                }
                 $('.AfterText1').last().append("<div class=\"AfterTextContent1\">");
                 $('.AfterTextContent1').last().append(data[i].encycleContent);
             }
