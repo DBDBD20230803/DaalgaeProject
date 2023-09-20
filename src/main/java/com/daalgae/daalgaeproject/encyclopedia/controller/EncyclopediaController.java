@@ -28,37 +28,50 @@ private final EncyclopediaService encyclopediaService;
 
     @GetMapping("knowBeforeAdopt")
     public String KnowBeforeAdopt(Model model) {
-        List<EncyclopediaDTO> findList = encyclopediaService.findList("before");
-        System.out.println(findList);
+        model.addAttribute("getUrl", "getKnowBeforeAdopt");
         return "/daaalgeEncyclopedia/knowBeforeAdopt";
+    }
+    @GetMapping(value = "getKnowBeforeAdopt", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<EncyclopediaDTO> getBeforeList() throws JsonProcessingException {
+        List<EncyclopediaDTO> findList = encyclopediaService.findList("before");
+        return findList;
     }
 
     @GetMapping("knowAfterAdopt")
     public String KnowAfterAdopt(Model model) {
-        List<EncyclopediaDTO> findList = encyclopediaService.findList("after");
-        System.out.println(findList);
+        model.addAttribute("getUrl", "getKnowAfterAdopt");
         return "/daaalgeEncyclopedia/knowAfterAdopt";
     }
     @GetMapping(value = "getKnowAfterAdopt", produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<EncyclopediaDTO> getConvertedMemberList() throws JsonProcessingException {
+    public List<EncyclopediaDTO> getAfterList() throws JsonProcessingException {
         List<EncyclopediaDTO> findList = encyclopediaService.findList("after");
-        System.out.println(findList);
         return findList;
     }
 
     @GetMapping("knowEmergency")
     public String KnowEmergency(Model model) {
-        List<EncyclopediaDTO> findList = encyclopediaService.findList("emergency");
-        System.out.println(findList);
+        model.addAttribute("getUrl", "getKnowEmergency");
         return "/daaalgeEncyclopedia/knowEmergency";
+    }
+    @GetMapping(value = "getKnowEmergency", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<EncyclopediaDTO> getEmergencyList() throws JsonProcessingException {
+        List<EncyclopediaDTO> findList = encyclopediaService.findList("emergency");
+        return findList;
     }
 
     @GetMapping("petiket")
     public String Petiket(Model model) {
-        List<EncyclopediaDTO> findList = encyclopediaService.findList("petiket");
-        System.out.println(findList);
+        model.addAttribute("getUrl", "getKnowPetiket");
         return "/daaalgeEncyclopedia/petiket";
+    }
+    @GetMapping(value = "getKnowPetiket", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<EncyclopediaDTO> getPetiketList() throws JsonProcessingException {
+        List<EncyclopediaDTO> findList = encyclopediaService.findList("petiket");
+        return findList;
     }
 
 }
