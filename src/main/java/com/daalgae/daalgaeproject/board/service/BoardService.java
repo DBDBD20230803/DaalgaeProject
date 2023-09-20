@@ -20,10 +20,10 @@ public interface BoardService {
     public List<BoardDTO> selectBoardList(SelectCriteria selectCriteria);
 
     /* 게시글 상세 페이지 조회용 메소드 */
-    public BoardDTO selectBoardDetail(Long no);
+    public BoardDTO selectBoardDetail(int no);
 
     /* 해당 게시글의 전체 댓글 조회용 메소드 */
-    public List<ReplyDTO> selectAllReplyList(Long boardNo);
+    public List<ReplyDTO> selectAllReplyList(int boardNo);
 
 
     /* 댓글 등록용 메소드 */
@@ -43,5 +43,5 @@ public interface BoardService {
 
 
     /* 게시글 상세 페이지 조회용 메소드 */
-    public BoardDTO selectThumbnailDetail(Long no) ;
+    public BoardDTO selectThumbnailDetail(int no) ;
 }
