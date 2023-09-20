@@ -13,13 +13,14 @@
 
 
     <!--bootstrap-->
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
 
     <!--css-->
-    <link rel="stylesheet" th:href="@{/css/index.css}"/>
-    <link rel="stylesheet" th:href="@{/css/sanitize.css}"/>
-    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="login/css/mobile.css"/>
+    <link rel="stylesheet" href="/css/sanitize.css"/>
+    <link rel="stylesheet" href="/login/css/findIdComplete.css"/>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -32,8 +33,8 @@
 
 
     <!--favicon--->
-    <link th:href="@{favicon.ico}" rel="icon">
-    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
 </head>
 <body>
 <section id="findIdComplete">
@@ -45,7 +46,7 @@
 
             <form class="findIdCompleteForm" action="" method="post">
                 <h5 class="findIdCompleteMessage">로그인 실패!</h5>
-                <div class="pwdResetCompleteGotoMain" th:onclick="|location.href='@{/login/login}'|">로그인 페이지로 이동</div>
+                <div class="pwdResetCompleteGotoMain" th:onclick="|location.href='@{/}'|">로그인 페이지로 이동</div>
             </form>
         </div>
     </div>

@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/registLayout.html}">
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title>약관</title>
 
 
+    <!--meta-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="le=edge">
+
+      
+      <!--bootstrap-->
+      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+      
+
+      <!--css-->
+      <link rel="stylesheet" th:href="@{/css/index.css}">
+      <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+      <link rel="stylesheet" th:href="@{/css/regist.css}">
+      
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+      <!--js-->
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+      
+    <!--favicon--->
+      <link th:href="@{favicon.ico}" rel="icon">
+      <link th:href="@{favicon.ico}" rel="apple-touch-icon">
   </head>
-  <th:block layout:fragment="content">
+  <body>
         <section id="agreeTerms">
           <div class="agreeTermsWrap container">
 
@@ -21,7 +46,7 @@
                 
                 <div class="agreeAllWrap">
                     <label id="agreeAll">
-                        <input type="checkbox" name="agreeAll" value="전체 동의하기" id="Allagree" class="selectJs" required/>
+                        <input type="checkbox" name="agreeAll" value="전체 동의하기" id="Allagree" required/>
                         <div class="showCheckbox" onclick="testFunction3()"></div>
                         <span>전체 동의하기</span>
                     </label>
@@ -34,15 +59,13 @@
                                 testCheck.attr("checked", false);
                             }
                         }
-
                     </script>
-
                     <div class="agreeAllText">이용 약관 및 개인정보 수집 및 이용 동의를 포함합니다.</div>
                 </div>
                 
                 <div class="termsCheckWrap">
                     <label id="termCheck">
-                        <input type="checkbox" name="termsCheck" id="termsCheck" value="뭐든다알개 이용약관" class="selectJs" required/>
+                        <input type="checkbox" name="termsCheck" id="termsCheck" value="뭐든다알개 이용약관" required/>
                         <div class="showCheckbox" onclick="testFunction4()"></div>
                         <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;뭐든다알개 이용약관 <a href="">전체 > </a></span>
                     </label>
@@ -75,7 +98,7 @@
 
                 <div class="privacyWrap">
                     <label id="privacy">
-                        <input type="checkbox" name="privacy" id="privacyUse" value="개인정보 수집 및 이용" class="selectJs" required/>
+                        <input type="checkbox" name="privacy" id="privacyUse" value="개인정보 수집 및 이용" required/>
                         <div class="showCheckbox" onclick="testFunction5()"></div>
                         <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;개인정보 수집 및 이용 <a href="">전체 > </a></span>
                     </label>
@@ -114,14 +137,12 @@
                     </div>
                 </div>
 
-                <input type="button" name="nextBtn" id="nextBtn" value="다음" required th:onclick="|location.href='@{/regist/regist}'|"/>
+                <input type="submit" name="nextBtn" id="nextBtn" value="다음" required th:onclick="|location.href='@{/regist/regist}'|"/>
               </form>
             </div>
           </div>
         </section>
-  </th:block>
-
-</html>
+  </body>
 
 
  
