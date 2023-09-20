@@ -17,28 +17,37 @@
 
     <div class="board-container container">
         <div class="board-searchBar">
-            <div class="search-buttons">
-                <div class="head-title-category">
-                    <select name="anno-head-title-category" id="anno-head-title-category">
-                        <option value="말머리" selected>말머리</option>
-                        <option value="공지사항">공지사항</option>
-                        <option value="이벤트">이벤트</option>
-                    </select>
+                            <!--searchCondition 이랑 searchValue를 어떻게 넘길지
+                            그리고 BoardController에서 공지페이지 들어올때
+                            Condition이랑 Value가 그냥 굳은 상태로 들어오니까
+                            검색을 쿼리로 날려도 안되는거같음
+                            예제 참고해서 유동적으로 변하게 검색기능 활성화 시키기
+                            다른 게시판들도 mapping 시키고 테스트 글 불러 올수 있는지
+                            갤러리에 fileupload 테스트 ㄱㄱ-->
+            <form id="searchForm" th:action="@{/board/announcementBoard}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="head-title-category">
+                        <select name="searchCondition" id="searchCondition">
+                            <option selected>검색조건</option>
+                            <option value="postSort">말머리</option>
+                            <option value="postTitle">제목</option>
+                            <option value="postContent">내용</option>
+                            <option value="refMemCode.memId">작성자</option>
+                            <option value="">제목 + 내용</option>
+                            <!--작성자 조건, 제목 + 내용조건 추가로 더해야함.-->
+                        </select>
+                    </div>
+
+                    <div class="search-by-text">
+                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
+                        <input type="search" name="searchValue" id="searchValueInput">
+                    </div>
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton">검색</button>
+                    </div>
                 </div>
-                <div class="search-category">
-                    <select name="anno-search-category" id="anno-search-category">
-                        <option value="제목">제목</option>
-                        <option value="제목내용">제목 + 내용</option>
-                    </select>
-                </div>
-                <div class="search-by-text">
-                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
-                </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
-                </div>
-            </div>
+            </form>
         </div>
         <div class="board-list-container">
             <div class="board-postCategory">
@@ -52,12 +61,12 @@
         </div>
 
         <div class="postList" th:each="board : ${ boardList }">
-            <h6 class="testPost-postNo" th:text="${board.no}"></h6>
-            <h6 class="testPost-postCategory" th:text="${board.category.name}"></h6>
-            <h6 class="testPost-postTitle" th:text="${board.title}"></h6>
-            <h6 class="testPost-postUser" th:text="${board.writer.memName}"></h6>
-            <h6 class="testPost-postCount" th:text="${board.count}"></h6>
-            <h6 class="testPost-postDate" th:text="${board.createdDate}"></h6>
+            <h6 class="testPost-postNo" th:text="${board.postCode}"></h6>
+            <h6 class="testPost-postCategory" th:text="${board.postSort}"></h6>
+            <h6 class="testPost-postTitle" th:text="${board.postTitle}"></h6>
+            <h6 class="testPost-postUser" th:text="${board.refPostWriter.memId}"></h6>
+            <h6 class="testPost-postCount" th:text="${board.postCount}"></h6>
+            <h6 class="testPost-postDate" th:text="${board.postDate}"></h6>
         </div>
 
         <div class="board-write">
@@ -136,6 +145,7 @@
                 }
             }
         }
+
     </script>
 
 </th:block>

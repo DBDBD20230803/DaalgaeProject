@@ -13,6 +13,6 @@ public class AttachmentDTO {
     private String attachDbName;
     private String attachThumbAddr;
     private String attachOriginAddr;
-    private BoardDTO postCode;
+    private BoardDTO refPostCode;
 
 }
