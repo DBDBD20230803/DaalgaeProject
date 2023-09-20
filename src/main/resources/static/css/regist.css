@@ -37,9 +37,6 @@ input:focus{
     justify-content: flex-end;
 }
 
-#regist .registWrap .registContents .registForm input[type="checkbox"]{
-    display: none !important;
-}
 
 #realName:checked + .showCheckbox {
     background: url(../images/checkbox_checked.png) no-repeat;

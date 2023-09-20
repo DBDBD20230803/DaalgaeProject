@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.member.controller;
 
+import com.daalgae.daalgaeproject.exception.member.EmailAuthException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
@@ -10,11 +11,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Controller
@@ -31,8 +40,20 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginForm(String id, MemberDTO memberDTO, Model model){
+    public String loginForm(){
         return "login/login";
+    }
+
+/*    @PostMapping("/loginForm")
+    public String login(String id, MemberDTO memberDTO, Model model) throws EmailAuthException{
+
+        return "redirect:/";
+    }*/
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
     }
 
     @GetMapping("/loginFindId")
@@ -48,20 +69,55 @@ public class MemberController {
     public String registForm(){ return "regist/regist"; }
 
     @PostMapping("/regist")
-    public String registMember(@ModelAttribute MemberDTO member, HttpServletRequest request, RedirectAttributes rttr) throws MemberRegistException, MessagingException {
+    public String registMember(@ModelAttribute MemberDTO member, HttpServletRequest request, RedirectAttributes rttr) throws MemberRegistException, MessagingException, UnsupportedEncodingException {
         log.info("");
         log.info("");
         log.info("[MemberController] registMember ==========================================================");
 
-        String address = request.getParameter("address") + "$" + request.getParameter("address1") + "$" + request.getParameter("address2");
-        member.setMemAdrs(address);
-        member.setMemPwd(passwordEncoder.encode(member.getMemPwd()));
+        String memId = request.getParameter("username");
+        member.setMemId(memId);
+
+        String memPwd = request.getParameter("password");
+        member.setMemPwd(passwordEncoder.encode(memPwd));
+
+        String memEmail = request.getParameter("putEmailAddress");
+        member.setMemEmail(memEmail);
+
+        String memName = request.getParameter("nameUser");
+        member.setMemName(memName);
+
+        String birthStr = request.getParameter("birth");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date memBirth = null;
+
+        try {
+            memBirth = dateFormat.parse(birthStr);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        };
+
+        member.setMemBirth(memBirth);
+
+
+        String memAdrs = request.getParameter("address1");
+        member.setMemAdrs(memAdrs);
+
+        String memAdrsDetail = request.getParameter("address2");
+        member.setMemAdrsDetail(memAdrsDetail);
+
 
         log.info("[MemberController] registMember request Member : " + member);
 
-        loginService.registMember(member);
 
-        rttr.addFlashAttribute("message", "회원 가입에 성공했습니다!");
+        int result = loginService.registMember(member);
+        if(result == 1){
+            loginService.sendRegistEmail(member);
+            rttr.addFlashAttribute("message", "회원 가입에 성공했습니다!");
+        }else{
+            rttr.addFlashAttribute("message", "회원가입에 실패했습니다.");
+        }
+
+
 
         log.info("[MemberController] registMember ==========================================================");
 
@@ -71,7 +127,7 @@ public class MemberController {
 
 
     @PostMapping("/idDupCheck")
-    public ResponseEntity<String> checkDuplication(MemberDTO memberDTO) throws JsonProcessingException{
+    public ResponseEntity<String> checkDuplication(@RequestBody MemberDTO memberDTO) throws JsonProcessingException{
 
         log.info("");
         log.info("");
@@ -103,7 +159,7 @@ public class MemberController {
     public String emailConfirm(MemberDTO memberDTO) {
         loginService.updateMailAuth(memberDTO);
 
-        return "/regist/registComplete";
+        return "regist/registEmailAuth";
     }
 
 

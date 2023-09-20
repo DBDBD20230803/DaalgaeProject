@@ -2,7 +2,7 @@ window.onload = function (){
     if(document.getElementById("regist")){
         const $regist = document.getElementById("regist");
         $regist.onclick = function (){
-            location.href = "/regist/agreeTerms";
+            location.href = "/regist/regist";
         }
     }
 
@@ -11,14 +11,14 @@ window.onload = function (){
         const $duplication = document.getElementById("duplicationCheck");
 
         $duplication.onclick = function (){
-            let memberId = document.getElementById("username").value.trim();
+            let memId = document.getElementById("username").value.trim();
 
-            fetch("/member/idDupCheck", {
+            fetch("/regist/idDupCheck", {
                 method: "POST",
                 headers: {
                     'Content-Type' : 'application/json;charset=UTF-8'
                 },
-                body: JSON.stringify({memberId: memberId})
+                body: JSON.stringify({memId: memId})
             })
                 .then(result => result.text())
                 .then(result => alert(result))

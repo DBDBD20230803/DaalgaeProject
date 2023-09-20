@@ -22,10 +22,13 @@ public class UserImpl extends User{
     private Date memBirth;
     private String memEmail;
     private String memAdrs;
-    private String memAdresDetail;
+    private String memAdrsDetail;
     private Date memWithdrawal;
     private int memDogGum;
-    private List<MemberRoleDTO> memberRoleList;
+    private String memRole;
+    private String memBanStatus;
+    private int mailAuth;
+    private String mailKey;
 
 
     public UserImpl(String username, String password, Collection<? extends GrantedAuthority> authorities) {
@@ -41,10 +44,13 @@ public class UserImpl extends User{
         this.memBirth = member.getMemBirth();
         this.memEmail = member.getMemEmail();
         this.memAdrs = member.getMemAdrs();
-        this.memAdresDetail = member.getMemAdrsDetail();
+        this.memAdrsDetail = member.getMemAdrsDetail();
         this.memWithdrawal = member.getMemWithdrawal();
         this.memDogGum = member.getMemDogGum();
-        //this.memberRoleList = member.getMemberRoleList();
+        this.memRole = member.getMemRole();
+        this.memBanStatus = member.getMemBanStatus();
+        this.mailAuth = member.getMailAuth();
+        this.mailKey = member.getMailKey();
     }
 }
 

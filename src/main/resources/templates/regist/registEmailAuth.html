@@ -7,7 +7,33 @@
     <meta charset="utf-8">
     <title>이메일인증</title>
 
+    <script type="text/javascript">
+      function sendNumber(){
+        $("#mail_number").css("display","block");
+        $.ajax({
+          url:"/mail",
+          type:"post",
+          dataType:"json",
+          data:{"mail" : $("#mail").val()},
+          success: function(data){
+            alert("인증번호 발송");
+            $("#Confirm").attr("value",data);
+          }
+        })
+      };
 
+
+      function confirmNumber(){
+        var number1 = $("#reSendAutNum").val();
+        var number2 = $("#AuthComplete").val();
+
+        if(number1 == number2){
+          alert("인증되었습니다.");
+        }else{
+          alert("번호가 다릅니다.");
+        }
+      }
+    </script>
 
   </head>
   <th:block layout:fragment="content">
@@ -18,7 +44,7 @@
 
               <h5 class="registemailAuthTitle">뭐든 다알개</h5>
 
-              <form class="registemailAuthForm" action="" method="post">
+              <form class="registemailAuthForm" th:action="@{/regist/registEmailAuth}" method="post">
 
                 <div class="putAuthNumWrap">
                     <input type="text" name="putAuthNum" id="putAuthNum" placeholder="인증번호를 입력해주세요."/>
