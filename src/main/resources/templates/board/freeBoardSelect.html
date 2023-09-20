@@ -40,12 +40,12 @@
         </div>
         <div class="board-content-select-container">
             <div class="board-content-title" th:each="board : ${ board }">
-                <h6 class="postNo" th:text="${board.no}"></h6>
-                <h6 class="postCategory" th:text="${board.category.name}"></h6>
-                <h6 class="postTitle" th:text="${board.title}"></h6>
-                <h6 class="postUser" th:text="${board.writer.memName}"></h6>
-                <h6 class="postCount" th:text="${board.count}"></h6>
-                <h6 class="postDate" th:text="${board.createdDate}"></h6>
+                <h6 class="postNo" th:text="${board.postCode}"></h6>
+                <h6 class="postCategory" th:text="${board.postSort}"></h6>
+                <h6 class="postTitle" th:text="${board.postTitle}"></h6>
+                <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
+                <h6 class="postCount" th:text="${board.postCount}"></h6>
+                <h6 class="postDate" th:text="${board.postDate}"></h6>
             </div>
             <div class="board-select-content">
                 <div class="board-textarea">
@@ -54,7 +54,7 @@
                             cols="120"
                             rows="15"
                             readonly
-                            th:text="${board.body}"
+                            th:text="${board.postContent}"
                     >
                     </textarea>
 
@@ -68,7 +68,7 @@
             </div>
 
             <div class="write-comment" id="replyWrite">
-                <input type="hidden" id="boardNo" th:value="${board.no}">
+                <input type="hidden" id="boardNo" th:value="${board.postCode}">
                 <div class="write-comment-info">
                     <h6>*내용(0 / 300자)</h6>
                 </div>
@@ -86,19 +86,19 @@
                     <th:block th:each="reply : ${replyList}">
 
                     <div class="replyListTr comment-content">
-                        <input type="hidden" id="${ reply.no }" th:value="${ reply.no }">
-                        <div id="reply-writer" th:text="${ reply.writer.memName }"></div>
-                        <div id="reply-body" th:text="${ reply.body }"></div>
-                        <div id="reply-date" th:text="${ reply.createdDate }"></div>
+                        <input type="hidden" id="${ reply.no }" th:value="${ reply.replyCode }">
+                        <div id="reply-writer" th:text="${ reply.refMemCode.memId }"></div>
+                        <div id="reply-body" th:text="${ reply.replyCon}"></div>
+                        <div id="reply-date" th:text="${ reply.replyDate }"></div>
                         <div id="comment-delete-button">
 <!--                            <th:block-->
 <!--                                    sec:authorize="isAuthenticated()"-->
-<!--                                    th:if="${ #authentication.getPrincipal().getMemberNo() == reply.writer.memberNo }"-->
+<!--                                    th:if="${ #authentication.getPrincipal().getMemberNo() == reply.refMemCode.memCode }"-->
 <!--                            >-->
                             <button
                                     type="button"
-                                    th:replyNo="${ reply.no }"
-                                    th:onclick="removeReply(this.getAttribute('replyNo'))"
+                                    th:replyNo="${ reply.replyCode }"
+                                    th:onclick="removeReply(this.getAttribute('replyCode'))"
                             >
                                 댓글삭제
                             </button>
@@ -164,8 +164,8 @@
                         data.map((reply) => {
                             $div = $("<div>");
                             $bodyTd = $("<div>").text(reply.body);
-                            $writerTd = $("<div>").text(reply.writer.memName);
-                            $createDateTd = $("<div>").text(reply.createdDate);
+                            $writerTd = $("<div>").text(reply.refMemCode.memId);
+                            $createDateTd = $("<div>").text(reply.replyDate);
 
                             if(reply.writerMemberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
                                 $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
@@ -215,9 +215,9 @@
                     data.map((reply) => {
                         $tr = $("<tr>");
                         $bodyTd = $("<td>").text(reply.body);
-                        $writerTd = $("<td>").text(reply.writer.memName);
-                        $createDateTd = $("<td>").text(reply.createdDate);
-                        if(reply.writer.memberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
+                        $writerTd = $("<td>").text(reply.refMemCode.memId);
+                        $createDateTd = $("<td>").text(reply.replyDate);
+                        if(reply.refMemCode.memCode == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
                             $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
                         } else {
                             $removeTd = $("<td>");
