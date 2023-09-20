@@ -19,11 +19,11 @@ public class MemberDTO {
     private Date memBirth;
     private String memEmail;
     private String memAdrs;
-    private String memAdresDetail;
+    private String memAdrsDetail;
     private Date memWithdrawal;
     private int memDogGum;
     private String memRole;
-    private String memStatus;
+    private String memBanStatus;
     private int mailAuth;
     private String mailKey;
 }

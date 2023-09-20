@@ -13,10 +13,12 @@ import java.util.List;
 @AllArgsConstructor
 public class BoardDTO {
     private int postCode;
+    private String postType;
     private String postSort;
     private String postTitle;
     private String postContent;
     private Date postDate;
-    private MemberDTO refMemCode;
+    private int postCount;
+    private MemberDTO refPostWriter;
     private List<AttachmentDTO> attachmentList;
 }

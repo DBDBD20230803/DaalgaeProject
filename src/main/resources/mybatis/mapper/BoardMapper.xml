@@ -6,11 +6,13 @@
 
     <resultMap type="BoardDTO" id="boardResultMap">
         <id property="postCode" column="POST_CODE"/>
+        <result property="postType" column="POST_TYPE"/>
         <result property="postSort" column="POST_SORT"/>
         <result property="postTitle" column="POST_TITLE"/>
         <result property="postContent" column="POST_CONTENT"/>
         <result property="postDate" column="POST_DATE"/>
-        <association property="refMemCode" resultMap="memberResultMap"/>
+        <result property="postCount" column="POST_COUNT"/>
+        <association property="refPostWriter" resultMap="memberResultMap"/>
     </resultMap>
 
     <resultMap type="MemberDTO" id="memberResultMap">
@@ -21,11 +23,11 @@
         <result property="memBirth" column="MEM_BIRTH"/>
         <result property="memEmail" column="MEM_EMAIL"/>
         <result property="memAdrs" column="MEM_ADRS"/>
-        <result property="memAdresDetail" column="MEM_ADRS_DETAIL"/>
+        <result property="memAdrsDetail" column="MEM_ADRS_DETAIL"/>
         <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
         <result property="memDogGum" column="MEM_DOG_GUM"/>
         <result property="memRole" column="MEM_ROLE"/>
-        <result property="memStatus" column="MEM_BAN_STATUS"/>
+        <result property="memBanStatus" column="MEM_BAN_STATUS"/>
         <result property="mailAuth" column="MAIL_AUTH"/>
         <result property="mailKey" column="MAIL_KEY"/>
     </resultMap>
@@ -34,7 +36,7 @@
         <id property="replyCode" column="POST_REPLY_CODE"/>
         <result property="replyCon" column="POST_REPLY_CON"/>
         <result property="replyDate" column="POST_REPLY_DATE"/>
-        <association property="refMemCode" resultMap="memberResultMap"/>
+        <association property="refPostWriter" resultMap="memberResultMap"/>
         <association property="refPostCode" resultMap="boardResultMap"/>
     </resultMap>
 
@@ -51,14 +53,17 @@
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
                 COUNT(*)
           FROM  POST_INFO A
-        <if test="searchCondition == 'refMemCode'">
+        <if test="searchCondition == 'refPostWriter'">
             JOIN MEM_INFO B ON(A.MEM_CODE = B.MEM_CODE)
         </if>
         <where>
+            <if test="searchCondition == 'postType'">
+                A.POST_Type = #{ searchValue }
+            </if>
             <if test="searchCondition == 'postSort'">
                 A.POST_SORT = #{ searchValue }
             </if>
-            <if test="searchCondition == 'refMemCode'">
+            <if test="searchCondition == 'refPostWriter'">
                 B.MEM_NAME LIKE CONCAT('%', #{ searchValue }, '%')
             </if>
             <if test="searchCondition == 'postTitle'">
@@ -77,6 +82,7 @@
                 , A.POST_TITLE
                 , A.POST_CONTENT
                 , A.POST_DATE
+                , A.POST_COUNT
                 , C.MEM_ID
           FROM (
                 SELECT  B.POST_CODE
@@ -85,18 +91,25 @@
                         , B.POST_CONTENT
                         , B.POST_DATE
                         , B.REF_POST_WRITER
+                        , B.POST_COUNT
                   FROM  POST_INFO B
+                <if test="searchCondition == 'postType'">
+                    JOIN POST_INFO C ON(B.POST_TYPE = C.POST_TYPE)
+                </if>
                 <if test="searchCondition == 'postSort'">
                     JOIN POST_INFO C ON(B.POST_SORT = C.POST_SORT)
                 </if>
-                <if test="searchCondition == 'refMemCode'">
+                <if test="searchCondition == 'refPostWriter'">
                     JOIN MEM_INFO C ON(B.REF_POST_WRITER = C.MEM_CODE)
                 </if>
                 <where>
+                    <if test="searchCondition == 'postType'">
+                        C.POST_TYPE = #{ searchValue }
+                    </if>
                     <if test="searchCondition == 'postSort'">
                         C.POST_SORT = #{ searchValue }
                     </if>
-                    <if test="searchCondition == 'refMemCode'">
+                    <if test="searchCondition == 'refPostWriter'">
                         C.MEM_ID LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
                     <if test="searchCondition == 'postTitle'">
@@ -112,31 +125,39 @@
             LIMIT  #{ startRow }, 10
     </select>
 
+    <update id="incrementBoardCount">
+        UPDATE  /* com.ohgiraffers.thymeleafspringboot.board.dao.BoardMapper#incrementBoardCount() */
+            POST_INFO
+        SET  POST_COUNT = POST_COUNT + 1
+        WHERE  POST_CODE = #{ no }
+    </update>
+
     <select id="selectBoardDetail" resultMap="boardResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardDetail() */
                  A.POST_CODE
+                 , A.POST_SORT
                  , A.POST_TITLE
-                 , A.POST_CONTENT
-                 , A.MEM_CODE
+                 , A.REF_POST_WRITER
                  , B.MEM_ID
+                 , A.POST_CONTENT
+                 , A.POST_COUNT
                  , A.POST_DATE
-          FROM  POST_INFO A
-          JOIN  MEM_INFO B ON (A.MEM_CODE = B.MEM_CODE)
-           AND  A.POST_CODE = #{ no }
+        FROM POST_INFO A
+        JOIN MEM_INFO B ON(A.REF_POST_WRITER = B.MEM_CODE)
+        WHERE A.POST_CODE = #{ no }
     </select>
 
     <select id="selectReplyList" resultMap="replyResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectReplyList() */
                  A.POST_REPLY_CODE
-                 , A.POST_CODE
-                 , A.POST_REPLY_CON
-                 , A.POST_REPLY_WRITER
+                 , A.REF_POST_CODE
+                 , A.POST_REPLY_CONTENT
+                 , A.REF_POST_REPLY_WRITER
                  , A.POST_REPLY_DATE
-                 , B.MEM_CODE
                  , B.MEM_ID
           FROM  POST_REPLY A
-          JOIN  MEM_INFO B ON (A.POST_REPLY_WRITER = B.MEM_CODE)
-         WHERE   A.POST_CODE = #{ refBoardNo }
+          JOIN  MEM_INFO B ON (A.REF_POST_REPLY_WRITER = B.MEM_CODE)
+         WHERE   A.REF_POST_CODE = #{ BoardNo }
         ORDER BY A.POST_REPLY_CODE
     </select>
 

@@ -15,9 +15,7 @@ import java.util.Map;
 public interface BoardService {
 
     /* 해당 게시글 전체 갯수 조회용 메소드 */
-    public int selectTotalCount(@Param("searchCondition") String searchCondition, @Param("searchValue") String searchValue);
-
-    /* 해당 게시글 전체 갯수 조회용 메소드 */
+    public int selectTotalCount(Map<String, String> searchMap);
 
     /* 게시글 전체 조회용 메소드 */
     public List<BoardDTO> selectBoardList(SelectCriteria selectCriteria);

@@ -38,11 +38,11 @@ public class BoardController {
                                     , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                         , ModelAndView mv) {
 
-//        Map<String, String> searchMap = new HashMap<>();
-//        searchMap.put("searchCondition", searchCondition);
-//        searchMap.put("searchValue", searchValue);
+        Map<String, String> searchMap = new HashMap<>();
+        searchMap.put("searchCondition", searchCondition);
+        searchMap.put("searchValue", searchValue);
 
-        int totalCount = boardServiceImpl.selectTotalCount(searchCondition, searchValue);
+        int totalCount = boardServiceImpl.selectTotalCount(searchMap);
 
         int limit = 10;
 
@@ -78,14 +78,11 @@ public class BoardController {
                                             , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                             , ModelAndView mv) {
 
-        searchCondition = "postSort";
-        searchValue = "공지";
-//        Map<String, String> searchMap = new HashMap<>();
-//        searchMap.put("searchCondition", searchCondition);
-//        searchMap.put("searchValue", searchValue);
+        Map<String, String> searchMap = new HashMap<>();
+        searchMap.put("searchCondition", searchCondition);
+        searchMap.put("searchValue", searchValue);
 
-        System.out.println("BoardController 도달");
-        int totalCount = boardServiceImpl.selectTotalCount(searchCondition, searchValue);
+        int totalCount = boardServiceImpl.selectTotalCount(searchMap);
 
         int limit = 10;
 
@@ -103,6 +100,7 @@ public class BoardController {
 
         mv.addObject("boardList", boardList);
         mv.addObject("selectCriteria", selectCriteria);
+        /* postType은 공지로 고정을 안시키면 모든 게시글이 다 딸려오는데 */
 
         mv.setViewName("board/announcementBoard");
         return mv;

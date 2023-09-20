@@ -41,7 +41,7 @@ public class UserImpl extends User{
         this.memBirth = member.getMemBirth();
         this.memEmail = member.getMemEmail();
         this.memAdrs = member.getMemAdrs();
-        this.memAdresDetail = member.getMemAdresDetail();
+        this.memAdresDetail = member.getMemAdrsDetail();
         this.memWithdrawal = member.getMemWithdrawal();
         this.memDogGum = member.getMemDogGum();
         //this.memberRoleList = member.getMemberRoleList();

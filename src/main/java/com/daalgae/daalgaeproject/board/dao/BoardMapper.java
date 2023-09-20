@@ -13,7 +13,7 @@ import java.util.Map;
 @Mapper
 public interface BoardMapper {
 
-    int selectTotalCount(@Param("searchCondition") String searchCondition, @Param("searchValue") String searchValue);
+    int selectTotalCount(Map<String, String> searchMap);
     List<BoardDTO> selectBoardList(SelectCriteria selectCriteria);
 
     BoardDTO selectBoardDetail(int no);
