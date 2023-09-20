@@ -35,12 +35,16 @@ public class BoardController {
     public ModelAndView freeBoardMain(HttpServletRequest request
                                     , @RequestParam(required = false) String searchCondition
                                     , @RequestParam(required = false) String searchValue
+                                    , @RequestParam(required = false) String postType
                                     , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                         , ModelAndView mv) {
+
+        postType = "자유";
 
         Map<String, String> searchMap = new HashMap<>();
         searchMap.put("searchCondition", searchCondition);
         searchMap.put("searchValue", searchValue);
+        searchMap.put("postType", postType);
 
         int totalCount = boardServiceImpl.selectTotalCount(searchMap);
 
@@ -51,9 +55,9 @@ public class BoardController {
         SelectCriteria selectCriteria = null;
 
         if(searchCondition != null && !"".equals(searchCondition)) {
-            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue, postType);
         } else {
-            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, postType);
         }
 
         List<BoardDTO> boardList = boardServiceImpl.selectBoardList(selectCriteria);
@@ -75,12 +79,16 @@ public class BoardController {
     public ModelAndView announcementBoardMain(HttpServletRequest request
                                             , @RequestParam(required = false) String searchCondition
                                             , @RequestParam(required = false) String searchValue
+                                            , @RequestParam(required = false) String postType
                                             , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                             , ModelAndView mv) {
+
+        postType = "공지";
 
         Map<String, String> searchMap = new HashMap<>();
         searchMap.put("searchCondition", searchCondition);
         searchMap.put("searchValue", searchValue);
+        searchMap.put("postType", postType);
 
         int totalCount = boardServiceImpl.selectTotalCount(searchMap);
 
@@ -91,9 +99,9 @@ public class BoardController {
         SelectCriteria selectCriteria = null;
 
         if(searchCondition != null && !"".equals(searchCondition)) {
-            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue, postType);
         } else {
-            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, postType);
         }
 
         List<BoardDTO> boardList = boardServiceImpl.selectBoardList(selectCriteria);

@@ -57,9 +57,7 @@
             JOIN MEM_INFO B ON(A.MEM_CODE = B.MEM_CODE)
         </if>
         <where>
-            <if test="searchCondition == 'postType'">
-                A.POST_Type = #{ searchValue }
-            </if>
+                A.POST_TYPE = #{ postType }
             <if test="searchCondition == 'postSort'">
                 A.POST_SORT = #{ searchValue }
             </if>
@@ -83,7 +81,7 @@
                 , A.POST_CONTENT
                 , A.POST_DATE
                 , A.POST_COUNT
-                , C.MEM_ID
+                , D.MEM_ID
           FROM (
                 SELECT  B.POST_CODE
                         , B.POST_SORT
@@ -91,11 +89,9 @@
                         , B.POST_CONTENT
                         , B.POST_DATE
                         , B.REF_POST_WRITER
+                        , B.POST_TYPE
                         , B.POST_COUNT
                   FROM  POST_INFO B
-                <if test="searchCondition == 'postType'">
-                    JOIN POST_INFO C ON(B.POST_TYPE = C.POST_TYPE)
-                </if>
                 <if test="searchCondition == 'postSort'">
                     JOIN POST_INFO C ON(B.POST_SORT = C.POST_SORT)
                 </if>
@@ -103,14 +99,12 @@
                     JOIN MEM_INFO C ON(B.REF_POST_WRITER = C.MEM_CODE)
                 </if>
                 <where>
-                    <if test="searchCondition == 'postType'">
-                        C.POST_TYPE = #{ searchValue }
-                    </if>
+                        B.POST_TYPE = #{ postType }
                     <if test="searchCondition == 'postSort'">
-                        C.POST_SORT = #{ searchValue }
+                        B.POST_SORT = #{ searchValue }
                     </if>
                     <if test="searchCondition == 'refPostWriter'">
-                        C.MEM_ID LIKE CONCAT('%', #{ searchValue }, '%')
+                        B.MEM_ID LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
                     <if test="searchCondition == 'postTitle'">
                         B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
@@ -120,8 +114,8 @@
                     </if>
                 </where>
                 ) A
-            JOIN  MEM_INFO C ON(A.REF_POST_WRITER = C.MEM_CODE)
-            ORDER BY B.POST_CODE DESC
+            JOIN  MEM_INFO D ON(A.REF_POST_WRITER = D.MEM_CODE)
+            ORDER BY A.POST_CODE DESC
             LIMIT  #{ startRow }, 10
     </select>
 
