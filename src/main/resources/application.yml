@@ -10,3 +10,4 @@ spring:
 
 mybatis:
   mapper-locations: mybatis/mapper/**/*.xml
+  type-aliases-package: com.daalgae.daalgaeproject

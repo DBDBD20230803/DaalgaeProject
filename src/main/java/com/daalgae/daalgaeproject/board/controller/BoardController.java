@@ -33,11 +33,11 @@ public class BoardController {
 
     @GetMapping("/freeBoard")
     public ModelAndView freeBoardMain(HttpServletRequest request
-            , @RequestParam(required = false) String searchCondition
-            , @RequestParam(required = false) String searchValue
-            , @RequestParam(required = false) String postType
-            , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
-            , ModelAndView mv) {
+                                    , @RequestParam(required = false) String searchCondition
+                                    , @RequestParam(required = false) String searchValue
+                                    , @RequestParam(required = false) String postType
+                                    , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
+                                        , ModelAndView mv) {
 
         postType = "자유";
 
@@ -77,11 +77,11 @@ public class BoardController {
 
     @GetMapping("/announcementBoard")
     public ModelAndView announcementBoardMain(HttpServletRequest request
-            , @RequestParam(required = false) String searchCondition
-            , @RequestParam(required = false) String searchValue
-            , @RequestParam(required = false) String postType
-            , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
-            , ModelAndView mv) {
+                                            , @RequestParam(required = false) String searchCondition
+                                            , @RequestParam(required = false) String searchValue
+                                            , @RequestParam(required = false) String postType
+                                            , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
+                                            , ModelAndView mv) {
 
         postType = "공지";
 
