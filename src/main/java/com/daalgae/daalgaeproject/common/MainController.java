@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.common;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,8 @@ public class MainController {
         return "/daaalgeEncyclopedia/encyclopediaMain";
     }
     @GetMapping("tour")
-    public String TourMain() {
+    public String TourMain(Model model) {
+        model.addAttribute("select", "0");
         return "/tour/tour";
     }
 
