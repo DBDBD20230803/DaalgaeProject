@@ -8,14 +8,10 @@
     <title>회원가입</title>
   </head>
 
-  <th:block layout:fragment="content">
- <!-- <script th:inline="javascript">
-      let message = '[[${message}]]';
 
-      if(message != null && message !== ''){
-          alert(message);
-      }
-  </script>-->
+
+  <th:block layout:fragment="content">
+
 
 
         <section id="regist">
@@ -28,7 +24,7 @@
               <form class="registForm" th:action="@{/regist/regist}" method="post">
                 
                 <label id="realNameId">
-                    <input type="checkbox" name="realName" value="실명 인증된 아이디로 가입" id="realName" required/>
+                    <input type="checkbox" name="realName" value="실명 인증된 아이디로 가입" id="realName"/>
                     <div class="showCheckbox" onclick="testFunction1()"></div>
                     <span>실명 인증된 아이디로 가입</span>
                 </label>
@@ -77,7 +73,7 @@
                     </script>
                     <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
                 </label>
-                <input th:onclick="|location.href='@{/auth/signup}'|" type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
+                <input type="submit" name="AuthBtn" id="AuthBtn" value="인증요청"/>
               </form>
             </div>
           </div>
