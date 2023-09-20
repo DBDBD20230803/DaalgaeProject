@@ -36,7 +36,7 @@
 
         )
         VALUES (
-                #{ memId }
+                   #{ memId }
                ,#{ memPwd}
                ,#{ memName }
                ,#{ memBirth }
@@ -84,21 +84,21 @@
         FROM MEM_INFO
         WHERE MEM_ID = #{ memId } AND MAIL_AUTH = 1
     </select>
-    
+
     <select id="findMemberById" resultMap="loginMemberResultMap">
         SELECT
-                  A.MEM_CODE
-                , A.MEM_ID
-                , A.MEM_PWD
-                , A.MEM_NAME
-                , A.MEM_BIRTH
-                , A.MEM_EMAIL
-                , A.MEM_ADRS
-                , A.MEM_ADRS_DETAIL
-                , A.MEM_ROLE
-                , A.MEM_BAN_STATUS
-                , A.MAIL_AUTH
-                , A.MAIL_KEY
+            A.MEM_CODE
+             , A.MEM_ID
+             , A.MEM_PWD
+             , A.MEM_NAME
+             , A.MEM_BIRTH
+             , A.MEM_EMAIL
+             , A.MEM_ADRS
+             , A.MEM_ADRS_DETAIL
+             , A.MEM_ROLE
+             , A.MEM_BAN_STATUS
+             , A.MAIL_AUTH
+             , A.MAIL_KEY
         FROM MEM_INFO A
         WHERE A.MEM_ID = #{ memId }
     </select>
