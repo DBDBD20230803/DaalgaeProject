@@ -47,11 +47,6 @@ public class MainController {
         return "payment/payments";
     }
 
-/*    @GetMapping("payment/success")
-    public String success() {
-        return "payment/success";
-    }*/
-
     @GetMapping("payment/useHistory")
     public String useHistory(){
         return "payment/useHistory";
