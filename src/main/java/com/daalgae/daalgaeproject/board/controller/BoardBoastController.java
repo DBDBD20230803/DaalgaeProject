@@ -2,7 +2,6 @@ package com.daalgae.daalgaeproject.board.controller;
 
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +41,7 @@ public class BoardBoastController {
     @GetMapping("/boastBoardSelect")
     public String selectBoast(HttpServletRequest request, Model model) {
 
-        Long no = Long.valueOf(request.getParameter("no"));
+        int no = Integer.parseInt(request.getParameter("no"));
 
         BoardDTO thumbnailDetail = boardServiceImpl.selectThumbnailDetail(no);
 

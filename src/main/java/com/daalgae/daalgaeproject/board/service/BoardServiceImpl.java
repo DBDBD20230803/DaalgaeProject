@@ -29,6 +29,7 @@ public class BoardServiceImpl implements BoardService{
     public int selectTotalCount(Map<String, String> searchMap) {
 
         int result = mapper.selectTotalCount(searchMap);
+        System.out.println(searchMap.get("searchCondition"));
 
         return result;
     }
@@ -45,7 +46,7 @@ public class BoardServiceImpl implements BoardService{
     /* 게시글 상세 페이지 조회용 메소드 */
     @Override
     @Transactional
-    public BoardDTO selectBoardDetail(Long no) {
+    public BoardDTO selectBoardDetail(int no) {
         BoardDTO boardDetail = null;
 
         int result = mapper.incrementBoardCount(no);
@@ -60,7 +61,7 @@ public class BoardServiceImpl implements BoardService{
     /* 해당 게시글의 전체 댓글 조회용 메소드 */
 
     @Override
-    public List<ReplyDTO> selectAllReplyList(Long boardNo) {
+    public List<ReplyDTO> selectAllReplyList(int boardNo) {
         List<ReplyDTO> replyList = null;
 
         replyList = mapper.selectReplyList(boardNo);
@@ -78,7 +79,7 @@ public class BoardServiceImpl implements BoardService{
         int result = mapper.insertReply(registReply);
 
         if(result > 0) {
-            replyList = mapper.selectReplyList(registReply.getRefBoardNo());
+            replyList = mapper.selectReplyList(registReply.getRefPostCode().getPostCode());
         } else {
             throw new ReplyRegistException("댓글 등록에 실패하셨습니다.");
         }
@@ -92,10 +93,10 @@ public class BoardServiceImpl implements BoardService{
     public List<ReplyDTO> removeReply(ReplyDTO removeReply) throws ReplyRemoveException {
         List<ReplyDTO> replyList = null;
 
-        int result = mapper.deleteReply(removeReply.getNo());
+        int result = mapper.deleteReply(removeReply.getReplyCode());
 
         if(result > 0) {
-            replyList = mapper.selectReplyList(removeReply.getRefBoardNo());
+            replyList = mapper.selectReplyList(removeReply.getRefPostCode().getPostCode());
         } else {
             throw new ReplyRemoveException("댓글 삭제에 실패하셨습니다.");
         }
@@ -137,7 +138,7 @@ public class BoardServiceImpl implements BoardService{
 
         /* fileList에 boardNo값을 넣는다. */
         for(int i = 0; i < attachmentList.size(); i++) {
-            attachmentList.get(i).setRefBoardNo(thumbnail.getNo());
+            attachmentList.get(i).setRefPostCode((BoardDTO) thumbnail.getAttachmentList());
         }
 
         /* Attachment 테이블에 list size만큼 insert 한다. */
@@ -154,7 +155,7 @@ public class BoardServiceImpl implements BoardService{
 
     /* 게시글 상세 페이지 조회용 메소드 */
     @Override
-    public BoardDTO selectThumbnailDetail(Long no) {
+    public BoardDTO selectThumbnailDetail(int no) {
         BoardDTO thumbnailDetail = null;
 
         int result = mapper.incrementBoardCount(no);
