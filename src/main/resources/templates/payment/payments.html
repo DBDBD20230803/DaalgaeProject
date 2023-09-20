@@ -16,15 +16,15 @@
 
 
     <!--bootstrap-->
-    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
     <!--css-->
     <!--<link rel="stylesheet" href="/css/index.css">-->
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <!--<link rel="stylesheet" href="/css/mobile.css">-->
-    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" th:href="@{/css/mobile.css}">
     <!--<link rel="stylesheet" href="/css/sanitize.css">-->
-    <link rel="stylesheet" href="../css/sanitize.css">
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -38,10 +38,9 @@
 
 
     <!--favicon--->
-    <!--<link href="/favicon.ico" rel="icon">-->
-    <link th:href="@{/favicon.ico}" rel="icon"/>
-    <!--<link href="/favicon.ico" rel="apple-touch-icon">-->
-    <link th:href="@{/favicon.ico}" rel="apple-touch-icon">
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+    <script type="text/javascript" th:src="@{/js/tour.js}"></script>
 
     <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -52,60 +51,109 @@
 <div id="headers">
     <th:block th:include="component/header.html"></th:block>
 </div>
+<div class="paymentBg">
+    <h3>오늘도 댕댕하개!</h3>
+</div>
+
 <div class="container">
-    <div id="payment1">
-        <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌10">
-            <input type="hidden" name="quantity" value=1>
-            <input type="hidden" name="totalAmount" value=1100>
-
-            <button type="submit" >1,100원</button>
-        </form>
+    <div class="paymentBox1">
+        <div class="paymentText1">개껌이부족해요</div>
     </div>
-    <div>
-        <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌20">
-            <input type="hidden" name="quantity" value=1>
-            <input type="hidden" name="totalAmount" value=2200>
 
-            <button type="submit">2,200원</button>
-        </form>
+    <div class="payment101">
+        <img th:src="@{/images/denggum.png}" alt="개껌이미지">
+        <div class="payment102">현재 보유한 개껌</div>
+        <div class="payment103">1개</div>
     </div>
-    <div>
-        <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌50">
-            <input type="hidden" name="quantity" value=1>
-            <input type="hidden" name="totalAmount" value=5500>
 
-            <button type="submit" >5,500원</button>
-        </form>
+    <div class="paymentBox2">
+
+        <img th:src="@{/images/denggum.png}" class="paymentImg1">
+        <div class="text1">개껌 10개</div>
+        <div class="paymentBox3">
+            <form action="/payment/ready" method="post">
+                <input type="hidden" name="itemName" value="개껌10">
+                <input type="hidden" name="quantity" value=10>
+                <input type="hidden" name="totalAmount" value=1000000>
+                <button class="btnwh" type="submit">1,100원</button>
+            </form>
+        </div>
     </div>
-    <div>
-        <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌100">
-            <input type="hidden" name="quantity" value=1>
-            <input type="hidden" name="totalAmount" value=11000>
+    <div class="paymentBox2">
 
-            <button type="submit" >11,000원</button>
-        </form>
+        <img th:src="@{/images/denggum.png}" class="paymentImg1">
+        <div class="text1">개껌 20개</div>
+
+        <div class="paymentBox3">
+
+            <form id="paymentForm" action="/payment/ready" method="post">
+                <input type="hidden" name="itemName" value="개껌2222222">
+                <input type="hidden" name="quantity" value=20>
+                <input type="hidden" name="totalAmount" value=1000000>
+
+                <button class="btnwh" type="submit">2,200원</button>
+            </form>
+
+        </div>
     </div>
-    <div>
-        <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌300">
-            <input type="hidden" name="quantity" value=1>
-            <input type="hidden" name="totalAmount" value=33000>
 
-            <button type="submit">33,000원</button>
+<div class="paymentBox2">
+
+    <img th:src="@{/images/denggum.png}" class="paymentImg1">
+    <div class="text1">개껌 50개</div>
+
+    <div class="paymentBox3">
+
+        <form action="/payment/ready" method="post">
+            <input type="hidden" name="itemName" value="개껌555555">
+            <input type="hidden" name="quantity" value=50>
+            <input type="hidden" name="totalAmount" value=1000000>
+
+            <button class="btnwh" type="submit">5,500원</button>
         </form>
+
     </div>
 </div>
+<div class="paymentBox2">
+
+    <img th:src="@{/images/denggum.png}" class="paymentImg1">
+    <div class="text1">개껌 100개</div>
+
+    <div class="paymentBox3">
+
+        <form action="/payment/ready" method="post">
+            <input type="hidden" name="itemName" value="개껌100">
+            <input type="hidden" name="quantity" value=100>
+            <input type="hidden" name="totalAmount" value=1000000>
+
+            <button class="btnwh" type="submit">11,000원</button>
+        </form>
+
+    </div>
+</div>
+<div class="paymentBox2">
+
+    <img th:src="@{/images/denggum.png}" class="paymentImg1">
+    <div class="text1">개껌 300개</div>
+
+    <div class="paymentBox3">
+
+        <form action="/payment/ready" method="post">
+            <input type="hidden" name="itemName" value="개껌33333">
+            <input type="hidden" name="quantity" value=300>
+            <input type="hidden" name="totalAmount" value=1000000>
+
+            <button class="btnwh" type="submit">33,000원</button>
+        </form>
+
+    </div>
+</div>
+</div>
+<button onclick="location.href='/payment/list'">전체 메뉴 조회</button>
 <div id="footers"></div>
 <div>
     <th:block th:include="component/footer.html"></th:block>
 </div>
-<script>
-
-</script>
 </body>
 <script th:src="@{/js/ready.js/}"></script>
 </html>

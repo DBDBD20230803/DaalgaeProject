@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -35,28 +37,25 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeRequests()
-                //.antMatchers("/*").authenticated()
-                .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("MEMBER")
-                .antMatchers(HttpMethod.POST, "/board/*", "/login/*", "/myPage/*").hasRole("ADMIN")
+                .antMatchers("/menu/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/menu/**").hasRole("MEMBER")
+                .antMatchers(HttpMethod.POST, "/menu/**").hasRole("ADMIN")
+                .antMatchers("/order/**").hasRole("MEMBER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
             .and()
                 .formLogin()
                 .loginPage("/login/login")
-                .defaultSuccessUrl("/")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .failureUrl("/login/login")
+                .successForwardUrl("/")
             .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/header/logout"))
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
-                .logoutSuccessUrl("/")
             .and()
                 .exceptionHandling()
                 .accessDeniedPage("/common/denied")
                 .and().build();
-
     }
 
 

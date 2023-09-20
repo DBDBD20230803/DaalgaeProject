@@ -6,6 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@Data
 public class KakaoApprove {
 
     private String aid;

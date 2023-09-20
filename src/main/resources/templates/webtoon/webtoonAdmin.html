@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html"
-xmlns:th="http://thymeleaf/org">
+xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
 
@@ -16,17 +16,17 @@ xmlns:th="http://thymeleaf/org">
 
 
   <!--bootstrap-->
-  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
   <!--css-->
   <!--  주석 처리 되어있는 경로는 절대 경로 이며, ../ 으로 되어있는것은 상대 경로이다.
         절대 경로 이용할 경우 NotFound 으로 파일을 찾을수 없음 -->
   <!--<link rel="stylesheet" href="/css/index.css">-->
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" th:href="@{/css/index.css}">
   <!--<link rel="stylesheet" href="/css/mobile.css">-->
-  <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" th:href="@{/css/mobile.css}">
   <!--<link rel="stylesheet" href="/css/sanitize.css">-->
-  <link rel="stylesheet" href="../css/sanitize.css">
+  <link rel="stylesheet" th:href="@{css/sanitize.css}">
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -39,11 +39,9 @@ xmlns:th="http://thymeleaf/org">
 
 
   <!--favicon--->
-  <!--  주석처리 된 것은 절대 경로 이며, ../ 으로 경로 설정되어있는것은 상대 경로 입니다.-->
-  <!--<link href="/favicon.ico" rel="icon">-->
-  <link href="../favicon.ico" rel="icon"/>
-  <!--<link href="/favicon.ico" rel="apple-touch-icon">-->
-  <link href="../favicon.ico" rel="apple-touch-icon">
+  <link href="favicon.ico" rel="icon">
+  <link href="favicon.ico" rel="apple-touch-icon">
+  <script type="text/javascript" th:src="@{/js/tour.js}"></script>
 
 </head>
 <body>
