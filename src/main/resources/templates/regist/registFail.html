@@ -1,41 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/registLayout.html}">
   <head>
     <meta charset="utf-8">
     <title>회원가입</title>
 
 
-    <!--meta-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="le=edge">
 
-      
-      <!--bootstrap-->
-      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      
-
-      <!--css-->
-      <link rel="stylesheet" href="../css/index.css">
-      <link rel="stylesheet" href="../regist/css/mobile.css">
-      <link rel="stylesheet" href="../css/sanitize.css">
-      <link rel="stylesheet" href="../regist/css/registFail.css">
-      
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-      <!--js-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-      
-    <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
   </head>
-  <body>
+  <th:block layout:fragment="content">
         <section id="regist">
           <div class="registWrap container">
 
@@ -47,7 +22,7 @@
                 
                 <label id="realNameId">
                     <input type="checkbox" name="realName" value="실명 인증된 아이디로 가입" id="realName" required/>
-                    <div id="showCheckbox"></div>
+                    <div class="showCheckbox"></div>
                     <span>실명 인증된 아이디로 가입</span>
                 </label>
                 <input type="text" name="username" id="username" placeholder="아이디" required/>
@@ -60,15 +35,15 @@
                 <input type="text" name="nameUser" id="nameUser" placeholder="이름" required/>
                 <label id="birthday">
                     <div class="birthTitle"><span><img src="../regist/images/birth.png" alt="birth"></span> 생년월일</div>
-                    <input type="date" name="birth" id="birthday" value="생년월일" required/>
+                    <input type="date" name="birth" class="birthday" value="생년월일" required/>
                 </label>
                 <div class="addressBox">
                     <input type="text" name="address" id="address" placeholder="주소지" required/>
                     <div class="searchAddress">주소 검색</div>
                 </div>
                 <label id="termCheck" onclick="location.href='agreeTerms.html'">
-                    <input type="checkbox" name="termsCheck" id="termCheck" value="인증 약관 전체동의" required/>
-                    <div id="showCheckbox"></div>
+                    <input type="checkbox" name="termsCheck" id="termsCheck" value="인증 약관 전체동의" required/>
+                    <div class="showCheckbox"></div>
                     <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
                 </label>
                 <input type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" required/>
@@ -76,7 +51,7 @@
             </div>
           </div>
         </section>
-  </body>
+  </th:block>
 
-
+</html>
  

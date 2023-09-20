@@ -46,5 +46,6 @@ public class UserImpl extends User{
         this.memDogGum = member.getMemDogGum();
         this.memberRoleList = member.getMemberRoleList();
     }
+
 }
 
