@@ -46,5 +46,4 @@ public class MailHandler {
         mailSender.send(message);
     }
 
-
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface MemberDAO {
 
-
     MemberDTO findMemberById(String memberId);
 
 

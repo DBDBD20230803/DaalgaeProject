@@ -51,5 +51,6 @@ public class UserImpl extends User{
         this.mailAuth = member.getMailAuth();
         this.mailKey = member.getMailKey();
     }
+
 }
 

@@ -18,7 +18,6 @@ public interface LoginService extends UserDetailsService {
 
     int updateMailAuth(MemberDTO memberDTO) throws EmailAuthException, MessagingException;
     int emailAuthFail(String id) throws EmailAuthException, MessagingException;
-
 }
 
 
