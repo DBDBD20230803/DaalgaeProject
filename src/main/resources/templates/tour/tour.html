@@ -31,11 +31,13 @@
       <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+      <script type="text/javascript" th:src="@{/js/header.js}"></script>
       
     <!--favicon--->
       <link href="favicon.ico" rel="icon">
       <link href="favicon.ico" rel="apple-touch-icon">
       <script type="text/javascript" th:src="@{/js/tour.js}"></script>
+
   </head>
   <body>
   <input type="hidden" name="selectNum" th:value="${select}">
@@ -74,19 +76,19 @@
                                     <div class="listTour listTour1">
                                         
                                         <div class="listTourImag"><img th:src="@{/images/tour.png}" alt="tour"/></div>
-                                        <p>관광</p>
+                                        <p>관광지</p>
                                     </div>
 
                                     <div class="listTour listTour2">
                                         
                                         <div class="listTourImag"><img th:src="@{/images/accomo.png}" alt="accomo"/></div>
-                                        <p>숙박</p>
+                                        <p>숙박시설</p>
                                     </div>
 
                                     <div class="listTour listTour3">
                                         
                                         <div class="listTourImag"><img th:src="@{/images/food.png}" alt="food"/></div>
-                                        <p>식음료</p>
+                                        <p>식당</p>
                                     </div>
 
                                     <div class="listTour listTour4">
@@ -120,11 +122,11 @@
                                     </label>
                                     <label id="accomoCheck">
                                         <input type="checkbox" name="accomoCheck" class="accomoCheck"/>
-                                        <span>숙박</span>
+                                        <span>숙박시설</span>
                                     </label>
                                     <label id="foodCheck">
                                         <input type="checkbox" name="foodCheck" class="foodCheck"/>
-                                        <span>식음료</span>
+                                        <span>식당 및 카페</span>
                                     </label>
                                     <label id="activityCheck">
                                         <input type="checkbox" name="activityCheck" class="activityCheck"/>
