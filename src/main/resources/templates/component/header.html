@@ -1,7 +1,7 @@
 <!-- 링크 3개를 지정해야 합니다. -->
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -755,7 +755,8 @@
     <!-- 로고, 로그인, 회원가입, 마이페이지, 검색 -->
 
     <div class="loginButton">
-        <a th:href="@{/login/login}">로그인</a>
+        <a th:href="@{/login/login}" sec:authorize="isAnonymous()">로그인</a>
+        <a th:href="@{/}" sec:authorize="isAuthenticated()">로그아웃</a>
     </div>
     <div class="signupButton">
         <a th:href="@{/regist/agreeTerms}" id="regist">회원가입</a>

@@ -5,7 +5,7 @@
 
 <mapper namespace="com.daalgae.daalgaeproject.member.model.dao.MemberDAO">
 
-    <resultMap id="loginMemberResultMap" type="com.daalgae.daalgaeproject.member.model.dto.MemberDTO">
+    <resultMap id="loginMemberResultMap" type="MemberDTO">
         <id property="memCode" column="MEM_CODE"/>
         <result property="memId" column="MEM_ID"/>
         <result property="memPwd" column="MEM_PWD"/>
@@ -82,7 +82,7 @@
         SELECT
             COUNT(*)
         FROM MEM_INFO
-        WHERE MEM_ID = #{ memId } AND MAIL_AUTH = 1
+        WHERE MAIL_AUTH = 1
     </select>
 
     <select id="findMemberById" resultMap="loginMemberResultMap">

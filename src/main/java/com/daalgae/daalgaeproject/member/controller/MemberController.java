@@ -79,7 +79,7 @@ public class MemberController {
         member.setMemId(memId);
 
         String memPwd = request.getParameter("password");
-        member.setMemPwd(passwordEncoder.encode(memPwd));
+        member.setMemPwd(memPwd);
 
         String memEmail = request.getParameter("putEmailAddress");
         member.setMemEmail(memEmail);
@@ -156,11 +156,12 @@ public class MemberController {
 
 
 
-    @GetMapping("/registEmailAuth")
-    public String emailConfirm(MemberDTO memberDTO) {
+    @GetMapping(path = "/registEmailAuth")
+    public String emailConfirm(MemberDTO memberDTO ) {
         loginService.updateMailAuth(memberDTO);
+        System.out.println("확인!!!!!!!");
 
-        return "regist/registEmailAuth";
+        return "regist/emailAuthSuccess";
     }
 
 
