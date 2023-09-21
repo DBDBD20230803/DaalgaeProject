@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <div class="postList" th:each="board : ${ boardList }">
+        <div id="postListContainer" class="postList" th:each="board : ${ boardList }">
             <h6 class="testPost-postNo" th:text="${board.postCode}"></h6>
             <h6 class="testPost-postCategory" th:text="${board.postSort}"></h6>
             <h6 class="testPost-postTitle" th:text="${board.postTitle}"></h6>
@@ -79,18 +79,19 @@
             </a>
         </div>
 
-        <div class="board-paging-button">
+        <div class="board-paging-button" id="paginationButtons">
             <!-- 맨 앞으로 이동 버튼 -->
-            <button
-                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.startPage}} + '\''"
+            <button th:if="${selectCriteria.startPage > 0}"
+                    th:onclick="'location.href=\'/board/announcementBoard?currentPage=1\''"
                     th:disabled="${selectCriteria.pageNo == 1}"
             >
                 <img th:src="@{/images/firstPageButton.png}" alt="firstPageButton">
             </button>
+
             <!-- 이전 페이지 버튼 -->
             <button
-                    th:onclick="'location.href=\'/board/announcementBoardSelect?currentPage='+ @{${selectCriteria.pageNo - 1}} + '\''"
-                    th:disabled="${selectCriteria.pageNo == 1}"
+                    th:onclick="'location.href=\'/board/announcementBoard?currentPage='+ @{${selectCriteria.startPage - 1}} + '\''"
+                    th:disabled="${selectCriteria.pageNo < 6}"
             >
                 <img th:src="@{/images/previousPageButton.png}" alt="previousPageButton">
             </button>
@@ -98,21 +99,22 @@
             <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
                 <button
                         th:text="${ page }"
-                        th:onclick="'location.href=\'/board/announcementBoardSelect?currentPage='+ @{${page}} + '\''"
-                        th:disabled="${ selectCriteria.pageNo eq page }">
+                        th:onclick="'location.href=\'/board/announcementBoard?currentPage='+ @{${page}} + '\''"
+                        th:disabled="${ selectCriteria.pageNo eq page }"
+                        th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
                 </button>
             </th:block>
 
             <!-- 다음 페이지 버튼 -->
             <button
-                    th:onclick="'location.href=\'/board/announcementBoardSelect?currentPage='+ @{${selectCriteria.pageNo + 1}} + '\''"
-                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+                    th:onclick="'location.href=\'/board/announcementBoard?currentPage='+ @{${selectCriteria.endPage + 1}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
             >
                 <img th:src="@{/images/nextPageButton.png}" alt="nextPageButton">
             </button>
             <!-- 마지막 페이지로 이동 버튼 -->
             <button
-                    th:onclick="'location.href=\'/board/announcementBoardSelect?currentPage='+ @{${selectCriteria.maxPage}} + '\''"
+                    th:onclick="'location.href=\'/board/announcementBoard?currentPage='+ @{${selectCriteria.maxPage}} + '\''"
                     th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
             >
                 <img th:src="@{/images/lastPageButton.png}" alt="lastPageButton">
@@ -156,6 +158,29 @@
         function navigateToPage2() {
             window.location.href = '/board/announcementBoard?currentPage=1&searchCondition=postSort&searchValue=이벤트';
         }
+        document.getElementById('paginationButtons').addEventListener('click', function(event) {
+            // 페이지 버튼 클릭 이벤트 처리
+            if (event.target.tagName === 'BUTTON') {
+                const pageNo = event.target.getAttribute('data-page'); // 버튼의 페이지 번호 가져오기
+                // Ajax 요청 보내기
+                fetch(`/api/posts?page=${pageNo}`) // 서버의 게시물 API 엔드포인트로 수정 필요
+                    .then(response => response.json())
+                    .then(data => {
+                        // 받은 데이터로 페이지 업데이트
+                        const postListContainer = document.getElementById('postListContainer');
+                        postListContainer.innerHTML = ''; // 기존 목록 비우기
+                        data.forEach(post => {
+                            // 게시물을 목록에 추가
+                            const postElement = document.createElement('div');
+                            postElement.textContent = post.title; // 적절한 게시물 데이터로 수정
+                            postListContainer.appendChild(postElement);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('데이터 로드 중 에러 발생:', error);
+                    });
+            }
+        });
     </script>
 
 </th:block>

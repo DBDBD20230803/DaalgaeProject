@@ -87,23 +87,12 @@
                     <th:block th:each="reply : ${replyList}">
 
                     <div class="replyListTr comment-content">
-                        <input type="hidden" id="${ reply.no }" th:value="${ reply.replyCode }">
+                        <input type="hidden" id="${ reply.replyCode }" th:value="${ reply.replyCode }">
                         <div id="reply-writer" th:text="${ reply.refPostWriter.memId }"></div>
                         <div id="reply-body" th:text="${ reply.replyCon}"></div>
                         <div id="reply-date" th:text="${ reply.replyDate }"></div>
                         <div id="comment-delete-button">
-<!--                            <th:block-->
-<!--                                    sec:authorize="isAuthenticated()"-->
-<!--                                    th:if="${ #authentication.getPrincipal().getRefPostWriter().getMemCode() == reply.refPostWriter.MemCode }"-->
-<!--                            >-->
-                            <button
-                                    type="button"
-                                    th:replyNo="${ reply.replyCode }"
-                                    th:onclick="removeReply(this.getAttribute('replyCode'))"
-                            >
-                                댓글삭제
-                            </button>
-<!--                            </th:block>-->
+
                         </div>
                         <div id="comment-report-button">
                             <button>
@@ -123,121 +112,6 @@
         </div>
     </div>
 
-<!--    <script th:inline="javascript">-->
 
-<!--        /* 댓글 작성 이벤트 처리 */-->
-<!--        if(document.getElementById("registReply")) {-->
-
-<!--            const $registReply = document.getElementById("registReply");-->
-<!--            const $replyBody = document.getElementById("replyBody");-->
-
-<!--            $registReply.onclick = function() {-->
-
-<!--                if($replyBody.value.trim() == ""){-->
-<!--                    alert('댓글을 입력해 주십시오');-->
-<!--                    return ;-->
-<!--                }-->
-
-<!--                let boardNo = document.getElementById("boardNo").value;-->
-<!--                let replyBody = document.getElementById("replyBody").value;-->
-
-<!--                console.log('BoardNo : ', boardNo);-->
-<!--                console.log('replyBody : ', replyBody);-->
-
-<!--                fetch("/board/registReply", {-->
-<!--                    method: "POST",-->
-<!--                    headers: {-->
-<!--                        'Content-Type': 'application/json;charset=UTF-8'-->
-<!--                    },-->
-<!--                    body: JSON.stringify(-->
-<!--                        {-->
-<!--                            writerMemCode: '[[${#authentication.getPrincipal().getRefPostWriter().getMemCode()}]]',-->
-<!--                            refBoardNo: boardNo,-->
-<!--                            body: replyBody-->
-<!--                        }-->
-<!--                    )-->
-<!--                })-->
-<!--                    .then(result => result.json())-->
-<!--                    .then(data => {-->
-<!--                        const $table = $("#replyResult");-->
-<!--                        $table.html("");-->
-
-<!--                        data.map((reply) => {-->
-<!--                            $div = $("<div>");-->
-<!--                            $bodyTd = $("<div>").text(reply.body);-->
-<!--                            $writerTd = $("<div>").text(reply.refPostWriter.memId);-->
-<!--                            $createDateTd = $("<div>").text(reply.replyDate);-->
-
-<!--                            if(reply.writerMemCode == '[[${#authentication.getPrincipal().getRefPostWriter().getMemCode()}]]'){-->
-<!--                                $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");-->
-<!--                            } else {-->
-<!--                                $removeTd = $("<td>");-->
-<!--                            }-->
-
-<!--                            $div.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");-->
-<!--                            $div.append($bodyTd);-->
-<!--                            $div.append($writerTd);-->
-<!--                            $div.append($createDateTd);-->
-<!--                            $div.append($removeTd);-->
-
-<!--                            $table.append($div);-->
-<!--                        });-->
-
-<!--                    })-->
-<!--                    .catch((error) => error.text().then((res) => alert(res)));-->
-<!--            }-->
-<!--        }-->
-
-
-<!--        /* 댓글 삭제 이벤트 처리 함수*/-->
-<!--        function removeReply(replyNo){-->
-
-<!--            let boardNo = document.getElementById("boardNo").value;-->
-
-<!--            fetch("/board/removeReply", {-->
-<!--                method: "DELETE",-->
-<!--                headers: {-->
-<!--                    'Content-Type': 'application/json;charset=UTF-8'-->
-<!--                },-->
-<!--                body: JSON.stringify(-->
-<!--                    {-->
-<!--                        refBoardNo:boardNo,-->
-<!--                        no:replyNo-->
-<!--                    }-->
-<!--                )-->
-<!--            })-->
-<!--                .then(result => result.json())-->
-<!--                .then(data => {-->
-<!--                    console.table(data);-->
-
-<!--                    const $table = $("#replyResult");-->
-<!--                    $table.html("");-->
-
-<!--                    data.map((reply) => {-->
-<!--                        $tr = $("<tr>");-->
-<!--                        $bodyTd = $("<td>").text(reply.body);-->
-<!--                        $writerTd = $("<td>").text(reply.refPostWriter.memId);-->
-<!--                        $createDateTd = $("<td>").text(reply.replyDate);-->
-<!--                        if(reply.refPostWriter.memCode == '[[${#authentication.getPrincipal().getRefPostWriter().getMemCode()}]]'){-->
-<!--                            $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");-->
-<!--                        } else {-->
-<!--                            $removeTd = $("<td>");-->
-<!--                        }-->
-
-<!--                        $tr.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");-->
-<!--                        $tr.append($bodyTd);-->
-<!--                        $tr.append($writerTd);-->
-<!--                        $tr.append($createDateTd);-->
-<!--                        $tr.append($removeTd);-->
-
-<!--                        $table.append($tr);-->
-
-<!--                    })-->
-
-
-<!--                })-->
-<!--                .catch((error) => error.text().then((res) => alert(res)));-->
-<!--        }-->
-<!--    </script>-->
 </th:block>
 </html>

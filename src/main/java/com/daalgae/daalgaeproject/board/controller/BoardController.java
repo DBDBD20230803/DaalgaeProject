@@ -108,7 +108,6 @@ public class BoardController {
 
         mv.addObject("boardList", boardList);
         mv.addObject("selectCriteria", selectCriteria);
-        /* postType은 공지로 고정을 안시키면 모든 게시글이 다 딸려오는데 */
 
         mv.setViewName("board/announcementBoard");
         return mv;
