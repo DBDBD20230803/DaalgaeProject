@@ -116,8 +116,8 @@ public class LoginServiceImpl implements LoginService {
                 "<h1>뭐든다알개 메일인증</h1>" +
                         "<br>뭐든다알개에 오신 것을 환영합니다!" +
                         "<br>아래 [이메일 인증 확인]을 눌러주세요." +
-                        "<br><a href='http://localhost:8001/regist/registEmailAuth?email=" + member.getMemEmail() +
-                        "&MAIL_KEY=" + member.getMailKey() +
+                        "<br><a href='http://localhost:8001/regist/registEmailAuth?memEmail=" + member.getMemEmail() +
+                        "&mailKey=" + member.getMailKey() +
                         "' target='_blank'>이메일 인증 확인</a>");
         sendMail.setFrom("daalgae@naver.com", "뭐든다알개");
         sendMail.setTo(member.getMemEmail());
