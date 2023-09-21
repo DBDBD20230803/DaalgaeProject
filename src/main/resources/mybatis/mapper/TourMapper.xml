@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daalgae.daalgaeproject.tour.dao.TourMapper">
+    <resultMap id="findTourMap" type="com.daalgae.daalgaeproject.tour.dto.TourDTO">
+        <id property="tourCode" column="TOUR_CODE"/>
+        <result property="tourPhoto" column="TOUR_PHOTO"/>
+        <result property="tourTitle" column="TOUR_TITLE"/>
+        <result property="addr" column="ADDR"/>
+        <result property="tel" column="TEL"/>
+        <result property="mapx" column="MAPX"/>
+        <result property="mapy" column="MAPY"/>
+        <result property="tourCategory" column="TOUR_CATEGORY"/>
+        <result property="time" column="TIME"/>
+        <result property="page" column="PAGE"/>
+        <result property="facilities" column="FACILITIES"/>
+        <result property="supplies" column="SUPPLIES"/>
+        <result property="policy" column="POLICY"/>
+        <result property="notice" column="NOTICE"/>
+        <result property="intro" column="INTRO"/>
+    </resultMap>
+
+    <select id="findTourList" resultMap="findTourMap">
+        SELECT TOUR_CODE
+                ,TOUR_PHOTO
+                ,TOUR_TITLE
+                ,ADDR
+                ,TEL
+                ,MAPX
+                ,MAPY
+                ,TOUR_CATEGORY
+                ,TIME
+                ,PAGE
+                ,FACILITIES
+                ,SUPPLIES
+                ,POLICY
+                ,NOTICE
+                INTRO
+      FROM TOUR_INFO
+     LIMIT 9
+    </select>
+</mapper>
