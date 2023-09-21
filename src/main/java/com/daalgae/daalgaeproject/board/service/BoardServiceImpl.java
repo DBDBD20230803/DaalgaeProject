@@ -110,7 +110,7 @@ public class BoardServiceImpl implements BoardService{
         int result = mapper.insertBoard(board);
 
         if(!(result > 0)) {
-            throw new BoardRegistException("게시글 등록에 실패하셨습니다.");
+            throw new BoardRegistException("게시글 등록에 실패하셨습니다...🙊");
         }
     }
 

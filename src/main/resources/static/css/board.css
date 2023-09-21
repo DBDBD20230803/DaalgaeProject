@@ -342,6 +342,15 @@
   justify-content: center;
 }
 
+.board-container form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #HeadTitle {
   width: 100%;
   height: 60px;
@@ -350,7 +359,7 @@
   background-color: #F6F6F6;
 }
 
-#Title {
+#title {
   width: 100%;
   height: 60px;
   border: 0;

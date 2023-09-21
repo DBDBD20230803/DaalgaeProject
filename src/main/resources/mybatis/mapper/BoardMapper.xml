@@ -176,19 +176,21 @@
          WHERE  POST_REPLY_CODE = #{ replyNo }
     </delete>
 
-    <insert id="insertBoard" parameterType="_int">
+    <insert id="insertBoard" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertBoard() */
         INTO POST_INFO      (
-                              POST_SORT
+                              POST_TYPE
+                            , POST_SORT
                             , POST_TITLE
                             , POST_CONTENT
-                            , MEM_CODE
+                            , REF_POST_WRITER
                             )
         VALUES  (
-                  #{ categoryCode }
-                , #{ title }
-                , #{ body }
-                , #{ writerMemberNo }
+                  #{postType}
+                , #{postSort}
+                , #{postTitle}
+                , #{postContent}
+                , #{refPostWriter.memCode}
                 )
     </insert>
 
