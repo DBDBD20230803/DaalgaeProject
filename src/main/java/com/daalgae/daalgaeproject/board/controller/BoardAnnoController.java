@@ -30,9 +30,6 @@ public class BoardAnnoController {
 
         model.addAttribute("board", boardDetail);
 
-        List<ReplyDTO> replyList = boardServiceImpl.selectAllReplyList(no);
-        model.addAttribute("replyList", replyList);
-
         return "board/announcementBoardSelect";
     }
 

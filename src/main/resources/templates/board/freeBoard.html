@@ -16,37 +16,41 @@
 
     <div class="board-container container">
         <div class="board-searchBar">
-            <form id="searchForm"
-                  th:action="@{/board/freeBoard}"
-                  method="get"
-                  style="display: inline-block"
-            >
-            <div class="search-buttons">
-<!--                <div class="head-title-category">-->
-<!--                    <select name="head-title-category" id="head-title-category">-->
-<!--                        <option value="" selected>말머리</option>-->
-<!--                        <option value="1">용품</option>-->
-<!--                        <option value="2">먹거리</option>-->
-<!--                        <option value="3">일상</option>-->
-<!--                         script 넣을때 카테고리 코드 정해야 이걸 쓸 수 있을듯-->
-<!--                    </select>-->
-<!--                </div>-->
-                <div class="search-category">
-                    <input type="hidden" name="currentPage" value="1">
-                    <select id="searchCondition" name="searchCondition">
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                        <option value="writer">작성자</option>
-                    </select>
+            <div class="board-category-container">
+                <div class="board-category">
+                    <button onclick="navigateToPage0()">전체</button>
                 </div>
-                <div class="search-by-text">
-                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="searchValue" id="searchValue">
+                <div class="board-category">
+                    <button onclick="navigateToPage1()">자유</button>
                 </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
+                <div class="board-category">
+                    <button onclick="navigateToPage2()">먹거리</button>
+                </div>
+                <div class="board-category">
+                    <button onclick="navigateToPage3()">용품</button>
                 </div>
             </div>
+            <form id="searchForm" th:action="@{/board/freeBoard}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="head-title-category">
+                        <select name="searchCondition" id="searchCondition">
+                            <option selected>검색조건</option>
+                            <option value="postTitle">제목</option>
+                            <option value="postContent">내용</option>
+                            <option value="postTitleContent">제목 + 내용</option>
+                            <option value="refMemCode.memId">작성자</option>
+                        </select>
+                    </div>
+
+                    <div class="search-by-text">
+                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
+                        <input type="search" name="searchValue" id="searchValueInput">
+                    </div>
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton">검색</button>
+                    </div>
+                </div>
             </form>
         </div>
 
@@ -62,12 +66,12 @@
         </div>
 
         <div class="postList" th:each="board : ${ boardList }">
-                    <h6 class="testPost-postNo" th:text="${board.no}"></h6>
-                    <h6 class="testPost-postCategory" th:text="${board.category.name}"></h6>
-                    <h6 class="testPost-postTitle" th:text="${board.title}"></h6>
-                    <h6 class="testPost-postUser" th:text="${board.writer.memName}"></h6>
-                    <h6 class="testPost-postCount" th:text="${board.count}"></h6>
-                    <h6 class="testPost-postDate" th:text="${board.createdDate}"></h6>
+            <h6 class="testPost-postNo" th:text="${board.postCode}"></h6>
+            <h6 class="testPost-postCategory" th:text="${board.postSort}"></h6>
+            <h6 class="testPost-postTitle" th:text="${board.postTitle}"></h6>
+            <h6 class="testPost-postUser" th:text="${board.refPostWriter.memId}"></h6>
+            <h6 class="testPost-postCount" th:text="${board.postCount}"></h6>
+            <h6 class="testPost-postDate" th:text="${board.postDate}"></h6>
         </div>
 
         <div class="board-write">
@@ -145,6 +149,18 @@
                     location.href = "/board/freeBoardSelect?no=" + no;
                 }
             }
+        }
+        function navigateToPage0() {
+            window.location.href = '/board/freeBoard';
+        }
+        function navigateToPage1() {
+            window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=자유';
+        }
+        function navigateToPage2() {
+            window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=먹거리';
+        }
+        function navigateToPage3() {
+            window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=용품';
         }
     </script>
 
