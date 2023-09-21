@@ -11,5 +11,5 @@ public interface OrderPayMapper {
 
     int orderRegist(OrderPay orderPay);
 
-    List<OrderPay> findAllPay();
+    List<OrderPay> dogGumCode();
 }

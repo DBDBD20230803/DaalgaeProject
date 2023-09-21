@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("payment")
 @RequiredArgsConstructor
@@ -68,7 +66,7 @@ public class KakaoPayController {
 
         /*res.getTid();*/
         System.out.println("나 디비에좀 들어가자 ㅡㅡ");
-        kakaoPayService.orderRegist(orderPay);
+        kakaoPayService.orderTranscation(orderPay);
 
         return "webtoon/dengInfo";
     }

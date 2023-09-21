@@ -1,22 +1,27 @@
 package com.daalgae.daalgaeproject.payment.service;
 
 
+import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
+import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.KakaoReady;
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -26,9 +31,16 @@ public class KakaoPayService {
     static final String cid = "TC0ONETIME";
     static final String admin_Key = "7785656bcca2241ab970a65883853a10";
 
-    private final OrderPayMapper orderPayMapper;
+    private OrderPayMapper orderPayMapper;
+    private MemberDAO memberMapper;
     private KakaoReady kakaoReady;
 
+
+    @Autowired
+    public KakaoPayService(OrderPayMapper orderPayMapper, MemberDAO memberDAO) {
+        this.orderPayMapper = orderPayMapper;
+        this.memberMapper = memberDAO;
+    }
 
 
     // 요기가 지금 결제 준비 단계!!
@@ -103,21 +115,43 @@ public class KakaoPayService {
 
     }
 
-    @Transactional
-    public void orderRegist(OrderPay orderPay) {
-        System.out.println("나왔냐 ?");
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void orderTranscation(OrderPay orderPay) {
+        System.out.println("인서트 하고,");
         System.out.println(orderPay);
         orderPayMapper.orderRegist(orderPay);
+
+        List<Integer> memberCode = orderPay.getMember()
+                .stream()
+                .map(MemberDTO::getMemCode)
+                .collect(Collectors.toList());
+        System.out.println("memberCode = " + memberCode);
+
+
+        Map<String, List<Integer>> map = new HashMap<>();
+        map.put("memberCode", memberCode);
+
+        List<MemberDTO> members = memberMapper.memDogGum(map);
+        System.out.println("members =" + members);
+
+int totalDogGum = addDogGum(orderPay.getMember());
+        System.out.println("totalDogGum =" + totalDogGum);
+
+        for (MemberDTO member : members) {
+            member.setMemDogGum((member.getMemDogGum() + totalDogGum));
+        }
+
+        for (MemberDTO member : members) {
+            memberMapper.updateMemDogGum(member);
+        }
     }
 
-/**/
 
-
-    public List<KakaoApprove> findAllPay() {
-
-//        List<KakaoApprove> k = orderPayMapper.findAllPay();
-
-        return  null;
-
+    private int addDogGum(List<MemberDTO> orderPays) {
+        int totalDogGum = 0;
+        for (MemberDTO orderPay : orderPays) {
+            totalDogGum += orderPay.getMemDogGum();
+        }
+        return totalDogGum;
     }
 }
