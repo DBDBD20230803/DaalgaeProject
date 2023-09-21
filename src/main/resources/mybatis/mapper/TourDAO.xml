@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daalgae.daalgaeproject.tour.dao.TourMapper">
+    <resultMap id="findTourMap" type="com.daalgae.daalgaeproject.tour.dto.TourDTO">
+        <id property="tourCode" column="ENCYCLE_CODE"/>
+        <result property="tourPhoto" column="ENCYCLE_TEXT"/>
+        <result property="tourTitle" column="ENCYCLE_ORDER"/>
+        <result property="addr" column="ENCYCLE_IMAGE"/>
+        <result property="tel" column="ENCYCLE_TITLE"/>
+        <result property="mapx" column="ENCYCLE_CONTENT"/>
+    </resultMap>
+
+    <select id="findTourList" resultMap="findTourMap">
+
+    </select>
+</mapper>
+
+<!--
+public class TourDTO {
+    private int tourCode;
+    private String tourPhoto;
+    private String tourTitle;
+    private String addr;
+    private String tel;
+    private String mapx;
+    private String mapy;
+    private String tourCategory;
+    private String time;
+    private String page;
+    private String facilities;
+    private String supplies;
+    private String policy;
+    private String notice;
+    private String intro;
+}
+
+-->
