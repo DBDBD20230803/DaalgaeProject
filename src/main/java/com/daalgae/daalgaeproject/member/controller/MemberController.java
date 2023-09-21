@@ -40,15 +40,29 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginForm(){
+    public String loginForm(@RequestParam(value = "error", required = false) String error,
+                            @RequestParam(value = "exception", required = false) String exception, Model model){
+
+            model.addAttribute("error", error);
+            model.addAttribute("exception", exception);
+            log.info("loginForm view resolve");
+
         return "login/login";
     }
 
-/*    @PostMapping("/loginForm")
-    public String login(String id, MemberDTO memberDTO, Model model) throws EmailAuthException{
+    @PostMapping("/login")
+    public String login(String id, MemberDTO memberDTO, Model model, Errors errors) throws EmailAuthException{
+
+        if (errors.hasErrors()) {
+            return "/login/login";
+        }
+
+        if (loginService.emailAuthFail(String.valueOf(memberDTO.getMailAuth())) != 1) {
+            return "/regist/emailAuthFail";
+        }
 
         return "redirect:/";
-    }*/
+    }
 
 
     @GetMapping("/logout")
@@ -70,7 +84,7 @@ public class MemberController {
     public String registForm(){ return "regist/regist"; }
 
     @PostMapping("/regist")
-    public String registMember(@ModelAttribute MemberDTO member, HttpServletRequest request, RedirectAttributes rttr) throws MemberRegistException, MessagingException, UnsupportedEncodingException {
+    public String registMember(@ModelAttribute MemberDTO member, HttpServletRequest request) throws MemberRegistException, MessagingException, UnsupportedEncodingException {
         log.info("");
         log.info("");
         log.info("[MemberController] registMember ==========================================================");
@@ -111,18 +125,15 @@ public class MemberController {
 
 
         int result = loginService.registMember(member);
-        if(result == 1){
-            loginService.sendRegistEmail(member);
-            rttr.addFlashAttribute("message", "회원 가입에 성공했습니다!");
-        }else{
-            rttr.addFlashAttribute("message", "회원가입에 실패했습니다.");
-        }
 
+        if(result == 1) {
+            loginService.sendRegistEmail(member);
+        }
 
 
         log.info("[MemberController] registMember ==========================================================");
 
-        return "redirect:/regist/registComplete";
+        return "/regist/registComplete";
 
     }
 
@@ -155,8 +166,10 @@ public class MemberController {
     public String agreeTerms(){ return "regist/agreeTerms"; }
 
 
+    @GetMapping("/registComplete")
+    public String registCompleteForm(){ return "regist/registComplete"; }
 
-    @GetMapping(path = "/registEmailAuth")
+    @GetMapping( "/registEmailAuth")
     public String emailConfirm(MemberDTO memberDTO ) {
         loginService.updateMailAuth(memberDTO);
         System.out.println("확인!!!!!!!");
@@ -167,4 +180,7 @@ public class MemberController {
 
     @GetMapping("/mypage")
     public String mypageForm(){ return "myPage/mypage"; }
+
+
+
 }

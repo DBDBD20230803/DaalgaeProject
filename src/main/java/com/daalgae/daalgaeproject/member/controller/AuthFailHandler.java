@@ -1,9 +1,12 @@
 package com.daalgae.daalgaeproject.member.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -16,7 +19,7 @@ import java.net.URLEncoder;
 
 @Configuration
 public class AuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
-
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
 
@@ -28,13 +31,16 @@ public class AuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
         }else if(exception instanceof UsernameNotFoundException){
             errorMessage = "존재하지 않는 회원입니다. \n 아이디를 확인해주세요.";
         }else if(exception instanceof AuthenticationCredentialsNotFoundException){
+            log.info("이메일이 인증되지 않았습니다. 이메일을 확인해 주세요.");
             errorMessage = "인증 요청이 거부되었습니다. \n 관리자에게 문의해주세요.";
-        }else{
+        }
+        else{
             errorMessage = "알 수 없는 오류로 로그인 처리가 불가합니다. \n 관리자에게 문의해주세요.";
         }
 
         errorMessage = URLEncoder.encode(errorMessage, "UTF-8");
         setDefaultFailureUrl("/login/loginFail?errorMessage=" + errorMessage);
+
         super.onAuthenticationFailure(request, response, exception);
     }
 
