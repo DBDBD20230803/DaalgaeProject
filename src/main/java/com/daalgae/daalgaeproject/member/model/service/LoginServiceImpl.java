@@ -90,7 +90,7 @@ public class LoginServiceImpl implements LoginService {
     @Transactional
     public int registMember(MemberDTO member) throws MemberRegistException, MessagingException {
 
-        String mailKey = new TempKey().getKey(30, false);
+       String mailKey = new TempKey().getKey(30, false);
         member.setMailKey(mailKey);
 
         String encPassword = passwordEncoder.encode(member.getMemPwd());

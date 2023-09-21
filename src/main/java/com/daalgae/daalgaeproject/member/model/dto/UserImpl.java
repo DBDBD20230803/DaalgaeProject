@@ -1,14 +1,13 @@
 
 package com.daalgae.daalgaeproject.member.model.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
