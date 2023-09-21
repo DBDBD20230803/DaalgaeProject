@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
+
 @Configuration
 //@PropertySource("classpath:mailAuth.properties")
 @ConfigurationProperties(prefix = "mail")

@@ -1,8 +1,7 @@
 
 package com.daalgae.daalgaeproject.config;
 
-import com.daalgae.daalgaeproject.member.model.service.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.daalgae.daalgaeproject.member.controller.AuthFailHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,6 +19,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final AuthFailHandler authFailHandler;
+    public SecurityConfig(AuthFailHandler authFailHandler) {
+        this.authFailHandler = authFailHandler;
+    }
+
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -31,17 +37,21 @@ public class SecurityConfig {
         return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/imgaes/**", "/lib/**");
     }
 
+
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeRequests()
                 //.antMatchers("/*").authenticated()
                 .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("MEMBER")
-                .antMatchers(HttpMethod.POST, "/board/*", "/login/*", "/myPage/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/board/*", "/myPage/*", "/login/*").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login/login")
+                .failureHandler(authFailHandler)
                 .defaultSuccessUrl("/")
                 .usernameParameter("username")
                 .passwordParameter("password")
