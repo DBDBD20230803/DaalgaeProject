@@ -1752,7 +1752,12 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
             startPos = position;
             let latitudeValue = startPos.coords.latitude;
             let longitudeValue = startPos.coords.longitude;
-
+            let userX = String(latitudeValue);
+            let userY = String(longitudeValue);
+            if(userX.length !==0 && userY.length !==0) {
+                localStorage.setItem("userX", userX);
+                localStorage.setItem("userY", userY);
+            }
             // 좌표로 주소 찾기: 구까지는 정확한 것 같다.
             let makeUrlFindLocation = "https://api.vworld.kr/req/address?service=address&request=getAddress&version=2.0&crs=epsg:4326&point=";
             makeUrlFindLocation += longitudeValue;

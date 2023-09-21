@@ -207,29 +207,42 @@ select {
     left: 20px;
     top: 10px;
     font-size: 16px;
+    font-weight: 500;
     color: #222;
 }
 
 .locationLoc {
     position: relative;
+    top: 20px;
     left: 16px;
-    top: 10px;
-    font-size: 14px;
-    color: #222;
 }
 
 .locTextUp {
     position: relative;
     font-size: 14px;
     color: #222;
-    top: -1px;
+    font-weight: bold;
+    top: -8px;
+    left: 50px;
+    white-space  : nowrap;
+    overflow:hidden;
+    width:250px;
+    text-overflow:ellipsis;
 }
 
 .telNumber {
     position: relative;
+    top: 10px;
     left: 16px;
+}
+
+.telNums {
+    position: relative;
     font-size: 14px;
+    font-weight: bold;
     color: #222;
+    top: -16px;
+    left: 51px;
 }
 
 .whiteSpaceEncycle {

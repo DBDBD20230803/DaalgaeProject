@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class TourDTO {
+public class TourDetailDTO {
     private int tourCode;
     private String tourPhoto;
     private String tourTitle;
