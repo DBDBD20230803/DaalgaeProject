@@ -51,7 +51,6 @@
         ,MAPY
         ,TOUR_CATEGORY
         FROM TOUR_INFO
-        LIMIT 9
     </select>
 
     <select id="findTourList" resultMap="findTourList">

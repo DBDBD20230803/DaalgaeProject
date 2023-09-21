@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.tour.controller;
 
 import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import com.daalgae.daalgaeproject.tour.service.TourService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,8 +24,6 @@ public class TourController {
 
     @GetMapping("tourList")
     public String TourList() {
-        List<TourListDTO> findTourList = tourService.findTourList("tourList");
-        System.out.println(findTourList);
         return "tour/tourList";
     }
 
@@ -37,8 +36,6 @@ public class TourController {
 
     @GetMapping("tourDetail")
     public String TourDetail() {
-        List<TourDetailDTO> findDetail = tourService.findTourDetail("tourDetail");
-        System.out.println(findDetail);
         return "tour/tourDetail";
     }
 
@@ -47,6 +44,13 @@ public class TourController {
     public List<TourDetailDTO> getTourDetail() throws JsonProcessingException {
         List<TourDetailDTO> findDetail = tourService.findTourDetail("tourDetail");
         return findDetail;
+    }
+
+    @GetMapping(value = "getTourKakaoMap", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<TourKakaoMapDTO> getTourKakaoMap() throws JsonProcessingException {
+        List<TourKakaoMapDTO> findTourKakaoMap = tourService.findTourKakaoMap("tourKakaoMap");
+        return findTourKakaoMap;
     }
 
     @GetMapping("place")
