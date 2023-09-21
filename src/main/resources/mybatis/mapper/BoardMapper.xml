@@ -194,6 +194,11 @@
                 )
     </insert>
 
+    <delete id="deletePost" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
+        DELETE FROM POST_INFO
+        WHERE POST_CODE = #{ postCode }
+    </delete>
+
     <insert id="insertAttachment" parameterType="_int">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertAttachment() */
         INTO ATTACHMENT_FILE    (

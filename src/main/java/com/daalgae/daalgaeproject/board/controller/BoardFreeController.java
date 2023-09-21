@@ -3,6 +3,7 @@ package com.daalgae.daalgaeproject.board.controller;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
+import com.daalgae.daalgaeproject.common.exception.board.BoardDeleteException;
 import com.daalgae.daalgaeproject.common.exception.board.BoardRegistException;
 import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
 import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
@@ -74,6 +75,20 @@ public class BoardFreeController {
         boardServiceImpl.registBoard(board);
 
         rttr.addFlashAttribute("message", "게시글 등록에 성공하였습니다!!🐶");
+
+        log.info("[BoardController] registBoard =========================================================");
+
+        return "redirect:/board/freeBoard";
+    }
+
+    @PostMapping("/deletePost")
+    public String deletePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
+
+        log.info("[BoardController] deleteBoard Request : " + board);
+
+        boardServiceImpl.deleteBoard(board);
+
+        rttr.addFlashAttribute("message", "게시글 삭제에 성공하였습니다!!😎");
 
         log.info("[BoardController] registBoard =========================================================");
 

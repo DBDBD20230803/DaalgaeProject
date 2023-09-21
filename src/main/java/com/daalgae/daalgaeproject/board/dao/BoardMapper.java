@@ -25,6 +25,8 @@ public interface BoardMapper {
 
     int insertBoard(BoardDTO board);
 
+    int deletePost(BoardDTO board);
+
     List<BoardDTO> selectAllThumbnailList();
 
     int insertThumbnailContent(BoardDTO thumbnail);

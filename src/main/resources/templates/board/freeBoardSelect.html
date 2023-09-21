@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/boardLayout}">
+      layout:decorate="~{layouts/boardLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>자유게시판</title>
 </head>
@@ -129,13 +130,23 @@
                     </div>
                     </th:block>
                 </th:block>
-
             </div>
+
+            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1 }">
+                <form th:action="@{/board/deletePost}" id="boardDeleteForm" method="post">
+                    <input type="hidden" name="postCode" th:value="${board.postCode}">
+                    <div class="updatePost">
+                        <button type="submit">수정</button>
+                    </div>
+                    <div class="deletePost">
+                        <button type="submit">삭제</button>
+                    </div>
+                </form>
+            </th:block>
 
             <div class="back-to-list">
                 <a th:href="@{/board/freeBoard}">목록</a>
             </div>
-
         </div>
     </div>
 
