@@ -1,8 +1,8 @@
 package com.daalgae.daalgaeproject.tour.service;
 
-import com.daalgae.daalgaeproject.encyclopedia.dto.EncyclopediaDTO;
 import com.daalgae.daalgaeproject.tour.dao.TourMapper;
-import com.daalgae.daalgaeproject.tour.dto.TourDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +16,11 @@ public class TourService {
         this.tourMapper = tourMapper;
     }
 
-    public List<TourDTO> findTourList(String tourList) {
+    public List<TourListDTO> findTourList(String tourList) {
         return tourMapper.findTourList(tourList);
+    }
+
+    public List<TourDetailDTO> findTourDetail(String tourDetail) {
+        return tourMapper.findTourDetail(tourDetail);
     }
 }

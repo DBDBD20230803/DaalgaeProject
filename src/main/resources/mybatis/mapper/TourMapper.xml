@@ -3,7 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daalgae.daalgaeproject.tour.dao.TourMapper">
-    <resultMap id="findTourMap" type="com.daalgae.daalgaeproject.tour.dto.TourDTO">
+
+    <resultMap id="findTourKakaoMap" type="com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO">
+        <id property="tourCode" column="TOUR_CODE"/>
+        <result property="tourPhoto" column="TOUR_PHOTO"/>
+        <result property="tourTitle" column="TOUR_TITLE"/>
+        <result property="addr" column="ADDR"/>
+        <result property="tel" column="TEL"/>
+        <result property="mapx" column="MAPX"/>
+        <result property="mapy" column="MAPY"/>
+        <result property="tourCategory" column="TOUR_CATEGORY"/>
+    </resultMap>
+
+    <resultMap id="findTourList" type="com.daalgae.daalgaeproject.tour.dto.TourListDTO">
+        <id property="tourCode" column="TOUR_CODE"/>
+        <result property="tourPhoto" column="TOUR_PHOTO"/>
+        <result property="tourTitle" column="TOUR_TITLE"/>
+        <result property="addr" column="ADDR"/>
+        <result property="tel" column="TEL"/>
+    </resultMap>
+
+    <resultMap id="findTourDetail" type="com.daalgae.daalgaeproject.tour.dto.TourDetailDTO">
         <id property="tourCode" column="TOUR_CODE"/>
         <result property="tourPhoto" column="TOUR_PHOTO"/>
         <result property="tourTitle" column="TOUR_TITLE"/>
@@ -21,23 +41,47 @@
         <result property="intro" column="INTRO"/>
     </resultMap>
 
-    <select id="findTourList" resultMap="findTourMap">
+    <select id="findTourKakaoMap" resultMap="findTourKakaoMap">
         SELECT TOUR_CODE
-                ,TOUR_PHOTO
-                ,TOUR_TITLE
-                ,ADDR
-                ,TEL
-                ,MAPX
-                ,MAPY
-                ,TOUR_CATEGORY
-                ,TIME
-                ,PAGE
-                ,FACILITIES
-                ,SUPPLIES
-                ,POLICY
-                ,NOTICE
-                INTRO
-      FROM TOUR_INFO
-     LIMIT 9
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        ,MAPX
+        ,MAPY
+        ,TOUR_CATEGORY
+        FROM TOUR_INFO
+        LIMIT 9
     </select>
+
+    <select id="findTourList" resultMap="findTourList">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        FROM TOUR_INFO
+        LIMIT 9
+    </select>
+
+    <select id="findTourDetail" resultMap="findTourDetail">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        ,MAPX
+        ,MAPY
+        ,TOUR_CATEGORY
+        ,TIME
+        ,PAGE
+        ,FACILITIES
+        ,SUPPLIES
+        ,POLICY
+        ,NOTICE
+        ,INTRO
+        FROM TOUR_INFO
+        LIMIT 1
+    </select>
+
 </mapper>

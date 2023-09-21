@@ -1,7 +1,7 @@
 package com.daalgae.daalgaeproject.tour.controller;
 
-import com.daalgae.daalgaeproject.encyclopedia.dto.EncyclopediaDTO;
-import com.daalgae.daalgaeproject.tour.dto.TourDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import com.daalgae.daalgaeproject.tour.service.TourService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Controller;
@@ -23,23 +23,30 @@ public class TourController {
 
     @GetMapping("tourList")
     public String TourList() {
-
+        List<TourListDTO> findTourList = tourService.findTourList("tourList");
+        System.out.println(findTourList);
         return "tour/tourList";
     }
 
     @GetMapping(value = "getTourList", produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<TourDTO> getTourList() throws JsonProcessingException {
-        List<TourDTO> findList = tourService.findTourList("tourList");
+    public List<TourListDTO> getTourList() throws JsonProcessingException {
+        List<TourListDTO> findList = tourService.findTourList("tourList");
         return findList;
     }
 
-
     @GetMapping("tourDetail")
     public String TourDetail() {
-        List<TourDTO> findList = tourService.findTourList("tourList");
-        System.out.println(findList);
+        List<TourDetailDTO> findDetail = tourService.findTourDetail("tourDetail");
+        System.out.println(findDetail);
         return "tour/tourDetail";
+    }
+
+    @GetMapping(value = "getTourDetail", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<TourDetailDTO> getTourDetail() throws JsonProcessingException {
+        List<TourDetailDTO> findDetail = tourService.findTourDetail("tourDetail");
+        return findDetail;
     }
 
     @GetMapping("place")

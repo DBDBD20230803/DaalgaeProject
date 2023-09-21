@@ -1,11 +1,14 @@
 package com.daalgae.daalgaeproject.tour.dao;
 
-import com.daalgae.daalgaeproject.tour.dto.TourDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
+import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface TourMapper {
-    List<TourDTO> findTourList(String tourList);
+    List<TourListDTO> findTourList(String tourList);
+
+    List<TourDetailDTO> findTourDetail(String tourDetail);
 }
