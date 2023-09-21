@@ -7,23 +7,7 @@
     <meta charset="utf-8">
     <title>이메일인증</title>
 
-    <script type="text/javascript">
-      function sendNumber(){
-        $("#mail_number").css("display","block");
-        $.ajax({
-          url:"/mail",
-          type:"post",
-          dataType:"json",
-          data:{"mail" : $("#mail").val()},
-          success: function(data){
-            alert("인증번호 발송");
-            $("#Confirm").attr("value",data);
-          }
-        })
-      };
-
-
-
+    <script th:inline="javascript">
       function confirmNumber(){
         var number1 = $("#reSendAutNum").val();
         var number2 = $("#AuthComplete").val();
@@ -52,7 +36,7 @@
                     <div class="authTime">남은 시간 : <span class="timeRemain">2 : 44</span></div>
                 </div>
                 <input type="submit" name="reSendAutNum" id="reSendAutNum" value="인증번호 재전송"/>
-                <input type="submit" name="AuthComplete" id="AuthComplete" value="인증확인"/>
+                <input type="submit" name="AuthComplete" id="AuthComplete" value="인증확인" onclick="confirmNumber()"/>
               </form>
 
             </div>

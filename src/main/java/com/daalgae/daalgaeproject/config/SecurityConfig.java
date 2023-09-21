@@ -55,7 +55,7 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .failureUrl("/login/login")
+                //.failureUrl("/login/login")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/header/logout"))

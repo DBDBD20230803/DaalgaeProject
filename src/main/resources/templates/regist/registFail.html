@@ -7,7 +7,21 @@
     <meta charset="utf-8">
     <title>회원가입</title>
 
-
+      <script th:inline="javascript">
+         function sendNumber(){
+             $("#mail_number").css("display","block");
+             $.ajax({
+             url:"/mail",
+             type:"post",
+             dataType:"json",
+             data:{"mail" : $("#mail").val()},
+             success: function(data){
+             alert("인증번호 발송");
+             $("#Confirm").attr("value",data);
+             }
+          })
+       };
+      </script>
 
   </head>
   <th:block layout:fragment="content">
