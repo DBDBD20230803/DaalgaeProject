@@ -45,7 +45,7 @@ public class SecurityConfig {
         return http.csrf().disable()
                 .authorizeRequests()
                 //.antMatchers("/*").authenticated()
-                .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("MEMBER")
+                .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/board/*", "/myPage/*", "/login/*").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
