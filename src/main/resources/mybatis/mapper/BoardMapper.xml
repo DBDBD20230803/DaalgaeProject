@@ -34,7 +34,7 @@
 
     <resultMap type="ReplyDTO" id="replyResultMap">
         <id property="replyCode" column="POST_REPLY_CODE"/>
-        <result property="replyCon" column="POST_REPLY_CON"/>
+        <result property="replyCon" column="POST_REPLY_CONTENT"/>
         <result property="replyDate" column="POST_REPLY_DATE"/>
         <association property="refPostWriter" resultMap="memberResultMap"/>
         <association property="refPostCode" resultMap="boardResultMap"/>
@@ -113,8 +113,8 @@
                         AND B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
                     <if test="searchCondition == 'postTitleContent'">
-                        AND B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
-                        OR B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
+                        AND ( B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+                        OR B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%'))
                     </if>
                 </where>
                 ) A
