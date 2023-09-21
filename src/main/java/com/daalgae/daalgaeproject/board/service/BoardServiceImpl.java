@@ -29,7 +29,6 @@ public class BoardServiceImpl implements BoardService{
     public int selectTotalCount(Map<String, String> searchMap) {
 
         int result = mapper.selectTotalCount(searchMap);
-        System.out.println(searchMap.get("searchCondition"));
 
         return result;
     }

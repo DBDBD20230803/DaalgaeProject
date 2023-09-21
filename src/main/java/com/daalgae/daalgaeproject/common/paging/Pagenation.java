@@ -32,7 +32,8 @@ public class Pagenation {
          * 1, 11, 21, 31, .....
          * */
 //		startPage = (((int)((double) pageNo / buttonAmount + 0.9)) - 1) * buttonAmount + 1;
-        startPage = (int) (Math.ceil((double) pageNo / buttonAmount) - 1) * buttonAmount + 1;
+//        startPage = (int) (Math.ceil((double) pageNo / buttonAmount) - 1) * buttonAmount + 1;
+        startPage = (int) Math.floor((double) (pageNo - 1) / buttonAmount) * buttonAmount + 1;
 
         /* 목록 아래쪽에 보여질 마지막 페이지 수 (10, 20, 30, ....) */
         endPage = startPage + buttonAmount - 1;
@@ -52,8 +53,6 @@ public class Pagenation {
         startRow = (pageNo - 1) * limit;
         endRow = startRow + limit - 1;
 
-        System.out.println("startRow : " + startRow);
-        System.out.println("endRow : " + endRow);
 
         SelectCriteria selectCriteria = new SelectCriteria(pageNo, totalCount, limit, buttonAmount ,maxPage, startPage, endPage, startRow, endRow, searchCondition, searchValue, postType);
 

@@ -92,10 +92,7 @@
                         , B.POST_TYPE
                         , B.POST_COUNT
                   FROM  POST_INFO B
-                <if test="searchCondition == 'postSort'">
-                    JOIN POST_INFO C ON(B.POST_SORT = C.POST_SORT)
-                </if>
-                <if test="searchCondition == 'refPostWriter'">
+                <if test="searchCondition == 'postWriter'">
                     JOIN MEM_INFO C ON(B.REF_POST_WRITER = C.MEM_CODE)
                 </if>
                 <where>
@@ -103,8 +100,8 @@
                     <if test="searchCondition == 'postSort'">
                         AND B.POST_SORT LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
-                    <if test="searchCondition == 'refPostWriter'">
-                        AND B.MEM_ID LIKE CONCAT('%', #{ searchValue }, '%')
+                    <if test="searchCondition == 'postWriter'">
+                        AND C.MEM_ID LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
                     <if test="searchCondition == 'postTitle'">
                         AND B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
@@ -155,7 +152,7 @@
                  , B.MEM_ID
           FROM  POST_REPLY A
           JOIN  MEM_INFO B ON (A.REF_POST_REPLY_WRITER = B.MEM_CODE)
-         WHERE   A.REF_POST_CODE = #{ BoardNo }
+         WHERE   A.REF_POST_CODE = #{ boardNo }
         ORDER BY A.POST_REPLY_CODE
     </select>
 
