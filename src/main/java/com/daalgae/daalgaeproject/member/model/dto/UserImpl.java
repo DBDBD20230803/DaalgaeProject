@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 
 @Getter
@@ -29,10 +28,15 @@ public class UserImpl extends User{
     private int mailAuth;
     private String mailKey;
 
-
-    public UserImpl(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserImpl(String username, String password, boolean mailAuth, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
+
+/*
+    public UserImpl(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+    }
+*/
 
 
     public void setDetails(MemberDTO member) {
@@ -50,6 +54,27 @@ public class UserImpl extends User{
         this.memBanStatus = member.getMemBanStatus();
         this.mailAuth = member.getMailAuth();
         this.mailKey = member.getMailKey();
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return mailAuth == 1;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
 }

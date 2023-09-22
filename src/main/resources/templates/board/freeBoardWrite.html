@@ -15,38 +15,47 @@
     </div>
 
     <div class="board-container container">
+        <form th:action="@{/board/freeBoardWrite}" id="boardWriteForm" method="post">
+            <input
+                    type="hidden"
+                    id="refPostWriter.memCode"
+                    name="refPostWriter.memCode"
+                    th:value="${ #authentication.getPrincipal().getMemCode() }"
+            >
+            <input type="hidden" name="postType" th:value="자유">
         <div class="header-board-write-text">
             <h2>글쓰기</h2>
         </div>
         <div class="board-write-header">
             <div class="category">
-                <select name="말머리" id="HeadTitle">
-                    <option value="default" selected>말머리 선택</option>
+                <select name="postSort" id="HeadTitle">
+                    <option value="자유">자유</option>
                     <option value="용품">용품</option>
                     <option value="먹거리">먹거리</option>
                 </select>
             </div>
             <div class="write-title">
-                <input type="text" name="Title" id="Title" placeholder="제목을 입력해주세요.">
+                <input type="text" name="postTitle" id="title" placeholder="제목을 입력해주세요.">
             </div>
-            <div class="imageUpload">
-                <label for="imageUpload" class="label-imageUpload" id="imageUploadButton">
-                    <img th:src="@{/images/imageUpload.png}" alt="이미지업로드">
-                </label>
-                <input type="file" name="imageUpload" id="imageUpload" style="display: none;">
-            </div>
+<!--            <div class="imageUpload">-->
+<!--                <label for="imageUpload" class="label-imageUpload" id="imageUploadButton">-->
+<!--                    <img th:src="@{/images/imageUpload.png}" alt="이미지업로드">-->
+<!--                </label>-->
+<!--                <input type="file" name="imageUpload" id="imageUpload" style="display: none;">-->
+<!--            </div>-->
         </div>
         <div class="board-write-content">
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="postContent" id="content" cols="30" rows="10"></textarea>
         </div>
         <div class="board-write-buttons">
             <div class="write-button">
-                <button type="submit" value="작성">작성완료</button>
+                <button type="submit">작성완료</button>
             </div>
             <div class="write-cancel">
                 <a th:href="@{/board/freeBoard}">취소</a>
             </div>
         </div>
+        </form>
     </div>
 
 </th:block>

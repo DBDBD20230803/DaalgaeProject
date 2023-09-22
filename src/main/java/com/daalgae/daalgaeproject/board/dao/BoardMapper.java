@@ -21,9 +21,11 @@ public interface BoardMapper {
 
     int insertReply(ReplyDTO registReply);
 
-    int deleteReply(int no);
+    int removeReply(int no);
 
     int insertBoard(BoardDTO board);
+
+    int deletePost(BoardDTO board);
 
     List<BoardDTO> selectAllThumbnailList();
 
@@ -34,4 +36,6 @@ public interface BoardMapper {
     int incrementBoardCount(int no);
 
     BoardDTO selectThumbnailDetail(int no);
+
+    int updatePost(BoardDTO board);
 }

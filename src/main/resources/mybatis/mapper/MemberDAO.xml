@@ -82,7 +82,7 @@
         SELECT
             COUNT(*)
         FROM MEM_INFO
-        WHERE MAIL_AUTH = 1
+        WHERE MEM_ID = #{ memId } AND MAIL_AUTH = 1
     </select>
 
     <select id="findMemberById" resultMap="loginMemberResultMap">

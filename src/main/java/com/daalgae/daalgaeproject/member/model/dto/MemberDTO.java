@@ -27,4 +27,7 @@ public class MemberDTO {
     private int mailAuth;
     private String mailKey;
 
+    public int isMailAuth() {
+        return mailAuth;
+    }
 }
