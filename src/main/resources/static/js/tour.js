@@ -166,8 +166,58 @@ $(document).ready( function() {
         });
         $("#mapSearchBox").on("keyup",function(key){
             if(key.keyCode==13) {
-                alert($("#mapSearchBox").val());
-
+                let searchValue = $("#mapSearchBox").val();
+                for (let i = 0; i < marker1.length; i++) {
+                    let checkWord = marker1[i].Gb;
+                    if(!checkWord.includes(searchValue)) {
+                        marker1[i].setMap(null);
+                    } else {
+                        if($('#tourCheck input').prop('checked') == true) {
+                            marker1[i].setMap(constMap);
+                        }
+                    }
+                }
+                for (let i = 0; i < marker2.length; i++) {
+                    let checkWord = marker2[i].Gb;
+                    if(!checkWord.includes(searchValue)) {
+                        marker2[i].setMap(null);
+                    }else {
+                        if($('#accomoCheck input').prop('checked') == true) {
+                            marker2[i].setMap(constMap);
+                        }
+                    }
+                }
+                for (let i = 0; i < marker3.length; i++) {
+                    let checkWord = marker3[i].Gb;
+                    if(!checkWord.includes(searchValue)) {
+                        marker3[i].setMap(null);
+                    }else {
+                        if($('#foodCheck input').prop('checked') == true) {
+                            marker3[i].setMap(constMap);
+                        }
+                    }
+                }
+                for (let i = 0; i < marker4.length; i++) {
+                    let checkWord = marker4[i].Gb;
+                    if(!checkWord.includes(searchValue)) {
+                        marker4[i].setMap(null);
+                    }else {
+                        if($('#activityCheck input').prop('checked') == true) {
+                            marker4[i].setMap(constMap);
+                        }
+                    }
+                }
+                for (let i = 0; i < marker5.length; i++) {
+                    let checkWord = marker5[i].Gb;
+                    if(!checkWord.includes(searchValue)) {
+                        marker5[i].setMap(null);
+                    }else {
+                        if($('#hospitalCheck input').prop('checked') == true) {
+                            marker5[i].setMap(constMap);
+                        }
+                    }
+                }
+                $("#mapSearchBox").prop('value', '');
             }
         });
     });
