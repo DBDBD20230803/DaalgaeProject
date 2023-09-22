@@ -6,7 +6,7 @@ $(document).ready( function() {
     $('.font12 button').css("font-size", '12px');
     $("#headerSearchBox").on("keyup",function(key){
         if(key.keyCode==13) {
-            alert("엔터키 이벤트");
+            alert($("#headerSearchBox").val());
         }
     });
 });

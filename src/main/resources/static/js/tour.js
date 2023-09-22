@@ -4,6 +4,7 @@ let marker3 = [];
 let marker4 = [];
 let marker5 = [];
 let constMap;
+let searchWord;
 $(document).ready( function() {
     $(window).on('resize', function() {
         w = window.innerWidth - 100;
@@ -165,7 +166,8 @@ $(document).ready( function() {
         });
         $("#mapSearchBox").on("keyup",function(key){
             if(key.keyCode==13) {
-                alert("엔터키 이벤트");
+                alert($("#mapSearchBox").val());
+
             }
         });
     });
