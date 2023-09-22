@@ -154,6 +154,11 @@ public class LoginServiceImpl implements LoginService {
     public int emailAuthFail(String id) {
         return memberDAO.emailAuthFail(id);
     }
+
+    public List<MemberDTO> findId(MemberDTO memberDTO) {
+        System.out.println(memberDTO + "받아오기!!!!!!");
+        return memberDAO.findId(memberDTO);
+    }
 }
 
 

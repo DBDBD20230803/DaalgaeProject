@@ -4,21 +4,23 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 
+
+    <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="le=edge">
 
 
     <!--bootstrap-->
-    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 
 
     <!--css-->
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-    <link rel="stylesheet" th:href="@{/css/regist.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
     <!--js-->
@@ -29,15 +31,15 @@
 
 
     <!--favicon--->
-    <link th:href="@{favicon.ico}" rel="icon">
-    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
+    <link th:href="@{favicon.ico}" rel="icon"/>
+    <link th:href="@{favicon.ico}" rel="apple-touch-icon"/>
 </head>
 <body>
-<th:block th:insert="/component/header"></th:block>
+    <th:block th:insert="/component/header"></th:block>
 
-<div layout:fragment="content"></div>
+    <div layout:fragment="content"></div>
 
 
-<th:block th:include="Component/footer.html"></th:block>
+    <th:block th:include="Component/footer.html"></th:block>
 </body>
 </html>

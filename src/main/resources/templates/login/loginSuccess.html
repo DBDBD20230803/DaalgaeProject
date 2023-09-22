@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script th:inline="javascript">
-        alert("로그인이 완료되었습니다!! 🤩🤩 \n 님 환영합니다! \n" +
+        let memId = /*[[${memId}]]*/ '';
+        if(memId){
+        alert("로그인이 완료되었습니다!! 🤩🤩 \n " + memId + "님 환영합니다! \n" +
             "다양한 게시물을 만나보세요!"
             )
+        }
         location.href = "/";
     </script>
 </head>

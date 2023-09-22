@@ -35,4 +35,6 @@ public interface MemberDAO {
     List<MemberDTO> memDogGum(Map<String, List<Integer>> memCode);
 
     void updateMemDogGum(MemberDTO member);
+
+    List<MemberDTO> findId(MemberDTO memberDTO);
 }

@@ -23,34 +23,30 @@
               <h5 class="registTitle">뭐든 다알개</h5>
 
               <form class="registForm" th:action="@{/regist/regist}" method="post">
-                
-                <label id="realNameId">
-                    <input type="checkbox" name="realName" value="실명 인증된 아이디로 가입" id="realName"/>
-                    <div class="showCheckbox" onclick="testFunction1()"></div>
-                    <span>실명 인증된 아이디로 가입</span>
-                </label>
-                  <script type="text/javascript">
-                      function testFunction1(){
-                          const testCheck = $("#realName")
-                          if(testCheck.prop("checked")) {
-                              testCheck.attr("checked", true);
-                          }else{
-                              testCheck.attr("checked", false);
-                          }
-                      }
-                  </script>
-                <input type="text" name="username" id="username" placeholder="아이디" required/>
+
+
+                <input type="text" name="username" id="username" placeholder="아이디 8~20자의 영문 소문자와 숫자를 사용하세요." required/>
+                  <div id="idCheckMsg" class="validmsg" value="N"></div>
                   <input type="button" value="중복확인" class="btn btn-bs" id="duplicationCheck">
-                <input type="password" name="password" id="password" placeholder="비밀번호" required/>
-                <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="비밀번호 재확인" required/>
-                <input type="text" name="putEmailAddress" id="putEmailAddress" placeholder="이메일" required/>
+
+                <input type="password" name="password" id="password" placeholder="비밀번호 8~20자의 영문 대소문자+숫자+특수문자를 사용하세요." required/>
+                  <div id="passCheckMsg" class="validmsg" value="N"></div>
+                  <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="비밀번호 재확인" required/>
+                  <div id="passCheckMsg2" class="validmsg" value="N"></div>
+
+
+                  <input type="text" name="putEmailAddress" id="putEmailAddress" placeholder="이메일" required/>
+                  <div id="emailCheckMsg" class="validmsg" value="N"></div>
+
                 <input type="text" name="nameUser" id="nameUser" placeholder="이름" required/>
-                <label id="birth">
+                  <div id="nameCheckMsg" class="validmsg" value="N"></div>
+
+                  <label id="birth">
                     <div class="birthTitle"><span><img th:src="@{/images/birth.png}" alt="birth"></span> 생년월일</div>
                     <input type="date" name="birth" class="birth" value="yyyy-MM-dd" required/>
                 </label>
                 <div class="addressBox">
-                    <input type="text" name="address1" id="address1" class="address" placeholder="주소지" required/>
+                    <input type="text" name="address1" id="address1" class="address" placeholder="주소지" required readonly/>
                     <button class="searchAddress" id="searchAddress">주소 검색</button>
                 </div>
                   <div class="addressBox">
@@ -58,23 +54,21 @@
                   </div>
                 <label id="termCheck">
                     <input type="checkbox" name="termsCheck" id="termsCheck" value="인증 약관 전체동의" required/>
-                    <div class="showCheckbox" onclick="testFunction()"></div>
-                    <script type="text/javascript">
-                        function testFunction() {
-                            const testCheck = $("#termsCheck");
-                            console.log(testCheck.prop("checked"));
-                            if(testCheck.prop("checked")) {
-                                console.log(111);
-                                testCheck.attr("checked", false);
-                            } else {
-                                console.log(222);
-                                testCheck.attr("checked", true);
-                            }
-                        }
-                    </script>
+                    <div class="showCheckbox"></div>
                     <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;인증 약관 전체동의</span>
                 </label>
-                <input type="submit" name="AuthBtn" id="AuthBtn" value="인증요청"/>
+                <input type="submit" name="AuthBtn" id="AuthBtn" value="인증요청" onclick="testFunction()"/>
+
+                  <script type="text/javascript">
+                      function testFunction() {
+                          if($("#termsCheck").is(":checked") == false){
+                              alert("약관에 동의 하셔야 다음 단계로 진행 가능합니다.🥱");
+                          }else{
+                              $(".registForm").submit();
+                          }
+                      }
+                  </script>
+
               </form>
             </div>
           </div>

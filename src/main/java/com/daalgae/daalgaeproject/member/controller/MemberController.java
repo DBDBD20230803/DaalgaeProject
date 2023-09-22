@@ -21,9 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -44,22 +46,13 @@ public class MemberController {
         return "login/login";
     }
 
-    @PostMapping("/login")
-    public String login(String id, MemberDTO memberDTO, Model model, Errors errors) throws EmailAuthException{
-
-        if (errors.hasErrors()) {
-            return "/login/login";
-        }
-
-        if (loginService.emailAuthFail(String.valueOf(memberDTO.getMailAuth())) != 1) {
-            return "/regist/emailAuthFail";
-        }
-
-        return "redirect:/";
-    }
 
     @GetMapping("/loginSuccess")
-    public String loginSuccess(){
+    public String loginSuccess(Model model, Principal principal){
+        if(principal != null){
+            String memId = principal.getName();
+            model.addAttribute("memId", memId);
+        }
         return "login/loginSuccess";
     }
 
@@ -71,6 +64,14 @@ public class MemberController {
 
     @GetMapping("/loginFindId")
     public String loginFindIdForm(){ return "login/loginFindId"; }
+
+    @PostMapping("/loginFindId")
+    public String loginFindId(MemberDTO memberDTO, Model model){
+        List<MemberDTO> idList = loginService.findId(memberDTO);
+        model.addAttribute("idList", idList);
+        System.out.println("idList : " + idList);
+        return "login/FindIdComplete";
+    }
 
     @GetMapping("/loginFindPwd")
     public String loginFindFPwdForm(){ return "login/loginFindPwd"; }

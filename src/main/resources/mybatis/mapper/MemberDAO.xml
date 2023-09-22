@@ -110,4 +110,11 @@
         WHERE MEM_ID = #{ memId }
     </select>
 
+    <select id="findId" resultMap="loginMemberResultMap">
+        SELECT
+            MEM_ID
+        FROM MEM_INFO
+        WHERE MEM_NAME = #{ memName } and MEM_EMAIL = #{ memEmail }
+    </select>
+
 </mapper>

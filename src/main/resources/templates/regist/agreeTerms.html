@@ -21,11 +21,11 @@
                 
                 <div class="agreeAllWrap">
                     <label id="agreeAll">
-                        <input type="checkbox" name="agreeAll" value="전체 동의하기" id="Allagree" class="selectJs" required/>
+                        <input type="checkbox" name="agreeAll" value="전체 동의하기" id="Allagree" required/>
                         <div class="showCheckbox" onclick="testFunction3()"></div>
                         <span>전체 동의하기</span>
                     </label>
-
+<!--
                     <script type="text/javascript">
                         function testFunction3(){
                             const testCheck = $("#Allagree")
@@ -36,7 +36,7 @@
                             }
                         }
 
-                    </script>
+                    </script>-->
 
                     <div class="agreeAllText">이용 약관 및 개인정보 수집 및 이용 동의를 포함합니다.</div>
                 </div>
@@ -48,7 +48,7 @@
                         <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;뭐든다알개 이용약관 <a href="">전체 > </a></span>
                     </label>
 
-                    <script type="text/javascript">
+                 <!--   <script type="text/javascript">
                         function testFunction4(){
                             const testCheck = $("#termsCheck")
                             if(testCheck.prop("checked")) {
@@ -57,7 +57,7 @@
                                 testCheck.attr("checked", false);
                             }
                         }
-                    </script>
+                    </script>-->
 
                     <div class="termsText">
                         <h5>여러분을 환영합니다.</h5>
@@ -81,7 +81,7 @@
                         <span class="agreeAll1"><span class="agreeAll2">&nbsp;[필수]</span>&nbsp;개인정보 수집 및 이용 <a href="">전체 > </a></span>
                     </label>
 
-                    <script type="text/javascript">
+               <!--     <script type="text/javascript">
                         function testFunction5(){
                             const testCheck = $("#privacyUse")
                             if(testCheck.prop("checked")) {
@@ -90,7 +90,7 @@
                                 testCheck.attr("checked", false);
                             }
                         }
-                    </script>
+                    </script>-->
 
                     <div class="privacyText">
                         <p>
@@ -115,7 +115,53 @@
                     </div>
                 </div>
 
-                <input type="button" name="nextBtn" id="nextBtn" value="다음" required th:onclick="|location.href='@{/regist/regist}'|"/>
+                <input type="button" name="nextBtn" id="nextBtn" value="다음" th:onclick="|location.href='@{/regist/regist}'|"/>
+
+                  <script type="text/javascript">
+                      $(document).ready(function(){
+
+                          /*약관동의 - 버튼을 하나라도 누르지 않으면 페이지 이동 불가*/
+                          $("#nextBtn").click(function(){
+                              if($("#Allagree").is(":checked") == false){
+                                  location.href="/regist/agreeTerms"
+                                  alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.😑");
+                                  return;
+                              }else if($("#termsCheck").is(":checked") == false){
+                                  location.href="/regist/agreeTerms"
+                                  alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다..😥");
+                                  return;
+                              }else if($("#privacyUse").is(":checked") == false){
+                                  location.href="/regist/agreeTerms"
+                                  alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다...😣");
+                                  return;
+                              }else{
+                                  location.href="/regist/regist"
+                              }
+                          });
+
+                          /*약관동의 - 전체 선택 / 해제 */
+
+                          $("#Allagree").click(function() {
+                              if($("#Allagree").is(":checked")) $("input[class=selectJs]").prop("checked", true);
+                              else $("input[class=selectJs]").prop("checked", false);
+                          });
+
+                          $("input[class=selectJs]").click(function() {
+                              const total = $("input[class=selectJs]").length;
+                              const checked = $("input[class=selectJs]:checked").length;
+
+                              console.log("total : " + total);
+
+                              if(total != checked) $("#Allagree").prop("checked", false);
+                              else $("#Allagree").prop("checked", true);
+                          });
+                      });
+
+                  </script>
+
+
+
+
               </form>
             </div>
           </div>
