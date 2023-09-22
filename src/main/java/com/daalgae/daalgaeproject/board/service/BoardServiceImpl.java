@@ -79,7 +79,7 @@ public class BoardServiceImpl implements BoardService{
         int result = mapper.insertReply(registReply);
 
         if(result > 0) {
-            replyList = mapper.selectReplyList(registReply.getRefPostCode().getPostCode());
+            replyList = mapper.selectReplyList(registReply.getRefPostCode());
         } else {
             throw new ReplyRegistException("댓글 등록에 실패하셨습니다.");
         }
@@ -93,10 +93,13 @@ public class BoardServiceImpl implements BoardService{
     public List<ReplyDTO> removeReply(ReplyDTO removeReply) throws ReplyRemoveException {
         List<ReplyDTO> replyList = null;
 
-        int result = mapper.deleteReply(removeReply.getReplyCode());
+        int result = mapper.removeReply(removeReply.getReplyCode());
 
         if(result > 0) {
-            replyList = mapper.selectReplyList(removeReply.getRefPostCode().getPostCode());
+            replyList = mapper.selectReplyList(removeReply.getRefPostCode());
+            System.out.println("refPostCode : " + removeReply.getRefPostCode());
+            System.out.println("replyList : " + replyList);
+            System.out.println("replyCode : " + removeReply.getReplyCode());
         } else {
             throw new ReplyRemoveException("댓글 삭제에 실패하셨습니다.");
         }

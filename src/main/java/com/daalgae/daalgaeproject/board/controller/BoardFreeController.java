@@ -55,6 +55,7 @@ public class BoardFreeController {
     @DeleteMapping("/removeReply")
     public ResponseEntity<List<ReplyDTO>> removeReply(@RequestBody ReplyDTO removeReply) throws ReplyRemoveException {
 
+        System.out.println("refPostCode : " + removeReply.getRefPostCode());
         List<ReplyDTO> replyList = boardServiceImpl.removeReply(removeReply);
 
         return ResponseEntity.ok(replyList);

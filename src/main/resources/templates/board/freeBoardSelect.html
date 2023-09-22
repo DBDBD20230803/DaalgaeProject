@@ -116,23 +116,34 @@
 
                     <div class="replyListTr comment-content">
                         <input type="hidden" id="${ reply.replyCode }" th:value="${ reply.replyCode }">
-                        <div id="reply-writer" th:text="${ reply.refPostWriter.memId }"></div>
+                        <div id="reply-writer" th:text="${ reply.replyWriterDetail.memId }"></div>
                         <div id="reply-body" th:text="${ reply.replyCon}"></div>
                         <div id="reply-date" th:text="${ reply.replyDate }"></div>
-                        <div id="comment-delete-button">
-
-                        </div>
                         <div id="comment-report-button">
                             <button>
                                 <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                             </button>
                         </div>
+                        <th:block
+                                sec:authorize="isAuthenticated()"
+                                th:if="${ #authentication.getPrincipal().getMemCode() == reply.refReplyWriter }"
+                        >
+                            <div id="comment-delete-button">
+                            <button
+                                    type="button"
+                                    th:replyCode="${ reply.replyCode }"
+                                    th:onclick="removeReply(this.getAttribute('replyCode'))"
+                            >
+                                삭제
+                            </button>
+                            </div>
+                        </th:block>
                     </div>
                     </th:block>
                 </th:block>
             </div>
 
-            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1 }">
+            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
                 <form th:action="@{/board/deletePost}" id="boardDeleteForm" method="post">
                     <input type="hidden" name="postCode" th:value="${board.postCode}">
                     <div class="updatePost">
@@ -149,7 +160,125 @@
             </div>
         </div>
     </div>
+    <script th:inline="javascript">
 
+        /* 댓글 작성 이벤트 처리 */
+        if(document.getElementById("registReply")) {
+
+            const $registReply = document.getElementById("registReply");
+            const $replyBody = document.getElementById("replyBody");
+
+            $registReply.onclick = function() {
+
+                if($replyBody.value.trim() == ""){
+                    alert('댓글을 입력해 주십시오');
+                    return ;
+                }
+
+                let boardNo = document.getElementById("boardNo").value;
+                let replyBody = document.getElementById("replyBody").value;
+
+                console.log('BoardNo : ', boardNo);
+                console.log('replyBody : ', replyBody);
+
+                fetch("/board/registReply", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    },
+                    body: JSON.stringify(
+                        {
+                            refReplyWriter: '[[${#authentication.getPrincipal().getMemCode()}]]',
+                            refPostCode: boardNo,
+                            replyCon: replyBody
+                        }
+                    )
+                })
+                    .then(result => result.json())
+                    .then(data => {
+                        const $table = $("#replyResult");
+                        $table.html("");
+
+                        data.map((reply) => {
+                            $tr = $("<div class='comment-content'>");
+                            $bodyTd = $("<div id='reply-body'>").text(reply.replyCon);
+                            $writerTd = $("<div id='reply-writer'>").text(reply.replyWriterDetail.memId);
+                            $createDateTd = $("<div id='reply-date'>").text(reply.replyDate);
+                            $reportButton = $("<div id='comment-report-button'>").append("<button><img src='/images/report-comment-button.png' alt='comment-report-button'></button>")
+                            if(reply.refReplyWriter == '[[${#authentication.getPrincipal().getMemCode()}]]'){
+                                $removeTd = $("<div id='comment-delete-button'>").append("<button type='button' onclick='removeReply(" + reply.replyCode + ")'>삭제</button>");
+                            } else {
+                                $removeTd = $("<div>");
+                            }
+
+                            $tr.append("<input type='hidden' id=" + reply.replyCode + " value='" + reply.replyCode + "'>");
+                            $tr.append($writerTd);
+                            $tr.append($bodyTd);
+                            $tr.append($createDateTd);
+                            $tr.append($reportButton);
+                            $tr.append($removeTd);
+
+                            $table.append($tr);
+                        });
+
+                    })
+                    .catch((error) => error.text().then((res) => alert(res)));
+            }
+        }
+
+
+
+        /* 댓글 삭제 이벤트 처리 함수*/
+        function removeReply(replyCode){
+
+            let boardNo = document.getElementById("boardNo").value;
+
+            fetch("/board/removeReply", {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                body: JSON.stringify(
+                    {
+                        refPostCode:boardNo,
+                        replyCode:replyCode
+                    }
+                )
+            })
+                .then(result => result.json())
+                .then(data => {
+                    console.table(data);
+
+                    const $table = $("#replyResult");
+                    $table.html("");
+
+                    data.map((reply) => {
+                        $tr = $("<div class='comment-content'>");
+                        $bodyTd = $("<div id='reply-body'>").text(reply.replyCon);
+                        $writerTd = $("<div id='reply-writer'>").text(reply.replyWriterDetail.memId);
+                        $createDateTd = $("<div id='reply-date'>").text(reply.replyDate);
+                        $reportButton = $("<div id='comment-report-button'>").append("<button><img src='/images/report-comment-button.png' alt='comment-report-button'></button>")
+                        if(reply.refReplyWriter == '[[${#authentication.getPrincipal().getMemCode()}]]'){
+                            $removeTd = $("<div id='comment-delete-button'>").append("<button type='button' onclick='removeReply(" + reply.replyCode + ")'>삭제</button>");
+                        } else {
+                            $removeTd = $("<div>");
+                        }
+
+                        $tr.append("<input type='hidden' id=" + reply.replyCode + " value='" + reply.replyCode + "'>");
+                        $tr.append($writerTd);
+                        $tr.append($bodyTd);
+                        $tr.append($createDateTd);
+                        $tr.append($reportButton);
+                        $tr.append($removeTd);
+
+                        $table.append($tr);
+                    });
+
+
+                })
+                .catch((error) => error.text().then((res) => alert(res)));
+        }
+    </script>
 
 </th:block>
 </html>

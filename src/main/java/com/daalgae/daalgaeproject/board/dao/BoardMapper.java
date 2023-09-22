@@ -21,7 +21,7 @@ public interface BoardMapper {
 
     int insertReply(ReplyDTO registReply);
 
-    int deleteReply(int no);
+    int removeReply(int no);
 
     int insertBoard(BoardDTO board);
 
