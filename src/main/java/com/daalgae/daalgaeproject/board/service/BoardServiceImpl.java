@@ -127,13 +127,20 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void updateBoard(BoardDTO board) throws BoardUpdateException {
+    @Transactional
+    public BoardDTO updateBoard(BoardDTO updateBoard) throws BoardUpdateException {
 
-        int result = mapper.updatePost(board);
+        BoardDTO boardList = null;
 
-        if(!(result>0)) {
+        int result = mapper.updatePost(updateBoard);
+
+        if(result>0) {
+            boardList = mapper.selectBoardDetail(updateBoard.getPostCode());
+        } else {
             throw new BoardUpdateException("게시글 수정 실패...😣");
         }
+
+        return boardList;
     }
 
 

@@ -94,17 +94,17 @@ public class BoardFreeController {
     }
 
     @PostMapping("/updatePost")
-    public String updatePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardUpdateException {
+    public ResponseEntity<BoardDTO> updatePost(@RequestBody BoardDTO board) throws BoardUpdateException {
 
-        log.info("[BoardController] deleteBoard Request : " + board);
+        log.info("[BoardController] updateBoard Request : " + board);
 
-        boardServiceImpl.updateBoard(board);
+        BoardDTO boardList = boardServiceImpl.updateBoard(board);
 
-        rttr.addFlashAttribute("message", "게시글 수정에 성공하였습니다!!😉");
+        log.info("boardList : " + boardList);
 
-        log.info("[BoardController] registBoard =========================================================");
-
-        return "redirect:/board/freeBoard";
+        return ResponseEntity.ok(boardList);
+//        int no = board.getPostCode();
+//        return "redirect:/board/freeBoardSelect?no=" + no;
     }
 
 }

@@ -68,10 +68,10 @@
         </div>
         <div class="board-content-select-container" id="post">
             <div class="board-content-title" th:each="board : ${ board }">
-                <h6 class="postNo" th:text="${board.postCode}"></h6>
+                <h6 class="postNo" name="postCode" th:text="${board.postCode}"></h6>
                 <h6 class="postCategory" th:text="${board.postSort}"></h6>
 <!--                <h6 class="postTitle" id="postTitle" th:text="${board.postTitle}"></h6>-->
-                <input class="postTitle" id="postTitle" type="text" th:value="${board.postTitle}" readonly />
+                <input class="postTitle" id="postTitle" name="postTitle" type="text" th:value="${board.postTitle}" readonly />
                 <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
                 <h6 class="postCount" th:text="${board.postCount}"></h6>
                 <h6 class="postDate" th:text="${board.postDate}"></h6>
@@ -79,11 +79,11 @@
             <div class="board-select-content">
                 <div class="board-textarea">
                     <textarea
-                            name="body"
                             cols="120"
                             rows="15"
                             readonly
                             id="postContent"
+                            name="postContent"
                             th:text="${board.postContent}"
                     >
                     </textarea>
@@ -174,45 +174,52 @@
             editButton.addEventListener("click", function () {
                 editButton.style.display = "none";
                 saveButton.style.display = "block";
-                postTitleField.removeAttribute("readonly");
                 postTitleField.style.border = "1px solid #DBDBDB";
                 postContentField.style.border = "1px solid #DBDBDB";
-                postContentField.removeAttribute("readonly");
+                postTitleField.readOnly = false;
+                postContentField.readOnly = false;
+
             });
 
-            // 저장 버튼 클릭 시
             saveButton.addEventListener("click", function () {
                 saveButton.style.display = "none";
                 editButton.style.display = "block";
-                const boardNo = document.getElementById("boardNo").value;
+                const postCode = document.getElementById("boardNo").value;
                 const postTitle = postTitleField.value;
                 const postContent = postContentField.value;
                 postTitleField.style.border = "0";
                 postContentField.style.border = "0";
+                postTitleField.readOnly = true;
+                postContentField.readOnly = true;
 
-                // 서버로 수정된 내용을 전송
                 fetch("/board/updatePost", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json;charset=UTF-8'
                     },
                     body: JSON.stringify({
-                        postCode: boardNo,
+                        postCode: postCode,
                         postTitle: postTitle,
                         postContent: postContent
                     })
                 })
-                    .then(result => result.json())
+                    .then(result => {
+                        console.log("Server Response:", result);
+                        if (!result.ok) {
+                            throw new Error("서버 응답이 실패했습니다.");
+                        }
+                        return result.json();
+                    })
                     .then(data => {
-                        // 수정이 완료되면 입력 필드를 다시 읽기 전용으로 설정
-                        postTitleField.setAttribute("readonly", true);
-                        postContentField.setAttribute("readonly", true);
-
-                        // 서버에서 업데이트된 값을 반영
+                        console.log("Received Data:", data);
                         postTitleField.value = data.postTitle;
                         postContentField.value = data.postContent;
                     })
-                    .catch(error => console.error(error));
+                    .catch((error) => {
+                        console.error("Error Details:", error);
+                        const errorMessage = "오류가 발생했습니다. 나중에 다시 시도해 주세요.";
+                        alert(errorMessage);
+                    });
             });
         }
 

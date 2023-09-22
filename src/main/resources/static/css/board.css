@@ -1205,3 +1205,8 @@ button[type="submit"]:hover {
   resize: none;
   outline: none;
 }
+
+.updatePost button{
+  width: 100%;
+  width: 100%;
+}

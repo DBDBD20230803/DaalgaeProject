@@ -32,10 +32,9 @@ public interface BoardService {
 
     /* 게시글 등록용 메소드 */
     public void registBoard(BoardDTO board) throws BoardRegistException;
-
     /* 게시글 삭제용 메소드*/
     public void deleteBoard(BoardDTO board) throws BoardDeleteException;
-    public void updateBoard(BoardDTO board) throws BoardUpdateException;
+    public BoardDTO updateBoard(BoardDTO board) throws BoardUpdateException;
     /* 전체 썸네일 게시글 조회용 메소드 */
 
     public List<BoardDTO> selectAllThumbnailList();
