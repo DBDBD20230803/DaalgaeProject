@@ -756,7 +756,7 @@
 
     <div class="loginButton">
         <a th:href="@{/login/login}" sec:authorize="isAnonymous()">로그인</a>
-        <a th:href="@{/}" sec:authorize="isAuthenticated()">로그아웃</a>
+        <a th:href="@{/login/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
     </div>
     <div class="signupButton">
         <a th:href="@{/regist/agreeTerms}" id="regist">회원가입</a>

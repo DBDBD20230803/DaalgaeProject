@@ -80,7 +80,9 @@ public class LoginServiceImpl implements LoginService {
             authorities.add(new SimpleGrantedAuthority(roleList));
         }
 
-        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), authorities);
+        boolean mailAuth = member.getMailAuth() == 1;
+
+        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, authorities);
         user.setDetails(member);
         return user;
     }
@@ -89,7 +91,7 @@ public class LoginServiceImpl implements LoginService {
     @Transactional
     public int registMember(MemberDTO member) throws MemberRegistException, MessagingException {
 
-       String mailKey = new TempKey().getKey(30, false);
+        String mailKey = new TempKey().getKey(30, false);
         member.setMailKey(mailKey);
 
         String encPassword = passwordEncoder.encode(member.getMemPwd());
@@ -133,6 +135,7 @@ public class LoginServiceImpl implements LoginService {
     @Transactional
     public boolean selectMemberById(String memId) {
         String result = memberDAO.selectMemberById(memId);
+
 
         return result != null? true : false;
     }
