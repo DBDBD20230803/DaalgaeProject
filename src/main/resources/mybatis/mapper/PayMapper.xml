@@ -7,11 +7,11 @@
 
     <resultMap id="approveResultMap" type="com.daalgae.daalgaeproject.payment.dto.OrderPay">
         <id property="tid" column="DOG_GUM_PAY_CODE"/>
-        <result property="partner_user_id" column="MEM_CODE"/>
-        <result property="payment_method_type" column="DOG_GUM_PAY_METHOD"/>
-        <result property="created_at" column="DOG_GUM_PAY_DATE"/>
-        <result property="quantity" column="MEM_DOG_GUM"/>
-        <result property="item_name" column="DOG_ITEM_NAME"/>
+        <result property="dogGumPaymethod" column="DOG_GUM_PAYMETHOD"/>
+        <result property="dogGumPay" column="DOG_GUM_PAY"/>
+        <result property="memDogGum" column="MEM_DOG_GUM"/>
+        <result property="dogItemName" column="DOG_ITEM_NAME"/>
+        <result property="memCode" column="REF_MEM_CODE"/>
     </resultMap>
 
     <!--<select id="findAllPay" resultMap="approveResultMap">
@@ -24,21 +24,21 @@
     <insert id="orderRegist" parameterType="com.daalgae.daalgaeproject.payment.dto.OrderPay">
         INSERT INTO DOG_GUM_PAY (
                                 DOG_GUM_PAY_CODE
-                                ,MEM_CODE
                                 ,DOG_GUM_PAYMETHOD
                                 ,DOG_GUM_PAY
                                 ,DOG_GUM_PAY_DATE
-                                ,MEM_DOG_GUM
                                 ,DOG_ITEM_NAME
+                                ,MEM_DOG_GUM
+                                ,MEM_CODE
                             )
         VALUES (
                 #{ dogGumPayCode },
-                #{ memCode },
                 #{ dogGumPaymethod },
                 #{ dogGumPay },
                 #{ dogGumPayDate },
-                #{ memDogGum },
                 #{ dogItemName }
+                #{ memDogGum },
+                 #{ memCode },
             )
     </insert>
 

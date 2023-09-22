@@ -2,7 +2,7 @@ package com.daalgae.daalgaeproject.payment.service;
 
 
 import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
-import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
+import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.KakaoReady;
@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,7 +23,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -43,14 +44,35 @@ public class KakaoPayService {
     }
 
 
+    public String getUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
+
     // 요기가 지금 결제 준비 단계!!
     public KakaoReady kakaoPayReady(String itemName, int quantity, int totalAmount) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Object principal = authentication.getPrincipal();
+        int memCode = 0;
+        if (principal instanceof UserImpl) {
+            UserImpl user = (UserImpl) principal;
+            memCode = user.getMemCode();
+            System.out.println("가왓냐 ? 가왔냐 ??????" + memCode);
+        }
+
+        /*Object memCode = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            memCode = authentication.getPrincipal();
+            System.out.println("드디어 가져왔냐 ?" + memCode);
+        }*/
 
         MultiValueMap<String, Object> parameters = new LinkedMultiValueMap<>();
 
         parameters.add("cid", cid);
         parameters.add("partner_order_id", "가맹점 주문 번호");
-        parameters.add("partner_user_id", 1);
+        parameters.add("partner_user_id", memCode);
         parameters.add("item_name", itemName);
         parameters.add("quantity", String.valueOf(quantity));
         parameters.add("total_amount", String.valueOf(totalAmount));
@@ -78,10 +100,22 @@ public class KakaoPayService {
     //결제 완료 승인
     public KakaoApprove approve(String pgToken) {
 
+
         HttpHeaders headers = new HttpHeaders();
         String auth = "KakaoAK " + admin_Key;
         headers.set("Authorization", auth);
         headers.set("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Object principal = authentication.getPrincipal();
+        int memCode = 0;
+        if (principal instanceof UserImpl) {
+            UserImpl user = (UserImpl) principal;
+            memCode = user.getMemCode();
+            System.out.println("가왓냐 ? 가왔냐 ?????? : " + memCode);
+        }
+
 
         // 카카오 요청
         MultiValueMap<String, Object> payParams = new LinkedMultiValueMap<>();
@@ -89,7 +123,7 @@ public class KakaoPayService {
         payParams.add("cid", cid);
         payParams.add("tid", kakaoReady.getTid());
         payParams.add("partner_order_id", "가맹점 주문 번호");
-        payParams.add("partner_user_id", 1);
+        payParams.add("partner_user_id", memCode);
         payParams.add("pg_token", pgToken);
 
         HttpEntity<Map> requset = new HttpEntity<>(payParams, headers);
@@ -121,6 +155,7 @@ public class KakaoPayService {
         System.out.println(orderPay);
         orderPayMapper.orderRegist(orderPay);
 
+/*
         List<Integer> memberCode = orderPay.getMember()
                 .stream()
                 .map(MemberDTO::getMemCode)
@@ -146,12 +181,15 @@ int totalDogGum = addDogGum(orderPay.getMember());
         }
     }
 
-
     private int addDogGum(List<MemberDTO> orderPays) {
         int totalDogGum = 0;
         for (MemberDTO orderPay : orderPays) {
             totalDogGum += orderPay.getMemDogGum();
         }
         return totalDogGum;
+    }
+*/
+
+
     }
 }
