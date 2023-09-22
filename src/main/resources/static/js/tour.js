@@ -1,4 +1,9 @@
-let saveTourData;
+let marker1 = [];
+let marker2 = [];
+let marker3 = [];
+let marker4 = [];
+let marker5 = [];
+let constMap;
 $(document).ready( function() {
     $(window).on('resize', function() {
         w = window.innerWidth - 100;
@@ -29,6 +34,7 @@ $(document).ready( function() {
         }
 
         let map = new kakao.maps.Map(container, options);
+        constMap = map;
         map.relayout();
         $.ajax({
             type:"get",
@@ -36,10 +42,7 @@ $(document).ready( function() {
             dataType:"json",
             async: false,
             success: function(data){
-                localStorage.setItem("isData", data);
                 let tourLocInfo = new Array(206);
-                saveTourData = data;
-                console.log(data);
                 for(let i= 0; i<data.length; i++) {
                     tourLocInfo[i] = {
                         title : data[i].tourTitle,
@@ -47,7 +50,6 @@ $(document).ready( function() {
                         category: data[i].tourCategory
                     }
                 }
-                console.log(tourLocInfo);
 
                 // 마커 이미지의 이미지 주소입니다
                 let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -60,62 +62,101 @@ $(document).ready( function() {
                     let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
                     // 마커를 생성합니다
-                    if(selectNum == 1) {
-                        if(tourLocInfo[i].category.includes("관광")) {
-                            let marker = new kakao.maps.Marker({
-                                map: map, // 마커를 표시할 지도
-                                position: tourLocInfo[i].latlng, // 마커를 표시할 위치
-                                title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                image : markerImage // 마커 이미지
-                            });
-                        }
-                    } else if(selectNum == 2) {
-                        if(tourLocInfo[i].category.includes("숙박")) {
-                            let marker = new kakao.maps.Marker({
-                                map: map, // 마커를 표시할 지도
-                                position: tourLocInfo[i].latlng, // 마커를 표시할 위치
-                                title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                image : markerImage // 마커 이미지
-                            });
-                        }
-                    } else if(selectNum == 3) {
-                        if(tourLocInfo[i].category.includes("식음료")) {
-                            let marker = new kakao.maps.Marker({
-                                map: map, // 마커를 표시할 지도
-                                position: tourLocInfo[i].latlng, // 마커를 표시할 위치
-                                title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                image : markerImage // 마커 이미지
-                            });
-                        }
-                    } else if(selectNum == 4) {
-                        if(tourLocInfo[i].category.includes("체험")) {
-                            let marker = new kakao.maps.Marker({
-                                map: map, // 마커를 표시할 지도
-                                position: tourLocInfo[i].latlng, // 마커를 표시할 위치
-                                title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                image : markerImage // 마커 이미지
-                            });
-                        }
-                    } else if(selectNum == 5) {
-                        if(tourLocInfo[i].category.includes("동물병원")) {
-                            let marker = new kakao.maps.Marker({
-                                map: map, // 마커를 표시할 지도
-                                position: tourLocInfo[i].latlng, // 마커를 표시할 위치
-                                title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                image : markerImage // 마커 이미지
-                            });
-                        }
-                    } else {
+
+                    if(tourLocInfo[i].category.includes("관광")) {
                         let marker = new kakao.maps.Marker({
                             map: map, // 마커를 표시할 지도
                             position: tourLocInfo[i].latlng, // 마커를 표시할 위치
                             title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                             image : markerImage // 마커 이미지
                         });
+                        marker.setMap(null);
+                        marker1.push(marker);
+                    }
+                    if(tourLocInfo[i].category.includes("숙박")) {
+                        let marker = new kakao.maps.Marker({
+                            map: map, // 마커를 표시할 지도
+                            position: tourLocInfo[i].latlng, // 마커를 표시할 위치
+                            title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                            image : markerImage // 마커 이미지
+                        });
+                        marker.setMap(null);
+                        marker2.push(marker);
+                    }
+                    if(tourLocInfo[i].category.includes("식음료")) {
+                        let marker = new kakao.maps.Marker({
+                            map: map, // 마커를 표시할 지도
+                            position: tourLocInfo[i].latlng, // 마커를 표시할 위치
+                            title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                            image : markerImage // 마커 이미지
+                        });
+                        marker.setMap(null);
+                        marker3.push(marker);
+                    }
+                    if(tourLocInfo[i].category.includes("체험")) {
+                        let marker = new kakao.maps.Marker({
+                            map: map, // 마커를 표시할 지도
+                            position: tourLocInfo[i].latlng, // 마커를 표시할 위치
+                            title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                            image : markerImage // 마커 이미지
+                        });
+                        marker.setMap(null);
+                        marker4.push(marker);
+                    }
+                    if(tourLocInfo[i].category.includes("동물병원")) {
+                        let marker = new kakao.maps.Marker({
+                            map: map, // 마커를 표시할 지도
+                            position: tourLocInfo[i].latlng, // 마커를 표시할 위치
+                            title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                            image : markerImage // 마커 이미지
+                        });
+                        marker.setMap(null);
+                        marker5.push(marker);
                     }
 
                     // 마커 스타일 달기
-
+                }
+                if(selectNum == 1) {
+                    for (let i = 0; i < marker1.length; i++) {
+                        marker1[i].setMap(constMap);
+                    }
+                }
+                if(selectNum == 2) {
+                    for (let i = 0; i < marker2.length; i++) {
+                        marker2[i].setMap(constMap);
+                    }
+                }
+                if(selectNum == 3) {
+                    for (let i = 0; i < marker3.length; i++) {
+                        marker3[i].setMap(constMap);
+                    }
+                }
+                if(selectNum == 4) {
+                    for (let i = 0; i < marker4.length; i++) {
+                        marker4[i].setMap(constMap);
+                    }
+                }
+                if(selectNum == 5) {
+                    for (let i = 0; i < marker5.length; i++) {
+                        marker5[i].setMap(constMap);
+                    }
+                }
+                if(selectNum == 0) {
+                    for (let i = 0; i < marker1.length; i++) {
+                        marker1[i].setMap(constMap);
+                    }
+                    for (let i = 0; i < marker2.length; i++) {
+                        marker2[i].setMap(constMap);
+                    }
+                    for (let i = 0; i < marker3.length; i++) {
+                        marker3[i].setMap(constMap);
+                    }
+                    for (let i = 0; i < marker4.length; i++) {
+                        marker4[i].setMap(constMap);
+                    }
+                    for (let i = 0; i < marker5.length; i++) {
+                        marker5[i].setMap(constMap);
+                    }
                 }
             },
             error:function(){
@@ -150,38 +191,66 @@ $(document).ready( function() {
     }
     $('.listTour1').click(function(){
         if($('#tourCheck input').prop('checked') == true) {
-            console.log(saveTourData);
-            b(saveTourData);
+            for (let i = 0; i < marker1.length; i++) {
+                marker1[i].setMap(null);
+            }
             $('#tourCheck input').prop('checked', false);
         } else {
+            for (let i = 0; i < marker1.length; i++) {
+                marker1[i].setMap(constMap);
+            }
             $('#tourCheck input').prop('checked', true);
         }
     });
     $('.listTour2').click(function(){
         if( $('#accomoCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker2.length; i++) {
+                marker2[i].setMap(null);
+            }
             $('#accomoCheck input').prop('checked', false);
         } else {
+            for (let i = 0; i < marker2.length; i++) {
+                marker2[i].setMap(constMap);
+            }
             $('#accomoCheck input').prop('checked', true);
         }
     });
     $('.listTour3').click(function(){
         if( $('#foodCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker3.length; i++) {
+                marker3[i].setMap(null);
+            }
             $('#foodCheck input').prop('checked', false);
         } else {
+            for (let i = 0; i < marker3.length; i++) {
+                marker3[i].setMap(constMap);
+            }
             $('#foodCheck input').prop('checked', true);
         }
     });
     $('.listTour4').click(function(){
         if( $('#activityCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker4.length; i++) {
+                marker4[i].setMap(null);
+            }
             $('#activityCheck input').prop('checked', false);
         } else {
+            for (let i = 0; i < marker4.length; i++) {
+                marker4[i].setMap(constMap);
+            }
             $('#activityCheck input').prop('checked', true);
         }
     });
     $('.listTour5').click(function(){
         if( $('#hospitalCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker5.length; i++) {
+                marker5[i].setMap(null);
+            }
             $('#hospitalCheck input').prop('checked', false);
         } else {
+            for (let i = 0; i < marker5.length; i++) {
+                marker5[i].setMap(constMap);
+            }
             $('#hospitalCheck input').prop('checked', true);
         }
     });
@@ -195,21 +264,51 @@ $(document).ready( function() {
         }
     });
 
-    function b(a) {
-        console.log(a);
-    }
     $(".tourCheck").change(function(){
-        if($(".tourCheck").prop("checked") == true){
-            console.log("체크박스 체크했음!");
-        } else{
-            console.log("체크박스 체크 해제!");
+        if($('#tourCheck input').prop('checked') == true) {
+            for (let i = 0; i < marker1.length; i++) {
+                marker1[i].setMap(constMap);
+            }
+        } else {
+            for (let i = 0; i < marker1.length; i++) {
+                marker1[i].setMap(null);
+            }
         }
-    });
-    $(".listTourImag").click(function(){
-        if($(".listTourImag").prop("checked") == true){
-            console.log("체크박스 체크했음!");
-        } else{
-            console.log("체크박스 체크 해제!");
+        if( $('#accomoCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker2.length; i++) {
+                marker2[i].setMap(constMap);
+            }
+        } else {
+            for (let i = 0; i < marker2.length; i++) {
+                marker2[i].setMap(null);
+            }
+        }
+        if( $('#foodCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker3.length; i++) {
+                marker3[i].setMap(constMap);
+            }
+        } else {
+            for (let i = 0; i < marker3.length; i++) {
+                marker3[i].setMap(null);
+            }
+        }
+        if( $('#activityCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker4.length; i++) {
+                marker4[i].setMap(constMap);
+            }
+        } else {
+            for (let i = 0; i < marker4.length; i++) {
+                marker4[i].setMap(null);
+            }
+        }
+        if( $('#hospitalCheck input').prop('checked')  == true) {
+            for (let i = 0; i < marker5.length; i++) {
+                marker5[i].setMap(constMap);
+            }
+        } else {
+            for (let i = 0; i < marker5.length; i++) {
+                marker5[i].setMap(null);
+            }
         }
     });
 });
