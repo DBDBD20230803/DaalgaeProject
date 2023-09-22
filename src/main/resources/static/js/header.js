@@ -4,4 +4,9 @@ $(document).ready( function() {
     $('#headers').css("z-index", "5");
     $('#menu').css("margin-top", "-16px");
     $('.font12 button').css("font-size", '12px');
+    $("#headerSearchBox").on("keyup",function(key){
+        if(key.keyCode==13) {
+            alert("엔터키 이벤트");
+        }
+    });
 });

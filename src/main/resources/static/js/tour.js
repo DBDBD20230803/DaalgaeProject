@@ -163,6 +163,11 @@ $(document).ready( function() {
                 console.log("통신에러3");
             }
         });
+        $("#mapSearchBox").on("keyup",function(key){
+            if(key.keyCode==13) {
+                alert("엔터키 이벤트");
+            }
+        });
     });
 
     // 체크 관련, 검색 관련
