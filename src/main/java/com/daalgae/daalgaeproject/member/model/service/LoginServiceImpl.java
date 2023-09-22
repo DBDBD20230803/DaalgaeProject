@@ -80,7 +80,9 @@ public class LoginServiceImpl implements LoginService {
             authorities.add(new SimpleGrantedAuthority(roleList));
         }
 
-        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), authorities);
+        boolean mailAuth = member.getMailAuth() == 1;
+
+        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, authorities);
         user.setDetails(member);
         return user;
     }

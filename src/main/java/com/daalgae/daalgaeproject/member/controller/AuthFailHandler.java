@@ -26,16 +26,23 @@ public class AuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
         String errorMessage;
         if(exception instanceof BadCredentialsException){
             errorMessage = "아이디 또는 비밀번호가 맞지 않습니다.";
+            response.getWriter().append("<script>alert('" + errorMessage + "');</script>");
         }else if(exception instanceof InternalAuthenticationServiceException){
             errorMessage = "서버에서 오류가 발생하였습니다. \n 관리자에게 문의해주세요.";
+            response.getWriter().append("<script>alert('" + errorMessage + "');</script>");
         }else if(exception instanceof UsernameNotFoundException){
             errorMessage = "존재하지 않는 회원입니다. \n 아이디를 확인해주세요.";
+            response.getWriter().append("<script>alert('" + errorMessage + "');</script>");
+
         }else if(exception instanceof AuthenticationCredentialsNotFoundException){
             log.info("이메일이 인증되지 않았습니다. 이메일을 확인해 주세요.");
             errorMessage = "인증 요청이 거부되었습니다. \n 관리자에게 문의해주세요.";
+            response.getWriter().append("<script>alert('" + errorMessage + "');</script>");
         }
         else{
-            errorMessage = "알 수 없는 오류로 로그인 처리가 불가합니다. \n 관리자에게 문의해주세요.";
+            errorMessage = "이메일이 인증되지 않았습니다. \n 이메일을 확인해 주세요.";
+            response.getWriter().append("<script>alert('" + errorMessage + "');</script>");
+
         }
 
         errorMessage = URLEncoder.encode(errorMessage, "UTF-8");

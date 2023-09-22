@@ -27,7 +27,7 @@ import java.util.Date;
 
 
 @Controller
-@RequestMapping(value ={ "/login", "/regist", "myPage"})
+@RequestMapping(value ={ "/login", "/regist", "/myPage"})
 public class MemberController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -40,13 +40,7 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginForm(@RequestParam(value = "error", required = false) String error,
-                            @RequestParam(value = "exception", required = false) String exception, Model model){
-
-            model.addAttribute("error", error);
-            model.addAttribute("exception", exception);
-            log.info("loginForm view resolve");
-
+    public String loginForm(){
         return "login/login";
     }
 
@@ -64,6 +58,10 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/loginSuccess")
+    public String loginSuccess(){
+        return "login/loginSuccess";
+    }
 
     @GetMapping("/logout")
     public String logout(HttpSession session){

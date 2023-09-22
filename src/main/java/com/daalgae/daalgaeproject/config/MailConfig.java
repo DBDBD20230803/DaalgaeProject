@@ -14,7 +14,7 @@ import java.util.Properties;
 
 
 @Configuration
-@PropertySource("classpath:mailAuth.properties")
+//@PropertySource("classpath:mailAuth.properties")
 @ConfigurationProperties(prefix = "mail")
 @Getter
 @Setter
@@ -46,6 +46,9 @@ public class MailConfig {
         properties.setProperty("mail.debug", "true");
         properties.setProperty("mail.smtp.ssl.trust", "smtp.naver.com");
         properties.setProperty("mail.smtp.ssl.enable", "true");
+        properties.setProperty("mail.smtp.connectiontimeout", "5000");
+        properties.setProperty("mail.smtp.timeout", "5000");
+        properties.setProperty("mail.smtp.writetimeout", "5000");
         return properties;
     }
 
