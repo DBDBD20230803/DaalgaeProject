@@ -285,3 +285,8 @@ input:focus {
     margin: 0 auto;
 }
 
+.hospitalExcept {
+    position: relative;
+    color: #888888;
+    font-size: 14px;
+}
