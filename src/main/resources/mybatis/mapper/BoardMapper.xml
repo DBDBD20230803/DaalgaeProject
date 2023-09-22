@@ -129,6 +129,13 @@
         WHERE  POST_CODE = #{ no }
     </update>
 
+    <update id="updatePost">
+        UPDATE POST_INFO
+        SET POST_TITLE = #{ postTitle },
+            POST_CONTENT = #{ postContent }
+        WHERE POST_CODE = #{ postCode }
+    </update>
+
     <select id="selectBoardDetail" resultMap="boardResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardDetail() */
                  A.POST_CODE

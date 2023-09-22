@@ -36,4 +36,6 @@ public interface BoardMapper {
     int incrementBoardCount(int no);
 
     BoardDTO selectThumbnailDetail(int no);
+
+    int updatePost(BoardDTO board);
 }

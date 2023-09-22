@@ -3,10 +3,7 @@ package com.daalgae.daalgaeproject.board.controller;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
-import com.daalgae.daalgaeproject.common.exception.board.BoardDeleteException;
-import com.daalgae.daalgaeproject.common.exception.board.BoardRegistException;
-import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
-import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
+import com.daalgae.daalgaeproject.common.exception.board.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -96,10 +93,18 @@ public class BoardFreeController {
         return "redirect:/board/freeBoard";
     }
 
-    @GetMapping("/freeBoardModify")
-    public ModelAndView modifyFree(ModelAndView mv) {
-        mv.setViewName("/board/freeBoardModify");
-        return mv;
+    @PostMapping("/updatePost")
+    public String updatePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardUpdateException {
+
+        log.info("[BoardController] deleteBoard Request : " + board);
+
+        boardServiceImpl.updateBoard(board);
+
+        rttr.addFlashAttribute("message", "게시글 수정에 성공하였습니다!!😉");
+
+        log.info("[BoardController] registBoard =========================================================");
+
+        return "redirect:/board/freeBoard";
     }
 
 }

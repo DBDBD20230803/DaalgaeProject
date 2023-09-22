@@ -706,6 +706,7 @@ button[type="submit"]:hover {
 .postTitle {
   width: 20%;
   display: block;
+  border: 0;
 }
 
 .postUser {
