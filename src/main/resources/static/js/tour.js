@@ -164,6 +164,9 @@ $(document).ready( function() {
                 console.log("통신에러3");
             }
         });
+        $("#mapSearchBox").on('oninput', function () {
+           console.log(11);
+        });
         $("#mapSearchBox").on("keyup",function(key){
             if(key.keyCode==13) {
                 let searchValue = $("#mapSearchBox").val();
@@ -217,7 +220,7 @@ $(document).ready( function() {
                         }
                     }
                 }
-                $("#mapSearchBox").prop('value', '');
+                // $("#mapSearchBox").prop('value', '');
             }
         });
     });
@@ -247,6 +250,7 @@ $(document).ready( function() {
         $('#hospitalCheck input').prop('checked', 'true');
     }
     $('.listTour1').click(function(){
+        let searchValue = $("#mapSearchBox").val();
         if($('#tourCheck input').prop('checked') == true) {
             for (let i = 0; i < marker1.length; i++) {
                 marker1[i].setMap(null);
@@ -254,12 +258,16 @@ $(document).ready( function() {
             $('#tourCheck input').prop('checked', false);
         } else {
             for (let i = 0; i < marker1.length; i++) {
-                marker1[i].setMap(constMap);
+                let checkWord = marker1[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker1[i].setMap(constMap);
+                }
             }
             $('#tourCheck input').prop('checked', true);
         }
     });
     $('.listTour2').click(function(){
+        let searchValue = $("#mapSearchBox").val();
         if( $('#accomoCheck input').prop('checked')  == true) {
             for (let i = 0; i < marker2.length; i++) {
                 marker2[i].setMap(null);
@@ -267,12 +275,16 @@ $(document).ready( function() {
             $('#accomoCheck input').prop('checked', false);
         } else {
             for (let i = 0; i < marker2.length; i++) {
-                marker2[i].setMap(constMap);
+                let checkWord = marker2[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker2[i].setMap(constMap);
+                }
             }
             $('#accomoCheck input').prop('checked', true);
         }
     });
     $('.listTour3').click(function(){
+        let searchValue = $("#mapSearchBox").val();
         if( $('#foodCheck input').prop('checked')  == true) {
             for (let i = 0; i < marker3.length; i++) {
                 marker3[i].setMap(null);
@@ -280,12 +292,16 @@ $(document).ready( function() {
             $('#foodCheck input').prop('checked', false);
         } else {
             for (let i = 0; i < marker3.length; i++) {
-                marker3[i].setMap(constMap);
+                let checkWord = marker3[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker3[i].setMap(constMap);
+                }
             }
             $('#foodCheck input').prop('checked', true);
         }
     });
     $('.listTour4').click(function(){
+        let searchValue = $("#mapSearchBox").val();
         if( $('#activityCheck input').prop('checked')  == true) {
             for (let i = 0; i < marker4.length; i++) {
                 marker4[i].setMap(null);
@@ -293,12 +309,16 @@ $(document).ready( function() {
             $('#activityCheck input').prop('checked', false);
         } else {
             for (let i = 0; i < marker4.length; i++) {
-                marker4[i].setMap(constMap);
+                let checkWord = marker4[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker4[i].setMap(constMap);
+                }
             }
             $('#activityCheck input').prop('checked', true);
         }
     });
     $('.listTour5').click(function(){
+        let searchValue = $("#mapSearchBox").val();
         if( $('#hospitalCheck input').prop('checked')  == true) {
             for (let i = 0; i < marker5.length; i++) {
                 marker5[i].setMap(null);
@@ -306,7 +326,10 @@ $(document).ready( function() {
             $('#hospitalCheck input').prop('checked', false);
         } else {
             for (let i = 0; i < marker5.length; i++) {
-                marker5[i].setMap(constMap);
+                let checkWord = marker5[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker5[i].setMap(constMap);
+                }
             }
             $('#hospitalCheck input').prop('checked', true);
         }
@@ -323,8 +346,12 @@ $(document).ready( function() {
 
     $(".tourCheck").change(function(){
         if($('#tourCheck input').prop('checked') == true) {
+            let searchValue = $("#mapSearchBox").val();
             for (let i = 0; i < marker1.length; i++) {
-                marker1[i].setMap(constMap);
+                let checkWord = marker1[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker1[i].setMap(constMap);
+                }
             }
         } else {
             for (let i = 0; i < marker1.length; i++) {
@@ -332,8 +359,12 @@ $(document).ready( function() {
             }
         }
         if( $('#accomoCheck input').prop('checked')  == true) {
+            let searchValue = $("#mapSearchBox").val();
             for (let i = 0; i < marker2.length; i++) {
-                marker2[i].setMap(constMap);
+                let checkWord = marker2[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker2[i].setMap(constMap);
+                }
             }
         } else {
             for (let i = 0; i < marker2.length; i++) {
@@ -341,8 +372,12 @@ $(document).ready( function() {
             }
         }
         if( $('#foodCheck input').prop('checked')  == true) {
+            let searchValue = $("#mapSearchBox").val();
             for (let i = 0; i < marker3.length; i++) {
-                marker3[i].setMap(constMap);
+                let checkWord = marker3[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker3[i].setMap(constMap);
+                }
             }
         } else {
             for (let i = 0; i < marker3.length; i++) {
@@ -350,8 +385,12 @@ $(document).ready( function() {
             }
         }
         if( $('#activityCheck input').prop('checked')  == true) {
+            let searchValue = $("#mapSearchBox").val();
             for (let i = 0; i < marker4.length; i++) {
-                marker4[i].setMap(constMap);
+                let checkWord = marker4[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker4[i].setMap(constMap);
+                }
             }
         } else {
             for (let i = 0; i < marker4.length; i++) {
@@ -359,8 +398,12 @@ $(document).ready( function() {
             }
         }
         if( $('#hospitalCheck input').prop('checked')  == true) {
+            let searchValue = $("#mapSearchBox").val();
             for (let i = 0; i < marker5.length; i++) {
-                marker5[i].setMap(constMap);
+                let checkWord = marker5[i].Gb;
+                if(checkWord.includes(searchValue)) {
+                    marker5[i].setMap(constMap);
+                }
             }
         } else {
             for (let i = 0; i < marker5.length; i++) {
