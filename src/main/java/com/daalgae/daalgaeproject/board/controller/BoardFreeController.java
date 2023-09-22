@@ -3,13 +3,15 @@ package com.daalgae.daalgaeproject.board.controller;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
-import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
-import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
+import com.daalgae.daalgaeproject.common.exception.board.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 @RequestMapping("/board/*")
 public class BoardFreeController {
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final BoardServiceImpl boardServiceImpl;
 
     public BoardFreeController(BoardServiceImpl boardServiceImpl) {
@@ -49,21 +52,59 @@ public class BoardFreeController {
     @DeleteMapping("/removeReply")
     public ResponseEntity<List<ReplyDTO>> removeReply(@RequestBody ReplyDTO removeReply) throws ReplyRemoveException {
 
+        System.out.println("refPostCode : " + removeReply.getRefPostCode());
         List<ReplyDTO> replyList = boardServiceImpl.removeReply(removeReply);
 
         return ResponseEntity.ok(replyList);
     }
 
     @GetMapping("/freeBoardWrite")
-    public ModelAndView writeFree(ModelAndView mv) {
-        mv.setViewName("board/freeBoardWrite");
-        return mv;
+    public String goWriteFree() {
+
+        log.info("[BoardController] goWriteFree() ");
+        return "/board/freeBoardWrite";
     }
 
-    @GetMapping("/freeBoardModify")
-    public ModelAndView modifyFree(ModelAndView mv) {
-        mv.setViewName("board/freeBoardModify");
-        return mv;
+    @PostMapping("/freeBoardWrite")
+    public String writeFree(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardRegistException {
+
+        log.info("[BoardController] registBoard Request : " + board);
+
+        boardServiceImpl.registBoard(board);
+
+        rttr.addFlashAttribute("message", "게시글 등록에 성공하였습니다!!🐶");
+
+        log.info("[BoardController] registBoard =========================================================");
+
+        return "redirect:/board/freeBoard";
+    }
+
+    @PostMapping("/deletePost")
+    public String deletePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
+
+        log.info("[BoardController] deleteBoard Request : " + board);
+
+        boardServiceImpl.deleteBoard(board);
+
+        rttr.addFlashAttribute("message", "게시글 삭제에 성공하였습니다!!😎");
+
+        log.info("[BoardController] registBoard =========================================================");
+
+        return "redirect:/board/freeBoard";
+    }
+
+    @PostMapping("/updatePost")
+    public String updatePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardUpdateException {
+
+        log.info("[BoardController] deleteBoard Request : " + board);
+
+        boardServiceImpl.updateBoard(board);
+
+        rttr.addFlashAttribute("message", "게시글 수정에 성공하였습니다!!😉");
+
+        log.info("[BoardController] registBoard =========================================================");
+
+        return "redirect:/board/freeBoard";
     }
 
 }

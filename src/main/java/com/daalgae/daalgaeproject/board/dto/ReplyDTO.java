@@ -13,6 +13,8 @@ public class ReplyDTO {
     private int replyCode;
     private String replyCon;
     private Date replyDate;
-    private MemberDTO refPostWriter;
-    private BoardDTO refPostCode;
+    private int refReplyWriter;
+    private int refPostCode;
+    private MemberDTO replyWriterDetail;
+
 }

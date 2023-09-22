@@ -342,6 +342,42 @@
   justify-content: center;
 }
 
+.board-container form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deletePost {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DBDBDB;
+  border-radius: 5px;
+}
+.updatePost {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DBDBDB;
+  border-radius: 5px;
+}
+#boardDeleteForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 20px;
+}
 #HeadTitle {
   width: 100%;
   height: 60px;
@@ -350,7 +386,7 @@
   background-color: #F6F6F6;
 }
 
-#Title {
+#title {
   width: 100%;
   height: 60px;
   border: 0;
@@ -670,6 +706,7 @@ button[type="submit"]:hover {
 .postTitle {
   width: 20%;
   display: block;
+  border: 0;
 }
 
 .postUser {
@@ -1085,7 +1122,7 @@ button[type="submit"]:hover {
 }
 
 #comment-delete-button button {
-  width: 90px;
+  width: 100%;
   height: 50px;
   background-color: #EFEFEF;
   border-radius: 5px;

@@ -36,8 +36,10 @@
         <id property="replyCode" column="POST_REPLY_CODE"/>
         <result property="replyCon" column="POST_REPLY_CONTENT"/>
         <result property="replyDate" column="POST_REPLY_DATE"/>
-        <association property="refPostWriter" resultMap="memberResultMap"/>
-        <association property="refPostCode" resultMap="boardResultMap"/>
+        <result property="refReplyWriter" column="REF_POST_REPLY_WRITER"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
+        <association property="replyWriterDetail" resultMap="memberResultMap"/>
+<!--        <association property="refPostCode" resultMap="boardResultMap"/>-->
     </resultMap>
 
     <resultMap type="AttachmentDTO" id="attachmentFileResultMap">
@@ -127,6 +129,13 @@
         WHERE  POST_CODE = #{ no }
     </update>
 
+    <update id="updatePost">
+        UPDATE POST_INFO
+        SET POST_TITLE = #{ postTitle },
+            POST_CONTENT = #{ postContent }
+        WHERE POST_CODE = #{ postCode }
+    </update>
+
     <select id="selectBoardDetail" resultMap="boardResultMap">
         SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardDetail() */
                  A.POST_CODE
@@ -159,38 +168,45 @@
     <insert id="insertReply">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertReply() */
         INTO POST_REPLY   (
-                           POST_CODE
-                         , POST_REPLY_CON
-                         , POST_REPLY_WRITER
+                          POST_REPLY_CONTENT
+                         , REF_POST_REPLY_WRITER
+                         , REF_POST_CODE
                          )
         VALUES  (
-                #{ refBoardNo }
-                , #{ body }
-                , #{ writerMemberNo }
+                  #{replyCon}
+                , #{refReplyWriter}
+                , #{refPostCode}
                 )
     </insert>
 
-    <delete id="deleteReply" parameterType="_int">
+    <delete id="removeReply" parameterType="_int">
         DELETE  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#deleteReply() */
           FROM  POST_REPLY
-         WHERE  POST_REPLY_CODE = #{ replyNo }
+         WHERE  POST_REPLY_CODE = #{no}
     </delete>
 
-    <insert id="insertBoard" parameterType="_int">
+    <insert id="insertBoard" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertBoard() */
         INTO POST_INFO      (
-                              POST_SORT
+                              POST_TYPE
+                            , POST_SORT
                             , POST_TITLE
                             , POST_CONTENT
-                            , MEM_CODE
+                            , REF_POST_WRITER
                             )
         VALUES  (
-                  #{ categoryCode }
-                , #{ title }
-                , #{ body }
-                , #{ writerMemberNo }
+                  #{postType}
+                , #{postSort}
+                , #{postTitle}
+                , #{postContent}
+                , #{refPostWriter.memCode}
                 )
     </insert>
+
+    <delete id="deletePost" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
+        DELETE FROM POST_INFO
+        WHERE POST_CODE = #{ postCode }
+    </delete>
 
     <insert id="insertAttachment" parameterType="_int">
         INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertAttachment() */
