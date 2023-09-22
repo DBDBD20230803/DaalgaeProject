@@ -4,6 +4,7 @@ import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
 import com.daalgae.daalgaeproject.payment.service.KakaoPayService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("payment")
 @RequiredArgsConstructor
+@Slf4j
 public class KakaoPayController {
 
 
@@ -53,12 +55,14 @@ public class KakaoPayController {
         OrderPay orderPay = new OrderPay();
 
         orderPay.setDogGumPayCode(kakaoApprove.getTid());
-        orderPay.setMemCode(Integer.parseInt(kakaoApprove.getPartner_user_id()));
         orderPay.setDogGumPaymethod(kakaoApprove.getPayment_method_type());
-        orderPay.setDogGumPayDate(kakaoApprove.getCreated_at());
-        orderPay.setMemDogGum(kakaoApprove.getQuantity());
         orderPay.setDogGumPay(String.valueOf(kakaoApprove.getAmount().getTotal()));
+        orderPay.setDogGumPayDate(kakaoApprove.getCreated_at());
         orderPay.setDogItemName(kakaoApprove.getItem_name());
+        orderPay.setRefMemCode(Integer.parseInt(kakaoApprove.getPartner_user_id()));
+        orderPay.setMemDogGum(kakaoApprove.getQuantity());
+
+
 
         System.out.println("나 실행됐냐 ??");
 
@@ -80,6 +84,8 @@ public class KakaoPayController {
     }
 
     //결제 실패
+
+    @GetMapping("/fail")
     public ResponseEntity fail() {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결제에 실패하였습니다.");
@@ -98,5 +104,7 @@ public class KakaoPayController {
 //        System.out.println(k);
         return "payment/successPage";
     }
+
+
 }
 

@@ -13,7 +13,7 @@ public class KakaoApprove {
     private String tid; // notnull. PK
     private String cid;
     private String partner_order_id;
-    private String partner_user_id;  // 회원코드 FK
+    private String partner_user_id;  // 회원코드 FK mem_code??
     private String payment_method_type; // 결제 수단
     private Amount amount;  //결제금액
     private String item_name; //개껌 10 또는 개껌 20개
