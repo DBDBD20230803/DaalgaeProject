@@ -2,15 +2,12 @@ package com.daalgae.daalgaeproject.board.controller;
 
 import com.daalgae.daalgaeproject.board.dto.AttachmentDTO;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
-import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
-import com.daalgae.daalgaeproject.common.exception.board.*;
 import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import net.coobird.thumbnailator.Thumbnails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,78 +18,79 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @Controller
-@RequestMapping("/board/*")
-public class BoardFreeController {
+@RequestMapping("/thumbnail")
+public class AttachmentController {
 
     @Value("${image.image-dir}")
     private String IMAGE_DIR;
 
     @Value("${spring.servlet.multipart.location}")
     private String ROOT_LOCATION;
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     private final BoardServiceImpl boardServiceImpl;
 
-    public BoardFreeController(BoardServiceImpl boardServiceImpl) {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+    public AttachmentController(BoardServiceImpl boardServiceImpl) {
         this.boardServiceImpl = boardServiceImpl;
     }
 
-    @GetMapping("/freeBoardSelect")
-    public String selectFree(HttpServletRequest request, Model model) {
+    @GetMapping("/list")
+    public ModelAndView selectAllThumbnailList(ModelAndView mv) {
 
-        int no = Integer.parseInt(request.getParameter("no"));
-        BoardDTO boardDetail = boardServiceImpl.selectBoardDetail(no);
+        log.info("");
+        log.info("");
+        log.info("[ThumbnailController] =========================================================");
 
-        model.addAttribute("board", boardDetail);
+        List<BoardDTO> thumbnailList = boardServiceImpl.selectAllThumbnailList();
 
-        List<ReplyDTO> replyList = boardServiceImpl.selectAllReplyList(no);
-        model.addAttribute("replyList", replyList);
+        log.info("[ThumbnailController] thumbnailList : " + thumbnailList);
 
-        return "board/freeBoardSelect";
+        mv.addObject("thumbnailList", thumbnailList);
+
+        mv.setViewName("content/thumbnail/thumbnailList");
+
+        log.info("[ThumbnailController] =========================================================");
+
+        return mv;
     }
 
-    @PostMapping("/registReply")
-    public ResponseEntity<List<ReplyDTO>> registReply(@RequestBody ReplyDTO registReply) throws ReplyRegistException {
-
-        List<ReplyDTO> replyList = boardServiceImpl.registReply(registReply);
-
-        return ResponseEntity.ok(replyList);
+    @GetMapping("/regist")
+    public String goRegister() {
+        return "content/thumbnail/thumbnailRegist";
     }
 
-    @DeleteMapping("/removeReply")
-    public ResponseEntity<List<ReplyDTO>> removeReply(@RequestBody ReplyDTO removeReply) throws ReplyRemoveException {
+    @PostMapping("/regist")
+    public String registThumbnail(@ModelAttribute BoardDTO thumbnail, HttpServletRequest request,
+                                  @RequestParam("thumbnailImg1") MultipartFile thumbnailImg1,
+                                  @RequestParam("thumbnailImg2") MultipartFile thumbnailImg2,
+                                  @RequestParam("thumbnailImg3") MultipartFile thumbnailImg3,
+                                  @RequestParam("thumbnailImg4") MultipartFile thumbnailImg4, RedirectAttributes rttr)
+            throws UnsupportedEncodingException, ThumbnailRegistException {
 
-        System.out.println("refPostCode : " + removeReply.getRefPostCode());
-        List<ReplyDTO> replyList = boardServiceImpl.removeReply(removeReply);
 
-        return ResponseEntity.ok(replyList);
-    }
+        log.info("");
+        log.info("");
+        log.info("[ThumbnailController] =========================================================");
 
-    @GetMapping("/freeBoardWrite")
-    public String goWriteFree() {
-
-        log.info("[BoardController] goWriteFree() ");
-        return "/board/freeBoardWrite";
-    }
-
-    @PostMapping("/freeBoardWrite")
-    public String writeFree(@ModelAttribute BoardDTO board,
-                            @RequestParam("thumbnailImg1") MultipartFile thumbnailImg1,
-                            @RequestParam("thumbnailImg2") MultipartFile thumbnailImg2,
-                            @RequestParam("thumbnailImg3") MultipartFile thumbnailImg3,
-                            @RequestParam("thumbnailImg4") MultipartFile thumbnailImg4, RedirectAttributes rttr) throws BoardRegistException {
-
-        log.info("[BoardController] registBoard Request : " + board);
-
+        //String rootLocation = request.getSession().getServletContext().getRealPath("/resources");
         String rootLocation = ROOT_LOCATION + IMAGE_DIR;
+
+
         String fileUploadDirectory = rootLocation + "/upload/original";
         String thumbnailDirectory = rootLocation + "/upload/thumbnail";
+
+
         File directory = new File(fileUploadDirectory);
         File directory2 = new File(thumbnailDirectory);
+
         log.info("[ThumbnailController] fileUploadDirectory : " + directory);
         log.info("[ThumbnailController] thumbnailDirectory : " + directory2);
+
         /* 파일 저장경로가 존재하지 않는 경우 디렉토리를 생성한다. */
         if (!directory.exists() || !directory2.exists()) {
 
@@ -113,6 +111,7 @@ public class BoardFreeController {
         log.info("[ThumbnailController] thumbnailImg3 : " + thumbnailImg3);
         paramFileList.add(thumbnailImg4);
         log.info("[ThumbnailController] thumbnailImg4 : " + thumbnailImg4);
+
         try {
             for (MultipartFile paramFile : paramFileList) {
                 if (paramFile.getSize() > 0) {
@@ -170,8 +169,8 @@ public class BoardFreeController {
 
             /* 서비스를 요청할 수 있도록 BoardDTO에 담는다. */
 
-            board.setAttachmentList(new ArrayList<AttachmentDTO>());
-            List<AttachmentDTO> list = board.getAttachmentList();
+            thumbnail.setAttachmentList(new ArrayList<AttachmentDTO>());
+            List<AttachmentDTO> list = thumbnail.getAttachmentList();
             for (int i = 0; i < fileList.size(); i++) {
                 Map<String, String> file = fileList.get(i);
 
@@ -185,10 +184,12 @@ public class BoardFreeController {
                 list.add(tempFileInfo);
             }
 
-            log.info("[ThumbnailController] thumbnail : " + board);
-        boardServiceImpl.registBoard(board);
+            log.info("[ThumbnailController] thumbnail : " + thumbnail);
 
-        rttr.addFlashAttribute("message", "게시글 등록에 성공하였습니다!!🐶");
+            boardServiceImpl.registThumbnail(thumbnail);
+
+            rttr.addFlashAttribute("message", "사진 게시판 등록에 성공하셨습니다.");
+
         } catch (IllegalStateException | IOException e) {
             e.printStackTrace();
 
@@ -214,43 +215,30 @@ public class BoardFreeController {
             } else {
                 e.printStackTrace();
             }
-        } catch (ThumbnailRegistException e) {
-            e.printStackTrace();
         }
 
         log.info("[ThumbnailController] =========================================================");
 
-        log.info("[BoardController] registBoard =========================================================");
-
-        return "redirect:/board/freeBoard";
+        return "redirect:/thumbnail/list";
     }
 
-    @PostMapping("/deletePost")
-    public String deletePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
 
-        log.info("[BoardController] deleteBoard Request : " + board);
+    @GetMapping("/detail")
+    public String selectThumbnailDetail(HttpServletRequest request, Model model) {
 
-        boardServiceImpl.deleteBoard(board);
+        log.info("");
+        log.info("");
+        log.info("[ThumbnailController] =========================================================");
 
-        rttr.addFlashAttribute("message", "게시글 삭제에 성공하였습니다!!😎");
+        int no = Integer.parseInt(request.getParameter("no"));
 
-        log.info("[BoardController] registBoard =========================================================");
+        BoardDTO thumbnailDetail = boardServiceImpl.selectThumbnailDetail(no);
+        log.info("[ThumbnailController] thumbnailDetail : " + thumbnailDetail);
 
-        return "redirect:/board/freeBoard";
+        model.addAttribute("thumbnail", thumbnailDetail);
+
+        log.info("[ThumbnailController] =========================================================");
+
+        return "content/thumbnail/thumbnailDetail";
     }
-
-    @PostMapping("/updatePost")
-    public ResponseEntity<BoardDTO> updatePost(@RequestBody BoardDTO board) throws BoardUpdateException {
-
-        log.info("[BoardController] updateBoard Request : " + board);
-
-        BoardDTO boardList = boardServiceImpl.updateBoard(board);
-
-        log.info("boardList : " + boardList);
-
-        return ResponseEntity.ok(boardList);
-//        int no = board.getPostCode();
-//        return "redirect:/board/freeBoardSelect?no=" + no;
-    }
-
 }

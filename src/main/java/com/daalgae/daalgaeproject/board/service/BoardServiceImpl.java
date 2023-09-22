@@ -107,12 +107,28 @@ public class BoardServiceImpl implements BoardService{
     /* 게시글 등록용 메소드 */
     @Override
     @Transactional
-    public void registBoard(BoardDTO board) throws BoardRegistException {
-        int result = mapper.insertBoard(board);
+    public void registBoard(BoardDTO board) throws ThumbnailRegistException {
 
-        if(!(result > 0)) {
-            throw new BoardRegistException("게시글 등록 실패...🙊");
+        int boardResult = mapper.insertBoard(board);
+
+        List<AttachmentDTO> attachmentList = board.getAttachmentList();
+
+        /* fileList에 boardNo값을 넣는다. */
+        for(int i = 0; i < attachmentList.size(); i++) {
+            attachmentList.get(i).setRefPostCode(board.getAttachmentList());
         }
+
+        /* Attachment 테이블에 list size만큼 insert 한다. */
+        int attachmentResult = 0;
+        for(int i = 0; i < attachmentList.size(); i++) {
+            attachmentResult += mapper.insertAttachment(attachmentList.get(i));
+        }
+
+        /* 게시글 추가 및 첨부파일 갯수 만큼 첨부파일 내용 insert에 실패 시 예외 발생 */
+        if(!(boardResult > 0 && attachmentResult == attachmentList.size())) {
+            throw new ThumbnailRegistException("게시글 등록 실패...🙊");
+        }
+
     }
 
     @Override

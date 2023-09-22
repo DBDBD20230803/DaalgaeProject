@@ -48,7 +48,7 @@
         <result property="attachDbName" column="ATTACH_DB_NAME"/>
         <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
         <result property="attachOriginAddr" column="ATTACH_ORIGIN_ADDR"/>
-        <association property="refPostCode" resultMap="boardResultMap"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
     </resultMap>
 
     <select id="selectTotalCount" resultType="_int" parameterType="java.lang.String">
