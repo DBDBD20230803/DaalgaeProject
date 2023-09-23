@@ -25,12 +25,12 @@ $(document).ready( function() {
         if(userX && userY) {
             options = {
                 center: new kakao.maps.LatLng(userX, userY),
-                level: 10
+                level: 12
             };
         } else {
             options = {
                 center: new kakao.maps.LatLng(37.5652352, 126.992384),
-                level: 10
+                level: 12
             };
         }
 
