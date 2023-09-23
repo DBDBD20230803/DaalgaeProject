@@ -5,9 +5,13 @@ $(document).ready( function() {
             tourListSearch();
         }
     });
+
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    $('.tourListSearch').val(urlParam.get("keyword"));
 });
 function tourListSearch() {
     let keyword = $('.tourListSearch').val();
-    const select = $('.selectSearchOption option:selected').val();
-    location.href = "/tour/tourList?keyword="+keyword+"&option="+select;
+    const country = $('.selectSearchOption option:selected').val();
+    location.href = "/tour/tourList?keyword="+keyword+"&country="+country;
 }

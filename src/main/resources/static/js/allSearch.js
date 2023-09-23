@@ -28,7 +28,7 @@ $(document).ready( function() {
         dataType:"json",
         async: false,
         success: function(data){
-            let tourLocInfo = new Array(206);
+            let tourLocInfo = [];
             for(let i= 0; i<data.length; i++) {
                 tourLocInfo[i] = {
                     title : data[i].tourTitle,
