@@ -7,6 +7,8 @@ import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.common.exception.board.*;
 import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,7 @@ import java.util.Map;
 
 @Service
 public class BoardServiceImpl implements BoardService{
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private final BoardMapper mapper;
 
@@ -111,18 +114,25 @@ public class BoardServiceImpl implements BoardService{
 
         int boardResult = mapper.insertBoard(board);
 
+        log.info("[BoardServiceImpl] board : " + board);
+        log.info("[BoardServiceImpl] boardResult : " + boardResult);
+
         List<AttachmentDTO> attachmentList = board.getAttachmentList();
 
-        /* fileList에 boardNo값을 넣는다. */
+        log.info("[BoardServiceImpl] attachmentList : " + attachmentList);
+
+        /* fileList에 postCode값을 넣는다. */
         for(int i = 0; i < attachmentList.size(); i++) {
-            attachmentList.get(i).setRefPostCode(board.getAttachmentList());
+            attachmentList.get(i).setRefPostCode(board.getPostCode());
         }
+        log.info("[BoardServiceImpl] attachmentList postCode : " + attachmentList);
 
         /* Attachment 테이블에 list size만큼 insert 한다. */
         int attachmentResult = 0;
         for(int i = 0; i < attachmentList.size(); i++) {
             attachmentResult += mapper.insertAttachment(attachmentList.get(i));
         }
+        log.info("[BoardServiceImpl] attachmentResult : " + attachmentResult);
 
         /* 게시글 추가 및 첨부파일 갯수 만큼 첨부파일 내용 insert에 실패 시 예외 발생 */
         if(!(boardResult > 0 && attachmentResult == attachmentList.size())) {
@@ -157,59 +167,5 @@ public class BoardServiceImpl implements BoardService{
         }
 
         return boardList;
-    }
-
-
-    /* 전체 썸네일 게시글 조회용 메소드 */
-
-    @Override
-    public List<BoardDTO> selectAllThumbnailList() {
-        List<BoardDTO> thumbnailList = mapper.selectAllThumbnailList();
-
-        return thumbnailList;
-    }
-    /* 썸네일 게시글 등록용 메소드 */
-
-    @Override
-    @Transactional
-    public void registThumbnail(BoardDTO thumbnail) throws ThumbnailRegistException {
-
-        int result = 0;
-
-        /* 먼저 board 테이블부터 insert 한다. */
-        int boardResult = mapper.insertThumbnailContent(thumbnail);
-
-        /* Attachment 리스트를 불러온다. */
-        List<AttachmentDTO> attachmentList = thumbnail.getAttachmentList();
-
-        /* fileList에 boardNo값을 넣는다. */
-        for(int i = 0; i < attachmentList.size(); i++) {
-            attachmentList.get(i).setRefPostCode((BoardDTO) thumbnail.getAttachmentList());
-        }
-
-        /* Attachment 테이블에 list size만큼 insert 한다. */
-        int attachmentResult = 0;
-        for(int i = 0; i < attachmentList.size(); i++) {
-            attachmentResult += mapper.insertAttachment(attachmentList.get(i));
-        }
-
-        /* 게시글 추가 및 첨부파일 갯수 만큼 첨부파일 내용 insert에 실패 시 예외 발생 */
-        if(!(boardResult > 0 && attachmentResult == attachmentList.size())) {
-            throw new ThumbnailRegistException("사진 게시판 등록에 실패하셨습니다.");
-        }
-    }
-    /* 게시글 상세 페이지 조회용 메소드 */
-
-    @Override
-    public BoardDTO selectThumbnailDetail(int no) {
-        BoardDTO thumbnailDetail = null;
-
-        int result = mapper.incrementBoardCount(no);
-
-        if(result > 0) {
-            thumbnailDetail = mapper.selectThumbnailDetail(no);
-        }
-
-        return thumbnailDetail;
     }
 }

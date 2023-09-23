@@ -67,33 +67,49 @@
             </div>
         </div>
         <div class="board-content-select-container" id="post">
-            <div id="titleImgArea" align="center">
-                <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null}">
-                    <img id="titleImg" width="500" height="300" th:src="@{|/thumbPath${board.attachmentList[0].getAttachThumbAddr()}|}"/><br>
-<!--                    <a href="${ pageContext.servletContext.contextPath }/resources/upload/original/${ requestScope.thumbnail.attachmentList[0].savedName }" download><span th:text="${ thumbnail.attachmentList[0].originalName }"></span></a>-->
-                </th:block>
-            </div>
             <div class="board-content-title" th:each="board : ${ board }">
                 <h6 class="postNo" name="postCode" th:text="${board.postCode}"></h6>
                 <h6 class="postCategory" th:text="${board.postSort}"></h6>
-<!--                <h6 class="postTitle" id="postTitle" th:text="${board.postTitle}"></h6>-->
                 <input class="postTitle" id="postTitle" name="postTitle" type="text" th:value="${board.postTitle}" readonly />
                 <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
                 <h6 class="postCount" th:text="${board.postCount}"></h6>
                 <h6 class="postDate" th:text="${board.postDate}"></h6>
             </div>
             <div class="board-select-content">
+                <div id="titleImgArea" align="center" class="board-content-image">
+                    <th:block th:if="${ board.attachmentList.size() > 0 }">
+                        <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                            <img id="titleImg" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                            <img id="detailImg1" th:src="@{|/thumbPath${board.attachmentList[1].attachThumbAddr}|}"/>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                            <img id="detailImg2" th:src="@{|/thumbPath${board.attachmentList[2].attachThumbAddr}|}"/>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                            <img id="detailImg3" th:src="@{|/thumbPath${board.attachmentList[3].attachThumbAddr}|}"/>
+                        </th:block>
+                    </th:block>
+                </div>
                 <div class="board-textarea">
-                    <textarea
-                            cols="120"
-                            rows="15"
-                            readonly
-                            id="postContent"
-                            name="postContent"
-                            th:text="${board.postContent}"
-                    >
-                    </textarea>
-
+                    <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}"></textarea>
+                </div>
+                <div class="imgDownload">
+                    <th:block th:if="${ board.attachmentList.size() > 0 }">
+                        <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download><span th:text="${ board.attachmentList[0].attachOriginName }"></span></a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download><span th:text="${ board.attachmentList[1].attachOriginName }"></span></a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download><span th:text="${ board.attachmentList[2].attachOriginName }"></span></a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download><span th:text="${ board.attachmentList[3].attachOriginName }"></span></a>
+                        </th:block>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -122,7 +138,7 @@
 
                     <th:block th:each="reply : ${replyList}">
 
-                    <div class="replyListTr comment-content">
+                    <div class="comment-content">
                         <input type="hidden" id="${ reply.replyCode }" th:value="${ reply.replyCode }">
                         <div id="reply-writer" th:text="${ reply.replyWriterDetail.memId }"></div>
                         <div id="reply-body" th:text="${ reply.replyCon}"></div>
@@ -169,5 +185,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var textarea = document.getElementById('postContentText');
+            autoResizeRead(textarea);
+        });
+    </script>
 </th:block>
 </html>

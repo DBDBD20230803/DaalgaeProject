@@ -35,7 +35,7 @@
     postCode: postCode,
     postTitle: postTitle,
     postContent: postContent
-})
+}), mode: 'cors'
 })
     .then(result => {
     console.log("Server Response:", result);
@@ -83,12 +83,12 @@
 },
     body: JSON.stringify(
 {
-    refReplyWriter: '[[${#authentication.getPrincipal().getMemCode()}]]',
+    refReplyWriter: memCode,
     refPostCode: boardNo,
     replyCon: replyBody
-}
-    )
+}), mode: 'cors'
 })
+
     .then(result => result.json())
     .then(data => {
     const $table = $("#replyResult");
@@ -100,7 +100,7 @@
     $writerTd = $("<div id='reply-writer'>").text(reply.replyWriterDetail.memId);
     $createDateTd = $("<div id='reply-date'>").text(reply.replyDate);
     $reportButton = $("<div id='comment-report-button'>").append("<button><img src='/images/report-comment-button.png' alt='comment-report-button'></button>")
-    if(reply.refReplyWriter == '[[${#authentication.getPrincipal().getMemCode()}]]'){
+    if(reply.refReplyWriter == memCode){
     $removeTd = $("<div id='comment-delete-button'>").append("<button type='button' onclick='removeReply(" + reply.replyCode + ")'>삭제</button>");
 } else {
     $removeTd = $("<div>");
@@ -139,8 +139,7 @@
 {
     refPostCode:boardNo,
     replyCode:replyCode
-}
-    )
+}), mode: 'cors'
 })
     .then(result => result.json())
     .then(data => {
@@ -155,7 +154,7 @@
     $writerTd = $("<div id='reply-writer'>").text(reply.replyWriterDetail.memId);
     $createDateTd = $("<div id='reply-date'>").text(reply.replyDate);
     $reportButton = $("<div id='comment-report-button'>").append("<button><img src='/images/report-comment-button.png' alt='comment-report-button'></button>")
-    if(reply.refReplyWriter == '[[${#authentication.getPrincipal().getMemCode()}]]'){
+    if(reply.refReplyWriter == memCode){
     $removeTd = $("<div id='comment-delete-button'>").append("<button type='button' onclick='removeReply(" + reply.replyCode + ")'>삭제</button>");
 } else {
     $removeTd = $("<div>");
@@ -182,56 +181,115 @@
     const $contentImgArea3 = document.getElementById("contentImgArea3");
 
     $titleImgArea.onclick = function() {
-    document.getElementById("thumbnailImg1").click();
-}
+        document.getElementById("thumbnailImg1").click();
+    }
 
     $contentImgArea1.onclick = function() {
-    document.getElementById("thumbnailImg2").click();
-}
+        document.getElementById("thumbnailImg2").click();
+    }
 
     $contentImgArea2.onclick = function() {
-    document.getElementById("thumbnailImg3").click();
-}
+        document.getElementById("thumbnailImg3").click();
+    }
 
     $contentImgArea3.onclick = function() {
-    document.getElementById("thumbnailImg4").click();
-}
+        document.getElementById("thumbnailImg4").click();
+    }
 
     /* 이미지 미리보기 관련 함수(File API 활용하기) */
     function loadImg(value, num) {
 
-    /* https://developer.mozilla.org/ko/docs/Web/API/FileReader 참고 (MDN 사이트 참고)*/
-    if (value.files && value.files[0]) {			// value.files[0]는 파일 이름
-    const reader = new FileReader();
+        /* https://developer.mozilla.org/ko/docs/Web/API/FileReader 참고 (MDN 사이트 참고)*/
+        if (value.files && value.files[0]) {			// value.files[0]는 파일 이름
+            const reader = new FileReader();
 
-    /*
-        FileReader 객체는 웹 애플리케이션이 비동기적으로 데이터를 읽기 위하여 읽을 파일을 가리키는 File 혹은 Blob 객체를
-        이용해 파일의 내용을(혹은 raw data버퍼로) 읽고 사용자의 컴퓨터에 저장하는 것을 가능하게 하는 것
-        Blob(Binary large object) : 파일류의 불변하는 미가공 데이터로 텍스트와 이진 데이터의 형태로 읽을 수 있음
-    */
+            /*
+                FileReader 객체는 웹 애플리케이션이 비동기적으로 데이터를 읽기 위하여 읽을 파일을 가리키는 File 혹은 Blob 객체를
+                이용해 파일의 내용을(혹은 raw data버퍼로) 읽고 사용자의 컴퓨터에 저장하는 것을 가능하게 하는 것
+                Blob(Binary large object) : 파일류의 불변하는 미가공 데이터로 텍스트와 이진 데이터의 형태로 읽을 수 있음
+            */
 
-    // reader.readAsText(value.files[0]);			// 텍스트 파일을 읽을 때 사용 (이미지 파일을 텍스트로 읽어서 글자가 깨짐)
-    // reader.readAsArrayBuffer(value.files[0]);	// 데이터를 일정한 크기로 조금씩(파일을 표현하는 ArrayBuffer) 서버로 보낼 때
-    // reader.readAsBinaryString(value.files[0]);	// 이진 데이터를 서버로 보낼 때 사용
-    reader.readAsDataURL(value.files[0]);		// Base64방식으로 파일을 FileReader에 전달 (Base64로 인코딩한 것은 브라우저가 원래 데이터로 만들게 됨)
+            // reader.readAsText(value.files[0]);			// 텍스트 파일을 읽을 때 사용 (이미지 파일을 텍스트로 읽어서 글자가 깨짐)
+            // reader.readAsArrayBuffer(value.files[0]);	// 데이터를 일정한 크기로 조금씩(파일을 표현하는 ArrayBuffer) 서버로 보낼 때
+            // reader.readAsBinaryString(value.files[0]);	// 이진 데이터를 서버로 보낼 때 사용
+            reader.readAsDataURL(value.files[0]);		// Base64방식으로 파일을 FileReader에 전달 (Base64로 인코딩한 것은 브라우저가 원래 데이터로 만들게 됨)
 
-    /* load 이벤트의 핸들러로 읽기 동작이 성공적으로 완료 되었을 때마다 발생한다. */
-    reader.onload = function(e) {				// load EventListener에 function 등록 (FileReader에서 전달 받은 파일을 다 읽으면 리스너에 등록한 function이 호출 됨)
-    switch(num){
-    case 1:
-    console.log(e.target.result);		// e.target.result는 인코딩한 결과로 img태그의 src로 사용할 수 있음
-    document.getElementById("titleImg").src = e.target.result;
-    break;
-    case 2:
-    document.getElementById("contentImg1").src = e.target.result;
-    break;
-    case 3:
-    document.getElementById("contentImg2").src = e.target.result;
-    break;
-    case 4:
-    document.getElementById("contentImg3").src = e.target.result;
-    break;
-}
-}
-}
-}
+            /* load 이벤트의 핸들러로 읽기 동작이 성공적으로 완료 되었을 때마다 발생한다. */
+            reader.onload = function(e) {				// load EventListener에 function 등록 (FileReader에서 전달 받은 파일을 다 읽으면 리스너에 등록한 function이 호출 됨)
+                switch(num){
+                    case 1:
+                        console.log(e.target.result);		// e.target.result는 인코딩한 결과로 img태그의 src로 사용할 수 있음
+                        document.getElementById("titleImg").src = e.target.result;
+                        break;
+                    case 2:
+                        document.getElementById("contentImg1").src = e.target.result;
+                        break;
+                    case 3:
+                        document.getElementById("contentImg2").src = e.target.result;
+                        break;
+                    case 4:
+                        document.getElementById("contentImg3").src = e.target.result;
+                        break;
+                }
+            }
+        }
+    }
+
+    // 라벨 엘리먼트와 input 엘리먼트를 가져옵니다.
+    const labels = document.querySelectorAll('.label-imageUpload');
+    const inputs = document.querySelectorAll('input[type="file"]');
+    const imgs = document.querySelectorAll('.imgs');
+
+    // 현재 활성화된 라벨의 인덱스를 추적합니다.
+    let currentLabelIndex = 0;
+
+    // 이미지 선택 이벤트 리스너를 설정합니다.
+    inputs.forEach((input, index) => {
+        input.addEventListener('change', () => {
+            // 이미지를 업로드하면 현재 라벨를 비활성화합니다.
+            labels[currentLabelIndex].style.pointerEvents = 'none'; // 라벨 클릭 이벤트 비활성화
+            labels[currentLabelIndex].style.opacity = 0; // 라벨을 투명하게 만들어 비활성화처럼 보이게 함
+            imgs[currentLabelIndex].style.display = 'none';
+
+            // 다음 라벨를 활성화합니다.
+            currentLabelIndex++;
+            if (currentLabelIndex < labels.length) {
+                labels[currentLabelIndex].style.pointerEvents = 'auto'; // 다음 라벨 클릭 이벤트 활성화
+                labels[currentLabelIndex].style.display = 'inline-block'; // 라벨을 원래 상태로 복구
+                labels[currentLabelIndex].style.opacity = 1; // 라벨을 원래 상태로 복구
+            } else {
+                // 모든 라벨을 사용한 경우에는 알림을 표시할 수 있습니다.
+                alert('더 이상 이미지를 업로드할 수 없습니다.');
+                labels[0].style.opacity = 1; // 라벨을 원래 상태로 복구
+                imgs[0].style.display = 'inline-block';
+            }
+        });
+    });
+
+    function autoResizeWrite(textarea) {
+        var threshold = 120; // 예시 임계값, 필요에 따라 조절 가능
+
+        // 입력된 글자 수를 계산합니다.
+        var text = textarea.value;
+        var textLength = text.length;
+
+        var container = document.querySelector('.board-write-content');
+        // 글자 수가 임계값을 넘으면 높이를 늘립니다.
+        if (textLength > threshold) {
+            textarea.style.height = '100%'; // 먼저 높이를 초기화
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+            container.style.height = (container.scrollHeight) + 'px';
+        }
+    }
+
+
+    function autoResizeRead(textarea) {
+        var scrollHeight = textarea.scrollHeight;
+
+        console.log(scrollHeight);
+        console.log(textarea.clientHeight);
+
+        if (textarea.clientHeight < scrollHeight) {
+            textarea.style.height = scrollHeight + 'px';
+        }
+    }

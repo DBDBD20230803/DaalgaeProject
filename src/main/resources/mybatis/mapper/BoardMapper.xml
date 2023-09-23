@@ -13,6 +13,7 @@
         <result property="postDate" column="POST_DATE"/>
         <result property="postCount" column="POST_COUNT"/>
         <association property="refPostWriter" resultMap="memberResultMap"/>
+        <association property="attachmentList" resultMap="attachmentFileResultMap"/>
     </resultMap>
 
     <resultMap type="MemberDTO" id="memberResultMap">
@@ -146,8 +147,15 @@
                  , A.POST_CONTENT
                  , A.POST_COUNT
                  , A.POST_DATE
+                 , C.ATTACH_CODE_SEQ
+                 , C.ATTACH_ORIGIN_NAME
+                 , C.ATTACH_DB_NAME
+                 , C.ATTACH_THUMB_ADDR
+                 , C.ATTACH_ORIGIN_ADDR
+                 , C.REF_POST_CODE
         FROM POST_INFO A
         JOIN MEM_INFO B ON(A.REF_POST_WRITER = B.MEM_CODE)
+        LEFT JOIN ATTACHMENT_FILE C ON (A.POST_CODE = C.REF_POST_CODE)
         WHERE A.POST_CODE = #{ no }
     </select>
 
@@ -166,7 +174,7 @@
     </select>
 
     <insert id="insertReply">
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertReply() */
+        INSERT
         INTO POST_REPLY   (
                           POST_REPLY_CONTENT
                          , REF_POST_REPLY_WRITER
@@ -180,13 +188,13 @@
     </insert>
 
     <delete id="removeReply" parameterType="_int">
-        DELETE  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#deleteReply() */
+        DELETE
           FROM  POST_REPLY
          WHERE  POST_REPLY_CODE = #{no}
     </delete>
 
     <insert id="insertBoard" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertBoard() */
+        INSERT
         INTO POST_INFO      (
                               POST_TYPE
                             , POST_SORT
@@ -201,6 +209,27 @@
                 , #{postContent}
                 , #{refPostWriter.memCode}
                 )
+        <selectKey keyProperty="postCode" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <insert id="insertAttachment">
+        INSERT
+        INTO ATTACHMENT_FILE    (
+                                  REF_POST_CODE
+                                , ATTACH_ORIGIN_NAME
+                                , ATTACH_DB_NAME
+                                , ATTACH_ORIGIN_ADDR
+                                , ATTACH_THUMB_ADDR
+        )
+        VALUES  (
+                    #{refPostCode}
+                , #{attachOriginName}
+                , #{attachDbName}
+                , #{attachOriginAddr}
+                , #{attachThumbAddr}
+                )
     </insert>
 
     <delete id="deletePost" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
@@ -208,23 +237,6 @@
         WHERE POST_CODE = #{ postCode }
     </delete>
 
-    <insert id="insertAttachment" parameterType="_int">
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertAttachment() */
-        INTO ATTACHMENT_FILE    (
-                                  POST_CODE
-                                , ATTACH_ORIGIN_NAME
-                                , ATTACH_DB_NAME
-                                , ATTACH_ORIGIN_ADDR
-                                , ATTACH_THUMB_ADDR
-                                )
-        VALUES  (
-                  #{ refBoardNo }
-                , #{ originalName }
-                , #{ savedName }
-                , #{ savePath }
-                , #{ thumbnailPath }
-                )
-    </insert>
 
     <select id="selectThumbnailDetail" resultMap="boardResultMap">
         SELECT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectThumbnailDetail() */

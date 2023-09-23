@@ -232,9 +232,11 @@
   width: 100%;
   height: 100%;
   border: 1px solid #BDBDBD;
+  font-size: inherit;
+  overflow: hidden;
 }
 
-#content {
+#postContent {
   resize: none;
 }
 
@@ -342,6 +344,10 @@
   justify-content: center;
 }
 
+.imageUpload input{
+  display: none;
+}
+
 .board-container form {
   width: 100%;
   height: 100%;
@@ -360,6 +366,8 @@
   border: 1px solid #DBDBDB;
   border-radius: 5px;
 }
+
+
 .updatePost {
   width: 120px;
   height: 60px;
@@ -369,6 +377,7 @@
   border: 1px solid #DBDBDB;
   border-radius: 5px;
 }
+
 #boardDeleteForm {
   width: 100%;
   display: flex;
@@ -402,7 +411,13 @@
   background-color: #F6F6F6;
 }
 
+.imageUpload label {
+  display: none;
+}
 
+#imageUploadButton1 {
+  display: inline-block;
+}
 .search-by-text {
   background-color: #F6F6F6;
   width: 250px;
@@ -483,6 +498,30 @@
   /*background-color: #A6CEF7;*/
 }
 
+.content-img-area {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.content-img-area div {
+  width: 25%;
+  height: 100%;
+}
+.content-img-area img {
+  width: 100%;
+  height: 100%;
+}
+
+.thumbnail-file-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail-file-area input{
+  display: none;
+}
 .content-detail {
   position: relative;
   width: 100%;
@@ -666,6 +705,16 @@ button[type="submit"]:hover {
   gap: 10px;
   padding: 50px;
 }
+.board-content-image {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.board-content-image a {
+  width: 10%;
+}
 
 .board-content-image img{
   max-width: 100%;
@@ -673,6 +722,12 @@ button[type="submit"]:hover {
   width: auto;
   height: auto;
   object-fit: contain;
+  display: flex;
+}
+
+.imgDownload {
+  display: flex;
+  justify-content: center;
 }
 
 .board-content-title {
@@ -1200,7 +1255,7 @@ button[type="submit"]:hover {
 .board-textarea textarea{
   width: 100%;
   height: 100%;
-  font-size: 22px;
+  font-size: inherit;
   border: 0;
   resize: none;
   outline: none;

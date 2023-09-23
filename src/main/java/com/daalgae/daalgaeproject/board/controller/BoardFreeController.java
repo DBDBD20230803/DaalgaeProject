@@ -146,13 +146,13 @@ public class BoardFreeController {
                         fileMap.put("fileType", "TITLE");
 
                         /* 썸네일로 변환 할 사이즈를 지정한다. */
-                        width = 300;
-                        height = 150;
+                        width = 500;
+                        height = 250;
                     } else {
                         fileMap.put("fileType", "BODY");
 
-                        width = 120;
-                        height = 100;
+                        width = 500;
+                        height = 250;
                     }
 
                     /* 썸네일로 변환 후 저장한다. */
