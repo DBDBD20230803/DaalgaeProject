@@ -20,7 +20,13 @@ public interface LoginService extends UserDetailsService {
     int updateMailAuth(MemberDTO memberDTO) throws EmailAuthException, MessagingException;
     int emailAuthFail(String id) throws EmailAuthException, MessagingException;
 
-    List<MemberDTO> findId(MemberDTO memberDTO);
+    List<MemberDTO> findId(MemberDTO memberDTO) throws Exception;
+
+    int getFindUserResult(MemberDTO memberDTO) throws Exception;
+
+    void findPass(MemberDTO memberDTO) throws Exception;
+
+
 }
 
 

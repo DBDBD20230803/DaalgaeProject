@@ -133,23 +133,6 @@ window.onload = function (){
         });
 
 
-
-
-
-
-
-
-        /**
-         * 아이디찾기 js
-         * */
-        $("#findId-hp").on("keyup",function(){
-            //자동하이픈 + 숫자가 아니면 입력 불가
-            $(this).val($(this).val()
-                .replace(/[^0-9]/g, "")
-                .replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3")
-                .replace("--", "-"));
-        });
-
     });
 
 // 회원 가입 시 유효성 최종 체크
@@ -189,41 +172,5 @@ window.onload = function (){
         return location.href="/";
     }
 
-//아이디찾기 체크
-    function fn_findId_check() {
-        let nameRegExp = /^[가-힣]{2,}$/;
-        let emailRegExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,6}$/;
 
-
-        let name = $("#findId-name").val().trim();
-        let email = $("#findId-email").val().trim();
-        let hp = $("#findId-hp").val().trim();
-
-        if(!nameRegExp.test(name) || name.length == 0){
-            alert("이름을 다시 확인해주세요");
-            return false;
-        } else if (!emailRegExp.test(email) || email.length == 0) {
-            alert("이메일 형식이 올바르지 않습니다.");
-            return false;
-        }
-        return true;
-    }
-
-//비밀번호찾기 체크
-    function fn_findPass_check() {
-        let idRegExp = /^[a-z0-9]{5,20}$/;
-        let emailRegExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,6}$/;
-
-        let id = $("#findPass-id").val().trim();
-        let email = $("#findPass-email").val().trim();
-
-        if(!idRegExp.test(id) || id.length == 0){
-            alert("아이디를 다시 확인해주세요.");
-            return false;
-        } else if (!emailRegExp.test(email) || email.length == 0) {
-            alert("이메일 형식이 올바르지 않습니다.");
-            return false;
-        }
-        return true;
-    }
 }

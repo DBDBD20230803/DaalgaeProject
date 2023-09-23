@@ -1,6 +1,5 @@
 package com.daalgae.daalgaeproject.member.controller;
 
-import com.daalgae.daalgaeproject.exception.member.EmailAuthException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
@@ -11,19 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -67,15 +63,33 @@ public class MemberController {
 
     @PostMapping("/loginFindId")
     public String loginFindId(MemberDTO memberDTO, Model model){
+
         List<MemberDTO> idList = loginService.findId(memberDTO);
-        model.addAttribute("idList", idList);
-        System.out.println("idList : " + idList);
+
+        List<String> memIds = new ArrayList<>();
+        for (MemberDTO dto : idList) {
+            String memId = dto.getMemId();
+            memIds.add(memId);
+        }
+        model.addAttribute("memIds", memIds);
+
+        log.info("idList : " + idList + "드디어 나왔쥬~?");
         return "login/FindIdComplete";
     }
 
     @GetMapping("/loginFindPwd")
     public String loginFindFPwdForm(){ return "login/loginFindPwd"; }
 
+
+    @PostMapping("/loginFindPwd")
+    public String findPass(MemberDTO memberDTO, Model model) throws MessagingException, UnsupportedEncodingException {
+       int result = loginService.getFindUserResult(memberDTO);
+       log.info("MemberController.findPassword : result={}", result);
+       model.addAttribute("result", result);
+
+       loginService.findPass(memberDTO);
+       return "/login/FindPwdComplete";
+    }
 
 
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/loginLayout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script th:inline="javascript">
+        let result = '[[${result}]]';
+        if(result == 0){
+            alert("등록된 가입 정보가 없습니다.😌😌 \n " +
+                "입력한 정보를 다시 한 번 확인해주세요!"
+            )
+        }else{
+            alert("입력하신 이메일 주소를 임시 비밀번호를 발송했습니다!!😘 \n" +
+                "로그인 후 반드시 비밀번호를 변경해주세요!")
+        }
+        location.href = "/login/login";
+    </script>
+
+
+</head>
+<th:block layout:fragment="content">
+
+
+</th:block>
+</html>

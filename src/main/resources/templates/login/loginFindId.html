@@ -10,6 +10,7 @@
   </head>
 
   <th:block layout:fragment="content">
+
         <section id="FindId">
           <div class="FindIdWrap container">
 
@@ -17,7 +18,7 @@
 
               <h5 class="FindIdTitle">뭐든 다알개</h5>
 
-              <form class="PutemailAdressForm" th:action="@{/login/loginFindId}" method="post">
+              <form class="PutemailAdressForm" th:action="@{/login/loginFindId}" method="post" onsubmit="return findIdCheck()">
                 <h5 class="PutemailAdressTitle">아이디 찾기</h5>
                 <p>가입시 등록한 이메일 주소와 이름을 입력해주세요.</p>
                 <input type="text" name="memEmail" id="putEmailAddress" placeholder="이메일"/>
@@ -27,7 +28,26 @@
             </div>
           </div>
         </section>
+
+    <script th:inline="javascript">
+      function findIdCheck() {
+        let nameRegExp = /^[가-힣]{2,}$/;
+        let emailRegExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,6}$/;
+
+
+        let name = $("#putName").val().trim();
+        let email = $("#FindId #putEmailAddress").val().trim();
+
+        if(!nameRegExp.test(name) || name.length == 0){
+          alert("이름을 다시 확인해주세요");
+          return false;
+        } else if (!emailRegExp.test(email) || email.length == 0) {
+          alert("이메일 형식이 올바르지 않습니다.");
+          return false;
+        }
+        return true;
+      }
+    </script>
   </th:block>
 
-
- 
+</html>

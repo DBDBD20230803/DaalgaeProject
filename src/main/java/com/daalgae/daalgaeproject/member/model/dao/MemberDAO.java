@@ -37,4 +37,8 @@ public interface MemberDAO {
     void updateMemDogGum(MemberDTO member);
 
     List<MemberDTO> findId(MemberDTO memberDTO);
+
+    int getFindUserResult(MemberDTO memberDTO);
+
+    int updateRandomPass(MemberDTO memberDTO);
 }

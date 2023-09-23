@@ -448,7 +448,6 @@ input:focus{
 #findIdComplete .findIdCompleteWrap .findIdCompleteContents .findIdCompleteForm .findPwdPage{
     width: 100%;
     background-color: #9DC4E7;
-    padding: 3% 2%;
     border-radius: 2px;
 }
 
@@ -457,6 +456,7 @@ input:focus{
     display: block;
     width: 100%;
     color: #fff;
+    padding: 3% 2%;
     text-decoration: none;
 
 }
@@ -465,7 +465,6 @@ input:focus{
     background-color: #9DC4E7;
     color: #fff;
     border:none;
-    padding: 3% 2%;
     width: 100%;
     margin-top: 3%;
 }
@@ -475,6 +474,7 @@ input:focus{
     display: block;
     text-decoration: none;
     color: #fff;
+    padding: 3% 2%;
 }
 
 
@@ -538,7 +538,7 @@ input:focus{
     font-weight: 300;
 }
 
-#FindId .FindIdWrap .FindIdContents .PutemailAdressForm input#AuthBtn{
+#FindId .FindIdWrap .FindIdContents .PutemailAdressForm #AuthBtn{
     background-color: #9DC4E7;
     color: #fff;
     border:none;

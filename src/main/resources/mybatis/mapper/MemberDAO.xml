@@ -117,4 +117,17 @@
         WHERE MEM_NAME = #{ memName } and MEM_EMAIL = #{ memEmail }
     </select>
 
+    <select id="getFindUserResult" parameterType="MemberDTO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId } AND MEM_EMAIL = #{ memEmail }
+    </select>
+
+    <update id="updateRandomPass" parameterType="memberDTO">
+        UPDATE
+            MEM_INFO
+        SET MEM_PWD = #{ memPwd }
+        WHERE MEM_ID = #{ memId }
+    </update>
 </mapper>
