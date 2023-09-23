@@ -9,5 +9,5 @@ $(document).ready( function() {
 function tourListSearch() {
     let keyword = $('.tourListSearch').val();
     const select = $('.selectSearchOption option:selected').val();
-    location.href = "/tour/tourList?keyword="+keyword+"&condition="+select;
+    location.href = "/tour/tourList?keyword="+keyword+"&option="+select;
 }

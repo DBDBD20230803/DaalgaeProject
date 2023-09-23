@@ -23,7 +23,7 @@ public class TourController {
     }
 
     @GetMapping("tourList")
-    public String TourList() {
+      public String TourList() {
         return "tour/tourList";
     }
 

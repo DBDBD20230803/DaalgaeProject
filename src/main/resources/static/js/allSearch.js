@@ -6,6 +6,10 @@ $(document).ready( function() {
         }
     });
 
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    $('#allSearchBox').val(urlParam.get("keyword"));
+
     /* 카카오 지도*/
     let userX = Number(localStorage.getItem("userX"));
     let userY = Number(localStorage.getItem("userY"));
