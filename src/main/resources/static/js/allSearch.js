@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    $('#allSearchBox').focus();
     $("#allSearchBox").on("keyup",function(key){
         if(key.keyCode==13) {
             allSearch();

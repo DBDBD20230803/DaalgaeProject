@@ -13,6 +13,7 @@ $(document).ready( function() {
         $('#map').css('height',h);
     });
     $(function(){
+        $('#mapSearchBox').focus();
         w = window.innerWidth - 100;
         h = window.innerHeight - 100;
         $('#map').css('width',w);
@@ -163,9 +164,6 @@ $(document).ready( function() {
             error:function(){
                 console.log("통신에러3");
             }
-        });
-        $("#mapSearchBox").on('oninput', function () {
-           console.log(11);
         });
         $("#mapSearchBox").on("keyup",function(key){
             if(key.keyCode==13) {

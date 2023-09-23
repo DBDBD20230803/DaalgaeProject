@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    $(".tourListSearch").focus();
     $(".tourListSearch").on("keyup",function(key){
         if(key.keyCode==13) {
             tourListSearch();
