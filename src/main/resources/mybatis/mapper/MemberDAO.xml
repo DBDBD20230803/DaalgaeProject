@@ -15,6 +15,7 @@
         <result property="memAdrs" column="MEM_ADRS"/>
         <result property="memAdrsDetail" column="MEM_ADRS_DETAIL"/>
         <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
+        <result property="memDogGum" column="MEM_DOG_GUM"/>
         <result property="memRole" column="MEM_ROLE"/>
         <result property="memBanStatus" column="MEM_BAN_STATUS"/>
         <result property="mailAuth" column="MAIL_AUTH"/>
@@ -130,4 +131,31 @@
         SET MEM_PWD = #{ memPwd }
         WHERE MEM_ID = #{ memId }
     </update>
+
+    <select id="mypageRead" resultMap="loginMemberResultMap">
+        SELECT
+            *
+        FROM
+            MEM_INFO
+        WHERE MEM_ID = #{memId}
+    </select>
+
+
+    <update id="infoUpdate">
+        UPDATE
+            MEM_INFO
+        SET
+             MEM_ID = #{ memId }
+            ,MEM_NAME = #{ memName }
+            ,MEM_ADRS = #{ memAdrs }
+            ,MEM_ADRS_DETAIL = #{ memAdrsDetail }
+            ,MEM_BIRTH = #{ memBirth }
+    </update>
+
+    <select id="nameCheck" parameterType="memberDTO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_NAME = #{ memName }
+    </select>
 </mapper>

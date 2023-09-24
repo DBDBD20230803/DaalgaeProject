@@ -41,4 +41,7 @@ public interface MemberDAO {
     int getFindUserResult(MemberDTO memberDTO);
 
     int updateRandomPass(MemberDTO memberDTO);
+
+    MemberDTO mypageRead(String memId);
+
 }

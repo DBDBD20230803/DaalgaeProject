@@ -1,42 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/myPageLayout}">
   <head>
     <meta charset="utf-8">
     <title>마이페이지</title>
-
-
-    <!--meta-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-      
-      <!--bootstrap-->
-      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-      
-
-      <!--css-->
-      <link rel="stylesheet" th:href="@{/css/index.css}">
-      <link rel="stylesheet" th:href="@{/css/sanitize.css}">
-      <link rel="stylesheet" th:href="@{/css/mypage.css}">
-      
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-      <!--js-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-      
-    <!--favicon--->
-      <link th:href="@{favicon.ico}" rel="icon">
-      <link th:href="@{favicon.ico}" rel="apple-touch-icon">
-
   </head>
-  <body>
-  <div th:insert="/component/header"></div>
+
+
+  <th:block layout:fragment="content">
         <section id="myPage">
             <div class="myPageBg"><h3>마이페이지</h3></div>
 
@@ -48,10 +21,10 @@
                             <div class="myPageProfileImgBox">
                                     <div class="profileImg"></div> 
 
-                                    <div class="gum"><a href="">100 <img src="/images/gum.png" alt="gum"></a></div>
+                                    <div class="gum"><a th:href="@{/payment/useHistory}"><span th:text="${member.memDogGum}"></span> <img src="/images/gum.png" alt="gum"></a></div>
                                     <form action="single-file" method="post" enctype="multipart/form-data">
                                         <label for="profileChange">
-                                            <div class="changeFileImgage">프로필 사진 변경</div> 
+                                            <div class="changeFileImgage">프로필 사진 변경</div>
                                         </label>
                                         <input type="file" name="profileChange" value="profileChange" id="profileChange"/>
                                         <div class="introPet">
@@ -86,21 +59,21 @@
                         <div class="myPageBoxRight">
                             <p>기본 정보</p>
 
-                            <form class="myIdBox">
-                                <input type="text" name="myId" id="myId" value="dogtype376" class="myId" readonly/>
-                                <input type="submit" id="myInfoChange" class="myInfoChange" name="myInfoChange" value="완료"/>
-                            </form>
+
 
 
                             <div class="myInfo">
                                 <form action="" method="post">
-
+                                    <div class="myIdBox">
+                                        <input type="text" name="memId" id="myId" th:value="${member.memId}" class="myId" readonly/>
+                                        <input type="submit" id="myInfoChange" class="myInfoChange" name="myInfoChange" value="수정"/>
+                                    </div>
                                     <div class="myInfo1">
                                         <div class="myInfoTitle"><img src="/images/email.png" alt="email"> &nbsp;&nbsp;이메일</div>
                                     
                                         <div class="myInfoInputs myInfo1Inputs">
                                             <label for="myEmail"></label>
-                                            <input type="text" id="myEmail" name="myEmail" value="dogtype376@daalgae.com" readonly/>
+                                            <input type="text" id="myEmail" name="memEmail" th:value="${member.memEmail}" readonly/>
                                         </div>
                                     </div>
                                     
@@ -109,7 +82,7 @@
 
                                         <div class="myInfoInputs myInfo2Inputs">
                                             <label for="myName"></label>
-                                            <input type="text" id="myName" name="myName" readonly value="이소망"/>
+                                            <input type="text" id="myName" name="memName" readonly th:value="${member.memName}"/>
                                         </div>
                                     </div>
 
@@ -118,7 +91,7 @@
 
                                         <div class="myInfoInputs myInfo3Inputs">
                                             <label for="myAdress"></label>
-                                            <input type="text" id="myAdress" name="myAdress" readonly value="서울 종로구 인사동길 12 대일빌딩 7층"/>
+                                            <input type="text" id="myAdress" name="memAdrs" readonly th:value="${member.memAdrs + ' ' + member.memAdrsDetail}"/>
                                         </div>
                                     </div>
 
@@ -127,7 +100,7 @@
                                         
                                         <div class="myInfoInputs myInfo4Inputs">
                                             <label for="myBirth"></label>
-                                            <input type="date" id="myBirth" name="myBirth" readonly value="2022-12-07"/>
+                                            <input type="date" id="myBirth" name="memBirth" readonly th:value="${#dates.format(member.memBirth, 'yyyy-MM-dd')}"/>
                                         </div>
                                     </div>
 
@@ -196,7 +169,7 @@
                                             </div>
                                         </div>    
                                     
-                                        <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="수정완료" required/></div>
+                                        <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="수정" required/></div>
 
 
                                     </form>
@@ -225,8 +198,7 @@
         </section>
 
         <script src="/js/mypage.js"></script>
-        <div th:insert="/component/footer"></div>
-  </body>
 
+      </th:block>
 
- 
+  </html>

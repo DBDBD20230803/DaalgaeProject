@@ -192,8 +192,17 @@ public class MemberController {
 
 
     @GetMapping("/mypage")
-    public String mypageForm(){ return "myPage/mypage"; }
+    public String mypageForm(Principal principal, Model model){
+        log.info("마이페이지로 이동!!!!!!!!!!!!!");
+        log.info("유저아이디 : " + principal.getName());
 
+
+        String memId = principal.getName();
+        MemberDTO memberDTO = loginService.mypageRead(memId);
+        model.addAttribute("member", memberDTO);
+        log.info("memberDTO : " + memberDTO);
+
+        return "myPage/mypage"; }
 
 
 }

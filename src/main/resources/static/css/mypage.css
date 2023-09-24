@@ -288,6 +288,11 @@ p{
     border-radius: 2px;
 }
 
+#myPage .myPageWrap .myPageContents .myPageBoxRight .myInfo > form > div.myIdBox{
+    border: none;
+    padding: 0%;
+}
+
 #myPage .myPageWrap .myPageContents .myPageBoxRight .myInfo > form > div div.myInfoTitle{
     width: 20%;
 }

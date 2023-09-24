@@ -26,6 +26,7 @@ public interface LoginService extends UserDetailsService {
 
     void findPass(MemberDTO memberDTO) throws Exception;
 
+    MemberDTO mypageRead(String memId) throws Exception;
 
 }
 

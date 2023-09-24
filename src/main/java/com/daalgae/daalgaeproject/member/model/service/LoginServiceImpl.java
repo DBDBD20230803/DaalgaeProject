@@ -17,13 +17,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 
 
 @Service
@@ -153,15 +153,18 @@ public class LoginServiceImpl implements LoginService {
         return memberDAO.emailAuthFail(id);
     }
 
+    @Transactional
     public List<MemberDTO> findId(MemberDTO memberDTO) {
         log.info("memberDTO : " + memberDTO + "왜안나와!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return memberDAO.findId(memberDTO);
     }
 
+    @Transactional
     public int getFindUserResult(MemberDTO memberDTO) {
         return memberDAO.getFindUserResult(memberDTO);
     }
 
+    @Transactional
     public void findPass(MemberDTO memberDTO) throws MessagingException, UnsupportedEncodingException {
         log.info("MemberServiceImpl.findPass ==================");
 
@@ -187,6 +190,16 @@ public class LoginServiceImpl implements LoginService {
             log.info("비밀번호 찾기 메일 발송 성공!");
         }
     }
+
+    @Transactional
+    public MemberDTO mypageRead(String memId){
+        log.info("작동 되는거 맞니?????????????????????");
+        log.info("memId : " + memId);
+        return memberDAO.mypageRead(memId);
+    }
+
+
+
 }
 
 
