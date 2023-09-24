@@ -293,3 +293,8 @@
             textarea.style.height = scrollHeight + 'px';
         }
     }
+
+
+
+
+

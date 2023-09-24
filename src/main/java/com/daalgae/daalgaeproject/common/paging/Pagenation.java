@@ -31,8 +31,7 @@ public class Pagenation {
          * 아래쪽에 페이지 수가 10개씩 보여지게 한다면
          * 1, 11, 21, 31, .....
          * */
-//		startPage = (((int)((double) pageNo / buttonAmount + 0.9)) - 1) * buttonAmount + 1;
-//        startPage = (int) (Math.ceil((double) pageNo / buttonAmount) - 1) * buttonAmount + 1;
+
         startPage = (int) Math.floor((double) (pageNo - 1) / buttonAmount) * buttonAmount + 1;
 
         /* 목록 아래쪽에 보여질 마지막 페이지 수 (10, 20, 30, ....) */

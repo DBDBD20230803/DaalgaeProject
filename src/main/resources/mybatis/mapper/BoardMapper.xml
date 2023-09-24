@@ -53,7 +53,7 @@
     </resultMap>
 
     <select id="selectTotalCount" resultType="_int" parameterType="java.lang.String">
-        SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
+        SELECT DISTINCT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
                 COUNT(*)
           FROM  POST_INFO A
         <if test="searchCondition == 'refPostWriter'">
@@ -73,11 +73,15 @@
             <if test="searchCondition == 'postContent'">
                 AND A.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
             </if>
+            <if test="searchCondition == 'postTitleContent'">
+                AND (A.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+                OR A.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%'))
+            </if>
         </where>
     </select>
 
     <select id="selectBoardList" resultMap="boardResultMap">
-        SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardList() */
+        SELECT DISTINCT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardList() */
                 A.POST_CODE
                 , A.POST_SORT
                 , A.POST_TITLE
@@ -86,7 +90,8 @@
                 , A.POST_COUNT
                 , D.MEM_ID
           FROM (
-                SELECT  B.POST_CODE
+                SELECT DISTINCT
+                        B.POST_CODE
                         , B.POST_SORT
                         , B.POST_TITLE
                         , B.POST_CONTENT
@@ -113,7 +118,7 @@
                         AND B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
                     <if test="searchCondition == 'postTitleContent'">
-                        AND ( B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+                        AND (B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
                         OR B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%'))
                     </if>
                 </where>
