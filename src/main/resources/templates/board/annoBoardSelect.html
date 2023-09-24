@@ -4,12 +4,12 @@
       layout:decorate="~{layouts/boardLayout}"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <title>자유게시판</title>
+    <title>공지사항</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="board-banner">
-        <h3>자유게시판</h3>
+        <h3>공지사항</h3>
         <div>
             <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
@@ -19,22 +19,16 @@
         <div class="board-searchBar">
             <div class="board-category-container">
                 <div class="board-category">
-                    <button onclick="navigateToFreePage0()" class="category-button" id="btn0">전체</button>
+                    <button onclick="navigateToAnnoPage0()">전체</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToFreePage1()" class="category-button" id="btn1">자유</button>
+                    <button onclick="navigateToAnnoPage1()">공지</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToFreePage2()" class="category-button" id="btn2">먹거리</button>
-                </div>
-                <div class="board-category">
-                    <button onclick="navigateToFreePage3()" class="category-button" id="btn3">용품</button>
-                </div>
-                <div class="board-category">
-                    <button onclick="navigateToFreePage4()" class="category-button" id="btn4">정보</button>
+                    <button onclick="navigateToAnnoPage2()">이벤트</button>
                 </div>
             </div>
-            <form id="searchForm" th:action="@{/board/freeBoard}" method="get">
+            <form id="searchForm" th:action="@{/board/annoBoard}" method="get">
                 <input type="hidden" name="currentPage" value="1">
                 <div class="search-buttons">
                     <div class="head-title-category">
@@ -42,7 +36,7 @@
                             <option value="postTitle" selected>제목</option>
                             <option value="postContent">내용</option>
                             <option value="postTitleContent">제목 + 내용</option>
-                            <option value="postWriter">작성자</option>
+                            <option value="refMemCode.memId">작성자</option>
                         </select>
                     </div>
 
@@ -70,7 +64,7 @@
         </div>
         <div class="board-content-select-container">
             <div class="board-content-title" th:each="board : ${ board }">
-                <h6 class="postNo" name="postCode" id="postCode" th:text="${board.postCode}"></h6>
+                <h6 class="postNo" name="postCode" th:text="${board.postCode}"></h6>
                 <h6 class="postCategory" th:text="${board.postSort}"></h6>
                 <input class="postTitle" id="postTitle" name="postTitle" type="text" th:value="${board.postTitle}" readonly />
                 <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
@@ -80,26 +74,22 @@
             <div class="board-select-content">
                 <div class="board-content-image">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
-                        <div>
                         <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
                             <img class="board-content-image-img" id="titleImg" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
                         </th:block>
                         <th:block th:if="${ board.attachmentList.size() >= 2 }">
                             <img class="board-content-image-img" id="detailImg1" th:src="@{|/thumbPath${board.attachmentList[1].attachThumbAddr}|}"/>
                         </th:block>
-                        </div>
-                        <div>
                         <th:block th:if="${ board.attachmentList.size() >= 3 }">
                             <img class="board-content-image-img" id="detailImg2" th:src="@{|/thumbPath${board.attachmentList[2].attachThumbAddr}|}"/>
                         </th:block>
                         <th:block th:if="${ board.attachmentList.size() >= 4 }">
                             <img class="board-content-image-img" id="detailImg3" th:src="@{|/thumbPath${board.attachmentList[3].attachThumbAddr}|}"/>
                         </th:block>
-                        </div>
                     </th:block>
                 </div>
                 <div class="board-textarea">
-                    <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)" ></textarea>
+                    <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)"></textarea>
                 </div>
                 <div class="imgDownload">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
@@ -120,61 +110,8 @@
             </div>
         </div>
         <div class="board-select-footer">
-            <div class="comment-section-title">
-                <img th:src="@{/images/comment-icon.png}" alt="dog-paw">
-                <h6>의견을 남겨주세요</h6>
-            </div>
-
-            <div class="write-comment" id="replyWrite">
-                <input type="hidden" th:value="${board.postCode}">
-                <div class="write-comment-info">
-                    <h6>*내용(0 / 300자)</h6>
-                    <!-- 타이핑하는 텍스트에 따라 유동적으로 변하게 하기 -->
-                </div>
-                <div class="write-comment-content">
-                    <textarea name="comment" id="replyBody" cols="30" rows="10"></textarea>
-                </div>
-                <div class="write-comment-button">
-                    <button type="button" id="registReply">댓글달기</button>
-                </div>
-            </div>
-
-            <div class="comment" id="replyResult">
-                <th:block th:if="${ replyList != null }">
-
-                    <th:block th:each="reply : ${replyList}">
-
-                    <div class="comment-content">
-                        <input type="hidden" id="${ reply.replyCode }" th:value="${ reply.replyCode }">
-                        <div id="reply-writer" th:text="${ reply.replyWriterDetail.memId }"></div>
-                        <div id="reply-body" th:text="${ reply.replyCon}"></div>
-                        <div id="reply-date" th:text="${ reply.replyDate }"></div>
-                        <div id="comment-report-button">
-                            <button>
-                                <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
-                            </button>
-                        </div>
-                        <th:block
-                                sec:authorize="isAuthenticated()"
-                                th:if="${ #authentication.getPrincipal().getMemCode() == reply.refReplyWriter }"
-                        >
-                            <div id="comment-delete-button">
-                            <button
-                                    type="button"
-                                    th:replyCode="${ reply.replyCode }"
-                                    th:onclick="removeReply(this.getAttribute('replyCode'))"
-                            >
-                                삭제
-                            </button>
-                            </div>
-                        </th:block>
-                    </div>
-                    </th:block>
-                </th:block>
-            </div>
-
             <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
-                <form th:action="@{/board/deletePostFree}" id="boardDeleteForm" method="post">
+                <form th:action="@{/board/deletePostAnno}" id="boardDeleteForm" method="post">
                     <input type="hidden" name="postCode" id="boardNo" th:value="${board.postCode}">
                     <div class="updatePost">
                         <button id="editButton" type="button">수정</button>
@@ -187,7 +124,7 @@
             </th:block>
 
             <div class="back-to-list">
-                <a th:href="@{/board/freeBoard}">목록</a>
+                <a th:href="@{/board/annoBoard}">목록</a>
             </div>
         </div>
     </div>

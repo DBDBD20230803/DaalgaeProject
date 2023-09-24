@@ -2,7 +2,7 @@
     const editButton = document.getElementById("editButton");
     const saveButton = document.getElementById("saveButton");
     const postTitleField = document.getElementById("postTitle");
-    const postContentField = document.getElementById("postContent");
+    const postContentField = document.getElementById("postContentText");
 
     editButton.addEventListener("click", function () {
     editButton.style.display = "none";
@@ -122,8 +122,6 @@
 }
 }
 
-
-
     /* 댓글 삭제 이벤트 처리 함수*/
     function removeReply(replyCode){
 
@@ -174,27 +172,6 @@
 })
     .catch((error) => error.text().then((res) => alert(res)));
 }
-
-    const $titleImgArea = document.getElementById("titleImgArea");
-    const $contentImgArea1 = document.getElementById("contentImgArea1");
-    const $contentImgArea2 = document.getElementById("contentImgArea2");
-    const $contentImgArea3 = document.getElementById("contentImgArea3");
-
-    $titleImgArea.onclick = function() {
-        document.getElementById("thumbnailImg1").click();
-    }
-
-    $contentImgArea1.onclick = function() {
-        document.getElementById("thumbnailImg2").click();
-    }
-
-    $contentImgArea2.onclick = function() {
-        document.getElementById("thumbnailImg3").click();
-    }
-
-    $contentImgArea3.onclick = function() {
-        document.getElementById("thumbnailImg4").click();
-    }
 
     /* 이미지 미리보기 관련 함수(File API 활용하기) */
     function loadImg(value, num) {
@@ -286,15 +263,36 @@
     function autoResizeRead(textarea) {
         var scrollHeight = textarea.scrollHeight;
 
-        console.log(scrollHeight);
-        console.log(textarea.clientHeight);
-
         if (textarea.clientHeight < scrollHeight) {
             textarea.style.height = scrollHeight + 'px';
         }
     }
 
+    function navigateToAnnoPage0() {
+        window.location.href = '/board/announcementBoard';
+    }
+    function navigateToAnnoPage1() {
+        window.location.href = '/board/announcementBoard?currentPage=1&searchCondition=postSort&searchValue=공지';
+    }
+    function navigateToAnnoPage2() {
+        window.location.href = '/board/announcementBoard?currentPage=1&searchCondition=postSort&searchValue=이벤트';
+    }
 
+    function navigateToFreePage0() {
+        window.location.href = '/board/freeBoard';
+    }
+    function navigateToFreePage1() {
+        window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=자유';
+    }
+    function navigateToFreePage2() {
+        window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=먹거리';
+    }
+    function navigateToFreePage3() {
+        window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=용품';
+    }
+    function navigateToFreePage4() {
+        window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=정보';
+    }
 
 
 

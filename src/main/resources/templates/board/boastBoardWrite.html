@@ -3,38 +3,31 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/boardLayout}">
 <head>
-    <title>자유게시판 글 작성</title>
+    <title>자랑게시판 글 작성</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="board-banner">
-        <h3>자유게시판</h3>
+        <h3>자랑게시판</h3>
         <div>
             <img th:src="@{/images/board-banner-image-2.png}" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
 
     <div class="board-container container">
-        <form th:action="@{/board/freeBoardWrite}" id="boardWriteForm" method="post" enctype="multipart/form-data">
+        <form th:action="@{/board/boastBoardWrite}" id="boardWriteForm" method="post" enctype="multipart/form-data">
             <input
                     type="hidden"
                     id="refPostWriter.memCode"
                     name="refPostWriter.memCode"
                     th:value="${ #authentication.getPrincipal().getMemCode() }"
             >
-            <input type="hidden" name="postType" th:value="자유">
+            <input type="hidden" name="postType" th:value="자랑">
+            <input type="hidden" name="postSort" th:value="자랑">
         <div class="header-board-write-text">
             <h2>글쓰기</h2>
         </div>
         <div class="board-write-header">
-            <div class="category">
-                <select name="postSort" id="HeadTitle">
-                    <option value="자유">자유</option>
-                    <option value="용품">용품</option>
-                    <option value="먹거리">먹거리</option>
-                    <option value="정보">정보</option>
-                </select>
-            </div>
             <div class="write-title">
                 <input type="text" name="postTitle" id="title" placeholder="제목을 입력해주세요.">
             </div>
@@ -57,16 +50,16 @@
                 </label>
             </div>
         </div>
-        <div class="board-write-image">
-            <div>
-                <img class="write-img" id="titleImg">
-                <img class="write-img" id="contentImg1">
+            <div class="board-write-image">
+                <div>
+                    <img class="write-img" id="titleImg">
+                    <img class="write-img" id="contentImg1">
+                </div>
+                <div>
+                    <img class="write-img" id="contentImg2">
+                    <img class="write-img" id="contentImg3">
+                </div>
             </div>
-            <div>
-                <img class="write-img" id="contentImg2">
-                <img class="write-img" id="contentImg3">
-            </div>
-        </div>
         <div class="board-write-content">
             <textarea name="postContent" id="postContent" cols="30" rows="10" oninput="autoResizeWrite(this)"></textarea>
         </div>
@@ -75,7 +68,7 @@
                 <button type="submit">작성완료</button>
             </div>
             <div class="write-cancel">
-                <a th:href="@{/board/freeBoard}">취소</a>
+                <a th:href="@{/board/boastBoard}">취소</a>
             </div>
         </div>
         </form>

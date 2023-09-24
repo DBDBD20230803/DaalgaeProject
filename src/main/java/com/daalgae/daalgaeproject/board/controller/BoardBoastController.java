@@ -6,11 +6,14 @@ import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
 import com.daalgae.daalgaeproject.common.exception.board.BoardDeleteException;
 import com.daalgae.daalgaeproject.common.exception.board.BoardRegistException;
+import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
+import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
 import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import net.coobird.thumbnailator.Thumbnails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +27,8 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/board/*")
-public class BoardAnnoController {
+public class BoardBoastController {
+
     @Value("${image.image-dir}")
     private String IMAGE_DIR;
 
@@ -33,29 +37,33 @@ public class BoardAnnoController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final BoardServiceImpl boardServiceImpl;
 
-    public BoardAnnoController(BoardServiceImpl boardServiceImpl) {
+    public BoardBoastController(BoardServiceImpl boardServiceImpl) {
         this.boardServiceImpl = boardServiceImpl;
     }
 
-    @GetMapping("/annoBoardSelect")
-    public String selectFree(HttpServletRequest request, Model model) {
+    @GetMapping("/boastBoardSelect")
+    public String selectBoast(HttpServletRequest request, Model model) {
 
         int no = Integer.parseInt(request.getParameter("no"));
         BoardDTO boardDetail = boardServiceImpl.selectBoardDetail(no);
 
         model.addAttribute("board", boardDetail);
 
-        return "board/annoBoardSelect";
+        List<ReplyDTO> replyList = boardServiceImpl.selectAllReplyList(no);
+        model.addAttribute("replyList", replyList);
+
+        return "board/boastBoardSelect";
     }
 
-    @GetMapping("/annoBoardWrite")
-    public String goWriteAnno() {
+    @GetMapping("/boastBoardWrite")
+    public String goWriteBoast() {
 
-        log.info("[BoardController] goWriteAnno() ");
-        return "annoBoardWrite";
+        log.info("[BoardController] goWriteBoast() ");
+        return "/board/boastBoardWrite";
     }
-    @PostMapping("/annoBoardWrite")
-    public String writeAnno(@ModelAttribute BoardDTO board,
+
+    @PostMapping("/boastBoardWrite")
+    public String writeBoast(@ModelAttribute BoardDTO board,
                             @RequestParam("thumbnailImg1") MultipartFile thumbnailImg1,
                             @RequestParam("thumbnailImg2") MultipartFile thumbnailImg2,
                             @RequestParam("thumbnailImg3") MultipartFile thumbnailImg3,
@@ -123,13 +131,13 @@ public class BoardAnnoController {
                         fileMap.put("fileType", "TITLE");
 
                         /* 썸네일로 변환 할 사이즈를 지정한다. */
-                        width = 1000;
-                        height = 500;
+                        width = 800;
+                        height = 400;
                     } else {
                         fileMap.put("fileType", "BODY");
 
-                        width = 1000;
-                        height = 500;
+                        width = 800;
+                        height = 400;
                     }
 
                     /* 썸네일로 변환 후 저장한다. */
@@ -163,9 +171,9 @@ public class BoardAnnoController {
             }
 
             log.info("[ThumbnailController] thumbnail : " + board);
-            boardServiceImpl.registBoard(board);
+        boardServiceImpl.registBoard(board);
 
-            rttr.addFlashAttribute("message", "게시글 등록에 성공하였습니다!!🐶");
+        rttr.addFlashAttribute("message", "게시글 등록에 성공하였습니다!!🐶");
         } catch (IllegalStateException | IOException e) {
             e.printStackTrace();
 
@@ -199,11 +207,11 @@ public class BoardAnnoController {
 
         log.info("[BoardController] registBoard =========================================================");
 
-        return "redirect:/board/annoBoard";
+        return "redirect:/board/boastBoard";
     }
 
-    @PostMapping("/deletePostAnno")
-    public String deletePostAnno(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
+    @PostMapping("/deletePostBoast")
+    public String deletePostBoast(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
 
         log.info("[BoardController] deleteBoard Request : " + board);
 
@@ -213,6 +221,6 @@ public class BoardAnnoController {
 
         log.info("[BoardController] registBoard =========================================================");
 
-        return "redirect:/board/annoBoard";
+        return "redirect:/board/boastBoard";
     }
 }

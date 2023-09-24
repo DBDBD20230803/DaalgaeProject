@@ -53,23 +53,6 @@ public class BoardFreeController {
         return "board/freeBoardSelect";
     }
 
-    @PostMapping("/registReply")
-    public ResponseEntity<List<ReplyDTO>> registReply(@RequestBody ReplyDTO registReply) throws ReplyRegistException {
-
-        List<ReplyDTO> replyList = boardServiceImpl.registReply(registReply);
-
-        return ResponseEntity.ok(replyList);
-    }
-
-    @DeleteMapping("/removeReply")
-    public ResponseEntity<List<ReplyDTO>> removeReply(@RequestBody ReplyDTO removeReply) throws ReplyRemoveException {
-
-        System.out.println("refPostCode : " + removeReply.getRefPostCode());
-        List<ReplyDTO> replyList = boardServiceImpl.removeReply(removeReply);
-
-        return ResponseEntity.ok(replyList);
-    }
-
     @GetMapping("/freeBoardWrite")
     public String goWriteFree() {
 
@@ -225,8 +208,8 @@ public class BoardFreeController {
         return "redirect:/board/freeBoard";
     }
 
-    @PostMapping("/deletePost")
-    public String deletePost(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
+    @PostMapping("/deletePostFree")
+    public String deletePostFree(@ModelAttribute BoardDTO board, RedirectAttributes rttr) throws BoardDeleteException {
 
         log.info("[BoardController] deleteBoard Request : " + board);
 
@@ -238,19 +221,4 @@ public class BoardFreeController {
 
         return "redirect:/board/freeBoard";
     }
-
-    @PostMapping("/updatePost")
-    public ResponseEntity<BoardDTO> updatePost(@RequestBody BoardDTO board) throws BoardUpdateException {
-
-        log.info("[BoardController] updateBoard Request : " + board);
-
-        BoardDTO boardList = boardServiceImpl.updateBoard(board);
-
-        log.info("boardList : " + boardList);
-
-        return ResponseEntity.ok(boardList);
-//        int no = board.getPostCode();
-//        return "redirect:/board/freeBoardSelect?no=" + no;
-    }
-
 }

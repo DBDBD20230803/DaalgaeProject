@@ -1,15 +1,18 @@
 package com.daalgae.daalgaeproject.board.controller;
 
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
+import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
+import com.daalgae.daalgaeproject.common.exception.board.BoardUpdateException;
+import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
+import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
 import com.daalgae.daalgaeproject.common.paging.Pagenation;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,14 +76,8 @@ public class BoardController {
         return mv;
     }
 
-    @GetMapping("/abandonedBoard")
-    public ModelAndView abandonedBoardMain(ModelAndView mv) {
-        mv.setViewName("board/abandonedBoard");
-        return mv;
-    }
-
-    @GetMapping("/announcementBoard")
-    public ModelAndView announcementBoardMain(HttpServletRequest request
+    @GetMapping("/annoBoard")
+    public ModelAndView annoBoardMain(HttpServletRequest request
                                             , @RequestParam(required = false) String searchCondition
                                             , @RequestParam(required = false) String searchValue
                                             , @RequestParam(required = false) String postType
@@ -113,7 +110,80 @@ public class BoardController {
         mv.addObject("boardList", boardList);
         mv.addObject("selectCriteria", selectCriteria);
 
-        mv.setViewName("board/announcementBoard");
+        mv.setViewName("/board/annoBoard");
+        return mv;
+    }
+
+    @GetMapping("/boastBoard")
+    public ModelAndView boastBoardMain(HttpServletRequest request
+                                        , @RequestParam(required = false) String searchCondition
+                                        , @RequestParam(required = false) String searchValue
+                                        , @RequestParam(required = false) String postType
+                                        , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
+                                        , ModelAndView mv) {
+
+        postType = "자랑";
+
+        Map<String, String> searchMap = new HashMap<>();
+        searchMap.put("searchCondition", searchCondition);
+        searchMap.put("searchValue", searchValue);
+        searchMap.put("postType", postType);
+
+        int totalCount = boardServiceImpl.selectTotalCount(searchMap);
+
+        int limit = 9;
+
+        int buttonAmount = 5;
+
+        SelectCriteria selectCriteria = null;
+
+        if(searchCondition != null && !"".equals(searchCondition)) {
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue, postType);
+        } else {
+            selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, postType);
+        }
+
+        List<BoardDTO> boardList = boardServiceImpl.selectBoardList(selectCriteria);
+
+        mv.addObject("boardList", boardList);
+        mv.addObject("selectCriteria", selectCriteria);
+
+        mv.setViewName("board/boastBoard");
+        return mv;
+    }
+
+    @PostMapping("/updatePost")
+    public ResponseEntity<BoardDTO> updatePost(@RequestBody BoardDTO board) throws BoardUpdateException {
+
+        log.info("[BoardController] updateBoard Request : " + board);
+
+        BoardDTO boardList = boardServiceImpl.updateBoard(board);
+
+        log.info("boardList : " + boardList);
+
+        return ResponseEntity.ok(boardList);
+    }
+
+    @PostMapping("/registReply")
+    public ResponseEntity<List<ReplyDTO>> registReply(@RequestBody ReplyDTO registReply) throws ReplyRegistException {
+
+        List<ReplyDTO> replyList = boardServiceImpl.registReply(registReply);
+
+        return ResponseEntity.ok(replyList);
+    }
+
+    @DeleteMapping("/removeReply")
+    public ResponseEntity<List<ReplyDTO>> removeReply(@RequestBody ReplyDTO removeReply) throws ReplyRemoveException {
+
+        System.out.println("refPostCode : " + removeReply.getRefPostCode());
+        List<ReplyDTO> replyList = boardServiceImpl.removeReply(removeReply);
+
+        return ResponseEntity.ok(replyList);
+    }
+
+    @GetMapping("/abandonedBoard")
+    public ModelAndView abandonedBoardMain(ModelAndView mv) {
+        mv.setViewName("board/abandonedBoard");
         return mv;
     }
 
