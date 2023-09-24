@@ -89,6 +89,7 @@
                 , A.POST_DATE
                 , A.POST_COUNT
                 , D.MEM_ID
+                , E.ATTACH_THUMB_ADDR
           FROM (
                 SELECT DISTINCT
                         B.POST_CODE
@@ -124,6 +125,7 @@
                 </where>
                 ) A
             JOIN  MEM_INFO D ON(A.REF_POST_WRITER = D.MEM_CODE)
+            LEFT JOIN  ATTACHMENT_FILE E ON (A.POST_CODE = E.REF_POST_CODE)
             ORDER BY A.POST_CODE DESC
             LIMIT  #{ startRow }, 10
     </select>

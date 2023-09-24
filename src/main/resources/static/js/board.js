@@ -294,5 +294,9 @@
         window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=정보';
     }
 
+    function navigateToBoastPage0() {
+        window.location.href = '/board/boastBoard';
+    }
+
 
 
