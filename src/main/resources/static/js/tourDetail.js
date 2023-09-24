@@ -163,6 +163,7 @@ $(function () {
                 }
                 $('.nearImageAndText').last().append("<p class=\"nearImageText\"></p>");
                 $('.nearImageAndText p').last().append(tourLocInfo[nearTour.order].title);
+                $('.nearImageText').last().prop("title", tourLocInfo[nearTour.order].title);
                 $('.nearTourImageBox').last().append("<div class=\"shortWhiteSpace\"></div>");
                 nearThree++;
             }
