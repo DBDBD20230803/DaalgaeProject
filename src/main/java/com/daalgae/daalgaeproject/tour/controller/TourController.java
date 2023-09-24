@@ -45,7 +45,7 @@ public class TourController {
     @GetMapping("tourDetail")
     public String TourDetail(@RequestParam(value = "no", required = false) int no, Model model) {
         TourDetailDTO findDetail = tourService.findTourDetail(no);
-        model.addAttribute("findDetail", "findDetail");
+        model.addAttribute("findDetail", findDetail);
         System.out.println(findDetail);
         return "tour/tourDetail";
     }

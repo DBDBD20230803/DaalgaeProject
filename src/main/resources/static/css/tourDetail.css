@@ -165,7 +165,7 @@
     white-space  : nowrap;
     overflow:hidden;
     left: 131px;
-    top: 16px;
+    top: -24px;
     width: 330px;
     text-overflow:ellipsis;
 }
