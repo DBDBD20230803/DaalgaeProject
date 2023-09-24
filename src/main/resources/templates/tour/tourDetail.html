@@ -50,14 +50,15 @@
 <div class="tourDetailtitle"><p class="DetailTitleText">관광지</p></div>
 <div class="tourDetailWhiteSpace"></div>
 <div class="tourDetailContent">
-    <img class="tourPhoto" height="500px" alt="관광지 이미지" th:src="${findDetail.tourPhoto}" />
+    <input type="hidden" th:value="${findDetail.tourPhoto}" class="tourPhotoVal">
+    <img class="tourPhoto" height="500px" alt="관광지 이미지"/>
     <div class="tourDescBox">
         <div class="tourDescText">
             <button onclick="likeClick()"><img class="likeListImage" th:src="@{/images/likeList.png}" /></button>
             <span class="descTitle" th:text="${findDetail.tourTitle}"></span><br><br>
             <span class="descAttrName">주소
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </span><div class="addr" th:text="${findDetail.addr}"></div>
+                </span><div class="addr" th:text="${findDetail.addr}" th:title="${findDetail.addr}"></div>
             <span class="descAttrName">문의처
                     &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </span><div class="tel" th:text="${findDetail.tel}"></div>
@@ -68,13 +69,10 @@
                     &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </span><input type="hidden" th:value="${findDetail.page}" class="findPage">
         </div>
-        
-        <!--<div class="tourImageBox">
-            <div class="tourImage1">
-                <img height="70px" src="/images/dogHouseImage.png" />
-                <p class="tourImageDesc">비품제공</p>
-            </div>
-        </div>-->
+        <input type="hidden" th:value="${findDetail.supplies}" class="supplies">
+        <input type="hidden" th:value="${findDetail.facilities}" class="facilities">
+        <div class="tourImageBox">
+        </div>
     </div>
 </div>
 
@@ -112,14 +110,15 @@
 <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />지도 보기</p>
 <p class="introDesc" th:text="${findDetail.addr}">전라남도 장흥군 관산읍 칠관로 842-1150 </p><br>
 <input type="hidden" class="mapx" th:value="${findDetail.mapx}">
+<input type="hidden" class="tourCode" th:value="${findDetail.tourCode}">
 <input type="hidden" class="mapy" th:value="${findDetail.mapy}">
 <input type="hidden" class="title" th:value="${findDetail.tourTitle}">
     <div id="map" class="tourLocMap"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cee456796362f003412371bb71c7faa0"></script>
 <div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />주변 여행지</p><br><br>
+<p id="nearTourInfo" class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />주변 여행지</p><br><br>
 <div class="nearTourImageBox">
-    <a href="#"><div class="nearImageAndText">
+    <!--<a href="#"><div class="nearImageAndText">
         <img class="nearTourImage" height="325px" th:src="@{/images/dogPhoto1.png}" />
         <p class="nearImageText">오크카운티펜션</p>
     </div></a>
@@ -133,7 +132,7 @@
         <img class="nearTourImage" height="325px" th:src="@{/images/dogPhoto1.png}" />
         <p class="nearImageText">지니의캠프펜션</p>
     </div></a>
-    <div class="shortWhiteSpace"></div>
+    <div class="shortWhiteSpace"></div>-->
 </div>
 <div class="whiteSpaceEncycle">
     <div class="logoInPage"></div>

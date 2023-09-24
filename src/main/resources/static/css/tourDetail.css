@@ -362,3 +362,11 @@
     color: #fff;
 }
 
+
+.nearImageText{
+    white-space  : nowrap;
+    overflow:hidden;
+    width: 300px;
+    text-overflow:ellipsis;
+    margin: 0 auto;
+}
