@@ -80,7 +80,7 @@
         ,NOTICE
         ,INTRO
         FROM TOUR_INFO
-        LIMIT 1
+        WHERE TOUR_CODE = #{ no }
     </select>
 
 </mapper>

@@ -21,8 +21,8 @@ public class TourService {
         return tourMapper.findTourList(tourList);
     }
 
-    public List<TourDetailDTO> findTourDetail(String tourDetail) {
-        return tourMapper.findTourDetail(tourDetail);
+    public TourDetailDTO findTourDetail(int no) {
+        return tourMapper.findTourDetail(no);
     }
 
     public List<TourKakaoMapDTO> findTourKakaoMap(String tourKakaoMap) {

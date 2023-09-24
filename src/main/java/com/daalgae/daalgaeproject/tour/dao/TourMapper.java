@@ -11,7 +11,7 @@ import java.util.List;
 public interface TourMapper {
     List<TourListDTO> findTourList(String tourList);
 
-    List<TourDetailDTO> findTourDetail(String tourDetail);
+    TourDetailDTO findTourDetail(int no);
 
     List<TourKakaoMapDTO> findTourKakaoMap(String tourKakaoMap);
 }

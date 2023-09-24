@@ -43,16 +43,19 @@ public class TourController {
     }
 
     @GetMapping("tourDetail")
-    public String TourDetail() {
+    public String TourDetail(@RequestParam(value = "no", required = false) int no, Model model) {
+        TourDetailDTO findDetail = tourService.findTourDetail(no);
+        model.addAttribute("findDetail", "findDetail");
+        System.out.println(findDetail);
         return "tour/tourDetail";
     }
 
-    @GetMapping(value = "getTourDetail", produces = "application/json; charset=UTF-8")
+    /*@GetMapping(value = "getTourDetail", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<TourDetailDTO> getTourDetail() throws JsonProcessingException {
         List<TourDetailDTO> findDetail = tourService.findTourDetail("tourDetail");
         return findDetail;
-    }
+    }*/
 
     @GetMapping(value = "getTourKakaoMap", produces = "application/json; charset=UTF-8")
     @ResponseBody
