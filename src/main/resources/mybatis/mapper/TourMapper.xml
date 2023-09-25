@@ -61,16 +61,19 @@
         ,TEL
         FROM TOUR_INFO
         <trim prefix="WHERE" prefixOverrides="AND">
-            <if test="keyword.length > 0">
-            TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
             </if>
-            <if test="country neq '지역'">
-                AND ADDR LIKE CONCAT('%', '${country}', '%')
+            <if test="country != '지역' and country != '전체'">
+                <if test="country == '수도'">
+                    AND ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%'
+                </if>
+                <if test="country != '수도'">
+                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                </if>
             </if>
             AND TOUR_CATEGORY NOT LIKE '%동물%'
         </trim>
-
-
         LIMIT ${ no }, 9
 
 

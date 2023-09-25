@@ -438,6 +438,10 @@
     background-color: #fff;
 }
 
+#mainMapContentOne {
+    height: 1080px;
+}
+
 .mainTourLine {
     position: relative;
     width: 166px;
@@ -496,10 +500,78 @@
     right: 100px;
     width: 546px;
     height: 866px;
-    background-image: url("/images/mainMapKorean.png");
     z-index: 3;
 }
 
+.mainMapKorea button {
+    position: absolute;
+    color: #222;
+    font-size: 20px;
+}
+
+.hoverImage {
+    background-image: url("/images/marker.png");
+    width: 73px;
+    height: 73px;
+}
+
+.hoverText {
+    position: relative;
+    left: -90px;
+    top: -129px;
+    color: #222;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #639DD7;
+    font-weight: 700;
+    padding: 10px 30px;
+    white-space: nowrap;;
+    display: none;
+}
+
+.hoverImage:hover ~.hoverText {
+    display: block;
+}
+
+.togoDog {
+    position: relative;
+    top: -2px;
+    left: -2px;
+}
+
+.capital {
+    top: 147px;
+    left: 135px;
+}
+
+.gangwondo {
+    top: 107px;
+    left: 293px;
+}
+
+.chungcheongdo {
+    top: 320px;
+    left: 159px;
+}
+
+.gyeongsangdo {
+    top: 403px;
+    left: 350px;
+}
+
+.jeonlado {
+    top: 510px;
+    left: 122px;
+}
+
+.jejudo {
+    top: 750px;
+    left: 53px;
+}
+
+#mainMapContentTwo {
+    height: 1080px;
+}
 .MapContentTwoBox {
     display: block;
     top: 40px;
@@ -544,8 +616,14 @@
     margin: auto;
     width: 546px;
     height: 866px;
-    background-image: url("/images/mainMapKorean.png");
 }
+
+.mainMapKorea2 button {
+    position: absolute;
+    color: #222;
+    font-size: 20px;
+}
+
 .daalgaeLogo2 {
     position: relative;
     top: 750px;

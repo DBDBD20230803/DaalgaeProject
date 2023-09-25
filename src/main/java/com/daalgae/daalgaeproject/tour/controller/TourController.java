@@ -6,6 +6,7 @@ import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import com.daalgae.daalgaeproject.tour.service.TourService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.codehaus.groovy.transform.SourceURIASTTransformation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +40,9 @@ public class TourController {
         Map<String, String> options = new HashMap<>();
         String noToInt = String.valueOf(Integer.parseInt(no) - 1);
         String countryTwoWord = country.substring(0, 2);
-        TourCriteria tourCriteria = new TourCriteria(noToInt, countryTwoWord, country);
+        TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
         List<TourListDTO> findList = tourService.findTourList(tourCriteria);
+        System.out.println(tourCriteria);
         return findList;
     }
 

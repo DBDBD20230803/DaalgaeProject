@@ -1,5 +1,6 @@
 
 $(document).ready( function() {
+
     $(".tourListSearch").focus();
     $(".tourListSearch").on("keyup",function(key){
         if(key.keyCode==13) {
@@ -40,7 +41,7 @@ $(document).ready( function() {
 
     let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country;
     console.log(getUrl);
-    let urlNo = 1;
+    // let urlNo = 1;
     $.ajax({
         type:"get",
         url:getUrl,
@@ -48,8 +49,7 @@ $(document).ready( function() {
         success: function(data){
             for(let tourInfo of data) {
                 $('.tourBoard').last().append("<div class=\"tourBoardUnit\">");
-
-                let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + urlNo++ + "\'\">";
+                let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
                 $('.tourBoardUnit').last().append(url);
                 $('.tourBoardUnit button').last().append("<img class=\"tourBoardUnitThumbnail\">");
                 if(tourInfo.tourPhoto.length > 0) {

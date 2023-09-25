@@ -21,7 +21,6 @@ public class TourService {
     }
 
     public List<TourListDTO> findTourList(TourCriteria tourCriteria) {
-        System.out.println(tourCriteria);
         return tourMapper.findTourList(tourCriteria);
     }
 
