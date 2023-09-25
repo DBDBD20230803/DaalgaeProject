@@ -94,8 +94,14 @@
                         </div>
                     </th:block>
                 </div>
+                <div class="img-tip">
+                    <h6>이미지 클릭시 크게 보실 수 있습니다.</h6>
+                </div>
                 <div class="board-textarea">
                     <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)" ></textarea>
+                </div>
+                <div class="img-tip">
+                    <h6>이미지 이름 클릭시 다운 받으실 수 있습니다.</h6>
                 </div>
                 <div class="imgDownload">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
@@ -133,12 +139,14 @@
             <div class="write-comment" id="replyWrite">
                 <input type="hidden" th:value="${board.postCode}">
                 <div class="write-comment-info">
-                    <h6>*내용(0 / 300자)</h6>
-                    <!-- 타이핑하는 텍스트에 따라 유동적으로 변하게 하기 -->
+                    <h6>*내용(
+                        <span id="charCount">0</span>
+                        / 150자)</h6>
                 </div>
                 <div class="write-comment-content">
-                    <textarea name="comment" id="replyBody" cols="30" rows="10"></textarea>
+                    <textarea name="comment" id="replyBody" cols="30" rows="10" oninput="countCharacters()"></textarea>
                 </div>
+                <!-- 진짜 150자 초과는 submit을 못하게 하기 -->
                 <div class="write-comment-button">
                     <button type="button" id="registReply">댓글달기</button>
                 </div>

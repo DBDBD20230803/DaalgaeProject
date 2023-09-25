@@ -671,6 +671,13 @@ button[type="submit"]:hover {
   border-bottom: 1px solid #DBDBDB;
 }
 
+.img-tip h6 {
+  color: #6c757d;
+}
+.postList h6 {
+  margin: 0;
+}
+
 .boast-list {
   display: flex;
   justify-content: center;
@@ -766,6 +773,10 @@ button[type="submit"]:hover {
   background-color: #D8D8D8;
 }
 
+.board-content-title h6 {
+  margin: 0;
+}
+
 .board-content-select-container{
   width: 100%;
   height: auto;
@@ -840,6 +851,8 @@ button[type="submit"]:hover {
 .imgDownload {
   display: flex;
   justify-content: center;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .board-content-title {

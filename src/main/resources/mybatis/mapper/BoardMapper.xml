@@ -131,9 +131,17 @@
                 </where>
                 ) A
             JOIN  MEM_INFO D ON(A.REF_POST_WRITER = D.MEM_CODE)
-            LEFT JOIN  ATTACHMENT_FILE E ON (A.POST_CODE = E.REF_POST_CODE)
+            LEFT JOIN ATTACHMENT_FILE E ON (A.POST_CODE = E.REF_POST_CODE)
             ORDER BY A.POST_CODE DESC
-            LIMIT  #{ startRow }, 10
+            <choose>
+                <when test="postType == '자랑'">
+                    LIMIT #{ startRow }, 9
+                </when>
+                <otherwise>
+                    LIMIT #{ startRow }, 10
+                </otherwise>
+            </choose>
+
     </select>
 
     <update id="incrementBoardCount">

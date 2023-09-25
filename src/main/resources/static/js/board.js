@@ -16,15 +16,25 @@
 
     saveButton.addEventListener("click", function () {
 
-    saveButton.style.display = "none";
-    editButton.style.display = "block";
     const postCode = document.getElementById("boardNo").value;
     const postTitle = postTitleField.value;
     const postContent = postContentField.value;
+    if (postTitle.trim() == "") {
+        alert('제목을 입력해 주세요..😅')
+        return;
+    }
+
+    if (postContent.trim() == "") {
+        alert('내용을 입력해 주세요..😅')
+        return;
+    }
     postTitleField.style.border = "0";
     postContentField.style.border = "0";
     postTitleField.readOnly = true;
     postContentField.readOnly = true;
+    saveButton.style.display = "none";
+    editButton.style.display = "block";
+
 
     fetch("/board/updatePost", {
     method: "POST",
@@ -57,20 +67,51 @@
 });
 }
 
+    if(document.getElementById("postSubmit")) {
+
+        const $postSubmit = document.getElementById("postSubmit");
+        const $title = document.getElementById("title");
+        const $postContent = document.getElementById("postContent");
+
+        $postSubmit.onclick = function () {
+            if($postContent.value.trim() == ""){
+                alert('내용을 입력해 주세요..😅')
+                event.preventDefault();
+            }
+            if($title.value.trim() == ""){
+                alert('제목을 입력해 주세요..😅')
+                event.preventDefault();
+            }
+        }
+    }
+
     if(document.getElementById("registReply")) {
 
     const $registReply = document.getElementById("registReply");
     const $replyBody = document.getElementById("replyBody");
+    let previousReply = '';
 
     $registReply.onclick = function() {
 
     if($replyBody.value.trim() == ""){
-    alert('댓글을 입력해 주십시오');
-    return ;
-}
+        alert('댓글을 입력해 주세요..😅')
+        return ;
+    }
 
     let boardNo = document.getElementById("boardNo").value;
     let replyBody = document.getElementById("replyBody").value;
+
+    const maxLength = 150;
+
+    if ($replyBody.value.length > maxLength) {
+        alert("150자를 초과할 수 없습니다.. 😥");
+        return;
+    }
+
+    if (previousReply === replyBody) {
+        alert('같은 내용의 댓글은 달 수 없습니다.');
+        return;
+    }
 
     console.log('BoardNo : ', boardNo);
     console.log('replyBody : ', replyBody);
@@ -115,6 +156,8 @@
 
     $table.append($tr);
 
+    previousReply = replyBody;
+    $replyBody.value = '';
 });
 
 })
@@ -319,3 +362,20 @@
             this.style.display = 'none';
         }
     });
+
+    function countCharacters() {
+        const textarea = document.getElementById("replyBody");
+        const charCount = document.getElementById("charCount");
+        const maxLength = 150;
+        const registReplyButton = document.getElementById("registReply");
+
+        const currentLength = textarea.value.length;
+        charCount.textContent = currentLength;
+
+        if (currentLength > maxLength) {
+            charCount.style.color = "red";
+        } else {
+            charCount.style.color = "";
+            registReplyButton.disabled = false;
+        }
+    }
