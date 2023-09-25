@@ -1,7 +1,9 @@
 function allHeaderSearch() {
     let keyword = $('#headerSearchBox').val();
     let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+    let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
+    keyword = keyword.replace(replaceNotFullKorean, "");
     location.href = "/allSearch?keyword="+keyword;
 }
 $(document).ready(function (){

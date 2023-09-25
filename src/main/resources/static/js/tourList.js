@@ -82,6 +82,8 @@ function tourListSearch() {
     let country = $('.selectSearchOption option:selected').val();
     let no = $('.noTour').val();
     let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+    let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
+    keyword = keyword.replace(replaceNotFullKorean, "");
     location.href = "/tour/tourList?no=" + no +"&keyword="+keyword+"&country="+country;
 }

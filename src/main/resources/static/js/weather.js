@@ -2060,7 +2060,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                 }
                                             }
                                             // 4
-                                            let d = data.response.body.items[4].informGrade.split(",");
+                                            /*let d = data.response.body.items[4].informGrade.split(",");
                                             for(let b of d) {
                                                 if(b.substring(0, 2) === addressLevel1.substring(0, 2)) {
                                                     let c = b.indexOf(":");
@@ -2095,7 +2095,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                     }
                                                     break;
                                                 }
-                                            }
+                                            }*/
                                             localStorage.setItem('savedWeatherLevel', weatherLevel);
                                             localStorage.setItem('savedFineDustLevel', fineDustLevel);
                                             localStorage.setItem('savedWeatherNo', weatherNo);
