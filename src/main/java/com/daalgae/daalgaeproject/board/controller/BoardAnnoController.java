@@ -52,7 +52,7 @@ public class BoardAnnoController {
     public String goWriteAnno() {
 
         log.info("[BoardController] goWriteAnno() ");
-        return "annoBoardWrite";
+        return "board/annoBoardWrite";
     }
     @PostMapping("/annoBoardWrite")
     public String writeAnno(@ModelAttribute BoardDTO board,

@@ -81,20 +81,28 @@
                 <div class="board-content-image">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
                         <div>
-                        <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
-                            <img class="board-content-image-img" id="titleImg" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
-                        </th:block>
-                        <th:block th:if="${ board.attachmentList.size() >= 2 }">
-                            <img class="board-content-image-img" id="detailImg1" th:src="@{|/thumbPath${board.attachmentList[1].attachThumbAddr}|}"/>
-                        </th:block>
+                            <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="titleImg" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg1" th:src="@{|/thumbPath${board.attachmentList[1].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
                         </div>
                         <div>
-                        <th:block th:if="${ board.attachmentList.size() >= 3 }">
-                            <img class="board-content-image-img" id="detailImg2" th:src="@{|/thumbPath${board.attachmentList[2].attachThumbAddr}|}"/>
-                        </th:block>
-                        <th:block th:if="${ board.attachmentList.size() >= 4 }">
-                            <img class="board-content-image-img" id="detailImg3" th:src="@{|/thumbPath${board.attachmentList[3].attachThumbAddr}|}"/>
-                        </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg2" th:src="@{|/thumbPath${board.attachmentList[2].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg3" th:src="@{|/thumbPath${board.attachmentList[3].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
                         </div>
                     </th:block>
                 </div>
@@ -104,16 +112,24 @@
                 <div class="imgDownload">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
                         <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
-                            <a th:href="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download><span th:text="${ board.attachmentList[0].attachOriginName }"></span></a>
+                            <a th:href="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[0].attachOriginName }"></span>
+                            </a>
                         </th:block>
                         <th:block th:if="${ board.attachmentList.size() >= 2 }">
-                            <a th:href="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download><span th:text="${ board.attachmentList[1].attachOriginName }"></span></a>
+                            <a th:href="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[1].attachOriginName }"></span>
+                            </a>
                         </th:block>
                         <th:block th:if="${ board.attachmentList.size() >= 3 }">
-                            <a th:href="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download><span th:text="${ board.attachmentList[2].attachOriginName }"></span></a>
+                            <a th:href="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[2].attachOriginName }"></span>
+                            </a>
                         </th:block>
                         <th:block th:if="${ board.attachmentList.size() >= 4 }">
-                            <a th:href="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download><span th:text="${ board.attachmentList[3].attachOriginName }"></span></a>
+                            <a th:href="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[3].attachOriginName }"></span>
+                            </a>
                         </th:block>
                     </th:block>
                 </div>
@@ -190,6 +206,10 @@
                 <a th:href="@{/board/freeBoard}">목록</a>
             </div>
         </div>
+    </div>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <script>

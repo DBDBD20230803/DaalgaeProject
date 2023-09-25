@@ -47,35 +47,33 @@
         <div class="boast-list">
             <div class="boast-postList" th:each="board : ${ boardList }">
                 <div class="boast-img-box">
-                    <th:block th:if="${ board.attachmentList.size() > 0 }">
-                        <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
-                            <img class="boast-content-img" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
-                        </th:block>
-                    </th:block>
-                </div>
-                <div class="boast-detail-box">
-                    <div class="boast-detail-title">
-                        <div class="boast-detail-title1">
-                            <h6>No.</h6>
-                            <h6 class="boast-postNo" th:text="${board.postCode}"></h6>
-                            <h6 class="boast-postTitle" th:text="${board.postTitle}"></h6>
-                        </div>
-                        <div class="boast-detail-title2">
-                            <h6 class="boast-postCount-name">조회수</h6>
-                            <h6 class="boast-postCount" th:text="${board.postCount}"></h6>
-                        </div>
+                            <th:block th:if="${ board.attachThumbAddr != null }">
+                                <img class="boast-content-img" th:src="@{|/thumbPath${board.attachThumbAddr}|}"/>
+                            </th:block>
                     </div>
-                    <div>
-                        <img class="boast-post-icon" th:src="@{/images/writer.png}">
-                        <h6 class="boast-postUser" th:text="${board.refPostWriter.memId}"></h6>
-                    </div>
-                    <div>
-                        <img class="boast-post-icon" th:src="@{/images/date.png}">
-                        <h6 class="boast-postDate" th:text="${board.postDate}"></h6>
+                    <div class="boast-detail-box">
+                        <div class="boast-detail-title">
+                            <div class="boast-detail-title1">
+                                <h6>No.</h6>
+                                <h6 class="boast-postNo" th:text="${board.postCode}"></h6>
+                                <h6 class="boast-postTitle" th:text="${board.postTitle}"></h6>
+                            </div>
+                            <div class="boast-detail-title2">
+                                <h6 class="boast-postCount-name">조회수</h6>
+                                <h6 class="boast-postCount" th:text="${board.postCount}"></h6>
+                            </div>
+                        </div>
+                        <div>
+                            <img class="boast-post-icon" th:src="@{/images/writer.png}">
+                            <h6 class="boast-postUser" th:text="${board.refPostWriter.memId}"></h6>
+                        </div>
+                        <div>
+                            <img class="boast-post-icon" th:src="@{/images/date.png}">
+                            <h6 class="boast-postDate" th:text="${board.postDate}"></h6>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="board-write">
             <a th:href="@{/board/boastBoardWrite}" id="board-write-button" alt="글쓰기">
@@ -145,7 +143,7 @@
                 }
 
                 $tds[i].onclick = function() {
-                    const no = this.children[0].innerText;
+                    const no = this.children[1].children[0].children[0].children[1].innerText;
                     location.href = "/board/boastBoardSelect?no=" + no;
                 }
             }

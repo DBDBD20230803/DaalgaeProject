@@ -12,6 +12,7 @@
         <result property="postContent" column="POST_CONTENT"/>
         <result property="postDate" column="POST_DATE"/>
         <result property="postCount" column="POST_COUNT"/>
+        <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
         <association property="refPostWriter" resultMap="memberResultMap"/>
         <association property="attachmentList" resultMap="attachmentFileResultMap"/>
     </resultMap>
@@ -89,7 +90,12 @@
                 , A.POST_DATE
                 , A.POST_COUNT
                 , D.MEM_ID
-                , E.ATTACH_THUMB_ADDR
+                <if test="postType == '자랑'">
+                    ,(SELECT ATTACH_THUMB_ADDR
+                    FROM ATTACHMENT_FILE
+                    WHERE REF_POST_CODE = A.POST_CODE
+                    LIMIT 1) AS ATTACH_THUMB_ADDR
+                </if>
           FROM (
                 SELECT DISTINCT
                         B.POST_CODE

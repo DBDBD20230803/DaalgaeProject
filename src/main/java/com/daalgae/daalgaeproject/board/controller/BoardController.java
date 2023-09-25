@@ -54,6 +54,7 @@ public class BoardController {
         searchMap.put("postType", postType);
 
         int totalCount = boardServiceImpl.selectTotalCount(searchMap);
+//        47
 
         int limit = 10;
 

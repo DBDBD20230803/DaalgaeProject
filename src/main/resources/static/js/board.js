@@ -269,13 +269,13 @@
     }
 
     function navigateToAnnoPage0() {
-        window.location.href = '/board/announcementBoard';
+        window.location.href = '/board/annoBoard';
     }
     function navigateToAnnoPage1() {
-        window.location.href = '/board/announcementBoard?currentPage=1&searchCondition=postSort&searchValue=공지';
+        window.location.href = '/board/annoBoard?currentPage=1&searchCondition=postSort&searchValue=공지';
     }
     function navigateToAnnoPage2() {
-        window.location.href = '/board/announcementBoard?currentPage=1&searchCondition=postSort&searchValue=이벤트';
+        window.location.href = '/board/annoBoard?currentPage=1&searchCondition=postSort&searchValue=이벤트';
     }
 
     function navigateToFreePage0() {
@@ -298,5 +298,24 @@
         window.location.href = '/board/boastBoard';
     }
 
+    document.querySelectorAll('.image-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = this.getAttribute('data-image-src');
+        });
+    });
 
+    document.getElementById('modalImage').addEventListener('click', function() {
+        var modal = document.getElementById('imageModal');
+        modal.style.display = 'none';
+    });
 
+    // 모달 팝업 밖을 클릭하면 모달 팝업을 닫습니다.
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });

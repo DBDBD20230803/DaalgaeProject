@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/boardLayout}">
+      layout:decorate="~{layouts/boardLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>자랑갤러리</title>
 </head>
@@ -16,15 +17,32 @@
 
     <div class="board-container container">
         <div class="board-searchBar">
-            <div class="search-buttons">
-                <div class="search-by-text">
-                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
-                </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
+            <div class="board-category-container">
+                <div class="board-category">
+                    <button onclick="navigateToBoastPage0()" class="category-button" id="btn0">전체</button>
                 </div>
             </div>
+            <form id="searchForm" th:action="@{/board/boastBoard}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="head-title-category">
+                        <select name="searchCondition" id="searchCondition">
+                            <option value="postTitle" selected>제목</option>
+                            <option value="postContent">내용</option>
+                            <option value="postTitleContent">제목 + 내용</option>
+                            <option value="postWriter">작성자</option>
+                        </select>
+                    </div>
+
+                    <div class="search-by-text">
+                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
+                        <input type="search" name="searchValue" id="searchValueInput">
+                    </div>
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton">검색</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="board-select-header-buttons">
             <div class="like-button">
@@ -38,24 +56,71 @@
                 </button>
             </div>
         </div>
-
         <div class="board-content-select-container">
-            <div class="board-content-title">
-                    <h6 id="postNo" th:text="${ thumbnail.no }"></h6>
-                    <h6 id="postTitle" th:text="${ thumbnail.title }"></h6>
-                    <h6 id="postUser" th:text="${ thumbnail.writer.memName }"></h6>
-                    <h6 id="postDate" th:text="${ thumbnail.createdDate }"></h6>
+            <div class="board-content-title" th:each="board : ${ board }">
+                <h6 class="postNo" name="postCode" id="postCode" th:text="${board.postCode}"></h6>
+                <h6 class="postCategory" th:text="${board.postSort}"></h6>
+                <input class="postTitle" id="postTitle" name="postTitle" type="text" th:value="${board.postTitle}" readonly />
+                <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
+                <h6 class="postCount" th:text="${board.postCount}"></h6>
+                <h6 class="postDate" th:text="${board.postDate}"></h6>
             </div>
             <div class="board-select-content">
-                <th:block th:each="attachment, iterStat : ${thumbnail.attachmentList}">
-                    <div class="board-content-image">
-                        <a th:href="@{|/imagePath/${attachment.savedName}|}" target="_blank">
-                            <img th:id="'detailImg' + ${iterStat.index}" class="detailImg" th:src="@{|/imagePath/${attachment.savedName}|}"/><br>
-                            <span th:text="${attachment.originalName}">저장하기</span>
-                        </a>
-                    </div>
-                </th:block>
-                <h6 id="contentArea" th:text="${ thumbnail.body }"></h6>
+                <div class="board-content-image">
+                    <th:block th:if="${ board.attachmentList.size() > 0 }">
+                        <div>
+                            <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="titleImg" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg1" th:src="@{|/thumbPath${board.attachmentList[1].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                        </div>
+                        <div>
+                            <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg2" th:src="@{|/thumbPath${board.attachmentList[2].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg3" th:src="@{|/thumbPath${board.attachmentList[3].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                        </div>
+                    </th:block>
+                </div>
+                <div class="board-textarea">
+                    <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)" ></textarea>
+                </div>
+                <div class="imgDownload">
+                    <th:block th:if="${ board.attachmentList.size() > 0 }">
+                        <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[0].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[1].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[2].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[3].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                    </th:block>
+                </div>
             </div>
         </div>
 
@@ -66,9 +131,10 @@
             </div>
 
             <div class="write-comment" id="replyWrite">
-                <input type="hidden" id="boardNo" th:value="${board.no}">
+                <input type="hidden" th:value="${board.postCode}">
                 <div class="write-comment-info">
                     <h6>*내용(0 / 300자)</h6>
+                    <!-- 타이핑하는 텍스트에 따라 유동적으로 변하게 하기 -->
                 </div>
                 <div class="write-comment-content">
                     <textarea name="comment" id="replyBody" cols="30" rows="10"></textarea>
@@ -83,157 +149,65 @@
 
                     <th:block th:each="reply : ${replyList}">
 
-                        <div class="replyListTr comment-content">
-                            <input type="hidden" id="${ reply.no }" th:value="${ reply.no }">
-                            <div id="reply-writer" th:text="${ reply.writer.memName }"></div>
-                            <div id="reply-body" th:text="${ reply.body }"></div>
-                            <div id="reply-date" th:text="${ reply.createdDate }"></div>
-                            <div id="comment-delete-button">
-                                <!--                            <th:block-->
-                                <!--                                    sec:authorize="isAuthenticated()"-->
-                                <!--                                    th:if="${ #authentication.getPrincipal().getMemberNo() == reply.writer.memberNo }"-->
-                                <!--                            >-->
-                                <button
-                                        type="button"
-                                        th:replyNo="${ reply.no }"
-                                        th:onclick="removeReply(this.getAttribute('replyNo'))"
-                                >
-                                    댓글삭제
-                                </button>
-                                <!--                            </th:block>-->
-                            </div>
+                        <div class="comment-content">
+                            <input type="hidden" id="${ reply.replyCode }" th:value="${ reply.replyCode }">
+                            <div id="reply-writer" th:text="${ reply.replyWriterDetail.memId }"></div>
+                            <div id="reply-body" th:text="${ reply.replyCon}"></div>
+                            <div id="reply-date" th:text="${ reply.replyDate }"></div>
                             <div id="comment-report-button">
                                 <button>
                                     <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                                 </button>
                             </div>
+                            <th:block
+                                    sec:authorize="isAuthenticated()"
+                                    th:if="${ #authentication.getPrincipal().getMemCode() == reply.refReplyWriter }"
+                            >
+                                <div id="comment-delete-button">
+                                    <button
+                                            type="button"
+                                            th:replyCode="${ reply.replyCode }"
+                                            th:onclick="removeReply(this.getAttribute('replyCode'))"
+                                    >
+                                        삭제
+                                    </button>
+                                </div>
+                            </th:block>
                         </div>
                     </th:block>
                 </th:block>
-
             </div>
+
+            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
+                <form th:action="@{/board/deletePostBoast}" id="boardDeleteForm" method="post">
+                    <input type="hidden" name="postCode" id="boardNo" th:value="${board.postCode}">
+                    <div class="updatePost">
+                        <button id="editButton" type="button">수정</button>
+                        <button id="saveButton" type="button" style="display:none;">저장</button>
+                    </div>
+                    <div class="deletePost">
+                        <button type="submit">삭제</button>
+                    </div>
+                </form>
+            </th:block>
 
             <div class="back-to-list">
-                <a th:href="@{/board/freeBoard}">목록</a>
+                <a th:href="@{/board/boastBoard}">목록</a>
             </div>
-
         </div>
     </div>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
-    <script th:inline="javascript">
+    <script>
+        var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
 
-        /* 댓글 작성 이벤트 처리 */
-        if(document.getElementById("registReply")) {
-
-            const $registReply = document.getElementById("registReply");
-            const $replyBody = document.getElementById("replyBody");
-
-            $registReply.onclick = function() {
-
-                if($replyBody.value.trim() == ""){
-                    alert('댓글을 입력해 주십시오');
-                    return ;
-                }
-
-                let boardNo = document.getElementById("boardNo").value;
-                let replyBody = document.getElementById("replyBody").value;
-
-                console.log('BoardNo : ', boardNo);
-                console.log('replyBody : ', replyBody);
-
-                fetch("/board/registReply", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8'
-                    },
-                    body: JSON.stringify(
-                        {
-                            writerMemberNo: '[[${#authentication.getPrincipal().getMemberNo()}]]',
-                            refBoardNo: boardNo,
-                            body: replyBody
-                        }
-                    )
-                })
-                    .then(result => result.json())
-                    .then(data => {
-                        const $table = $("#replyResult");
-                        $table.html("");
-
-                        data.map((reply) => {
-                            $div = $("<div>");
-                            $bodyTd = $("<div>").text(reply.body);
-                            $writerTd = $("<div>").text(reply.writer.memName);
-                            $createDateTd = $("<div>").text(reply.createdDate);
-
-                            if(reply.writerMemberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
-                                $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
-                            } else {
-                                $removeTd = $("<td>");
-                            }
-
-                            $div.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");
-                            $div.append($bodyTd);
-                            $div.append($writerTd);
-                            $div.append($createDateTd);
-                            $div.append($removeTd);
-
-                            $table.append($div);
-                        });
-
-                    })
-                    .catch((error) => error.text().then((res) => alert(res)));
-            }
-        }
-
-
-        /* 댓글 삭제 이벤트 처리 함수*/
-        function removeReply(replyNo){
-
-            let boardNo = document.getElementById("boardNo").value;
-
-            fetch("/board/removeReply", {
-                method: "DELETE",
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                },
-                body: JSON.stringify(
-                    {
-                        refBoardNo:boardNo,
-                        no:replyNo
-                    }
-                )
-            })
-                .then(result => result.json())
-                .then(data => {
-                    console.table(data);
-
-                    const $table = $("#replyResult");
-                    $table.html("");
-
-                    data.map((reply) => {
-                        $tr = $("<tr>");
-                        $bodyTd = $("<td>").text(reply.body);
-                        $writerTd = $("<td>").text(reply.writer.memName);
-                        $createDateTd = $("<td>").text(reply.createdDate);
-                        if(reply.writer.memberNo == '[[${#authentication.getPrincipal().getMemberNo()}]]'){
-                            $removeTd = $("<td>").append("<button type='button' onclick='removeReply(" + reply.no + ")'>댓글삭제</button>");
-                        } else {
-                            $removeTd = $("<td>");
-                        }
-
-                        $tr.append("<input type='hidden' id=" + reply.no + " value='" + reply.no + "'>");
-                        $tr.append($bodyTd);
-                        $tr.append($writerTd);
-                        $tr.append($createDateTd);
-                        $tr.append($removeTd);
-
-                        $table.append($tr);
-
-                    })
-                })
-                .catch((error) => error.text().then((res) => alert(res)));
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var textarea = document.getElementById('postContentText');
+            autoResizeRead(textarea);
+        });
     </script>
-
 </th:block>
 </html>
