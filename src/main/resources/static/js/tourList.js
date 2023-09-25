@@ -1,15 +1,30 @@
 function pagingCalc(pageCase) {
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
-    let keyword = urlParam.get("keyword") + "";
+    let keyword = urlParam.get("keyword");
     let country = urlParam.get("country");
+    let no = urlParam.get("no");
     let totalPage = $('.totalPage').val();
-    if(pageCase === 1) {
+    if(pageCase === -3) {
         location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
-    }
-    if(pageCase === 0) {
+    } else if(pageCase === 0) {
         let toUrl = "/tour/tourList?no=";
         toUrl += totalPage;
+        toUrl += "&keyword="+keyword+"&country="+country;
+        location.href = toUrl;
+    } else if(pageCase === -1) {
+        let toUrl = "/tour/tourList?no=";
+        toUrl += Math.floor((no-1) / 5) * 5;
+        toUrl += "&keyword="+keyword+"&country="+country;
+        location.href = toUrl;
+    } else if(pageCase === -2) {
+        let toUrl = "/tour/tourList?no=";
+        toUrl += Math.ceil(no / 5) * 5 + 1;
+        toUrl += "&keyword="+keyword+"&country="+country;
+        location.href = toUrl;
+    } else {
+        let toUrl = "/tour/tourList?no=";
+        toUrl += pageCase;
         toUrl += "&keyword="+keyword+"&country="+country;
         location.href = toUrl;
     }
@@ -61,21 +76,49 @@ $(document).ready( function() {
 
 
     /* 페이징 로직 */
-    if(no == 1) {
+    $('.paging').append("<button class=\"firstPage\" onclick=\"pagingCalc(-3)\"> << </button>");
+    $('.paging').append("<button class=\"prevPage\" onclick=\"pagingCalc(-1)\"> < </button>");
+    if(Number(no) > lastRange) {
+        for(let i = parseInt((no-1) / 5) * 5 + 1; i <= totalPage; i++) {
+            $('.paging').append("<button onclick=\"pagingCalc(" + i + ")\">" + i + "</button>");
+            if($('.paging button').last().text() == no) {
+                $('.paging button').last().attr("disabled", true);
+                $('.paging button').last().css("color", "#222");
+                $('.paging button').last().css("text-decoration", "underline");
+            }
+        }
+    } else {
+        for(let i = parseInt((no-1) / 5) * 5 + 1; i <= parseInt((no-1) / 5) * 5 + 5; i++) {
+            $('.paging').append("<button onclick=\"pagingCalc(" + i + ")\">" + i + "</button>");
+            if($('.paging button').last().text() == no) {
+                $('.paging button').last().attr("disabled", true);
+                $('.paging button').last().css("color", "#222");
+                $('.paging button').last().css("text-decoration", "underline");
+            }
+        }
+    }
+    $('.paging').append("<button class=\"nextPage\" onclick=\"pagingCalc(-2)\"> > </button>");
+    $('.paging').append("<button class=\"lastPage\" onclick=\"pagingCalc(0)\"> >> </button>");
+
+    if(Number(no) == 1) {
         $('.firstPage').attr("disabled", true);
     }
 
-    if(no <= 5) {
+    if(Number(no) <= 5) {
         $('.prevPage').attr("disabled", true);
     }
 
-    if(no > lastRange) {
+    if(Number(no) > lastRange) {
         $('.nextPage').attr("disabled", true);
     }
 
-    if(no == totalPage) {
+    if(Number(no) == totalPage) {
         $('.lastPage').attr("disabled", true);
     }
+
+
+
+
 
     /* 불러오기 */
     let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country;
