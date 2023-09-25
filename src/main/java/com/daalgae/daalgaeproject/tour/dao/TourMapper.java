@@ -17,4 +17,6 @@ public interface TourMapper {
     TourDetailDTO findTourDetail(int no);
 
     List<TourKakaoMapDTO> findTourKakaoMap(String tourKakaoMap);
+
+    int findPaging(TourCriteria tourCriteria);
 }

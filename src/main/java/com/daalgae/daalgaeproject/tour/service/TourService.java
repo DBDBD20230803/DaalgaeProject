@@ -31,4 +31,8 @@ public class TourService {
     public List<TourKakaoMapDTO> findTourKakaoMap(String tourKakaoMap) {
         return tourMapper.findTourKakaoMap(tourKakaoMap);
     }
+
+    public int findPaging(TourCriteria tourCriteria) {
+        return tourMapper.findPaging(tourCriteria);
+    }
 }

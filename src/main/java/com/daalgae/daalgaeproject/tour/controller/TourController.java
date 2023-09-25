@@ -29,20 +29,24 @@ public class TourController {
 
     /* 여행지 리스트 */
     @GetMapping("tourList")
-      public String TourList(@RequestParam(value = "no", required = false) String no, Model model) {
+      public String TourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no, Model model) {
         model.addAttribute("no", no);
+        String noToInt = String.valueOf(Integer.parseInt(no) - 1);
+        String countryTwoWord = country.substring(0, 2);
+        TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
+        int totalPageCalc = tourService.findPaging(tourCriteria);
+        int totalPage = (int) Math.ceil(totalPageCalc / 9.0);
+        model.addAttribute("totalPage", totalPage);
         return "tour/tourList";
     }
 
     @GetMapping(value = "getTourList", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<TourListDTO> getTourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no) throws JsonProcessingException {
-        Map<String, String> options = new HashMap<>();
         String noToInt = String.valueOf(Integer.parseInt(no) - 1);
         String countryTwoWord = country.substring(0, 2);
         TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
         List<TourListDTO> findList = tourService.findTourList(tourCriteria);
-        System.out.println(tourCriteria);
         return findList;
     }
 
@@ -52,7 +56,6 @@ public class TourController {
     public String TourDetail(@RequestParam(value = "no", required = false) int no, Model model) {
         TourDetailDTO findDetail = tourService.findTourDetail(no);
         model.addAttribute("findDetail", findDetail);
-        System.out.println(findDetail);
         return "tour/tourDetail";
     }
 
