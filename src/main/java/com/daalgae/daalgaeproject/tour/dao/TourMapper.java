@@ -5,11 +5,13 @@ import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface TourMapper {
-    List<TourListDTO> findTourList(String tourList);
+    List<TourListDTO> findTourList(Map<String, String> options);
 
     TourDetailDTO findTourDetail(int no);
 

@@ -6,7 +6,9 @@ import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TourService {
@@ -17,8 +19,8 @@ public class TourService {
         this.tourMapper = tourMapper;
     }
 
-    public List<TourListDTO> findTourList(String tourList) {
-        return tourMapper.findTourList(tourList);
+    public List<TourListDTO> findTourList(Map<String, String> options) {
+        return tourMapper.findTourList(options);
     }
 
     public TourDetailDTO findTourDetail(int no) {

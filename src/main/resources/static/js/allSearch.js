@@ -6,6 +6,24 @@ $(document).ready( function() {
         }
     });
 
+    let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+
+    // 완성형 아닌 한글 정규식
+    let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+
+    $("#allSearchBox").on("focusout", function() {
+        let x = $(this).val();
+        if (x.length > 0) {
+            if (x.match(replaceChar) || x.match(replaceNotFullKorean)) {
+                x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+            }
+            $(this).val(x);
+        }
+    }).on("keyup", function() {
+        $(this).val($(this).val().replace(replaceChar, ""));
+    });
+
+
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
     $('#allSearchBox').val(urlParam.get("keyword"));
@@ -67,5 +85,7 @@ $(document).ready( function() {
 });
 function allSearch() {
     let keyword = $('#allSearchBox').val();
+    let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+    keyword = keyword.replace(replaceChar, "");
     location.href = "/allSearch?keyword="+keyword;
 }

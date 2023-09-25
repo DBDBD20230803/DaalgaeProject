@@ -25,22 +25,25 @@ public class TourController {
         this.tourService = tourService;
     }
 
+    /* 여행지 리스트 */
     @GetMapping("tourList")
-      public String TourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "option", required = false) String option) {
-        Map<String, String> keyNoOption = new HashMap<>();
-        keyNoOption.put("keyword", keyword);
-        keyNoOption.put("option", option);
-        System.out.println(keyword);
-        System.out.println(option);
+      public String TourList(@RequestParam(value = "no", required = false) String no, Model model) {
+        model.addAttribute("no", no);
         return "tour/tourList";
     }
 
     @GetMapping(value = "getTourList", produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<TourListDTO> getTourList() throws JsonProcessingException {
-        List<TourListDTO> findList = tourService.findTourList("tourList");
+    public List<TourListDTO> getTourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no) throws JsonProcessingException {
+        Map<String, String> options = new HashMap<>();
+        options.put("no", no);
+        options.put("keyword", keyword);
+        options.put("country", country);
+        List<TourListDTO> findList = tourService.findTourList(options);
         return findList;
     }
+
+    /* 여행지 상세 */
 
     @GetMapping("tourDetail")
     public String TourDetail(@RequestParam(value = "no", required = false) int no, Model model) {
@@ -56,6 +59,8 @@ public class TourController {
         List<TourDetailDTO> findDetail = tourService.findTourDetail("tourDetail");
         return findDetail;
     }*/
+
+    /* 지도 관련 */
 
     @GetMapping(value = "getTourKakaoMap", produces = "application/json; charset=UTF-8")
     @ResponseBody
