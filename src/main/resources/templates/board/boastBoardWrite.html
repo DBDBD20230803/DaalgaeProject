@@ -74,5 +74,20 @@
         </form>
     </div>
 
+    <script>
+        document.getElementById("boardWriteForm").addEventListener("submit", function(event) {
+            const thumbnailImg1 = document.getElementById("thumbnailImg1");
+            const thumbnailImg2 = document.getElementById("thumbnailImg2");
+            const thumbnailImg3 = document.getElementById("thumbnailImg3");
+            const thumbnailImg4 = document.getElementById("thumbnailImg4");
+
+            // 하나라도 파일이 선택되었는지 확인
+            if (!thumbnailImg1.files.length && !thumbnailImg2.files.length && !thumbnailImg3.files.length && !thumbnailImg4.files.length) {
+                alert("최소 하나의 이미지를 업로드해야 합니다..😏");
+                event.preventDefault();
+            }
+        });
+    </script>
+
 </th:block>
 </html>

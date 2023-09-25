@@ -150,41 +150,40 @@
         }
 
         window.addEventListener('load', function() {
-            // 현재 URL에서 search 파라미터를 가져옵니다
             const urlParams = new URLSearchParams(window.location.search);
             const searchValue = urlParams.get('searchValue');
 
-            // 모든 버튼을 찾아서 'active' 클래스를 제거합니다
             const buttons = document.querySelectorAll('.category-button');
             buttons.forEach(button => button.classList.remove('active'));
 
-            // searchValue에 따라 해당 버튼에 'active' 클래스를 추가합니다
             if (searchValue === '') {
                 }else {
                 document.getElementById('btn0').classList.add('active');
             }
         });
 
-
-
-        //tourListSearch 이것만 input class, id에 맞게 쓰시면 됩니다.
-        $(document).ready( function() {
-            let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+        $(document).ready(function () {
+            let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
             let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+            const searchTextInput = $(".searchText");
+            const searchValueInput = document.getElementById("searchValueInput");
 
-            $(".searchText").on("focusout", function() {
+            searchTextInput.on("focusout keyup", function () {
                 let x = $(this).val();
                 if (x.length > 0) {
-                    if (x.match(replaceChar) || x.match(replaceNotFullKorean)) {
-
-                        x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
-                    }
-                    $(this).val(x);
+                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
                 }
-            }).on("keyup", function() {
-                $(this).val($(this).val().replace(replaceChar, ""));
+                $(this).val(x);
+
+                const searchValue = searchTextInput.val();
+                localStorage.setItem("searchValue", searchValue);
             });
+
+            if (localStorage.getItem("searchValue")) {
+                searchTextInput.val(localStorage.getItem("searchValue"));
+            }
         });
+
 
     </script>
 
