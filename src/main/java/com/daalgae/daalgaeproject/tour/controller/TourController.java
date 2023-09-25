@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.tour.controller;
 
+import com.daalgae.daalgaeproject.tour.dto.TourCriteria;
 import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
@@ -36,10 +37,10 @@ public class TourController {
     @ResponseBody
     public List<TourListDTO> getTourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no) throws JsonProcessingException {
         Map<String, String> options = new HashMap<>();
-        options.put("no", no);
-        options.put("keyword", keyword);
-        options.put("country", country);
-        List<TourListDTO> findList = tourService.findTourList(options);
+        String noToInt = String.valueOf(Integer.parseInt(no) - 1);
+        String countryTwoWord = country.substring(0, 2);
+        TourCriteria tourCriteria = new TourCriteria(noToInt, countryTwoWord, country);
+        List<TourListDTO> findList = tourService.findTourList(tourCriteria);
         return findList;
     }
 

@@ -53,14 +53,27 @@
         FROM TOUR_INFO
     </select>
 
-    <select id="findTourList" resultMap="findTourList">
+    <select id="findTourList" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultMap="findTourList">
         SELECT TOUR_CODE
         ,TOUR_PHOTO
         ,TOUR_TITLE
         ,ADDR
         ,TEL
         FROM TOUR_INFO
-        LIMIT 9
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword.length > 0">
+            TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="country neq '지역'">
+                AND ADDR LIKE CONCAT('%', '${country}', '%')
+            </if>
+            AND TOUR_CATEGORY NOT LIKE '%동물%'
+        </trim>
+
+
+        LIMIT ${ no }, 9
+
+
     </select>
 
     <select id="findTourDetail" resultMap="findTourDetail">

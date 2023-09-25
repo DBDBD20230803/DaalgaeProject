@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.tour.dao;
 
+import com.daalgae.daalgaeproject.tour.dto.TourCriteria;
 import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
@@ -11,7 +12,7 @@ import java.util.Map;
 
 @Mapper
 public interface TourMapper {
-    List<TourListDTO> findTourList(Map<String, String> options);
+    List<TourListDTO> findTourList(TourCriteria tourCriteria);
 
     TourDetailDTO findTourDetail(int no);
 

@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.tour.service;
 
 import com.daalgae.daalgaeproject.tour.dao.TourMapper;
+import com.daalgae.daalgaeproject.tour.dto.TourCriteria;
 import com.daalgae.daalgaeproject.tour.dto.TourDetailDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO;
 import com.daalgae.daalgaeproject.tour.dto.TourListDTO;
@@ -19,8 +20,9 @@ public class TourService {
         this.tourMapper = tourMapper;
     }
 
-    public List<TourListDTO> findTourList(Map<String, String> options) {
-        return tourMapper.findTourList(options);
+    public List<TourListDTO> findTourList(TourCriteria tourCriteria) {
+        System.out.println(tourCriteria);
+        return tourMapper.findTourList(tourCriteria);
     }
 
     public TourDetailDTO findTourDetail(int no) {
