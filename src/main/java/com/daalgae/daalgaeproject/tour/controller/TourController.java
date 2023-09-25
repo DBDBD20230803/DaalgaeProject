@@ -31,19 +31,24 @@ public class TourController {
     @GetMapping("tourList")
       public String TourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no, Model model) {
         model.addAttribute("no", no);
-        String noToInt = String.valueOf(Integer.parseInt(no) - 1);
+        String noToInt = String.valueOf((Integer.parseInt(no) - 1)  * 9);
         String countryTwoWord = country.substring(0, 2);
         TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
         int totalPageCalc = tourService.findPaging(tourCriteria);
         int totalPage = (int) Math.ceil(totalPageCalc / 9.0);
+        int pageRange = (int) Math.ceil(totalPage / 5.0);
+        int lastRange = 5 * (int) Math.floor(totalPage / 5.0);
+        model.addAttribute("totalPageCalc", totalPageCalc);
         model.addAttribute("totalPage", totalPage);
+        model.addAttribute("pageRange", pageRange);
+        model.addAttribute("lastRange", lastRange);
         return "tour/tourList";
     }
 
     @GetMapping(value = "getTourList", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<TourListDTO> getTourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no) throws JsonProcessingException {
-        String noToInt = String.valueOf(Integer.parseInt(no) - 1);
+        String noToInt = String.valueOf((Integer.parseInt(no) - 1)  * 9);
         String countryTwoWord = country.substring(0, 2);
         TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
         List<TourListDTO> findList = tourService.findTourList(tourCriteria);

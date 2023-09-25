@@ -1,4 +1,20 @@
+function pagingCalc(pageCase) {
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    let keyword = urlParam.get("keyword") + "";
+    let country = urlParam.get("country");
+    let totalPage = $('.totalPage').val();
+    if(pageCase === 1) {
+        location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
+    }
+    if(pageCase === 0) {
+        let toUrl = "/tour/tourList?no=";
+        toUrl += totalPage;
+        toUrl += "&keyword="+keyword+"&country="+country;
+        location.href = toUrl;
+    }
 
+}
 $(document).ready( function() {
 
     $(".tourListSearch").focus();
@@ -30,6 +46,10 @@ $(document).ready( function() {
     let keyword = urlParam.get("keyword");
     let country = urlParam.get("country");
     let no = urlParam.get("no");
+    let totalPage = $('.totalPage').val();
+    let pageRange = $('.pageRange').val();
+    let lastRange = $('.lastRange').val();
+    let totalPageCalc = $('.totalPageCalc').val();
 
     $('.tourListSearch').val(keyword);
     if($('.selectSearchOption').val(country).length > 0) {
@@ -39,9 +59,26 @@ $(document).ready( function() {
     }
 
 
+
+    /* 페이징 로직 */
+    if(no == 1) {
+        $('.firstPage').attr("disabled", true);
+    }
+
+    if(no <= 5) {
+        $('.prevPage').attr("disabled", true);
+    }
+
+    if(no > lastRange) {
+        $('.nextPage').attr("disabled", true);
+    }
+
+    if(no == totalPage) {
+        $('.lastPage').attr("disabled", true);
+    }
+
+    /* 불러오기 */
     let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country;
-    console.log(getUrl);
-    // let urlNo = 1;
     $.ajax({
         type:"get",
         url:getUrl,
@@ -85,5 +122,5 @@ function tourListSearch() {
     let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
     keyword = keyword.replace(replaceNotFullKorean, "");
-    location.href = "/tour/tourList?no=" + no +"&keyword="+keyword+"&country="+country;
+    location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
 }
