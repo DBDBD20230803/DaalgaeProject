@@ -11,6 +11,9 @@ function likeClick() {
         dataType:"json",
         success: function(data) {
             console.log(data);
+            if(data == -1) {
+                location.href='/login/login';
+            }
             if(data == 0) {
                 $.ajax({
                     type:"get",
@@ -227,6 +230,7 @@ $(function () {
     const urlParam = urlObject.searchParams;
     let no = urlParam.get("no");
     let toUrl = "/tour/getTourBookmark?no=" + no;
+    console.log(toUrl);
     $.ajax({
         type:"get",
         url:toUrl,
