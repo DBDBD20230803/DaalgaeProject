@@ -265,3 +265,12 @@ input:focus{
     display: flex;
     justify-content: center;
 }
+
+.clear {
+    position: relative;
+    top: -193px;
+    left: 200px;
+    font-size: 16px;
+    color: #222;
+    font-weight: 400;
+}

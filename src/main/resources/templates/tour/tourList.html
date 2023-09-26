@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
 
     <title>여행지 리스트</title>
     <!--meta-->
@@ -30,7 +32,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript" th:src="@{/js/header.js}"></script>
-      
+    <script type="text/javascript" th:src="@{/js/tourList.js}"></script>
+    
     <!--favicon--->
       <link href="favicon.ico" rel="icon">
       <link href="favicon.ico" rel="apple-touch-icon">
@@ -39,47 +42,58 @@
   <div id="headers">
     <th:block th:include="component/header.html"></th:block>
   </div>
+  <input type="hidden" class="noTour" th:value="${no}">
   <div class="tourBg">
       <h3>다알개 여행지</h3>
   </div>
 
   <div class="tourSelectBar">
-    <button class="searchButton">검색</button>
+    <button onclick="tourListSearch()" class="searchButton">검색</button>
     <div class="searchInput">
       <div class="searchIcon"></div>
-      <input placeholder="검색어를 입력해 주세요.">
+      <input class="tourListSearch" placeholder="검색어를 입력해 주세요.">
     </div>
     <div class="selectBox">
       <button class="searchArrow"></button>
       <select class="selectSearchOption">
 
         <option disabled selected>지역</option>
-        <option value="강원도">강원도</option>
+        <option value="전체">전체</option>
         <option value="수도권">수도권</option>
+        <option value="강원도">강원도</option>
+        <option value="충청도">충청도</option>
         <option value="경상도">경상도</option>
         <option value="전라도">전라도</option>
-        <option value="충청도">충청도</option>
         <option value="제주도">제주도</option>
       </select>
     </div>
   </div>
 
   <div class="tourBoard">
-    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
+
+    <!--<div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail?no=10'">
       <img class="tourBoardUnitThumbnail" src="/images/dogPhoto1.png" />
       <div class="tourBoardUnitDesc">
         <div class="locationName">장소이름</div>
         <img class="locationLoc" th:src="@{/images/location.png}" />
-        <div class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239 11111111111111111111111111111111111111111111111111</div>
+        <div class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</div>
         <img class="telNumber" th:src="@{/images/phone.png}" />
         <div class="telNums">033-572-3011</div>
       </div></button>
-    </div>
+    </div>-->
   </div>
   <div class="whiteSpaceTourBoard"></div>
+  <input class="totalPageCalc" type="hidden" th:value="${totalPageCalc}">
+  <input class="totalPage" type="hidden" th:value="${totalPage}">
+  <input class="pageRange" type="hidden" th:value="${pageRange}">
+  <input class="lastRange" type="hidden" th:value="${lastRange}">
   <div class="whiteSpaceEncycle">
     <div class="logoInPage"></div>
+    <div class="whiteSpaceTourBoard"></div>
+    <div class="paging">
+    </div>
   </div>
+
   
   <div>
     <th:block th:include="component/footer.html"></th:block>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
   <head>
-    <meta charset="utf-8">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="le=edge">
     <title>여행지 찾기</title>
 
 
@@ -37,7 +39,6 @@
       <link href="favicon.ico" rel="icon">
       <link href="favicon.ico" rel="apple-touch-icon">
       <script type="text/javascript" th:src="@{/js/tour.js}"></script>
-
   </head>
   <body>
   <input type="hidden" name="selectNum" th:value="${select}">
@@ -65,7 +66,7 @@
                     <div class="mapSearchWrap">
                         <div class="mapSearchUp">
 
-                            <form class="mapSearchForm" action="" method="post">
+                            <div class="mapSearchForm">
                                 <h5>다알개지도검색</h5>
 
                                 <div class="searchBox">
@@ -74,36 +75,36 @@
 
                                 <div class="searchList">
                                     <div class="listTour listTour1">
-                                        
+
                                         <div class="listTourImag"><img th:src="@{/images/tour.png}" alt="tour"/></div>
                                         <p>관광지</p>
                                     </div>
 
                                     <div class="listTour listTour2">
-                                        
+
                                         <div class="listTourImag"><img th:src="@{/images/accomo.png}" alt="accomo"/></div>
                                         <p>숙박시설</p>
                                     </div>
 
                                     <div class="listTour listTour3">
-                                        
+
                                         <div class="listTourImag"><img th:src="@{/images/food.png}" alt="food"/></div>
                                         <p>식당</p>
                                     </div>
 
                                     <div class="listTour listTour4">
-                                        
+
                                         <div class="listTourImag"><img th:src="@{/images/activity.png}" alt="activity"/></div>
                                         <p>체험</p>
                                     </div>
 
                                     <div class="listTour listTour5">
-                                        
+
                                         <div class="listTourImag"><img th:src="@{/images/hospital.png}" alt="hospital"/></div>
                                         <p>동물병원</p>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
 
                         <div class="mapSearchDown">
@@ -138,6 +139,7 @@
                                     </label>
                                 </form>
                             </div>
+                            <button class="clear" onclick="location.href='/tour'">전체 초기화</button>
 
                             <div class="tourArrow">
                                 <img th:src="@{/images/arrow.png}" />
@@ -156,6 +158,3 @@
       <th:block th:include="component/footer.html"></th:block>
   </div>
   </body>
-
-
- 

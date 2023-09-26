@@ -165,7 +165,7 @@
     white-space  : nowrap;
     overflow:hidden;
     left: 131px;
-    top: 16px;
+    top: -24px;
     width: 330px;
     text-overflow:ellipsis;
 }
@@ -362,3 +362,11 @@
     color: #fff;
 }
 
+
+.nearImageText{
+    white-space  : nowrap;
+    overflow:hidden;
+    width: 300px;
+    text-overflow:ellipsis;
+    margin: 0 auto;
+}

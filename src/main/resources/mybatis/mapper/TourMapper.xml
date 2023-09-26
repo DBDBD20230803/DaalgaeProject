@@ -53,14 +53,50 @@
         FROM TOUR_INFO
     </select>
 
-    <select id="findTourList" resultMap="findTourList">
+    <select id="findPaging" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultType="_int">
+        SELECT COUNT(TOUR_CODE)
+        FROM TOUR_INFO
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="country != '지역' and country != '전체'">
+                <if test="country == '수도'">
+                    AND (ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%')
+                </if>
+                <if test="country != '수도'">
+                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                </if>
+            </if>
+            AND TOUR_CATEGORY NOT LIKE '%동물%'
+        </trim>
+    </select>
+
+    <select id="findTourList" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultMap="findTourList">
         SELECT TOUR_CODE
         ,TOUR_PHOTO
         ,TOUR_TITLE
         ,ADDR
         ,TEL
         FROM TOUR_INFO
-        LIMIT 9
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="country != '지역' and country != '전체'">
+                <if test="country == '수도'">
+                    AND (ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%')
+                </if>
+                <if test="country != '수도'">
+                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                </if>
+            </if>
+            AND TOUR_CATEGORY NOT LIKE '%동물%'
+            <if test="category != 'null'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
+        </trim>
+        LIMIT ${ no }, 9
     </select>
 
     <select id="findTourDetail" resultMap="findTourDetail">
@@ -80,7 +116,7 @@
         ,NOTICE
         ,INTRO
         FROM TOUR_INFO
-        LIMIT 1
+        WHERE TOUR_CODE = #{ no }
     </select>
 
 </mapper>

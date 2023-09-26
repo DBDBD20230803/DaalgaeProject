@@ -1642,20 +1642,20 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
         }
         switch (fineDustLevel) {
             case "1":
-                $('.weatherTemp0').append("대기질 좋음");
-                $('.weatherTemp1').append("대기질 좋음");
-                $('.weatherTemp2').append("대기질 좋음");
+                $('.weatherTemp0').append("미세먼지 좋음");
+                $('.weatherTemp1').append("미세먼지 좋음");
+                $('.weatherTemp2').append("미세먼지 좋음");
                 break;
             case "2":
                 // console.log(11122);
-                $('.weatherTemp0').append("대기질 보통");
-                $('.weatherTemp1').append("대기질 보통");
-                $('.weatherTemp2').append("대기질 보통");
+                $('.weatherTemp0').append("미세먼지 보통");
+                $('.weatherTemp1').append("미세먼지 보통");
+                $('.weatherTemp2').append("미세먼지 보통");
                 break;
             case "3":
-                $('.weatherTemp0').append("대기질 나쁨");
-                $('.weatherTemp1').append("대기질 나쁨");
-                $('.weatherTemp2').append("대기질 나쁨");
+                $('.weatherTemp0').append("미세먼지 나쁨");
+                $('.weatherTemp1').append("미세먼지 나쁨");
+                $('.weatherTemp2').append("미세먼지 나쁨");
                 break;
         }
         switch (weatherNo) {
@@ -2060,7 +2060,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                 }
                                             }
                                             // 4
-                                            let d = data.response.body.items[4].informGrade.split(",");
+                                            /*let d = data.response.body.items[4].informGrade.split(",");
                                             for(let b of d) {
                                                 if(b.substring(0, 2) === addressLevel1.substring(0, 2)) {
                                                     let c = b.indexOf(":");
@@ -2095,7 +2095,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                                     }
                                                     break;
                                                 }
-                                            }
+                                            }*/
                                             localStorage.setItem('savedWeatherLevel', weatherLevel);
                                             localStorage.setItem('savedFineDustLevel', fineDustLevel);
                                             localStorage.setItem('savedWeatherNo', weatherNo);
@@ -2120,18 +2120,18 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                             }
                                             switch (fineDustLevel) {
                                                 case 1:
-                                                    $('.weatherTemp0').append("대기질 좋음");
-                                                    $('.weatherTemp1').append("대기질 좋음");
-                                                    $('.weatherTemp2').append("대기질 좋음");
+                                                    $('.weatherTemp0').append("미세먼지 좋음");
+                                                    $('.weatherTemp1').append("미세먼지 좋음");
+                                                    $('.weatherTemp2').append("미세먼지 좋음");
                                                     break;
                                                 case 2:
-                                                    $('.weatherTemp0').append("대기질 보통");
-                                                    $('.weatherTemp1').append("대기질 보통");
-                                                    $('.weatherTemp2').append("대기질 보통");
+                                                    $('.weatherTemp0').append("미세먼지 보통");
+                                                    $('.weatherTemp1').append("미세먼지 보통");
+                                                    $('.weatherTemp2').append("미세먼지 보통");
                                                     break;
-                                                    $('.weatherTemp0').append("대기질 나쁨");
-                                                    $('.weatherTemp1').append("대기질 나쁨");
-                                                    $('.weatherTemp2').append("대기질 나쁨");
+                                                    $('.weatherTemp0').append("미세먼지 나쁨");
+                                                    $('.weatherTemp1').append("미세먼지 나쁨");
+                                                    $('.weatherTemp2').append("미세먼지 나쁨");
                                                 case 3:
                                                     break;
                                             }
