@@ -218,21 +218,24 @@ public class MemberController {
 
         return "myPage/mypage"; }
 
-   @PostMapping(value = "/updateInfo")
+    @PostMapping(value = "/updateInfo")
     public String modifyMember(@ModelAttribute MemberDTO memberDTO, Model model, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws MemberModifyException {
         System.out.println("파라미ㅓ 넘어왔니;???? : " + memberDTO);
         log.info("제발 나와라!!!!!!!!!!!!!!!! : ====modifyMember=====");
 
-         memberDTO.setMemId(memberDTO.getMemId());
+        memberDTO.setMemId(memberDTO.getMemId());
 
-         String memAdrs = request.getParameter("memAdrs") + "$" + request.getParameter("memAdrsDetail");
-         memberDTO.setMemAdrs(memAdrs);
+        String memAdrs = request.getParameter("memAdrs");
+        memberDTO.setMemAdrs(memAdrs);
 
-         String birthStr = request.getParameter("memBirth");
-         System.out.println("birthStr : " + birthStr);
-         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-         Date memBirth = null;
-         log.info("memBirth:" + memBirth);
+        String memAdrsDetail = request.getParameter("memAdrsDetail");
+        memberDTO.setMemAdrsDetail(memAdrsDetail);
+
+        String birthStr = request.getParameter("memBirth");
+        System.out.println("birthStr : " + birthStr);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date memBirth = null;
+        log.info("memBirth:" + memBirth);
 
 
         try {
@@ -240,10 +243,10 @@ public class MemberController {
                 memBirth = dateFormat.parse(birthStr);
             }
         } catch (ParseException e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         };
-       log.info("memBirth:" + memBirth);
-       memberDTO.setMemBirth(memBirth);
+        log.info("memBirth:" + memBirth);
+        memberDTO.setMemBirth(memBirth);
 
         loginService.modifyMember(memberDTO);
 
@@ -256,9 +259,6 @@ public class MemberController {
         return "/myPage/updateComplete";
     }
 
-    @GetMapping("/updateComplete")
-    public String updateCompleteForm(){
-        return "/login/login";
-    }
+
 
 }
