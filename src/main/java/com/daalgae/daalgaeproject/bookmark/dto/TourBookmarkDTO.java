@@ -8,7 +8,11 @@ import lombok.*;
 @Setter
 @ToString
 public class TourBookmarkDTO {
-    private int postCode;
-    private String postTitle;
-    private String postDate;
+    private int memCode;
+    private int memSeq;
+    private int tourCode;
+    public TourBookmarkDTO(int memCode, int tourCode) {
+        this.memCode = memCode;
+        this.tourCode = tourCode;
+    }
 }

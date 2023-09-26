@@ -1,22 +1,16 @@
 package com.daalgae.daalgaeproject.bookmark.controller;
 
-import com.daalgae.daalgaeproject.bookmark.dto.BookmarkInfoDTO;
 import com.daalgae.daalgaeproject.bookmark.dto.TourBookmarkDTO;
 import com.daalgae.daalgaeproject.bookmark.service.BookmarkService;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Controller
 @Slf4j
@@ -26,19 +20,49 @@ public class TourBookmarkController {
     public TourBookmarkController(BookmarkService bookmarkService) {
         this.bookmarkService = bookmarkService;
     }
-
-    @GetMapping("tour/getTourBookmark")
-    public String getTourBookmark() {
+    /* 게시글, 관광지, 백과사전 번호 추가해야 함 백과사전 코드는 테이블 하나 만들어야 하나? */
+    @GetMapping(value = "tour/getTourBookmark", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public int getTourBookmark(@RequestParam(value = "no") int no) {
+        int isMarked = -1;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(111);
         if (authentication.getPrincipal() instanceof UserImpl) {
             UserImpl user = (UserImpl) authentication.getPrincipal();
             int memCode = user.getMemCode();
-            BookmarkInfoDTO bookmarkInfoDTO = new BookmarkInfoDTO(memCode);
-            System.out.println(memCode);
+            TourBookmarkDTO tourBookmarkDTO = new TourBookmarkDTO(memCode, no);
+            isMarked = bookmarkService.tourIsMarked(tourBookmarkDTO);
         }
+        return isMarked;
+    }
 
-        return "payment/payments";
+    @GetMapping(value = "tour/setTourBookmark", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public int setTourBookmark(@RequestParam(value = "no") int no) {
+        int isMarked = 0;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            int memCode = user.getMemCode();
+
+            TourBookmarkDTO tourBookmarkDTO = new TourBookmarkDTO(memCode, no);
+            isMarked = bookmarkService.setTourMark(tourBookmarkDTO);
+        }
+        return isMarked;
+    }
+
+    @GetMapping(value = "tour/deleteTourBookmark", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public int deleteTourBookmark(@RequestParam(value = "no") int no) {
+        int isMarked = 0;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            int memCode = user.getMemCode();
+
+            TourBookmarkDTO tourBookmarkDTO = new TourBookmarkDTO(memCode, no);
+            isMarked = bookmarkService.deleteTourBookmark(tourBookmarkDTO);
+        }
+        return isMarked;
     }
 
 }
