@@ -14,4 +14,8 @@ public interface BookmarkMapper {
     int setTourMark(TourBookmarkDTO setBookmarkDTO);
 
     int getTourSequence(TourBookmarkDTO tourBookmarkDTO);
+
+    int deleteFromBookmark(int getTourSequence);
+
+    int deleteFromTourSort(int getTourSequence);
 }

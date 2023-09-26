@@ -36,16 +36,25 @@
                     ${ tourCode }, ${ memSeq }, ${ memCode }
                 )
     </insert>
-<!--
-getTourSequence
--->
+
+    <select id="getTourSequence" resultType="_int">
+        SELECT REF_MEM_BOOKMARK_SEQ
+        FROM TOUR_SORT
+        WHERE REF_TOUR_CODE = ${ tourCode } AND REF_MEM_CODE = ${ memCode }
+    </select>
 
     <!-- 참고용 -->
 
-    <delete id="removeReply" parameterType="_int">
+    <delete id="deleteFromBookmark">
         DELETE
-          FROM  POST_REPLY
-         WHERE  POST_REPLY_CODE = #{no}
+          FROM  BOOKMARK_INFO
+         WHERE  MEM_BOOKMARK_SEQ = #{ getTourSequence }
+    </delete>
+
+    <delete id="deleteFromTourSort">
+        DELETE
+        FROM  TOUR_SORT
+        WHERE  REF_MEM_BOOKMARK_SEQ = #{ getTourSequence }
     </delete>
 
 </mapper>

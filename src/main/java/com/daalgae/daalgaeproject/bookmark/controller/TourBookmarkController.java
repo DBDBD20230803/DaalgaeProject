@@ -38,7 +38,7 @@ public class TourBookmarkController {
     @GetMapping(value = "tour/setTourBookmark", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public int setTourBookmark(@RequestParam(value = "no") int no) {
-        int isMarked = 0;
+        int isMarked = -1;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication.getPrincipal() instanceof UserImpl) {
             UserImpl user = (UserImpl) authentication.getPrincipal();
@@ -53,7 +53,7 @@ public class TourBookmarkController {
     @GetMapping(value = "tour/deleteTourBookmark", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public int deleteTourBookmark(@RequestParam(value = "no") int no) {
-        int isMarked = 0;
+        int isMarked = -1;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication.getPrincipal() instanceof UserImpl) {
             UserImpl user = (UserImpl) authentication.getPrincipal();

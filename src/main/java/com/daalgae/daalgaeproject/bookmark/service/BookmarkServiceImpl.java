@@ -38,6 +38,8 @@ public class BookmarkServiceImpl implements BookmarkService {
     public int deleteTourBookmark(TourBookmarkDTO tourBookmarkDTO) {
         int result = -1;
         int getTourSequence = bookmarkMapper.getTourSequence(tourBookmarkDTO);
-        return result;
+        int deleteFromTourSort = bookmarkMapper.deleteFromTourSort(getTourSequence);
+        int deleteFromBookmark = bookmarkMapper.deleteFromBookmark(getTourSequence);
+        return deleteFromBookmark + deleteFromTourSort;
     }
 }

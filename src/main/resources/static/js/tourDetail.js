@@ -175,4 +175,20 @@ $(function () {
             console.log("통신에러3");
         }
     });
+
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    let no = urlParam.get("no");
+    toUrl = "/tour/getTourBookmark?no=" + no;
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
 });
