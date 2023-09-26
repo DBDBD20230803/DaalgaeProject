@@ -110,6 +110,23 @@
         FROM MEM_INFO
         WHERE MEM_ID = #{ memId }
     </select>
+        <!--멤버에 개껌 보유량 추가 하기위한 매핑입니다. -선호 -->
+    <update id="updateMemDogGum" parameterType="com.daalgae.daalgaeproject.member.model.dto.MemberDTO">
+        UPDATE MEM_INFO
+        SET MEM_DOG_GUM = #{ memDogGum }
+        WHERE MEM_CODE = #{ memCode }
+    </update>
+    <select id="getMemberByMemCode" resultType="_int">
+        SELECT MEM_DOG_GUM
+        FROM MEM_INFO
+        WHERE MEM_CODE = #{ memCode }
+    </select>
+
+  <update id="purchaseDogGumus">
+      UPDATE MEM_INFO
+      SET MEM_DOG_GUM = #{ memDogGum }
+      WHERE MEM_CODE = #{ memCode }
+  </update>
 
     <select id="findId" resultMap="loginMemberResultMap">
         SELECT

@@ -2,12 +2,13 @@ package com.daalgae.daalgaeproject.payment.service;
 
 
 import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
+import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.KakaoReady;
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
-import groovy.util.logging.Slf4j;
+import groovy.util.logging.Log4j2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -27,7 +28,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
+@Log4j2
 public class KakaoPayService {
     static final String cid = "TC0ONETIME";
     static final String admin_Key = "7785656bcca2241ab970a65883853a10";
@@ -71,7 +72,7 @@ public class KakaoPayService {
         MultiValueMap<String, Object> parameters = new LinkedMultiValueMap<>();
 
         parameters.add("cid", cid);
-        parameters.add("partner_order_id", "가맹점 주문 번호");
+        parameters.add("partner_order_id", "Dogtype");
         parameters.add("partner_user_id", memCode);
         parameters.add("item_name", itemName);
         parameters.add("quantity", String.valueOf(quantity));
@@ -122,7 +123,7 @@ public class KakaoPayService {
 
         payParams.add("cid", cid);
         payParams.add("tid", kakaoReady.getTid());
-        payParams.add("partner_order_id", "가맹점 주문 번호");
+        payParams.add("partner_order_id", "Dogtype");
         payParams.add("partner_user_id", memCode);
         payParams.add("pg_token", pgToken);
 
@@ -153,43 +154,33 @@ public class KakaoPayService {
     public void orderTranscation(OrderPay orderPay) {
         System.out.println("인서트 하고,");
         System.out.println(orderPay);
+
+        //결제 데이터 insert 했음
         orderPayMapper.orderRegist(orderPay);
 
-/*
-        List<Integer> memberCode = orderPay.getMember()
-                .stream()
-                .map(MemberDTO::getMemCode)
-                .collect(Collectors.toList());
-        System.out.println("memberCode = " + memberCode);
+        try {
+            // userCode 가져와~~~~~
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+            Object principal = authentication.getPrincipal();
+            int memCode = 0;
+            if (principal instanceof UserImpl) {
+                UserImpl user = (UserImpl) principal;
+                memCode = user.getMemCode();
+                System.out.println("가왓냐 ? 가왔냐 ?????? : " + memCode);
 
-        Map<String, List<Integer>> map = new HashMap<>();
-        map.put("memberCode", memberCode);
+                if (user != null) {
+                    int currentDogGum = user.getMemDogGum();
 
-        List<MemberDTO> members = memberMapper.memDogGum(map);
-        System.out.println("members =" + members);
+                    int newDogGum = currentDogGum + orderPay.getMemDogGum();
 
-int totalDogGum = addDogGum(orderPay.getMember());
-        System.out.println("totalDogGum =" + totalDogGum);
-
-        for (MemberDTO member : members) {
-            member.setMemDogGum((member.getMemDogGum() + totalDogGum));
-        }
-
-        for (MemberDTO member : members) {
-            memberMapper.updateMemDogGum(member);
+                    user.setMemDogGum(newDogGum);
+                    memberMapper.updateMemDogGum(user);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("payment processing failed : " + e.getMessage(), e);
         }
     }
 
-    private int addDogGum(List<MemberDTO> orderPays) {
-        int totalDogGum = 0;
-        for (MemberDTO orderPay : orderPays) {
-            totalDogGum += orderPay.getMemDogGum();
-        }
-        return totalDogGum;
-    }
-*/
-
-
-    }
 }

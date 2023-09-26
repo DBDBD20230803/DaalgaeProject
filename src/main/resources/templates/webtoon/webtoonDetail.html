@@ -52,8 +52,8 @@
 <div class="container">
     <div class="webtoonBox1">
         <img th:src="@{/images/denggum.png}" alt="개껌이미지">
-        <div class="webtoontext1">현재 보유한 개껌</div>
-        <div class="webtoonText2">60개</div>
+        <span class="webtoontext1">현재 보유한 개껌</span>
+        <span class="webtoonText2" th:text="${member}"></span><span class="webtoonText2"> 개</span>
     </div>
 </div>
 <br/><br/><br/>

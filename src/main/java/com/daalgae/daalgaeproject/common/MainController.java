@@ -35,24 +35,5 @@ public class MainController {
         return "/allSearch/allSearch";
     }
 
-
-    @GetMapping("webtoon/dengInfo")
-    public String webtoon() {
-        return "/webtoon/dengInfo";
-    }
-    @GetMapping("webtoon/webtoonDetail")
-    public String goWebtoonDetailPage(){
-        return "webtoon/webtoonDetail";
-    }
-    @PostMapping("payment/payments")
-    public String goPayment() {
-        return "payment/payments";
-    }
-
-    @GetMapping("payment/useHistory")
-    public String useHistory(){
-        return "payment/useHistory";
-    }
-
     }
 

@@ -1,13 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layouts/myPageLayout}">
   <head>
+
     <meta charset="utf-8">
     <title>마이페이지</title>
   </head>
 
+
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+
+
+    <!--bootstrap-->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+
+    <!--css-->
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+    <link rel="stylesheet" th:href="@{/css/mypage.css}">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--js-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+
+    <!--favicon--->
+    <link th:href="@{favicon.ico}" rel="icon">
+    <link th:href="@{favicon.ico}" rel="apple-touch-icon">
+
+</head>
+<body>
+<div th:insert="/component/header"></div>
+<section id="myPage">
+    <div class="myPageBg"><h3>마이페이지</h3></div>
+
+    <div class="myPageWrap container">
+
+        <div class="myPageContents">
+            <div class="myPageBoxLeft">
+
+                <div class="myPageProfileImgBox">
+                    <div class="profileImg"></div>
+
+                    <div class="gum"><a href="">100 <img src="/images/gum.png" alt="gum"></a></div>
+                    <form action="single-file" method="post" enctype="multipart/form-data">
+                        <label for="profileChange">
+                            <div class="changeFileImgage">프로필 사진 변경</div>
+                        </label>
+                        <input type="file" name="profileChange" value="profileChange" id="profileChange"/>
+                        <div class="introPet">
+                            <p class="introPetTitle">
 
   <th:block layout:fragment="content">
         <section id="myPage">
@@ -32,33 +88,111 @@
                                                 <span>
                                                     <img src="/images/paw.png" alt="paw">
                                                 </span>
-                                                반려견 소개
-                                            </p>
-                                            <label for="introPetEdit">
-                                                <div class="petEditIcon"><img src="/images/complete.png" alt="edit"></div>
-                                            </label>
-                                            <input type="submit" name="introPetEdit" value="introPetEdit" id="introPetEdit"/>
-                                        </div>
-                                        <textarea class="profileText" placeholder="반려견을 소개해주세요."></textarea>
-                                    </form>
-                            </div>
+                                반려견 소개
+                            </p>
+                            <label for="introPetEdit">
+                                <div class="petEditIcon"><img src="/images/complete.png" alt="edit"></div>
+                            </label>
+                            <input type="submit" name="introPetEdit" value="introPetEdit" id="introPetEdit"/>
+                        </div>
+                        <textarea class="profileText" placeholder="반려견을 소개해주세요."></textarea>
+                    </form>
+                </div>
 
-                            <div class="myPageHistory">
-                                <div class="activityHistory"><a href="">활동 내역</a></div>
-                                <div class="payHistory"><a href="">결제 내역</a></div>
-                                <form action="" method="post">
-                                    <input type="button" name="changePwd" id="changePwd" readonly value="비밀번호 수정" />
-                                    <input type="button" name="activityHistory" id="resign" readonly value="탈퇴"/>
-                                </form>
-                            </div>
+                <div class="myPageHistory">
+                    <div class="activityHistory"><a href="">활동 내역</a></div>
+                    <div class="payHistory">
+                        <form action="/payment/useHistory" method="get">
+                            <button>결제 내역</button>
+                        </form>
+                    </div>
+                    <form action="" method="post">
+                        <input type="button" name="changePwd" id="changePwd" readonly value="비밀번호 수정"/>
+                        <input type="button" name="activityHistory" id="resign" readonly value="탈퇴"/>
+                    </form>
+                </div>
 
+            </div>
+
+
+            <div class="myPageBoxRight">
+                <p>기본 정보</p>
+
+                <form class="myIdBox">
+                    <input type="text" name="myId" id="myId" value="dogtype376" class="myId" readonly/>
+                    <input type="submit" id="myInfoChange" class="myInfoChange" name="myInfoChange" value="완료"/>
+                </form>
+
+
+                <div class="myInfo">
+                    <form action="" method="post">
+
+                        <div class="myInfo1">
+                            <div class="myInfoTitle"><img src="/images/email.png" alt="email"> &nbsp;&nbsp;이메일</div>
+
+                            <div class="myInfoInputs myInfo1Inputs">
+                                <label for="myEmail"></label>
+                                <input type="text" id="myEmail" name="myEmail" value="dogtype376@daalgae.com" readonly/>
+                            </div>
                         </div>
 
+                        <div class="myInfo2">
+                            <div class="myInfoTitle"><img src="/images/name.png" alt="name"> &nbsp;&nbsp;이름</div>
+
+                            <div class="myInfoInputs myInfo2Inputs">
+                                <label for="myName"></label>
+                                <input type="text" id="myName" name="myName" readonly value="이소망"/>
+                            </div>
+                        </div>
+
+                        <div class="myInfo3">
+                            <div class="myInfoTitle"><img src="/images/adress.png" alt="adress"> &nbsp;&nbsp;주소지</div>
+
+                            <div class="myInfoInputs myInfo3Inputs">
+                                <label for="myAdress"></label>
+                                <input type="text" id="myAdress" name="myAdress" readonly
+                                       value="서울 종로구 인사동길 12 대일빌딩 7층"/>
+                            </div>
+                        </div>
+
+                        <div class="myInfo4">
+                            <div class="myInfoTitle"><img src="/images/birth.png" alt="birth"> &nbsp;&nbsp;생년월일</div>
+
+                            <div class="myInfoInputs myInfo4Inputs">
+                                <label for="myBirth"></label>
+                                <input type="date" id="myBirth" name="myBirth" readonly value="2022-12-07"/>
+                            </div>
+                        </div>
+
+                        <div class="myInfo5">
+                            <div class="myInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+
+                            <div class="myInfoInputs myInfo5Inputs">
+                                <label for="myPet"></label>
+                                <input type="text" id="myPet" name="myPet" placeholder="반려견을 등록해주세요." readonly/>
+                            </div>
+                            <div class="spreadBtn spreadBtn1">접기 <i class="xi-angle-up-thin xi-x"></i></div>
+                        </div>
+
+                    </form>
+                </div>
 
 
-                        <div class="myPageBoxRight">
-                            <p>기본 정보</p>
 
+                <div class="dogInfo">
+
+                    <div class="dogInfoMore">
+                        <form action="" method="post" class="dogInfoMoreContent">
+
+                            <div class="petInfo1">
+                                <div class="petName">
+                                    <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견
+                                    </div>
+                                    <input type="text" name="petName" id="petName" class="petInput"/>
+                                </div>
+
+                                <div class="petBreed">
+                                    <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종
                             <div class="myInfo">
                                 <form th:action="@{/myPage/updateInfo}" method="post" class="myPageSubmit">
 
@@ -85,10 +219,15 @@
                                             <input type="text" id="myName" name="memName" readonly th:value="${#authentication.getPrincipal().getMemName()}"/>
                                         </div>
                                     </div>
+                                    <input type="text" name="petBreedName" id="petBreedName" class="petInput"/>
+                                </div>
+                            </div>
 
-                                    <div class="myInfo3">
-                                        <div class="myInfoTitle"><img src="/images/adress.png" alt="adress"> &nbsp;&nbsp;주소지</div>
 
+                            <div class="petInfo2">
+                                <div class="petBirth">
+                                    <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp;
+                                        생년월일
                                         <div class="myInfoInputs myInfo3Inputs">
                                             <label for="myAdress"></label>
                                             <input type="text" id="myAdress" name="memAdrs" readonly th:value="${#authentication.getPrincipal().getMemAdrs()}" class="changeInputs"/>
@@ -103,7 +242,13 @@
                                             <input type="text" id="myAdress2" name="memAdrsDetail" readonly th:value="${#authentication.getPrincipal().getMemAdrsDetail()}" class="changeInputs"/>
                                         </div>
                                     </div>
+                                    <input type="date" name="petBirthDay" id="petBirthDay" class="petInput"/>
+                                </div>
 
+
+                                <div class="petGender">
+                                    <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp;
+                                        성별
                                     <div class="myInfo4">
                                         <div class="myInfoTitle"><img src="/images/birth.png" alt="birth"> &nbsp;&nbsp;생년월일</div>
                                         
@@ -112,20 +257,30 @@
                                             <input type="date" id="myBirth" name="memBirth" readonly th:value="${#dates.format(#authentication.getPrincipal().getMemBirth(), 'yyyy-MM-dd')}" class="changeInputs"/>
                                         </div>
                                     </div>
-
-                                    <div class="myInfo5">
-                                        <div class="myInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
-
-                                        <div class="myInfoInputs myInfo5Inputs">
-                                            <label for="myPet"></label>
-                                            <input type="text" id="myPet" name="myPet" placeholder="반려견을 등록해주세요." readonly/>
-                                        </div>
-                                        <div class="spreadBtn spreadBtn1">접기 <i class="xi-angle-up-thin xi-x"></i></div>
-                                    </div>
-                                  
-                                </form>
+                                    <select name="petGenderAnswer" id="petGenderAnswer" class="petSelect">
+                                        <option value="female">female</option>
+                                        <option value="male">male</option>
+                                    </select>
+                                </div>
                             </div>
 
+
+                            <div class="petInfo3">
+                                <div class="petOper">
+                                    <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp;
+                                        중성화
+                                    </div>
+                                    <select name="petOperAnswer" id="petOperAnswer" class="petSelect">
+                                        <option value="Y">Y</option>
+                                        <option value="N">N</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="petWeight">
+                                    <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게
+                                    </div>
+                                    <input type="text" name="petWeightAnswer" id="petWeightAnswer" class="petInput"/>
 
                             <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                             <script th:inline="javascript">
@@ -199,27 +354,43 @@
 
                                     </form>
                                 </div>
-                            
                             </div>
 
-                            <div class="addPet">
-                                <form action="" method="post">
-                                    <label for="addPetBtn"></label>
-                                    <input type="button" name="addPetBtn" id="addPetBtn" class="addPetBtn" value="반려견 추가하기"/> 
-                                </form>
-                            </div>
-
-                        </div>
+                            <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="수정완료"
+                                                           required/></div>
 
 
-                        <div class="goToMain"><a th:href="@{/}">메인 페이지로 돌아가기</a></div>
 
-                    </div>    
+                        </form>
+                    </div>
 
-                
+                </div>
+
+                <div class="addPet">
+                    <form action="" method="post">
+                        <label for="addPetBtn"></label>
+                        <input type="button" name="addPetBtn" id="addPetBtn" class="addPetBtn" value="반려견 추가하기"/>
+                    </form>
+                </div>
+
             </div>
-        </section>
+
+
+
+            <div class="goToMain"><a th:href="@{/}">메인 페이지로 돌아가기</a></div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<script src="/js/mypage.js"></script>
+<div th:insert="/component/footer"></div>
+</body>
+
 
       </th:block>
+
 
   </html>
