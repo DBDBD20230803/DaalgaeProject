@@ -40,7 +40,6 @@
     <!--favicon--->
     <link href="favicon.ico" rel="icon">
     <link href="favicon.ico" rel="apple-touch-icon">
-    <script type="text/javascript" th:src="@{/js/tour.js}"></script>
 
 </head>
 
@@ -71,7 +70,7 @@
             </div>
         </div>
         <div class="webtoonBox5">
-            <form action="/webtoon/purchaseDogGum" method="POST">
+            <form>
                 <input id="memberValue" th:value="${member}" type="hidden">
             <button id="button4" class="webtoonText9" type="submit">구매하기</button>
             </form>
@@ -119,7 +118,7 @@
             </div>
         </div>
         <div class="webtoonBox5">
-            <form onsubmit="return buyGum()">
+            <form>
                 <input id="memberValue1" th:value="${member}" type="hidden">
                 <button id="button5" class="webtoonText9" type="submit">구매하기</button>
             </form>
