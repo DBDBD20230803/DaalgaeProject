@@ -92,6 +92,9 @@
                 </if>
             </if>
             AND TOUR_CATEGORY NOT LIKE '%동물%'
+            <if test="category != 'null'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
         </trim>
         LIMIT ${ no }, 9
     </select>
