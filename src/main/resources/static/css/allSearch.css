@@ -10,19 +10,6 @@
     }
 }
 
-@media (min-width: 1050px) {
-    .tourLocMap {
-        width: 1025px;
-        height: 600px;
-    }
-}
-@media (max-width: 1050px) {
-    .tourLocMap {
-        width: 500px;
-        height: 500px;
-    }
-}
-
 @media (max-width: 1068px) {
     .imageAndText {
         max-width: 500px;
@@ -278,11 +265,6 @@ input:focus {
     position: relative;
     float: right;
     top: 10px;
-}
-
-.tourLocMap {
-    position: relative;
-    margin: 0 auto;
 }
 
 .hospitalExcept {

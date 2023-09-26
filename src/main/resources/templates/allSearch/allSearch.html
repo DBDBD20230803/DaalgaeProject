@@ -70,7 +70,7 @@
         <button onclick="location.href='#searchAccomo'" class="optionButton">숙박시설 (3)</button>
         <button onclick="location.href='#searchCafe'" class="optionButton">식당 및 카페 (0)</button>
         <button onclick="location.href='#searchActivity'" class="optionButton">체험 활동 (0)</button>
-        <button onclick="location.href='#dogHospital'" class="optionButton">동물병원</button>
+        <button onclick="location.href='#dogHospital'" class="optionButton">동물병원 (0)</button>
         <button onclick="location.href='#bulletin'" class="optionButton">게시판 (0)</button>
     </div>
 </div>
@@ -80,7 +80,7 @@
 
 <p class="imageAndText">
 
-    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />관광지 (3) <span class="hospitalExcept">&nbsp;&nbsp; *동물병원 제외</span>
+    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />관광지 (3)
     <button onclick="allSearchDetail()" class="plusDetail">
         <img th:src="@{/images/plusDetail.png}" />
     </button>
@@ -173,21 +173,33 @@
 <div class="allSearchWhiteSpace" id="dogHospital"></div>
 <div class="allSearchWhiteSpace"></div>
 <p class="imageAndText">
-    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />동물병원
+    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />동물병원 (0)
     <button onclick="allSearchDetail()" class="plusDetail">
         <img th:src="@{/images/plusDetail.png}" />
     </button>
 </p>
+
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>
 
-<div id="map" class="tourLocMap"></div>
+<div class="tourBoard">
+    <div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail'">
+        <img class="tourBoardUnitThumbnail" src="/images/dogPhoto1.png" />
+        <div class="tourBoardUnitDesc">
+            <div class="locationName">장소이름</div>
+            <img class="locationLoc" th:src="@{/images/location.png}" />
+            <div class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239 11111111111111111111111111111111111111111111111111</div>
+            <img class="telNumber" th:src="@{/images/phone.png}" />
+            <div class="telNums">033-572-3011</div>
+        </div></button>
+    </div>
+</div>
 
 <div class="allSearchWhiteSpace" id="bulletin"></div>
 <div class="allSearchWhiteSpace"></div>
 <p class="imageAndText">
-    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />게시판
+    <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />게시판 (0)
 </p>
 <div class="allSearchWhiteSpace"></div>
 <div class="allSearchWhiteSpace"></div>

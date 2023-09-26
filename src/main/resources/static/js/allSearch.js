@@ -28,20 +28,6 @@ $(document).ready( function() {
     const urlParam = urlObject.searchParams;
     $('#allSearchBox').val(urlParam.get("keyword"));
 
-    /* 카카오 지도*/
-    let userX = Number(localStorage.getItem("userX"));
-    let userY = Number(localStorage.getItem("userY"));
-    let container = document.getElementById('map');
-    console.log(userX);
-    console.log(userY);
-    let options = {
-        center: new kakao.maps.LatLng(37.5652352-1.6, 126.9858304),
-        level: 13
-    };
-
-    let map = new kakao.maps.Map(container, options);
-    map.relayout();
-
     let category = "";
 
     $.ajax({
