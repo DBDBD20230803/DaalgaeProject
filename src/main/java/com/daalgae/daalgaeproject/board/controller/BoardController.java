@@ -1,5 +1,7 @@
 package com.daalgae.daalgaeproject.board.controller;
 
+import com.daalgae.daalgaeproject.api.ApiExplorer;
+import com.daalgae.daalgaeproject.board.dto.AbanInfoDTO;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.board.service.BoardServiceImpl;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -182,9 +185,40 @@ public class BoardController {
         return ResponseEntity.ok(replyList);
     }
 
-    @GetMapping("/abandonedBoard")
-    public ModelAndView abandonedBoardMain(ModelAndView mv) {
-        mv.setViewName("board/abandonedBoard");
+    @GetMapping("/abanBoard")
+    public ModelAndView abanBoardMain(ModelAndView mv
+                                      ,@RequestParam(required = false) String searchCondition
+                                      , @RequestParam(required = false) String searchValue
+                                      , @RequestParam(value="currentPage", defaultValue = "1") int pageNo) throws IOException {
+
+        ApiExplorer abanApi = new ApiExplorer();
+
+        Map<String, String> searchMap = new HashMap<>();
+        searchMap.put("searchCondition", searchCondition);
+        searchMap.put("searchValue", searchValue);
+
+        SelectCriteria selectCriteria = null;
+
+        int totalCount = 0;
+
+
+        List<AbanInfoDTO> abanInfoList = abanApi.abanInfo(pageNo);
+        mv.addObject("abanInfoList", abanInfoList);
+        totalCount = abanInfoList.get(0).getTotalCount();
+
+
+        int limit = 9;
+
+        int buttonAmount = 5;
+
+        if(searchCondition != null && !"".equals(searchCondition)) {
+            selectCriteria = Pagenation.getSelectCriteriaAban(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
+        } else {
+            selectCriteria = Pagenation.getSelectCriteriaAban(pageNo, totalCount, limit, buttonAmount);
+        }
+
+        mv.addObject("selectCriteria", selectCriteria);
+        mv.setViewName("board/abanBoard");
         return mv;
     }
 

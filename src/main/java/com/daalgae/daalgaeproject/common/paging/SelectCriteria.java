@@ -33,6 +33,22 @@ public class SelectCriteria {
         this.postType = postType;
     }
 
+    public SelectCriteria(int pageNo, int totalCount, int limit, int buttonAmount, int maxPage, int startPage,
+                          int endPage, int startRow, int endRow, String searchCondition, String searchValue) {
+        super();
+        this.pageNo = pageNo;
+        this.totalCount = totalCount;
+        this.limit = limit;
+        this.buttonAmount = buttonAmount;
+        this.maxPage = maxPage;
+        this.startPage = startPage;
+        this.endPage = endPage;
+        this.startRow = startRow;
+        this.endRow = endRow;
+        this.searchCondition = searchCondition;
+        this.searchValue = searchValue;
+    }
+
     public int getPageNo() {
         return pageNo;
     }

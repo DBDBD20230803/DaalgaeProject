@@ -115,7 +115,7 @@
 
     console.log('BoardNo : ', boardNo);
     console.log('replyBody : ', replyBody);
-    alert("댓글을 달았습니다요~ 😊")
+    alert("댓글을 달았습니다~ 😊")
 
     fetch("/board/registReply", {
     method: "POST",
@@ -169,7 +169,7 @@
     function removeReply(replyCode){
 
     let boardNo = document.getElementById("boardNo").value;
-    alert("그래요. 그런 댓글은 차라리 지우는게 나아요 😅")
+    alert("댓글을 삭제했습니다.")
 
     fetch("/board/removeReply", {
     method: "DELETE",
@@ -339,6 +339,22 @@
 
     function navigateToBoastPage0() {
         window.location.href = '/board/boastBoard';
+    }
+
+    function navigateToAbanPage0() {
+        window.location.href = '/board/abanBoard';
+    }
+
+    function navigateToAbanPage1() {
+        window.location.href = '/board/abanBoardCenter';
+    }
+
+    function navigateToAbanPage2() {
+        window.location.href = '/board/abanAdoptInfo';
+    }
+
+    function navigateToAbanPage3() {
+        window.location.href = '/board/abanPickupInfo';
     }
 
     document.querySelectorAll('.image-link').forEach(function(link) {

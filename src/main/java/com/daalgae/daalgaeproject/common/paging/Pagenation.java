@@ -57,4 +57,41 @@ public class Pagenation {
 
         return selectCriteria;
     }
+
+    public static SelectCriteria getSelectCriteriaAban(int pageNo, int totalCount, int limit, int buttonAmount) {
+
+        return getSelectCriteriaAban(pageNo, totalCount, limit, buttonAmount, null, null);
+    }
+
+    public static SelectCriteria getSelectCriteriaAban(int pageNo, int totalCount, int limit, int buttonAmount, String searchCondition, String searchValue) {
+
+        int maxPage;
+        int startPage;
+        int endPage;
+        int startRow;
+        int endRow;
+
+        maxPage = (int) Math.ceil((double) totalCount / limit);
+
+        startPage = (int) Math.floor((double) (pageNo - 1) / buttonAmount) * buttonAmount + 1;
+
+        endPage = startPage + buttonAmount - 1;
+
+        if(maxPage < endPage){
+            endPage = maxPage;
+        }
+
+        if(maxPage == 0 && endPage == 0) {
+            maxPage = startPage;
+            endPage = startPage;
+        }
+
+        startRow = (pageNo - 1) * limit;
+        endRow = startRow + limit - 1;
+
+
+        SelectCriteria selectCriteria = new SelectCriteria(pageNo, totalCount, limit, buttonAmount ,maxPage, startPage, endPage, startRow, endRow, searchCondition, searchValue);
+
+        return selectCriteria;
+    }
 }
