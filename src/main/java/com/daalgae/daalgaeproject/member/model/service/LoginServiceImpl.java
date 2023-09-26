@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.member.model.service;
 
+import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.mail.MailHandler;
 import com.daalgae.daalgaeproject.member.mail.TempKey;
@@ -15,17 +16,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import java.util.*;
 
 
 @Service
@@ -81,6 +78,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         boolean mailAuth = member.getMailAuth() == 1;
+        log.info("membId : " + memId);
 
         UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, authorities);
         user.setDetails(member);
@@ -153,6 +151,62 @@ public class LoginServiceImpl implements LoginService {
     @Transactional
     public int emailAuthFail(String id) {
         return memberDAO.emailAuthFail(id);
+    }
+
+    @Transactional
+    public List<MemberDTO> findId(MemberDTO memberDTO) {
+        log.info("memberDTO : " + memberDTO + "왜안나와!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        return memberDAO.findId(memberDTO);
+    }
+
+    @Transactional
+    public int getFindUserResult(MemberDTO memberDTO) {
+        return memberDAO.getFindUserResult(memberDTO);
+    }
+
+    @Transactional
+    public void findPass(MemberDTO memberDTO) throws MessagingException, UnsupportedEncodingException {
+        log.info("MemberServiceImpl.findPass ==================");
+
+        if(getFindUserResult(memberDTO) == 1){
+
+            String pass = new TempKey().getKey(15, false);
+
+            String encPassword = passwordEncoder.encode(pass);
+
+            memberDTO.setMemPwd(encPassword);
+            memberDAO.updateRandomPass(memberDTO);
+
+            MailHandler sendMail = new MailHandler(mailSender);
+            sendMail.setSubject("[뭐든다알개 임시비밀번호 입니다.]");
+            sendMail.setText(
+                    "<h1>뭐든 다알개 임시비밀번호</h1>" +
+                            "<br>회원님의 임시비밀번호입니다." +
+                            "<br><b>" + pass + "</b>" +
+                            "<br>로그인 후 반드시 비밀번호를 변경해주세요!!");
+            sendMail.setFrom("daalgae@naver.com", "뭐든다알개");
+            sendMail.setTo(memberDTO.getMemEmail());
+            sendMail.send();
+            log.info("비밀번호 찾기 메일 발송 성공!");
+        }
+    }
+
+    @Transactional
+    public MemberDTO mypageRead(String memId){
+        log.info("작동 되는거 맞니?????????????????????");
+        log.info("memId : " + memId);
+        return memberDAO.mypageRead(memId);
+    }
+
+
+    @Transactional
+    public void modifyMember(MemberDTO memberDTO) throws MemberModifyException{
+        System.out.println("회원 수정 정보 넘겨주니 ?? : " + memberDTO);
+        int result = memberDAO.modifyMember(memberDTO);
+
+        if(!(result > 0)) {
+            throw new MemberModifyException("회원 정보 수정에 실패하셨습니다.");
+        }
     }
 }
 

@@ -21,7 +21,14 @@ mybatis:
   mapper-locations: mybatis/mapper/**/*.xml
   type-aliases-package: com.daalgae.daalgaeproject
 
+
 image:
   image-dir: img
 
 #이미지업로드를 위해서 공통 파일 수정하였습니다. (유빈)
+
+
+#logging:
+  #level:
+    #root: DEBUG
+
