@@ -5,6 +5,8 @@ import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
+import com.daalgae.daalgaeproject.pet.model.dto.PetDTO;
+import com.daalgae.daalgaeproject.pet.model.servie.PetServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,9 +38,11 @@ public class MemberController {
     private  final PasswordEncoder passwordEncoder;
     private final LoginServiceImpl loginService;
 
-    public MemberController(PasswordEncoder passwordEncoder, LoginServiceImpl loginService) {
+    private final PetServiceImpl petService;
+    public MemberController(PasswordEncoder passwordEncoder, LoginServiceImpl loginService, PetServiceImpl petService) {
         this.passwordEncoder = passwordEncoder;
         this.loginService = loginService;
+        this.petService = petService;
     }
 
     @GetMapping("/login")
@@ -215,6 +219,14 @@ public class MemberController {
         MemberDTO memberDTO = loginService.mypageRead(memId);
         model.addAttribute("member", memberDTO);
         log.info("memberDTO : " + memberDTO);
+
+
+        int memCode = memberDTO.getMemCode();
+        List<PetDTO> petList = petService.getPetInfoByMemCode(memCode);
+        model.addAttribute("petList", petList);
+        log.info("memCode : " + memCode);
+        log.info("petList : " + petList);
+
 
         return "myPage/mypage"; }
 

@@ -21,7 +21,7 @@
                     <div class="myPageProfileImgBox">
                         <div class="profileImg"></div>
 
-                        <div class="gum"><a th:href="@{/payment/useHistory}"><span th:text="${member?.memDogGum}"></span> <img src="/images/gum.png" alt="gum"></a></div>
+                        <div class="gum"><a th:href="@{/payment/useHistory}"><span th:text="${#authentication.getPrincipal().getMemDogGum()}"></span> <img src="/images/gum.png" alt="gum"></a></div>
                         <form action="single-file" method="post" enctype="multipart/form-data">
                             <label for="profileChange">
                                 <div class="changeFileImgage">프로필 사진 변경</div>
@@ -39,7 +39,7 @@
                                 </label>
                                 <input type="submit" name="introPetEdit" value="introPetEdit" id="introPetEdit"/>
                             </div>
-                            <textarea class="profileText" placeholder="반려견을 소개해주세요."></textarea>
+                            <textarea class="profileText" name="petIntroduce" placeholder="반려견을 소개해주세요."></textarea>
                         </form>
                     </div>
 
@@ -118,7 +118,7 @@
 
                                 <div class="myInfoInputs myInfo5Inputs">
                                     <label for="myPet"></label>
-                                    <input type="text" id="myPet" name="myPet" placeholder="반려견을 등록해주세요." readonly/>
+                                    <input type="text" id="myPet" name="petNick" placeholder="반려견을 등록해주세요." th:value="${petNick}" readonly/>
                                 </div>
                                 <div class="spreadBtn spreadBtn1">접기 <i class="xi-angle-up-thin xi-x"></i></div>
                             </div>
@@ -153,12 +153,14 @@
                                 <div class="petInfo1">
                                     <div class="petName">
                                         <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
-                                        <input type="text" name="petName" id="petName" class="petInput"/>
+                                        <input type="text" name="petNick" id="petName" class="petInput" th:value="${petNick}"/>
+                                        <input type="hidden" name="refMemCode" id="refMemCode" th:value="${#authentication.getPrincipal().getMemCode()}">
                                     </div>
+
 
                                     <div class="petBreed">
                                         <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
-                                        <input type="text" name="petBreedName" id="petBreedName" class="petInput"/>
+                                        <input type="text" name="petKind" id="petBreedName" class="petInput" th:value="${petKind}"/>
                                     </div>
                                 </div>
 
@@ -166,15 +168,18 @@
                                 <div class="petInfo2">
                                     <div class="petBirth">
                                         <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
-                                        <input type="date" name="petBirthDay" id="petBirthDay" class="petInput"/>
+                                        <input type="date" name="petBirth" id="petBirthDay" class="petInput" th:value="${petListpetBirth}"/>
                                     </div>
 
                                     <div class="petGender">
                                         <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
-                                        <select name="petGenderAnswer" id="petGenderAnswer" class="petSelect">
-                                            <option value="female">female</option>
-                                            <option value="male">male</option>
+                                        <select name="petGender" id="petGenderAnswer" class="petSelect">
+                                            <option th:value="female">female</option>
+                                            <option th:value="male">male</option>
                                         </select>
+                                        <script th:inline="javascript">
+                                            let petGenderAnswer = $("#petGenderAnswer").val(petGenderAnswer);
+                                        </script>
                                     </div>
                                 </div>
 
@@ -182,19 +187,22 @@
                                 <div class="petInfo3">
                                     <div class="petOper">
                                         <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
-                                        <select name="petOperAnswer" id="petOperAnswer" class="petSelect">
-                                            <option value="Y">Y</option>
-                                            <option value="N">N</option>
+                                        <select name="petNeutered" id="petOperAnswer" class="petSelect">
+                                            <option th:value="Y">Y</option>
+                                            <option th:value="N">N</option>
                                         </select>
+                                        <script th:inline="javascript">
+                                            let petNeutered = $("#petGenderAnswer").val(petNeutered);
+                                        </script>
                                     </div>
 
                                     <div class="petWeight">
                                         <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
-                                        <input type="text" name="petWeightAnswer" id="petWeightAnswer" class="petInput"/>
+                                        <input type="text" name="petWeight" id="petWeightAnswer" class="petInput" th:value="${petWeight}"/>
                                     </div>
                                 </div>
 
-                                <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="수정" required/></div>
+                                <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="완료" required/></div>
 
 
                             </form>

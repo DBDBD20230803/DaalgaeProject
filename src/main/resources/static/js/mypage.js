@@ -50,4 +50,38 @@ spreadBtn.addEventListener('click', function (){
 
 
 
+
+
+
+    $(function (){
+
+        $("#addDoneBtn").click(function (){
+
+            let formData = {
+                petNick: $("#petName").val(),
+                petKind: $("#petBreedName").val(),
+                petBirth: $("#petBirthDay").val(),
+                petGender: $("#petGenderAnswer").val(),
+                petNeutered: $("#petOperAnswer").val(),
+                petWeight: $("#petWeightAnswer").val()
+            };
+
+
+            $.ajax({
+                type:"POST",
+                url:"/pet/insertPetInfo",
+                data: JSON.stringify(formData),
+                contentType: "application/json; charset=UTF-8",
+
+                success: function (data, textStatus, xhr){
+                    console.log("반려견 정보가 성공적으로 등록되었습니다🐶.!!")
+                },
+                error: function (xhr, status, error){
+                    console.log("20230926.오류발발 1차: " + error.responseText);
+                }
+            })
+        });
+    });
+
+
 })(jQuery);
