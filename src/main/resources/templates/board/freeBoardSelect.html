@@ -19,16 +19,19 @@
         <div class="board-searchBar">
             <div class="board-category-container">
                 <div class="board-category">
-                    <button onclick="navigateToPage0()">전체</button>
+                    <button onclick="navigateToFreePage0()" class="category-button" id="btn0">전체</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToPage1()">자유</button>
+                    <button onclick="navigateToFreePage1()" class="category-button" id="btn1">자유</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToPage2()">먹거리</button>
+                    <button onclick="navigateToFreePage2()" class="category-button" id="btn2">먹거리</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToPage3()">용품</button>
+                    <button onclick="navigateToFreePage3()" class="category-button" id="btn3">용품</button>
+                </div>
+                <div class="board-category">
+                    <button onclick="navigateToFreePage4()" class="category-button" id="btn4">정보</button>
                 </div>
             </div>
             <form id="searchForm" th:action="@{/board/freeBoard}" method="get">
@@ -36,8 +39,7 @@
                 <div class="search-buttons">
                     <div class="head-title-category">
                         <select name="searchCondition" id="searchCondition">
-                            <option selected>검색조건</option>
-                            <option value="postTitle">제목</option>
+                            <option value="postTitle" selected>제목</option>
                             <option value="postContent">내용</option>
                             <option value="postTitleContent">제목 + 내용</option>
                             <option value="postWriter">작성자</option>
@@ -46,7 +48,7 @@
 
                     <div class="search-by-text">
                         <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                        <input type="search" name="searchValue" id="searchValueInput">
+                        <input type="search" name="searchValue" id="searchValueInput" class="searchText">
                     </div>
                     <div class="submit-button">
                         <button type="submit" id="searchButton">검색</button>
@@ -66,28 +68,70 @@
                 </button>
             </div>
         </div>
-        <div class="board-content-select-container" id="post">
+        <div class="board-content-select-container">
             <div class="board-content-title" th:each="board : ${ board }">
-                <h6 class="postNo" th:text="${board.postCode}"></h6>
+                <h6 class="postNo" name="postCode" id="postCode" th:text="${board.postCode}"></h6>
                 <h6 class="postCategory" th:text="${board.postSort}"></h6>
-<!--                <h6 class="postTitle" id="postTitle" th:text="${board.postTitle}"></h6>-->
-                <input class="postTitle" id="postTitle" type="text" th:value="${board.postTitle}" readonly />
+                <input class="postTitle" id="postTitle" name="postTitle" type="text" th:value="${board.postTitle}" readonly />
                 <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
                 <h6 class="postCount" th:text="${board.postCount}"></h6>
                 <h6 class="postDate" th:text="${board.postDate}"></h6>
             </div>
             <div class="board-select-content">
+                <div class="board-content-image">
+                    <th:block th:if="${ board.attachmentList.size() > 0 }">
+                        <div>
+                            <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="titleImg" th:src="@{|/thumbPath${board.attachmentList[0].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg1" th:src="@{|/thumbPath${board.attachmentList[1].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                        </div>
+                        <div>
+                            <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg2" th:src="@{|/thumbPath${board.attachmentList[2].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                            <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                                <a href="#" class="image-link" th:data-image-src="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download>
+                                    <img class="board-content-image-img" id="detailImg3" th:src="@{|/thumbPath${board.attachmentList[3].attachThumbAddr}|}"/>
+                                </a>
+                            </th:block>
+                        </div>
+                    </th:block>
+                </div>
                 <div class="board-textarea">
-                    <textarea
-                            name="body"
-                            cols="120"
-                            rows="15"
-                            readonly
-                            id="postContent"
-                            th:text="${board.postContent}"
-                    >
-                    </textarea>
-
+                    <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)" ></textarea>
+                </div>
+                <div class="imgDownload">
+                    <th:block th:if="${ board.attachmentList.size() > 0 }">
+                        <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[0].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[0].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 2 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[1].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[1].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 3 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[2].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[2].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                        <th:block th:if="${ board.attachmentList.size() >= 4 }">
+                            <a th:href="@{|/imagePath/${board.attachmentList[3].attachDbName}|}" download>
+                                <span th:text="${ board.attachmentList[3].attachOriginName }"></span>
+                            </a>
+                        </th:block>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -98,14 +142,16 @@
             </div>
 
             <div class="write-comment" id="replyWrite">
-                <input type="hidden" id="boardNo" th:value="${board.postCode}">
+                <input type="hidden" th:value="${board.postCode}">
                 <div class="write-comment-info">
-                    <h6>*내용(0 / 300자)</h6>
-                    <!-- 타이핑하는 텍스트에 따라 유동적으로 변하게 하기 -->
-                </div>
+                    <h6>*내용(
+                        <span id="charCount">0</span>
+                        / 150자)</h6>
+                 </div>
                 <div class="write-comment-content">
-                    <textarea name="comment" id="replyBody" cols="30" rows="10"></textarea>
+                    <textarea name="comment" id="replyBody" cols="30" rows="10" oninput="countCharacters()"></textarea>
                 </div>
+                <!-- 진짜 150자 초과는 submit을 못하게 하기 -->
                 <div class="write-comment-button">
                     <button type="button" id="registReply">댓글달기</button>
                 </div>
@@ -116,7 +162,7 @@
 
                     <th:block th:each="reply : ${replyList}">
 
-                    <div class="replyListTr comment-content">
+                    <div class="comment-content">
                         <input type="hidden" id="${ reply.replyCode }" th:value="${ reply.replyCode }">
                         <div id="reply-writer" th:text="${ reply.replyWriterDetail.memId }"></div>
                         <div id="reply-body" th:text="${ reply.replyCon}"></div>
@@ -146,8 +192,8 @@
             </div>
 
             <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
-                <form th:action="@{/board/deletePost}" id="boardDeleteForm" method="post">
-                    <input type="hidden" name="postCode" th:value="${board.postCode}">
+                <form th:action="@{/board/deletePostFree}" id="boardDeleteForm" method="post">
+                    <input type="hidden" name="postCode" id="boardNo" th:value="${board.postCode}">
                     <div class="updatePost">
                         <button id="editButton" type="button">수정</button>
                         <button id="saveButton" type="button" style="display:none;">저장</button>
@@ -163,175 +209,41 @@
             </div>
         </div>
     </div>
-    <script th:inline="javascript">
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
-        if (document.getElementById("editButton")) {
-            const editButton = document.getElementById("editButton");
-            const saveButton = document.getElementById("saveButton");
-            const postTitleField = document.getElementById("postTitle");
-            const postContentField = document.getElementById("postContent");
+    <script>
+        var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
 
-            editButton.addEventListener("click", function () {
-                editButton.style.display = "none";
-                saveButton.style.display = "block";
-                postTitleField.removeAttribute("readonly");
-                postTitleField.style.border = "1px solid #DBDBDB";
-                postContentField.style.border = "1px solid #DBDBDB";
-                postContentField.removeAttribute("readonly");
-            });
+        document.addEventListener('DOMContentLoaded', function () {
+            var textarea = document.getElementById('postContentText');
+            autoResizeRead(textarea);
+        });
 
-            // 저장 버튼 클릭 시
-            saveButton.addEventListener("click", function () {
-                saveButton.style.display = "none";
-                editButton.style.display = "block";
-                const boardNo = document.getElementById("boardNo").value;
-                const postTitle = postTitleField.value;
-                const postContent = postContentField.value;
-                postTitleField.style.border = "0";
-                postContentField.style.border = "0";
+        $(document).ready(function () {
+            let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
+            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+            const searchTextInput = $(".searchText");
+            const searchValueInput = document.getElementById("searchValueInput");
 
-                // 서버로 수정된 내용을 전송
-                fetch("/board/updatePost", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8'
-                    },
-                    body: JSON.stringify({
-                        postCode: boardNo,
-                        postTitle: postTitle,
-                        postContent: postContent
-                    })
-                })
-                    .then(result => result.json())
-                    .then(data => {
-                        // 수정이 완료되면 입력 필드를 다시 읽기 전용으로 설정
-                        postTitleField.setAttribute("readonly", true);
-                        postContentField.setAttribute("readonly", true);
-
-                        // 서버에서 업데이트된 값을 반영
-                        postTitleField.value = data.postTitle;
-                        postContentField.value = data.postContent;
-                    })
-                    .catch(error => console.error(error));
-            });
-        }
-
-        if(document.getElementById("registReply")) {
-
-            const $registReply = document.getElementById("registReply");
-            const $replyBody = document.getElementById("replyBody");
-
-            $registReply.onclick = function() {
-
-                if($replyBody.value.trim() == ""){
-                    alert('댓글을 입력해 주십시오');
-                    return ;
+            searchTextInput.on("focusout keyup", function () {
+                let x = $(this).val();
+                if (x.length > 0) {
+                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
                 }
+                $(this).val(x);
 
-                let boardNo = document.getElementById("boardNo").value;
-                let replyBody = document.getElementById("replyBody").value;
+                const searchValue = searchTextInput.val();
+                localStorage.setItem("searchValue", searchValue);
+            });
 
-                console.log('BoardNo : ', boardNo);
-                console.log('replyBody : ', replyBody);
-
-                fetch("/board/registReply", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8'
-                    },
-                    body: JSON.stringify(
-                        {
-                            refReplyWriter: '[[${#authentication.getPrincipal().getMemCode()}]]',
-                            refPostCode: boardNo,
-                            replyCon: replyBody
-                        }
-                    )
-                })
-                    .then(result => result.json())
-                    .then(data => {
-                        const $table = $("#replyResult");
-                        $table.html("");
-
-                        data.map((reply) => {
-                            $tr = $("<div class='comment-content'>");
-                            $bodyTd = $("<div id='reply-body'>").text(reply.replyCon);
-                            $writerTd = $("<div id='reply-writer'>").text(reply.replyWriterDetail.memId);
-                            $createDateTd = $("<div id='reply-date'>").text(reply.replyDate);
-                            $reportButton = $("<div id='comment-report-button'>").append("<button><img src='/images/report-comment-button.png' alt='comment-report-button'></button>")
-                            if(reply.refReplyWriter == '[[${#authentication.getPrincipal().getMemCode()}]]'){
-                                $removeTd = $("<div id='comment-delete-button'>").append("<button type='button' onclick='removeReply(" + reply.replyCode + ")'>삭제</button>");
-                            } else {
-                                $removeTd = $("<div>");
-                            }
-
-                            $tr.append("<input type='hidden' id=" + reply.replyCode + " value='" + reply.replyCode + "'>");
-                            $tr.append($writerTd);
-                            $tr.append($bodyTd);
-                            $tr.append($createDateTd);
-                            $tr.append($reportButton);
-                            $tr.append($removeTd);
-
-                            $table.append($tr);
-                        });
-
-                    })
-                    .catch((error) => error.text().then((res) => alert(res)));
+            if (localStorage.getItem("searchValue")) {
+                searchTextInput.val(localStorage.getItem("searchValue"));
             }
-        }
+        });
 
-
-
-        /* 댓글 삭제 이벤트 처리 함수*/
-        function removeReply(replyCode){
-
-            let boardNo = document.getElementById("boardNo").value;
-
-            fetch("/board/removeReply", {
-                method: "DELETE",
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                },
-                body: JSON.stringify(
-                    {
-                        refPostCode:boardNo,
-                        replyCode:replyCode
-                    }
-                )
-            })
-                .then(result => result.json())
-                .then(data => {
-                    console.table(data);
-
-                    const $table = $("#replyResult");
-                    $table.html("");
-
-                    data.map((reply) => {
-                        $tr = $("<div class='comment-content'>");
-                        $bodyTd = $("<div id='reply-body'>").text(reply.replyCon);
-                        $writerTd = $("<div id='reply-writer'>").text(reply.replyWriterDetail.memId);
-                        $createDateTd = $("<div id='reply-date'>").text(reply.replyDate);
-                        $reportButton = $("<div id='comment-report-button'>").append("<button><img src='/images/report-comment-button.png' alt='comment-report-button'></button>")
-                        if(reply.refReplyWriter == '[[${#authentication.getPrincipal().getMemCode()}]]'){
-                            $removeTd = $("<div id='comment-delete-button'>").append("<button type='button' onclick='removeReply(" + reply.replyCode + ")'>삭제</button>");
-                        } else {
-                            $removeTd = $("<div>");
-                        }
-
-                        $tr.append("<input type='hidden' id=" + reply.replyCode + " value='" + reply.replyCode + "'>");
-                        $tr.append($writerTd);
-                        $tr.append($bodyTd);
-                        $tr.append($createDateTd);
-                        $tr.append($reportButton);
-                        $tr.append($removeTd);
-
-                        $table.append($tr);
-                    });
-
-
-                })
-                .catch((error) => error.text().then((res) => alert(res)));
-        }
     </script>
-
 </th:block>
 </html>

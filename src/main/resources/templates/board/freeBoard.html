@@ -18,16 +18,19 @@
         <div class="board-searchBar">
             <div class="board-category-container">
                 <div class="board-category">
-                    <button onclick="navigateToPage0()">전체</button>
+                    <button onclick="navigateToFreePage0()" class="category-button" id="btn0">전체</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToPage1()">자유</button>
+                    <button onclick="navigateToFreePage1()" class="category-button" id="btn1">자유</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToPage2()">먹거리</button>
+                    <button onclick="navigateToFreePage2()" class="category-button" id="btn2">먹거리</button>
                 </div>
                 <div class="board-category">
-                    <button onclick="navigateToPage3()">용품</button>
+                    <button onclick="navigateToFreePage3()" class="category-button" id="btn3">용품</button>
+                </div>
+                <div class="board-category">
+                    <button onclick="navigateToFreePage4()" class="category-button" id="btn4">정보</button>
                 </div>
             </div>
             <form id="searchForm" th:action="@{/board/freeBoard}" method="get">
@@ -44,7 +47,7 @@
 
                     <div class="search-by-text">
                         <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                        <input type="search" name="searchValue" id="searchValueInput">
+                        <input type="search" name="searchValue" id="searchValueInput" class="searchText">
                     </div>
                     <div class="submit-button">
                         <button type="submit" id="searchButton">검색</button>
@@ -82,44 +85,37 @@
         </div>
 
         <div class="board-paging-button">
-            <!-- 맨 앞으로 이동 버튼 -->
             <button th:if="${selectCriteria.startPage > 0}"
-                    th:onclick="'location.href=\'/board/freeBoard?currentPage=1\''"
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage=1' + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
                     th:disabled="${selectCriteria.pageNo == 1}"
                     >
-                <img th:src="@{/images/firstPageButton.png}" alt="firstPageButton">
+                <<
             </button>
-
-            <!-- 이전 페이지 버튼 -->
             <button
-                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.startPage - 1}} + '\''"
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.startPage - 1}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
                     th:disabled="${selectCriteria.pageNo < 6}"
             >
-                <img th:src="@{/images/previousPageButton.png}" alt="previousPageButton">
+                <
             </button>
-            <!-- 숫자 버튼 -->
             <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
                 <button
                         th:text="${ page }"
-                        th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${page}} + '\''"
+                        th:onclick="'location.href=\'/board/freeBoard?currentPage=' + @{${page}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
                         th:disabled="${ selectCriteria.pageNo eq page }"
                         th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
                 </button>
             </th:block>
-
-            <!-- 다음 페이지 버튼 -->
             <button
-                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.endPage + 1}} + '\''"
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.endPage + 1}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
                     th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
             >
-                <img th:src="@{/images/nextPageButton.png}" alt="nextPageButton">
+                >
             </button>
-            <!-- 마지막 페이지로 이동 버튼 -->
             <button
-                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.maxPage}} + '\''"
+                    th:onclick="'location.href=\'/board/freeBoard?currentPage='+ @{${selectCriteria.maxPage}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
                     th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
             >
-                <img th:src="@{/images/lastPageButton.png}" alt="lastPageButton">
+                >>
             </button>
         </div>
     </div>
@@ -151,18 +147,52 @@
                 }
             }
         }
-        function navigateToPage0() {
-            window.location.href = '/board/freeBoard';
-        }
-        function navigateToPage1() {
-            window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=자유';
-        }
-        function navigateToPage2() {
-            window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=먹거리';
-        }
-        function navigateToPage3() {
-            window.location.href = '/board/freeBoard?currentPage=1&searchCondition=postSort&searchValue=용품';
-        }
+
+        window.addEventListener('load', function() {
+            // 현재 URL에서 search 파라미터를 가져옵니다
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchValue = urlParams.get('searchValue');
+
+            // 모든 버튼을 찾아서 'active' 클래스를 제거합니다
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // searchValue에 따라 해당 버튼에 'active' 클래스를 추가합니다
+            if (searchValue === '자유') {
+                document.getElementById('btn1').classList.add('active');
+            } else if (searchValue === '먹거리') {
+                document.getElementById('btn2').classList.add('active');
+            } else if (searchValue === '용품') {
+                document.getElementById('btn3').classList.add('active');
+            } else if (searchValue === '정보') {
+                document.getElementById('btn4').classList.add('active');
+            } else {
+                document.getElementById('btn0').classList.add('active');
+            }
+        });
+
+        $(document).ready(function () {
+            let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
+            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+            const searchTextInput = $(".searchText");
+            const searchValueInput = document.getElementById("searchValueInput");
+
+            searchTextInput.on("focusout keyup", function () {
+                let x = $(this).val();
+                if (x.length > 0) {
+                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+                }
+                $(this).val(x);
+
+                const searchValue = searchTextInput.val();
+                localStorage.setItem("searchValue", searchValue);
+            });
+
+            if (localStorage.getItem("searchValue")) {
+                searchTextInput.val(localStorage.getItem("searchValue"));
+            }
+        });
+
     </script>
 
 </th:block>

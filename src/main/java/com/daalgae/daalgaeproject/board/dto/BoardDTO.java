@@ -17,6 +17,7 @@ public class BoardDTO {
     private String postSort;
     private String postTitle;
     private String postContent;
+    private String attachThumbAddr;
     private Date postDate;
     private int postCount;
     private MemberDTO refPostWriter;

@@ -16,68 +16,65 @@
 
     <div class="board-container container">
         <div class="board-searchBar">
-            <div class="search-buttons">
-                <div class="search-category">
-                    <select name="search-category" id="search-category">
-                        <option value="제목">제목</option>
-                        <option value="제목내용">제목 + 내용</option>
-                        <option value="작성자">작성자</option>
-                    </select>
-                </div>
-                <div class="search-by-text">
-                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
-                </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
+            <div class="board-category-container">
+                <div class="board-category">
+                    <button onclick="navigateToBoastPage0()" class="category-button" id="btn0">전체</button>
                 </div>
             </div>
-        </div>
-        <div class="board-content-container">
-<!--            <a th:href="@{/board/boastBoardSelect}">-->
-<!--                <div class="content">-->
-<!--                    <div class="content-img">-->
-<!--                        <img th:src="@{/images/petiket3.png}" alt="DOG" style="width: 100%">-->
-<!--                    </div>-->
-<!--                    <div class="content-detail">-->
-<!--                        <div class="b-c-title">-->
-<!--                            <h5>인생첫글</h5>-->
-<!--                        </div>-->
-<!--                        <div class="b-c-user">-->
-<!--                            <img th:src="@{/images/writer.png}" alt="writer">-->
-<!--                            <h6>작성자</h6>-->
-<!--                        </div>-->
-<!--                        <div class="b-c-date">-->
-<!--                            <img th:src="@{/images/date.png}" alt="date">-->
-<!--                            <h6>2023-09-11</h6>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </a>-->
+            <form id="searchForm" th:action="@{/board/boastBoard}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="head-title-category">
+                        <select name="searchCondition" id="searchCondition">
+                            <option value="postTitle">제목</option>
+                            <option value="postContent">내용</option>
+                            <option value="postTitleContent">제목 + 내용</option>
+                            <option value="postWriter">작성자</option>
+                        </select>
+                    </div>
 
-                <th:block th:each="thumbnail : ${ thumbnailList }">
-                    <div class="content" id="thumbnailArea">
-                        <div class="content-img">
-                            <label th:text="${ thumbnail.no }" style="display: none"></label>
-                            <img th:src="@{|/thumbPath${thumbnail.attachmentList[0].getThumbnailPath()}|}" width="300px" height="200px">
+                    <div class="search-by-text">
+                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
+                        <input type="search" name="searchValue" id="searchValueInput" class="searchText">
+                    </div>
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton" class="searchButton">검색</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="boast-list">
+            <div class="boast-postList" th:each="board : ${ boardList }">
+                <div class="boast-img-box">
+                            <th:block th:if="${ board.attachThumbAddr != null }">
+                                <img class="boast-content-img" th:src="@{|/thumbPath${board.attachThumbAddr}|}"/>
+                            </th:block>
+                    </div>
+                    <div class="boast-detail-box">
+                        <div class="boast-detail-title">
+                            <div class="boast-detail-title1">
+                                <h6>No.</h6>
+                                <h6 class="boast-postNo" th:text="${board.postCode}"></h6>
+                                <h6 class="boast-postTitle" th:text="${board.postTitle}"></h6>
+                            </div>
+                            <div class="boast-detail-title2">
+                                <h6 class="boast-postCount-name">조회수</h6>
+                                <h6 class="boast-postCount" th:text="${board.postCount}"></h6>
+                            </div>
                         </div>
-                        <div class="content-detail">
-                            <div class="b-c-title">
-                                <span th:text="${ thumbnail.title }"></span>
-                            </div>
-                            <div class="b-c-user">
-                                <img th:src="@{/images/writer.png}" alt="writer">
-                                <span th:text="|작성자 : ${ thumbnail.writer.memName }|"></span>
-                            </div>
-                            <div class="b-c-date">
-                                <img th:src="@{/images/date.png}" alt="date">
-                                <span th:text="|작성일자 : ${ thumbnail.createdDate }|"></span>
-                            </div>
+                        <div>
+                            <img class="boast-post-icon" th:src="@{/images/writer.png}">
+                            <h6 class="boast-postUser" th:text="${board.refPostWriter.memId}"></h6>
+                        </div>
+                        <div>
+                            <img class="boast-post-icon" th:src="@{/images/date.png}">
+                            <h6 class="boast-postDate" th:text="${board.postDate}"></h6>
                         </div>
                     </div>
-                </th:block>
+                </div>
+            </div>
 
-        </div>
         <div class="board-write">
             <a th:href="@{/board/boastBoardWrite}" id="board-write-button" alt="글쓰기">
                 <div class="board-write-text">
@@ -85,28 +82,108 @@
                 </div>
             </a>
         </div>
+
         <div class="board-paging-button">
-            <button type="button" id="previousPageButton">
-                <img th:src="@{/images/previousPageButton.png}" alt="">
+            <button th:if="${selectCriteria.startPage > 0}"
+                    th:onclick="'location.href=\'/board/boastBoard?currentPage=1' + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
+                    th:disabled="${selectCriteria.pageNo == 1}"
+            >
+                <<
             </button>
-            <button class="pageNumber">
-                <div id="postPage1">
-                    <div>1</div>
-                </div>
+            <button
+                    th:onclick="'location.href=\'/board/boastBoard?currentPage='+ @{${selectCriteria.startPage - 1}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
+                    th:disabled="${selectCriteria.pageNo < 6}"
+            >
+                <
             </button>
-            <button type="button" id="nextPageButton">
-                <img th:src="@{/images/nextPageButton.png}" alt="">
+            <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
+                <button
+                        th:text="${ page }"
+                        th:onclick="'location.href=\'/board/boastBoard?currentPage=' + @{${page}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
+                        th:disabled="${ selectCriteria.pageNo eq page }"
+                        th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
+                </button>
+            </th:block>
+            <button
+                    th:onclick="'location.href=\'/board/boastBoard?currentPage='+ @{${selectCriteria.endPage + 1}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
+            >
+                >
+            </button>
+            <button
+                    th:onclick="'location.href=\'/board/boastBoard?currentPage='+ @{${selectCriteria.maxPage}} + '&searchCondition=' + @{${selectCriteria.searchCondition}} + '&searchValue=' + @{${selectCriteria.searchValue}}+'\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+            >
+                >>
             </button>
         </div>
     </div>
 
     <script th:inline="javascript">
 
-        $("#thumbnailArea > div").click(function(){
-            const no = $(this).find("label").text();
-            console.log(no);
-            location.href = "/board/boastBoardSelect?no=" + no;
+        let message = '[[${message}]]';
+
+        if(message != null && message !== 'null') {
+            alert(message);
+        }
+
+        if (document.querySelectorAll(".board-container .boast-postList")) {
+            const $tds = document.querySelectorAll(".board-container .boast-postList");
+            for (let i = 0; i < $tds.length; i++) {
+
+                $tds[i].onmouseenter = function() {
+                    this.style.backgroundColor = "#A6CEF7";
+                    this.style.cursor = "pointer";
+                    this.style.color = "#FFFFFF";
+                }
+
+                $tds[i].onmouseleave = function() {
+                    this.style.backgroundColor = "transparent";
+                    this.style.color = "#000000";
+                }
+
+                $tds[i].onclick = function() {
+                    const no = this.children[1].children[0].children[0].children[1].innerText;
+                    location.href = "/board/boastBoardSelect?no=" + no;
+                }
+            }
+        }
+
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchValue = urlParams.get('searchValue');
+
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            if (searchValue === '') {
+                }else {
+                document.getElementById('btn0').classList.add('active');
+            }
         });
+
+        $(document).ready(function () {
+            let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
+            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+            const searchTextInput = $(".searchText");
+            const searchValueInput = document.getElementById("searchValueInput");
+
+            searchTextInput.on("focusout keyup", function () {
+                let x = $(this).val();
+                if (x.length > 0) {
+                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+                }
+                $(this).val(x);
+
+                const searchValue = searchTextInput.val();
+                localStorage.setItem("searchValue", searchValue);
+            });
+
+            if (localStorage.getItem("searchValue")) {
+                searchTextInput.val(localStorage.getItem("searchValue"));
+            }
+        });
+
 
     </script>
 

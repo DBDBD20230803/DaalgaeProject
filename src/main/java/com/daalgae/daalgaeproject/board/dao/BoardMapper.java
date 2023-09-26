@@ -27,6 +27,8 @@ public interface BoardMapper {
 
     int deletePost(BoardDTO board);
 
+    int updatePost(BoardDTO board);
+
     List<BoardDTO> selectAllThumbnailList();
 
     int insertThumbnailContent(BoardDTO thumbnail);
@@ -36,6 +38,4 @@ public interface BoardMapper {
     int incrementBoardCount(int no);
 
     BoardDTO selectThumbnailDetail(int no);
-
-    int updatePost(BoardDTO board);
 }

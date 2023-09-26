@@ -31,19 +31,10 @@ public interface BoardService {
     public List<ReplyDTO> removeReply(ReplyDTO removeReply) throws ReplyRemoveException;
 
     /* 게시글 등록용 메소드 */
-    public void registBoard(BoardDTO board) throws BoardRegistException;
-
+    public void registBoard(BoardDTO board) throws ThumbnailRegistException;
     /* 게시글 삭제용 메소드*/
     public void deleteBoard(BoardDTO board) throws BoardDeleteException;
-    public void updateBoard(BoardDTO board) throws BoardUpdateException;
+    public BoardDTO updateBoard(BoardDTO board) throws BoardUpdateException;
     /* 전체 썸네일 게시글 조회용 메소드 */
 
-    public List<BoardDTO> selectAllThumbnailList();
-    /* 썸네일 게시글 등록용 메소드 */
-
-    public void registThumbnail(BoardDTO thumbnail) throws ThumbnailRegistException;
-
-    /* 게시글 상세 페이지 조회용 메소드 */
-
-    public BoardDTO selectThumbnailDetail(int no) ;
 }
