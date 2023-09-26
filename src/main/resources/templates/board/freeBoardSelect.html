@@ -106,8 +106,14 @@
                         </div>
                     </th:block>
                 </div>
+                <div class="img-tip">
+                    <h6>이미지 클릭시 크게 보실 수 있습니다.</h6>
+                </div>
                 <div class="board-textarea">
                     <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)" ></textarea>
+                </div>
+                <div class="img-tip">
+                    <h6>이미지 이름 클릭시 다운 받으실 수 있습니다.</h6>
                 </div>
                 <div class="imgDownload">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">

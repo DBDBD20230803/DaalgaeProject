@@ -115,7 +115,7 @@
 
     console.log('BoardNo : ', boardNo);
     console.log('replyBody : ', replyBody);
-    alert("수준 낮은 댓글은 쓰질마세요~ 🤔")
+    alert("댓글을 달았습니다요~ 😊")
 
     fetch("/board/registReply", {
     method: "POST",
