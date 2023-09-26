@@ -63,7 +63,7 @@
     <div class="payment101">
         <img th:src="@{/images/denggum.png}" alt="개껌이미지">
         <div class="payment102">현재 보유한 개껌</div>
-        <div class="payment103">1개</div>
+        <div class="payment103"><span th:text="${member}"></span><span class="payment103">개</span></div>
     </div>
 
     <div class="paymentBox2">
@@ -73,7 +73,7 @@
         <div class="paymentBox3">
             <form action="/payment/ready" method="post">
                 <input type="hidden" name="itemName" value="개껌10">
-                <input type="hidden" name="quantity" value=10>
+                <input type="hidden" name="quantity" value=10000000>
                 <input type="hidden" name="totalAmount" value=1000000>
                 <button class="btnwh" type="submit">1,100원</button>
             </form>
@@ -155,5 +155,4 @@
     <th:block th:include="component/footer.html"></th:block>
 </div>
 </body>
-<script th:src="@{/js/ready.js/}"></script>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html"
-xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
@@ -20,11 +20,11 @@ xmlns:th="http://www.thymeleaf.org">
     <!--  주석 처리 되어있는 경로는 절대 경로 이며, ../ 으로 되어있는것은 상대 경로이다.
           절대 경로 이용할 경우 NotFound 으로 파일을 찾을수 없음 -->
     <!--<link rel="stylesheet" href="/css/index.css">-->
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <!--<link rel="stylesheet" href="/css/mobile.css">-->
-    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" th:href="@{/css/mobile.css}">
     <!--<link rel="stylesheet" href="/css/sanitize.css">-->
-    <link rel="stylesheet" href="../css/sanitize.css">
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -34,7 +34,7 @@ xmlns:th="http://www.thymeleaf.org">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
+    <script th:src="@{/js/purchase.js}"></script>
 
 
     <!--favicon--->
@@ -48,14 +48,14 @@ xmlns:th="http://www.thymeleaf.org">
 <div id="headers">
     <th:block th:include="component/header.html"></th:block>
 </div>
-    <div class="webtoonBg">
-        <h3>오늘도 댕댕하개!</h3>
-    </div>
+<div class="webtoonBg">
+    <h3>오늘도 댕댕하개!</h3>
+</div>
 <div class="container">
     <div class="webtoonBox1">
         <img th:src="@{/images/denggum.png}" alt="개껌이미지">
-        <div class="webtoontext1">현재 보유한 개껌</div>
-        <div class="webtoonText2">60개</div>
+        <span class="webtoontext1">현재 보유한 개껌&nbsp;</span>
+        <span class="webtoonText2" th:text="${member}"></span><span class="webtoonText2">개</span>
     </div>
     <div class="webtoonPage1">
         <img class="webtoonImg1" th:src="@{/images/exampleImg.png}">
@@ -71,9 +71,12 @@ xmlns:th="http://www.thymeleaf.org">
             </div>
         </div>
         <div class="webtoonBox5">
-            <button id="button4" class="webtoonText9">구매하기</button>
+            <form action="/webtoon/purchaseDogGum" method="POST">
+                <input id="memberValue" th:value="${member}" type="hidden">
+            <button id="button4" class="webtoonText9" type="submit">구매하기</button>
+            </form>
             <form action="/payment/payments" method="post">
-            <button id="payButton3" class="webtoonText8">충전하기</button>
+                <button id="payButton3" class="webtoonText8">충전하기</button>
             </form>
         </div>
     </div>
@@ -92,9 +95,12 @@ xmlns:th="http://www.thymeleaf.org">
             </div>
         </div>
         <div class="webtoonBox5">
-            <button id="button3" class="webtoonText9">구매하기</button>
+            <form>
+                <input id="memberValue2" th:value="${member}" type="hidden">
+            <button id="button3" class="webtoonText9" type="submit" >구매하기</button>
+            </form>
             <form action="/payment/payments" method="post">
-            <button id="payButton2" class="webtoonText8">충전하기</button>
+                <button id="payButton2" class="webtoonText8">충전하기</button>
             </form>
         </div>
     </div>
@@ -113,10 +119,12 @@ xmlns:th="http://www.thymeleaf.org">
             </div>
         </div>
         <div class="webtoonBox5">
-
-            <button id="button2" class="webtoonText9">구매하기</button>
+            <form onsubmit="return buyGum()">
+                <input id="memberValue1" th:value="${member}" type="hidden">
+                <button id="button5" class="webtoonText9" type="submit">구매하기</button>
+            </form>
             <form action="/payment/payments" method="post">
-            <button id="payButton1" class="webtoonText8">충전하기</button>
+                <button id="payButton1" class="webtoonText8">충전하기</button>
             </form>
         </div>
     </div>
@@ -130,8 +138,6 @@ xmlns:th="http://www.thymeleaf.org">
                 <div class="webtonnText5">1화. 댕댕댕! 귀여운 강아지!</div>
             </div>
             <div class="webtoonBox4">
-                <div class="webtoonText6">구매 &nbsp;</div>
-                <div class="webtoonText7">개껌 2 개</div>
             </div>
         </div>
         <div class="webtoonBox5">
@@ -140,6 +146,166 @@ xmlns:th="http://www.thymeleaf.org">
     </div>
 
 </div>
+
+<br><br><Br><br><br><br><Br><br><br><br><Br><br>
+<div id="footers"></div>
+<div>
+    <th:block th:include="component/footer.html"></th:block>
+</div>
+</body>
+</html>
+<!-------------------------------------------------------------------------------------->
+<!--
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>댕댕정보툰</title>
+
+    <link rel="stylesheet" th:href="@{/css/webtoon.css}">
+    &lt;!&ndash;meta&ndash;&gt;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    &lt;!&ndash;bootstrap&ndash;&gt;
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    &lt;!&ndash;css&ndash;&gt;
+    &lt;!&ndash;  주석 처리 되어있는 경로는 절대 경로 이며, ../ 으로 되어있는것은 상대 경로이다.
+          절대 경로 이용할 경우 NotFound 으로 파일을 찾을수 없음 &ndash;&gt;
+    &lt;!&ndash;<link rel="stylesheet" href="/css/index.css">&ndash;&gt;
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    &lt;!&ndash;<link rel="stylesheet" href="/css/mobile.css">&ndash;&gt;
+    <link rel="stylesheet" th:href="@{/css/mobile.css}">
+    &lt;!&ndash;<link rel="stylesheet" href="/css/sanitize.css">&ndash;&gt;
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    &lt;!&ndash;js&ndash;&gt;
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script th:src="@{/js/purchase.js}"></script>
+
+
+    &lt;!&ndash;favicon-&ndash;&gt;
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+    <script type="text/javascript" th:src="@{/js/tour.js}"></script>
+
+</head>
+
+<body>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
+<div class="webtoonBg">
+    <h3>오늘도 댕댕하개!</h3>
+</div>
+<div class="container">
+    <div class="webtoonBox1">
+        <img th:src="@{/images/denggum.png}" alt="개껌이미지">
+        <span class="webtoontext1">현재 보유한 개껌&nbsp;</span>
+        <span class="webtoonText2" th:text="${member}"></span><span class="webtoonText2">개</span>
+    </div>
+    <div class="webtoonPage1">
+        <img class="webtoonImg1" th:src="@{/images/exampleImg.png}">
+        <div class="webtoonBox3">
+            <div class="webtoonBox3">
+                <div class="webtoonText3">23.09.05</div>
+                <div class="webtoonText4">오늘도 댕댕하개</div>
+                <div class="webtonnText5">4화. 댕댕댕! 귀여운 강아지!</div>
+            </div>
+            <div class="webtoonBox4">
+                <div class="webtoonText6">구매 &nbsp;</div>
+                <div class="webtoonText7">개껌 2 개</div>
+            </div>
+        </div>
+        <div class="webtoonBox5">
+            <form id="form1" action="/webtoon/purchaseDogGum" method="POST">
+                <input th:value="${member}" type="hidden" name="memDogGum">
+                <button class="webtoonText9" type="submit">구매하기</button>
+            </form>
+            <form action="/payment/payments" method="post">
+                <button id="payButton3" class="webtoonText8">충전하기</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="webtoonPage1">
+        <img class="webtoonImg1" th:src="@{/images/exampleImg.png}">
+        <div class="webtoonBox3">
+            <div class="webtoonBox3">
+                <div class="webtoonText3">23.09.05</div>
+                <div class="webtoonText4">오늘도 댕댕하개</div>
+                <div class="webtonnText5">3화. 댕댕댕! 귀여운 강아지!</div>
+            </div>
+            <div class="webtoonBox4">
+                <div class="webtoonText6">구매 &nbsp;</div>
+                <div class="webtoonText7">개껌 2 개</div>
+            </div>
+        </div>
+        <div class="webtoonBox5">
+            <form id="form2" action="/webtoon/purchaseDogGum" method="POST">
+                <input th:value="${member}" type="hidden" name="memDogGum">
+                <button class="webtoonText9" type="submit" >구매하기</button>
+            </form>
+            <form action="/payment/payments" method="post">
+                <button id="payButton2" class="webtoonText8">충전하기</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="webtoonPage1">
+        <img class="webtoonImg1" th:src="@{/images/exampleImg.png}">
+        <div class="webtoonBox3">
+            <div class="webtoonBox3">
+                <div class="webtoonText3">23.09.05</div>
+                <div class="webtoonText4">오늘도 댕댕하개</div>
+                <div class="webtonnText5">2화. 댕댕댕! 귀여운 강아지!</div>
+            </div>
+            <div class="webtoonBox4">
+                <div class="webtoonText6">구매 &nbsp;</div>
+                <div class="webtoonText7">개껌 2 개</div>
+            </div>
+        </div>
+        <div class="webtoonBox5">
+            <form id="form3" action="/webtoon/purchaseDogGum" method="POST">
+                <input th:value="${member}" type="hidden" name="memDogGum">
+                <button class="webtoonText9" type="submit">구매하기</button>
+            </form>
+            <form action="/payment/payments" method="post">
+                <button id="payButton1" class="webtoonText8">충전하기</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="webtoonPage1">
+        <img class="webtoonImg1" th:src="@{/images/exampleImg.png}">
+        <div class="webtoonBox3">
+            <div class="webtoonBox3">
+                <div class="webtoonText3">23.09.05</div>
+                <div class="webtoonText4">오늘도 댕댕하개</div>
+                <div class="webtonnText5">1화. 댕댕댕! 귀여운 강아지!</div>
+            </div>
+            <div class="webtoonBox4">
+            </div>
+        </div>
+        <div class="webtoonBox5">
+            <button id="button1" class="webtoonText9" onclick="location.href='webtoonDetail'">무료보기</button>
+        </div>
+    </div>
+
+</div>
+
 <br><br><Br><br><br><br><Br><br><br><br><Br><br>
 <div id="footers"></div>
 <div>
@@ -148,3 +314,5 @@ xmlns:th="http://www.thymeleaf.org">
 </body>
 </html>
 
+
+-->

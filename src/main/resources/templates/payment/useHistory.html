@@ -60,12 +60,12 @@
             <div class="purchase2">
                 <div class="payment201">
                     <img th:src="@{/images/denggum.png}" alt="개껌이미지">
-                    <div class="payment202">현재 보유한 개껌</div>
-                    <div class="payment203">21개</div>
+                    <span class="payment202">현재 보유한 개껌</span>
+                    <span class="payment203" th:text="${member}"></span><span class="payment203"> 개</span>
                 </div>
                 <div class="purchaseContent1">
                     <form action="/payment/payments" method="post">
-                    <button class="purchaseText1">충전하기</button>
+                        <button class="purchaseText1">충전하기</button>
                     </form>
                     <div class="purchaseText2">구매취소</div>
                 </div>
