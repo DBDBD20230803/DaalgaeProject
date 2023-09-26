@@ -254,7 +254,7 @@ p{
 
 
 #myPage .myPageWrap .myPageContents .myPageBoxRight .myIdBox input.myId{
-    color: #222 !important;
+    color: #222;
     font-size: 2em;
 }
 
@@ -286,6 +286,11 @@ p{
     padding: 1.5% 4%;
     margin-bottom: 2%;
     border-radius: 2px;
+}
+
+#myPage .myPageWrap .myPageContents .myPageBoxRight .myInfo > form > div.myIdBox{
+    border: none;
+    padding: 0%;
 }
 
 #myPage .myPageWrap .myPageContents .myPageBoxRight .myInfo > form > div div.myInfoTitle{

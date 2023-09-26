@@ -17,6 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+      /*  (debug = true)*/
 public class SecurityConfig {
 
     private final AuthFailHandler authFailHandler;
@@ -46,8 +47,9 @@ public class SecurityConfig {
                 .authorizeRequests()
                 //.antMatchers("/*").authenticated()
                 .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/board/*", "/myPage/*", "/login/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/board/*").hasRole("ADMIN")
                  .antMatchers("/login").hasAnyAuthority("USER")
+                 .antMatchers("/login/loginFindId", "/login/loginFindPwd").permitAll()
                  .anyRequest().permitAll()
                 .and()
                 .formLogin()
