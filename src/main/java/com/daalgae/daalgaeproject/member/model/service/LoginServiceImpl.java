@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.member.model.service;
 
+import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.mail.MailHandler;
 import com.daalgae.daalgaeproject.member.mail.TempKey;
@@ -17,9 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
@@ -79,6 +78,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         boolean mailAuth = member.getMailAuth() == 1;
+        log.info("membId : " + memId);
 
         UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, authorities);
         user.setDetails(member);
@@ -199,7 +199,15 @@ public class LoginServiceImpl implements LoginService {
     }
 
 
+    @Transactional
+    public void modifyMember(MemberDTO memberDTO) throws MemberModifyException{
+        System.out.println("회원 수정 정보 넘겨주니 ?? : " + memberDTO);
+        int result = memberDAO.modifyMember(memberDTO);
 
+        if(!(result > 0)) {
+            throw new MemberModifyException("회원 정보 수정에 실패하셨습니다.");
+        }
+    }
 }
 
 

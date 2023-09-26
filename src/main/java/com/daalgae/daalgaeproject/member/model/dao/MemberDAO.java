@@ -44,4 +44,5 @@ public interface MemberDAO {
 
     MemberDTO mypageRead(String memId);
 
+    int modifyMember(MemberDTO memberDTO);
 }

@@ -2,6 +2,7 @@
 package com.daalgae.daalgaeproject.member.model.service;
 
 import com.daalgae.daalgaeproject.exception.member.EmailAuthException;
+import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,6 +29,7 @@ public interface LoginService extends UserDetailsService {
 
     MemberDTO mypageRead(String memId) throws Exception;
 
+    void modifyMember(MemberDTO memberDTO) throws MemberModifyException;
 }
 
 

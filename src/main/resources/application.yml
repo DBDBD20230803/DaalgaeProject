@@ -13,6 +13,6 @@ mybatis:
   type-aliases-package: com.daalgae.daalgaeproject
 
 
-logging:
-  level:
-    com.daalgae.daalgaeproject: INFO
+#logging:
+  #level:
+    #root: DEBUG

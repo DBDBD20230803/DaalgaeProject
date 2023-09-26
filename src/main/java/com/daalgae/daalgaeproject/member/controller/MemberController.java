@@ -1,5 +1,7 @@
 package com.daalgae.daalgaeproject.member.controller;
 
+import com.daalgae.daalgaeproject.common.util.SessionUtil;
+import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
@@ -11,9 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
@@ -108,30 +112,39 @@ public class MemberController {
         String memPwd = request.getParameter("password");
         member.setMemPwd(memPwd);
 
-        String memEmail = request.getParameter("putEmailAddress");
+        String memEmail = request.getParameter("memEmail");
         member.setMemEmail(memEmail);
 
-        String memName = request.getParameter("nameUser");
+        String memName = request.getParameter("memName");
         member.setMemName(memName);
+        log.info("memName:" + memName);
 
-        String birthStr = request.getParameter("birth");
+        String birthStr = request.getParameter("memBirth");
+        System.out.println("birthStr : " + birthStr);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date memBirth = null;
+        log.info("memBirth:" + memBirth);
+
 
         try {
-            memBirth = dateFormat.parse(birthStr);
+            if(birthStr != null && !birthStr.isEmpty()){
+                memBirth = dateFormat.parse(birthStr);
+            }
         } catch (ParseException e) {
             throw new RuntimeException(e);
         };
-
+        log.info("memBirth:" + memBirth);
         member.setMemBirth(memBirth);
 
 
-        String memAdrs = request.getParameter("address1");
+        String memAdrs = request.getParameter("memAdrs");
+        log.info("memAdrs:" + memAdrs);
         member.setMemAdrs(memAdrs);
 
-        String memAdrsDetail = request.getParameter("address2");
+        String memAdrsDetail = request.getParameter("memAdrsDetail");
+        log.info("memAdrsDetail:" + memAdrsDetail);
         member.setMemAdrsDetail(memAdrsDetail);
+
 
 
         log.info("[MemberController] registMember request Member : " + member);
@@ -145,6 +158,7 @@ public class MemberController {
 
 
         log.info("[MemberController] registMember ==========================================================");
+
 
         return "/regist/registComplete";
 
@@ -204,5 +218,47 @@ public class MemberController {
 
         return "myPage/mypage"; }
 
+   @PostMapping(value = "/updateInfo")
+    public String modifyMember(@ModelAttribute MemberDTO memberDTO, Model model, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws MemberModifyException {
+        System.out.println("파라미ㅓ 넘어왔니;???? : " + memberDTO);
+        log.info("제발 나와라!!!!!!!!!!!!!!!! : ====modifyMember=====");
+
+         memberDTO.setMemId(memberDTO.getMemId());
+
+         String memAdrs = request.getParameter("memAdrs") + "$" + request.getParameter("memAdrsDetail");
+         memberDTO.setMemAdrs(memAdrs);
+
+         String birthStr = request.getParameter("memBirth");
+         System.out.println("birthStr : " + birthStr);
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+         Date memBirth = null;
+         log.info("memBirth:" + memBirth);
+
+
+        try {
+            if(birthStr != null && !birthStr.isEmpty()){
+                memBirth = dateFormat.parse(birthStr);
+            }
+        } catch (ParseException e) {
+           throw new RuntimeException(e);
+        };
+       log.info("memBirth:" + memBirth);
+       memberDTO.setMemBirth(memBirth);
+
+        loginService.modifyMember(memberDTO);
+
+        SessionUtil.invalidateSession(request, response);
+
+        rttr.addFlashAttribute("message", "회원 정보 수정에 성공하셨습니다.");
+
+        log.info("[MemberController] modifyMember");
+
+        return "/myPage/updateComplete";
+    }
+
+    @GetMapping("/updateComplete")
+    public String updateCompleteForm(){
+        return "/login/login";
+    }
 
 }
