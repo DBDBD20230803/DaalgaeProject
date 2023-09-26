@@ -1,8 +1,8 @@
 .board-banner {
   width: 100%;
   height: 500px;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   position: relative;
   background-color: #A6CEF7;
   display: flex;
@@ -16,12 +16,16 @@
 }
 .board-category-container {
   display: flex;
-  position: relative;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .current-page {
-  color: #A6CEF7;
-  font-size: 20px;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  background-color: #787878 !important;
 }
 
 .board-category {
@@ -31,6 +35,17 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #DBDBDB;
+}
+
+.category-button {
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+/* 클릭된 버튼 스타일 */
+.active {
+  background-color: #639DD7;
+  color: #fff;
 }
 
 .board-category button {
@@ -102,6 +117,7 @@
 
 .board-list-container {
   border-top: 1px solid #DBDBDB;
+  border-bottom: 1px solid #DBDBDB;
   width: 80%;
   height: 109px;
   position: relative;
@@ -178,7 +194,7 @@
   .box:nth-child(4),
   .box:nth-child(5),
   .box:nth-child(6) {
-    width: calc(50% - 10px); /* 2열 레이아웃을 위한 너비 설정 */
+    width: calc(50% - 10px);
   }
 }
 
@@ -197,13 +213,11 @@
 
 .search-buttons {
   width: 100%;
-  height: 130px;
-  right: 10%;
+  height: 100%;
   text-align: center;
   justify-content: flex-end;
   display: flex;
   align-items: center;
-  position: relative;
   gap: 10px;
 }
 
@@ -232,14 +246,15 @@
   width: 100%;
   height: 100%;
   border: 1px solid #BDBDBD;
+  font-size: inherit;
+  overflow: hidden;
 }
 
-#content {
+#postContent {
   resize: none;
 }
 
 .board-write{
-  border-top: 1px solid #DBDBDB;
   width: 80%;
   display: flex;
   justify-content: center;
@@ -252,7 +267,7 @@
   height: 60px;
   background-color: #A6CEF7;
   border-radius: 5px;
-  border: 0px;
+  border: 0;
   color: #ffffff;
   justify-content: center;
   align-items: center;
@@ -261,7 +276,7 @@
 
 #board-write-button {
   position: relative;
-  border: 0px;
+  border: 0;
   background-color: #FFFFFF;
   left: 40%;
   top: 25%;
@@ -342,6 +357,52 @@
   justify-content: center;
 }
 
+.imageUpload input{
+  display: none;
+}
+
+.board-container form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#boardWriteForm {
+  display: flex;
+  flex-direction: column;
+}
+.deletePost {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DBDBDB;
+  border-radius: 5px;
+}
+
+
+.updatePost {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DBDBDB;
+  border-radius: 5px;
+}
+
+#boardDeleteForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 20px;
+}
 #HeadTitle {
   width: 100%;
   height: 60px;
@@ -350,7 +411,7 @@
   background-color: #F6F6F6;
 }
 
-#Title {
+#title {
   width: 100%;
   height: 60px;
   border: 0;
@@ -366,7 +427,13 @@
   background-color: #F6F6F6;
 }
 
+.imageUpload label {
+  display: none;
+}
 
+#imageUploadButton1 {
+  display: inline-block;
+}
 .search-by-text {
   background-color: #F6F6F6;
   width: 250px;
@@ -447,6 +514,15 @@
   /*background-color: #A6CEF7;*/
 }
 
+.thumbnail-file-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail-file-area input{
+  display: none;
+}
 .content-detail {
   position: relative;
   width: 100%;
@@ -462,9 +538,6 @@
   height: 25px;
 }
 
-.boast-content-detail > div > h5, h6 {
-  margin: 0;
-}
 
 .a-c-title {
   display: flex;
@@ -495,24 +568,6 @@
   gap: 5px;
 }
 
-.b-c-title {
-  display: flex;
-  align-items: center;
-  height: 25px;
-}
-
-.b-c-user {
-  display: flex;
-  align-items: center;
-  height: 25px;
-}
-
-.b-c-date {
-  display: flex;
-  align-items: center;
-  height: 25px;
-}
-
 .board-paging-button {
   display: flex;
   width: 80%;
@@ -524,7 +579,13 @@
 }
 
 .board-paging-button button {
-  border: 0;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: #F2F2F2;
+  font-size: 18px;
+  color: #808080;
 }
 
 #postPage1 {
@@ -600,7 +661,6 @@ button[type="submit"]:hover {
 }
 
 .postList {
-  border-top: 1px solid #DBDBDB;
   width: 80%;
   height: 80px;
   text-align: center;
@@ -608,6 +668,113 @@ button[type="submit"]:hover {
   justify-content: space-around;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid #DBDBDB;
+}
+
+.img-tip h6 {
+  color: #6c757d;
+}
+.postList h6 {
+  margin: 0;
+}
+
+.boast-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.boast-postList {
+  width: 400px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #DBDBDB;
+  gap: 2px;
+  max-height: 400px;
+}
+
+.boast-postList h6, .boast-post-icon{
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+
+
+.boast-content-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.boast-detail-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.boast-postTitle, .boast-postCount {
+  position: relative;
+}
+
+.boast-postTitle {
+  position: relative;
+  left: 15px !important;
+}
+
+.boast-postCount-name {
+  position: relative;
+  right: 18px;
+}
+
+.boast-postCount {
+  position: relative;
+  right: 6px;
+}
+
+.boast-detail-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.boast-detail-title1 h6{
+  position: relative;
+  left: 5px;
+}
+
+.boast-detail-title2 {
+  display: flex;
+  justify-content: end;
+}
+
+
+.boast-detail-box div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.boast-img-box {
+  width: 100%;
+  height: 250px;
+  background-color: #D8D8D8;
+}
+
+.board-content-title h6 {
+  margin: 0;
 }
 
 .board-content-select-container{
@@ -630,13 +797,62 @@ button[type="submit"]:hover {
   gap: 10px;
   padding: 50px;
 }
-
-.board-content-image img{
+.board-content-image {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.board-content-image div {
+  display: flex;
+  justify-content: center;
   max-width: 100%;
-  max-height: 100%;
-  width: auto;
+}
+
+.board-content-image-img{
+  max-height: 250px;
   height: auto;
   object-fit: contain;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.board-content-image-img-boast{
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.board-write-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+}
+.board-write-image div {
+  display: flex;
+  justify-content: center;
+}
+
+.write-img {
+  max-height: 250px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: flex;
+  flex-wrap: wrap;
+}
+.imgDownload {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .board-content-title {
@@ -670,6 +886,7 @@ button[type="submit"]:hover {
 .postTitle {
   width: 20%;
   display: block;
+  border: 0;
 }
 
 .postUser {
@@ -707,7 +924,7 @@ button[type="submit"]:hover {
 }
 
 .post-info h5 {
-  margin: 0px;
+  margin: 0;
   white-space: nowrap;
 }
 
@@ -749,10 +966,6 @@ button[type="submit"]:hover {
   align-items: center;
   justify-content: center;
   gap: 5px;
-}
-
-.board-paging-button button {
-  border: 0;
 }
 
 #postPage1 {
@@ -1085,7 +1298,7 @@ button[type="submit"]:hover {
 }
 
 #comment-delete-button button {
-  width: 90px;
+  width: 100%;
   height: 50px;
   background-color: #EFEFEF;
   border-radius: 5px;
@@ -1163,8 +1376,45 @@ button[type="submit"]:hover {
 .board-textarea textarea{
   width: 100%;
   height: 100%;
-  font-size: 22px;
+  font-size: inherit;
   border: 0;
   resize: none;
   outline: none;
+}
+
+.updatePost button{
+  width: 100%;
+}
+
+/* 모달 스타일 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }

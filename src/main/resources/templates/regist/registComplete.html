@@ -2,7 +2,7 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/registLayout.html}">
+      layout:decorate="~{/layouts/registLayout}">
   <head>
     <meta charset="utf-8">
     <title>회원가입</title>
@@ -20,12 +20,12 @@
               <h5 class="registCompleteTitle">뭐든 다알개</h5>
 
               <form class="registCompleteForm" action="" method="post">
-                <h5 class="registCompleteMessage">비밀번호 변경이 완료되었습니다.<br><br>뭐든다알개의 가족이 되신 것을 축하드립니다 🥳🎉</h5>
+                <h5 class="registCompleteMessage">회원가입이 완료되었습니다.<br><br>이메일을 확인해주세요 🥳🎉</h5>
                 <p class="message1">반려견 정보를 등록하고 다양한 정보를 받아가세요!
-                  <a href="../myPage/mypage.html">GO!</a>
+                  <a th:href="@{/myPage/mypage.html}">GO!</a>
                 </p>
                 <p class="message2">나중에도 반려견 정보를 추가하실 수 있습니다! </p>
-                <div class="registCompleteGotoMain"><a href="">메인 페이지로 이동</a></div>
+                <div class="registCompleteGotoMain"><a th:href="@{/}">메인 페이지로 이동</a></div>
               </form>
             </div>
           </div>

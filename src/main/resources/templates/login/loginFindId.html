@@ -1,39 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/loginLayout}">
   <head>
     <meta charset="utf-8">
     <title>아이디찾기</title>
 
-
-    <!--meta-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-      
-      <!--bootstrap-->
-      <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      
-
-      <!--css-->
-      <link rel="stylesheet" type="text/css" href="/css/index.css">
-      <link rel="stylesheet" type="text/css" href="/css/sanitize.css">
-      <link rel="stylesheet" type="text/css" href="/css/login.css">
-      
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-      <!--js-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-      
-    <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
   </head>
-  <body>
+
+  <th:block layout:fragment="content">
+
         <section id="FindId">
           <div class="FindIdWrap container">
 
@@ -41,16 +18,36 @@
 
               <h5 class="FindIdTitle">뭐든 다알개</h5>
 
-              <form class="PutemailAdressForm" action="" method="post">
-                <h5 class="PutemailAdressTitle">본인 확인</h5>
-                <p>이메일 주소를 입력해주세요.</p>
-                <input type="text" name="putEmailAddress" id="putEmailAddress" placeholder="이메일"/>
-                <input type="submit" name="AuthBtn" id="AuthBtn" value="인증번호 받기"/>
+              <form class="PutemailAdressForm" th:action="@{/login/loginFindId}" method="post" onsubmit="return findIdCheck()">
+                <h5 class="PutemailAdressTitle">아이디 찾기</h5>
+                <p>가입시 등록한 이메일 주소와 이름을 입력해주세요.</p>
+                <input type="text" name="memEmail" id="putEmailAddress" placeholder="이메일"/>
+                <input type="text" name="memName" id="putName" placeholder="이름"/>
+                <input type="submit" name="AuthBtn" id="AuthBtn" value="아이디 찾기"/>
               </form>
             </div>
           </div>
         </section>
-  </body>
+
+    <script th:inline="javascript">
+      function findIdCheck() {
+        let nameRegExp = /^[가-힣]{2,}$/;
+        let emailRegExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,6}$/;
 
 
- 
+        let name = $("#putName").val().trim();
+        let email = $("#FindId #putEmailAddress").val().trim();
+
+        if(!nameRegExp.test(name) || name.length == 0){
+          alert("이름을 다시 확인해주세요");
+          return false;
+        } else if (!emailRegExp.test(email) || email.length == 0) {
+          alert("이메일 형식이 올바르지 않습니다.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </th:block>
+
+</html>

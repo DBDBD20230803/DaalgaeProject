@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/myPageLayout}">
+  <head>
+    <meta charset="utf-8">
+    <title>마이페이지</title>
+  </head>
+
+  <th:block layout:fragment="content">
+        <section id="pwdResetComplete">
+          <div class="pwdResetCompleteWrap container">
+
+            <div class="pwdResetCompleteContents">
+
+              <h5 class="pwdResetCompleteTitle">뭐든 다알개</h5>
+
+              <form class="pwdResetCompleteForm" th:action="@{/myPage/updateComplete}" method="post">
+                <h5 class="pwdResetCompleteMessage">정보 수정이 완료되었습니다.</h5>
+                <p>다시 로그인 해주세요!</p>
+                <div class="pwdResetCompleteGotoMain"><a th:href="@{/}">메인 페이지로 이동</a></div>
+              </form>
+            </div>
+          </div>
+        </section>
+  </th:block>>
+
+
+ 

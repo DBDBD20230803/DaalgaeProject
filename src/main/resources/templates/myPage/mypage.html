@@ -2,8 +2,16 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/myPageLayout}">
+  <head>
+
     <meta charset="utf-8">
     <title>마이페이지</title>
+  </head>
+
 
 
     <!--meta-->
@@ -56,6 +64,27 @@
                         <input type="file" name="profileChange" value="profileChange" id="profileChange"/>
                         <div class="introPet">
                             <p class="introPetTitle">
+
+  <th:block layout:fragment="content">
+        <section id="myPage">
+            <div class="myPageBg"><h3>마이페이지</h3></div>
+
+            <div class="myPageWrap container">
+
+                    <div class="myPageContents">
+                        <div class="myPageBoxLeft">
+
+                            <div class="myPageProfileImgBox">
+                                    <div class="profileImg"></div> 
+
+                                    <div class="gum"><a th:href="@{/payment/useHistory}"><span th:text="${member?.memDogGum}"></span> <img src="/images/gum.png" alt="gum"></a></div>
+                                    <form action="single-file" method="post" enctype="multipart/form-data">
+                                        <label for="profileChange">
+                                            <div class="changeFileImgage">프로필 사진 변경</div>
+                                        </label>
+                                        <input type="file" name="profileChange" value="profileChange" id="profileChange"/>
+                                        <div class="introPet">
+                                            <p class="introPetTitle">
                                                 <span>
                                                     <img src="/images/paw.png" alt="paw">
                                                 </span>
@@ -149,6 +178,7 @@
                 </div>
 
 
+
                 <div class="dogInfo">
 
                     <div class="dogInfoMore">
@@ -163,6 +193,31 @@
 
                                 <div class="petBreed">
                                     <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종
+                            <div class="myInfo">
+                                <form th:action="@{/myPage/updateInfo}" method="post" class="myPageSubmit">
+
+                                    <div class="myIdBox">
+                                        <input type="text" name="memId" id="myId" th:value="${ #authentication.getPrincipal().getMemId()}" class="myId" readonly/>
+                                        <input type="hidden" name="memCode" id="memCode" th:value="${ #authentication.getPrincipal().getMemCode() }">
+                                        <button type="button" id="myInfoChange" class="myInfoChange" name="myInfoChange">수정</button>
+                                    </div>
+
+                                    <div class="myInfo1">
+                                        <div class="myInfoTitle"><img src="/images/email.png" alt="email"> &nbsp;&nbsp;이메일</div>
+                                    
+                                        <div class="myInfoInputs myInfo1Inputs">
+                                            <label for="myEmail"></label>
+                                            <input type="text" id="myEmail" name="memEmail" th:value="${#authentication.getPrincipal().getMemEmail()}" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="myInfo2">
+                                        <div class="myInfoTitle"><img src="/images/name.png" alt="name"> &nbsp;&nbsp;이름</div>
+
+                                        <div class="myInfoInputs myInfo2Inputs">
+                                            <label for="myName"></label>
+                                            <input type="text" id="myName" name="memName" readonly th:value="${#authentication.getPrincipal().getMemName()}"/>
+                                        </div>
                                     </div>
                                     <input type="text" name="petBreedName" id="petBreedName" class="petInput"/>
                                 </div>
@@ -173,13 +228,34 @@
                                 <div class="petBirth">
                                     <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp;
                                         생년월일
+                                        <div class="myInfoInputs myInfo3Inputs">
+                                            <label for="myAdress"></label>
+                                            <input type="text" id="myAdress" name="memAdrs" readonly th:value="${#authentication.getPrincipal().getMemAdrs()}" class="changeInputs"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="myInfo3_1">
+                                        <div class="myInfoTitle"><img src="/images/adress.png" alt="adress"> &nbsp;&nbsp;상세주소</div>
+
+                                        <div class="myInfoInputs myInfo3Inputs">
+                                            <label for="myAdress"></label>
+                                            <input type="text" id="myAdress2" name="memAdrsDetail" readonly th:value="${#authentication.getPrincipal().getMemAdrsDetail()}" class="changeInputs"/>
+                                        </div>
                                     </div>
                                     <input type="date" name="petBirthDay" id="petBirthDay" class="petInput"/>
                                 </div>
 
+
                                 <div class="petGender">
                                     <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp;
                                         성별
+                                    <div class="myInfo4">
+                                        <div class="myInfoTitle"><img src="/images/birth.png" alt="birth"> &nbsp;&nbsp;생년월일</div>
+                                        
+                                        <div class="myInfoInputs myInfo4Inputs">
+                                            <label for="myBirth"></label>
+                                            <input type="date" id="myBirth" name="memBirth" readonly th:value="${#dates.format(#authentication.getPrincipal().getMemBirth(), 'yyyy-MM-dd')}" class="changeInputs"/>
+                                        </div>
                                     </div>
                                     <select name="petGenderAnswer" id="petGenderAnswer" class="petSelect">
                                         <option value="female">female</option>
@@ -200,15 +276,89 @@
                                     </select>
                                 </div>
 
+
                                 <div class="petWeight">
                                     <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게
                                     </div>
                                     <input type="text" name="petWeightAnswer" id="petWeightAnswer" class="petInput"/>
+
+                            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                            <script th:inline="javascript">
+                                const $myAdress = document.getElementById("myAdress");
+
+                                $myAdress.onclick = function() {
+
+                                    /* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다. */
+                                    new daum.Postcode({
+                                        oncomplete: function(data){
+                                            /* 팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분 */
+                                            document.getElementById("myAdress").value = data.address;
+                                            document.getElementById("myAdress2").focus();
+                                        }
+                                    }).open();
+                                }
+                            </script>
+
+
+                            <div class="dogInfo">
+
+                                <div class="dogInfoMore">
+                                    <form action="" method="post" class="dogInfoMoreContent">
+
+                                        <div class="petInfo1">
+                                            <div class="petName">
+                                                <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+                                                <input type="text" name="petName" id="petName" class="petInput"/>
+                                            </div>
+        
+                                            <div class="petBreed">
+                                                <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
+                                                <input type="text" name="petBreedName" id="petBreedName" class="petInput"/>
+                                            </div>
+                                        </div>
+                                    
+
+                                        <div class="petInfo2">
+                                            <div class="petBirth">
+                                                <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
+                                                <input type="date" name="petBirthDay" id="petBirthDay" class="petInput"/>
+                                            </div>
+        
+                                            <div class="petGender">
+                                                <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
+                                                <select name="petGenderAnswer" id="petGenderAnswer" class="petSelect">
+                                                    <option value="female">female</option>
+                                                    <option value="male">male</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    
+
+                                        <div class="petInfo3">
+                                            <div class="petOper">
+                                                <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
+                                                <select name="petOperAnswer" id="petOperAnswer" class="petSelect">
+                                                    <option value="Y">Y</option>
+                                                    <option value="N">N</option>
+                                                </select>
+                                            </div>
+        
+                                            <div class="petWeight">
+                                                <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
+                                                <input type="text" name="petWeightAnswer" id="petWeightAnswer" class="petInput"/>
+                                            </div>
+                                        </div>    
+                                    
+                                        <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="수정" required/></div>
+
+
+                                    </form>
                                 </div>
                             </div>
 
                             <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="수정완료"
                                                            required/></div>
+
 
 
                         </form>
@@ -226,6 +376,7 @@
             </div>
 
 
+
             <div class="goToMain"><a th:href="@{/}">메인 페이지로 돌아가기</a></div>
 
         </div>
@@ -239,4 +390,7 @@
 </body>
 
 
- 
+      </th:block>
+
+
+  </html>

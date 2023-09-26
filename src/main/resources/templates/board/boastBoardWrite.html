@@ -3,42 +3,91 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/boardLayout}">
 <head>
-    <title>자랑갤러리 글 작성</title>
+    <title>자랑게시판 글 작성</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="board-banner">
-        <h3>자랑갤러리</h3>
+        <h3>자랑게시판</h3>
         <div>
             <img th:src="@{/images/board-banner-image-2.png}" class="board-banner-image-2" alt="play-with-dog-image">
         </div>
     </div>
+
     <div class="board-container container">
+        <form th:action="@{/board/boastBoardWrite}" id="boardWriteForm" method="post" enctype="multipart/form-data">
+            <input
+                    type="hidden"
+                    id="refPostWriter.memCode"
+                    name="refPostWriter.memCode"
+                    th:value="${ #authentication.getPrincipal().getMemCode() }"
+            >
+            <input type="hidden" name="postType" th:value="자랑">
+            <input type="hidden" name="postSort" th:value="자랑">
         <div class="header-board-write-text">
             <h2>글쓰기</h2>
         </div>
         <div class="board-write-header">
             <div class="write-title">
-                <input type="text" name="Title" id="Title" placeholder="제목을 입력해주세요.">
+                <input type="text" name="postTitle" id="title" placeholder="제목을 입력해주세요.">
             </div>
             <div class="imageUpload">
-                <label for="imageUpload" class="label-imageUpload" id="imageUploadButton">
-                    <img th:src="@{/images/imageUpload.png}" alt="이미지업로드">
+                <input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this,1)">
+                <label for="thumbnailImg1" class="label-imageUpload" id="imageUploadButton1">
+                    <img class="imgs" th:src="@{/images/imageUpload.png}" alt="이미지업로드">
                 </label>
-                <input type="file" name="imageUpload" id="imageUpload" style="display: none;">
+                <input type="file" id="thumbnailImg2" name="thumbnailImg2" onchange="loadImg(this,2)">
+                <label for="thumbnailImg2" class="label-imageUpload" id="imageUploadButton2">
+                    <img class="imgs" th:src="@{/images/imageUpload.png}" alt="이미지업로드">
+                </label>
+                <input type="file" id="thumbnailImg3" name="thumbnailImg3" onchange="loadImg(this,3)">
+                <label for="thumbnailImg3" class="label-imageUpload" id="imageUploadButton3">
+                    <img class="imgs" th:src="@{/images/imageUpload.png}" alt="이미지업로드">
+                </label>
+                <input type="file" id="thumbnailImg4" name="thumbnailImg4" onchange="loadImg(this,4)">
+                <label for="thumbnailImg4" class="label-imageUpload" id="imageUploadButton4">
+                    <img class="imgs" th:src="@{/images/imageUpload.png}" alt="이미지업로드">
+                </label>
             </div>
         </div>
+            <div class="board-write-image">
+                <div>
+                    <img class="write-img" id="titleImg">
+                    <img class="write-img" id="contentImg1">
+                </div>
+                <div>
+                    <img class="write-img" id="contentImg2">
+                    <img class="write-img" id="contentImg3">
+                </div>
+            </div>
         <div class="board-write-content">
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="postContent" id="postContent" cols="30" rows="10" oninput="autoResizeWrite(this)"></textarea>
         </div>
         <div class="board-write-buttons">
             <div class="write-button">
-                <button type="submit" value="작성">작성완료</button>
+                <button type="submit">작성완료</button>
             </div>
             <div class="write-cancel">
                 <a th:href="@{/board/boastBoard}">취소</a>
             </div>
         </div>
+        </form>
     </div>
+
+    <script>
+        document.getElementById("boardWriteForm").addEventListener("submit", function(event) {
+            const thumbnailImg1 = document.getElementById("thumbnailImg1");
+            const thumbnailImg2 = document.getElementById("thumbnailImg2");
+            const thumbnailImg3 = document.getElementById("thumbnailImg3");
+            const thumbnailImg4 = document.getElementById("thumbnailImg4");
+
+            // 하나라도 파일이 선택되었는지 확인
+            if (!thumbnailImg1.files.length && !thumbnailImg2.files.length && !thumbnailImg3.files.length && !thumbnailImg4.files.length) {
+                alert("최소 하나의 이미지를 업로드해야 합니다..😏");
+                event.preventDefault();
+            }
+        });
+    </script>
+
 </th:block>
 </html>

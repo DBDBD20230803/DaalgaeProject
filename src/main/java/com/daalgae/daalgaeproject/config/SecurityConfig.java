@@ -17,6 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+      /*  (debug = true)*/
 public class SecurityConfig {
 
     private final AuthFailHandler authFailHandler;
@@ -42,20 +43,23 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
+         http.csrf().disable()
                 .authorizeRequests()
                 //.antMatchers("/*").authenticated()
                 .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/board/*", "/myPage/*", "/login/*").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .antMatchers(HttpMethod.POST, "/board/*").hasRole("ADMIN")
+                 .antMatchers("/login").hasAnyAuthority("USER")
+                 .antMatchers("/login/loginFindId", "/login/loginFindPwd").permitAll()
+                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login/login")
                 .failureHandler(authFailHandler)
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/login/loginSuccess")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 //.failureUrl("/login/login")
+
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/header/logout"))
@@ -65,8 +69,14 @@ public class SecurityConfig {
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/common/denied")
-                .and().build();
 
+                .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(false);
+
+
+        return http.build();
     }
 
 

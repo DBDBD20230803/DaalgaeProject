@@ -12,7 +12,9 @@
         <result property="postContent" column="POST_CONTENT"/>
         <result property="postDate" column="POST_DATE"/>
         <result property="postCount" column="POST_COUNT"/>
+        <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
         <association property="refPostWriter" resultMap="memberResultMap"/>
+        <association property="attachmentList" resultMap="attachmentFileResultMap"/>
     </resultMap>
 
     <resultMap type="MemberDTO" id="memberResultMap">
@@ -36,8 +38,10 @@
         <id property="replyCode" column="POST_REPLY_CODE"/>
         <result property="replyCon" column="POST_REPLY_CONTENT"/>
         <result property="replyDate" column="POST_REPLY_DATE"/>
-        <association property="refPostWriter" resultMap="memberResultMap"/>
-        <association property="refPostCode" resultMap="boardResultMap"/>
+        <result property="refReplyWriter" column="REF_POST_REPLY_WRITER"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
+        <association property="replyWriterDetail" resultMap="memberResultMap"/>
+<!--        <association property="refPostCode" resultMap="boardResultMap"/>-->
     </resultMap>
 
     <resultMap type="AttachmentDTO" id="attachmentFileResultMap">
@@ -46,11 +50,11 @@
         <result property="attachDbName" column="ATTACH_DB_NAME"/>
         <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
         <result property="attachOriginAddr" column="ATTACH_ORIGIN_ADDR"/>
-        <association property="refPostCode" resultMap="boardResultMap"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
     </resultMap>
 
     <select id="selectTotalCount" resultType="_int" parameterType="java.lang.String">
-        SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
+        SELECT DISTINCT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectTotalCount() */
                 COUNT(*)
           FROM  POST_INFO A
         <if test="searchCondition == 'refPostWriter'">
@@ -70,11 +74,15 @@
             <if test="searchCondition == 'postContent'">
                 AND A.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
             </if>
+            <if test="searchCondition == 'postTitleContent'">
+                AND (A.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+                OR A.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%'))
+            </if>
         </where>
     </select>
 
     <select id="selectBoardList" resultMap="boardResultMap">
-        SELECT  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardList() */
+        SELECT DISTINCT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectBoardList() */
                 A.POST_CODE
                 , A.POST_SORT
                 , A.POST_TITLE
@@ -82,8 +90,15 @@
                 , A.POST_DATE
                 , A.POST_COUNT
                 , D.MEM_ID
+                <if test="postType == '자랑'">
+                    ,(SELECT ATTACH_THUMB_ADDR
+                    FROM ATTACHMENT_FILE
+                    WHERE REF_POST_CODE = A.POST_CODE
+                    LIMIT 1) AS ATTACH_THUMB_ADDR
+                </if>
           FROM (
-                SELECT  B.POST_CODE
+                SELECT DISTINCT
+                        B.POST_CODE
                         , B.POST_SORT
                         , B.POST_TITLE
                         , B.POST_CONTENT
@@ -110,14 +125,23 @@
                         AND B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%')
                     </if>
                     <if test="searchCondition == 'postTitleContent'">
-                        AND ( B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
+                        AND (B.POST_TITLE LIKE CONCAT('%', #{ searchValue }, '%')
                         OR B.POST_CONTENT LIKE CONCAT('%', #{ searchValue }, '%'))
                     </if>
                 </where>
                 ) A
             JOIN  MEM_INFO D ON(A.REF_POST_WRITER = D.MEM_CODE)
+            LEFT JOIN ATTACHMENT_FILE E ON (A.POST_CODE = E.REF_POST_CODE)
             ORDER BY A.POST_CODE DESC
-            LIMIT  #{ startRow }, 10
+            <choose>
+                <when test="postType == '자랑'">
+                    LIMIT #{ startRow }, 9
+                </when>
+                <otherwise>
+                    LIMIT #{ startRow }, 10
+                </otherwise>
+            </choose>
+
     </select>
 
     <update id="incrementBoardCount">
@@ -125,6 +149,13 @@
             POST_INFO
         SET  POST_COUNT = POST_COUNT + 1
         WHERE  POST_CODE = #{ no }
+    </update>
+
+    <update id="updatePost">
+        UPDATE POST_INFO
+        SET POST_TITLE = #{ postTitle },
+            POST_CONTENT = #{ postContent }
+        WHERE POST_CODE = #{ postCode }
     </update>
 
     <select id="selectBoardDetail" resultMap="boardResultMap">
@@ -137,8 +168,15 @@
                  , A.POST_CONTENT
                  , A.POST_COUNT
                  , A.POST_DATE
+                 , C.ATTACH_CODE_SEQ
+                 , C.ATTACH_ORIGIN_NAME
+                 , C.ATTACH_DB_NAME
+                 , C.ATTACH_THUMB_ADDR
+                 , C.ATTACH_ORIGIN_ADDR
+                 , C.REF_POST_CODE
         FROM POST_INFO A
         JOIN MEM_INFO B ON(A.REF_POST_WRITER = B.MEM_CODE)
+        LEFT JOIN ATTACHMENT_FILE C ON (A.POST_CODE = C.REF_POST_CODE)
         WHERE A.POST_CODE = #{ no }
     </select>
 
@@ -157,58 +195,69 @@
     </select>
 
     <insert id="insertReply">
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertReply() */
+        INSERT
         INTO POST_REPLY   (
-                           POST_CODE
-                         , POST_REPLY_CON
-                         , POST_REPLY_WRITER
+                          POST_REPLY_CONTENT
+                         , REF_POST_REPLY_WRITER
+                         , REF_POST_CODE
                          )
         VALUES  (
-                #{ refBoardNo }
-                , #{ body }
-                , #{ writerMemberNo }
+                  #{replyCon}
+                , #{refReplyWriter}
+                , #{refPostCode}
                 )
     </insert>
 
-    <delete id="deleteReply" parameterType="_int">
-        DELETE  /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#deleteReply() */
+    <delete id="removeReply" parameterType="_int">
+        DELETE
           FROM  POST_REPLY
-         WHERE  POST_REPLY_CODE = #{ replyNo }
+         WHERE  POST_REPLY_CODE = #{no}
     </delete>
 
-    <insert id="insertBoard" parameterType="_int">
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertBoard() */
+    <insert id="insertBoard" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
+        INSERT
         INTO POST_INFO      (
-                              POST_SORT
+                              POST_TYPE
+                            , POST_SORT
                             , POST_TITLE
                             , POST_CONTENT
-                            , MEM_CODE
+                            , REF_POST_WRITER
                             )
         VALUES  (
-                  #{ categoryCode }
-                , #{ title }
-                , #{ body }
-                , #{ writerMemberNo }
+                  #{postType}
+                , #{postSort}
+                , #{postTitle}
+                , #{postContent}
+                , #{refPostWriter.memCode}
                 )
+        <selectKey keyProperty="postCode" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
-    <insert id="insertAttachment" parameterType="_int">
-        INSERT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#insertAttachment() */
+    <insert id="insertAttachment">
+        INSERT
         INTO ATTACHMENT_FILE    (
-                                  POST_CODE
+                                  REF_POST_CODE
                                 , ATTACH_ORIGIN_NAME
                                 , ATTACH_DB_NAME
                                 , ATTACH_ORIGIN_ADDR
                                 , ATTACH_THUMB_ADDR
-                                )
+        )
         VALUES  (
-                  #{ refBoardNo }
-                , #{ originalName }
-                , #{ savedName }
-                , #{ savePath }
-                , #{ thumbnailPath }
+                    #{refPostCode}
+                , #{attachOriginName}
+                , #{attachDbName}
+                , #{attachOriginAddr}
+                , #{attachThumbAddr}
                 )
     </insert>
+
+    <delete id="deletePost" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
+        DELETE FROM POST_INFO
+        WHERE POST_CODE = #{ postCode }
+    </delete>
+
 
     <select id="selectThumbnailDetail" resultMap="boardResultMap">
         SELECT /* com.daalgae.thymeleafspringboot.board.dao.BoardMapper#selectThumbnailDetail() */

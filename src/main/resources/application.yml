@@ -7,7 +7,28 @@ spring:
     url: jdbc:mysql://mysql.coffit.today:3306/daalgae
     username: HIkdt6
     password: HIkdt6
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+      location: D:/thymeleaf-springboot/
+  web:
+    resources:
+      static-locations: classpath:/upload/
 
 mybatis:
   mapper-locations: mybatis/mapper/**/*.xml
   type-aliases-package: com.daalgae.daalgaeproject
+
+
+image:
+  image-dir: img
+
+#이미지업로드를 위해서 공통 파일 수정하였습니다. (유빈)
+
+
+#logging:
+  #level:
+    #root: DEBUG
+

@@ -15,6 +15,7 @@
         <result property="memAdrs" column="MEM_ADRS"/>
         <result property="memAdrsDetail" column="MEM_ADRS_DETAIL"/>
         <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
+        <result property="memDogGum" column="MEM_DOG_GUM"/>
         <result property="memRole" column="MEM_ROLE"/>
         <result property="memBanStatus" column="MEM_BAN_STATUS"/>
         <result property="mailAuth" column="MAIL_AUTH"/>
@@ -36,7 +37,7 @@
 
         )
         VALUES (
-                   #{ memId }
+                #{ memId }
                ,#{ memPwd}
                ,#{ memName }
                ,#{ memBirth }
@@ -82,7 +83,7 @@
         SELECT
             COUNT(*)
         FROM MEM_INFO
-        WHERE MAIL_AUTH = 1
+        WHERE MEM_ID = #{ memId } AND MAIL_AUTH = 1
     </select>
 
     <select id="findMemberById" resultMap="loginMemberResultMap">
@@ -127,4 +128,48 @@
       WHERE MEM_CODE = #{ memCode }
   </update>
 
+    <select id="findId" resultMap="loginMemberResultMap">
+        SELECT
+            MEM_ID
+        FROM MEM_INFO
+        WHERE MEM_NAME = #{ memName } and MEM_EMAIL = #{ memEmail }
+    </select>
+
+    <select id="getFindUserResult" parameterType="MemberDTO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId } AND MEM_EMAIL = #{ memEmail }
+    </select>
+
+    <update id="updateRandomPass" parameterType="memberDTO">
+        UPDATE
+            MEM_INFO
+        SET MEM_PWD = #{ memPwd }
+        WHERE MEM_ID = #{ memId }
+    </update>
+
+    <select id="mypageRead" resultMap="loginMemberResultMap">
+        SELECT
+            *
+        FROM
+            MEM_INFO
+        WHERE MEM_ID = #{memId}
+    </select>
+
+
+
+
+    <update id="modifyMember">
+        UPDATE
+            MEM_INFO
+        SET
+             MEM_ID = #{ memId }
+            ,MEM_ADRS = #{ memAdrs }
+            ,MEM_ADRS_DETAIL = #{ memAdrsDetail }
+            ,MEM_BIRTH = #{ memBirth }
+            ,MEM_DOG_GUM = #{ memDogGum }
+        WHERE
+            MEM_CODE = #{ memCode }
+    </update>
 </mapper>

@@ -4,11 +4,11 @@ import com.daalgae.daalgaeproject.board.dao.BoardMapper;
 import com.daalgae.daalgaeproject.board.dto.AttachmentDTO;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
-import com.daalgae.daalgaeproject.common.exception.board.BoardRegistException;
-import com.daalgae.daalgaeproject.common.exception.board.ReplyRegistException;
-import com.daalgae.daalgaeproject.common.exception.board.ReplyRemoveException;
+import com.daalgae.daalgaeproject.common.exception.board.*;
 import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import com.daalgae.daalgaeproject.common.paging.SelectCriteria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +17,7 @@ import java.util.Map;
 
 @Service
 public class BoardServiceImpl implements BoardService{
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private final BoardMapper mapper;
 
@@ -78,7 +79,7 @@ public class BoardServiceImpl implements BoardService{
         int result = mapper.insertReply(registReply);
 
         if(result > 0) {
-            replyList = mapper.selectReplyList(registReply.getRefPostCode().getPostCode());
+            replyList = mapper.selectReplyList(registReply.getRefPostCode());
         } else {
             throw new ReplyRegistException("댓글 등록에 실패하셨습니다.");
         }
@@ -92,10 +93,13 @@ public class BoardServiceImpl implements BoardService{
     public List<ReplyDTO> removeReply(ReplyDTO removeReply) throws ReplyRemoveException {
         List<ReplyDTO> replyList = null;
 
-        int result = mapper.deleteReply(removeReply.getReplyCode());
+        int result = mapper.removeReply(removeReply.getReplyCode());
 
         if(result > 0) {
-            replyList = mapper.selectReplyList(removeReply.getRefPostCode().getPostCode());
+            replyList = mapper.selectReplyList(removeReply.getRefPostCode());
+            System.out.println("refPostCode : " + removeReply.getRefPostCode());
+            System.out.println("replyList : " + replyList);
+            System.out.println("replyCode : " + removeReply.getReplyCode());
         } else {
             throw new ReplyRemoveException("댓글 삭제에 실패하셨습니다.");
         }
@@ -106,63 +110,62 @@ public class BoardServiceImpl implements BoardService{
     /* 게시글 등록용 메소드 */
     @Override
     @Transactional
-    public void registBoard(BoardDTO board) throws BoardRegistException {
-        int result = mapper.insertBoard(board);
+    public void registBoard(BoardDTO board) throws ThumbnailRegistException {
 
-        if(!(result > 0)) {
-            throw new BoardRegistException("게시글 등록에 실패하셨습니다.");
-        }
-    }
+        int boardResult = mapper.insertBoard(board);
 
-    /* 전체 썸네일 게시글 조회용 메소드 */
-    @Override
-    public List<BoardDTO> selectAllThumbnailList() {
-        List<BoardDTO> thumbnailList = mapper.selectAllThumbnailList();
+        log.info("[BoardServiceImpl] board : " + board);
+        log.info("[BoardServiceImpl] boardResult : " + boardResult);
 
-        return thumbnailList;
-    }
+        List<AttachmentDTO> attachmentList = board.getAttachmentList();
 
-    /* 썸네일 게시글 등록용 메소드 */
-    @Override
-    @Transactional
-    public void registThumbnail(BoardDTO thumbnail) throws ThumbnailRegistException {
+        log.info("[BoardServiceImpl] attachmentList : " + attachmentList);
 
-        int result = 0;
-
-        /* 먼저 board 테이블부터 insert 한다. */
-        int boardResult = mapper.insertThumbnailContent(thumbnail);
-
-        /* Attachment 리스트를 불러온다. */
-        List<AttachmentDTO> attachmentList = thumbnail.getAttachmentList();
-
-        /* fileList에 boardNo값을 넣는다. */
+        /* fileList에 postCode값을 넣는다. */
         for(int i = 0; i < attachmentList.size(); i++) {
-            attachmentList.get(i).setRefPostCode((BoardDTO) thumbnail.getAttachmentList());
+            attachmentList.get(i).setRefPostCode(board.getPostCode());
         }
+        log.info("[BoardServiceImpl] attachmentList postCode : " + attachmentList);
 
         /* Attachment 테이블에 list size만큼 insert 한다. */
         int attachmentResult = 0;
         for(int i = 0; i < attachmentList.size(); i++) {
             attachmentResult += mapper.insertAttachment(attachmentList.get(i));
         }
+        log.info("[BoardServiceImpl] attachmentResult : " + attachmentResult);
 
         /* 게시글 추가 및 첨부파일 갯수 만큼 첨부파일 내용 insert에 실패 시 예외 발생 */
         if(!(boardResult > 0 && attachmentResult == attachmentList.size())) {
-            throw new ThumbnailRegistException("사진 게시판 등록에 실패하셨습니다.");
+            throw new ThumbnailRegistException("게시글 등록 실패...🙊");
+        }
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteBoard(BoardDTO board) throws BoardDeleteException{
+
+        int result = mapper.deletePost(board);
+
+        if (!(result>0)) {
+            throw new BoardDeleteException("게시글 삭제 실패...😥");
         }
     }
 
-    /* 게시글 상세 페이지 조회용 메소드 */
     @Override
-    public BoardDTO selectThumbnailDetail(int no) {
-        BoardDTO thumbnailDetail = null;
+    @Transactional
+    public BoardDTO updateBoard(BoardDTO updateBoard) throws BoardUpdateException {
 
-        int result = mapper.incrementBoardCount(no);
+        BoardDTO boardList = null;
 
-        if(result > 0) {
-            thumbnailDetail = mapper.selectThumbnailDetail(no);
+        int result = mapper.updatePost(updateBoard);
+
+        if(result>0) {
+            boardList = mapper.selectBoardDetail(updateBoard.getPostCode());
+        } else {
+            throw new BoardUpdateException("게시글 수정 실패...😣");
         }
 
-        return thumbnailDetail;
+        return boardList;
     }
 }
