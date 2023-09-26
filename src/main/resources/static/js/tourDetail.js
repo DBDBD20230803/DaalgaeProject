@@ -1,5 +1,52 @@
 function likeClick() {
-
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    let no = urlParam.get("no");
+    let toUrl = "/tour/getTourBookmark?no=" + no;
+    let toUrl1 = "/tour/setTourBookmark?no=" + no;
+    let toUrl2 = "/tour/deleteTourBookmark?no=" + no;
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+            if(data == 0) {
+                $.ajax({
+                    type:"get",
+                    url:toUrl1,
+                    dataType:"json",
+                    success: function(data) {
+                        console.log(data);
+                        if(data > 0) {
+                            $('.likeListImage').prop('src', '/images/likeListClicked.png');
+                        }
+                    },
+                    error:function(){
+                        console.log("통신에러3");
+                    }
+                });
+            } else {
+                $.ajax({
+                    type:"get",
+                    url:toUrl2,
+                    dataType:"json",
+                    success: function(data) {
+                        console.log(data);
+                        if(data > 0) {
+                            $('.likeListImage').prop('src', '/images/likeList.png');
+                        }
+                    },
+                    error:function(){
+                        console.log("통신에러3");
+                    }
+                });
+            }
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
 }
 $(function () {
     let page = $('.findPage').val();
@@ -179,13 +226,18 @@ $(function () {
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
     let no = urlParam.get("no");
-    toUrl = "/tour/getTourBookmark?no=" + no;
+    let toUrl = "/tour/getTourBookmark?no=" + no;
     $.ajax({
         type:"get",
         url:toUrl,
         dataType:"json",
         success: function(data) {
             console.log(data);
+            if(data == 1) {
+                $('.likeListImage').prop('src', '/images/likeListClicked.png');
+            } else {
+                $('.likeListImage').prop('src', '/images/likeList.png');
+            }
         },
         error:function(){
             console.log("통신에러3");
