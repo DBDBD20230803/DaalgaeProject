@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daalgae.daalgaeproject.bookmark.dao.BookmarkMapper">
 
+    <!-- 관광지 -->
+
     <select id="tourIsMarked" resultType="_int">
         SELECT COUNT(REF_MEM_CODE)
         FROM TOUR_SORT
@@ -43,8 +45,6 @@
         WHERE REF_TOUR_CODE = ${ tourCode } AND REF_MEM_CODE = ${ memCode }
     </select>
 
-    <!-- 참고용 -->
-
     <delete id="deleteFromBookmark">
         DELETE
           FROM  BOOKMARK_INFO
@@ -56,6 +56,5 @@
         FROM  TOUR_SORT
         WHERE  REF_MEM_BOOKMARK_SEQ = #{ getTourSequence }
     </delete>
-
 </mapper>
 
