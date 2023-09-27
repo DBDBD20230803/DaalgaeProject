@@ -41,8 +41,6 @@ public interface MemberDAO {
 
     int purchaseDogGumus (@Param("memCode") int memCode, @Param("memDogGum") int memDogGum);
 
-    void updateMemDogGum(MemberDTO member);
-
     List<MemberDTO> findId(MemberDTO memberDTO);
 
     int getFindUserResult(MemberDTO memberDTO);

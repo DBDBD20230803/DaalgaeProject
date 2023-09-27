@@ -4,11 +4,16 @@ package com.daalgae.daalgaeproject.webtoon.controller;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.webtoon.service.WebtoonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
@@ -17,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 public class WebtoonController {
 
     private final WebtoonService webtoonService;
-
 
     @GetMapping("/dengInfo")
     public String goWebtoon(Model model) {
@@ -45,7 +49,8 @@ public class WebtoonController {
             int memCode = user.getMemCode();
 
             int member = webtoonService.getMemberByMemCode(memCode);
-            System.out.println(member);
+
+            System.out.println("member 값은 ,,,??2222 : " + member);
             model.addAttribute("member", member);
 
         }
@@ -54,26 +59,12 @@ public class WebtoonController {
 
     @PostMapping("/purchaseDogGum")
     @ResponseBody
-    public String purchaseDogGum(@RequestParam(value = "memDogGum", required = false) Integer memDogGum) {
+    public String purchaseDogGum(@RequestParam( "memDogGum") Integer memDogGum) {
         boolean success = webtoonService.purchaseDogGum(memDogGum);
-        System.out.println("드디어 값 받아왔냐 ? : " + memDogGum);
         if (success) {
             return "success";
         }else{
             return "failure";
         }
     }
- /*   @PostMapping("/dogGumResult")
-    @ResponseBody
-    public String updateMemDogGum(@RequestParam int memCode, @RequestParam int memDogGum) {
-        boolean updateResult = webtoonService.updateMember(memDogGum, memCode);
-
-        System.out.println("컨트롤러 결과값 받음? : " + memDogGum + memCode);
-        if (updateResult) {
-            return "success";
-        }else{
-            return "fail";
-        }
-
-    }*/
 }
