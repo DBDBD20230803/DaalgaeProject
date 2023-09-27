@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>사용내역</title>
+    <title>결제내역</title>
 
     <!--styleSheet-->
     <link rel="stylesheet" th:href="@{/css/payment.css}">
@@ -51,7 +51,7 @@
     <th:block th:include="component/header.html"></th:block>
 </div>
 <div class="paymentBg">
-    <h3>사용내역</h3>
+    <h3>결제내역</h3>
 </div>
 
 <div>
@@ -86,7 +86,7 @@
                 <hr class="purchaseLine1">
                 <div class="purchaseBox1-7">
                     <div class="purchaseBox1-5">구매 &nbsp; &nbsp;</div>
-                    <div class="purchaseBox1-6">개껌 10개</div>
+                    <div class="purchaseBox1-6">개껌10개</div>
                 </div>
             </div>
         </div>
@@ -107,7 +107,27 @@
             </div>
         </div>
     </div>
-</div>
+
 <br><br><br><br><br><br><br><br>
+
+<table>
+    <thead>
+    <tr>
+        <th>결제 일자</th>
+        <th>결제 금액</th>
+        <th>개껌 잔여</th>
+        <th>결제 아이템</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="orderPays : ${orderPays}">
+        <td th:text="${#dates.format(orderPays.getDogGumPayDate(), 'yyyy-MM-dd')}"></td>
+        <td th:text="${orderPays.getDogGumPayMethod()}"></td>
+        <td th:text="${orderPays.getDogGumPay()}"></td>
+        <td th:text="${orderPays.getDogItemName()}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
 </body>
 </html>

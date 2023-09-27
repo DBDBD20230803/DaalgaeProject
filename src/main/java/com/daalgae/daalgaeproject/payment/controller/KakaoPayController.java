@@ -1,28 +1,29 @@
-package com.daalgae.daalgaeproject.payment.paycontroller;
+package com.daalgae.daalgaeproject.payment.controller;
 
-import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
 import com.daalgae.daalgaeproject.payment.service.KakaoPayService;
 import com.daalgae.daalgaeproject.webtoon.service.WebtoonService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("payment")
 @RequiredArgsConstructor
 @Slf4j
+@Data
 public class KakaoPayController {
 
 
@@ -44,8 +45,6 @@ public class KakaoPayController {
 
         return "payment/payments";
     }
-
-
 
 
     // 결제 요청??
@@ -122,9 +121,30 @@ public class KakaoPayController {
 
             int member = webtoonService.getMemberByMemCode(memCode);
             System.out.println(member);
+            List<OrderPay> orderPays = kakaoPayService.getAllPayment(memCode);
             model.addAttribute("member", member);
+            model.addAttribute("orderPays", orderPays);
+
+            if (orderPays.isEmpty()) {
+                return "redirect:/payment/useHistoryEmpty";
+            }
         }
         return "payment/useHistory";
+    }
+
+    @GetMapping("useHistoryEmpty")
+    public String goUseHistory(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            int memCode = user.getMemCode();
+
+            int member = webtoonService.getMemberByMemCode(memCode);
+
+            model.addAttribute("member", member);
+        }
+        return "payment/useHistoryEmpty";
     }
 }
 

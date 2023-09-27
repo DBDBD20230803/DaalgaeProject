@@ -5,14 +5,14 @@ import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
-import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
-import com.daalgae.daalgaeproject.payment.dto.KakaoReady;
-import com.daalgae.daalgaeproject.payment.dto.OrderPay;
+import com.daalgae.daalgaeproject.payment.dto.*;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import groovy.util.logging.Log4j2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -36,6 +36,7 @@ public class KakaoPayService {
     private OrderPayMapper orderPayMapper;
     private MemberDAO memberMapper;
     private KakaoReady kakaoReady;
+    private KakaoPayService kakaoPayService;
 
 
     @Autowired
@@ -138,6 +139,7 @@ public class KakaoPayService {
         return res;
     }
 
+
     // 헤더값
     private HttpHeaders getHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -183,4 +185,9 @@ public class KakaoPayService {
         }
     }
 
-}
+
+    public List<OrderPay> getAllPayment(Integer memCode) {
+        return orderPayMapper.userSelect(memCode);
+    }
+
+    }
