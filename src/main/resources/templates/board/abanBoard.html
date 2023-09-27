@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/boardLayout}">
+<head>
+    <title>유기견 게시판</title>
+</head>
+
+<th:block layout:fragment="content">
+    <div class="board-banner">
+        <h3>당신이 필요한 아이들</h3>
+        <div>
+            <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
+        </div>
+    </div>
+
+    <div class="board-header-menu">
+        <div class="protection">
+            <button onclick="navigateToAbanPage0()" class="category-button" id="btn0">보호중인 강아지</button>
+        </div>
+        <div class="center">
+            <button onclick="navigateToAbanPage1()" class="category-button" id="btn1">동물보호센터</button>
+        </div>
+        <div class="adoptInfo">
+            <button onclick="navigateToAbanPage2()" class="category-button" id="btn2">입양안내</button>
+        </div>
+        <div class="pickupInfo" id="pickupInfo">
+            <button onclick="navigateToAbanPage3()" class="category-button" id="btn3">습득시 안내</button>
+        </div>
+    </div>
+
+    <div class="board-container container">
+        <div class="board-searchBar">
+            <form id="searchForm" th:action="@{/board/abanBoard}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="head-title-category">
+                        <select name="city" id="searchCondition">
+                            <option value="" disabled selected>지역</option>
+                            <option value="6110000" th:selected="${city == '6110000'}">서울</option>
+                            <option value="6260000" th:selected="${city == '6260000'}">부산</option>
+                            <option value="6270000" th:selected="${city == '6270000'}">대구</option>
+                            <option value="6280000" th:selected="${city == '6280000'}">인천</option>
+                            <option value="6290000" th:selected="${city == '6290000'}">광주</option>
+                            <option value="5690000" th:selected="${city == '5690000'}">세종</option>
+                            <option value="6300000" th:selected="${city == '6300000'}">대전</option>
+                            <option value="6310000" th:selected="${city == '6310000'}">울산</option>
+                            <option value="6410000" th:selected="${city == '6410000'}">경기</option>
+                            <option value="6530000" th:selected="${city == '6530000'}">강원</option>
+                            <option value="6430000" th:selected="${city == '6430000'}">충북</option>
+                            <option value="6440000" th:selected="${city == '6440000'}">충남</option>
+                            <option value="6450000" th:selected="${city == '6450000'}">전북</option>
+                            <option value="6460000" th:selected="${city == '6460000'}">전남</option>
+                            <option value="6470000" th:selected="${city == '6470000'}">경북</option>
+                            <option value="6480000" th:selected="${city == '6480000'}">경남</option>
+                            <option value="6500000" th:selected="${city == '6500000'}">제주</option>
+                        </select>
+                    </div>
+
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton" class="searchButton">검색</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="boast-list">
+            <div class="boast-postList" th:each="abanInfo : ${abanInfoList}">
+                <input th:value="${abanInfo.desertionNo}" type="hidden">
+                <input type="hidden" name="pageNo" th:value="${selectCriteria.pageNo}">
+                <div class="boast-img-box">
+                    <img class="boast-content-img" th:src="${abanInfo.popfile}" alt="DOG">
+                </div>
+                    <div class="boast-detail-box">
+                        <div class="boast-detail-title">
+                            <div>
+                                <h6 class="boast-postNo">공고번호 : </h6>
+                                <h6  class="boast-postTitle" th:text="${abanInfo.noticeNo}"></h6>
+                            </div>
+                        </div>
+                            <div class="boast-detail">
+                                <img th:src="@{/images/gender.png}" alt="date">
+                                <h6 class="boast-postUser">성별 : </h6>
+                                <h6 class="boast-postUser" th:text="${abanInfo.sexCd}"></h6>
+                            </div>
+                            <div class="boast-detail">
+                                <img th:src="@{/images/location.png}" alt="writer">
+                                <h6 class="boast-postUser">발견장소 : </h6>
+                                <h6 class="boast-postUser" th:text="${abanInfo.happenPlace}"></h6>
+                            </div>
+                            <div class="boast-detail">
+                                <img th:src="@{/images/aban-breed.png}" alt="date">
+                                <h6 class="boast-postUser">품종 : </h6>
+                                <h6 class="boast-postUser" th:text="${abanInfo.kindCd}"></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="board-paging-button">
+            <button th:if="${selectCriteria.startPage > 0}"
+                    th:onclick="'location.href=\'/board/abanBoard?currentPage=1'+ '&city='+ @{${city}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == 1}"
+            >
+                &lt;&lt;
+            </button>
+            <button
+                    th:onclick="'location.href=\'/board/abanBoard?currentPage='+ @{${selectCriteria.startPage - 1}} + '&city='+ @{${city}} + '\''"
+                    th:disabled="${selectCriteria.pageNo < 6}"
+            >
+                &lt;
+            </button>
+            <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
+                <button
+                        th:text="${ page }"
+                        th:onclick="'location.href=\'/board/abanBoard?currentPage=' + @{${page}}  + '&city='+ @{${city}} +'\''"
+                        th:disabled="${ selectCriteria.pageNo eq page }"
+                        th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
+                </button>
+            </th:block>
+            <button
+                    th:onclick="'location.href=\'/board/abanBoard?currentPage='+ @{${selectCriteria.endPage + 1}} + '&city='+ @{${city}} +'\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
+            >
+                &gt;
+            </button>
+            <button
+                    th:onclick="'location.href=\'/board/abanBoard?currentPage='+ @{${selectCriteria.maxPage}} + '&city='+ @{${city}} +'\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+            >
+                &gt;&gt;
+            </button>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+
+        let message = '[[${message}]]';
+
+        if(message != null && message !== 'null') {
+            alert(message);
+        }
+
+        if (document.querySelectorAll(".board-container .boast-postList")) {
+            const $tds = document.querySelectorAll(".board-container .boast-postList");
+            for (let i = 0; i < $tds.length; i++) {
+
+                $tds[i].onmouseenter = function() {
+                    this.style.backgroundColor = "#A6CEF7";
+                    this.style.cursor = "pointer";
+                    this.style.color = "#FFFFFF";
+                }
+
+                $tds[i].onmouseleave = function() {
+                    this.style.backgroundColor = "transparent";
+                    this.style.color = "#000000";
+                }
+
+                $tds[i].onclick = function() {
+                    const no = this.children[0].value;
+                    const pageNo = this.children[1].value;
+                    const city = document.getElementById('searchCondition').value.replace(/\s/g, '');
+                    console.log("city : " + city)
+                    location.href = "/board/abanBoardSelect?currentPage=" + pageNo + "&city="+ city +"&no=" + no;
+                }
+            }
+        }
+
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchValue = urlParams.get('searchValue');
+
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            if (searchValue === '') {
+            }else {
+                document.getElementById('btn0').classList.add('active');
+            }
+        });
+
+
+    </script>
+</th:block>
+</html>

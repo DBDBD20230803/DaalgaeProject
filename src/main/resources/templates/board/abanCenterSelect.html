@@ -3,50 +3,55 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/boardLayout}">
 <head>
-    <title>유기견 게시판</title>
+    <title>동물보호센터</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="board-banner">
-        <h3>당신이 필요한 아이들</h3>
+        <h3>동물보호센터</h3>
             <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
 
     <div class="board-header-menu">
         <div class="protection">
-            <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
+            <button onclick="navigateToAbanPage0()" class="category-button" id="btn0">보호중인 강아지</button>
         </div>
         <div class="center">
-            <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
+            <button onclick="navigateToAbanPage1()" class="category-button" id="btn1">동물보호센터</button>
         </div>
         <div class="adoptInfo">
-            <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
+            <button onclick="navigateToAbanPage2()" class="category-button" id="btn2">입양안내</button>
         </div>
         <div class="pickupInfo" id="pickupInfo">
-            <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
+            <button onclick="navigateToAbanPage3()" class="category-button" id="btn3">습득시 안내</button>
         </div>
     </div>
 
     <div class="board-container container">
         <div class="board-searchBar">
-            <div class="search-buttons">
-                <div class="search-by-text">
-                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
+            <form id="searchForm" th:action="@{/board/abanBoardCenter}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="search-by-text">
+                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
+                        <input type="search" name="centerName" id="centerName" class="searchText" placeholder="보호소 이름 검색">
+                    </div>
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton">검색</button>
+                    </div>
                 </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
-                </div>
-            </div>
+            </form>
         </div>
-        <div class="board-content-select-container">
+    </div>
+
+        <div class="board-content-select-container" th:each="info : ${ abanInfo }">
             <div class="board-content-title">
                     <h2>보호중인 동물</h2>
             </div>
-            <div class="board-select-content">
+            <div class="board-select-content-aban">
                 <div class="dog-img">
-                    <img th:src="@{/images/board-announcement-button.png}" alt="">
+                    <img class="dog-img-img" th:src="${info.popfile}" alt="DOG">
                 </div>
                 <div class="dog-detail">
                     <div class="a-c-title">
@@ -54,7 +59,7 @@
                             <h4>공고번호</h4>
                         </div>
                         <div>
-                            <h4>광주-북구-2023-00650</h4>
+                            <h4 th:text="${info.noticeNo}"></h4>
                         </div>
                     </div>
                     <div class="a-c-date">
@@ -62,7 +67,7 @@
                             <h4>접수일시</h4>
                         </div>
                         <div>
-                            <h4>2023-09-01</h4>
+                            <h4 th:text="${info.noticeSdt}"></h4>
                         </div>
                     </div>
                     <div class="a-c-breed">
@@ -70,7 +75,7 @@
                             <h4>품종</h4>
                         </div>
                         <div>
-                            <h4>믹스견</h4>
+                            <h4 th:text="${info.kindCd}"></h4>
                         </div>
                     </div>
                     <div class="a-c-color">
@@ -78,7 +83,7 @@
                             <h4>색상</h4>
                         </div>
                         <div>
-                            <h4>흰색</h4>
+                            <h4 th:text="${info.colorCd}"></h4>
                         </div>
                     </div>
                     <div class="a-c-gender">
@@ -86,7 +91,7 @@
                             <h4>성별</h4>
                         </div>
                         <div>
-                            <h4>수컷</h4>
+                            <h4 th:text="${info.sexCd}"></h4>
                         </div>
                     </div>
                 </div>
@@ -99,46 +104,48 @@
                 <div class="detail-detail">
                     <div class="detail-detail-group-1">
                         <div class="a-c-RegistNumber">
-                            <h4>등록번호 : </h4>
-                            <h4> - </h4>
+                            <h4>공고번호 : </h4>
+                            <h4 th:text="${info.noticeNo}"></h4>
                         </div>
                         <div class="a-c-Neutered">
                             <h4>중성화여부 : </h4>
-                            <h4>아니오</h4>
+                            <h4 th:text="${info.neuterYn}"></h4>
                         </div>
                         <div class="a-c-AgeWeight">
                             <h4>나이/체중 : </h4>
-                            <h4>2023(60일미만)(년생) / 3kg</h4>
+                            <h4 th:text="${info.age}"></h4>
+                            <h4> / </h4>
+                            <h4 th:text="${info.weight}"></h4>
                         </div>
                         <div class="a-c-Character">
                             <h4>특징 : </h4>
-                            <h4>개농장 구조</h4>
+                            <h4 th:text="${info.specialMark}"></h4>
                         </div>
                         <div class="a-c-PlaceOfDiscovery">
                             <h4>발견장소 : </h4>
-                            <h4>군익로 655-22</h4>
+                            <h4 th:text="${info.happenPlace}"></h4>
                         </div>
                     </div>
                     <div class="detail-detail-group-2">
                         <div class="a-c-Agency">
                             <h4>관할기간 : </h4>
-                            <h4>전라북도 군산시</h4>
+                            <h4 th:text="${info.orgNm}"></h4>
                         </div>
                         <div class="a-c-Condition">
                             <h4>상태 : </h4>
-                            <h4>보호중</h4>
+                            <h4 th:text="${info.processState}"></h4>
                         </div>
                         <div class="a-c-Shelter">
                             <h4>보호센터 : </h4>
-                            <h4>군산유기동물보호센터</h4>
+                            <h4 th:text="${info.careNm}"></h4>
                         </div>
                         <div class="a-c-PhoneNumber">
                             <h4>전화번호 : </h4>
-                            <h4>062-571-2808</h4>
+                            <h4 th:text="${info.careTel}"></h4>
                         </div>
                         <div class="a-c-PlaceOfProtection">
                             <h4>보호장소 : </h4>
-                            <h4>전라북도 군산시 대야면 보덕안정길 108-20</h4>
+                            <h4 th:text="${info.careAddr}"></h4>
                         </div>
                     </div>
                 </div>
@@ -146,9 +153,25 @@
         </div>
         <div class="board-select-footer">
             <div class="back-to-list">
-                <a th:href="@{/board/abandonedBoard}">목록</a>
+                <a th:href="@{/board/abanBoard}">목록</a>
             </div>
         </div>
     </div>
+
+    <script>
+
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchValue = urlParams.get('searchValue');
+
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            if (searchValue === '') {
+            }else {
+                document.getElementById('btn0').classList.add('active');
+            }
+        });
+    </script>
 </th:block>
 </html>

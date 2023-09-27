@@ -148,29 +148,6 @@
             }
         }
 
-        window.addEventListener('load', function() {
-            // 현재 URL에서 search 파라미터를 가져옵니다
-            const urlParams = new URLSearchParams(window.location.search);
-            const searchValue = urlParams.get('searchValue');
-
-            // 모든 버튼을 찾아서 'active' 클래스를 제거합니다
-            const buttons = document.querySelectorAll('.category-button');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // searchValue에 따라 해당 버튼에 'active' 클래스를 추가합니다
-            if (searchValue === '자유') {
-                document.getElementById('btn1').classList.add('active');
-            } else if (searchValue === '먹거리') {
-                document.getElementById('btn2').classList.add('active');
-            } else if (searchValue === '용품') {
-                document.getElementById('btn3').classList.add('active');
-            } else if (searchValue === '정보') {
-                document.getElementById('btn4').classList.add('active');
-            } else {
-                document.getElementById('btn0').classList.add('active');
-            }
-        });
-
         $(document).ready(function () {
             let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
             let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
