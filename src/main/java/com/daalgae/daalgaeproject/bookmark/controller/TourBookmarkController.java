@@ -21,7 +21,7 @@ public class TourBookmarkController {
         this.bookmarkService = bookmarkService;
     }
     /* 게시글, 관광지, 백과사전 번호 추가해야 함 백과사전 코드는 테이블 하나 만들어야 하나? */
-    @GetMapping(value = "tour/getTourBookmark", produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "tour/bookmark/getTourBookmark", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public int getTourBookmark(@RequestParam(value = "no") int no) {
         int isMarked = -1;
@@ -35,7 +35,7 @@ public class TourBookmarkController {
         return isMarked;
     }
 
-    @GetMapping(value = "tour/setTourBookmark", produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "tour/bookmark/setTourBookmark", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public int setTourBookmark(@RequestParam(value = "no") int no) {
         int isMarked = -1;
@@ -50,7 +50,7 @@ public class TourBookmarkController {
         return isMarked;
     }
 
-    @GetMapping(value = "tour/deleteTourBookmark", produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "tour/bookmark/deleteTourBookmark", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public int deleteTourBookmark(@RequestParam(value = "no") int no) {
         int isMarked = -1;

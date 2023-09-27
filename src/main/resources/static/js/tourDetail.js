@@ -2,9 +2,9 @@ function likeClick() {
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
     let no = urlParam.get("no");
-    let toUrl = "/tour/getTourBookmark?no=" + no;
-    let toUrl1 = "/tour/setTourBookmark?no=" + no;
-    let toUrl2 = "/tour/deleteTourBookmark?no=" + no;
+    let toUrl = "/tour/bookmark/getTourBookmark?no=" + no;
+    let toUrl1 = "/tour/bookmark/setTourBookmark?no=" + no;
+    let toUrl2 = "/tour/bookmark/deleteTourBookmark?no=" + no;
     $.ajax({
         type:"get",
         url:toUrl,
@@ -229,7 +229,7 @@ $(function () {
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
     let no = urlParam.get("no");
-    let toUrl = "/tour/getTourBookmark?no=" + no;
+    let toUrl = "/tour/bookmark/getTourBookmark?no=" + no;
     console.log(toUrl);
     $.ajax({
         type:"get",
