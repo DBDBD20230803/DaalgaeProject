@@ -43,6 +43,7 @@
 <div id="headers">
     <th:block th:include="component/header.html"></th:block>
 </div>
+
 <div class="tourBg">
     <h3>우리 아이와 함께<br>펫티켓을 만들어 나가요</h3>
 </div>
@@ -50,12 +51,14 @@
 <div class="knowAfterAdopt"></div>
 
     <!-- 1페이지-->
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/knowAfterAdopt1.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/knowAfterAdopt1.png}" />
+        <button onclick="likeClick(5);"><img class="likeListImageLeft likeBtn" src="/images/likeList.png" /></button>
+    </div>
     <div class="SubHeading1">반려인</div>
     <div class="Afterdesc1">📌일반적으로 강아지의 성장기는 1세까지입니다. 단, 대형견은 1.5~2세까지 성장해요. 강아지 성장기의 가장 중요한 시점은
         바로 생후 2~4개월인데요. 이때 한 경험,으로 성격이 형성되기 때문이에요. 이 시기를 사회화 시기라고 합니다.<br>
         따라서 이 시기에는 다양한 사람, 동물, 소리, 환경 등의 자극을 긍정적으로 생각할 수 있도록 훈련하는 게 매우 중요합니다.</div>
-    
     <!--<div class="AfterText1">
         <img th:src="@{/images/knowAfterAdopt2.png}" />
         <div class="AfterTextSubstring1">작고 약한 이빨</div>
@@ -92,8 +95,10 @@
     <div class="gapBox"></div>
 
     <!-- 2페이지 -->
-    <img class="AfterAdopt2" height="260px" th:src="@{/images/knowAfterAdopt4.png}" />
-
+    <div class="AfterAdopt2">
+        <img height="260px" th:src="@{/images/knowAfterAdopt4.png}" />
+        <button onclick="likeClick(6);"><img class="likeListImageRight likeBtn" src="/images/likeList.png" /></button>
+    </div>
     <div class="gapBox2"></div>
 
     <div class="SubHeading2">성인기 (1세~7세)</div>
@@ -142,7 +147,10 @@
 
     <!-- 3페이지-->
     <div class="gapBox"></div>
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/knowAfterAdopt7.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/knowAfterAdopt7.png}" />
+        <button onclick="likeClick(7);"><img class="likeListImageLeft likeBtn" src="/images/likeList.png" /></button>
+    </div>
     <div class="SubHeading1">노년기 (8세~)</div>
     <div class="Afterdesc1">
         📌강아지 노년기는 보통 7~8세 이후를 의미하는데요. 이 시기에는 서서히, 많은 변화가 나타납니다.<br>

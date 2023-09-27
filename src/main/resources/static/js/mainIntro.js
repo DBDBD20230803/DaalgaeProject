@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    /* 이미지 슬라이더 */
     let imgs;
     let img_count;
     let img_position = 1;
@@ -31,4 +32,7 @@ $(document).ready( function() {
             img_position++;
         }
     }
+
+    /* 공지사항 관련 */
+
 });

@@ -1,5 +1,55 @@
 function likeClick() {
-
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    let no = urlParam.get("no");
+    let toUrl = "/tour/bookmark/getTourBookmark?no=" + no;
+    let toUrl1 = "/tour/bookmark/setTourBookmark?no=" + no;
+    let toUrl2 = "/tour/bookmark/deleteTourBookmark?no=" + no;
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+            if(data == -1) {
+                location.href='/login/login';
+            }
+            if(data == 0) {
+                $.ajax({
+                    type:"get",
+                    url:toUrl1,
+                    dataType:"json",
+                    success: function(data) {
+                        console.log(data);
+                        if(data > 0) {
+                            $('.likeListImageLeft').prop('src', '/images/likeListClicked.png');
+                        }
+                    },
+                    error:function(){
+                        console.log("통신에러3");
+                    }
+                });
+            } else {
+                $.ajax({
+                    type:"get",
+                    url:toUrl2,
+                    dataType:"json",
+                    success: function(data) {
+                        console.log(data);
+                        if(data > 0) {
+                            $('.likeListImageLeft').prop('src', '/images/likeList.png');
+                        }
+                    },
+                    error:function(){
+                        console.log("통신에러3");
+                    }
+                });
+            }
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
 }
 $(function () {
     let page = $('.findPage').val();
@@ -169,6 +219,28 @@ $(function () {
             }
             if(nearThree == 0) {
                 $('#nearTourInfo').remove();
+            }
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
+
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    let no = urlParam.get("no");
+    let toUrl = "/tour/bookmark/getTourBookmark?no=" + no;
+    console.log(toUrl);
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+            if(data == 1) {
+                $('.likeListImageLeft').prop('src', '/images/likeListClicked.png');
+            } else {
+                $('.likeListImageLeft').prop('src', '/images/likeList.png');
             }
         },
         error:function(){

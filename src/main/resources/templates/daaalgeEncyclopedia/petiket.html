@@ -48,9 +48,11 @@
 </div>
 <input type="hidden" name="getUrl" th:value="${getUrl}">
 <div class="knowAfterAdopt"></div>
-
     <!-- 1페이지-->
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/petiket1.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/petiket1.png}" />
+        <button onclick="likeClick(9);"><img class="likeListImageLeft likeBtn" src="/images/likeList.png" /></button>
+    </div>
     <div class="SubHeading1">반려인</div>
     <div class="Afterdesc1">📌안전하개 행복하개</div>
     
@@ -73,7 +75,10 @@
     <div class="gapBox"></div>
 
     <!-- 2페이지 -->
-    <img class="AfterAdopt2" height="260px" th:src="@{/images/petiket3.png}" />
+    <div class="AfterAdopt2">
+        <img height="260px" th:src="@{/images/petiket3.png}" />
+        <button onclick="likeClick(10);"><img class="likeListImageRight likeBtn" src="/images/likeList.png" /></button>
+    </div>
 
     <div class="gapBox2"></div>
 
@@ -107,7 +112,10 @@
 
     <!-- 3페이지-->
     <div class="gapBox"></div>
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/petiket5.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/petiket5.png}" />
+        <button onclick="likeClick(11);"><img class="likeListImageLeft likeBtn" src="/images/likeList.png" /></button>
+    </div>
     <div class="SubHeading1">시민</div>
     <div class="Afterdesc1">
         📌강아지가 너무 예쁘지만, 조금만 참아주세요!

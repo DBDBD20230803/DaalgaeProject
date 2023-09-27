@@ -41,4 +41,83 @@ $(function () {
             console.log(error);
         }
     });
+    const urlObject = new URL(decodeURI(window.location.href)).toString();
+    if(urlObject.includes("knowBeforeAdopt")) {
+        for(let i = 1; i <=4; i++) {
+            let no = i;
+            let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + no;
+            console.log(toUrl);
+            checkMark(toUrl);
+        }
+    }
 });
+
+function checkMark(toUrl) {
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+            if(data == 1) {
+                $(".likeBtn").eq(i-1).prop('src', '/images/likeListClicked.png');
+            } else {
+                $(".likeBtn").eq(i-1).prop('src', '/images/likeList.png');
+            }
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
+}
+
+function likeClick(num) {
+    let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + num;
+    let toUrl1 = "/encycle/bookmark/setEncycleBookmark?no=" + num;
+    let toUrl2 = "/encycle/bookmark/deleteEncycleBookmark?no=" + num;
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+            if(data == -1) {
+                location.href='/login/login';
+            }
+            if(data == 0) {
+                $.ajax({
+                    type:"get",
+                    url:toUrl1,
+                    dataType:"json",
+                    success: function(data) {
+                        console.log(data);
+                        if(data > 0) {
+                            $('.likeBtn').eq(num-1).prop('src', '/images/likeListClicked.png');
+                        }
+                    },
+                    error:function(){
+                        console.log("통신에러3");
+                    }
+                });
+            } else {
+                $.ajax({
+                    type:"get",
+                    url:toUrl2,
+                    dataType:"json",
+                    success: function(data) {
+                        console.log(data);
+                        if(data > 0) {
+                            $('.likeBtn').eq(num-1).prop('src', '/images/likeList.png');
+                        }
+                    },
+                    error:function(){
+                        console.log("통신에러3");
+                    }
+                });
+            }
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
+}

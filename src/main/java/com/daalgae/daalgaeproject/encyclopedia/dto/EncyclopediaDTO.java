@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 public class EncyclopediaDTO {
-    private int encycleCode;
+    private int encContentCode;
     private String encycleOrder;
     private String encycleImage;
     private String encycleTitle;
