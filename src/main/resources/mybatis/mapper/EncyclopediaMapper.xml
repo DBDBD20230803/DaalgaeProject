@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daalgae.daalgaeproject.encyclopedia.dao.EncyclopediaMapper">
     <resultMap id="encycleResultMap" type="com.daalgae.daalgaeproject.encyclopedia.dto.EncyclopediaDTO">
-        <id property="encycleCode" column="ENCYCLE_CODE"/>
+        <id property="encContentCode" column="ENC_CONTENT_CODE"/>
         <result property="encycleText" column="ENCYCLE_TEXT"/>
         <result property="encycleOrder" column="ENCYCLE_ORDER"/>
         <result property="encycleImage" column="ENCYCLE_IMAGE"/>
@@ -14,12 +14,12 @@
 
 <select id="findList" resultMap="encycleResultMap">
     SELECT
-            ENCYCLE_CODE
+            ENC_CONTENT_CODE
             ,ENCYCLE_ORDER
             ,ENCYCLE_IMAGE
             ,ENCYCLE_TITLE
             ,ENCYCLE_CONTENT
-      FROM ENCYCLE_INFO
+      FROM ENC_CONTENT
     <choose>
         <when test="option == 'before'">
             WHERE ENCYCLE_ORDER LIKE  '1-%'
