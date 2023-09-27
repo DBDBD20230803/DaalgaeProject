@@ -47,25 +47,29 @@ $(function () {
             let no = i;
             let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + no;
             console.log(toUrl);
-            $.ajax({
-                type:"get",
-                url:toUrl,
-                dataType:"json",
-                success: function(data) {
-                    console.log(data);
-                    if(data == 1) {
-                        $(".likeBtn").eq(i-1).prop('src', '/images/likeListClicked.png');
-                    } else {
-                        $(".likeBtn").eq(i-1).prop('src', '/images/likeList.png');
-                    }
-                },
-                error:function(){
-                    console.log("통신에러3");
-                }
-            });
+            checkMark(toUrl);
         }
     }
 });
+
+function checkMark(toUrl) {
+    $.ajax({
+        type:"get",
+        url:toUrl,
+        dataType:"json",
+        success: function(data) {
+            console.log(data);
+            if(data == 1) {
+                $(".likeBtn").eq(i-1).prop('src', '/images/likeListClicked.png');
+            } else {
+                $(".likeBtn").eq(i-1).prop('src', '/images/likeList.png');
+            }
+        },
+        error:function(){
+            console.log("통신에러3");
+        }
+    });
+}
 
 function likeClick(num) {
     let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + num;
