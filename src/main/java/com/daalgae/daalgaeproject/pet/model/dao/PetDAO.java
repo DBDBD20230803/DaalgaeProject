@@ -11,5 +11,7 @@ public interface PetDAO {
     int insertPet(PetDTO petDTO);
 
     List<PetDTO> getPetInfoByMemCode(int memCode);
+
+    int updatePet(PetDTO petDTO);
 }
 

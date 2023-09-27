@@ -2,7 +2,7 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/myPageLayout}">
+      layout:decorate="~{/layouts/myPageLayout}" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>마이페이지</title>
@@ -39,7 +39,9 @@
                                 </label>
                                 <input type="submit" name="introPetEdit" value="introPetEdit" id="introPetEdit"/>
                             </div>
-                            <textarea class="profileText" name="petIntroduce" placeholder="반려견을 소개해주세요."></textarea>
+                            <div th:each="pet : ${petList}">
+                                <textarea class="profileText" name="petIntroduce" placeholder="반려견을 소개해주세요." th:value="${pet.petIntroduce}"></textarea>
+                            </div>
                         </form>
                     </div>
 
@@ -116,9 +118,9 @@
                             <div class="myInfo5">
                                 <div class="myInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
 
-                                <div class="myInfoInputs myInfo5Inputs">
+                                <div class="myInfoInputs myInfo5Inputs" th:each="pet : ${petList}">
                                     <label for="myPet"></label>
-                                    <input type="text" id="myPet" name="petNick" placeholder="반려견을 등록해주세요." th:value="${petNick}" readonly/>
+                                    <input type="text" id="myPet" name="petNick" placeholder="반려견을 등록해주세요." th:value="${pet.petNick}" readonly class="petInfoInputsTitle"/>
                                 </div>
                                 <div class="spreadBtn spreadBtn1">접기 <i class="xi-angle-up-thin xi-x"></i></div>
                             </div>
@@ -151,58 +153,60 @@
                             <form action="" method="post" class="dogInfoMoreContent">
 
                                 <div class="petInfo1">
-                                    <div class="petName">
+                                    <div class="petName" th:each="pet : ${petList}">
                                         <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
-                                        <input type="text" name="petNick" id="petName" class="petInput" th:value="${petNick}"/>
-                                        <input type="hidden" name="refMemCode" id="refMemCode" th:value="${#authentication.getPrincipal().getMemCode()}">
+                                        <input type="text" name="petNick" id="petName" class="petInput" th:value="${pet.petNick}" />
+                                        <input type="hidden" name="memCode" th:value="${#authentication.getPrincipal().getMemCode()}">
+                                     <!--   <input type="hidden" name="refMemCode" id="refMemCode" th:value="${#authentication.getPrincipal().getRefMemCode()}">-->
+                                        <input type="hidden" name="memId" th:value="${#authentication.getPrincipal().getMemId()}">
                                     </div>
 
 
-                                    <div class="petBreed">
+                                    <div class="petBreed" th:each="pet : ${petList}">
                                         <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
-                                        <input type="text" name="petKind" id="petBreedName" class="petInput" th:value="${petKind}"/>
+                                        <input type="text" name="petKind" id="petBreedName" class="petInput" th:value="${pet.petKind}" />
                                     </div>
                                 </div>
 
 
                                 <div class="petInfo2">
-                                    <div class="petBirth">
+                                    <div class="petBirth" th:each="pet : ${petList}">
                                         <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
-                                        <input type="date" name="petBirth" id="petBirthDay" class="petInput" th:value="${petListpetBirth}"/>
+                                        <input type="date" name="petBirth" id="petBirthDay" class="petInput" th:value="${#dates.format(pet.petBirth, 'yyyy-MM-dd')}"/>
                                     </div>
 
-                                    <div class="petGender">
+                                    <div class="petGender" th:each="pet : ${petList}">
                                         <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
                                         <select name="petGender" id="petGenderAnswer" class="petSelect">
-                                            <option th:value="female">female</option>
-                                            <option th:value="male">male</option>
+                                            <option th:value="female"  th:selected="${pet.petGender == 'female'}">female</option>
+                                            <option th:value="male"  th:selected="${pet.petGender == 'male'}">male</option>
                                         </select>
                                         <script th:inline="javascript">
-                                            let petGenderAnswer = $("#petGenderAnswer").val(petGenderAnswer);
+                                            let petGenderAnswer = $("#petGenderAnswer").val();
                                         </script>
                                     </div>
                                 </div>
 
 
                                 <div class="petInfo3">
-                                    <div class="petOper">
+                                    <div class="petOper" th:each="pet : ${petList}">
                                         <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
                                         <select name="petNeutered" id="petOperAnswer" class="petSelect">
-                                            <option th:value="Y">Y</option>
-                                            <option th:value="N">N</option>
+                                            <option th:value="Y"  th:selected="${pet.petNeutered == 'Y'}">Y</option>
+                                            <option th:value="N"  th:selected="${pet.petNeutered == 'N'}">N</option>
                                         </select>
                                         <script th:inline="javascript">
-                                            let petNeutered = $("#petGenderAnswer").val(petNeutered);
+                                            let petNeutered = $("#petGenderAnswer").val();
                                         </script>
                                     </div>
 
-                                    <div class="petWeight">
+                                    <div class="petWeight" th:each="pet : ${petList}">
                                         <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
-                                        <input type="text" name="petWeight" id="petWeightAnswer" class="petInput" th:value="${petWeight}"/>
+                                        <input type="text" name="petWeight" id="petWeightAnswer" class="petInput" th:value="${pet.petWeight}"/>
                                     </div>
                                 </div>
 
-                                <div class="addDoneBtn"><input type="button" name="addDoneBtn" id="addDoneBtn" value="완료" required/></div>
+                                <div class="addDoneBtn"><button type="button" name="addDoneBtn" id="addDoneBtn" value="" required/>완료</button></div>
 
 
                             </form>

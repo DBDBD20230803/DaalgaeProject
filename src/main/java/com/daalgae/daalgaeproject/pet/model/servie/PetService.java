@@ -11,5 +11,7 @@ public interface PetService {
 
         public int insertPet(PetDTO petDTO);
 
-        List<PetDTO> getPetInfoByMemCode(int memCode);
+        public List<PetDTO> getPetInfoByMemCode(int memCode);
+
+        public int updatePet(PetDTO petDTO);
 }

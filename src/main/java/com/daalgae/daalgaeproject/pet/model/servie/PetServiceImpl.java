@@ -32,4 +32,9 @@ public class PetServiceImpl implements PetService {
     public List<PetDTO> getPetInfoByMemCode(int memCode) {
         return petDAO.getPetInfoByMemCode(memCode);
     }
+
+    @Transactional
+    public int updatePet(PetDTO petDTO){
+        return petDAO.updatePet(petDTO);
+    };
 }

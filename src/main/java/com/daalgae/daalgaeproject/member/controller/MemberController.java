@@ -4,6 +4,7 @@ import com.daalgae.daalgaeproject.common.util.SessionUtil;
 import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
+import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
 import com.daalgae.daalgaeproject.pet.model.dto.PetDTO;
 import com.daalgae.daalgaeproject.pet.model.servie.PetServiceImpl;
@@ -11,6 +12,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -210,18 +213,29 @@ public class MemberController {
 
 
     @GetMapping("/mypage")
-    public String mypageForm(Principal principal, Model model){
+    public String mypageForm(Principal principal, Model model, PetDTO petDTO){
         log.info("마이페이지로 이동!!!!!!!!!!!!!");
         log.info("유저아이디 : " + principal.getName());
 
-
+        /*회원정보*/
         String memId = principal.getName();
         MemberDTO memberDTO = loginService.mypageRead(memId);
         model.addAttribute("member", memberDTO);
         log.info("memberDTO : " + memberDTO);
 
 
-        int memCode = memberDTO.getMemCode();
+
+
+        /*반려견 정보*/
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        int memCode = 0;
+
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            memCode = user.getMemCode();
+            petDTO.setRefMemCode(memCode);
+        }
         List<PetDTO> petList = petService.getPetInfoByMemCode(memCode);
         model.addAttribute("petList", petList);
         log.info("memCode : " + memCode);
