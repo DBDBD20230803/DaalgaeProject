@@ -1,13 +1,12 @@
 package com.daalgae.daalgaeproject.board.controller;
 
-import com.daalgae.daalgaeproject.api.ApiExplorer;
+import com.daalgae.daalgaeproject.board.api.ApiExplorer;
 import com.daalgae.daalgaeproject.board.dto.AbanInfoDTO;
-import com.daalgae.daalgaeproject.board.dto.BoardDTO;
-import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
+import com.daalgae.daalgaeproject.board.api.AbanInfoByDesertionNo;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,39 +18,45 @@ import java.util.List;
 public class BoardAbanController {
 
     @GetMapping("/abanBoardSelect")
-    public String selectAban(HttpServletRequest request, Model model) throws IOException {
+    public ModelAndView selectAban(HttpServletRequest request
+                                    , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
+                                    , @RequestParam(value="city", defaultValue = "") String city
+                                    ,ModelAndView mv) throws IOException {
 
         String desertionNo =request.getParameter("no");
-        System.out.println("desertionNo : " + desertionNo);
+        System.out.println("1. desertionNo : " + desertionNo);
         ApiExplorer abanApi = new ApiExplorer();
+        System.out.println("2. city : " + city);
 
-        /* pageNo를 넘겨와서 이걸 이 pageNo에 해당하는 post 중에서
-        * desertionNo가 매칭되는걸 찾아서 뿌려주면된다. */
-//        List<AbanInfoDTO> abanInfoList = abanApi.abanInfo(pageNo);
+        System.out.println("3. pageNo : " + pageNo);
+        List<AbanInfoDTO> abanInfoList = abanApi.abanInfo(pageNo, city);
 
-//        abanInfoList.get(0);
-//        System.out.println(abanInfoList);
+        AbanInfoByDesertionNo abanInfoBDN = new AbanInfoByDesertionNo();
 
-        int no = Integer.parseInt(request.getParameter("no"));
+        AbanInfoDTO abanInfo = abanInfoBDN.getAbanInfoByDesertionNo(abanInfoList, desertionNo);
+        System.out.println("4. abanInfo : " + abanInfo);
 
-        return "board/abanBoardSelect";
+        mv.addObject("abanInfo" , abanInfo);
+        mv.setViewName("board/abanBoardSelect");
+
+        return mv;
     }
 
     @GetMapping("/abanBoardCenter")
     public ModelAndView centerAban(ModelAndView mv) {
-        mv.setViewName("abanBoardCenter");
+        mv.setViewName("board/abanBoardCenter");
         return mv;
     }
 
     @GetMapping("/abanBoardAdoptInfo")
     public ModelAndView adoptInfoAban(ModelAndView mv) {
-        mv.setViewName("abanBoardAdoptInfo");
+        mv.setViewName("board/abanBoardAdoptInfo");
         return mv;
     }
 
     @GetMapping("/abanBoardPickupInfo")
     public ModelAndView pickupInfoAban(ModelAndView mv) {
-        mv.setViewName("abanPickupInfo");
+        mv.setViewName("board/abanPickupInfo");
         return mv;
     }
 

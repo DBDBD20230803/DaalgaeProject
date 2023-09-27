@@ -40,6 +40,8 @@
 .category-button {
   background-color: #FFFFFF;
   color: #000;
+  width: 100%;
+  height: 100%;
 }
 
 /* 클릭된 버튼 스타일 */
@@ -82,7 +84,7 @@
   justify-content: space-around;
   align-items: center;
   height: 70px;
-  background-color: #639DD7;
+  background-color: #ffffff;
 }
 
 .board-header-menu div {
@@ -92,6 +94,7 @@
   justify-content: center;
   align-items: center;
   border-right: 1px solid #DBDBDB;
+  border-bottom: 1px solid #DBDBDB;
 }
 
 #pickupInfo {
@@ -723,6 +726,7 @@ button[type="submit"]:hover {
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
+  gap: 5px;
 }
 
 .boast-postTitle, .boast-postCount {
@@ -731,7 +735,7 @@ button[type="submit"]:hover {
 
 .boast-postTitle {
   position: relative;
-  left: 15px !important;
+  left: 3px !important;
 }
 
 .boast-postCount-name {
@@ -755,15 +759,21 @@ button[type="submit"]:hover {
   left: 5px;
 }
 
-.boast-detail-title2 {
-  display: flex;
-  justify-content: end;
-}
-
-
 .boast-detail-box div {
   height: 100%;
   display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px;
+}
+
+.boast-detail {
+  position: relative;
+  left: 3%;
+}
+
+.dog-img-img {
+  width: 100%;
 }
 
 .boast-img-box {
@@ -792,6 +802,16 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 50px;
+}
+
+.board-select-content-aban {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 50px;
@@ -1040,13 +1060,25 @@ button[type="submit"]:hover {
 }
 
 .dog-detail-detail {
-  width: 80%;
+  width: 100%;
   height: 100%;
   border: 1px solid #DBDBDB;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  margin: 20px;
+}
+
+.detail-detail-group-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-detail-group-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .detail-title {

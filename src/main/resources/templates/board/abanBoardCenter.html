@@ -16,42 +16,20 @@
 
     <div class="board-header-menu">
         <div class="protection">
-            <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
+            <button onclick="navigateToAbanPage0()" class="category-button" id="btn0">보호중인 강아지</button>
         </div>
         <div class="center">
-            <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
+            <button onclick="navigateToAbanPage1()" class="category-button" id="btn1">동물보호센터</button>
         </div>
         <div class="adoptInfo">
-            <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
+            <button onclick="navigateToAbanPage2()" class="category-button" id="btn2">입양안내</button>
         </div>
         <div class="pickupInfo" id="pickupInfo">
-            <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
+            <button onclick="navigateToAbanPage3()" class="category-button" id="btn3">습득시 안내</button>
         </div>
     </div>
 
     <div class="board-container container">
-        <div class="board-searchBar">
-            <div class="search-buttons">
-                <div class="search-category">
-                    <select name="search-category" id="search-category">
-                        <option value="지역">지역</option>
-                        <option value="수도권">수도권</option>
-                        <option value="경상도">경상도</option>
-                        <option value="전라도">전라도</option>
-                        <option value="강원도">강원도</option>
-                        <option value="충청도">충청도</option>
-                        <option value="제주도">제주도</option>
-                    </select>
-                </div>
-                <div class="search-by-text">
-                    <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                    <input type="text" name="textSearching" id="textSearching">
-                </div>
-                <div class="submit-button">
-                    <button type="submit" id="searchButton">검색</button>
-                </div>
-            </div>
-        </div>
         <div class="board-center-content-container">
             <div class="center-table">
                 <div class="jurisdiction-area">

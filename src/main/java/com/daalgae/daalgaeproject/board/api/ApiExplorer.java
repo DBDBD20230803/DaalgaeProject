@@ -1,4 +1,4 @@
-package com.daalgae.daalgaeproject.api;
+package com.daalgae.daalgaeproject.board.api;
 
 import com.daalgae.daalgaeproject.board.dto.AbanInfoDTO;
 
@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ApiExplorer {
-    public List<AbanInfoDTO> abanInfo(int pageNo) throws IOException {
+    public List<AbanInfoDTO> abanInfo(int pageNo, String city) throws IOException {
 
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=n2TVCKryQezP4TokLGOlzGKU7dA%2FnDt%2BclT6rTZ8mJ35FYxpzq6pFdOWfjjmdtqhu9dDX1JymgqA9emw2BwGLA%3D%3D"); /*Service Key*/
@@ -23,7 +23,9 @@ public class ApiExplorer {
         urlBuilder.append("&" + URLEncoder.encode("endde","UTF-8") + "=" + URLEncoder.encode("20230925", "UTF-8")); /*유기날짜(검색 종료일) (YYYYMMDD)*/
         urlBuilder.append("&" + URLEncoder.encode("upkind","UTF-8") + "=" + URLEncoder.encode("417000", "UTF-8")); /*축종코드 (개 : 417000, 고양이 : 422400, 기타 : 429900)*/
         urlBuilder.append("&" + URLEncoder.encode("kind","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*품종코드 (품종 조회 OPEN API 참조)*/
-        urlBuilder.append("&" + URLEncoder.encode("upr_cd","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*시도코드 (시도 조회 OPEN API 참조)*/
+
+        urlBuilder.append("&" + URLEncoder.encode("upr_cd","UTF-8") + "=" + URLEncoder.encode(city, "UTF-8")); /*시도코드 (시도 조회 OPEN API 참조)*/
+
         urlBuilder.append("&" + URLEncoder.encode("org_cd","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*시군구코드 (시군구 조회 OPEN API 참조)*/
         urlBuilder.append("&" + URLEncoder.encode("care_reg_no","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*보호소번호 (보호소 조회 OPEN API 참조)*/
         urlBuilder.append("&" + URLEncoder.encode("state","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*상태(전체 : null(빈값), 공고중 : notice, 보호중 : protect)*/
@@ -89,7 +91,7 @@ public class ApiExplorer {
             String careTel = item.getString("careTel");
             String careAddr = item.getString("careAddr");
             String orgNm = item.getString("orgNm");
-            String chargeNm = item.getString("chargeNm");
+            String chargeNm = item.isNull("chargeNm") ? null : item.getString("chargeNm");
             String officetel = item.getString("officetel");
             String popfile = item.getString("popfile");
 
@@ -112,7 +114,9 @@ public class ApiExplorer {
             abanInfoDTO.setCareTel(careTel);
             abanInfoDTO.setCareAddr(careAddr);
             abanInfoDTO.setOrgNm(orgNm);
-            abanInfoDTO.setChargeNm(chargeNm);
+            if(chargeNm != null) {
+                abanInfoDTO.setChargeNm(chargeNm);
+            }
             abanInfoDTO.setOfficetel(officetel);
             abanInfoDTO.setPopfile(popfile);
             abanInfoDTO.setTotalCount(totalCount); // 19
@@ -123,4 +127,33 @@ public class ApiExplorer {
 
         return abanInfoList;
     }
+
+//    public static void main(String[] args) throws IOException {
+//        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/animalShelterSrvc/shelterInfo"); /*URL*/
+//        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=서비스키"); /*Service Key*/
+//        urlBuilder.append("&" + URLEncoder.encode("care_reg_no","UTF-8") + "=" + URLEncoder.encode(" ", "UTF-8")); /*보호센터등록번호*/
+//        urlBuilder.append("&" + URLEncoder.encode("care_nm","UTF-8") + "=" + URLEncoder.encode(" ", "UTF-8")); /*동물보호센터명*/
+//        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("3", "UTF-8")); /*한 페이지 결과 수 (1,000 이하)*/
+//        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/
+//        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode(" ", "UTF-8")); /*xml(기본값) 또는 json*/
+//        URL url = new URL(urlBuilder.toString());
+//        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//        conn.setRequestMethod("GET");
+//        conn.setRequestProperty("Content-type", "application/json");
+//        System.out.println("Response code: " + conn.getResponseCode());
+//        BufferedReader rd;
+//        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+//            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//        } else {
+//            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        String line;
+//        while ((line = rd.readLine()) != null) {
+//            sb.append(line);
+//        }
+//        rd.close();
+//        conn.disconnect();
+//        System.out.println(sb.toString());
+//    }
 }

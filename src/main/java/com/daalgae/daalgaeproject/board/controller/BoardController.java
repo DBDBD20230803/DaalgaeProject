@@ -1,6 +1,6 @@
 package com.daalgae.daalgaeproject.board.controller;
 
-import com.daalgae.daalgaeproject.api.ApiExplorer;
+import com.daalgae.daalgaeproject.board.api.ApiExplorer;
 import com.daalgae.daalgaeproject.board.dto.AbanInfoDTO;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
@@ -189,6 +189,7 @@ public class BoardController {
     public ModelAndView abanBoardMain(ModelAndView mv
                                       ,@RequestParam(required = false) String searchCondition
                                       , @RequestParam(required = false) String searchValue
+                                      , @RequestParam(value="city", defaultValue = "") String city
                                       , @RequestParam(value="currentPage", defaultValue = "1") int pageNo) throws IOException {
 
         ApiExplorer abanApi = new ApiExplorer();
@@ -201,10 +202,13 @@ public class BoardController {
 
         int totalCount = 0;
 
+        log.info("pageNo : " + String.valueOf(pageNo));
+        log.info("city : " + city);
 
-        List<AbanInfoDTO> abanInfoList = abanApi.abanInfo(pageNo);
+        List<AbanInfoDTO> abanInfoList = abanApi.abanInfo(pageNo, city);
         mv.addObject("abanInfoList", abanInfoList);
         totalCount = abanInfoList.get(0).getTotalCount();
+        log.info("totalCount : " + totalCount);
 
 
         int limit = 9;
@@ -218,6 +222,7 @@ public class BoardController {
         }
 
         mv.addObject("selectCriteria", selectCriteria);
+        mv.addObject("city", city);
         mv.setViewName("board/abanBoard");
         return mv;
     }
