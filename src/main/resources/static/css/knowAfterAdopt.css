@@ -156,3 +156,11 @@
     top: -90px;
     right: 0px;
 }
+
+.likeClick {
+    position: absolute;
+    top: 473px;
+    z-index: 3;
+    background: transparent;
+    left: 342px;
+}
