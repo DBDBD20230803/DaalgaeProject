@@ -30,55 +30,129 @@
     </div>
 
     <div class="board-container container">
-        <div class="board-center-content-container">
-            <div class="center-table">
-                <div class="jurisdiction-area">
-                    <div class="ja-table-header">
-                        <div class="ja-table-content-header">관할구역</div>
-                        <div class="ja-table-content">부산광역시 강서구</div>
-                        <div class="ja-table-content">서울특별시 용산구</div>
-                        <div class="ja-table-content">전라북도 전주시</div>
+        <div class="board-searchBar">
+            <form id="searchForm" th:action="@{/board/abanBoardCenter}" method="get">
+                <input type="hidden" name="currentPage" value="1">
+                <div class="search-buttons">
+                    <div class="search-by-text">
+                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
+                        <input type="search" name="centerName" id="centerName" class="searchText" placeholder="보호소 이름 검색">
+                    </div>
+                    <div class="submit-button">
+                        <button type="submit" id="searchButton">검색</button>
                     </div>
                 </div>
-                <div class="shelter-name">
-                    <div class="sn-table-header">
-                        <div class="sn-table-content-header">보호센터명</div>
-                        <div class="sn-table-content">(사)하얀비둘기</div>
-                        <div class="sn-table-content">21세기동물병원</div>
-                        <div class="sn-table-content">21세기동물병원</div>
+            </form>
+        </div>
+    </div>
+
+    <div class="board-container container">
+
+        <div class="boast-list">
+            <div class="boast-postList" th:each="centerInfo : ${centerInfoList}">
+                <input type="hidden" name="pageNo" th:value="${selectCriteria.pageNo}">
+                <div class="boast-detail-box">
+                    <div class="boast-detail-title">
+                        <div>
+                            <h6 class="boast-postNo">🏷️센터명 : </h6>
+                            <h6  class="boast-postTitle" th:text="${centerInfo.careNm}"></h6>
+                        </div>
                     </div>
-                </div>
-                <div class="phone-number">
-                    <div class="pn-table-header">
-                        <div class="pn-table-content-header">전화번호</div>
-                        <div class="pn-table-content">051-293-9779</div>
-                        <div class="pn-table-content">02-749-6740</div>
-                        <div class="pn-table-content">063-251-1015</div>
+                    <div class="boast-detail">
+                        <h6 class="boast-postUser">📱전화번호 : </h6>
+                        <h6 class="boast-postUser" th:text="${centerInfo.careTel}"></h6>
                     </div>
-                </div>
-                <div class="shelter-address">
-                    <div class="sa-table-header">
-                        <div class="sa-table-content-header">보호센터주소</div>
-                        <div class="sa-table-content">부산광역시 강서구 제도로 726(강동동)</div>
-                        <div class="sa-table-content">서울특별시 용산구 보광동 259-1</div>
-                        <div class="sa-table-content">전라북도 전주시 덕진구 송천동1가 626-42</div>
+                    <div class="boast-detail">
+                        <h6 class="boast-postUser">📍주소 : </h6>
+                        <h6 class="boast-postUser" th:text="${centerInfo.careAddr}"></h6>
+                    </div>
+                    <div class="boast-detail">
+                        <h6 class="boast-postUser">🔎센터유형 : </h6>
+                        <h6 class="boast-postUser" th:text="${centerInfo.divisionNm}"></h6>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="board-paging-button">
-            <button type="button" id="previousPageButton">
-                <img th:src="@{/images/previousPageButton.png}" alt="">
+            <button th:if="${selectCriteria.startPage > 0}"
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage=1'+ '&centerName='+ @{${centerName}} + '\''"
+                    th:disabled="${selectCriteria.pageNo == 1}"
+            >
+                &lt;&lt;
             </button>
-            <button class="pageNumber">
-                <div id="postPage1">
-                    <div>1</div>
-                </div>
+            <button
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.startPage - 1}} + '&centerName='+ @{${centerName}} + '\''"
+                    th:disabled="${selectCriteria.pageNo < 6}"
+            >
+                &lt;
             </button>
-            <button type="button" id="nextPageButton">
-                <img th:src="@{/images/nextPageButton.png}" alt="">
+            <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
+                <button
+                        th:text="${ page }"
+                        th:onclick="'location.href=\'/board/abanBoardCenter?currentPage=' + @{${page}}  + '&centerName='+ @{${centerName}} +'\''"
+                        th:disabled="${ selectCriteria.pageNo eq page }"
+                        th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
+                </button>
+            </th:block>
+            <button
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.endPage + 1}} + '&centerName='+ @{${centerName}} +'\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
+            >
+                &gt;
+            </button>
+            <button
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.maxPage}} + '&centerName='+ @{${centerName}} +'\''"
+                    th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+            >
+                &gt;&gt;
             </button>
         </div>
+
     </div>
+
+    <script>
+        if (document.querySelectorAll(".board-container .boast-postList")) {
+            const $tds = document.querySelectorAll(".board-container .boast-postList");
+            for (let i = 0; i < $tds.length; i++) {
+
+                $tds[i].onmouseenter = function() {
+                    this.style.backgroundColor = "#A6CEF7";
+                    this.style.cursor = "pointer";
+                }
+
+                $tds[i].onmouseleave = function() {
+                    this.style.backgroundColor = "transparent";
+                }
+
+                $tds[i].onclick = function() {
+                    const centerName = this.children[0].innerText;
+                    location.href = "/board/abanBoardCenter?centerName=" + centerName;
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
+            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+            const searchTextInput = $(".searchText");
+            const centerNameInput = document.getElementById("centerName");
+
+            searchTextInput.on("focusout keyup", function () {
+                let x = $(this).val();
+                if (x.length > 0) {
+                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+                }
+                $(this).val(x);
+
+                const centerName = centerNameInput.val();
+                localStorage.setItem("centerName", centerName);
+            });
+
+            if (localStorage.getItem("searchValue")) {
+                centerNameInput.val(localStorage.getItem("centerName"));
+            }
+        });
+    </script>
 </th:block>
 </html>

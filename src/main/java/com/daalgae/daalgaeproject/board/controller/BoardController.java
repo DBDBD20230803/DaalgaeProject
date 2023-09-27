@@ -210,7 +210,6 @@ public class BoardController {
         totalCount = abanInfoList.get(0).getTotalCount();
         log.info("totalCount : " + totalCount);
 
-
         int limit = 9;
 
         int buttonAmount = 5;
