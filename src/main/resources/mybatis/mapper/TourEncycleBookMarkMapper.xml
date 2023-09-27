@@ -4,29 +4,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daalgae.daalgaeproject.bookmark.dao.BookmarkMapper">
 
-    <!-- 관광지 -->
-
-    <select id="tourIsMarked" resultType="_int">
-        SELECT COUNT(REF_MEM_CODE)
-        FROM TOUR_SORT
-        WHERE REF_MEM_CODE = ${ memCode } AND REF_TOUR_CODE = ${ tourCode }
-    </select>
+    <!-- 공통 부분 -->
 
     <insert id="setSequence">
         INSERT
-            INTO BOOKMARK_INFO   (
-                          REF_MEM_CODE
-                         )
+        INTO BOOKMARK_INFO   (
+            REF_MEM_CODE
+        )
         VALUES  (
-            ${memCode}
-            )
+                    ${memCode}
+                )
     </insert>
 
     <select id="getSequence" resultType="_int">
         SELECT MEM_BOOKMARK_SEQ
         FROM BOOKMARK_INFO
         ORDER BY MEM_BOOKMARK_SEQ DESC
-        LIMIT 1
+            LIMIT 1
+    </select>
+
+    <delete id="deleteFromBookmark">
+        DELETE
+        FROM  BOOKMARK_INFO
+        WHERE  MEM_BOOKMARK_SEQ = #{ getTourSequence }
+    </delete>
+
+    <!-- 관광지 -->
+
+    <select id="tourIsMarked" resultType="_int">
+        SELECT COUNT(REF_MEM_CODE)
+        FROM TOUR_SORT
+        WHERE REF_MEM_CODE = ${ memCode } AND REF_TOUR_CODE = ${ tourCode }
     </select>
 
     <insert id="setTourMark">
@@ -45,16 +53,41 @@
         WHERE REF_TOUR_CODE = ${ tourCode } AND REF_MEM_CODE = ${ memCode }
     </select>
 
-    <delete id="deleteFromBookmark">
-        DELETE
-          FROM  BOOKMARK_INFO
-         WHERE  MEM_BOOKMARK_SEQ = #{ getTourSequence }
-    </delete>
-
     <delete id="deleteFromTourSort">
         DELETE
         FROM  TOUR_SORT
         WHERE  REF_MEM_BOOKMARK_SEQ = #{ getTourSequence }
     </delete>
+
+    <!-- 백과사전 -->
+
+    <select id="encycleIsMarked" resultType="_int">
+        SELECT COUNT(REF_MEM_CODE)
+        FROM ENCYCLE_SORT
+        WHERE REF_MEM_CODE = ${ memCode } AND REF_ENCYCLE_CODE = ${ encycleCode }
+    </select>
+
+    <insert id="setEncycleMark">
+        INSERT
+        INTO ENCYCLE_SORT   (
+            REF_Encycle_CODE, REF_MEM_BOOKMARK_SEQ, REF_MEM_CODE
+        )
+        VALUES  (
+                    ${ encycleCode }, ${ memSeq }, ${ memCode }
+                )
+    </insert>
+
+    <select id="getEncycleSequence" resultType="_int">
+        SELECT REF_MEM_BOOKMARK_SEQ
+        FROM ENCYCLE_SORT
+        WHERE REF_Encycle_CODE = ${ encycleCode } AND REF_MEM_CODE = ${ memCode }
+    </select>
+
+    <delete id="deleteFromEncycleSort">
+        DELETE
+        FROM  ENCYCLE_SORT
+        WHERE  REF_MEM_BOOKMARK_SEQ = #{ getEncycleSequence }
+    </delete>
+
 </mapper>
 

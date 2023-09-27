@@ -8,7 +8,12 @@ import lombok.*;
 @Setter
 @ToString
 public class EncycleBookmarkDTO {
-    private int postCode;
-    private String postTitle;
-    private String postDate;
+    private int memCode;
+    private int memSeq;
+    private int EncycleCode;
+
+    public EncycleBookmarkDTO(int memCode, int encycleCode) {
+        this.memCode = memCode;
+        EncycleCode = encycleCode;
+    }
 }

@@ -42,3 +42,7 @@ $(function () {
         }
     });
 });
+
+function likeClick(num) {
+    console.log(num);
+}
