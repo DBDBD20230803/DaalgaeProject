@@ -22,7 +22,7 @@ function likeClick() {
                     success: function(data) {
                         console.log(data);
                         if(data > 0) {
-                            $('.likeListImage').prop('src', '/images/likeListClicked.png');
+                            $('.likeListImageLeft').prop('src', '/images/likeListClicked.png');
                         }
                     },
                     error:function(){
@@ -37,7 +37,7 @@ function likeClick() {
                     success: function(data) {
                         console.log(data);
                         if(data > 0) {
-                            $('.likeListImage').prop('src', '/images/likeList.png');
+                            $('.likeListImageLeft').prop('src', '/images/likeList.png');
                         }
                     },
                     error:function(){
@@ -238,9 +238,9 @@ $(function () {
         success: function(data) {
             console.log(data);
             if(data == 1) {
-                $('.likeListImage').prop('src', '/images/likeListClicked.png');
+                $('.likeListImageLeft').prop('src', '/images/likeListClicked.png');
             } else {
-                $('.likeListImage').prop('src', '/images/likeList.png');
+                $('.likeListImageLeft').prop('src', '/images/likeList.png');
             }
         },
         error:function(){

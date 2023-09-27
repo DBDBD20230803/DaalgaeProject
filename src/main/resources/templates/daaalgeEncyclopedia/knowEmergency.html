@@ -42,7 +42,6 @@
 <div id="headers">
     <th:block th:include="component/header.html"></th:block>
 </div>
-<button class="likeClick" onclick="likeClick();"><img class="likeListImage" src="/images/likeList.png" /></button>
 <div class="tourBg">
     <h3>응급 상황 발생!<br>어떡해요?</h3>
 </div>
@@ -50,7 +49,10 @@
 <div class="knowAfterAdopt"></div>
 
     <!-- 1페이지-->
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/emergency1.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/emergency1.png}" />
+        <button onclick="likeClick1();"><img class="likeListImageLeft" src="/images/likeList.png" /></button>
+    </div>
     <div class="SubHeading3">병원이 우선이지만<br> 응급상황에서는<br> 응급처치가 필요합니다.</div>
     <div class="Afterdesc1">📌내 강아지가 숨을 못쉬거나 발작을 일으키는 경우 갑작스러운 응급상황이 살면서 단 한번은 올수가 있습니다.<br>
         그때 순간적인 대처를 잘 하느냐 못하느냐에 따라 강아지의 생명이 달려 있는데요<br>

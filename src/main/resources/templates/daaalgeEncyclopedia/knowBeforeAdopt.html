@@ -41,7 +41,6 @@
 <div id="headers">
     <th:block th:include="component/header.html"></th:block>
 </div>
-<button class="likeClick" onclick="likeClick();"><img class="likeListImage" src="/images/likeList.png" /></button>
 <div class="tourBg">
     <h3>우리 아이<br>입양 전, 무엇을 해야 할까요?</h3>
 </div>
@@ -49,10 +48,13 @@
 <div class="knowAfterAdopt"></div>
 
     <!-- 1페이지-->
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/knowBeforeAdopt1.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/knowBeforeAdopt1.png}" />
+        <button onclick="likeClick1();"><img class="likeListImageLeft" src="/images/likeList.png" /></button>
+    </div>
+
     <div class="SubHeading1">마음가짐</div>
     <div class="Afterdesc1">📌강아지 입양 전, 가장 중요한 것은 무엇보다도 마음가짐! 내가 평생 책임질 수 있는지 꼭 돌아보기.</div>
-    
     <!--<div class="AfterText1">
         <div class="AfterTextSubstring1">꼭꼭! 체크리스트</div>
         <div class="AfterTextContent1">
@@ -96,8 +98,18 @@
     </div>-->
     <div class="gapBox"></div>
 
+
+
     <!-- 2페이지 -->
+<!--
     <img class="AfterAdopt2" height="260px" th:src="@{/images/knowBeforeAdopt2.png}" />
+-->
+
+    <div class="AfterAdopt2">
+        <img height="260px" th:src="@{/images/knowBeforeAdopt2.png}" />
+        <button onclick="likeClick2();"><img class="likeListImageRight" src="/images/likeList.png" /></button>
+    </div>
+
 
     <div class="gapBox2"></div>
 
@@ -145,7 +157,10 @@
 
     <!-- 3페이지-->
     <div class="gapBox"></div>
-    <img class="AfterAdopt1" height="260px" th:src="@{/images/knowBeforeAdopt3.png}" />
+    <div class="AfterAdopt1">
+        <img height="260px" th:src="@{/images/knowBeforeAdopt3.png}" />
+        <button onclick="likeClick3();"><img class="likeListImageLeft" src="/images/likeList.png" /></button>
+    </div>
     <div class="SubHeading1">입양 경로</div>
     <div class="Afterdesc1">
         📌나의 소중한 강아지 친구! 어떤 식으로 데려올지도 아주 중요합니다! 나의 반려견과의 첫 스타트! 과연?
@@ -188,8 +203,10 @@
     </div>-->
     <div class="gapBox"></div>
     <!-- 4페이지-->
-    <img class="AfterAdopt2" height="260px" th:src="@{/images/knowBeforeAdopt4.png}" />
-    
+    <div class="AfterAdopt2">
+        <img height="260px" th:src="@{/images/knowBeforeAdopt4.png}" />
+        <button onclick="likeClick4();"><img class="likeListImageRight" src="/images/likeList.png" /></button>
+    </div>
     <div class="gapBox2"></div>
     
     <div class="SubHeading2">구체적 준비</div>
