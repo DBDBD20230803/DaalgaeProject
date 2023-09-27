@@ -621,3 +621,11 @@ ul > li > a {
 input:focus {
     outline: none;
 }
+
+.loginButton {
+    color: #fff;
+}
+
+.signupButton {
+    color: #fff;
+}
