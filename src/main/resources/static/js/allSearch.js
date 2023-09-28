@@ -1,4 +1,85 @@
 $(document).ready( function() {
+
+    // 옵션 선택
+
+    $('.option3').change(function () {
+        console.log($('.option3').val());
+        $('.option2').empty();
+        switch ($('.option3').val()) {
+            case "전체":
+                $('.option2').append("<option disabled selected>중분류</option>");
+                $('.option2').append("<option value=\"전체\">전체</option>");
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option2').val("전체");
+                $('.option1').val("전체");
+                break;
+            case "여행지":
+                $('.option2').append("<option disabled selected>중분류</option>");
+                $('.option2').append("<option value=\"전체\">전체</option>");
+                $('.option2').append("<option value=\"관광지\">관광지</option>");
+                $('.option2').append("<option value=\"숙박시설\">숙박시설</option>");
+                $('.option2').append("<option value=\"식당 및 카페\">식당 및 카페</option>");
+                $('.option2').append("<option value=\"체험 활동\">체험 활동</option>");
+                $('.option2').append("<option value=\"동물병원\">동물병원</option>");
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option1').append("<option value=\"수도권\">수도권</option>");
+                $('.option1').append("<option value=\"강원도\">강원도</option>");
+                $('.option1').append("<option value=\"충청도\">충청도</option>");
+                $('.option1').append("<option value=\"경상도\">경상도</option>");
+                $('.option1').append("<option value=\"전라도\">전라도</option>");
+                $('.option1').append("<option value=\"제주도\">제주도</option>");
+                $('.option2').val("전체");
+                $('.option1').val("전체");
+                break;
+            case "게시판":
+                $('.option2').append("<option disabled selected>중분류</option>");
+                $('.option2').append("<option value=\"전체\">전체</option>");
+                $('.option2').append("<option value=\"자유게시판\">자유게시판</option>");
+                $('.option2').append("<option value=\"자랑갤러리\">자랑갤러리</option>");
+                $('.option2').append("<option value=\"공지사항\">공지사항</option>");
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option2').val("전체");
+                $('.option1').val("전체");
+                break;
+        }
+    });
+    $('.option2').change(function () {
+        switch ($('.option2').val()) {
+            case "자유게시판":
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option1').append("<option value=\"자유\">자유</option>");
+                $('.option1').append("<option value=\"먹거리\">먹거리</option>");
+                $('.option1').append("<option value=\"용품\">용품</option>");
+                $('.option1').append("<option value=\"정보\">정보</option>");
+                $('.option1').val("전체");
+                break;
+            case "자랑갤러리":
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option1').val("전체");
+                break;
+            case "공지사항":
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option1').append("<option value=\"공지\">공지</option>");
+                $('.option1').append("<option value=\"이벤트\">이벤트</option>");
+                $('.option1').val("전체");
+                break;
+        }
+    });
+
+    // 검색 관련
+
     $('#allSearchBox').focus();
     $("#allSearchBox").on("keyup",function(key){
         if(key.keyCode==13) {
@@ -24,54 +105,12 @@ $(document).ready( function() {
     });
 
 
+
+
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
     $('#allSearchBox').val(urlParam.get("keyword"));
 
-    let category = "";
-
-    $.ajax({
-        type:"get",
-        url:"/tour/getTourKakaoMap",
-        dataType:"json",
-        async: false,
-        success: function(data){
-            let tourLocInfo = [];
-            for(let i= 0; i<data.length; i++) {
-                tourLocInfo[i] = {
-                    title : data[i].tourTitle,
-                    latlng: new kakao.maps.LatLng(data[i].mapy, data[i].mapx),
-                    category: data[i].tourCategory
-                }
-            }
-
-            // 마커 이미지의 이미지 주소입니다
-            let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-            for (let i = 0; i < tourLocInfo.length; i ++) {
-                // 마커 이미지의 이미지 크기 입니다
-                let imageSize = new kakao.maps.Size(24, 35);
-
-                // 마커 이미지를 생성합니다
-                let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-                // 마커를 생성합니다
-                if(tourLocInfo[i].category.includes("동물병원")) {
-                    let marker = new kakao.maps.Marker({
-                        map: map, // 마커를 표시할 지도
-                        position: tourLocInfo[i].latlng, // 마커를 표시할 위치
-                        title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                        image : markerImage // 마커 이미지
-                    });
-
-                }
-                // 마커 스타일 달기
-            }
-        },
-        error:function(){
-            console.log("통신에러3");
-        }
-    });
 });
 function allSearch() {
     let keyword = $('#allSearchBox').val();

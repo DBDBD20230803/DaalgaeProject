@@ -53,18 +53,16 @@
 <div class="tourBg">
     <h3>여행지 검색</h3>
 </div>
-<div class="allSearchWhiteSpace"></div>
-<div class="tourSelectBar">
+
+<!--<div class="tourSelectBar">
     <div class="searchInput">
         <div class="searchIcon"></div>
-        <input type="search" id="allSearchBox" placeholder="여행지 검색">
+        <input type="search" id="allSearchBox" placeholder="통합 검색">
     </div>
     <button onclick="allSearch()" class="searchButton">검색</button>
-</div>
-<div class="allSearchWhiteSpace"></div>
-<div class="allSearchWhiteSpace"></div>
-<div class="allSearchWhiteSpace"></div>
-<div class="optionButtonsSpace">
+</div>-->
+
+<!--<div class="optionButtonsSpace">
     <div class="optionButtonsBox">
         <button onclick="location.href='#searchTour'" class="optionButton">관광지 (3)</button>
         <button onclick="location.href='#searchAccomo'" class="optionButton">숙박시설 (3)</button>
@@ -73,10 +71,72 @@
         <button onclick="location.href='#dogHospital'" class="optionButton">동물병원 (0)</button>
         <button onclick="location.href='#bulletin'" class="optionButton">게시판 (0)</button>
     </div>
-</div>
-<div class="allSearchWhiteSpace" id="searchTour"></div>
+</div>-->
+
+
+<!--<div class="allSearchWhiteSpace" id="searchTour"></div>-->
 <div class="allSearchWhiteSpace"></div>
 <!---->
+
+
+<div class="tourSelectBar">
+    
+    <div class="searchCenter">
+        <div class="selectBox">
+            <button class="searchArrow"></button>
+            <select class="selectSearchOption option3">
+                <option disabled selected>대분류</option>
+                <option value="전체">전체</option>
+                <option value="여행지">여행지</option>
+                <option value="게시판">게시판</option>
+            </select>
+        </div>
+        <div class="selectBox">
+            <button class="searchArrow"></button>
+            <select class="selectSearchOption option2">
+                <option disabled selected>중분류</option>
+                <option value="전체">전체</option>
+<!--                <option value="관광지">관광지</option>
+                <option value="숙박시설">숙박시설</option>
+                <option value="식당 및 카페">식당 및 카페</option>
+                <option value="체험 활동">체험 활동</option>
+                <option value="동물병원">동물병원</option>
+                <option value="전체">전체</option>
+                <option value="자유게시판">자유게시판</option>
+                <option value="자랑갤러리">자랑갤러리</option>
+                <option value="공지사항">공지사항</option>-->
+            </select>
+        </div>
+        <div class="selectBox">
+            <button class="searchArrow"></button>
+            <select class="selectSearchOption option1">
+                <option disabled selected>소분류</option>
+                <option value="전체">전체</option>
+<!--                <option value="수도권">수도권</option>
+                <option value="강원도">강원도</option>
+                <option value="충청도">충청도</option>
+                <option value="경상도">경상도</option>
+                <option value="전라도">전라도</option>
+                <option value="제주도">제주도</option>
+                <option value="전체">전체</option>
+                <option value="자유">자유</option>
+                <option value="먹거리">먹거리</option>
+                <option value="용품">용품</option>
+                <option value="정보">정보</option>
+                <option value="전체">전체</option>
+                <option value="공지">공지</option>
+                <option value="이벤트">이벤트</option>-->
+            </select>
+        </div>
+        <div class="searchInput">
+            <div class="searchIcon"></div>
+            <input class="tourListSearch" placeholder="검색어 미입력시 전체 조회">
+        </div>
+        <button onclick="tourListSearch()" class="searchButton">검색</button>
+    </div>
+</div>
+
+
 
 <p class="imageAndText">
 
@@ -101,7 +161,7 @@
     </div>
 </div>
 <div class="allSearchWhiteSpace"></div>
-<div class="allSearchWhiteSpace" id="searchAccomo"></div>
+<!--<div class="allSearchWhiteSpace" id="searchAccomo"></div>-->
 <p class="imageAndText">
     
     <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />숙박시설 (3)
@@ -124,7 +184,7 @@
         </div></button>
     </div>
 </div>
-<div class="allSearchWhiteSpace" id="searchCafe"></div>
+<!--<div class="allSearchWhiteSpace" id="searchCafe"></div>-->
 <div class="allSearchWhiteSpace"></div>
 <p class="imageAndText">
     <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />식당 및 카페 (0)
@@ -147,7 +207,7 @@
         </div></button>
     </div>
 </div>
-<div class="allSearchWhiteSpace" id="searchActivity"></div>
+<!--<div class="allSearchWhiteSpace" id="searchActivity"></div>-->
 <div class="allSearchWhiteSpace"></div>
 <p class="imageAndText">
     <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />체험 활동 (0)
@@ -170,7 +230,7 @@
         </div></button>
     </div>
 </div>
-<div class="allSearchWhiteSpace" id="dogHospital"></div>
+<!--<div class="allSearchWhiteSpace" id="dogHospital"></div>-->
 <div class="allSearchWhiteSpace"></div>
 <p class="imageAndText">
     <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />동물병원 (0)
@@ -196,7 +256,7 @@
     </div>
 </div>
 
-<div class="allSearchWhiteSpace" id="bulletin"></div>
+<!--<div class="allSearchWhiteSpace" id="bulletin"></div>-->
 <div class="allSearchWhiteSpace"></div>
 <p class="imageAndText">
     <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />게시판 (0)

@@ -1,3 +1,8 @@
+select:focus{
+    border: none;
+    outline:none;
+}
+
 @media (min-width: 1068px) {
     .imageAndText {
         max-width: 1038px;
@@ -47,15 +52,81 @@ input:focus {
     height: 35px;
 }
 
+/* 검색 옵션 관련*/
+
+
 .tourSelectBar {
+    position: relative;
+    width: 100%;
+    min-width: 640px;
+    height: 104px;
+    border: 1px solid #D8D8D8;
+    margin-top: 135px;
+    margin-bottom: 100px;
+}
+
+select {
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.selectBox {
+    position: relative;
+    float: right;
+    min-width: 178px;
+    height: 62px;
+    background-color: #f4f4f4;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 21px;
+    margin-right: 15px;
+}
+
+
+.selectSearchOption {
+    position: relative;
+    min-width: 176px;
+    height: 60px;
+    background-color: #f4f4f4;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+}
+
+.selectBox button {
+    pointer-events: none;
+}
+
+.searchArrow {
+    position: absolute;
+    background-image: url("/images/arrow.png");
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    right: 15px;
+    top: 17px;
+    border: 0px;
 }
 
 .searchInput {
     top: 21px;
     position: relative;
-    width: 312px;
+    min-width: 312px;
     height: 62px;
     background-color: #f4f4f4;
     border: 0px;
@@ -85,10 +156,9 @@ input:focus {
 }
 
 .searchButton {
-    float: right;
     position: relative;
     top: 21px;
-    width: 109px;
+    min-width: 109px;
     height: 62px;
     background-color: #A6CEF7;
     border: 1px solid #D8D8D8;
@@ -101,7 +171,13 @@ input:focus {
     align-items: center;
 }
 
-.optionButtonsSpace {
+.searchCenter {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*.optionButtonsSpace {
     position: relative;
     width: 100%;
     height: 100px;
@@ -139,7 +215,7 @@ input:focus {
 
 .optionButton:nth-child(6) {
     margin-right: 0px;
-}
+}*/
 
 /**/
 .tourBoard {
