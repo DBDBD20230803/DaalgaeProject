@@ -1,4 +1,4 @@
-@media (max-width: 920px) {
+/*@media (max-width: 920px) {
     .searchButton {
         margin-right: 0px;
     }
@@ -13,7 +13,22 @@
     .searchButton {
         margin-right: 150px;
     }
+}*//*@media (max-width: 920px) {
+    .searchButton {
+        margin-right: 0px;
+    }
+    .tourSelectBar {
+        display: flex;
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
 }
+
+@media (min-width: 920px) {
+    .searchButton {
+        margin-right: 150px;
+    }
+}*/
 
 .tourBg{
     width: 100%;
@@ -57,7 +72,7 @@ select {
 .selectBox {
     position: relative;
     float: right;
-    width: 178px;
+    min-width: 178px;
     height: 62px;
     background-color: #f4f4f4;
     border: 0px;
@@ -76,7 +91,7 @@ select {
 
 .selectSearchOption {
     position: relative;
-    width: 176px;
+    min-width: 176px;
     height: 60px;
     background-color: #f4f4f4;
     border: 0px;
@@ -100,16 +115,15 @@ select {
     width: 24px;
     height: 24px;
     z-index: 1;
-    right: 20px;
+    right: 15px;
     top: 17px;
     border: 0px;
 }
 
 .searchInput {
-    float: right;
     top: 21px;
     position: relative;
-    width: 312px;
+    min-width: 312px;
     height: 62px;
     background-color: #f4f4f4;
     border: 0px;
@@ -139,10 +153,9 @@ select {
 }
 
 .searchButton {
-    float: right;
     position: relative;
     top: 21px;
-    width: 109px;
+    min-width: 109px;
     height: 62px;
     background-color: #A6CEF7;
     border: 1px solid #D8D8D8;
@@ -276,4 +289,9 @@ select {
     background-color: #F2F2F2;
     font-size: 18px;
     color: #808080;
+}
+
+.searchCenter {
+    display: flex;
+    justify-content: center;
 }

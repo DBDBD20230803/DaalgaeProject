@@ -61,18 +61,23 @@ $(document).ready( function() {
     let keyword = urlParam.get("keyword");
     let country = urlParam.get("country");
     let no = urlParam.get("no");
+    let category = urlParam.get("category");
     let totalPage = $('.totalPage').val();
     let pageRange = $('.pageRange').val();
     let lastRange = $('.lastRange').val();
     let totalPageCalc = $('.totalPageCalc').val();
 
     $('.tourListSearch').val(keyword);
-    if($('.selectSearchOption').val(country).length > 0) {
-        $('.selectSearchOption').val(country);
+    if($('.option1').val(country).length > 0) {
+        $('.option1').val(country);
     } else {
-        $('.selectSearchOption').val("지역");
+        $('.option1').val("지역");
     }
-
+    if($('.option2').val(category).length > 0) {
+        $('.option2').val(category);
+    } else {
+        $('.option2').val("분류");
+    }
 
 
     /* 페이징 로직 */
@@ -121,7 +126,7 @@ $(document).ready( function() {
 
 
     /* 불러오기 */
-    let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country;
+    let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country + "&category=" + category;
     $.ajax({
         type:"get",
         url:getUrl,
@@ -159,11 +164,12 @@ $(document).ready( function() {
 });
 function tourListSearch() {
     let keyword = $('.tourListSearch').val();
-    let country = $('.selectSearchOption option:selected').val();
+    let country = $('.option1 option:selected').val();
+    let category = $('.option2 option:selected').val();
     let no = $('.noTour').val();
     let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
     let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
     keyword = keyword.replace(replaceNotFullKorean, "");
-    location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
+    location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country+"&category="+category;
 }

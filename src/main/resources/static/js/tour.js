@@ -260,11 +260,11 @@ $(document).ready( function() {
     });
     $('.listTour3').click(function(){
         let searchValue = $("#mapSearchBox").val();
-        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=식당및카페'
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=식당 및 카페'
     });
     $('.listTour4').click(function(){
         let searchValue = $("#mapSearchBox").val();
-        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=체험활동'
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=체험 활동'
     });
     $('.listTour5').click(function(){
         let searchValue = $("#mapSearchBox").val();
