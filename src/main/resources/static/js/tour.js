@@ -224,6 +224,7 @@ $(document).ready( function() {
     });
 
     // 체크 관련, 검색 관련
+
     let selectNum = $('input[name=selectNum]').val();
     if(selectNum == 0) {
         $('#tourCheck input').prop('checked', 'true');
@@ -232,7 +233,8 @@ $(document).ready( function() {
         $('#activityCheck input').prop('checked', 'true');
         $('#hospitalCheck input').prop('checked', 'true');
     }
-    if(selectNum == 1) {
+
+    /*if(selectNum == 1) {
         $('#tourCheck input').prop('checked', 'true');
     }
     if(selectNum == 2) {
@@ -246,8 +248,32 @@ $(document).ready( function() {
     }
     if(selectNum == 5) {
         $('#hospitalCheck input').prop('checked', 'true');
-    }
+    }*/
+
     $('.listTour1').click(function(){
+        let searchValue = $("#mapSearchBox").val();
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=관광지'
+    });
+    $('.listTour2').click(function(){
+        let searchValue = $("#mapSearchBox").val();
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=숙박시설'
+    });
+    $('.listTour3').click(function(){
+        let searchValue = $("#mapSearchBox").val();
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=식당및카페'
+    });
+    $('.listTour4').click(function(){
+        let searchValue = $("#mapSearchBox").val();
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=체험활동'
+    });
+    $('.listTour5').click(function(){
+        let searchValue = $("#mapSearchBox").val();
+        location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=동물병원'
+    });
+
+    /* 이제 안 쓰는 내용*/
+
+    /*$('.listTour1').click(function(){
         let searchValue = $("#mapSearchBox").val();
         if($('#tourCheck input').prop('checked') == true) {
             for (let i = 0; i < marker1.length; i++) {
@@ -331,7 +357,9 @@ $(document).ready( function() {
             }
             $('#hospitalCheck input').prop('checked', true);
         }
-    });
+    });*/
+
+    /* 표시창 관련*/
     const arrow = document.querySelector(".tourArrow");
     const map = document.querySelector(".mapSearch");
     arrow.addEventListener('click', function(){
@@ -341,6 +369,8 @@ $(document).ready( function() {
             $('.mapSearch').css("left", "-370px");
         }
     });
+
+    /* 체크 박스 관련 */
 
     $(".tourCheck").change(function(){
         if($('#tourCheck input').prop('checked') == true) {
