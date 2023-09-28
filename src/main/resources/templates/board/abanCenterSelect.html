@@ -3,12 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/boardLayout}">
 <head>
-    <title>동물보호센터</title>
+    <title>유기견 게시판</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="board-banner">
-        <h3>동물보호센터</h3>
+        <h3>당신이 필요한 아이들</h3>
             <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
         </div>
     </div>
@@ -30,20 +30,38 @@
 
     <div class="board-container container">
         <div class="board-searchBar">
-            <form id="searchForm" th:action="@{/board/abanBoardCenter}" method="get">
+            <form id="searchForm" th:action="@{/board/abanBoard}" method="get">
                 <input type="hidden" name="currentPage" value="1">
                 <div class="search-buttons">
-                    <div class="search-by-text">
-                        <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                        <input type="search" name="centerName" id="centerName" class="searchText" placeholder="보호소 이름 검색">
+                    <div class="head-title-category">
+                        <select name="city" id="searchCondition">
+                            <option value="" disabled selected>지역</option>
+                            <option value="6110000" th:selected="${city == '6110000'}">서울</option>
+                            <option value="6260000" th:selected="${city == '6260000'}">부산</option>
+                            <option value="6270000" th:selected="${city == '6270000'}">대구</option>
+                            <option value="6280000" th:selected="${city == '6280000'}">인천</option>
+                            <option value="6290000" th:selected="${city == '6290000'}">광주</option>
+                            <option value="5690000" th:selected="${city == '5690000'}">세종</option>
+                            <option value="6300000" th:selected="${city == '6300000'}">대전</option>
+                            <option value="6310000" th:selected="${city == '6310000'}">울산</option>
+                            <option value="6410000" th:selected="${city == '6410000'}">경기</option>
+                            <option value="6530000" th:selected="${city == '6530000'}">강원</option>
+                            <option value="6430000" th:selected="${city == '6430000'}">충북</option>
+                            <option value="6440000" th:selected="${city == '6440000'}">충남</option>
+                            <option value="6450000" th:selected="${city == '6450000'}">전북</option>
+                            <option value="6460000" th:selected="${city == '6460000'}">전남</option>
+                            <option value="6470000" th:selected="${city == '6470000'}">경북</option>
+                            <option value="6480000" th:selected="${city == '6480000'}">경남</option>
+                            <option value="6500000" th:selected="${city == '6500000'}">제주</option>
+                        </select>
                     </div>
+
                     <div class="submit-button">
-                        <button type="submit" id="searchButton">검색</button>
+                        <button type="submit" id="searchButton" class="searchButton">검색</button>
                     </div>
                 </div>
             </form>
         </div>
-    </div>
 
         <div class="board-content-select-container" th:each="info : ${ abanInfo }">
             <div class="board-content-title">
