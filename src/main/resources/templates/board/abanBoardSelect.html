@@ -175,18 +175,23 @@
             </div>
         </div>
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script>
 
         window.addEventListener('load', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const searchValue = urlParams.get('searchValue');
-
+            const url = window.location.href;
             const buttons = document.querySelectorAll('.category-button');
             buttons.forEach(button => button.classList.remove('active'));
 
-            if (searchValue === '') {
-            }else {
+            if (url.includes('/abanBoardCenter')) {
+                document.getElementById('btn1').classList.add('active');
+            } else if (url.includes('/abanAdoptInfo')) {
+                document.getElementById('btn2').classList.add('active');
+            } else if (url.includes('/abanPickupInfo')) {
+                document.getElementById('btn3').classList.add('active');
+            } else {
                 document.getElementById('btn0').classList.add('active');
             }
         });

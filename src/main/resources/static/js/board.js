@@ -396,5 +396,19 @@
         }
     }
 
+    function getCurrentBoardFromURL() {
+        const url = window.location.href;
+        if (url.startsWith("http://localhost:8001/board/boastBoard")) {
+            return "boastBoard";
+        } else if (url.startsWith("http://localhost:8001/board/freeBoard")) {
+            return "freeBoard";
+        } else if (url.startsWith("http://localhost:8001/board/annoBoard")) {
+            return "annoBoard";
+        } else if (url.startsWith("http://localhost:8001/board/abanBoardCenter")) {
+            return "abanBoardCenter";
+        }
+    }
+
+
 
 

@@ -208,7 +208,9 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script>
         var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
 
@@ -230,13 +232,8 @@
                 }
                 $(this).val(x);
 
-                const searchValue = searchTextInput.val();
-                localStorage.setItem("searchValue", searchValue);
             });
 
-            if (localStorage.getItem("searchValue")) {
-                searchTextInput.val(localStorage.getItem("searchValue"));
-            }
         });
 
     </script>

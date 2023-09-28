@@ -36,7 +36,7 @@
                 <div class="search-buttons">
                     <div class="search-by-text">
                         <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                        <input type="search" name="centerName" id="centerName" class="searchText" placeholder="보호소 이름 검색">
+                        <input type="search" name="centerName" id="searchValueInputCenter" class="searchText" placeholder="보호소 이름 검색">
                     </div>
                     <div class="submit-button">
                         <button type="submit" id="searchButton">검색</button>
@@ -49,40 +49,42 @@
     <div class="board-container container">
 
         <div class="boast-list">
-            <div class="boast-postList" th:each="centerInfo : ${centerInfoList}">
+            <div th:if="${#lists.isEmpty(centerInfoList)}" class="search-empty">
+                <p>검색 결과가 없습니다... 😢</p>
+            </div>
+            <div class="center-postList" th:each="centerInfo : ${centerInfoList}">
                 <input type="hidden" name="pageNo" th:value="${selectCriteria.pageNo}">
                 <div class="boast-detail-box">
-                    <div class="boast-detail-title">
-                        <div>
-                            <h6 class="boast-postNo">🏷️센터명 : </h6>
-                            <h6  class="boast-postTitle" th:text="${centerInfo.careNm}"></h6>
-                        </div>
+                    <div class="center-detail">
+                        <h6 class="boast-postNo">🏷️센터명 : </h6>
+                        <h6 class="boast-postTitle" th:text="${centerInfo.careNm}"></h6>
                     </div>
-                    <div class="boast-detail">
+                    <div class="center-detail">
                         <h6 class="boast-postUser">📱전화번호 : </h6>
                         <h6 class="boast-postUser" th:text="${centerInfo.careTel}"></h6>
                     </div>
-                    <div class="boast-detail">
+                    <div class="center-detail">
                         <h6 class="boast-postUser">📍주소 : </h6>
                         <h6 class="boast-postUser" th:text="${centerInfo.careAddr}"></h6>
                     </div>
-                    <div class="boast-detail">
+                    <div class="center-detail">
                         <h6 class="boast-postUser">🔎센터유형 : </h6>
                         <h6 class="boast-postUser" th:text="${centerInfo.divisionNm}"></h6>
                     </div>
+                    <input class="lat" type="hidden" th:value="${centerInfo.lat}">
                 </div>
             </div>
         </div>
 
         <div class="board-paging-button">
             <button th:if="${selectCriteria.startPage > 0}"
-                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage=1'+ '&centerName='+ @{${centerName}} + '\''"
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage=1' + '&amp;centerName=' + @{${centerName}} + '\''"
                     th:disabled="${selectCriteria.pageNo == 1}"
             >
                 &lt;&lt;
             </button>
             <button
-                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.startPage - 1}} + '&centerName='+ @{${centerName}} + '\''"
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.startPage - 1}} + '&amp;centerName=' + @{${centerName}} + '\''"
                     th:disabled="${selectCriteria.pageNo < 6}"
             >
                 &lt;
@@ -90,69 +92,75 @@
             <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
                 <button
                         th:text="${ page }"
-                        th:onclick="'location.href=\'/board/abanBoardCenter?currentPage=' + @{${page}}  + '&centerName='+ @{${centerName}} +'\''"
+                        th:onclick="'location.href=\'/board/abanBoardCenter?currentPage=' + @{${page}}  + '&amp;centerName=' + @{${centerName}} +'\''"
                         th:disabled="${ selectCriteria.pageNo eq page }"
                         th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
                 </button>
             </th:block>
             <button
-                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.endPage + 1}} + '&centerName='+ @{${centerName}} +'\''"
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.endPage + 1}} + '&amp;centerName=' + @{${centerName}} +'\''"
                     th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
             >
                 &gt;
             </button>
             <button
-                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.maxPage}} + '&centerName='+ @{${centerName}} +'\''"
+                    th:onclick="'location.href=\'/board/abanBoardCenter?currentPage='+ @{${selectCriteria.maxPage}} + '&amp;centerName=' + @{${centerName}} +'\''"
                     th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
             >
                 &gt;&gt;
             </button>
         </div>
-
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script>
-        if (document.querySelectorAll(".board-container .boast-postList")) {
-            const $tds = document.querySelectorAll(".board-container .boast-postList");
+        if (document.querySelectorAll(".board-container .center-postList")) {
+            const $tds = document.querySelectorAll(".board-container .center-postList");
             for (let i = 0; i < $tds.length; i++) {
 
                 $tds[i].onmouseenter = function() {
                     this.style.backgroundColor = "#A6CEF7";
-                    this.style.cursor = "pointer";
                 }
 
                 $tds[i].onmouseleave = function() {
                     this.style.backgroundColor = "transparent";
                 }
-
-                $tds[i].onclick = function() {
-                    const centerName = this.children[0].innerText;
-                    location.href = "/board/abanBoardCenter?centerName=" + centerName;
-                }
             }
         }
 
+        window.addEventListener('load', function() {
+            const url = window.location.href;
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            if (url.includes('/abanBoardCenter')) {
+                document.getElementById('btn1').classList.add('active');
+            } else if (url.includes('/abanAdoptInfo')) {
+                document.getElementById('btn2').classList.add('active');
+            } else if (url.includes('/abanPickupInfo')) {
+                document.getElementById('btn3').classList.add('active');
+            } else {
+                document.getElementById('btn0').classList.add('active');
+            }
+        });
+
         $(document).ready(function () {
             let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
-            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
             const searchTextInput = $(".searchText");
-            const centerNameInput = document.getElementById("centerName");
+            const searchValueInput = document.getElementById("searchValueInputCenter");
 
             searchTextInput.on("focusout keyup", function () {
                 let x = $(this).val();
                 if (x.length > 0) {
-                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+                    x = x.replace(replaceChar, "");
                 }
                 $(this).val(x);
 
-                const centerName = centerNameInput.val();
-                localStorage.setItem("centerName", centerName);
             });
 
-            if (localStorage.getItem("searchValue")) {
-                centerNameInput.val(localStorage.getItem("centerName"));
-            }
         });
-    </script>
+
+        </script>
 </th:block>
 </html>

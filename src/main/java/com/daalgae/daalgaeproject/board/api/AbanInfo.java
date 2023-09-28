@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.board.api;
 
 import com.daalgae.daalgaeproject.board.dto.AbanInfoDTO;
+import com.daalgae.daalgaeproject.board.dto.CenterDTO;
 
 import java.util.List;
 import java.util.Optional;

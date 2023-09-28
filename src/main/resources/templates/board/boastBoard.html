@@ -35,7 +35,7 @@
 
                     <div class="search-by-text">
                         <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                        <input type="search" name="searchValue" id="searchValueInput" class="searchText">
+                        <input type="search" name="searchValue" id="searchValueInputBoast" class="searchText">
                     </div>
                     <div class="submit-button">
                         <button type="submit" id="searchButton" class="searchButton">검색</button>
@@ -43,7 +43,9 @@
                 </div>
             </form>
         </div>
-
+        <div th:if="${#lists.isEmpty(boardList)}" class="search-empty">
+            <p>검색 결과가 없습니다... 😢</p>
+        </div>
         <div class="boast-list">
             <div class="boast-postList" th:each="board : ${ boardList }">
                 <div class="boast-img-box">
@@ -118,7 +120,9 @@
             </button>
         </div>
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script th:inline="javascript">
 
         let message = '[[${message}]]';
@@ -164,23 +168,62 @@
 
         $(document).ready(function () {
             let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
-            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
             const searchTextInput = $(".searchText");
-            const searchValueInput = document.getElementById("searchValueInput");
+            const searchValueInput = document.getElementById("searchValueInputBoast");
 
             searchTextInput.on("focusout keyup", function () {
                 let x = $(this).val();
                 if (x.length > 0) {
-                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+                    x = x.replace(replaceChar, "");
                 }
                 $(this).val(x);
 
-                const searchValue = searchTextInput.val();
-                localStorage.setItem("searchValue", searchValue);
             });
 
-            if (localStorage.getItem("searchValue")) {
-                searchTextInput.val(localStorage.getItem("searchValue"));
+        });
+
+        let currentBoard;
+
+        $(document).ready(function () {
+            const url = window.location.href;
+
+            if (url.startsWith("http://localhost:8001/board/boastBoard")) {
+                currentBoard = "Boast";
+            } else if (url.startsWith("http://localhost:8001/board/freeBoard")) {
+                currentBoard = "Free";
+            } else if (url.startsWith("http://localhost:8001/board/annoBoard")) {
+                currentBoard = "Anno";
+            } else if (url.startsWith("http://localhost:8001/board/abanBoardCenter")) {
+                currentBoard = "Center";
+            }
+
+            const searchTextInput = $(`#searchValueInput${currentBoard}`);
+
+            console.log("searchTextInput name : " + searchTextInput);
+
+            // 저장된 검색어가 있으면 복원
+            const savedSearchValue = localStorage.getItem(currentBoard + "searchValue");
+            if (savedSearchValue) {
+                searchTextInput.val(savedSearchValue);
+            }
+            console.log("Current Board:", currentBoard);
+            console.log("Saved Search Value:", savedSearchValue);
+        });
+
+        $("#searchForm").submit(function () {
+            const searchTextInput = $(`#searchValueInput${currentBoard}`);
+            const searchValue = searchTextInput.val();
+            const url = window.location.href;
+
+            if (searchValue.trim() === "") {
+                const url = new URL(window.location.href);
+                url.searchParams.delete("searchValue");
+                localStorage.removeItem(currentBoard + "searchValue"); // 여기에서 검색어를 삭제
+                window.location.href = url.href;
+            } else {
+                console.log("Before localStorage:", localStorage.getItem(currentBoard + "searchValue"));
+                localStorage.setItem(currentBoard + "searchValue", searchValue.trim());
+                console.log("After localStorage:", localStorage.getItem(currentBoard + "searchValue"));
             }
         });
 

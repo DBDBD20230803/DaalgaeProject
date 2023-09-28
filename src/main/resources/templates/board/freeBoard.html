@@ -47,7 +47,7 @@
 
                     <div class="search-by-text">
                         <img th:src="@{/images/reading-glasses.png}" alt="readingGlasses" id="readingGlassesImage">
-                        <input type="search" name="searchValue" id="searchValueInput" class="searchText">
+                        <input type="search" name="searchValue" id="searchValueInputFree" class="searchText">
                     </div>
                     <div class="submit-button">
                         <button type="submit" id="searchButton">검색</button>
@@ -67,6 +67,9 @@
             </div>
         </div>
 
+        <div th:if="${#lists.isEmpty(boardList)}" class="search-empty">
+            <p>검색 결과가 없습니다... 😢</p>
+        </div>
         <div class="postList" th:each="board : ${ boardList }">
             <h6 class="testPost-postNo" th:text="${board.postCode}"></h6>
             <h6 class="testPost-postCategory" th:text="${board.postSort}"></h6>
@@ -119,7 +122,9 @@
             </button>
         </div>
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script th:inline="javascript">
 
         let message = '[[${message}]]';
@@ -148,25 +153,87 @@
             }
         }
 
+        window.addEventListener('load', function() {
+            // 현재 URL에서 search 파라미터를 가져옵니다
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchValue = urlParams.get('searchValue');
+
+            // 모든 버튼을 찾아서 'active' 클래스를 제거합니다
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // searchValue에 따라 해당 버튼에 'active' 클래스를 추가합니다
+            if (searchValue === '자유') {
+                document.getElementById('btn1').classList.add('active');
+            } else if (searchValue === '먹거리') {
+                document.getElementById('btn2').classList.add('active');
+            } else if (searchValue === '용품') {
+                document.getElementById('btn3').classList.add('active');
+            } else if (searchValue === '정보') {
+                document.getElementById('btn4').classList.add('active');
+            } else {
+                document.getElementById('btn0').classList.add('active');
+            }
+        });
+
         $(document).ready(function () {
             let replaceChar = /[~!@\#$%^&*()\-=_';<>\/.\`:\"\\,\[\]?|{}]/gi;
-            let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
             const searchTextInput = $(".searchText");
-            const searchValueInput = document.getElementById("searchValueInput");
+            const searchValueInput = document.getElementById("searchValueInputFree");
 
             searchTextInput.on("focusout keyup", function () {
                 let x = $(this).val();
                 if (x.length > 0) {
-                    x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+                    x = x.replace(replaceChar, "");
                 }
                 $(this).val(x);
 
-                const searchValue = searchTextInput.val();
-                localStorage.setItem("searchValue", searchValue);
             });
 
-            if (localStorage.getItem("searchValue")) {
-                searchTextInput.val(localStorage.getItem("searchValue"));
+        });
+
+        let currentBoard;
+
+        $(document).ready(function () {
+            const url = window.location.href;
+
+            if (url.startsWith("http://localhost:8001/board/boastBoard")) {
+                currentBoard = "Boast";
+            } else if (url.startsWith("http://localhost:8001/board/freeBoard")) {
+                currentBoard = "Free";
+            } else if (url.startsWith("http://localhost:8001/board/annoBoard")) {
+                currentBoard = "Anno";
+            } else if (url.startsWith("http://localhost:8001/board/abanBoardCenter")) {
+                currentBoard = "Center";
+            }
+
+            const searchTextInput = $(`#searchValueInput${currentBoard}`);
+
+            console.log("searchTextInput name : " + searchTextInput);
+
+            // 저장된 검색어가 있으면 복원
+            const savedSearchValue = localStorage.getItem(currentBoard + "searchValue");
+            if (savedSearchValue) {
+                searchTextInput.val(savedSearchValue);
+            }
+            console.log("Current Board:", currentBoard);
+            console.log("Saved Search Value:", savedSearchValue);
+        });
+
+        $("#searchForm").submit(function () {
+            const searchTextInput = $(`#searchValueInput${currentBoard}`);
+            const searchValue = searchTextInput.val();
+            const url = window.location.href;
+
+            if (searchValue.trim() === "") {
+                const url = new URL(window.location.href);
+                url.searchParams.delete("searchValue");
+                localStorage.removeItem(currentBoard + "searchValue"); // 여기에서 검색어를 삭제
+                window.location.href = url.href;
+            } else {
+                console.log("Before localStorage:", localStorage.getItem(currentBoard + "searchValue"));
+                localStorage.setItem(currentBoard + "searchValue", searchValue.trim());
+                console.log("After localStorage:", localStorage.getItem(currentBoard + "searchValue"));
             }
         });
 
