@@ -52,6 +52,10 @@ function likeClick() {
     });
 }
 $(function () {
+    if($('.isHospital').val() == "동물병원") {
+        $('.hideHospital').remove();
+    }
+
     let page = $('.findPage').val();
     page = page.replaceAll("\"\"", "\"");
     page = page.replaceAll("\"\<", "\<");
@@ -113,10 +117,6 @@ $(function () {
         boxCount++;
     }
 
-    if($('.isHospital').val() == "동물병원") {
-        $('.hideHospital').remove();
-    }
-
     let tourMapx = $('.mapx').val();
     let tourMapy = $('.mapy').val();
     let tourTitle = $('.title').val();
@@ -149,7 +149,6 @@ $(function () {
         type:"get",
         url:"/tour/getTourKakaoMap",
         dataType:"json",
-        async: false,
         success: function(data){
             let tourLocInfo = new Array(206);
             for(let i= 0; i<data.length; i++) {
