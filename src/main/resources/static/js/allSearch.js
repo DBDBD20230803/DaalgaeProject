@@ -3,7 +3,6 @@ $(document).ready( function() {
     // 옵션 선택
 
     $('.option3').change(function () {
-        console.log($('.option3').val());
         $('.option2').empty();
         switch ($('.option3').val()) {
             case "전체":
@@ -50,7 +49,14 @@ $(document).ready( function() {
         }
     });
     $('.option2').change(function () {
+        console.log($('.option2').val());
         switch ($('.option2').val()) {
+            case "전체":
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option1').val("전체");
+                break;
             case "자유게시판":
                 $('.option1').empty();
                 $('.option1').append("<option disabled selected>소분류</option>");
