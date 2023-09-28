@@ -68,7 +68,9 @@
                     AND ADDR LIKE CONCAT('%', '${country}', '%')
                 </if>
             </if>
-            AND TOUR_CATEGORY NOT LIKE '%동물%'
+            <if test="category != 'null' and category != '분류' and category != '전체'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
         </trim>
     </select>
 
@@ -91,8 +93,7 @@
                     AND ADDR LIKE CONCAT('%', '${country}', '%')
                 </if>
             </if>
-            AND TOUR_CATEGORY NOT LIKE '%동물%'
-            <if test="category != 'null'">
+            <if test="category != 'null' and category != '분류' and category != '전체'">
                 AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
             </if>
         </trim>

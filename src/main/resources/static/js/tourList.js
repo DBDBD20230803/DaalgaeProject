@@ -3,29 +3,30 @@ function pagingCalc(pageCase) {
     const urlParam = urlObject.searchParams;
     let keyword = urlParam.get("keyword");
     let country = urlParam.get("country");
+    let category = urlParam.get("category");
     let no = urlParam.get("no");
     let totalPage = $('.totalPage').val();
     if(pageCase === -3) {
-        location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
+        location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country + "&category=" + category;
     } else if(pageCase === 0) {
         let toUrl = "/tour/tourList?no=";
         toUrl += totalPage;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     } else if(pageCase === -1) {
         let toUrl = "/tour/tourList?no=";
         toUrl += Math.floor((no-1) / 5) * 5;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     } else if(pageCase === -2) {
         let toUrl = "/tour/tourList?no=";
         toUrl += Math.ceil(no / 5) * 5 + 1;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     } else {
         let toUrl = "/tour/tourList?no=";
         toUrl += pageCase;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     }
 
