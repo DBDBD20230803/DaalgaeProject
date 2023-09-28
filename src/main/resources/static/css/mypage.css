@@ -407,7 +407,7 @@ p{
 }
 
 
-#myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button{
+#myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button#addDoneBtn{
     display: block;
     width: 100%;
     border-radius: 2px;
@@ -556,7 +556,7 @@ p{
         width: 100% !important;
     }
 
-    #myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn input{
+    #myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button{
         margin-left: 0 !important;
         padding: 3% !important;
     }

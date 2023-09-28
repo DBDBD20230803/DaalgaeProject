@@ -54,39 +54,6 @@ spreadBtn.addEventListener('click', function (){
     $(document).ready(function () {
         checkFieldValues();
 
-        $("input[type='text'], input[type='date'], select").on("input change", function () {
-            checkFieldValues();
-        });
-
-
-    function checkFieldValues() {
-        let hasValue = false;
-        $("input[type='text'], input[type='date'], select").each(function () {
-            if ($(this).val()) {
-                hasValue = true;
-                return false;
-            }
-        });
-
-        let $addDoneBtn = $('#addDoneBtn');
-        if (hasValue) {
-            let $addDoneBtn = $('#addDoneBtn');
-            let $petInfoInputsTitle = $('.petInfoInputsTitle');
-            let $petInput = $('.petInput');
-            let $petSelect = $('.petSelect');
-
-            $addDoneBtn.text("수정");
-            $petInfoInputsTitle.attr('readonly', true);
-            $petInput.attr('readonly', true);
-            $petInput.css('color', '#bbbbbb');
-            $petSelect.attr('disabled', true);
-            $petSelect.css('color', '#bbbbbb');
-        } else {
-            $addDoneBtn.text("완료");
-        }
-    }
-
-    $(function (){
         let $addDoneBtn = $('#addDoneBtn');
         let $petInfoInputsTitle = $('.petInfoInputsTitle');
         let $petInput = $('.petInput');
@@ -130,11 +97,11 @@ spreadBtn.addEventListener('click', function (){
 
 
             }else if($addDoneBtn.text() === "수정"){
-              /*  $petInfoInputsTitle.attr('readonly', true);
-                $petInput.attr('readonly', true);
+                $petInfoInputsTitle.attr('readonly', true);
+                $petInput.attr('readonly', false);
                 $petInput.css('color', '#bbbbbb');
-                $petSelect.attr('disabled', true);
-                $petSelect.css('color', '#bbbbbb');*/
+                $petSelect.attr('disabled', false);
+                $petSelect.css('color', '#bbbbbb');
 
                 alert("수정하시겠습니까?");
 
@@ -175,7 +142,33 @@ spreadBtn.addEventListener('click', function (){
         });
 
 
-    });
+        function checkFieldValues() {
+            let hasValue = false;
+            $("input[type='text'], input[type='date'], select").each(function () {
+                if ($(this).val()) {
+                    hasValue = true;
+                    return false;
+                }
+            });
+
+
+            if (hasValue) {
+                let $addDoneBtn = $('#addDoneBtn');
+                let $petInfoInputsTitle = $('.petInfoInputsTitle');
+                let $petInput = $('.petInput');
+                let $petSelect = $('.petSelect');
+
+                $addDoneBtn.text("수정");
+                $petInfoInputsTitle.attr('readonly', true);
+                $petInput.attr('readonly', true);
+                $petInput.css('color', '#222222');
+                $petSelect.attr('disabled', true);
+                $petSelect.css('color', '#222222');
+            } else {
+                $addDoneBtn.text("완료");
+            }
+        }
+
 
     });
 })(jQuery);
