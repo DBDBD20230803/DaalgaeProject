@@ -72,7 +72,7 @@ $(function () {
     $('.descTitle').append("&nbsp;");
     $('.descTitle').append("&nbsp;");
     let boxCount = 0;
-    if($('.supplies').val().length > 0) {
+    if($('.supplies').val().length > 0 && $('.supplies').val() != 'none') {
         $('.tourImageBox').append("<div class=\"tourImage1\">");
         $('.tourImage1').append("<img height=\"70px\" src=\"/images/dogHouseImage.png\" />");
         $('.tourImage1').append("<p class=\"tourImageDesc\">비품제공</p>");
@@ -111,6 +111,10 @@ $(function () {
         $('.tourImage1').last().append("<p class=\"tourImageDesc\">목욕</p>");
         $('.tourImageBox').last().append("</div>");
         boxCount++;
+    }
+
+    if($('.isHospital').val() == "동물병원") {
+        $('.hideHospital').remove();
     }
 
     let tourMapx = $('.mapx').val();

@@ -295,3 +295,11 @@ select {
     display: flex;
     justify-content: center;
 }
+
+.noSearchData {
+    position: relative;
+    height: 250px;
+    color: #222;
+    font-size: 24px;
+    font-weight: 700;
+}

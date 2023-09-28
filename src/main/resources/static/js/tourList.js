@@ -32,7 +32,6 @@ function pagingCalc(pageCase) {
 
 }
 $(document).ready( function() {
-
     $(".tourListSearch").focus();
     $(".tourListSearch").on("keyup",function(key){
         if(key.keyCode==13) {
@@ -133,6 +132,11 @@ $(document).ready( function() {
         url:getUrl,
         dataType:"json",
         success: function(data){
+            console.log(data);
+            if(data.length == 0) {
+                $('.tourBoard').last().append("<div class=\"noSearchData\">");
+                $('.noSearchData').append("검색 결과가 없습니다");
+            }
             for(let tourInfo of data) {
                 $('.tourBoard').last().append("<div class=\"tourBoardUnit\">");
                 let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
