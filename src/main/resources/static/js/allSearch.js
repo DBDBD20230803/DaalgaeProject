@@ -1,6 +1,17 @@
 $(document).ready( function() {
 
+    // 검색어 가져오기
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    $('.allSearchBox').val(urlParam.get("keyword"));
+    console.log($('.allSearchBox').val(urlParam.get("keyword")));
+
     // 옵션 선택
+
+    $('.option3').val(urlParam.get("category1"));
+    $('.option2').val(urlParam.get("category2"));
+    $('.option1').val(urlParam.get("category3"));
+
 
     $('.option3').change(function () {
         $('.option2').empty();
@@ -86,8 +97,8 @@ $(document).ready( function() {
 
     // 검색 관련
 
-    $('#allSearchBox').focus();
-    $("#allSearchBox").on("keyup",function(key){
+    $('.allSearchBox').focus();
+    $(".allSearchBox").on("keyup",function(key){
         if(key.keyCode==13) {
             allSearch();
         }
@@ -98,7 +109,7 @@ $(document).ready( function() {
     // 완성형 아닌 한글 정규식
     let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
 
-    $("#allSearchBox").on("focusout", function() {
+    $(".allSearchBox").on("focusout", function() {
         let x = $(this).val();
         if (x.length > 0) {
             if (x.match(replaceChar) || x.match(replaceNotFullKorean)) {
@@ -113,16 +124,19 @@ $(document).ready( function() {
 
 
 
-    const urlObject = new URL(decodeURI(window.location.href));
-    const urlParam = urlObject.searchParams;
-    $('#allSearchBox').val(urlParam.get("keyword"));
+
 
 });
 function allSearch() {
-    let keyword = $('#allSearchBox').val();
+    let keyword = $('.allSearchBox').val();
     let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
     let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
     keyword = keyword.replace(replaceNotFullKorean, "");
-    location.href = "/allSearch?keyword="+keyword;
+    const urlObject = new URL(decodeURI(window.location.href));
+    const urlParam = urlObject.searchParams;
+    let category1 = $('.option3').val();
+    let category2 = $('.option2').val();
+    let category3 = $('.option1').val();
+    location.href = "/allSearch?keyword="+keyword+"&category1="+category1+"&category2="+category2+"&category3="+category3;
 }
