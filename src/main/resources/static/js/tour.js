@@ -249,25 +249,49 @@ $(document).ready( function() {
     if(selectNum == 5) {
         $('#hospitalCheck input').prop('checked', 'true');
     }*/
+    let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+    let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+
+    $("#mapSearchBox").on("focusout", function() {
+        let x = $(this).val();
+        if (x.length > 0) {
+            if (x.match(replaceChar) || x.match(replaceNotFullKorean)) {
+                x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "");
+            }
+            $(this).val(x);
+        }
+    }).on("keyup", function() {
+        $(this).val($(this).val().replace(replaceChar, ""));
+    });
 
     $('.listTour1').click(function(){
         let searchValue = $("#mapSearchBox").val();
+        searchValue = searchValue.replace(replaceChar, "");
+        searchValue = searchValue.replace(replaceNotFullKorean, "");
         location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=관광지'
     });
     $('.listTour2').click(function(){
         let searchValue = $("#mapSearchBox").val();
+        searchValue = searchValue.replace(replaceChar, "");
+        searchValue = searchValue.replace(replaceNotFullKorean, "");
         location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=숙박시설'
     });
     $('.listTour3').click(function(){
         let searchValue = $("#mapSearchBox").val();
+        searchValue = searchValue.replace(replaceChar, "");
+        searchValue = searchValue.replace(replaceNotFullKorean, "");
         location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=식당 및 카페'
     });
     $('.listTour4').click(function(){
         let searchValue = $("#mapSearchBox").val();
+        searchValue = searchValue.replace(replaceChar, "");
+        searchValue = searchValue.replace(replaceNotFullKorean, "");
         location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=체험 활동'
     });
     $('.listTour5').click(function(){
         let searchValue = $("#mapSearchBox").val();
+        searchValue = searchValue.replace(replaceChar, "");
+        searchValue = searchValue.replace(replaceNotFullKorean, "");
         location.href='/tour/tourList?no=1&keyword=' + searchValue +'&country=지역&category=동물병원'
     });
 

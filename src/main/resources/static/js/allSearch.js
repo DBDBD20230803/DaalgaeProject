@@ -54,10 +54,12 @@ $(document).ready( function() {
     function toOption2() {
         switch ($('.option2').val()) {
             case "전체":
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option1').val("전체");
+                if($('.option3').val() =='게시판') {
+                    $('.option1').empty();
+                    $('.option1').append("<option disabled selected>소분류</option>");
+                    $('.option1').append("<option value=\"전체\">전체</option>");
+                    $('.option1').val("전체");
+                }
                 break;
             case "자유게시판":
                 $('.option1').empty();
@@ -86,6 +88,7 @@ $(document).ready( function() {
         }
     }
 
+    // 옵션 선택
     $('.option3').val(urlParam.get("category1"));
     toOption3();
     $('.option2').val(urlParam.get("category2"));
@@ -99,14 +102,8 @@ $(document).ready( function() {
         toOption2();
     });
 
-    // 옵션 선택
-
-
-
-
 
     // 검색 관련
-
     $('.allSearchBox').focus();
     $(".allSearchBox").on("keyup",function(key){
         if(key.keyCode==13) {
@@ -130,13 +127,8 @@ $(document).ready( function() {
     }).on("keyup", function() {
         $(this).val($(this).val().replace(replaceChar, ""));
     });
-
-
-
-
-
-
 });
+
 function allSearch() {
     let keyword = $('.allSearchBox').val();
     let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
