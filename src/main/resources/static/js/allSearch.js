@@ -5,89 +5,6 @@ $(document).ready( function() {
     const urlParam = urlObject.searchParams;
     $('.allSearchBox').val(urlParam.get("keyword"));
 
-    function toOption3() {
-        $('.option2').empty();
-        switch ($('.option3').val()) {
-            case "전체":
-                $('.option2').append("<option disabled selected>중분류</option>");
-                $('.option2').append("<option value=\"전체\">전체</option>");
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option2').val("전체");
-                $('.option1').val("전체");
-                break;
-            case "여행지":
-                $('.option2').append("<option disabled selected>중분류</option>");
-                $('.option2').append("<option value=\"전체\">전체</option>");
-                $('.option2').append("<option value=\"관광지\">관광지</option>");
-                $('.option2').append("<option value=\"숙박시설\">숙박시설</option>");
-                $('.option2').append("<option value=\"식당 및 카페\">식당 및 카페</option>");
-                $('.option2').append("<option value=\"체험 활동\">체험 활동</option>");
-                $('.option2').append("<option value=\"동물병원\">동물병원</option>");
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option1').append("<option value=\"수도권\">수도권</option>");
-                $('.option1').append("<option value=\"강원도\">강원도</option>");
-                $('.option1').append("<option value=\"충청도\">충청도</option>");
-                $('.option1').append("<option value=\"경상도\">경상도</option>");
-                $('.option1').append("<option value=\"전라도\">전라도</option>");
-                $('.option1').append("<option value=\"제주도\">제주도</option>");
-                $('.option2').val("전체");
-                $('.option1').val("전체");
-                break;
-            case "게시판":
-                $('.option2').append("<option disabled selected>중분류</option>");
-                $('.option2').append("<option value=\"전체\">전체</option>");
-                $('.option2').append("<option value=\"자유게시판\">자유게시판</option>");
-                $('.option2').append("<option value=\"자랑갤러리\">자랑갤러리</option>");
-                $('.option2').append("<option value=\"공지사항\">공지사항</option>");
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option2').val("전체");
-                $('.option1').val("전체");
-                break;
-        }
-    }
-    function toOption2() {
-        switch ($('.option2').val()) {
-            case "전체":
-                if($('.option3').val() =='게시판') {
-                    $('.option1').empty();
-                    $('.option1').append("<option disabled selected>소분류</option>");
-                    $('.option1').append("<option value=\"전체\">전체</option>");
-                    $('.option1').val("전체");
-                }
-                break;
-            case "자유게시판":
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option1').append("<option value=\"자유\">자유</option>");
-                $('.option1').append("<option value=\"먹거리\">먹거리</option>");
-                $('.option1').append("<option value=\"용품\">용품</option>");
-                $('.option1').append("<option value=\"정보\">정보</option>");
-                $('.option1').val("전체");
-                break;
-            case "자랑갤러리":
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option1').val("전체");
-                break;
-            case "공지사항":
-                $('.option1').empty();
-                $('.option1').append("<option disabled selected>소분류</option>");
-                $('.option1').append("<option value=\"전체\">전체</option>");
-                $('.option1').append("<option value=\"공지\">공지</option>");
-                $('.option1').append("<option value=\"이벤트\">이벤트</option>");
-                $('.option1').val("전체");
-                break;
-        }
-    }
-
     // 옵션 선택
     $('.option3').val(urlParam.get("category1"));
     toOption3();
@@ -141,4 +58,87 @@ function allSearch() {
     let category2 = $('.option2').val();
     let category3 = $('.option1').val();
     location.href = "/allSearch?keyword="+keyword+"&category1="+category1+"&category2="+category2+"&category3="+category3;
+}
+
+function toOption3() {
+    $('.option2').empty();
+    switch ($('.option3').val()) {
+        case "전체":
+            $('.option2').append("<option disabled selected>중분류</option>");
+            $('.option2').append("<option value=\"전체\">전체</option>");
+            $('.option1').empty();
+            $('.option1').append("<option disabled selected>소분류</option>");
+            $('.option1').append("<option value=\"전체\">전체</option>");
+            $('.option2').val("전체");
+            $('.option1').val("전체");
+            break;
+        case "여행지":
+            $('.option2').append("<option disabled selected>중분류</option>");
+            $('.option2').append("<option value=\"전체\">전체</option>");
+            $('.option2').append("<option value=\"관광지\">관광지</option>");
+            $('.option2').append("<option value=\"숙박시설\">숙박시설</option>");
+            $('.option2').append("<option value=\"식당 및 카페\">식당 및 카페</option>");
+            $('.option2').append("<option value=\"체험 활동\">체험 활동</option>");
+            $('.option2').append("<option value=\"동물병원\">동물병원</option>");
+            $('.option1').empty();
+            $('.option1').append("<option disabled selected>소분류</option>");
+            $('.option1').append("<option value=\"전체\">전체</option>");
+            $('.option1').append("<option value=\"수도권\">수도권</option>");
+            $('.option1').append("<option value=\"강원도\">강원도</option>");
+            $('.option1').append("<option value=\"충청도\">충청도</option>");
+            $('.option1').append("<option value=\"경상도\">경상도</option>");
+            $('.option1').append("<option value=\"전라도\">전라도</option>");
+            $('.option1').append("<option value=\"제주도\">제주도</option>");
+            $('.option2').val("전체");
+            $('.option1').val("전체");
+            break;
+        case "게시판":
+            $('.option2').append("<option disabled selected>중분류</option>");
+            $('.option2').append("<option value=\"전체\">전체</option>");
+            $('.option2').append("<option value=\"자유게시판\">자유게시판</option>");
+            $('.option2').append("<option value=\"자랑갤러리\">자랑갤러리</option>");
+            $('.option2').append("<option value=\"공지사항\">공지사항</option>");
+            $('.option1').empty();
+            $('.option1').append("<option disabled selected>소분류</option>");
+            $('.option1').append("<option value=\"전체\">전체</option>");
+            $('.option2').val("전체");
+            $('.option1').val("전체");
+            break;
+    }
+}
+function toOption2() {
+    switch ($('.option2').val()) {
+        case "전체":
+            if($('.option3').val() =='게시판') {
+                $('.option1').empty();
+                $('.option1').append("<option disabled selected>소분류</option>");
+                $('.option1').append("<option value=\"전체\">전체</option>");
+                $('.option1').val("전체");
+            }
+            break;
+        case "자유게시판":
+            $('.option1').empty();
+            $('.option1').append("<option disabled selected>소분류</option>");
+            $('.option1').append("<option value=\"전체\">전체</option>");
+            $('.option1').append("<option value=\"자유\">자유</option>");
+            $('.option1').append("<option value=\"먹거리\">먹거리</option>");
+            $('.option1').append("<option value=\"용품\">용품</option>");
+            $('.option1').append("<option value=\"정보\">정보</option>");
+            $('.option1').val("전체");
+            break;
+        case "자랑갤러리":
+            $('.option1').empty();
+            $('.option1').append("<option disabled selected>소분류</option>");
+            $('.option1').append("<option value=\"전체\">전체</option>");
+            $('.option1').val("전체");
+            break;
+        case "공지사항":
+            $('.option1').empty();
+            $('.option1').append("<option disabled selected>소분류</option>");
+            $('.option1').append("<option value=\"전체\">전체</option>");
+            $('.option1').append("<option value=\"공지\">공지</option>");
+            $('.option1').append("<option value=\"이벤트\">이벤트</option>");
+            $('.option1').val("전체");
+            break;
+    }
 }
