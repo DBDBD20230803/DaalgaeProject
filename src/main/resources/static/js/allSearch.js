@@ -4,16 +4,8 @@ $(document).ready( function() {
     const urlObject = new URL(decodeURI(window.location.href));
     const urlParam = urlObject.searchParams;
     $('.allSearchBox').val(urlParam.get("keyword"));
-    console.log($('.allSearchBox').val(urlParam.get("keyword")));
 
-    // 옵션 선택
-
-    $('.option3').val(urlParam.get("category1"));
-    $('.option2').val(urlParam.get("category2"));
-    $('.option1').val(urlParam.get("category3"));
-
-
-    $('.option3').change(function () {
+    function toOption3() {
         $('.option2').empty();
         switch ($('.option3').val()) {
             case "전체":
@@ -58,9 +50,8 @@ $(document).ready( function() {
                 $('.option1').val("전체");
                 break;
         }
-    });
-    $('.option2').change(function () {
-        console.log($('.option2').val());
+    }
+    function toOption2() {
         switch ($('.option2').val()) {
             case "전체":
                 $('.option1').empty();
@@ -93,7 +84,26 @@ $(document).ready( function() {
                 $('.option1').val("전체");
                 break;
         }
+    }
+
+    $('.option3').val(urlParam.get("category1"));
+    toOption3();
+    $('.option2').val(urlParam.get("category2"));
+    toOption2();
+    $('.option1').val(urlParam.get("category3"));
+
+    $('.option3').change(function () {
+        toOption3();
     });
+    $('.option2').change(function () {
+        toOption2();
+    });
+
+    // 옵션 선택
+
+
+
+
 
     // 검색 관련
 
