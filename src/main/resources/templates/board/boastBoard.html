@@ -60,11 +60,11 @@
                                 <h6 class="boast-postNo" th:text="${board.postCode}"></h6>
                                 <h6 class="boast-postTitle" th:text="${board.postTitle}"></h6>
                             </div>
+                        </div>
                             <div class="boast-detail-title2">
                                 <h6 class="boast-postCount-name">조회수</h6>
                                 <h6 class="boast-postCount" th:text="${board.postCount}"></h6>
                             </div>
-                        </div>
                         <div>
                             <img class="boast-post-icon" th:src="@{/images/writer.png}">
                             <h6 class="boast-postUser" th:text="${board.refPostWriter.memId}"></h6>

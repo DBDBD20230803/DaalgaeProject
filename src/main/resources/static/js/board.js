@@ -99,6 +99,7 @@
     }
 
     let boardNo = document.getElementById("boardNo").value;
+    console.log("boardNo : " + boardNo);
     let replyBody = document.getElementById("replyBody").value;
 
     const maxLength = 150;

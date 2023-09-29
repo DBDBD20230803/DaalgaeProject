@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 //.antMatchers("/*").authenticated()
                 .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/board/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/board/*").hasAnyRole("ADMIN", "USER")
                  .antMatchers("/login").hasAnyAuthority("USER")
                  .antMatchers("/login/loginFindId", "/login/loginFindPwd").permitAll()
                  .anyRequest().permitAll()

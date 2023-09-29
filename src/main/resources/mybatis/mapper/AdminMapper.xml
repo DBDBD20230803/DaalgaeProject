@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daalgae.daalgaeproject.admin.dao.AdminMapper">
+
+    <resultMap type="BoardDTO" id="boardResultMap">
+        <id property="postCode" column="POST_CODE"/>
+        <result property="postType" column="POST_TYPE"/>
+        <result property="postSort" column="POST_SORT"/>
+        <result property="postTitle" column="POST_TITLE"/>
+        <result property="postContent" column="POST_CONTENT"/>
+        <result property="postDate" column="POST_DATE"/>
+        <result property="postCount" column="POST_COUNT"/>
+        <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
+        <association property="refPostWriter" resultMap="memberResultMap"/>
+        <association property="attachmentList" resultMap="attachmentFileResultMap"/>
+    </resultMap>
+
+    <resultMap type="MemberDTO" id="memberResultMap">
+        <id property="memCode" column="MEM_CODE"/>
+        <result property="memId" column="MEM_ID"/>
+        <result property="memPwd" column="MEM_PWD"/>
+        <result property="memName" column="MEM_NAME"/>
+        <result property="memBirth" column="MEM_BIRTH"/>
+        <result property="memEmail" column="MEM_EMAIL"/>
+        <result property="memAdrs" column="MEM_ADRS"/>
+        <result property="memAdrsDetail" column="MEM_ADRS_DETAIL"/>
+        <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
+        <result property="memDogGum" column="MEM_DOG_GUM"/>
+        <result property="memRole" column="MEM_ROLE"/>
+        <result property="memBanStatus" column="MEM_BAN_STATUS"/>
+        <result property="mailAuth" column="MAIL_AUTH"/>
+        <result property="mailKey" column="MAIL_KEY"/>
+    </resultMap>
+
+    <resultMap type="ReplyDTO" id="replyResultMap">
+        <id property="replyCode" column="POST_REPLY_CODE"/>
+        <result property="replyCon" column="POST_REPLY_CONTENT"/>
+        <result property="replyDate" column="POST_REPLY_DATE"/>
+        <result property="refReplyWriter" column="REF_POST_REPLY_WRITER"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
+        <association property="replyWriterDetail" resultMap="memberResultMap"/>
+    </resultMap>
+
+    <resultMap type="AttachmentDTO" id="attachmentFileResultMap">
+        <id property="attachCode" column="ATTACH_CODE_SEQ"/>
+        <result property="attachOriginName" column="ATTACH_ORIGIN_NAME"/>
+        <result property="attachDbName" column="ATTACH_DB_NAME"/>
+        <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
+        <result property="attachOriginAddr" column="ATTACH_ORIGIN_ADDR"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
+    </resultMap>
+
+</mapper>

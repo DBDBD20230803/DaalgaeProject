@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/boardLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>신고 페이지</title>
+    </head>
+
+    <th:block layout:fragment="content">
+        <div class="board-banner">
+            <h3>신고 페이지</h3>
+            <div>
+                <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
+            </div>
+        </div>
+
+        <div th:each="board : ${ board }">
+            <div>
+                <div>신고자</div>
+                <div th:text="${#authentication.getPrincipal().getMemId}"></div>
+            </div>
+            <div>
+                <div>피신고자</div>
+                <div th:text="${board.refPostWriter.memId}"></div>
+            </div>
+        </div>
+        <div th:each="reply : ${ reply }"></div>
+
+        <div class="whiteSpace">
+            <div class="logoInPage"></div>
+        </div>
+    </th:block>
+</html>

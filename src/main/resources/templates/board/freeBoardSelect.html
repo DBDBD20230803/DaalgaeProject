@@ -63,9 +63,13 @@
                 </button>
             </div>
             <div class="report-button">
-                <button type="button" id="report-button">
-                    <img th:src="@{/images/report-button.png}" alt="report-button">
-                </button>
+                <form th:action="@{/report/reportUser}" method="post">
+                    <input type="hidden" name="postCode" th:value="${board.postCode}">
+                    <input type="hidden" name="postCode" th:value="${board.refPostWriter.memId}">
+                    <button type="submit">
+                        <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
+                    </button>
+                </form>
             </div>
         </div>
         <div class="board-content-select-container">
@@ -106,15 +110,19 @@
                         </div>
                     </th:block>
                 </div>
+                <th:block th:if="${ board.attachmentList.size() > 0 }">
                 <div class="img-tip">
                     <h6>이미지 클릭시 크게 보실 수 있습니다.</h6>
                 </div>
+                </th:block>
                 <div class="board-textarea">
                     <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)" ></textarea>
                 </div>
+                <th:block th:if="${ board.attachmentList.size() > 0 }">
                 <div class="img-tip">
                     <h6>이미지 이름 클릭시 다운 받으실 수 있습니다.</h6>
                 </div>
+                </th:block>
                 <div class="imgDownload">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
                         <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
@@ -148,7 +156,7 @@
             </div>
 
             <div class="write-comment" id="replyWrite">
-                <input type="hidden" th:value="${board.postCode}">
+                <input type="hidden" id="boardNo" th:value="${board.postCode}">
                 <div class="write-comment-info">
                     <h6>*내용(
                         <span id="charCount">0</span>
@@ -157,7 +165,6 @@
                 <div class="write-comment-content">
                     <textarea name="comment" id="replyBody" cols="30" rows="10" oninput="countCharacters()"></textarea>
                 </div>
-                <!-- 진짜 150자 초과는 submit을 못하게 하기 -->
                 <div class="write-comment-button">
                     <button type="button" id="registReply">댓글달기</button>
                 </div>
@@ -174,9 +181,13 @@
                         <div id="reply-body" th:text="${ reply.replyCon}"></div>
                         <div id="reply-date" th:text="${ reply.replyDate }"></div>
                         <div id="comment-report-button">
-                            <button>
+                            <form th:action="@{/report/reportUser}" method="post">
+                                <input type="hidden" name="replyCode" th:value="${reply.replyCode}">
+                                <input type="hidden" name="replyCode" th:value="${reply.replyWriterDetail.memId}">
+                            <button type="submit">
                                 <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                             </button>
+                            </form>
                         </div>
                         <th:block
                                 sec:authorize="isAuthenticated()"
@@ -190,16 +201,16 @@
                             >
                                 삭제
                             </button>
-                            </div>
-                        </th:block>
-                    </div>
+                        </div>
                     </th:block>
-                </th:block>
-            </div>
+                </div>
+            </th:block>
+        </th:block>
+    </div>
 
             <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
                 <form th:action="@{/board/deletePostFree}" id="boardDeleteForm" method="post">
-                    <input type="hidden" name="postCode" id="boardNo" th:value="${board.postCode}">
+                    <input type="hidden" name="postCode" th:value="${board.postCode}">
                     <div class="updatePost">
                         <button id="editButton" type="button">수정</button>
                         <button id="saveButton" type="button" style="display:none;">저장</button>

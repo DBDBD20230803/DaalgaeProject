@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/boardLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>관리자 페이지</title>
+    </head>
+
+    <th:block layout:fragment="content">
+        <div class="board-banner">
+            <h3>관리자 페이지</h3>
+            <div>
+                <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
+            </div>
+        </div>
+
+        <div class="whiteSpace">
+            <div class="logoInPage"></div>
+        </div>
+    </th:block>
+</html>
