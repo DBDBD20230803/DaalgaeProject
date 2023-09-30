@@ -113,12 +113,13 @@
 
 <div class="tourDetailWhiteSpace"></div>
 <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />지도 보기</p>
-<p class="introDesc" th:text="${findDetail.addr}">전라남도 장흥군 관산읍 칠관로 842-1150 </p><br>
+<p class="introDesc" th:text="${findDetail.addr}"></p><br>
 <input type="hidden" class="mapx" th:value="${findDetail.mapx}">
 <input type="hidden" class="tourCode" th:value="${findDetail.tourCode}">
 <input type="hidden" class="mapy" th:value="${findDetail.mapy}">
 <input type="hidden" class="title" th:value="${findDetail.tourTitle}">
 <input type="hidden" class="category" th:value="${findDetail.tourCategory}">
+<input type="hidden" class="tourAddr" th:value="${findDetail.addr}">
     <div id="map" class="tourLocMap"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cee456796362f003412371bb71c7faa0"></script>
 <div class="tourDetailWhiteSpace"></div>

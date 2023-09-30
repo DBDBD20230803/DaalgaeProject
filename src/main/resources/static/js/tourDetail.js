@@ -117,6 +117,8 @@ $(function () {
         boxCount++;
     }
 
+
+    /* 지도 관련 */
     let tourMapx = $('.mapx').val();
     let tourMapy = $('.mapy').val();
     let tourTitle = $('.title').val();
@@ -170,6 +172,41 @@ $(function () {
         title : tourTitle,
         image : markerImage
     });
+
+    function makeOverListener(map, marker, infowindow) {
+        return function() {
+            infowindow.open(map, marker);
+        };
+    }
+
+    let urlObject2 = new URL(decodeURI(window.location.href));
+    let urlParam2 = urlObject2.searchParams;
+    let noNum = urlParam2.get("no");
+
+    if($('.tourPhotoVal').val().length == 0) {
+        $('.tourPhotoVal').val("/images/dogTour.png");
+    }
+
+    let photoUrl = $('.tourPhotoVal').val();
+
+    let deepLink = '<div class="toEllipsis" title="' + tourTitle + '" >' + tourTitle + '</div>' +
+        '<img class="tourImage" width="148px" height="148px" src="' + photoUrl + '"><br>'
+        + '<div class="toEllipsis" title="' + $('.tourAddr').val() + '" >' + '주소:&nbsp;' + $('.tourAddr').val() + '</div>' +
+        '<a href="/tour/tourDetail?no=' + noNum +
+        '">자세히 보기</a>'
+
+
+
+
+    let infowindow = new kakao.maps.InfoWindow({
+        content: deepLink, // 인포윈도우에 표시할 내용
+        removable: true
+    });
+
+    infowindow.open(map, marker);
+
+    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+
     /* 주변 여행지 찾기*/
     let markers = [];
     let markerOrder = 0;
@@ -196,6 +233,7 @@ $(function () {
                     title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                     image : markerImage // 마커 이미지
                 });
+
                 marker.setMap(null);
                 markers.push(marker);
             }

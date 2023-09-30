@@ -49,9 +49,15 @@ $(document).ready( function() {
                     tourLocInfo[i] = {
                         title : data[i].tourTitle,
                         latlng: new kakao.maps.LatLng(data[i].mapy, data[i].mapx),
-                        category: data[i].tourCategory
+                        category: data[i].tourCategory,
+                        photo: data[i].tourPhoto,
+                        address: data[i].addr
+                    }
+                    if(tourLocInfo[i].photo.length == 0) {
+                        tourLocInfo[i].photo = "/images/dogTour.png";
                     }
                 }
+
 
                 // 마커 이미지의 이미지 주소입니다
                 /*let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";*/
@@ -68,11 +74,11 @@ $(document).ready( function() {
                 }
 
                 // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-                function makeOutListener(infowindow) {
+                /*function makeOutListener(infowindow) {
                     return function() {
                         infowindow.close();
                     };
-                }
+                }*/
 
 
                 for (let i = 0; i < tourLocInfo.length; i ++) {
@@ -98,7 +104,11 @@ $(document).ready( function() {
                             image : markerImage1 // 마커 이미지
                         });
 
-                        let deepLink = '<a href="/tour/tourDetail?no=' + i +
+                        let dbNum = i + 1;
+                        let deepLink = '<div class="toEllipsis" title="' + tourLocInfo[i].title + '" >' + tourLocInfo[i].title + '</div>' +
+                            '<img class="tourImage" width="148px" height="148px" src="' + tourLocInfo[i].photo + '"><br>'
+                            + '<div class="toEllipsis" title="' + tourLocInfo[i].address + '" >' + '주소:&nbsp;' + tourLocInfo[i].address + '</div>' +
+                            '<a href="/tour/tourDetail?no=' + dbNum +
                             '">자세히 보기</a>'
 
                         let infowindow = new kakao.maps.InfoWindow({
@@ -107,9 +117,6 @@ $(document).ready( function() {
                         });
 
                         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-                        $('.closeInfo').click(function () {
-                            makeOutListener(infowindow);
-                        });
                         /*kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));*/
 
                         marker.setMap(null);
@@ -123,7 +130,11 @@ $(document).ready( function() {
                             image : markerImage2 // 마커 이미지
                         });
 
-                        let deepLink = '<a href="/tour/tourDetail?no=' + i +
+                        let dbNum = i + 1;
+                        let deepLink = '<div class="toEllipsis" title="' + tourLocInfo[i].title + '" >' + tourLocInfo[i].title + '</div>' +
+                            '<img class="tourImage" width="148px" src="' + tourLocInfo[i].photo + '"><br>'
+                            + '<div class="toEllipsis" title="' + tourLocInfo[i].address + '" >' + '주소:&nbsp;' + tourLocInfo[i].address + '</div>' +
+                            '<a href="/tour/tourDetail?no=' + dbNum +
                             '">자세히 보기</a>'
 
                         let infowindow = new kakao.maps.InfoWindow({
@@ -132,9 +143,6 @@ $(document).ready( function() {
                         });
 
                         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-                        $('.closeInfo').click(function () {
-                            makeOutListener(infowindow);
-                        });
 
                         marker.setMap(null);
                         marker2.push(marker);
@@ -147,7 +155,11 @@ $(document).ready( function() {
                             image : markerImage3 // 마커 이미지
                         });
 
-                        let deepLink = '<a href="/tour/tourDetail?no=' + i +
+                        let dbNum = i + 1;
+                        let deepLink = '<div class="toEllipsis" title="' + tourLocInfo[i].title + '" >' + tourLocInfo[i].title + '</div>' +
+                            '<img class="tourImage" width="148px" src="' + tourLocInfo[i].photo + '"><br>'
+                            + '<div class="toEllipsis" title="' + tourLocInfo[i].address + '" >' + '주소:&nbsp;' + tourLocInfo[i].address + '</div>' +
+                            '<a href="/tour/tourDetail?no=' + dbNum +
                             '">자세히 보기</a>'
 
                         let infowindow = new kakao.maps.InfoWindow({
@@ -156,9 +168,6 @@ $(document).ready( function() {
                         });
 
                         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-                        $('.closeInfo').click(function () {
-                            makeOutListener(infowindow);
-                        });
 
                         marker.setMap(null);
                         marker3.push(marker);
@@ -171,7 +180,11 @@ $(document).ready( function() {
                             image : markerImage4 // 마커 이미지
                         });
 
-                        let deepLink = '<a href="/tour/tourDetail?no=' + i +
+                        let dbNum = i + 1;
+                        let deepLink = '<div class="toEllipsis" title="' + tourLocInfo[i].title + '" >' + tourLocInfo[i].title + '</div>' +
+                            '<img class="tourImage" width="148px" src="' + tourLocInfo[i].photo + '"><br>'
+                            + '<div class="toEllipsis" title="' + tourLocInfo[i].address + '" >' + '주소:&nbsp;' + tourLocInfo[i].address + '</div>' +
+                            '<a href="/tour/tourDetail?no=' + dbNum +
                             '">자세히 보기</a>'
 
                         let infowindow = new kakao.maps.InfoWindow({
@@ -180,9 +193,6 @@ $(document).ready( function() {
                         });
 
                         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-                        $('.closeInfo').click(function () {
-                            makeOutListener(infowindow);
-                        });
 
                         marker.setMap(null);
                         marker4.push(marker);
@@ -195,7 +205,11 @@ $(document).ready( function() {
                             image : markerImage5 // 마커 이미지
                         });
 
-                        let deepLink = '<a href="/tour/tourDetail?no=' + i +
+                        let dbNum = i + 1;
+                        let deepLink = '<div class="toEllipsis" title="' + tourLocInfo[i].title + '" >' + tourLocInfo[i].title + '</div>' +
+                            '<img class="tourImage" width="148px" src="' + tourLocInfo[i].photo + '"><br>'
+                            + '<div class="toEllipsis" title="' + tourLocInfo[i].address + '" >' + '주소:&nbsp;' + tourLocInfo[i].address + '</div>' +
+                            '<a href="/tour/tourDetail?no=' + dbNum +
                             '">자세히 보기</a>'
 
                         let infowindow = new kakao.maps.InfoWindow({
@@ -204,9 +218,6 @@ $(document).ready( function() {
                         });
 
                         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-                        $('.closeInfo').click(function () {
-                            makeOutListener(infowindow);
-                        });
 
                         marker.setMap(null);
                         marker5.push(marker);
