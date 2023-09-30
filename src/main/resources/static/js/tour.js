@@ -54,14 +54,25 @@ $(document).ready( function() {
                 }
 
                 // 마커 이미지의 이미지 주소입니다
-                let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                /*let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";*/
+                let imageSrc1 = "/images/markerTour.png";
+                let imageSrc2 = "/images/markerAccomo.png";
+                let imageSrc3 = "/images/markerFood.png";
+                let imageSrc4 = "/images/markerActivity.png";
+                let imageSrc5 = "/images/markerHospital.png";
 
                 for (let i = 0; i < tourLocInfo.length; i ++) {
                     // 마커 이미지의 이미지 크기 입니다
-                    let imageSize = new kakao.maps.Size(24, 35);
+                    /*let imageSize = new kakao.maps.Size(24, 35);*/
+                    let imageSize2 = new kakao.maps.Size(36, 36);
 
                     // 마커 이미지를 생성합니다
-                    let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                    /*let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);*/
+                    let markerImage1 = new kakao.maps.MarkerImage(imageSrc1, imageSize2);
+                    let markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2);
+                    let markerImage3 = new kakao.maps.MarkerImage(imageSrc3, imageSize2);
+                    let markerImage4 = new kakao.maps.MarkerImage(imageSrc4, imageSize2);
+                    let markerImage5 = new kakao.maps.MarkerImage(imageSrc5, imageSize2);
 
                     // 마커를 생성합니다
 
@@ -70,7 +81,7 @@ $(document).ready( function() {
                             map: map, // 마커를 표시할 지도
                             position: tourLocInfo[i].latlng, // 마커를 표시할 위치
                             title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                            image : markerImage // 마커 이미지
+                            image : markerImage1 // 마커 이미지
                         });
                         marker.setMap(null);
                         marker1.push(marker);
@@ -80,7 +91,7 @@ $(document).ready( function() {
                             map: map, // 마커를 표시할 지도
                             position: tourLocInfo[i].latlng, // 마커를 표시할 위치
                             title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                            image : markerImage // 마커 이미지
+                            image : markerImage2 // 마커 이미지
                         });
                         marker.setMap(null);
                         marker2.push(marker);
@@ -90,7 +101,7 @@ $(document).ready( function() {
                             map: map, // 마커를 표시할 지도
                             position: tourLocInfo[i].latlng, // 마커를 표시할 위치
                             title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                            image : markerImage // 마커 이미지
+                            image : markerImage3 // 마커 이미지
                         });
                         marker.setMap(null);
                         marker3.push(marker);
@@ -100,7 +111,7 @@ $(document).ready( function() {
                             map: map, // 마커를 표시할 지도
                             position: tourLocInfo[i].latlng, // 마커를 표시할 위치
                             title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                            image : markerImage // 마커 이미지
+                            image : markerImage4 // 마커 이미지
                         });
                         marker.setMap(null);
                         marker4.push(marker);
@@ -110,7 +121,7 @@ $(document).ready( function() {
                             map: map, // 마커를 표시할 지도
                             position: tourLocInfo[i].latlng, // 마커를 표시할 위치
                             title : tourLocInfo[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                            image : markerImage // 마커 이미지
+                            image : markerImage5 // 마커 이미지
                         });
                         marker.setMap(null);
                         marker5.push(marker);

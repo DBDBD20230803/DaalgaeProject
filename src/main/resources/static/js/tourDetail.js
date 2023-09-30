@@ -120,6 +120,7 @@ $(function () {
     let tourMapx = $('.mapx').val();
     let tourMapy = $('.mapy').val();
     let tourTitle = $('.title').val();
+    let tourCategory = $('.category').val();
     let container = document.getElementById('map');
     let options = {
         center: new kakao.maps.LatLng(tourMapy, tourMapx),
@@ -129,11 +130,39 @@ $(function () {
     let map = new kakao.maps.Map(container, options);
     let markerPosition  = new kakao.maps.LatLng(tourMapy, tourMapx);
 
-    let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-    let imageSize = new kakao.maps.Size(24, 35);
+    /*let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+    let imageSize = new kakao.maps.Size(24, 35);*/
+
+    let imageSrc1 = "/images/markerTour.png";
+    let imageSrc2 = "/images/markerAccomo.png";
+    let imageSrc3 = "/images/markerFood.png";
+    let imageSrc4 = "/images/markerActivity.png";
+    let imageSrc5 = "/images/markerHospital.png";
+
+    let imageSize2 = new kakao.maps.Size(36, 36);
+
+
+    let markerImage1 = new kakao.maps.MarkerImage(imageSrc1, imageSize2);
+    let markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2);
+    let markerImage3 = new kakao.maps.MarkerImage(imageSrc3, imageSize2);
+    let markerImage4 = new kakao.maps.MarkerImage(imageSrc4, imageSize2);
+    let markerImage5 = new kakao.maps.MarkerImage(imageSrc5, imageSize2);
+
+    let markerImage;
+    if(tourCategory.includes('관광지')) {
+        markerImage = markerImage1;
+    } else if(tourCategory.includes('숙박')) {
+        markerImage = markerImage2;
+    } else if(tourCategory.includes('식음료')) {
+        markerImage = markerImage3;
+    } else if(tourCategory.includes('체험')) {
+        markerImage = markerImage4;
+    } else if(tourCategory.includes('동물병원')) {
+        markerImage = markerImage5;
+    }
 
     // 마커 이미지를 생성합니다
-    let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    // let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     // 마커를 생성합니다
     let marker = new kakao.maps.Marker({
         map: map,
