@@ -103,9 +103,9 @@ spreadBtn.addEventListener('click', function () {
 
             if ($addDoneBtn1.text() === "수정") {
                 $petInfoInputsTitle1.attr('readonly', true);
-                $petInput1.attr('readonly', false);
+                $petInput1.attr('readonly', true);
                 $petInput1.css('color', '#bbbbbb');
-                $petSelect1.attr('disabled', false);
+                $petSelect1.attr('disabled', true);
                 $petSelect1.css('color', '#bbbbbb');
 
                 alert("수정하시겠습니까?");

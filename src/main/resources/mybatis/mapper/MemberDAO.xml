@@ -192,4 +192,6 @@
         SET MEM_WITHDRAWAL = CURDATE()
         WHERE MEM_ID = #{ memId }
     </update>
+
+
 </mapper>

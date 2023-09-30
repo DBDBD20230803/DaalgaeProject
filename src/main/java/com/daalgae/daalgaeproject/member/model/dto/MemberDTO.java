@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 
-
 @Getter
 @Setter
 @ToString
@@ -31,6 +30,7 @@ public class MemberDTO {
     private int mailAuth;
     private String mailKey;
 
+
     public int isMailAuth() {
         return mailAuth;
     }
@@ -38,4 +38,6 @@ public class MemberDTO {
     public Date isMemWithDrawal () {return memWithdrawal;}
 
     public String isMemBanStatus() {return memBanStatus;}
+
+
 }
