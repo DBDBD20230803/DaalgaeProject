@@ -34,4 +34,8 @@ public class MemberDTO {
     public int isMailAuth() {
         return mailAuth;
     }
+
+    public Date isMemWithDrawal () {return memWithdrawal;}
+
+    public String isMemBanStatus() {return memBanStatus;}
 }

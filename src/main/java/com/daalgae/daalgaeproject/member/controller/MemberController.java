@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
@@ -286,5 +287,85 @@ public class MemberController {
     }
 
 
+    @GetMapping("/pwdReset")
+    public String modifyPwdForm(){
+        return "myPage/pwdReset";
+    }
+
+
+    @PostMapping("/pwdReset")
+    public String modifyPwd(@ModelAttribute MemberDTO memberDTO, @RequestParam("password") String memPwd , HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws MemberModifyException {
+
+        log.info("pwdReset =======================" );
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        int memCode = 0;
+
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            memCode = user.getMemCode();
+            memberDTO.setMemCode(memCode);
+        }
+        log.info("memCode : " + memCode);
+
+
+        if(memPwd != null){
+            memberDTO.setMemPwd(passwordEncoder.encode(memPwd));
+        }
+
+        log.info("modifyPwd memberDTO: " + memberDTO);
+
+        loginService.modifyPwd(memberDTO);
+
+        SessionUtil.invalidateSession(request, response);
+
+        rttr.addFlashAttribute("message", "비밀번호 수정에 성공하셨습니다. 다시 로그인해주세요😋 ");
+
+        return "myPage/updateComplete";
+
+    }
+
+
+    @GetMapping("/delete")
+    public String memberDeleteForm(){
+        return "myPage/delete";
+    }
+
+    @PostMapping("/delete")
+    public String memberDelete(@ModelAttribute MemberDTO memberDTO, @RequestParam("password") String memPwd, SessionStatus status,
+                               HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws MemberModifyException {
+
+        log.info("memberDelete=========================");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        int memCode = 0;
+
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            memCode = user.getMemCode();
+            memberDTO.setMemCode(memCode);
+
+            String storedMemPwd = user.getMemPwd();
+
+            if(passwordEncoder.matches(memPwd, storedMemPwd)){
+
+                log.info("memCode : " + memCode);
+
+                log.info("memberDTO : " + memberDTO);
+                loginService.memberDelete(memberDTO);
+
+                SessionUtil.invalidateSession(request, response);
+
+                rttr.addFlashAttribute("message", "회원 탈퇴에 성공하셨습니다. 로그아웃 됩니다.");
+            }else{
+                rttr.addFlashAttribute("error", "현재 비밀번호가 일치하지 않습니다.");
+            }
+        }
+
+        return "myPage/deleteComplete";
+
+    }
 
 }

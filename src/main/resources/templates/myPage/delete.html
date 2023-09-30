@@ -16,7 +16,7 @@
 
               <h5 class="deleteTitle">뭐든 다알개</h5>
 
-              <form class="deletPwdConfirm" action="" method="post">
+              <form class="deletPwdConfirm" th:action="@{/myPage/delete}" method="post">
                 <h5 class="deletePwdConfirmTitle">탈퇴 비밀번호 확인</h5>
                 <input type="password" name="password" id="pwd" placeholder="비밀번호"/>
                 <p>탈퇴 시 동일한 이메일로 재가입이 불가능 합니다.😥</p>

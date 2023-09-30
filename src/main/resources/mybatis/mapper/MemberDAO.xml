@@ -96,6 +96,7 @@
              , A.MEM_EMAIL
              , A.MEM_ADRS
              , A.MEM_ADRS_DETAIL
+             , A.MEM_WITHDRAWAL
              , A.MEM_ROLE
              , A.MEM_BAN_STATUS
              , A.MAIL_AUTH
@@ -171,5 +172,24 @@
             ,MEM_DOG_GUM = #{ memDogGum }
         WHERE
             MEM_CODE = #{ memCode }
+    </update>
+
+
+
+    <update id="modifyPwd">
+        UPDATE
+            MEM_INFO
+        SET
+            MEM_PWD = #{ memPwd }
+        WHERE
+            MEM_CODE = #{ memCode }
+    </update>
+
+
+    <update id="memberDelete">
+        UPDATE
+            MEM_INFO
+        SET MEM_WITHDRAWAL = CURDATE()
+        WHERE MEM_ID = #{ memId }
     </update>
 </mapper>

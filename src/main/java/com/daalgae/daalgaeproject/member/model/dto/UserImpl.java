@@ -28,7 +28,7 @@ public class UserImpl extends User{
     private int mailAuth;
     private String mailKey;
 
-    public UserImpl(String username, String password, boolean mailAuth, Collection<? extends GrantedAuthority> authorities) {
+    public UserImpl(String username, String password, boolean mailAuth, boolean memWithdrawal, boolean memBanStatus, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
 
@@ -54,7 +54,7 @@ public class UserImpl extends User{
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return memWithdrawal == null;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class UserImpl extends User{
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return "N".equals(memBanStatus);
     }
 
 }
