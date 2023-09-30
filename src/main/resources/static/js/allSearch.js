@@ -19,7 +19,6 @@ $(document).ready( function() {
         toOption2();
     });
 
-
     // 검색 관련
     $('.allSearchBox').focus();
     $(".allSearchBox").on("keyup",function(key){
@@ -44,6 +43,14 @@ $(document).ready( function() {
     }).on("keyup", function() {
         $(this).val($(this).val().replace(replaceChar, ""));
     });
+
+    /* 보여줄 항목 */
+    if($('.option3').val() == '전체') {
+        console.log(1);
+    } else {
+        console.log(2);
+    }
+
 });
 
 function allSearch() {
