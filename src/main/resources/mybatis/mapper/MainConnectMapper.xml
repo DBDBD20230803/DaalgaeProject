@@ -20,4 +20,17 @@
         LIMIT 5
     </select>
 
+    <!-- 원래 allSearch용이지만 mapper 더 만들기 그래서 여기에 한다. -->
+    <select id="getAllSearchPost" resultType="com.daalgae.daalgaeproject.mainConnect.dto.AllSearchPostDTO">
+        SELECT POST_CODE
+        ,POST_TYPE
+        ,POST_TITLE
+        , (SELECT MEM_NAME FROM MEM_INFO WHERE MEM_CODE = REF_POST_WRITER) 'POST_WRITER'
+        ,POST_COUNT
+        ,POST_DATE
+        FROM POST_INFO
+        WHERE POST_TYPE = #{postType}
+        LIMIT 5
+    </select>
+
 </mapper>

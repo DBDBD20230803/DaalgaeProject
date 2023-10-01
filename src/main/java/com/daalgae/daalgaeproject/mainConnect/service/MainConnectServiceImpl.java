@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.mainConnect.service;
 
 import com.daalgae.daalgaeproject.mainConnect.dao.MainConnectMapper;
+import com.daalgae.daalgaeproject.mainConnect.dto.AllSearchPostDTO;
 import com.daalgae.daalgaeproject.mainConnect.dto.MainNoticeDTO;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,10 @@ public class MainConnectServiceImpl implements MainConnectService {
     @Override
     public List<MainNoticeDTO> findNotice() {
         return mainConnectMapper.findNotice();
+    }
+
+    @Override
+    public List<AllSearchPostDTO> getAllSearchPost(String postType) {
+        return mainConnectMapper.getAllSearchPost(postType);
     }
 }

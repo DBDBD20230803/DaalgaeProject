@@ -100,26 +100,6 @@
         LIMIT ${ no }, 9
     </select>
 
-    <!-- 통합검색용 -->
-
-    <select id="findTourListAllSearch" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultMap="findTourList">
-        SELECT TOUR_CODE
-        ,TOUR_PHOTO
-        ,TOUR_TITLE
-        ,ADDR
-        ,TEL
-        FROM TOUR_INFO
-        <trim prefix="WHERE" prefixOverrides="AND">
-            <if test="keyword != 'null'">
-                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
-            </if>
-            <if test="category != 'null' and category != '분류' and category != '전체'">
-                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
-            </if>
-        </trim>
-        LIMIT 3
-    </select>
-
     <select id="findTourDetail" resultMap="findTourDetail">
         SELECT TOUR_CODE
         ,TOUR_PHOTO
@@ -138,6 +118,26 @@
         ,INTRO
         FROM TOUR_INFO
         WHERE TOUR_CODE = #{ no }
+    </select>
+
+    <!-- 통합검색용 -->
+
+    <select id="findTourListAllSearch" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultMap="findTourList">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        FROM TOUR_INFO
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="category != 'null' and category != '분류' and category != '전체'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
+        </trim>
+        LIMIT 3
     </select>
 
 </mapper>
