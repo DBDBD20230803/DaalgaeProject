@@ -4,7 +4,7 @@ function allHeaderSearch() {
     let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
     keyword = keyword.replace(replaceNotFullKorean, "");
-    location.href = "/allSearch?keyword="+keyword+"&category1=전체&category2=전체&category3=전체";
+    location.href = "/allSearch?keyword="+keyword;
 }
 $(document).ready(function (){
     $('input[class="burger-check"]').change(function() {
