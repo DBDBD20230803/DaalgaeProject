@@ -20,11 +20,14 @@ public class UserProfileDTO {
     private int refMemCode;
     private List<UserProfileDTO> userProfileList;
 
-    public List<UserProfileDTO> setUserProfileList(ArrayList<UserProfileDTO> userProfileDTOS) {
-        return this.userProfileList = userProfileList;
+
+    public void setUserProfileList(List<UserProfileDTO> userProfileList) {
+        this.userProfileList = userProfileList;
     }
 
     public List<UserProfileDTO> getUserProfileList() {
-        return this.userProfileList = userProfileList ;
+        return this.userProfileList;
     }
+
+
 }

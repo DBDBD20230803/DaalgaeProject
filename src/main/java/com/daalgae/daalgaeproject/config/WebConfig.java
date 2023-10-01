@@ -16,9 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/upload/");
 
         registry.addResourceHandler("/thumbPath/**")
-                .addResourceLocations("file:///d:/thymeleaf-springboot/img/upload/thumbnail/");
+                .addResourceLocations("file:///c:/thymeleaf-springboot/img/upload/thumbnail/");
         registry.addResourceHandler("/imagePath/**")
-                .addResourceLocations("file:///d:/thymeleaf-springboot/img/upload/original/");
+                .addResourceLocations("file:///c:/thymeleaf-springboot/img/upload/original/");
 
     }
 }

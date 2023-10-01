@@ -4,6 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.daalgae.daalgaeproject.userProfile.model.dao.UserProfileDAO">
+    <resultMap id="thumbnailResultMap" type="UserProfileDTO">
+        <id property="profileCode" column="PROFILE_CODE"/>
+        <result property="profileOriginName" column="PROFILE_ORIGIN_NAME"/>
+        <result property="profileDbName" column="PROFILE_DB_NAME"/>
+        <result property="profileThumbAddr" column="PROFILE_THUMB_ADDR"/>
+        <result property="profileOriginAddr" column="PROFILE_ORIGIN_ADDR"/>
+        <result property="refMemCode" column="REF_MEM_CODE"/>
+    </resultMap>
+
+
+
     <insert id="insertAttachment">
         INSERT INTO
             USER_PROFILE (
@@ -22,5 +33,19 @@
                    #{refMemCode}
                )
     </insert>
+
+    <select id="selectThumbnail" resultMap="thumbnailResultMap">
+        SELECT
+             PROFILE_CODE,
+             PROFILE_ORIGIN_NAME,
+             PROFILE_DB_NAME,
+             PROFILE_THUMB_ADDR,
+             PROFILE_ORIGIN_ADDR,
+             REF_MEM_CODE
+        FROM
+            USER_PROFILE
+        WHERE
+            REF_MEM_CODE = #{refMemCode}
+    </select>
 </mapper>
 

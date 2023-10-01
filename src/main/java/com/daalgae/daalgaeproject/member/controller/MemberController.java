@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.member.controller;
 
+import com.daalgae.daalgaeproject.common.exception.thumbnail.ThumbnailRegistException;
 import com.daalgae.daalgaeproject.common.util.SessionUtil;
 import com.daalgae.daalgaeproject.exception.member.MemberModifyException;
 import com.daalgae.daalgaeproject.exception.member.MemberRegistException;
@@ -8,6 +9,8 @@ import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.member.model.service.LoginServiceImpl;
 import com.daalgae.daalgaeproject.pet.model.dto.PetDTO;
 import com.daalgae.daalgaeproject.pet.model.servie.PetServiceImpl;
+import com.daalgae.daalgaeproject.userProfile.model.dto.UserProfileDTO;
+import com.daalgae.daalgaeproject.userProfile.model.service.UserProfileServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,12 +44,15 @@ public class MemberController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private  final PasswordEncoder passwordEncoder;
     private final LoginServiceImpl loginService;
-
     private final PetServiceImpl petService;
-    public MemberController(PasswordEncoder passwordEncoder, LoginServiceImpl loginService, PetServiceImpl petService) {
+    private final UserProfileServiceImpl userProfileServiceImpl;
+
+
+    public MemberController(PasswordEncoder passwordEncoder, LoginServiceImpl loginService, PetServiceImpl petService, UserProfileServiceImpl userProfileServiceImple) {
         this.passwordEncoder = passwordEncoder;
         this.loginService = loginService;
         this.petService = petService;
+        this.userProfileServiceImpl = userProfileServiceImple;
     }
 
     @GetMapping("/login")
@@ -214,7 +220,7 @@ public class MemberController {
 
 
     @GetMapping("/mypage")
-    public String mypageForm(Principal principal, Model model, PetDTO petDTO){
+    public String mypageForm(Principal principal, Model model, PetDTO petDTO, UserProfileDTO userProfileDTO, HttpServletRequest request) throws ThumbnailRegistException {
         log.info("마이페이지로 이동!!!!!!!!!!!!!");
         log.info("유저아이디 : " + principal.getName());
 
@@ -230,9 +236,10 @@ public class MemberController {
         /*반려견 정보*/
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        int memCode = 0;
 
+        int memCode = 0;
         if (authentication.getPrincipal() instanceof UserImpl) {
+
             UserImpl user = (UserImpl) authentication.getPrincipal();
             memCode = user.getMemCode();
             petDTO.setRefMemCode(memCode);
@@ -243,7 +250,26 @@ public class MemberController {
         log.info("petList : " + petList);
 
 
-        return "myPage/mypage"; }
+        try {
+            /*프로필사진*/
+            if (authentication.getPrincipal() instanceof UserImpl) {
+                UserImpl user = (UserImpl) authentication.getPrincipal();
+                memCode = user.getMemCode();
+                userProfileDTO.setRefMemCode(memCode);
+
+
+                List<UserProfileDTO> userProfileDTOList = userProfileServiceImpl.selectThumbnail(memCode);
+
+
+                model.addAttribute("thumbnail", userProfileDTOList);
+                log.info("thumbnail 멤버컨트롤러에 있는 ! : " + userProfileDTOList);
+
+            }
+        }catch (Exception e){
+            log.error("프로필 사진을 불러오는 중 오류 발생 : " + e.getMessage(), e);
+        }
+        return "myPage/mypage";
+    }
 
     @PostMapping(value = "/updateInfo")
     public String modifyMember(@ModelAttribute MemberDTO memberDTO, Model model, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws MemberModifyException {

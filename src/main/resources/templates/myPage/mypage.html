@@ -20,15 +20,18 @@
 
                     <div class="myPageProfileImgBox">
                         <div class="profileImg" id="titleImgArea">
-                            <img id="titleImg">
+                            <th:block  th:each="thumb, index : ${ thumbnail }" th:if="${index.index == thumbnail.size() - 1}">
+                                <img id="titleImg" width="100%" height="100%" th:style="'border-radius: 50%;'" th:src="@{|/thumbPath${thumb.profileThumbAddr}|}"/>
+                            </th:block>
                         </div>
+
 
                         <div class="gum"><a th:href="@{/payment/useHistory}"><span th:text="${#authentication.getPrincipal().getMemDogGum()}"></span> <img src="/images/gum.png" alt="gum"></a></div>
                         <form th:action="@{/userProfile/profileRegist}" method="post" enctype="multipart/form-data">
                             <label for="profileChange">
                                 <div class="changeFileImgage">프로필 사진 변경</div>
                             </label>
-                            <input type="file" name="thumbnailImg" value="profileChange" id="profileChange" onchange="loadImg(this,1)"/>
+                            <input type="file" name="thumbnailImg" value="profileChange" id="profileChange" onchange="loadImg(this)"/>
                             <input type="hidden" id="refMemCode" name="refMemCode" th:value="${#authentication.getPrincipal().getMemCode()}"/>
                         <!--    <div class="introPet">
                                 <p class="introPetTitle">
@@ -167,14 +170,6 @@
 
                         <div class="dogInfoMore" th:if="${#lists.isEmpty(petList)} or ${petList == null}">
 
-                                <script th:inline="javascript">
-                                    /* Thymeleaf에서 petList의 길이를 가져와 JavaScript 변수에 할당 */
-                                    var petListSize = [[${#lists.size(petList)}]];
-
-                                    /* JavaScript console.log()를 사용하여 길이를 출력 */
-                                    console.log('petList의 길이: ' + petListSize);
-                                </script>
-
                               <form action="" method="post" class="dogInfoMoreContent">
 
                                 <div class="petInfo1">
@@ -245,15 +240,6 @@
 
 
                         <div class="dogInfoMore" th:if="${not #lists.isEmpty(petList)} and ${petList != null}">
-
-                            <script th:inline="javascript">
-                                /* Thymeleaf에서 petList의 길이를 가져와 JavaScript 변수에 할당 */
-                                var petListSize = [[${#lists.size(petList)}]];
-
-                                /* JavaScript console.log()를 사용하여 길이를 출력 */
-                                console.log('petList의 길이: ' + petListSize);
-                            </script>
-
 
                             <form action="" method="post" class="dogInfoMoreContent" th:each="pet : ${petList}">
 
@@ -338,9 +324,10 @@
 
         <script th:inline="javascript">
             const $titleImagArea = document.getElementById("titleImgArea");
+            const $profileChange = document.getElementById("profileChange")
 
             $titleImagArea.onclick = function (){
-                document.getElementById("profileChange").click();
+                $profileChange.click();
             }
 
 
@@ -353,7 +340,10 @@
                     reader.onload = function (e){
                         if (num){
                                 console.log(e.target.result);
-                                document.getElementById("titleImg").src = e.target.result;
+                                const $titleImg = document.getElementById("titleImg");
+                                if($titleImg){
+                                    $titleImg.src = e.target.result;
+                                }
                         }
                     }
                 }
