@@ -37,7 +37,8 @@ $(document).ready( function() {
     getTour("체험", 4);
     getTour("동물병원", 5);
 
-
+    getPost(0, "자유");
+    getPost(1, "공지");
 
 });
 
@@ -96,7 +97,6 @@ function getTour(categoreValue, orderApply) {
         dataType:"json",
         async: false,
         success: function(data){
-            console.log(data);
             if(data.length == 0) {
                 $('.tourBoard').eq(orderApply).append("<div class=\"noSearchData\">");
                 $('.noSearchData').last().append("검색 결과가 없습니다");
@@ -107,7 +107,7 @@ function getTour(categoreValue, orderApply) {
                 let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
                 $('.tourBoardUnit').last().append(url);
                 $('.tourBoardUnit button').last().append("<img class=\"tourBoardUnitThumbnail\">");
-                if(tourInfo.tourPhoto.length > 0) {
+                if(tourInfo.tourPhoto.length > 0)    {
                     $('.tourBoardUnitThumbnail').last().prop("src", tourInfo.tourPhoto);
                 } else {
                     $('.tourBoardUnitThumbnail').last().prop("src", "/images/dogTour.png");
@@ -126,6 +126,56 @@ function getTour(categoreValue, orderApply) {
                 $('.telNums').last().append(tourInfo.tel);
                 $('.telNums').last().prop("title", tourInfo.tel);
             }
+        },
+        error:function() {
+            // console.log("통신에러3");
+        }
+    });
+}
+
+function getPost(orderApply, postType) {
+    let urlObject1 = new URL(decodeURI(window.location.href));
+    let urlParam1 = urlObject1.searchParams;
+    let keyword= urlParam1.get("keyword");
+    let postUrl = "/allSearchPost?postType=" + postType + "&keyword=" + keyword;
+    $.ajax({
+        type:"get",
+        url:postUrl,
+        dataType:"json",
+        async: false,
+        success: function(data){
+            if(data.length == 0) {
+                $('.postBoard').eq(orderApply).append("<div class=\"noSearchData\">");
+                $('.noSearchData').last().append("검색 결과가 없습니다");
+                $('.isNoData').eq(0).remove();
+                $('.isNoData').eq(0).remove();
+                $('.isNoData').eq(0).remove();
+            }
+            if(data.length != 0) {
+                $('.postBoard').eq(orderApply).append("<div class=\"board-container\">\n" +
+                    "            <div class=\"board-list-container\">\n" +
+                    "                <div class=\"board-postCategory\">\n" +
+                    "                    <h5 class=\"postNo\">번호</h5>\n" +
+                    "                    <h5 class=\"postCategory\">말머리</h5>\n" +
+                    "                    <h5 class=\"postTitle\">제목</h5>\n" +
+                    "                    <h5 class=\"postUser\">작성자</h5>\n" +
+                    "                    <h5 class=\"postCount\">조회수</h5>\n" +
+                    "                    <h5 class=\"postDate\">등록일</h5>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>");
+            }
+            for(let postInfo of data) {
+                $('.board-container').eq(orderApply).append("<div class=\"postList\">");
+                $('.postList').last().append("<h6 class=\"testPost-postNo\">" + postInfo.post_Code +"</h6>");
+                $('.postList').last().append("<h6 class=\"testPost-postCategory\">" + postInfo.post_Type +"</h6>");
+                $('.postList').last().append("<h6 class=\"testPost-postTitle\">" + postInfo.post_Title +"</h6>");
+                $('.postList').last().append("<h6 class=\"testPost-postUser\">" + postInfo.post_Writer +"</h6>");
+                $('.postList').last().append("<h6 class=\"testPost-postCount\">" + postInfo.post_Count +"</h6>");
+                $('.postList').last().append("<h6 class=\"testPost-postDate\">" + postInfo.post_Date +"</h6>");
+            }
+
+
         },
         error:function(){
             // console.log("통신에러3");

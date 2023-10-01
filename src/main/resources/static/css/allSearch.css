@@ -1823,3 +1823,9 @@ button[type="submit"]:hover {
     font-size: 24px;
     font-weight: 700;
 }
+
+.postBoard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}

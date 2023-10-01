@@ -30,6 +30,10 @@
         ,POST_DATE
         FROM POST_INFO
         WHERE POST_TYPE = #{postType}
+        <if test="keyword != null">
+            and POST_TITLE LIKE CONCAT('%', #{keyword},'%')
+        </if>
+        ORDER BY POST_CODE DESC
         LIMIT 5
     </select>
 

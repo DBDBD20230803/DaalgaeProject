@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.mainConnect.controller;
 
+import com.daalgae.daalgaeproject.mainConnect.dto.AllSearchCriteria;
 import com.daalgae.daalgaeproject.mainConnect.dto.AllSearchPostDTO;
 import com.daalgae.daalgaeproject.mainConnect.dto.MainNoticeDTO;
 import com.daalgae.daalgaeproject.mainConnect.service.MainConnectService;
@@ -30,8 +31,9 @@ public class mainConnectController {
 
     @GetMapping(value = "allSearchPost", produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<AllSearchPostDTO> getAllSearchPost(@RequestParam(value = "postType", required = false) String postType) throws JsonProcessingException {
-        List<AllSearchPostDTO> allSearchPost = mainConnectService.getAllSearchPost(postType);
+    public List<AllSearchPostDTO> getAllSearchPost(@RequestParam(value = "postType", required = false) String postType, @RequestParam(value = "keyword", required = false) String keyword) throws JsonProcessingException {
+        AllSearchCriteria allSearchCriteria = new AllSearchCriteria(postType, keyword);
+        List<AllSearchPostDTO> allSearchPost = mainConnectService.getAllSearchPost(allSearchCriteria);
         return allSearchPost;
     }
 }

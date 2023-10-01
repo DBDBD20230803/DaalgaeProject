@@ -152,39 +152,13 @@
     <div class="allSearchWhiteSpace"></div>
     <div class="allSearchWhiteSpace"></div>
     
-    <div class="board-container">
-        <div class="board-list-container">
-            <div class="board-postCategory">
-                <h5 class="postNo">번호</h5>
-                <h5 class="postCategory">말머리</h5>
-                <h5 class="postTitle">제목</h5>
-                <h5 class="postUser">작성자</h5>
-                <h5 class="postCount">조회수</h5>
-                <h5 class="postDate">등록일</h5>
-            </div>
-        </div>
+    <div class="postBoard">
+    
     </div>
     
-    <div class="postList">
-        <h6 class="testPost-postNo" th:text="1"></h6>
-        <h6 class="testPost-postCategory" th:text="1"></h6>
-        <h6 class="testPost-postTitle" th:text="1"></h6>
-        <h6 class="testPost-postUser" th:text="1"></h6>
-        <h6 class="testPost-postCount" th:text="1"></h6>
-        <h6 class="testPost-postDate" th:text="1"></h6>
-    </div>
-    
-    <div class="postList" th:each="board : ${ boardList }">
-        <h6 class="testPost-postNo" th:text="${board.postCode}"></h6>
-        <h6 class="testPost-postCategory" th:text="${board.postSort}"></h6>
-        <h6 class="testPost-postTitle" th:text="${board.postTitle}"></h6>
-        <h6 class="testPost-postUser" th:text="${board.refPostWriter.memId}"></h6>
-        <h6 class="testPost-postCount" th:text="${board.postCount}"></h6>
-        <h6 class="testPost-postDate" th:text="${board.postDate}"></h6>
-    </div>
-    
-    <div class="allSearchWhiteSpace"></div>
-    <div class="allSearchWhiteSpace"></div>
+    <div class="allSearchWhiteSpace isNoData"></div>
+    <div class="allSearchWhiteSpace isNoData"></div>
+    <div class="allSearchWhiteSpace isNoData"></div>
     
     <p class="imageAndText">
         <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />공지사항
@@ -197,39 +171,13 @@
     <div class="allSearchWhiteSpace"></div>
     <div class="allSearchWhiteSpace"></div>
     
-    <div class="board-container">
-        <div class="board-list-container">
-            <div class="board-postCategory">
-                <h5 class="postNo">번호</h5>
-                <h5 class="postCategory">말머리</h5>
-                <h5 class="postTitle">제목</h5>
-                <h5 class="postUser">작성자</h5>
-                <h5 class="postCount">조회수</h5>
-                <h5 class="postDate">등록일</h5>
-            </div>
-        </div>
+    <div class="postBoard">
+    
     </div>
     
-    <div class="postList">
-        <h6 class="testPost-postNo" th:text="1"></h6>
-        <h6 class="testPost-postCategory" th:text="1"></h6>
-        <h6 class="testPost-postTitle" th:text="1"></h6>
-        <h6 class="testPost-postUser" th:text="1"></h6>
-        <h6 class="testPost-postCount" th:text="1"></h6>
-        <h6 class="testPost-postDate" th:text="1"></h6>
-    </div>
-    
-    <div class="postList" th:each="board : ${ boardList }">
-        <h6 class="testPost-postNo" th:text="${board.postCode}"></h6>
-        <h6 class="testPost-postCategory" th:text="${board.postSort}"></h6>
-        <h6 class="testPost-postTitle" th:text="${board.postTitle}"></h6>
-        <h6 class="testPost-postUser" th:text="${board.refPostWriter.memId}"></h6>
-        <h6 class="testPost-postCount" th:text="${board.postCount}"></h6>
-        <h6 class="testPost-postDate" th:text="${board.postDate}"></h6>
-    </div>
-    
-    <div class="allSearchWhiteSpace"></div>
-    <div class="allSearchWhiteSpace"></div>
+    <div class="allSearchWhiteSpace" isNoData></div>
+    <div class="allSearchWhiteSpace" isNoData></div>
+    <div class="allSearchWhiteSpace" isNoData></div>
     
     <p class="imageAndText">
         <img class="tourPawImage" th:src="@{/images/dogPaw.png}" />자랑갤러리
@@ -331,7 +279,7 @@
     
 </div>
 
-<div class="allSearchWhiteSpace"></div>
+<div class="allSearchWhiteSpace isNoData"></div>
 <div class="whiteSpaceTourBoard"></div>
 <div class="whiteSpaceTourBoard"></div>
 <div class="whiteSpaceEncycle">
