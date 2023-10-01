@@ -1521,6 +1521,9 @@ let date = today.getDate();  // 날짜
 if(month < 10) {
     month = "0" + month;
 }
+if(date < 10) {
+    date = "0" + date;
+}
 let date1 = year + "" + month + date;
 let date2 = year + "-" + month + "-" + date;
 
@@ -1945,7 +1948,7 @@ if(localStorage.getItem('savedChoDanHours') == choDanHours && localStorage.getIt
                                         let itemSelect = data.response.body.items.item[a];
                                         // console.log(date1);
                                         if(itemSelect.fcstDate == date1 && itemSelect.fcstTime == hourString) {
-                                            console.log(itemSelect.category);
+                                            // console.log(itemSelect.category);
                                             if(itemSelect.category == 'SNO') {
                                                 if(itemSelect.fcstValue >= 5) {
                                                     if (weatherLevel < 3) {
