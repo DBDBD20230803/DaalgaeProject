@@ -505,6 +505,10 @@ p{
     #myPage .myPageWrap .goToMain{
         width: 45% !important;
     }
+
+    #myPage .myPageWrap .goToMain1{
+        margin-bottom: 5%;
+    }
 }
 
 /*아이패드 (768px)*/
@@ -575,6 +579,7 @@ p{
     #myPage .myPageWrap .goToMain {
         width: 48.2% !important;
     }
+
 
 }
 
