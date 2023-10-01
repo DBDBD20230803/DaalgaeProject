@@ -30,53 +30,14 @@ $(document).ready( function() {
         $(this).val($(this).val().replace(replaceChar, ""));
     });
 
-    /* 보여줄 항목 */
-    if($('.option3').val() == '전체') {
-        console.log(1);
-    } else {
-        console.log(2);
-    }
-    let keyword= urlParam.get("keyword");
-    let getUrl = "/tour/getTourListAllSearch?keyword=" + keyword + "&category=" + "전체";
-    $.ajax({
-        type:"get",
-        url:getUrl,
-        dataType:"json",
-        success: function(data){
-            console.log(data);
-            if(data.length == 0) {
-                $('.tourBoard').last().append("<div class=\"noSearchData\">");
-                $('.noSearchData').append("검색 결과가 없습니다");
-            }
-            for(let tourInfo of data) {
-                $('.tourBoard').last().append("<div class=\"tourBoardUnit\">");
-                let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
-                $('.tourBoardUnit').last().append(url);
-                $('.tourBoardUnit button').last().append("<img class=\"tourBoardUnitThumbnail\">");
-                if(tourInfo.tourPhoto.length > 0) {
-                    $('.tourBoardUnitThumbnail').last().prop("src", tourInfo.tourPhoto);
-                } else {
-                    $('.tourBoardUnitThumbnail').last().prop("src", "/images/dogTour.png");
-                    $('.tourBoardUnitThumbnail').last().prop("title", "대체 이미지");
-                }
+    getTour("전체", 0);
+    getTour("관광", 1);
+    getTour("숙박", 2);
+    getTour("식음료", 3);
+    getTour("체험", 4);
+    getTour("동물병원", 5);
 
-                $('.tourBoardUnit button').last().append("<div class=\"tourBoardUnitDesc\"></div>");
-                $('.tourBoardUnitDesc').last().append("<div class=\"locationName\"></div>");
-                $('.locationName').last().append(tourInfo.tourTitle);
-                $('.tourBoardUnitDesc').last().append("<img class=\"locationLoc\" src=\"/images/location.png\" />");
-                $('.tourBoardUnitDesc').last().append("<div class=\"locTextUp\"></div>");
-                $('.locTextUp').last().append(tourInfo.addr);
-                $('.locTextUp').last().prop("title", tourInfo.addr);
-                $('.tourBoardUnitDesc').last().append("<img class=\"telNumber\" src=\"/images/phone.png\" />");
-                $('.tourBoardUnitDesc').last().append("<div class=\"telNums\">\</div>");
-                $('.telNums').last().append(tourInfo.tel);
-                $('.telNums').last().prop("title", tourInfo.tel);
-            }
-        },
-        error:function(){
-            // console.log("통신에러3");
-        }
-    });
+
 
 });
 
@@ -122,4 +83,52 @@ function allSearchDetail(sort) {
             location.href = "/board/boastBoard?currentPage=1&searchCondition=postTitle&searchValue=" + keyword;
             break;
     }
+}
+
+function getTour(categoreValue, orderApply) {
+    let urlObject1 = new URL(decodeURI(window.location.href));
+    let urlParam1 = urlObject1.searchParams;
+    let keyword= urlParam1.get("keyword");
+    let getUrl = "/tour/getTourListAllSearch?keyword=" + keyword + "&category=" + categoreValue;
+    $.ajax({
+        type:"get",
+        url:getUrl,
+        dataType:"json",
+        async: false,
+        success: function(data){
+            console.log(data);
+            if(data.length == 0) {
+                $('.tourBoard').eq(orderApply).append("<div class=\"noSearchData\">");
+                $('.noSearchData').last().append("검색 결과가 없습니다");
+                $('.isNoData').eq(0).remove();
+            }
+            for(let tourInfo of data) {
+                $('.tourBoard').eq(orderApply).append("<div class=\"tourBoardUnit\">");
+                let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
+                $('.tourBoardUnit').last().append(url);
+                $('.tourBoardUnit button').last().append("<img class=\"tourBoardUnitThumbnail\">");
+                if(tourInfo.tourPhoto.length > 0) {
+                    $('.tourBoardUnitThumbnail').last().prop("src", tourInfo.tourPhoto);
+                } else {
+                    $('.tourBoardUnitThumbnail').last().prop("src", "/images/dogTour.png");
+                    $('.tourBoardUnitThumbnail').last().prop("title", "대체 이미지");
+                }
+
+                $('.tourBoardUnit button').last().append("<div class=\"tourBoardUnitDesc\"></div>");
+                $('.tourBoardUnitDesc').last().append("<div class=\"locationName\"></div>");
+                $('.locationName').last().append(tourInfo.tourTitle);
+                $('.tourBoardUnitDesc').last().append("<img class=\"locationLoc\" src=\"/images/location.png\" />");
+                $('.tourBoardUnitDesc').last().append("<div class=\"locTextUp\"></div>");
+                $('.locTextUp').last().append(tourInfo.addr);
+                $('.locTextUp').last().prop("title", tourInfo.addr);
+                $('.tourBoardUnitDesc').last().append("<img class=\"telNumber\" src=\"/images/phone.png\" />");
+                $('.tourBoardUnitDesc').last().append("<div class=\"telNums\">\</div>");
+                $('.telNums').last().append(tourInfo.tel);
+                $('.telNums').last().prop("title", tourInfo.tel);
+            }
+        },
+        error:function(){
+            // console.log("통신에러3");
+        }
+    });
 }

@@ -1816,3 +1816,10 @@ button[type="submit"]:hover {
     cursor: pointer;
 }
 
+.noSearchData {
+    position: relative;
+    height: 125px;
+    color: #222;
+    font-size: 24px;
+    font-weight: 700;
+}
