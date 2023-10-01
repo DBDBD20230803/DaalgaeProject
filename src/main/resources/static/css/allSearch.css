@@ -1829,3 +1829,12 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center;
 }
+
+.boardLink {
+    color: #222;
+}
+
+.postList:hover {
+    color: #222;
+    background-color: rgba(166, 206, 247);
+}

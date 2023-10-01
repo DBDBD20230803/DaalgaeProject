@@ -166,7 +166,9 @@ function getPost(orderApply, postType) {
                     "        </div>");
             }
             for(let postInfo of data) {
-                $('.board-container').eq(orderApply).append("<div class=\"postList\">");
+                let url = "<a class='boardLink' href=\"/board/freeBoardSelect?no=" + postInfo.post_Code + "\">";
+                $('.board-container').eq(orderApply).append(url);
+                $('.boardLink').last().append("<div class=\"postList\">");
                 $('.postList').last().append("<h6 class=\"testPost-postNo\">" + postInfo.post_Code +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postCategory\">" + postInfo.post_Type +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postTitle\">" + postInfo.post_Title +"</h6>");
