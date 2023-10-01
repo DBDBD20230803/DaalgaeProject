@@ -63,7 +63,7 @@
                 </button>
             </div>
             <div class="report-button">
-                <form th:action="@{/report/reportUser}" method="post">
+                <form th:action="@{/report/reportPost}" method="post">
                     <input type="hidden" name="postCode" th:value="${board.postCode}">
                     <input type="hidden" name="postCode" th:value="${board.refPostWriter.memId}">
                     <button type="submit">
@@ -181,7 +181,7 @@
                         <div id="reply-body" th:text="${ reply.replyCon}"></div>
                         <div id="reply-date" th:text="${ reply.replyDate }"></div>
                         <div id="comment-report-button">
-                            <form th:action="@{/report/reportUser}" method="post">
+                            <form th:action="@{/report/reportReply}" method="post">
                                 <input type="hidden" name="replyCode" th:value="${reply.replyCode}">
                                 <input type="hidden" name="replyCode" th:value="${reply.replyWriterDetail.memId}">
                             <button type="submit">
