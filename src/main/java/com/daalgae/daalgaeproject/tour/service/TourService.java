@@ -35,4 +35,8 @@ public class TourService {
     public int findPaging(TourCriteria tourCriteria) {
         return tourMapper.findPaging(tourCriteria);
     }
+
+    public List<TourListDTO> findTourListAllSearch(TourCriteria tourCriteria) {
+        return tourMapper.findTourListAllSearch(tourCriteria);
+    }
 }

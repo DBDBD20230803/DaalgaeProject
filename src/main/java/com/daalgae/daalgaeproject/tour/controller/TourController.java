@@ -69,6 +69,21 @@ public class TourController {
         return findList;
     }
 
+    @GetMapping(value = "getTourListAllSearch", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<TourListDTO> getTourListAllSearch(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "category", required = false) String category) throws JsonProcessingException {
+        if(category.equals("식당 및 카페")) {
+            category = "식음료";
+        } else if(category.equals("숙박시설")) {
+            category = "숙박";
+        } else if(category.equals("체험 활동")) {
+            category = "체험";
+        }
+        TourCriteria tourCriteria = new TourCriteria("", keyword, "", category);
+        List<TourListDTO> findList = tourService.findTourListAllSearch(tourCriteria);
+        return findList;
+    }
+
     /* 여행지 상세 */
 
     @GetMapping("tourDetail")

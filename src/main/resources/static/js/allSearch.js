@@ -36,6 +36,47 @@ $(document).ready( function() {
     } else {
         console.log(2);
     }
+    let keyword= urlParam.get("keyword");
+    let getUrl = "/tour/getTourListAllSearch?keyword=" + keyword + "&category=" + "전체";
+    $.ajax({
+        type:"get",
+        url:getUrl,
+        dataType:"json",
+        success: function(data){
+            console.log(data);
+            if(data.length == 0) {
+                $('.tourBoard').last().append("<div class=\"noSearchData\">");
+                $('.noSearchData').append("검색 결과가 없습니다");
+            }
+            for(let tourInfo of data) {
+                $('.tourBoard').last().append("<div class=\"tourBoardUnit\">");
+                let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
+                $('.tourBoardUnit').last().append(url);
+                $('.tourBoardUnit button').last().append("<img class=\"tourBoardUnitThumbnail\">");
+                if(tourInfo.tourPhoto.length > 0) {
+                    $('.tourBoardUnitThumbnail').last().prop("src", tourInfo.tourPhoto);
+                } else {
+                    $('.tourBoardUnitThumbnail').last().prop("src", "/images/dogTour.png");
+                    $('.tourBoardUnitThumbnail').last().prop("title", "대체 이미지");
+                }
+
+                $('.tourBoardUnit button').last().append("<div class=\"tourBoardUnitDesc\"></div>");
+                $('.tourBoardUnitDesc').last().append("<div class=\"locationName\"></div>");
+                $('.locationName').last().append(tourInfo.tourTitle);
+                $('.tourBoardUnitDesc').last().append("<img class=\"locationLoc\" src=\"/images/location.png\" />");
+                $('.tourBoardUnitDesc').last().append("<div class=\"locTextUp\"></div>");
+                $('.locTextUp').last().append(tourInfo.addr);
+                $('.locTextUp').last().prop("title", tourInfo.addr);
+                $('.tourBoardUnitDesc').last().append("<img class=\"telNumber\" src=\"/images/phone.png\" />");
+                $('.tourBoardUnitDesc').last().append("<div class=\"telNums\">\</div>");
+                $('.telNums').last().append(tourInfo.tel);
+                $('.telNums').last().prop("title", tourInfo.tel);
+            }
+        },
+        error:function(){
+            // console.log("통신에러3");
+        }
+    });
 
 });
 
