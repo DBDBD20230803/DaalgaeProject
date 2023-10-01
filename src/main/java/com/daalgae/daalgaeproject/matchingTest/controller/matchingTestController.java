@@ -11,4 +11,8 @@ public class matchingTestController {
     @GetMapping("/matchingTestMain")
     public String matchingTestMainForm(){ return "matchingTest/matchingTestMain"; }
 
+    @GetMapping("/matchingTest")
+    public String matchingTestForm(){
+        return "matchingTest/test1";
+    }
 }

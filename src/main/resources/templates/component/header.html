@@ -1,6 +1,8 @@
 <!-- 링크 3개를 지정해야 합니다. -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
@@ -59,7 +61,7 @@
                     <li><a th:href="@{/board/freeBoard}">자유게시판</a></li>
                     <li><a th:href="@{/board/boastBoard}">자랑갤러리</a></li>
                     <li><a th:href="@{/board/abanBoard}">유기견 게시판</a></li>
-                    <li><a href="#">반려견 매칭 테스트</a></li>
+                    <li><a th:href="@{/matchingTest/matchingTestMain.html}">반려견 매칭 테스트</a></li>
                     <li><a th:href="@{/board/annoBoard}">공지사항</a></li>
                     <li><a th:href="@{/webtoon/dengInfo}">댕댕툰 보러가기</a></li>
                 </ul>
@@ -121,7 +123,7 @@
                 <tr>
                     <td><button onclick="location.href='/tour/meal'">식당 및 카페</button></td>
                     <td><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></td>
-                    <td><a href="#">반려견 매칭 테스트</a></td>
+                    <td><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></td>
                 </tr>
                 <tr>
                     <td><button onclick="location.href='/tour/experience'">체험 활동</button></td>
