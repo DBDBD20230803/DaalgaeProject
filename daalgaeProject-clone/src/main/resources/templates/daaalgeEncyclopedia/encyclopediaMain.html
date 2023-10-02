@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+    <title>다알개사전</title>
+
+
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+
+
+    <!--bootstrap-->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+
+    <div class=""></div>
+    <!--css-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+    <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+    <link th:href="@{/css/encyclopediaMain.css}" rel="stylesheet" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!--js-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
+
+    <!--favicon--->
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+</head>
+<body>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
+    <div class="encycleTitle">
+        <h3>다알개사전</h3>
+    </div>
+    <div class="encycleMain">
+        <div class="encycleDesc">더 올바른 방법으로 사랑하는 방법</div>
+        <div class="infoImageBox">
+            <div class="infoImageAndDesc1">
+                <button onclick="location.href='/encycle/knowBeforeAdopt'" class="infoImage1"><img width="286px" height="286px" th:src="@{/images/encycleInfoImage1.png}" /></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></div>
+            </div>
+            <div class="infoImageAndDesc2">
+                <button onclick="location.href='/encycle/knowAfterAdopt'" class="infoImage2"><img width="286px" height="286px" th:src="@{/images/encycleInfoImage2.png}" /></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></div>
+            </div>
+            <div class="infoImageAndDesc3">
+                <button onclick="location.href='/encycle/knowEmergency'" class="infoImage3"><img width="286px" height="286px" th:src="@{/images/encycleInfoImage3.png}" /></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowEmergency'">응급 상황 대처 방법</button></div>
+            </div>
+            <div class="infoImageAndDesc3">
+                <button onclick="location.href='/encycle/petiket'" class="infoImage3"><img width="286px" height="286px" th:src="@{/images/encycleInfoImage4.png}" /></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="whiteSpaceEncycle">
+        <div class="logoInPage"></div>
+    </div>
+    <div>
+        <th:block th:include="component/footer.html"></th:block>
+    </div>
+</body>
+
+

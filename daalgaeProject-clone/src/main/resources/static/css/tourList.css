@@ -1,0 +1,310 @@
+select:focus{
+    border: none;
+    outline:none;
+}
+
+/*@media (max-width: 920px) {
+    .searchButton {
+        margin-right: 0px;
+    }
+    .tourSelectBar {
+        display: flex;
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
+}
+
+@media (min-width: 920px) {
+    .searchButton {
+        margin-right: 150px;
+    }
+}*//*@media (max-width: 920px) {
+    .searchButton {
+        margin-right: 0px;
+    }
+    .tourSelectBar {
+        display: flex;
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
+}
+
+@media (min-width: 920px) {
+    .searchButton {
+        margin-right: 150px;
+    }
+}*/
+
+.tourBg{
+    width: 100%;
+    height: 500px;
+    background-color: #A6CEF7;
+    position: relative;
+}
+.tourBg h3{
+    text-align: center;
+    padding-top: 200px;
+}
+
+.tourBg::after{
+    content: "";
+    background: url("/images/bgImg.png") no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+}
+
+.tourSelectBar {
+    position: relative;
+    width: 100%;
+    min-width: 640px;
+    height: 104px;
+    border: 1px solid #D8D8D8;
+    margin-top: 135px;
+    margin-bottom: 100px;
+}
+
+select {
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.selectBox {
+    position: relative;
+    float: right;
+    min-width: 178px;
+    height: 62px;
+    background-color: #f4f4f4;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 21px;
+    margin-right: 15px;
+}
+
+
+.selectSearchOption {
+    position: relative;
+    min-width: 176px;
+    height: 60px;
+    background-color: #f4f4f4;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+}
+
+.selectBox button {
+    pointer-events: none;
+}
+
+.searchArrow {
+    position: absolute;
+    background-image: url("/images/arrow.png");
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    right: 15px;
+    top: 17px;
+    border: 0px;
+}
+
+.searchInput {
+    top: 21px;
+    position: relative;
+    min-width: 312px;
+    height: 62px;
+    background-color: #f4f4f4;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.searchIcon {
+    position: relative;
+    background-image: url("/images/search.png");
+    left: -5px;
+    width: 29px;
+    height: 29px;
+}
+
+.searchInput input {
+    position: relative;
+    border: 0px;
+    left: 10px;
+    background-color: #f4f4f4;
+}
+
+.searchButton {
+    position: relative;
+    top: 21px;
+    min-width: 109px;
+    height: 62px;
+    background-color: #A6CEF7;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tourBoard {
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0px auto;
+    z-index: 3;
+}
+
+.tourBoardUnit {
+    position: relative;
+    width: 326px;
+    height: 520px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.tourBoardUnitThumbnail {
+    position: relative;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-color: #D8D8D8;
+    width: 326px;
+    height: 326px;
+    background-color: #F0F7FF;
+}
+
+.tourBoardUnitDesc {
+    position: relative;
+    border: 1px solid #D8D8D8;
+    width: 326px;
+    height: 150px;
+    background-color: #fff;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.whiteSpaceTourBoard {
+    width: 100%;
+    height: 75px;
+}
+
+.locationName {
+    position: relative;
+    left: 20px;
+    top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222;
+}
+
+.locationLoc {
+    position: relative;
+    top: 20px;
+    left: 16px;
+}
+
+.locTextUp {
+    position: relative;
+    font-size: 14px;
+    color: #222;
+    font-weight: bold;
+    top: -3px;
+    left: 50px;
+    white-space  : nowrap;
+    overflow:hidden;
+    max-width:250px;
+    text-overflow:ellipsis;
+}
+
+.telNumber {
+    position: relative;
+    top: 10px;
+    left: 16px;
+}
+
+.telNums {
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    top: -16px;
+    left: 51px;
+}
+
+.whiteSpaceEncycle {
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+
+.logoInPage {
+    position: absolute;
+    background-image: url("/images/bgDAALGAE.png");
+    width: 1135px;
+    height: 182px;
+    top: -179px;
+    right: 0px;
+    z-index: 1;
+}
+
+.paging {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 5px;
+}
+
+.paging button {
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #F2F2F2;
+    font-size: 18px;
+    color: #808080;
+}
+
+.searchCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.noSearchData {
+    position: relative;
+    height: 250px;
+    color: #222;
+    font-size: 24px;
+    font-weight: 700;
+}

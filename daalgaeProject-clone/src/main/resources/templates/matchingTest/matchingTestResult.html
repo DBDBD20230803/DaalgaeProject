@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/matchingTestLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<th:block layout:fragment="content">
+        <section id="MatchingTestResult">
+            <div class="MatchingTestResultWrap container">
+                
+
+                <div class="MatchingTestResultContent">
+                    <h4>추천 반려견은</h4>
+                    <h2 class="testResultDog">말티즈</h2>
+                    <div class="resultImg">
+                        <img th:src="@{/images/maltese.png}" alt="maltese">
+                    </div>
+                    <p class="resultText">
+                        지적인 <span>말티즈!</span><br>
+                        말티즈는 주인이 집에 오면 꼬리를 미친 듯이 흔들고 주인을 반겨줍니다.<br>
+                        말티즈는 폐쇄적 사회성을 갖는 견종이라 사회성이 좋지는 않지만 주인과는 관계는 무척좋습니다.<br>
+                    </p>
+                </div>
+
+                <button class="retry">
+                    <a th:href="@{/matchingTest/matchingTestMain}">다시하기<span class="retryImg"><img th:src="@{/images/retry.png}" alt="retry"></span></a>
+                </button>
+            </div>
+        </section>
+</th:block>
+
+

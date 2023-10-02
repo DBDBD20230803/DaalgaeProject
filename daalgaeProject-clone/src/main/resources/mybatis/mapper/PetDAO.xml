@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daalgae.daalgaeproject.pet.model.dao.PetDAO">
+
+    <resultMap id="petResultMap" type="PetDTO">
+        <id property="petCode" column="PET_CODE"/>
+        <result property="petNick" column="PET_NICK"/>
+        <result property="petKind" column="PET_KIND"/>
+        <result property="petBirth" column="PET_BIRTH"/>
+        <result property="petGender" column="PET_GENDER"/>
+        <result property="petWeight" column="PET_WEIGHT"/>
+        <result property="petNeutered" column="PET_NEUTERED"/>
+        <result property="petIntroduce" column="PET_INTRODUCE"/>
+        <result property="refMemCode" column="REF_MEM_CODE"/>
+    </resultMap>
+
+    <insert id="insertPet">
+        INSERT INTO PET_INFO (
+                      PET_NICK
+                    , PET_KIND
+                    , PET_BIRTH
+                    , PET_GENDER
+                     , PET_WEIGHT
+                    , PET_NEUTERED
+                    , REF_MEM_CODE
+                )
+
+        VALUES (
+                   #{petNick},
+                   #{petKind},
+                   #{petBirth},
+                   #{petGender},
+                   #{petWeight},
+                   #{petNeutered},
+                   #{refMemCode}
+               )
+    </insert>
+
+
+
+    <select id="getPetInfoByMemCode" resultMap="petResultMap">
+        SELECT
+            PET_CODE
+            ,PET_NICK
+            ,PET_KIND
+            ,PET_BIRTH
+            ,PET_GENDER
+            ,PET_WEIGHT
+            ,PET_NEUTERED
+            ,REF_MEM_CODE
+        FROM
+            PET_INFO/* B*/
+/*        LEFT JOIN
+                MEM_INFO A ON B.REF_MEM_CODE = A.MEM_CODE*/
+        WHERE
+            REF_MEM_CODE = #{refMemCode}
+    </select>
+
+
+
+    <update id="updatePet">
+        UPDATE
+            PET_INFO
+        SET
+            PET_NICK = #{petNick}
+          , PET_KIND = #{petKind}
+          , PET_BIRTH = #{petBirth}
+          , PET_GENDER = #{petGender}
+          , PET_NEUTERED = #{petNeutered}
+          , PET_WEIGHT = #{petWeight}
+
+        WHERE
+           REF_MEM_CODE = #{refMemCode}
+    </update>
+</mapper>
+
+
+
+
+
+

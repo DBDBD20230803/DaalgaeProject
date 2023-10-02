@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/myPageLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>마이페이지</title>
+</head>
+
+
+<th:block layout:fragment="content">
+    <section id="myPage">
+        <div class="myPageBg"><h3>마이페이지</h3></div>
+
+        <div class="myPageWrap container">
+
+            <div class="myPageContents">
+
+                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().getMemRole() == 'ROLE_USER'}">
+                    <div class="myPageBoxLeft">
+
+                        <div class="myPageProfileImgBox">
+                            <div class="profileImg" id="titleImgArea">
+                                <th:block  th:each="thumb, index : ${ thumbnail }" th:if="${index.index == thumbnail.size() - 1}">
+                                    <img id="titleImg" width="100%" height="100%" th:style="'border-radius: 50%;'" th:src="@{|/thumbPath${thumb.profileThumbAddr}|}"/>
+                                </th:block>
+                            </div>
+
+                            <div class="gum"><a th:href="@{/payment/useHistory}"><span th:text="${#authentication.getPrincipal().getMemDogGum()}"></span> <img src="/images/gum.png" alt="gum"></a></div>
+                            <form th:action="@{/userProfile/profileRegist}" method="post" enctype="multipart/form-data">
+                                <label for="profileChange">
+                                    <div class="changeFileImgage">프로필 사진 변경</div>
+                                </label>
+                                <input type="file" name="thumbnailImg" value="profileChange" id="profileChange" onchange="loadImg(this)"/>
+                                <input type="hidden" id="refMemCode" name="refMemCode" th:value="${#authentication.getPrincipal().getMemCode()}"/>
+                            <!--    <div class="introPet">
+                                    <p class="introPetTitle">
+                                                    <span>
+                                                        <img src="/images/paw.png" alt="paw">
+                                                    </span>
+                                        반려견 소개
+                                    </p>
+
+                                </div>
+                                <div>
+                                    <textarea class="profileText" name="petIntroduce" placeholder="반려견을 소개해주세요." th:value="${petIntroduce}"></textarea>
+                                </div>-->
+                                <button type="submit" class="profileBtn btn-bs">변경완료</button>
+
+                            </form>
+                        </div>
+
+                        <div class="myPageHistory">
+                            <div class="activityHistory"><a href="@{myPage/activitys}">활동 내역</a></div>
+                            <div class="payHistory"><a th:href="@{/payment/useHistory}">결제 내역</a></div>
+                            <div class="payHistory"><a th:href="@{/payment/paymentDetail}">사용 내역</a></div>
+                            <form action="" method="post">
+                                <input type="button" name="changePwd" id="changePwd" readonly value="비밀번호 수정" onclick="location.href='/myPage/pwdReset';"/>
+                                <input type="button" name="activityHistory" id="resign" readonly value="탈퇴" onclick="location.href='/myPage/delete';"/>
+                            </form>
+
+                        </div>
+                    </div>
+                </th:block>
+
+
+                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().getMemRole == 'ROLE_USER'}">
+                    <div class="myPageBoxRight">
+                        <p>기본 정보</p>
+
+                        <div class="myInfo">
+                            <form th:action="@{/myPage/updateInfo}" method="post" class="myPageSubmit">
+
+                                <div class="myIdBox">
+                                    <input type="text" name="memId" id="myId" th:value="${ #authentication.getPrincipal().getMemId()}" class="myId" readonly/>
+                                    <input type="hidden" name="memCode" id="memCode" th:value="${ #authentication.getPrincipal().getMemCode() }">
+                                    <button type="button" id="myInfoChange" class="myInfoChange" name="myInfoChange">수정</button>
+                                </div>
+
+                                <div class="myInfo1">
+                                    <div class="myInfoTitle"><img src="/images/email.png" alt="email"> &nbsp;&nbsp;이메일</div>
+
+                                    <div class="myInfoInputs myInfo1Inputs">
+                                        <label for="myEmail"></label>
+                                        <input type="text" id="myEmail" name="memEmail" th:value="${#authentication.getPrincipal().getMemEmail()}" readonly/>
+                                    </div>
+                                </div>
+
+                                <div class="myInfo2">
+                                    <div class="myInfoTitle"><img src="/images/name.png" alt="name"> &nbsp;&nbsp;이름</div>
+
+                                    <div class="myInfoInputs myInfo2Inputs">
+                                        <label for="myName"></label>
+                                        <input type="text" id="myName" name="memName" readonly th:value="${#authentication.getPrincipal().getMemName()}"/>
+                                    </div>
+                                </div>
+
+                                <div class="myInfo3">
+                                    <div class="myInfoTitle"><img src="/images/adress.png" alt="adress"> &nbsp;&nbsp;주소지</div>
+
+                                    <div class="myInfoInputs myInfo3Inputs">
+                                        <label for="myAdress"></label>
+                                        <input type="text" id="myAdress" name="memAdrs" readonly th:value="${#authentication.getPrincipal().getMemAdrs()}" class="changeInputs"/>
+                                    </div>
+                                </div>
+
+                                <div class="myInfo3_1">
+                                    <div class="myInfoTitle"><img src="/images/adress.png" alt="adress"> &nbsp;&nbsp;상세주소</div>
+
+                                    <div class="myInfoInputs myInfo3Inputs">
+                                        <label for="myAdress"></label>
+                                        <input type="text" id="myAdress2" name="memAdrsDetail" readonly th:value="${#authentication.getPrincipal().getMemAdrsDetail()}" class="changeInputs"/>
+                                    </div>
+                                </div>
+
+                                <div class="myInfo4">
+                                    <div class="myInfoTitle"><img src="/images/birth.png" alt="birth"> &nbsp;&nbsp;생년월일</div>
+
+                                    <div class="myInfoInputs myInfo4Inputs">
+                                        <label for="myBirth"></label>
+                                        <input type="date" id="myBirth" name="memBirth" readonly th:value="${#dates.format(#authentication.getPrincipal().getMemBirth(), 'yyyy-MM-dd')}" class="changeInputs"/>
+                                    </div>
+                                </div>
+
+                                <div class="myInfo5" th:if="${#lists.isEmpty(petList)} or ${petList == null}">
+                                    <div class="myInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+
+                                    <div class="myInfoInputs myInfo5Inputs">
+                                        <label for="myPet"></label>
+                                        <input type="text" id="myPet" name="petNick" placeholder="반려견을 등록해주세요." readonly class="petInfoInputsTitle"/>
+                                    </div>
+                                    <div class="spreadBtn spreadBtn1">접기 <i class="xi-angle-up-thin xi-x"></i></div>
+                                </div>
+
+
+
+                                <div class="myInfo5" th:if="${not #lists.isEmpty(petList)} and ${petList != null}">
+                                    <div class="myInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+
+                                    <div class="myInfoInputs myInfo5Inputs" th:each="pet : ${petList}">
+                                        <label for="myPet"></label>
+                                        <input type="text" id="myPet1" name="petNick" placeholder="반려견을 등록해주세요." readonly th:value="${pet.petNick}" class="petInfoInputsTitle"/>
+                                    </div>
+                                    <div class="spreadBtn spreadBtn1">접기 <i class="xi-angle-up-thin xi-x"></i></div>
+                                </div>
+
+                            </form>
+                        </div>
+
+
+                        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                        <script th:inline="javascript">
+                            const $myAdress = document.getElementById("myAdress");
+
+                            $myAdress.onclick = function() {
+
+                                /* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다. */
+                                new daum.Postcode({
+                                    oncomplete: function(data){
+                                        /* 팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분 */
+                                        document.getElementById("myAdress").value = data.address;
+                                        document.getElementById("myAdress2").focus();
+                                    }
+                                }).open();
+                            }
+                        </script>
+
+
+                        <div class="dogInfo">
+
+                            <div class="dogInfoMore" th:if="${#lists.isEmpty(petList)} or ${petList == null}">
+
+                                  <form action="" method="post" class="dogInfoMoreContent">
+
+                                    <div class="petInfo1">
+                                        <div class="petName">
+                                            <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+                                            <input type="text" name="petNick" id="petName" class="petInput"/>
+                                            <input type="hidden" name="memCode" th:value="${#authentication.getPrincipal().getMemCode()}">
+                                          <!--  <input type="hidden" name="refMemCode" th:value="${#authentication.getPrincipal().getMemCode()}">-->
+                                            <input type="hidden" name="memId" th:value="${#authentication.getPrincipal().getMemId()}">
+                                        </div>
+
+
+                                        <div class="petBreed">
+                                            <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
+                                            <input type="text" name="petKind" id="petBreedName" class="petInput"/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="petInfo2">
+                                        <div class="petBirth">
+                                            <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
+                                            <input type="date" name="petBirth" id="petBirthDay" class="petInput"/>
+                                        </div>
+
+                                        <div class="petGender">
+                                            <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
+                                            <select name="petGender" id="petGenderAnswer" class="petSelect">
+                                                <option th:value="female">female</option>
+                                                <option th:value="male">male</option>
+                                            </select>
+                                            <script th:inline="javascript">
+                                                let petGenderAnswer = $("#petGenderAnswer").val();
+                                            </script>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="petInfo3">
+                                        <div class="petOper">
+                                            <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
+                                            <select name="petNeutered" id="petOperAnswer" class="petSelect">
+                                                <option th:value="Y">Y</option>
+                                                <option th:value="N">N</option>
+                                            </select>
+                                            <script th:inline="javascript">
+                                                let petNeutered = $("#petGenderAnswer").val();
+                                            </script>
+                                        </div>
+
+                                        <div class="petWeight">
+                                            <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
+                                            <input type="text" name="petWeight" id="petWeightAnswer" class="petInput"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="addDoneBtn"><button type="button" name="addDoneBtn" id="addDoneBtn" class="addDoneBtn">완료</button></div>
+
+
+                                </form>
+
+                            </div>
+
+
+
+
+
+
+
+                            <div class="dogInfoMore" th:if="${not #lists.isEmpty(petList)} and ${petList != null}">
+
+                                <form action="" method="post" class="dogInfoMoreContent" th:each="pet : ${petList}">
+
+                                    <div class="petInfo1">
+                                        <div class="petName">
+                                            <div class="dogInfoTitle"><img src="/images/pet.png" alt="pet"> &nbsp;&nbsp;반려견</div>
+                                            <input type="text" name="petNick" id="petName1" class="petInput" th:value="${pet.petNick}" />
+                                            <input type="hidden" name="memCode" th:value="${#authentication.getPrincipal().getMemCode()}">
+                                           <!-- <input type="hidden" name="refMemCode" th:value="${#authentication.getPrincipal().getMemCode()}">-->
+                                            <input type="hidden" name="memId" th:value="${#authentication.getPrincipal().getMemId()}">
+                                        </div>
+
+
+                                        <div class="petBreed">
+                                            <div class="dogInfoTitle"><img src="/images/breed.png" alt="breed"> &nbsp;&nbsp;견종</div>
+                                            <input type="text" name="petKind" id="petBreedName1" class="petInput" th:value="${pet.petKind}" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="petInfo2">
+                                        <div class="petBirth">
+                                            <div class="dogInfoTitle"><img src="/images/birth.png" alt="scissor">&nbsp;&nbsp; 생년월일</div>
+                                            <input type="date" name="petBirth" id="petBirthDay1" class="petInput" th:value="${#dates.format(pet.petBirth, 'yyyy-MM-dd')}"/>
+                                        </div>
+
+                                        <div class="petGender">
+                                            <div class="dogInfoTitle"><img src="/images/puppy_gender.png" alt="puppy_gender">&nbsp;&nbsp; 성별</div>
+                                            <select name="petGender" id="petGenderAnswer1" class="petSelect">
+                                                <option th:value="female"  th:selected="${pet.petGender == 'female'}">female</option>
+                                                <option th:value="male"  th:selected="${pet.petGender == 'male'}">male</option>
+                                            </select>
+                                            <script th:inline="javascript">
+                                                let petGenderAnswer = $("#petGenderAnswer").val();
+                                            </script>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="petInfo3">
+                                        <div class="petOper">
+                                            <div class="dogInfoTitle"><img src="/images/scissor.png" alt="scissor">&nbsp;&nbsp; 중성화</div>
+                                            <select name="petNeutered" id="petOperAnswer1" class="petSelect">
+                                                <option th:value="Y"  th:selected="${pet.petNeutered == 'Y'}">Y</option>
+                                                <option th:value="N"  th:selected="${pet.petNeutered == 'N'}">N</option>
+                                            </select>
+                                            <script th:inline="javascript">
+                                                let petNeutered = $("#petGenderAnswer").val();
+                                            </script>
+                                        </div>
+
+                                        <div class="petWeight">
+                                            <div class="dogInfoTitle"><img src="/images/weight.png" alt="weight">&nbsp;&nbsp; 무게</div>
+                                            <input type="text" name="petWeight" id="petWeightAnswer1" class="petInput" th:value="${pet.petWeight}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="addDoneBtn"><button type="button" name="addDoneBtn" id="addDoneBtn1" class="addDoneBtn">수정</button></div>
+
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!--
+                                            <div class="addPet">
+                                                <form action="" method="post">
+                                                    <label for="addPetBtn"></label>
+                                                    <input type="button" name="addPetBtn" id="addPetBtn" class="addPetBtn" value="반려견 추가하기"/>
+                                                </form>
+                                            </div>-->
+
+                    </div>
+                </th:block>
+
+
+                <div class="goToMain goToMain1"><a th:href="@{/}">메인 페이지로 돌아가기</a></div>
+                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().getMemRole() == 'ROLE_ADMIN'}">
+                    <div class="goToMain"><a th:href="@{/}">제제 내역 보기</a></div>
+                </th:block>
+
+            </div>
+
+
+        </div>
+
+        <script th:inline="javascript">
+            const $titleImagArea = document.getElementById("titleImgArea");
+            const $profileChange = document.getElementById("profileChange")
+
+            $titleImagArea.onclick = function (){
+                $profileChange.click();
+            }
+
+
+            function loadImg(value, num){
+                if(value.files && value.files[0]){
+                    const reader = new FileReader();
+
+                    reader.readAsDataURL(value.files[0]);
+
+                    reader.onload = function (e){
+                        if (num){
+                                console.log(e.target.result);
+                                const $titleImg = document.getElementById("titleImg");
+                                if($titleImg){
+                                    $titleImg.src = e.target.result;
+                                }
+                        }
+                    }
+                }
+            }
+        </script>
+    </section>
+
+</th:block>
+
+</html>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daalgae.daalgaeproject.tour.dao.TourMapper">
+
+    <resultMap id="findTourKakaoMap" type="com.daalgae.daalgaeproject.tour.dto.TourKakaoMapDTO">
+        <id property="tourCode" column="TOUR_CODE"/>
+        <result property="tourPhoto" column="TOUR_PHOTO"/>
+        <result property="tourTitle" column="TOUR_TITLE"/>
+        <result property="addr" column="ADDR"/>
+        <result property="tel" column="TEL"/>
+        <result property="mapx" column="MAPX"/>
+        <result property="mapy" column="MAPY"/>
+        <result property="tourCategory" column="TOUR_CATEGORY"/>
+    </resultMap>
+
+    <resultMap id="findTourList" type="com.daalgae.daalgaeproject.tour.dto.TourListDTO">
+        <id property="tourCode" column="TOUR_CODE"/>
+        <result property="tourPhoto" column="TOUR_PHOTO"/>
+        <result property="tourTitle" column="TOUR_TITLE"/>
+        <result property="addr" column="ADDR"/>
+        <result property="tel" column="TEL"/>
+    </resultMap>
+
+    <resultMap id="findTourDetail" type="com.daalgae.daalgaeproject.tour.dto.TourDetailDTO">
+        <id property="tourCode" column="TOUR_CODE"/>
+        <result property="tourPhoto" column="TOUR_PHOTO"/>
+        <result property="tourTitle" column="TOUR_TITLE"/>
+        <result property="addr" column="ADDR"/>
+        <result property="tel" column="TEL"/>
+        <result property="mapx" column="MAPX"/>
+        <result property="mapy" column="MAPY"/>
+        <result property="tourCategory" column="TOUR_CATEGORY"/>
+        <result property="time" column="TIME"/>
+        <result property="page" column="PAGE"/>
+        <result property="facilities" column="FACILITIES"/>
+        <result property="supplies" column="SUPPLIES"/>
+        <result property="policy" column="POLICY"/>
+        <result property="notice" column="NOTICE"/>
+        <result property="intro" column="INTRO"/>
+    </resultMap>
+
+    <select id="findTourKakaoMap" resultMap="findTourKakaoMap">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        ,MAPX
+        ,MAPY
+        ,TOUR_CATEGORY
+        FROM TOUR_INFO
+    </select>
+
+    <select id="findPaging" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultType="_int">
+        SELECT COUNT(TOUR_CODE)
+        FROM TOUR_INFO
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="country != '지역' and country != '전체'">
+                <if test="country == '수도'">
+                    AND (ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%')
+                </if>
+                <if test="country != '수도'">
+                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                </if>
+            </if>
+            <if test="category != 'null' and category != '분류' and category != '전체'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
+        </trim>
+    </select>
+
+    <select id="findTourList" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultMap="findTourList">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        FROM TOUR_INFO
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="country != '지역' and country != '전체'">
+                <if test="country == '수도'">
+                    AND (ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%')
+                </if>
+                <if test="country != '수도'">
+                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                </if>
+            </if>
+            <if test="category != 'null' and category != '분류' and category != '전체'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
+        </trim>
+        LIMIT ${ no }, 9
+    </select>
+
+    <select id="findTourDetail" resultMap="findTourDetail">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        ,MAPX
+        ,MAPY
+        ,TOUR_CATEGORY
+        ,TIME
+        ,PAGE
+        ,FACILITIES
+        ,SUPPLIES
+        ,POLICY
+        ,NOTICE
+        ,INTRO
+        FROM TOUR_INFO
+        WHERE TOUR_CODE = #{ no }
+    </select>
+
+    <!-- 통합검색용 -->
+
+    <select id="findTourListAllSearch" parameterType="com.daalgae.daalgaeproject.tour.dto.TourCriteria" resultMap="findTourList">
+        SELECT TOUR_CODE
+        ,TOUR_PHOTO
+        ,TOUR_TITLE
+        ,ADDR
+        ,TEL
+        FROM TOUR_INFO
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="keyword != 'null'">
+                TOUR_TITLE LIKE CONCAT('%', '${keyword}', '%')
+            </if>
+            <if test="category != 'null' and category != '분류' and category != '전체'">
+                AND TOUR_CATEGORY LIKE CONCAT('%', '${category}', '%')
+            </if>
+        </trim>
+        LIMIT 3
+    </select>
+
+</mapper>

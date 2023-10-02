@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/matchingTestLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+<th:block layout:fragment="content">
+        <section id="MatchingTest8">
+            <div class="MatchingTest8Wrap container">
+                <h4>나에게 맞는 강아지 찾기</h4>
+
+                <div class="MatchingTest8Content">
+                    <h4 class="testQuestion">대형견 VS 소형견</h4>
+                    <div class="test8Img">
+                        <img th:src="@{/images/TestImg8_1.png}" alt="TestImg8_1">
+                        <img th:src="@{/images/TestImg8_2.png}" alt="TestImg8_2">
+                    </div>
+                    <div class="testBtn">
+                        <div class="selectBtn1"><a href="matchingTestResult.html">작고 소중한 소형견!</a></div>
+                        <div class="selectBtn1"><a href="matchingTestResult.html">늠름한 대형견!</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</th:block>
+
+

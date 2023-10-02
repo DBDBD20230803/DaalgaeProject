@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+    <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+    <link th:href="@{/css/mainIntro.css}" rel="stylesheet" />
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/mainIntro.js}"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
+    <script type="text/javascript" th:src="@{/js/weather.js}"></script>
+    <title>뭐든다알개</title>
+
+</head>
+<body>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
+  <div id="mainBackgroundSpace">
+      <div id="mainBackground">
+  </div>
+      
+
+      <div id="mainIntroduce">소중한 나의 반려견, 이제 여기서 시작하세요</div>
+      <div id="weatherBox0">
+          <img class="weatherImage0" height="270px" />
+
+          
+          <div class="weatherRate0">
+              오늘의 산책지수
+          </div>
+          <div class="weatherGood0">
+          
+          </div>
+          <div class="weatherTemp0">
+
+          </div>
+          <div class="weatherDog0"></div>
+          <button class="weatherSelectButton0"></button>
+      </div>
+      <div id="weatherBox1">
+          <img class="weatherImage1" height="170px"/>
+          <div class="weatherRate1">
+              오늘의 산책지수
+          </div>
+          <div class="weatherGood1">
+          
+          </div>
+          <div class="weatherTemp1">
+
+          </div>
+          <div class="weatherDog1"></div>
+          <button class="weatherSelectButton1"></button>
+      </div>
+      <div id="weatherBox2">
+          <img class="weatherImage2" height="100px"/>
+          <div class="weatherRate2">
+              오늘의 산책지수
+          </div>
+          <div class="weatherGood2">
+          
+          </div>
+          <div class="weatherTemp2">
+
+          </div>
+          <div class="weatherDog2"></div>
+          <button class="weatherSelectButton2"></button>
+      </div>
+  </div>
+
+    <div id="mainInform">
+        <div class="informLeft">
+            <span class="informIcon1"></span>공지사항 &nbsp;&nbsp; | &nbsp;&nbsp; <span class="informIcon2"></span>이벤트
+        </div>
+        <div class="informRight">
+            <div class="imageBox">
+                <img class="informIconBox1" src="/images/informIconBox1.png">
+            </div>
+            
+            <a class="noticeUrl"><div class="informDown">
+                <img class="largeNotice" src="/images/informIconBox1.png"><div class="noticeEllipsis"></div><div class="informDate"></div>
+            </div></a>
+
+            <div class="informSlider">
+                <button class="Silder1"></button><div class="Silder2"></div><button class="Silder3"></button>
+            </div>
+        </div>
+    </div>
+    <div id="mainMap">
+        <div id="mainMapContentOne">
+            <div class="mainTourLine"></div>
+            <div class="mainMapFlag"></div>
+            <div class="TourWithYou">TOUR WITH YOU</div>
+            <div class="mainMapDesc">댕댕이와 함께 떠나는 전국팔도 여기저기</div>
+            <div class="mainMapKorea">
+                <img src="/images/mainMapKorean.png">
+                <button class="capital" onclick="location.href='/tour/tourList?no=1&keyword=&country=수도권&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">수도권의 가볼만한 곳</div>
+                </button>
+                <button class="gangwondo" onclick="location.href='/tour/tourList?no=1&keyword=&country=강원도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">강원도의 가볼만한 곳</div>
+                </button>
+                <button class="chungcheongdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=충청도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">충청도의 가볼만한 곳</div>
+                </button>
+                <button class="gyeongsangdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=경상도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">경상도의 가볼만한 곳</div>
+                </button>
+                <button class="jeonlado" onclick="location.href='/tour/tourList?no=1&keyword=&country=전라도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">전라도의 가볼만한 곳</div>
+                </button>
+                <button class="jejudo" onclick="location.href='/tour/tourList?no=1&keyword=&country=제주도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">제주도의 가볼만한 곳</div>
+                </button>
+                <div class="daalgaeLogo"></div>
+            </div>
+        </div>
+
+        <div id="mainMapContentTwo">
+            <div class="MapContentTwoBox">
+                <div class="mainMapFlag2"></div>
+                <div class="TourWithYou2">TOUR WITH YOU</div>
+            </div>
+            <div class="mainMapKorea2">
+                <img src="/images/mainMapKorean.png">
+                <button class="capital" onclick="location.href='/tour/tourList?no=1&keyword=&country=수도권&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">수도권의 가볼만한 곳</div>
+                </button>
+                <button class="gangwondo" onclick="location.href='/tour/tourList?no=1&keyword=&country=강원도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">강원도의 가볼만한 곳</div>
+                </button>
+                <button class="chungcheongdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=충청도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">충청도의 가볼만한 곳</div>
+                </button>
+                <button class="gyeongsangdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=경상도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">경상도의 가볼만한 곳</div>
+                </button>
+                <button class="jeonlado" onclick="location.href='/tour/tourList?no=1&keyword=&country=전라도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">전라도의 가볼만한 곳</div>
+                </button>
+                <button class="jejudo" onclick="location.href='/tour/tourList?no=1&keyword=&country=제주도&category=분류'">
+                    <div class="hoverImage"></div>
+                    <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">제주도의 가볼만한 곳</div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mainInfo">
+        <div class="infoHeader">
+            <div class="infoBookImage"></div>
+            <div class="infoText">INFO</div>
+            <div class="infoDesc">더 올바른 방법으로 사랑하는 방법</div>
+        </div>
+        <div class="infoImageBox">
+            <div class="infoImageAndDesc1">
+                <button onclick="location.href='/encycle/knowBeforeAdopt'" class="infoImage1"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowBeforeAdopt'">양육시 필수 지식</button></div>
+            </div>
+            
+            <div class="infoImageAndDesc2">
+                <button onclick="location.href='/encycle/knowAfterAdopt'" class="infoImage2"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></div>
+            </div>
+            <div class="infoImageAndDesc3">
+                <button onclick="location.href='/encycle/knowEmergency'" class="infoImage3"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></div>
+            </div>
+            <div class="infoImageAndDesc4">
+                <button onclick="location.href='/encycle/petiket'" class="infoImage4"></button>
+                <div class="infoImageDesc1"><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="mainGallery">
+        <div class="galleryText1">WHAT’S YOUR</div>
+        <div class="galleryText2">
+            <div class="galleryText2-1">우리강아지</div>
+            <div class="galleryText2-2">자랑갤러리</div>
+        </div>
+        <div class="galleryText3">FAVORITE TODAY</div>
+        <div class="logoInGallery"></div>
+    </div>
+  <div class="imageSliderMain">
+      <div class="imageSlider">
+          <img id="back" width="57" th:src="@{/images/galleryLeftArrow.png}" />
+          <img id="next" width="57" th:src="@{/images/galleryRightArrow.png}" />
+          <div class="slide">
+              <ul class="boastImage">
+
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div id="footers"></div>
+<div>
+    <th:block th:include="component/footer.html"></th:block>
+</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+
+    <title>여행지 리스트</title>
+    <!--meta-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="le=edge">
+
+      
+      <!--bootstrap-->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+      
+
+      <!--css-->
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/mobile.css}" rel="stylesheet" />
+    <link th:href="@{/css/sanitize.css}" rel="stylesheet" />
+    <link th:href="@{/css/tourList.css}" rel="stylesheet" />
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!--js-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
+    <script type="text/javascript" th:src="@{/js/tourList.js}"></script>
+    
+    <!--favicon--->
+      <link href="favicon.ico" rel="icon">
+      <link href="favicon.ico" rel="apple-touch-icon">
+  </head>
+  <body>
+  <div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+  </div>
+  <input type="hidden" class="noTour" th:value="${no}">
+  <div class="tourBg">
+      <h3>다알개 여행지</h3>
+  </div>
+
+  <div class="tourSelectBar">
+    
+    <div class="searchCenter">
+      <div class="selectBox">
+        <button class="searchArrow"></button>
+        <select class="selectSearchOption option2">
+          
+          <option disabled selected>분류</option>
+          <option value="전체">전체</option>
+          <option value="관광지">관광지</option>
+          <option value="숙박시설">숙박시설</option>
+          <option value="식당 및 카페">식당 및 카페</option>
+          <option value="체험 활동">체험 활동</option>
+          <option value="동물병원">동물병원</option>
+        </select>
+      </div>
+      <div class="selectBox">
+        <button class="searchArrow"></button>
+        <select class="selectSearchOption option1">
+          
+          <option disabled selected>지역</option>
+          <option value="전체">전체</option>
+          <option value="수도권">수도권</option>
+          <option value="강원도">강원도</option>
+          <option value="충청도">충청도</option>
+          <option value="경상도">경상도</option>
+          <option value="전라도">전라도</option>
+          <option value="제주도">제주도</option>
+        </select>
+      </div>
+      <div class="searchInput">
+        <div class="searchIcon"></div>
+        <input type="search" class="tourListSearch" placeholder="검색어 미입력시 전체 조회">
+      </div>
+      <button onclick="tourListSearch()" class="searchButton">검색</button>
+    </div>
+  </div>
+
+  <div class="tourBoard">
+
+    <!--<div class="tourBoardUnit"><button onclick="location.href='/tour/tourDetail?no=10'">
+      <img class="tourBoardUnitThumbnail" src="/images/dogPhoto1.png" />
+      <div class="tourBoardUnitDesc">
+        <div class="locationName">장소이름</div>
+        <img class="locationLoc" th:src="@{/images/location.png}" />
+        <div class="locTextUp">강원도 삼척시 근덕면 맹방해변로 228-239</div>
+        <img class="telNumber" th:src="@{/images/phone.png}" />
+        <div class="telNums">033-572-3011</div>
+      </div></button>
+    </div>-->
+  </div>
+  <div class="whiteSpaceTourBoard"></div>
+  <input class="totalPageCalc" type="hidden" th:value="${totalPageCalc}">
+  <input class="totalPage" type="hidden" th:value="${totalPage}">
+  <input class="pageRange" type="hidden" th:value="${pageRange}">
+  <input class="lastRange" type="hidden" th:value="${lastRange}">
+  <div class="whiteSpaceEncycle">
+    <div class="logoInPage"></div>
+    <div class="whiteSpaceTourBoard"></div>
+    <div class="paging">
+    </div>
+  </div>
+
+  
+  <div>
+    <th:block th:include="component/footer.html"></th:block>
+  </div>
+  </body>
+
+
+ 

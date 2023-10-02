@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daalgae.daalgaeproject.mainConnect.dao.MainConnectMapper">
+
+    <resultMap id="findNoticeMap" type="com.daalgae.daalgaeproject.mainConnect.dto.MainNoticeDTO">
+        <id property="postCode" column="POST_CODE"/>
+        <result property="postTitle" column="POST_TITLE"/>
+        <result property="postSort" column="POST_SORT"/>
+        <result property="postDate" column="POST_DATE"/>
+    </resultMap>
+
+    <select id="findNotice" resultMap="findNoticeMap">
+        SELECT POST_CODE
+        ,POST_TITLE
+        ,POST_SORT
+        ,POST_DATE
+        FROM POST_INFO
+        WHERE POST_TYPE = '공지'
+        ORDER BY POST_CODE DESC
+        LIMIT 10
+    </select>
+
+    <select id="getBoast" resultType="com.daalgae.daalgaeproject.mainConnect.dto.MainBoastDTO">
+        SELECT POST_CODE
+        ,POST_TITLE
+        ,(SELECT ATTACH_THUMB_ADDR FROM ATTACHMENT_FILE WHERE REF_POST_CODE = POST_CODE LIMIT 1) 'ATTACH_THUMB_ADDR'
+        FROM POST_INFO
+        WHERE POST_TYPE = '자랑'
+        ORDER BY POST_CODE DESC
+        LIMIT 15
+    </select>
+
+    <!-- 원래 allSearch용이지만 mapper 더 만들기 그래서 여기에 한다. -->
+    <select id="getAllSearchPost" resultType="com.daalgae.daalgaeproject.mainConnect.dto.AllSearchPostDTO">
+        SELECT POST_CODE
+        ,POST_TYPE
+        ,POST_TITLE
+        , (SELECT MEM_NAME FROM MEM_INFO WHERE MEM_CODE = REF_POST_WRITER) 'POST_WRITER'
+        ,POST_COUNT
+        ,POST_DATE
+        FROM POST_INFO
+        WHERE POST_TYPE = #{postType}
+        <if test="keyword != null">
+            and POST_TITLE LIKE CONCAT('%', #{keyword},'%')
+        </if>
+        ORDER BY POST_CODE DESC
+        LIMIT 5
+    </select>
+
+</mapper>

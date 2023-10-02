@@ -1,0 +1,209 @@
+<!-- 링크 3개를 지정해야 합니다. -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="le=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/headerStyle.css}" rel="stylesheet" />
+
+    <script type="text/javascript" th:src="@{/js/headerMenu.js}"></script>
+    <title>header</title>
+
+</head>
+<body>
+<div id="MenuWhole">
+
+    <!-- 해야 할 일 -->
+    <!--
+        1. 링크는 레이블을 달아야 좋기는 하겠다.
+        2. 메뉴만 만들고 끝이 아니다.
+     -->
+    <div id="toTheTop"><a id="toTop" href="#"><img th:src="@{/images/mainToTop.png}" /></a></div>
+    <!-- 메뉴바 목록 -->
+    <div id="menu">
+        <ul>
+            <div class="mainLogo">
+                <button onclick="location.href='/main'"><img th:src="@{/images/logo2_w.png}" /></button>
+            </div>
+            <div class="mainLogo2">
+                <button onclick="location.href='/main'"><img th:src="@{/images/logo2_w.png}" /></button>
+            </div>
+
+            <li><p>여기저기</p>
+                <ul class="margin16">
+                    <li><button onclick="location.href='/tour'">다알개 지도</button></li>
+                    <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=분류'">다알개 여행지</button></li>
+                    <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=관광지'">관광지</button></li>
+                    <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=숙박시설'">숙박시설</button></li>
+                    <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=식당 및 카페'">식당 및 카페</button></li>
+                    <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=체험 활동'">체험 활동</button></li>
+                    <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=동물병원'">동물병원</button></li>
+                </ul>
+            </li>
+            <li><p>다알개사전</p>
+                <ul class="margin16">
+                    <li><button onclick="location.href='/encycle'">전체</button></li>
+                    <li><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></li>
+                    <li><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></li>
+                    <li><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></li>
+                    <li class="font12"><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></li>
+                </ul>
+            </li>
+            <li><p>게시판<p>
+                <ul class="margin16">
+                    <li><a th:href="@{/board/}">전체</a></li>
+                    <li><a th:href="@{/board/freeBoard}">자유게시판</a></li>
+                    <li><a th:href="@{/board/boastBoard}">자랑갤러리</a></li>
+                    <li><a th:href="@{/board/abanBoard}">유기견 게시판</a></li>
+                    <li><a th:href="@{/matchingTest/matchingTestMain.html}">반려견 매칭 테스트</a></li>
+                    <li><a th:href="@{/board/annoBoard}">공지사항</a></li>
+                    <li><a th:href="@{/webtoon/dengInfo}">댕댕툰 보러가기</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+
+    </div>
+
+    <!-- 로고, 로그인, 회원가입, 마이페이지, 검색 -->
+
+    <div class="loginButton">
+        <a th:href="@{/login/login}" sec:authorize="isAnonymous()">로그인</a>
+        <a th:href="@{/login/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
+    </div>
+    <div class="signupButton">
+        <a th:href="@{/regist/agreeTerms}" id="regist">회원가입</a>
+    </div>
+    <div class="myPageButton">
+        <a th:href="@{/myPage/mypage}"><img th:src="@{/images/myPage.png}" /></a>
+    </div>
+
+    <!--  검색 버튼  -->
+    <input class="burger-check2" type="checkbox" id="burger-check2" /><label class="burger-icon2" for="burger-check2"><span class="burger-sticks2"></span></label>
+
+    <!-- 햄버거 버튼과 전체 메뉴 -->
+    <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span></label>
+
+    <div class="menu">
+        <div id="allMenu">
+            <div id="hideMenu"></div>
+            <table>
+                <tr>
+                    <th scope="col">여기저기</th>
+                    <th scope="col">다알개사전</th>
+                    <th scope="col">게시판</th>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour'">다알개 지도</button></td>
+                    <td><button onclick="location.href='/encycle'">전체</button></td>
+                    <td><a th:href="@{/board/}">전체</a></td>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=분류'">다알개 여행지</button></td>
+                    <td><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></td>
+                    <td><a th:href="@{/board/freeBoard}">자유게시판</a></td>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=관광지'">관광지</button></td>
+                    <td><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></td>
+                    <td><a th:href="@{/board/boastBoard}">자랑갤러리</a></td>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=숙박시설'">숙박시설</button></td>
+                    <td><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></td>
+                    <td><a th:href="@{/board/abanBoard}">유기견 게시판</a></td>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=식당 및 카페'">식당 및 카페</button></td>
+                    <td><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></td>
+                    <td><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></td>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=체험 활동'">체험 활동</button></td>
+                    <td></td>
+                    <td><a th:href="@{/board/annoBoard}">공지사항</a></td>
+                </tr>
+                <tr>
+                    <td><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=동물병원'">동물병원</button></td>
+                    <td></td>
+                    <td><a th:href="@{/webtoon/dengInfo}">댕댕툰 보러가기</a></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            </table>
+        </div>
+        <div id="allMenu2">
+            <div class="allMenu2WhiteSpace"></div>
+            <ol>
+                <li>
+                    <p>여기저기</p>
+                    <ol>
+                        <li><button onclick="location.href='/tour'">다알개 지도</button></li>
+                        <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=분류'">다알개 여행지</button></li>
+                        <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=관광지'">관광지</button></li>
+                        <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=숙박시설'">숙박시설</button></li>
+                        <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=식당 및 카페'">식당 및 카페</button></li>
+                        <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=체험 활동'">체험 활동</button></li>
+                        <li><button onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=동물병원'">동물병원</button></li>
+                    </ol>
+                </li>
+                <li>
+                    <p>다알개사전</p>
+                    <ol>
+                        <li><button onclick="location.href='/encycle'">전체</button></li>
+                        <li><button onclick="location.href='/encycle/knowBeforeAdopt'">입양 전 필수 지식</button></li>
+                        <li><button onclick="location.href='/encycle/knowAfterAdopt'">양육시 필수 지식</button></li>
+                        <li><button onclick="location.href='/encycle/knowEmergency'">응급상황 대처 방법</button></li>
+                        <li><button onclick="location.href='/encycle/petiket'">함께 실천하는 펫티켓</button></li>
+                    </ol>
+                </li>
+                <li>
+                    <p>게시판</p>
+                    <ol>
+                        <li><a th:href="@{/board/}">전체</a></li>
+                        <li><a th:href="@{/board/freeBoard}">자유게시판</a></li>
+                        <li><a th:href="@{/board/boastBoard}">자랑갤러리</a></li>
+                        <li><a th:href="@{/board/abanBoard}">유기견 게시판</a></li>
+                        <li><a th:href="@{/matchingTest/matchingTestMain}">반려견 매칭 테스트</a></li>
+                        <li><a th:href="@{/webtoon/dengInfo}">댕댕툰 보러가기</a></li>
+                        <li><a th:href="@{/board/annoBoard}">공지사항</a></li>
+                    </ol>
+                </li>
+                <div class="allMenu2WhiteSpace"></div>
+            </ol>
+        </div>
+        <div id="searchMenu">
+            <div id="hideMenu2"></div>
+            <div class="searchSpace">
+                <div class="searchBox121">
+                    <div class="menuSearchInputAndIcon">
+                        <div class="menuSearchIconIn"></div>
+                        <div class="menuSearchInput">
+                            <input type="search" id="headerSearchBox" placeholder="통합 검색">
+                        </div>
+                    </div>
+                </div>
+                <div class="inputSearchButton">
+                    <button onclick="allHeaderSearch()">검색</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

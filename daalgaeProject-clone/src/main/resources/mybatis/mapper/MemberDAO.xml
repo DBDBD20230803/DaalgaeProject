@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daalgae.daalgaeproject.member.model.dao.MemberDAO">
+
+    <resultMap id="loginMemberResultMap" type="MemberDTO">
+        <id property="memCode" column="MEM_CODE"/>
+        <result property="memId" column="MEM_ID"/>
+        <result property="memPwd" column="MEM_PWD"/>
+        <result property="memName" column="MEM_NAME"/>
+        <result property="memBirth" column="MEM_BIRTH"/>
+        <result property="memEmail" column="MEM_EMAIL"/>
+        <result property="memAdrs" column="MEM_ADRS"/>
+        <result property="memAdrsDetail" column="MEM_ADRS_DETAIL"/>
+        <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
+        <result property="memDogGum" column="MEM_DOG_GUM"/>
+        <result property="memRole" column="MEM_ROLE"/>
+        <result property="mailAuth" column="MAIL_AUTH"/>
+        <result property="mailKey" column="MAIL_KEY"/>
+        <result property="banPeriod" column="BAN_PERIOD"/>
+    </resultMap>
+
+
+
+    <insert id="registMember">
+        INSERT
+        INTO MEM_INFO       (
+                             MEM_ID
+                            ,MEM_PWD
+                            ,MEM_NAME
+                            ,MEM_BIRTH
+                            ,MEM_EMAIL
+                            ,MEM_ADRS
+                            ,MEM_ADRS_DETAIL
+
+        )
+        VALUES (
+                #{ memId }
+               ,#{ memPwd}
+               ,#{ memName }
+               ,#{ memBirth }
+               ,#{ memEmail }
+               ,#{ memAdrs }
+               ,#{ memAdrsDetail }
+               )
+    </insert>
+
+    <select id="selectMemberById" resultType="String">
+        SELECT
+            A.MEM_ID
+        FROM MEM_INFO A
+        WHERE A.MEM_ID = #{ memId }
+    </select>
+
+    <select id="login" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId } AND MEM_PWD = #{ memPwd }
+    </select>
+
+
+    <update id="updateMailKey">
+        UPDATE
+            MEM_INFO
+        SET
+            MAIL_KEY = #{ mailKey }
+        WHERE MEM_EMAIL = #{ memEmail } AND MEM_ID = #{ memId }
+    </update>
+
+    <update id="updateMailAuth">
+        UPDATE
+            MEM_INFO
+        SET
+            MAIL_AUTH = 1
+        WHERE MEM_EMAIL = #{ memEmail } AND MAIL_KEY = #{ mailKey }
+    </update>
+
+
+    <select id="emailAuthFail" parameterType="String" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId } AND MAIL_AUTH = 1
+    </select>
+
+    <select id="findMemberById" resultMap="loginMemberResultMap">
+        SELECT
+            A.MEM_CODE
+             , A.MEM_ID
+             , A.MEM_PWD
+             , A.MEM_NAME
+             , A.MEM_BIRTH
+             , A.MEM_EMAIL
+             , A.MEM_ADRS
+             , A.MEM_ADRS_DETAIL
+             , A.MEM_WITHDRAWAL
+             , A.MEM_ROLE
+             , A.MAIL_AUTH
+             , A.MAIL_KEY
+             , A.BAN_PERIOD
+        FROM MEM_INFO A
+        WHERE A.MEM_ID = #{ memId }
+    </select>
+
+    <select id="getEncPass" resultType="String">
+        SELECT
+            MEM_PASS
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId }
+    </select>
+        <!--멤버에 개껌 보유량 추가 하기위한 매핑입니다. -선호 -->
+    <update id="updateMemDogGum" parameterType="com.daalgae.daalgaeproject.member.model.dto.MemberDTO">
+        UPDATE MEM_INFO
+        SET MEM_DOG_GUM = #{ memDogGum }
+        WHERE MEM_CODE = #{ memCode }
+    </update>
+    <select id="getMemberByMemCode" resultType="_int">
+        SELECT MEM_DOG_GUM
+        FROM MEM_INFO
+        WHERE MEM_CODE = #{ memCode }
+    </select>
+
+  <update id="purchaseDogGumus">
+      UPDATE MEM_INFO
+      SET MEM_DOG_GUM = #{ memDogGum }
+      WHERE MEM_CODE = #{ memCode }
+  </update>
+
+    <select id="findId" resultMap="loginMemberResultMap">
+        SELECT
+            MEM_ID
+        FROM MEM_INFO
+        WHERE MEM_NAME = #{ memName } and MEM_EMAIL = #{ memEmail }
+    </select>
+
+    <select id="getFindUserResult" parameterType="MemberDTO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM MEM_INFO
+        WHERE MEM_ID = #{ memId } AND MEM_EMAIL = #{ memEmail }
+    </select>
+
+    <update id="updateRandomPass" parameterType="memberDTO">
+        UPDATE
+            MEM_INFO
+        SET MEM_PWD = #{ memPwd }
+        WHERE MEM_ID = #{ memId }
+    </update>
+
+    <select id="mypageRead" resultMap="loginMemberResultMap">
+        SELECT
+            *
+        FROM
+            MEM_INFO
+        WHERE MEM_ID = #{memId}
+    </select>
+
+
+
+
+    <update id="modifyMember">
+        UPDATE
+            MEM_INFO
+        SET
+             MEM_ID = #{ memId }
+            ,MEM_ADRS = #{ memAdrs }
+            ,MEM_ADRS_DETAIL = #{ memAdrsDetail }
+            ,MEM_BIRTH = #{ memBirth }
+            ,MEM_DOG_GUM = #{ memDogGum }
+        WHERE
+            MEM_CODE = #{ memCode }
+    </update>
+
+
+
+    <update id="modifyPwd">
+        UPDATE
+            MEM_INFO
+        SET
+            MEM_PWD = #{ memPwd }
+        WHERE
+            MEM_CODE = #{ memCode }
+    </update>
+
+
+    <update id="memberDelete">
+        UPDATE
+            MEM_INFO
+        SET MEM_WITHDRAWAL = CURDATE()
+        WHERE MEM_ID = #{ memId }
+    </update>
+
+
+</mapper>

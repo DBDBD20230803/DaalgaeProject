@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/matchingTestLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+  <th:block layout:fragment="content">
+        <section id="MatchingTestMain">
+            <div class="MatchingTestMainWrap container">
+                <h3>나에게 맞는 강아지 찾기</h3>
+                <div class="testMainImg">
+                    <img th:src="@{/images/maingImg.png}" alt="mainImg">
+                </div>
+                <div class="start"><button onclick="location.href='/matchingTest/matchingTest'">시작하기</button></div>
+            </div>
+        </section>
+  </th:block>
+
+
