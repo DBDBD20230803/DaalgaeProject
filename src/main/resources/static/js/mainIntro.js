@@ -1,4 +1,24 @@
 $(document).ready( function() {
+    /* 이미지 슬라이더용 이미지 */
+    $.ajax({
+        type:"get",
+        url:"/getBoast",
+        dataType:"json",
+        async: false,
+        success: function(data){
+            for(boastInfo of data) {
+                let locationHref = "location.href='/board/boastBoardSelect?no=" + boastInfo.post_code;
+                let imageUrl = "/thumbPath" + boastInfo.attach_thumb_addr;
+                let append = "<li><button onClick=\"" + locationHref + "'\"><img src=\" " + imageUrl + "\" alt=\"\" width=\"398\" height=\"250\"></button></li>";
+                $('.boastImage').append(append);
+
+            }
+        },
+        error:function() {
+            // console.log("통신에러3");
+        }
+    });
+    
     /* 이미지 슬라이더 */
     let imgs;
     let img_count;
@@ -18,7 +38,7 @@ $(document).ready( function() {
     function back() {
         if(1<img_position){
             imgs.animate({
-                left:'+=326px'
+                left:'+=398px'
             });
             img_position--;
         }
@@ -27,12 +47,14 @@ $(document).ready( function() {
     function next() {
         if(img_count-3>img_position){
             imgs.animate({
-                left:'-=326px'
+                left:'-=398px'
             });
             img_position++;
         }
     }
 
     /* 공지사항 관련 */
+
+    
 
 });

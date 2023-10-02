@@ -819,7 +819,7 @@
 .logoInGallery {
     position: absolute;
     background-image: url("/images/DAALGAE_LOGO.png");
-    width: 1148px;
+    width: 1135px;
     height: 182px;
     left: -82px;
     top: 480px;
@@ -844,14 +844,14 @@ button{
 /* 슬라이더 로직*/
 
 .slide{
-    width: 1304px;
-    height: 326px;
+    width: 1592px;
+    height: 250px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
 }
 .slide ul{
-    width: 5000px;
+    width: 10000px;
     position: relative;
     top:0;
     left:0;
@@ -872,7 +872,7 @@ button{
     position: absolute;
     top: 50%;
     transform: translateY(-29px);
-    right: -680px;
+    right: -968px;
     cursor: pointer;
     z-index: 1;
 }

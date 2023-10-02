@@ -27,7 +27,7 @@
         FROM POST_INFO
         WHERE POST_TYPE = '자랑'
         ORDER BY POST_CODE DESC
-        LIMIT 5
+        LIMIT 15
     </select>
 
     <!-- 원래 allSearch용이지만 mapper 더 만들기 그래서 여기에 한다. -->
