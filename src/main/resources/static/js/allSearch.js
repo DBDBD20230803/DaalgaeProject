@@ -147,6 +147,7 @@ function getPost(orderApply, postType) {
         dataType:"json",
         async: false,
         success: function(data){
+            console.log(data);
             if(data.length == 0) {
                 $('.postBoard').eq(orderApply).append("<div class=\"noSearchData\">");
                 $('.noSearchData').last().append("검색 결과가 없습니다");
@@ -167,6 +168,8 @@ function getPost(orderApply, postType) {
                     "        </div>");
             }
             for(let postInfo of data) {
+                console.log(postInfo);
+                console.log(postInfo.post_Code);
                 let url;
                 if(postType == '자유') {
                     url = "<a class='boardLink' href=\"/board/freeBoardSelect?no=" + postInfo.post_Code + "\">";
@@ -175,7 +178,7 @@ function getPost(orderApply, postType) {
                     url = "<a class='boardLink' href=\"/board/annoBoardSelect?no=" + postInfo.post_Code + "\">";
                 }
 
-                $('.board-container').eq(orderApply).append(url);
+                $('.board-container').last().append(url);
                 $('.boardLink').last().append("<div class=\"postList\">");
                 $('.postList').last().append("<h6 class=\"testPost-postNo\">" + postInfo.post_Code +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postCategory\">" + postInfo.post_Type +"</h6>");
@@ -183,6 +186,7 @@ function getPost(orderApply, postType) {
                 $('.postList').last().append("<h6 class=\"testPost-postUser\">" + postInfo.post_Writer +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postCount\">" + postInfo.post_Count +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postDate\">" + postInfo.post_Date +"</h6>");
+                console.log(111);
             }
 
 
