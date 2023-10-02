@@ -25,7 +25,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Value("img")
     private String IMAGE_DIR;
 
-    @Value("C:/thymeleaf-springboot/")
+    @Value("D:/thymeleaf-springboot/")
     private String ROOT_LOCATION;
 
     private final UserProfileDAO userProfileDAO;

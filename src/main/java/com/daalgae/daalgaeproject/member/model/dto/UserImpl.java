@@ -71,10 +71,10 @@ public class UserImpl extends User {
     public boolean isEnabled() {
         Date currentDate = new Date();
 
-        // SimpleDateFormat을 사용하여 날짜 문자열을 비교할 형식으로 변환합니다.
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        // banPeriod가 null이거나 현재 날짜보다 작을 때 로그인 가능하도록 설정합니다.
+
         if (banPeriod == null || banPeriod.compareTo(currentDate) < 0) {
             return true;
         } else {
