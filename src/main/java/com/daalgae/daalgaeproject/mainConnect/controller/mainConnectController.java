@@ -29,6 +29,13 @@ public class mainConnectController {
         return findNotice;
     }
 
+    @GetMapping(value = "getBoast", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<MainNoticeDTO> getBoast() throws JsonProcessingException {
+        List<MainNoticeDTO> getBoast = mainConnectService.getBoast();
+        return getBoast;
+    }
+
     @GetMapping(value = "allSearchPost", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<AllSearchPostDTO> getAllSearchPost(@RequestParam(value = "postType", required = false) String postType, @RequestParam(value = "keyword", required = false) String keyword) throws JsonProcessingException {

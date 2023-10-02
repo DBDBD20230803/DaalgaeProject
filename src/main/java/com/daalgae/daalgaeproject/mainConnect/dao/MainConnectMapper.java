@@ -13,4 +13,6 @@ public interface MainConnectMapper {
     List<MainNoticeDTO> findNotice();
 
     List<AllSearchPostDTO> getAllSearchPost(AllSearchCriteria allSearchCriteria);
+
+    List<MainNoticeDTO> getBoast();
 }

@@ -24,4 +24,9 @@ public class MainConnectServiceImpl implements MainConnectService {
     public List<AllSearchPostDTO> getAllSearchPost(AllSearchCriteria allSearchCriteria) {
         return mainConnectMapper.getAllSearchPost(allSearchCriteria);
     }
+
+    @Override
+    public List<MainNoticeDTO> getBoast() {
+        return mainConnectMapper.getBoast();
+    }
 }

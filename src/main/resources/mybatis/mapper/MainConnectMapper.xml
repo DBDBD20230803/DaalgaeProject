@@ -20,6 +20,16 @@
         LIMIT 5
     </select>
 
+    <select id="getBoast" resultType="com.daalgae.daalgaeproject.mainConnect.dto.MainBoastDTO">
+        SELECT POST_CODE
+        ,POST_TITLE
+        ,(SELECT ATTACH_THUMB_ADDR FROM ATTACHMENT_FILE WHERE REF_POST_CODE = POST_CODE LIMIT 1) 'ATTACH_THUMB_ADDR'
+        FROM POST_INFO
+        WHERE POST_TYPE = '자랑'
+        ORDER BY POST_CODE DESC
+        LIMIT 5
+    </select>
+
     <!-- 원래 allSearch용이지만 mapper 더 만들기 그래서 여기에 한다. -->
     <select id="getAllSearchPost" resultType="com.daalgae.daalgaeproject.mainConnect.dto.AllSearchPostDTO">
         SELECT POST_CODE

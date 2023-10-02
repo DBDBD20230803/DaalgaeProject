@@ -12,4 +12,6 @@ public interface MainConnectService {
     List<MainNoticeDTO> findNotice();
 
     List<AllSearchPostDTO> getAllSearchPost(AllSearchCriteria postType);
+
+    List<MainNoticeDTO> getBoast();
 }
