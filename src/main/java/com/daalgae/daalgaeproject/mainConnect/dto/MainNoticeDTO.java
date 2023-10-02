@@ -10,5 +10,6 @@ import lombok.*;
 public class MainNoticeDTO {
     private int postCode;
     private String postTitle;
+    private String postSort;
     private String postDate;
 }

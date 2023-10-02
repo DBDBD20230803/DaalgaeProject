@@ -3,35 +3,35 @@ function pagingCalc(pageCase) {
     const urlParam = urlObject.searchParams;
     let keyword = urlParam.get("keyword");
     let country = urlParam.get("country");
+    let category = urlParam.get("category");
     let no = urlParam.get("no");
     let totalPage = $('.totalPage').val();
     if(pageCase === -3) {
-        location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
+        location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country + "&category=" + category;
     } else if(pageCase === 0) {
         let toUrl = "/tour/tourList?no=";
         toUrl += totalPage;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     } else if(pageCase === -1) {
         let toUrl = "/tour/tourList?no=";
         toUrl += Math.floor((no-1) / 5) * 5;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     } else if(pageCase === -2) {
         let toUrl = "/tour/tourList?no=";
         toUrl += Math.ceil(no / 5) * 5 + 1;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     } else {
         let toUrl = "/tour/tourList?no=";
         toUrl += pageCase;
-        toUrl += "&keyword="+keyword+"&country="+country;
+        toUrl += "&keyword="+keyword+"&country="+country + "&category=" + category;
         location.href = toUrl;
     }
 
 }
 $(document).ready( function() {
-
     $(".tourListSearch").focus();
     $(".tourListSearch").on("keyup",function(key){
         if(key.keyCode==13) {
@@ -61,18 +61,23 @@ $(document).ready( function() {
     let keyword = urlParam.get("keyword");
     let country = urlParam.get("country");
     let no = urlParam.get("no");
+    let category = urlParam.get("category");
     let totalPage = $('.totalPage').val();
     let pageRange = $('.pageRange').val();
     let lastRange = $('.lastRange').val();
     let totalPageCalc = $('.totalPageCalc').val();
 
     $('.tourListSearch').val(keyword);
-    if($('.selectSearchOption').val(country).length > 0) {
-        $('.selectSearchOption').val(country);
+    if($('.option1').val(country).length > 0) {
+        $('.option1').val(country);
     } else {
-        $('.selectSearchOption').val("지역");
+        $('.option1').val("지역");
     }
-
+    if($('.option2').val(category).length > 0) {
+        $('.option2').val(category);
+    } else {
+        $('.option2').val("분류");
+    }
 
 
     /* 페이징 로직 */
@@ -121,12 +126,17 @@ $(document).ready( function() {
 
 
     /* 불러오기 */
-    let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country;
+    let getUrl = "/tour/getTourList?no=" + no + "&keyword=" + keyword + "&country=" + country + "&category=" + category;
     $.ajax({
         type:"get",
         url:getUrl,
         dataType:"json",
         success: function(data){
+            console.log(data);
+            if(data.length == 0) {
+                $('.tourBoard').last().append("<div class=\"noSearchData\">");
+                $('.noSearchData').append("검색 결과가 없습니다");
+            }
             for(let tourInfo of data) {
                 $('.tourBoard').last().append("<div class=\"tourBoardUnit\">");
                 let url = "<button onclick=\"location.href='/tour/tourDetail?no=" + tourInfo.tourCode + "\'\">";
@@ -159,11 +169,12 @@ $(document).ready( function() {
 });
 function tourListSearch() {
     let keyword = $('.tourListSearch').val();
-    let country = $('.selectSearchOption option:selected').val();
+    let country = $('.option1 option:selected').val();
+    let category = $('.option2 option:selected').val();
     let no = $('.noTour').val();
     let replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
     let replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     keyword = keyword.replace(replaceChar, "");
     keyword = keyword.replace(replaceNotFullKorean, "");
-    location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country;
+    location.href = "/tour/tourList?no=1&keyword="+keyword+"&country="+country+"&category="+category;
 }

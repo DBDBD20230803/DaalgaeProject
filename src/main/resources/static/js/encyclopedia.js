@@ -43,26 +43,38 @@ $(function () {
     });
     const urlObject = new URL(decodeURI(window.location.href)).toString();
     if(urlObject.includes("knowBeforeAdopt")) {
-        for(let i = 1; i <=4; i++) {
-            let no = i;
-            let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + no;
-            console.log(toUrl);
-            checkMark(toUrl);
-        }
+        checkMark(1, 4);
+    } else if(urlObject.includes("knowAfterAdopt")) {
+        checkMark(5, 7);
+    } else if(urlObject.includes("knowEmergency")) {
+        checkMark(8, 8);
+    } else if(urlObject.includes("petiket")) {
+        checkMark(9, 11);
     }
+
 });
 
-function checkMark(toUrl) {
+function checkMark(j, k) {
+    for(let i = j; i <=k; i++) {
+        getMark(i)
+    }
+}
+
+function getMark(i) {
+    let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + i;
+    if(i > 4) {
+        let nums = [1, 2, 3, 1, 1, 2, 3];
+        i = nums[i-5];
+    }
     $.ajax({
         type:"get",
         url:toUrl,
         dataType:"json",
         success: function(data) {
-            console.log(data);
             if(data == 1) {
-                $(".likeBtn").eq(i-1).prop('src', '/images/likeListClicked.png');
+                $('.likeBtn').eq(i-1).prop('src', '/images/likeListClicked.png');
             } else {
-                $(".likeBtn").eq(i-1).prop('src', '/images/likeList.png');
+                $('.likeBtn').eq(i-1).prop('src', '/images/likeList.png');
             }
         },
         error:function(){
@@ -75,6 +87,10 @@ function likeClick(num) {
     let toUrl = "/encycle/bookmark/getEncycleBookmark?no=" + num;
     let toUrl1 = "/encycle/bookmark/setEncycleBookmark?no=" + num;
     let toUrl2 = "/encycle/bookmark/deleteEncycleBookmark?no=" + num;
+    if(num > 4) {
+        let nums = [1, 2, 3, 1, 1, 2, 3];
+        num = nums[num-5];
+    }
     $.ajax({
         type:"get",
         url:toUrl,

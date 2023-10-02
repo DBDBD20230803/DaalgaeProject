@@ -47,7 +47,7 @@
 <div class="tourBg">
     <h3>다알개 여행지</h3>
 </div>
-<div class="tourDetailtitle"><p class="DetailTitleText">관광지</p></div>
+<!--<div class="tourDetailtitle"><p class="DetailTitleText">관광지</p></div>-->
 <div class="tourDetailWhiteSpace"></div>
 <div class="tourDetailContent">
     <input type="hidden" th:value="${findDetail.tourPhoto}" class="tourPhotoVal">
@@ -64,10 +64,10 @@
                 </span><div class="tel" th:text="${findDetail.tel}"></div>
             <span class="descAttrName">이용시간
                     &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </span><div class="useTime" th:text="${findDetail.time}"></div>
+                </span><div class="useTime" th:text="${findDetail.time.replaceAll('none', '')}"></div>
             <span class="descAttrName">홈페이지
                     &#09;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </span><input type="hidden" th:value="${findDetail.page}" class="findPage">
+                </span><input type="hidden" th:value="${findDetail.page.replaceAll('none', '')}" class="findPage">
         </div>
         <input type="hidden" th:value="${findDetail.supplies}" class="supplies">
         <input type="hidden" th:value="${findDetail.facilities}" class="facilities">
@@ -76,43 +76,50 @@
     </div>
 </div>
 
-<div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />애견 정책</p>
-<div class="px300">
-    <p class="introDesc" th:utext="${findDetail.policy}">
-    </p>
+
+<input type="hidden" th:value="${findDetail.tourCategory}" class="isHospital">
+<div class="hideHospital">
+    <div class="tourDetailWhiteSpace"></div>
+    <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />애견 정책</p>
+    <div class="px300">
+        <p class="introDesc" th:utext="${findDetail.policy}">
+        </p>
+    </div>
+    <div class="tourDetailWhiteSpace"></div>
+    <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />유의 사항</p>
+    <div class="px300">
+        <p class="introDesc" th:utext="${findDetail.notice}">
+        </p>
+    </div>
+    <div class="tourDetailWhiteSpace"></div>
+    <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />비품 제공</p>
+    <div class="px300">
+        <p class="introDesc" th:utext="${findDetail.supplies}">
+        </p>
+    </div>
+    <div class="tourDetailWhiteSpace"></div>
+    <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />주변 환경</p>
+    <div class="px300">
+        <p class="introDesc" th:utext="${findDetail.facilities}">
+        </p>
+    </div>
+    <div class="tourDetailWhiteSpace"></div>
+    <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />소개</p>
+    <div class="px300">
+        <p class="introDesc" th:utext="${findDetail.intro}">
+        </p>
+    </div>
 </div>
-<div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />유의 사항</p>
-<div class="px300">
-    <p class="introDesc" th:utext="${findDetail.notice}">
-    </p>
-</div>
-<div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />비품 제공</p>
-<div class="px300">
-    <p class="introDesc" th:utext="${findDetail.supplies}">
-    </p>
-</div>
-<div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />주변 환경</p>
-<div class="px300">
-    <p class="introDesc" th:utext="${findDetail.facilities}">
-    </p>
-</div>
-<div class="tourDetailWhiteSpace"></div>
-<p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />소개</p>
-<div class="px300">
-    <p class="introDesc" th:utext="${findDetail.intro}">
-    </p>
-</div>
+
 <div class="tourDetailWhiteSpace"></div>
 <p class="imageAndText"><img class="tourPawImage" th:src="@{/images/dogPaw.png}" />지도 보기</p>
-<p class="introDesc" th:text="${findDetail.addr}">전라남도 장흥군 관산읍 칠관로 842-1150 </p><br>
+<p class="introDesc" th:text="${findDetail.addr}"></p><br>
 <input type="hidden" class="mapx" th:value="${findDetail.mapx}">
 <input type="hidden" class="tourCode" th:value="${findDetail.tourCode}">
 <input type="hidden" class="mapy" th:value="${findDetail.mapy}">
 <input type="hidden" class="title" th:value="${findDetail.tourTitle}">
+<input type="hidden" class="category" th:value="${findDetail.tourCategory}">
+<input type="hidden" class="tourAddr" th:value="${findDetail.addr}">
     <div id="map" class="tourLocMap"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cee456796362f003412371bb71c7faa0"></script>
 <div class="tourDetailWhiteSpace"></div>
@@ -139,7 +146,7 @@
 </div>
 <div class="toListSpace">
     <div class="toListSpaceMiddle">
-        <button class="middleButtonList" onclick="location.href='/tour/tourList?no=1&keyword=&country=지역'"><div class="toList">목록</div></button>
+        <button class="middleButtonList" onclick="location.href='/tour/tourList?no=1&keyword=&country=지역&category=분류'"><div class="toList">목록</div></button>
     </div>
 </div>
 <div>
