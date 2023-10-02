@@ -10,6 +10,7 @@ import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/report/*")
+@RequestMapping(value = {"/report/*", "/admin/*"})
 public class AdminController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -85,6 +86,13 @@ public class AdminController {
         }
 
         return "redirect:/board/freeBoardSelect?no=" + board.getPostCode();
+    }
+
+    @GetMapping("/adminMain")
+    public ModelAndView adminMain(ModelAndView mv) {
+
+        mv.setViewName("/admin/adminMain");
+        return mv;
     }
 
 }
