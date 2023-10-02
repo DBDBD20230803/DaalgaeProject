@@ -1,124 +1,127 @@
-document.addEventListener('DOMContentLoaded', function() {
-    function select(type) {
-        let petType = document.querySelector(`#qna input[id=${type}]`);
-        let pageIdx = document.querySelector("input[id='page']").value;
+const main = $("#MatchingTest1");
+const qna = $("#qna");
+const result = $("#result");
 
-        if(pageIdx){
-            petType.value = ++petType.value;
-
-            if (pageIdx < 8) {
-                next(pageIdx);
-            } else {
-                end();
-            }
-        } else{
-            console.log("해당 요소를 찾을 수 없습니다.");
-        }
-
-    }
-
-
-
-const main = document.querySelector("#MatchingTest1");
-const qna = document.querySelector("#qna");
-const result = document.querySelector("#result");
 
 const clipboard = new ClipboardJS('.btn');
 clipboard.on('success', function(e) {
     console.log(e);
 });
+
+function next(pageIdx) {
+
+
+    let title = $(".question .testQuestion");
+    let answer_a = $(".answers #A");
+    let answer_a_btn = $(".answers #A .selectBtn1");
+    let answer_b = $(".answers #B");
+    let answer_b_btn = $(".answers #B .selectBtn1");
+    let page = $("input[id='page']");
+    let pageCnt = $(".page #cnt");
+
+
+    title.html(qnaList[pageIdx].q);
+    answer_a.attr("href", `javascript:select('${qnaList[pageIdx].a[0].type}')`);
+    console.log(`${qnaList[pageIdx].a[0].type}`)
+    answer_a_btn.html(qnaList[pageIdx].a[0].answer);
+    answer_b.attr("href", `javascript:select('${qnaList[pageIdx].a[1].type}')`);
+    console.log(`${qnaList[pageIdx].a[1].type}`)
+    answer_b_btn.html(qnaList[pageIdx].a[1].answer);
+    page.val(++pageIdx);
+    pageCnt.text(pageIdx);
+}
+
+
+function select(type) {
+    let petType = $(`#qna input[id=${type}]`);
+    let pageIdx = parseInt($("input[id='page']").val());
+
+    if (!isNaN(pageIdx)) {
+        petType.val(function (index, currentValue){
+            if(!isNaN(currentValue)){
+                return parseInt(currentValue) + 1;
+            }
+            return currentValue;
+        });
+
+        if (pageIdx < 8) {
+            next(pageIdx);
+        } else {
+            end();
+        }
+    } else {
+        console.log("해당 요소를 찾을 수 없습니다.");
+    }
+}
+
+
 clipboard.on('error', function(e) {
     console.log(e);
 });
 
-function start() {
-    main.style.display = "none";
-    qna.style.display = "block";
-    result.style.display = "none";
-
-    next(0);
-}
-
-function next(pageIdx) {
-    let title = document.querySelector(".question .testQuestion");
-    let answer_a = document.querySelector(".answers #A");
-    let answer_a_btn = document.querySelector(".answers #A .selectBtn1");
-    let answer_b = document.querySelector(".answers #B");
-    let answer_b_btn = document.querySelector(".answers #B .selectBtn1");
-    let page = document.querySelector("input[id='page']");
-    let pageCnt = document.querySelector(".page #cnt");
-
-    title.innerHTML = qnaList[pageIdx].q;
-    answer_a.href = `javascript:select('${qnaList[pageIdx].a[0].type}')`;
-    answer_a_btn.innerHTML = qnaList[pageIdx].a[0].answer;
-    answer_b.href = `javascript:select('${qnaList[pageIdx].a[1].type}')`;
-    answer_b_btn.innerHTML = qnaList[pageIdx].a[1].answer;
-    page.value = ++pageIdx;
-    pageCnt.innerText = pageIdx;
-}
-
-
 
 function end() {
-    qna.style.display = "none";
-    result.style.display = "block";
+    qna.hide();
+    result.show();
 
     let pet = JSON.stringify({
-        maltese : document.getElementById("maltese").value,
-        chiwawa : document.getElementById("chiwawa").value,
-        golden : document.getElementById("golden").value,
-        hursky : document.getElementById("hursky").value,
-        shihtzu : document.getElementById("shihtzu").value,
-        mix : document.getElementById("mix").value,
-        jindo : document.getElementById("jindo").value,
-        poodle : document.getElementById("poodle").value
+        maltese: $("#maltese").val(),
+        chiwawa: $("#chiwawa").val(),
+        golden: $("#golden").val(),
+        hursky: $("#hursky").val(),
+        shihtzu: $("#shihtzu").val(),
+        mix: $("#mix").val(),
+        jindo: $("#jindo").val(),
+        poodle: $("#poodle").val()
     });
-    petReset();
+
 
     $.ajax({
         type: "POST",
-        url : "/matchingTest/result",
-        data : JSON.stringify(pet),
+        url: "/matchingTest/result",
+        data: JSON.stringify(pet),
         contentType: "application/json; charset=UTF-8",
-
         success: function(data, textStatus, xhr) {
-            document.querySelector("#result #result_img").src = `/imgages/${data}.png`;
-
-            document.querySelector("#result .loader").style.display = "none";
-            document.querySelector("#result .fin").style.display = "block";
+            $("#result #result_img").attr("src", `./img/${data}.png`);
+            $("#result .loader").hide();
+            $("#result .fin").show();
+            alert("매칭테스트가 성공적으로 전송되었습니다🐶.!!")
         },
-
         error: function(request, status, error) {
-            qna.style.display = "block";
-            result.style.display = "none";
+            $("#qna").show();
+            $("#result").hide();
 
             console.log(error);
+            console.log("오류가 발생했어요..다시 시도해주세요😪" + error.responseText);
         }
     });
+
+    petReset();
 }
 
 function retest() {
-    main.style.display = "flex";
-    qna.style.display = "none";
-    result.style.display = "none";
+    main.css("display", "flex");
+    qna.hide();
+    result.hide();
 }
 
 function petReset() {
-    document.getElementById("maltese").value = 0;
-    document.getElementById("chiwawa").value = 0;
-    document.getElementById("golden").value = 0;
-    document.getElementById("hursky").value = 0;
-    document.getElementById("shihtzu").value = 0;
-    document.getElementById("mix").value = 0;
-    document.getElementById("jindo").value = 0;
-    document.getElementById("poodle").value = 0;
+    $("#maltese").val(0);
+    $("#chiwawa").val(0);
+    $("#golden").val(0);
+    $("#hursky").val(0);
+    $("#shihtzu").val(0);
+    $("#mix").val(0);
+    $("#jindo").val(0);
+    $("#poodle").val(0);
 }
 
 function copylink() {
     navigator.clipboard.writeText(window.location.href)
-        .then(() => alert("링크가 복사되었습니다. 친구에게 공유해보세요!"))
-        .catch(() => alert("다시 시도해보세요."))
-}
-
-
-});
+        .then(function() {
+            alert("링크가 복사되었습니다. 친구에게 공유해보세요!");
+        })
+        .catch(function() {
+            alert("다시 시도해보세요.");
+        });
+};
