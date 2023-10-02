@@ -304,8 +304,8 @@
     background-color: #A6CEF7;
     font-weight: bold;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .informIcon1 {
@@ -365,7 +365,7 @@
     position: absolute;
     width: 85px;
     height: 29px;
-    margin-left: -627px;
+    top: -30px;
     margin-bottom: 37px;
     background-size: contain;
 }
@@ -375,7 +375,7 @@
     position: absolute;
     width: 85px;
     height: 29px;
-    margin-left: -440px;
+    top: -30px;
     margin-bottom: 37px;
     background-size: contain;
 }
@@ -388,10 +388,11 @@
 }
 
 .Silder2 {
+    position: relative;
     background-image: url("/images/informButtonMiddle.png");
     width: 24px;
     height: 2px;
-    left: 1px;
+    left: -1px;
     display: block;
 }
 
@@ -887,4 +888,25 @@ button{
 li img {
     position: relative;
     left: -30px;
+}
+
+.imageBox {
+    position: relative;
+}
+
+.noticeEllipsis {
+    width: 300px;
+    white-space  : nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    color: #222;
+}
+
+.noticeEllipsis:hover {
+    color: #222;
+}
+
+.informDown {
+    display: flex;
+    flex-direction: row;
 }

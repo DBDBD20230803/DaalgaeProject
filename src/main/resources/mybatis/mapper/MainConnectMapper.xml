@@ -7,12 +7,14 @@
     <resultMap id="findNoticeMap" type="com.daalgae.daalgaeproject.mainConnect.dto.MainNoticeDTO">
         <id property="postCode" column="POST_CODE"/>
         <result property="postTitle" column="POST_TITLE"/>
+        <result property="postSort" column="POST_SORT"/>
         <result property="postDate" column="POST_DATE"/>
     </resultMap>
 
     <select id="findNotice" resultMap="findNoticeMap">
         SELECT POST_CODE
         ,POST_TITLE
+        ,POST_SORT
         ,POST_DATE
         FROM POST_INFO
         WHERE POST_TYPE = '공지'
