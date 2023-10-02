@@ -88,7 +88,104 @@ $(document).ready( function() {
     }
 
     /* 공지사항 관련 */
+    let noticeData;
+    $.ajax({
+        type:"get",
+        url:"/getNotice",
+        dataType:"json",
+        async: false,
+        success: function(data){
+            noticeData = data;
+        },
+        error:function() {
+            // console.log("통신에러3");
+        }
+    });
+    console.log(noticeData);
+    let notice1 = noticeData[0].postTitle;
+    let date1 = noticeData[0].postDate;
+    let url1 = "/board/annoBoardSelect?no=" + noticeData[0].postCode;
 
-    
+    $('.noticeEllipsis').append(notice1);
+    $('.informDate').append(date1);
+    $('.noticeUrl').prop('href', url1);
+    if(noticeData[0].postSort == "이벤트") {
+        $('.informIconBox1').prop('src', "/images/informIconBox2.png");
+    }
+    let noticeOrder = 0;
+    playAlert = setInterval(function() {
+        $('.imageBox').fadeTo(50, 0.5);
+        $('.noticeUrl').fadeTo(50, 0.5);
+        $('.imageBox').fadeTo(50, 1);
+        $('.noticeUrl').fadeTo(50, 1);
+        if(noticeOrder == 5) {
+            noticeOrder = 0;
+        } else {
+            noticeOrder++;
+        }
+        let notice2 = noticeData[noticeOrder].postTitle;
+        let date2 = noticeData[noticeOrder].postDate;
+        let url2 = "/board/annoBoardSelect?no=" + noticeData[noticeOrder].postCode;
+        $('.noticeEllipsis').html(notice2);
+        $('.informDate').html(date2);
+        $('.noticeUrl').prop('href', url2);
+        if(noticeData[noticeOrder].postSort == "이벤트") {
+            $('.largeNotice').prop('src', "/images/informIconBox2.png");
+            $('.informIconBox1').prop('src', "/images/informIconBox2.png");
+        } else {
+            $('.largeNotice').prop('src', "/images/informIconBox1.png");
+            $('.informIconBox1').prop('src', "/images/informIconBox1.png");
+        }
+    }, 5000);
 
+    $('.Silder1').on('click', function () {
+        clearInterval(playAlert);
+        $('.imageBox').fadeTo(50, 0.5);
+        $('.noticeUrl').fadeTo(50, 0.5);
+        $('.imageBox').fadeTo(50, 1);
+        $('.noticeUrl').fadeTo(50, 1);
+        if(noticeOrder == 0) {
+            noticeOrder = 5;
+        } else {
+            noticeOrder--;
+        }
+        let notice2 = noticeData[noticeOrder].postTitle;
+        let date2 = noticeData[noticeOrder].postDate;
+        let url2 = "/board/annoBoardSelect?no=" + noticeData[noticeOrder].postCode;
+        $('.noticeEllipsis').html(notice2);
+        $('.informDate').html(date2);
+        $('.noticeUrl').prop('href', url2);
+        if(noticeData[noticeOrder].postSort == "이벤트") {
+            $('.largeNotice').prop('src', "/images/informIconBox2.png");
+            $('.informIconBox1').prop('src', "/images/informIconBox2.png");
+        } else {
+            $('.largeNotice').prop('src', "/images/informIconBox1.png");
+            $('.informIconBox1').prop('src', "/images/informIconBox1.png");
+        }
+    });
+    $('.Silder3').on('click', function () {
+        clearInterval(playAlert);
+        $('.imageBox').fadeTo(50, 0.5);
+        $('.noticeUrl').fadeTo(50, 0.5);
+        $('.imageBox').fadeTo(50, 1);
+        $('.noticeUrl').fadeTo(50, 1);
+        if(noticeOrder == 5) {
+            noticeOrder = 0;
+        } else {
+            noticeOrder++;
+        }
+        let notice2 = noticeData[noticeOrder].postTitle;
+        let date2 = noticeData[noticeOrder].postDate;
+        let url2 = "/board/annoBoardSelect?no=" + noticeData[noticeOrder].postCode;
+        $('.noticeEllipsis').html(notice2);
+        $('.informDate').html(date2);
+        $('.noticeUrl').prop('href', url2);
+        if(noticeData[noticeOrder].postSort == "이벤트") {
+            $('.largeNotice').prop('src', "/images/informIconBox2.png");
+            $('.informIconBox1').prop('src', "/images/informIconBox2.png");
+        } else {
+            $('.largeNotice').prop('src', "/images/informIconBox1.png");
+            $('.informIconBox1').prop('src', "/images/informIconBox1.png");
+        }
+    });
 });

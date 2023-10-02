@@ -80,6 +80,9 @@
     .informIconBox2 {
         display: none;
     }
+    .informSlider {
+        top: -4px;
+    }
 }
 
 @media (max-width: 1150px) {
@@ -103,6 +106,9 @@
     }
     .informIconBox2 {
         display: block;
+    }
+    .largeNotice {
+        display: none;
     }
 }
 
@@ -405,6 +411,7 @@
 
 .informSlider {
     display: block;
+    position: relative;
 }
 
 
@@ -883,7 +890,6 @@ button{
 }
 .imageSlider {
     width: 652px;
-    position: relative;
 }
 li img {
     position: relative;
@@ -909,4 +915,10 @@ li img {
 .informDown {
     display: flex;
     flex-direction: row;
+}
+
+.largeNotice {
+    position: relative;
+    top: -3px;
+    left: -10px;
 }

@@ -19,7 +19,7 @@
         FROM POST_INFO
         WHERE POST_TYPE = '공지'
         ORDER BY POST_CODE DESC
-        LIMIT 5
+        LIMIT 10
     </select>
 
     <select id="getBoast" resultType="com.daalgae.daalgaeproject.mainConnect.dto.MainBoastDTO">
