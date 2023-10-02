@@ -23,9 +23,8 @@
                     , PET_KIND
                     , PET_BIRTH
                     , PET_GENDER
+                     , PET_WEIGHT
                     , PET_NEUTERED
-                    ,PET_INTRODUCE
-                    , PET_WEIGHT
                     , REF_MEM_CODE
                 )
 
@@ -34,23 +33,10 @@
                    #{petKind},
                    #{petBirth},
                    #{petGender},
-                   #{petNeutered},
-                   #{petIntroduce},
                    #{petWeight},
+                   #{petNeutered},
                    #{refMemCode}
                )
-       /* SELECT
-            #{petNick},
-            #{petKind},
-            #{petBirth},
-            #{petGender},
-            #{petNeutered},
-            #{petWeight},
-            A.MEM_CODE
-        FROM MEM_INFO A
-                 LEFT JOIN PET_INFO B ON A.MEM_CODE = B.REF_MEM_CODE
-        WHERE A.MEM_CODE = #{ refMemCode } AND B.REF_MEM_CODE IS NULL;*/
-
     </insert>
 
 
@@ -64,7 +50,6 @@
             ,PET_GENDER
             ,PET_WEIGHT
             ,PET_NEUTERED
-            ,PET_INTRODUCE
             ,REF_MEM_CODE
         FROM
             PET_INFO/* B*/
@@ -85,7 +70,6 @@
           , PET_BIRTH = #{petBirth}
           , PET_GENDER = #{petGender}
           , PET_NEUTERED = #{petNeutered}
-          ,PET_INTRODUCE = #{petIntroduce}
           , PET_WEIGHT = #{petWeight}
 
         WHERE

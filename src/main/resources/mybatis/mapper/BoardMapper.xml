@@ -41,7 +41,6 @@
         <result property="refReplyWriter" column="REF_POST_REPLY_WRITER"/>
         <result property="refPostCode" column="REF_POST_CODE"/>
         <association property="replyWriterDetail" resultMap="memberResultMap"/>
-<!--        <association property="refPostCode" resultMap="boardResultMap"/>-->
     </resultMap>
 
     <resultMap type="AttachmentDTO" id="attachmentFileResultMap">
@@ -165,6 +164,7 @@
                  , A.POST_TITLE
                  , A.REF_POST_WRITER
                  , B.MEM_ID
+                 , B.MEM_CODE
                  , A.POST_CONTENT
                  , A.POST_COUNT
                  , A.POST_DATE

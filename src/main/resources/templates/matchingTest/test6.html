@@ -1,41 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>매칭테스트</title>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/matchingTestLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-
-    <!--meta-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="le=edge">
-
-      
-      <!--bootstrap-->
-      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      
-      
-
-      <!--css-->
-      <link rel="stylesheet" href="../css/index.css">
-      <link rel="stylesheet" href="../matchingTest/css/mobile.css">
-      <link rel="stylesheet" href="../css/sanitize.css">
-      <link rel="stylesheet" href="../matchingTest/css/test6.css">
-      
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-      <!--js-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-      
-    <!--favicon--->
-      <link href="favicon.ico" rel="icon">
-      <link href="favicon.ico" rel="apple-touch-icon">
-  </head>
-  <body>
+<th:block layout:fragment="content">
         <section id="MatchingTest6">
             <div class="MatchingTest6Wrap container">
                 <h4>나에게 맞는 강아지 찾기</h4>
@@ -52,6 +22,6 @@
                 </div>
             </div>
         </section>
-  </body>
+</th:block>
 
 

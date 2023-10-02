@@ -25,6 +25,7 @@ public class PetServiceImpl implements PetService {
 
     @Transactional
     public int insertPet(PetDTO petDTO) {
+        log.info("PetServiceImple petDTO : " + petDTO);
         return petDAO.insertPet(petDTO);
     }
 

@@ -48,24 +48,40 @@
   </div>
 
   <div class="tourSelectBar">
-    <button onclick="tourListSearch()" class="searchButton">검색</button>
-    <div class="searchInput">
-      <div class="searchIcon"></div>
-      <input class="tourListSearch" placeholder="검색어 미입력시 전체 조회">
-    </div>
-    <div class="selectBox">
-      <button class="searchArrow"></button>
-      <select class="selectSearchOption">
-
-        <option disabled selected>지역</option>
-        <option value="전체">전체</option>
-        <option value="수도권">수도권</option>
-        <option value="강원도">강원도</option>
-        <option value="충청도">충청도</option>
-        <option value="경상도">경상도</option>
-        <option value="전라도">전라도</option>
-        <option value="제주도">제주도</option>
-      </select>
+    
+    <div class="searchCenter">
+      <div class="selectBox">
+        <button class="searchArrow"></button>
+        <select class="selectSearchOption option2">
+          
+          <option disabled selected>분류</option>
+          <option value="전체">전체</option>
+          <option value="관광지">관광지</option>
+          <option value="숙박시설">숙박시설</option>
+          <option value="식당 및 카페">식당 및 카페</option>
+          <option value="체험 활동">체험 활동</option>
+          <option value="동물병원">동물병원</option>
+        </select>
+      </div>
+      <div class="selectBox">
+        <button class="searchArrow"></button>
+        <select class="selectSearchOption option1">
+          
+          <option disabled selected>지역</option>
+          <option value="전체">전체</option>
+          <option value="수도권">수도권</option>
+          <option value="강원도">강원도</option>
+          <option value="충청도">충청도</option>
+          <option value="경상도">경상도</option>
+          <option value="전라도">전라도</option>
+          <option value="제주도">제주도</option>
+        </select>
+      </div>
+      <div class="searchInput">
+        <div class="searchIcon"></div>
+        <input type="search" class="tourListSearch" placeholder="검색어 미입력시 전체 조회">
+      </div>
+      <button onclick="tourListSearch()" class="searchButton">검색</button>
     </div>
   </div>
 

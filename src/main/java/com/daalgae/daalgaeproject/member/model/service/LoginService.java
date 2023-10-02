@@ -30,6 +30,10 @@ public interface LoginService extends UserDetailsService {
     MemberDTO mypageRead(String memId) throws Exception;
 
     void modifyMember(MemberDTO memberDTO) throws MemberModifyException;
+
+    void modifyPwd(MemberDTO memberDTO) throws MemberModifyException;
+
+    void memberDelete(MemberDTO memberDTO) throws MemberModifyException;
 }
 
 

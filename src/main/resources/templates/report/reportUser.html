@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/boardLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>신고 페이지</title>
+    </head>
+
+    <th:block layout:fragment="content">
+        <div class="board-banner">
+            <h3>신고 페이지</h3>
+            <div>
+                <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
+            </div>
+        </div>
+
+        <th:block th:if="${boardDetail != null}">
+            <th:block th:if="${#authentication.getPrincipal().getMemId != boardDetail.refPostWriter.memId}">
+                <form th:action="@{/report/reportUser}" method="post" class="reportForm">
+                    <div>
+                        <div>
+                            <div>신고자</div>
+                            <input type="hidden" name="refReportMemCode" th:value="${#authentication.getPrincipal().getMemCode}">
+                            <div th:text="${#authentication.getPrincipal().getMemId}"></div>
+                        </div>
+                        <div>
+                            <div>피신고자</div>
+                            <input type="hidden" name="refReportDefanCode" th:value="${boardDetail.refPostWriter.memCode}">
+                            <div th:if="${boardDetail} != null" th:text="${boardDetail.refPostWriter.memId}"></div>
+                        </div>
+                        <div>
+                            <div>게시글 코드</div>
+                            <input type="hidden" name="postCode" th:value="${boardDetail.postCode}">
+                            <div th:if="${boardDetail} != null" th:text="${boardDetail.postCode}"></div>
+                        </div>
+                        <div>
+                            <textarea name="reportReason" cols="30" rows="10" oninput="autoResizeWrite(this)" placeholder="신고 내용을 작성해주세요."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit">제출</button>
+                        </div>
+                    </div>
+                </form>
+            </th:block>
+            <th:block th:if="${#authentication.getPrincipal().getMemId == boardDetail.refPostWriter.memId}">
+                <div>자신의 게시물은 신고 할 수 없습니다.</div>
+            </th:block>
+        </th:block>
+
+        <th:block th:if="${replyDetail != null}">
+            <th:block th:if="${#authentication.getPrincipal().getMemId != replyDetail.replyWriterDetail.memId}">
+                <form th:action="@{/report/reportUser}" method="post" class="reportForm">
+                    <div>
+                        <div>
+                            <div>신고자</div>
+                            <input type="hidden" name="refReportMemCode" th:value="${#authentication.getPrincipal().getMemCode}">
+                            <div th:text="${#authentication.getPrincipal().getMemId}"></div>
+                        </div>
+                        <div>
+                            <div>피신고자</div>
+                            <input type="hidden" name="refReportDefanCode" th:value="${replyDetail.replyWriterDetail.memCode}">
+                            <div th:if="${replyDetail} != null" th:text="${replyDetail.replyWriterDetail.memId}"></div>
+                        </div>
+                        <div>
+                            <div>댓글 코드</div>
+                            <input type="hidden" name="replyCode" th:value="${replyDetail.replyCode}">
+                            <div th:if="${replyDetail} != null" th:text="${replyDetail.replyCode}"></div>
+                        </div>
+                        <div>
+                            <textarea name="reportReason" cols="30" rows="10" oninput="autoResizeWrite(this)" placeholder="신고 내용을 작성해주세요."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit">제출</button>
+                        </div>
+                    </div>
+                </form>
+            </th:block>
+            <th:block th:if="${#authentication.getPrincipal().getMemId == replyDetail.replyWriterDetail.memId}">
+                <div>자신의 댓글은 신고 할 수 없습니다.</div>
+            </th:block>
+        </th:block>
+
+        <div class="whiteSpace">
+            <div class="logoInPage"></div>
+        </div>
+    </th:block>
+</html>

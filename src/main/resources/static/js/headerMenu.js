@@ -52,6 +52,12 @@ $(document).ready(function (){
             $(this).children('#allMenu2 > ol > li > ol').slideUp();
         }
     });
+    let boolRegist = window.location.href.includes("regist");
+    let boolMyPage = window.location.href.includes("myPage");
+    if(boolRegist || boolMyPage) {
+        $('.margin16').css("margin-top", "0px");
+    }
+
 });
 $(function() {
     $(window).scroll(function() {

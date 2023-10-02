@@ -39,7 +39,6 @@ public interface BoardMapper {
 
     BoardDTO selectThumbnailDetail(int no);
 
-    int dogGumUse (int postCode);
+    ReplyDTO selectReply(int replyCode);
 
-    List<BoardDTO> userDogGum(int postCode);
 }

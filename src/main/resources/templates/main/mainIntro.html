@@ -77,26 +77,21 @@
 
     <div id="mainInform">
         <div class="informLeft">
-            <span class="informIcon1"></span>공지사항 &nbsp;&nbsp; | &nbsp;&nbsp;<span class="informIcon2"></span>뉴스
+            <span class="informIcon1"></span>공지사항 &nbsp;&nbsp; | &nbsp;&nbsp; <span class="informIcon2"></span>이벤트
         </div>
         <div class="informRight">
-
-
-            <div class="informRightTextButton">
-
+            <div class="imageBox">
+                <img class="informIconBox1" src="/images/informIconBox1.png">
             </div>
-            <div class="informIconBox1"></div>
-            <div class="informIconBox2"></div>
-            <div class="informDown">
-                <a href="#">[뭐든다알개 오픈 이벤트] 추천 관광지 후기 사진을 남기시는 분들에게...</a>
-                <span class="informDate">2023-10-04</span>
-            </div>
+            
+            <a class="noticeUrl"><div class="informDown">
+                <img class="largeNotice" src="/images/informIconBox1.png"><div class="noticeEllipsis"></div><div class="informDate"></div>
+            </div></a>
 
             <div class="informSlider">
                 <button class="Silder1"></button><div class="Silder2"></div><button class="Silder3"></button>
             </div>
         </div>
-        <div class="s"><span class="informIcon3"></span>공지사항</div>
     </div>
     <div id="mainMap">
         <div id="mainMapContentOne">
@@ -106,27 +101,27 @@
             <div class="mainMapDesc">댕댕이와 함께 떠나는 전국팔도 여기저기</div>
             <div class="mainMapKorea">
                 <img src="/images/mainMapKorean.png">
-                <button class="capital" onclick="location.href='/tour/tourList?no=1&keyword=&country=수도권'">
+                <button class="capital" onclick="location.href='/tour/tourList?no=1&keyword=&country=수도권&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">수도권의 가볼만한 곳</div>
                 </button>
-                <button class="gangwondo" onclick="location.href='/tour/tourList?no=1&keyword=&country=강원도'">
+                <button class="gangwondo" onclick="location.href='/tour/tourList?no=1&keyword=&country=강원도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">강원도의 가볼만한 곳</div>
                 </button>
-                <button class="chungcheongdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=충청도'">
+                <button class="chungcheongdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=충청도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">충청도의 가볼만한 곳</div>
                 </button>
-                <button class="gyeongsangdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=경상도'">
+                <button class="gyeongsangdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=경상도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">경상도의 가볼만한 곳</div>
                 </button>
-                <button class="jeonlado" onclick="location.href='/tour/tourList?no=1&keyword=&country=전라도'">
+                <button class="jeonlado" onclick="location.href='/tour/tourList?no=1&keyword=&country=전라도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">전라도의 가볼만한 곳</div>
                 </button>
-                <button class="jejudo" onclick="location.href='/tour/tourList?no=1&keyword=&country=제주도'">
+                <button class="jejudo" onclick="location.href='/tour/tourList?no=1&keyword=&country=제주도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">제주도의 가볼만한 곳</div>
                 </button>
@@ -141,27 +136,27 @@
             </div>
             <div class="mainMapKorea2">
                 <img src="/images/mainMapKorean.png">
-                <button class="capital" onclick="location.href='/tour/tourList?no=1&keyword=&country=수도권'">
+                <button class="capital" onclick="location.href='/tour/tourList?no=1&keyword=&country=수도권&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">수도권의 가볼만한 곳</div>
                 </button>
-                <button class="gangwondo" onclick="location.href='/tour/tourList?no=1&keyword=&country=강원도'">
+                <button class="gangwondo" onclick="location.href='/tour/tourList?no=1&keyword=&country=강원도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">강원도의 가볼만한 곳</div>
                 </button>
-                <button class="chungcheongdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=충청도'">
+                <button class="chungcheongdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=충청도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">충청도의 가볼만한 곳</div>
                 </button>
-                <button class="gyeongsangdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=경상도'">
+                <button class="gyeongsangdo" onclick="location.href='/tour/tourList?no=1&keyword=&country=경상도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">경상도의 가볼만한 곳</div>
                 </button>
-                <button class="jeonlado" onclick="location.href='/tour/tourList?no=1&keyword=&country=전라도'">
+                <button class="jeonlado" onclick="location.href='/tour/tourList?no=1&keyword=&country=전라도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">전라도의 가볼만한 곳</div>
                 </button>
-                <button class="jejudo" onclick="location.href='/tour/tourList?no=1&keyword=&country=제주도'">
+                <button class="jejudo" onclick="location.href='/tour/tourList?no=1&keyword=&country=제주도&category=분류'">
                     <div class="hoverImage"></div>
                     <div class="hoverText"><img class="togoDog" th:src="@{/images/togoDog.png}" height="22px">제주도의 가볼만한 곳</div>
                 </button>
@@ -208,22 +203,8 @@
           <img id="back" width="57" th:src="@{/images/galleryLeftArrow.png}" />
           <img id="next" width="57" th:src="@{/images/galleryRightArrow.png}" />
           <div class="slide">
-              <ul>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto1.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto2.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto3.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto4.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto5.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto1.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto2.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto3.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto4.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto5.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto1.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto2.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto3.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto4.png}" alt="" width="326" height="326"></button></li>
-                  <li><button onclick="location.href='#'"><img th:src="@{/images/dogPhoto5.png}" alt="" width="326" height="326"></button></li>
+              <ul class="boastImage">
+
               </ul>
           </div>
       </div>

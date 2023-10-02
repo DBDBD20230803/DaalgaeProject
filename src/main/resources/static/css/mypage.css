@@ -93,6 +93,7 @@ p{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: none;
 }
 
 #myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox .gum {
@@ -115,7 +116,7 @@ p{
     padding: 5px;
     border: 1px solid #CACACA;
     border-radius: 2px;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     font-weight: 300;
 }
 
@@ -137,25 +138,16 @@ p{
 
 }
 
-#myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox form .introPet p.introPetTitle span{
+
+
+#myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox form .profileBtn{
     width: 100%;
-}
-
-#myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox form .introPet p.introPetTitle span img{
-    max-width: 7%;
-    vertical-align: top;
-}
-
-#myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox form .introPet label{
-    width: 13%;
-    background-color: transparent;
-    border: none;
-    margin-bottom: 0 !important;
-}
-
-#myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox form .introPet label .petEditIcon{
-    max-width: 100%;
-
+    background-color: #DAECFF;
+    margin-bottom: 10%;
+    border: 1px solid #CACACA;
+    border-radius: 2px;
+    padding: 5px;
+    font-weight: 300;
 }
 
 #myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox form .introPet .petEditIcon img{
@@ -407,7 +399,8 @@ p{
 }
 
 
-#myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button{
+#myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button#addDoneBtn,
+#myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button#addDoneBtn1{
     display: block;
     width: 100%;
     border-radius: 2px;
@@ -456,6 +449,15 @@ p{
 }
 
 
+.profilBtn{
+    background-color: #DAECFF;
+    margin-bottom: 2%;
+    border: 1px solid #CACACA;
+    border-radius: 2px;
+    padding: 5px;
+    font-weight: 300;
+}
+
 
 
 /*mobile*/
@@ -464,6 +466,7 @@ p{
     #myPage .myPageWrap .myPageContents .myPageBoxLeft .myPageProfileImgBox .profileImg{
         width: 200px !important;
         height: 200px !important;
+        cursor: pointer;
     }
 
     #myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .dogInfoMoreContent{
@@ -501,6 +504,10 @@ p{
 
     #myPage .myPageWrap .goToMain{
         width: 45% !important;
+    }
+
+    #myPage .myPageWrap .goToMain1{
+        margin-bottom: 5%;
     }
 }
 
@@ -556,7 +563,7 @@ p{
         width: 100% !important;
     }
 
-    #myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn input{
+    #myPage .myPageWrap .myPageContents .myPageBoxRight .dogInfo .dogInfoMore .addDoneBtn button{
         margin-left: 0 !important;
         padding: 3% !important;
     }
@@ -572,6 +579,7 @@ p{
     #myPage .myPageWrap .goToMain {
         width: 48.2% !important;
     }
+
 
 }
 

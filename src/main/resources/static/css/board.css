@@ -1,3 +1,8 @@
+h4 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 .board-banner {
   width: 100%;
   height: 500px;
@@ -484,7 +489,7 @@
 }
 
 .board-content-2 {
-  padding: 50px;
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -705,6 +710,27 @@ button[type="submit"]:hover {
   max-height: 400px;
 }
 
+.center-postList {
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #DBDBDB;
+  gap: 2px;
+  max-height: 400px;
+}
+
+.search-empty {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .boast-postList h6, .boast-post-icon{
   width: auto;
   display: flex;
@@ -729,6 +755,7 @@ button[type="submit"]:hover {
   gap: 5px;
 }
 
+
 .boast-postTitle, .boast-postCount {
   position: relative;
 }
@@ -740,23 +767,25 @@ button[type="submit"]:hover {
 
 .boast-postCount-name {
   position: relative;
-  right: 18px;
+  left: 5px;
 }
 
 .boast-postCount {
   position: relative;
-  right: 6px;
-}
-
-.boast-detail-title {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  left: 5px;
 }
 
 .boast-detail-title1 h6{
   position: relative;
   left: 5px;
+}
+
+.center-detail > h6:first-child {
+  width: 100px;
+}
+
+.center-detail > h6:nth-child(2) {
+  width: 300px;
 }
 
 .boast-detail-box div {
@@ -765,11 +794,6 @@ button[type="submit"]:hover {
   align-items: center;
   gap: 5px;
   padding: 3px;
-}
-
-.boast-detail {
-  position: relative;
-  left: 3%;
 }
 
 .dog-img-img {
@@ -1303,7 +1327,7 @@ button[type="submit"]:hover {
 .comment-content {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   margin: 20px;
 }
 
@@ -1344,7 +1368,7 @@ button[type="submit"]:hover {
 }
 
 #comment-report-button button{
-  width: 90px;
+  width: 100%;
   height: 50px;
   border: 0;
 }
@@ -1448,4 +1472,27 @@ button[type="submit"]:hover {
   font-weight: bold;
   color: white;
   cursor: pointer;
+}
+
+.whiteSpace {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  z-index: -10;
+}
+
+.logoInPage {
+  position: absolute;
+  background-image: url("/images/DAALGAE_LOGO.png");
+  width: 1135px;
+  height: 182px;
+  top: -90px;
+  right: 0px;
+  z-index: -10;
+}
+
+.reportForm {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }

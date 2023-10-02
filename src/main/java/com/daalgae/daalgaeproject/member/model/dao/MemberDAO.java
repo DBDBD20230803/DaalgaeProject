@@ -49,7 +49,9 @@ public interface MemberDAO {
 
     int modifyMember(MemberDTO memberDTO);
 
-    int purchaseDogGumus(int memCode);
+    int modifyPwd(MemberDTO memberDTO);
+
+    int memberDelete(MemberDTO memberDTO);
 
 }
 

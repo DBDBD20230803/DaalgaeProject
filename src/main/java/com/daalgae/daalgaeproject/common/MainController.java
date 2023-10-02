@@ -33,8 +33,6 @@ public class MainController {
 
     @GetMapping("allSearch")
     public String allSearch(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "category", required = false) String category) {
-        System.out.println(keyword);
-        System.out.println(category);
         return "/allSearch/allSearch";
     }
 

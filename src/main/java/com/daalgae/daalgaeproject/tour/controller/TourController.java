@@ -29,11 +29,18 @@ public class TourController {
 
     /* 여행지 리스트 */
     @GetMapping("tourList")
-      public String TourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no, Model model) {
+      public String TourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no, @RequestParam(value = "category", required = false) String category, Model model) {
         model.addAttribute("no", no);
         String noToInt = String.valueOf((Integer.parseInt(no) - 1)  * 9);
         String countryTwoWord = country.substring(0, 2);
-        TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
+        if(category.equals("식당 및 카페")) {
+            category = "식음료";
+        } else if(category.equals("숙박시설")) {
+            category = "숙박";
+        } else if(category.equals("체험 활동")) {
+            category = "체험";
+        }
+        TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord, category);
         int totalPageCalc = tourService.findPaging(tourCriteria);
         int totalPage = (int) Math.ceil(totalPageCalc / 9.0);
         int pageRange = (int) Math.ceil(totalPage / 5.0);
@@ -47,11 +54,33 @@ public class TourController {
 
     @GetMapping(value = "getTourList", produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<TourListDTO> getTourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no) throws JsonProcessingException {
+    public List<TourListDTO> getTourList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "no", required = false) String no, @RequestParam(value = "category", required = false) String category) throws JsonProcessingException {
         String noToInt = String.valueOf((Integer.parseInt(no) - 1)  * 9);
         String countryTwoWord = country.substring(0, 2);
-        TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord);
+        if(category.equals("식당 및 카페")) {
+            category = "식음료";
+        } else if(category.equals("숙박시설")) {
+            category = "숙박";
+        } else if(category.equals("체험 활동")) {
+            category = "체험";
+        }
+        TourCriteria tourCriteria = new TourCriteria(noToInt, keyword, countryTwoWord, category);
         List<TourListDTO> findList = tourService.findTourList(tourCriteria);
+        return findList;
+    }
+
+    @GetMapping(value = "getTourListAllSearch", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<TourListDTO> getTourListAllSearch(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "category", required = false) String category) throws JsonProcessingException {
+        if(category.equals("식당 및 카페")) {
+            category = "식음료";
+        } else if(category.equals("숙박시설")) {
+            category = "숙박";
+        } else if(category.equals("체험 활동")) {
+            category = "체험";
+        }
+        TourCriteria tourCriteria = new TourCriteria("", keyword, "", category);
+        List<TourListDTO> findList = tourService.findTourListAllSearch(tourCriteria);
         return findList;
     }
 
@@ -80,7 +109,7 @@ public class TourController {
         return findTourKakaoMap;
     }
 
-    @GetMapping("place")
+/*    @GetMapping("place")
     public String TourPlace(Model model) {
         model.addAttribute("select", "1");
         return "tour/tour";
@@ -108,7 +137,7 @@ public class TourController {
     public String TourHospital(Model model) {
         model.addAttribute("select", "5");
         return "tour/tour";
-    }
+    }*/
 }
 
 

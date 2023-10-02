@@ -50,8 +50,6 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     @Override
     public int encycleIsMarked(EncycleBookmarkDTO encycleBookmarkDTO) {
-        System.out.println(encycleBookmarkDTO.getMemCode());
-        System.out.println(encycleBookmarkDTO.getEncycleCode());
         return bookmarkMapper.encycleIsMarked(encycleBookmarkDTO);
     }
 
@@ -63,9 +61,6 @@ public class BookmarkServiceImpl implements BookmarkService {
         int setSequence = bookmarkMapper.setSequence(encycleBookmarkDTO.getMemCode());
         if(setSequence > 0) {
             int getSequence = bookmarkMapper.getSequence();
-            System.out.println(getSequence);
-            System.out.println(encycleBookmarkDTO.getMemCode());
-            System.out.println(encycleBookmarkDTO.getEncycleCode());
             EncycleBookmarkDTO setEncycleBookmarkDTO = new EncycleBookmarkDTO(encycleBookmarkDTO.getMemCode(), getSequence, encycleBookmarkDTO.getEncycleCode());
             int setEncycleMark = bookmarkMapper.setEncycleMark(setEncycleBookmarkDTO);
             result = setEncycleMark;
@@ -79,9 +74,7 @@ public class BookmarkServiceImpl implements BookmarkService {
     public int deleteEncycleBookmark(EncycleBookmarkDTO encycleBookmarkDTO) {
         int result = -1;
         int getEncycleSequence = bookmarkMapper.getEncycleSequence(encycleBookmarkDTO);
-        System.out.println(getEncycleSequence);
         int deleteFromEncycleSort = bookmarkMapper.deleteFromEncycleSort(getEncycleSequence);
-        System.out.println(deleteFromEncycleSort);
         int deleteFromBookmark = bookmarkMapper.deleteFromBookmark(getEncycleSequence);
         return deleteFromBookmark + deleteFromEncycleSort;
     }

@@ -168,4 +168,12 @@ public class BoardServiceImpl implements BoardService{
 
         return boardList;
     }
+
+    public ReplyDTO selectReply(int replyCode) {
+        ReplyDTO reply = null;
+
+        reply = mapper.selectReply(replyCode);
+
+        return reply;
+    }
 }

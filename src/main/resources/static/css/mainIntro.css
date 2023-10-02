@@ -80,6 +80,9 @@
     .informIconBox2 {
         display: none;
     }
+    .informSlider {
+        top: -4px;
+    }
 }
 
 @media (max-width: 1150px) {
@@ -103,6 +106,9 @@
     }
     .informIconBox2 {
         display: block;
+    }
+    .largeNotice {
+        display: none;
     }
 }
 
@@ -304,8 +310,8 @@
     background-color: #A6CEF7;
     font-weight: bold;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .informIcon1 {
@@ -365,7 +371,7 @@
     position: absolute;
     width: 85px;
     height: 29px;
-    margin-left: -627px;
+    top: -30px;
     margin-bottom: 37px;
     background-size: contain;
 }
@@ -375,7 +381,7 @@
     position: absolute;
     width: 85px;
     height: 29px;
-    margin-left: -440px;
+    top: -30px;
     margin-bottom: 37px;
     background-size: contain;
 }
@@ -388,10 +394,11 @@
 }
 
 .Silder2 {
+    position: relative;
     background-image: url("/images/informButtonMiddle.png");
     width: 24px;
     height: 2px;
-    left: 1px;
+    left: -1px;
     display: block;
 }
 
@@ -404,6 +411,7 @@
 
 .informSlider {
     display: block;
+    position: relative;
 }
 
 
@@ -819,7 +827,7 @@
 .logoInGallery {
     position: absolute;
     background-image: url("/images/DAALGAE_LOGO.png");
-    width: 1148px;
+    width: 1135px;
     height: 182px;
     left: -82px;
     top: 480px;
@@ -844,14 +852,13 @@ button{
 /* 슬라이더 로직*/
 
 .slide{
-    width: 1304px;
-    height: 326px;
+    width: 1592px;
+    height: 250px;
     overflow: hidden;
     position: relative;
-    margin: 0 auto;
 }
 .slide ul{
-    width: 5000px;
+    width: 10000px;
     position: relative;
     top:0;
     left:0;
@@ -872,7 +879,7 @@ button{
     position: absolute;
     top: 50%;
     transform: translateY(-29px);
-    right: -680px;
+    right: -968px;
     cursor: pointer;
     z-index: 1;
 }
@@ -882,10 +889,37 @@ button{
     left: 120px;
 }
 .imageSlider {
-    width: 652px;
     position: relative;
+    width: 652px;
 }
 li img {
     position: relative;
     left: -30px;
+}
+
+.imageBox {
+    position: relative;
+}
+
+.noticeEllipsis {
+    width: 300px;
+    white-space  : nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    color: #222;
+}
+
+.noticeEllipsis:hover {
+    color: #222;
+}
+
+.informDown {
+    display: flex;
+    flex-direction: row;
+}
+
+.largeNotice {
+    position: relative;
+    top: -3px;
+    left: -10px;
 }

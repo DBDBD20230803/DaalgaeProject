@@ -14,20 +14,20 @@
     </div>
 </div>
 
-<div class="board-header-menu">
-    <div class="protection">
-        <a th:href="@{/board/abandonedBoard}">보호중인 강아지</a>
+    <div class="board-header-menu">
+        <div class="protection">
+            <button onclick="navigateToAbanPage0()" class="category-button" id="btn0">보호중인 강아지</button>
+        </div>
+        <div class="center">
+            <button onclick="navigateToAbanPage1()" class="category-button" id="btn1">동물보호센터</button>
+        </div>
+        <div class="adoptInfo">
+            <button onclick="navigateToAbanPage2()" class="category-button" id="btn2">입양안내</button>
+        </div>
+        <div class="pickupInfo" id="pickupInfo">
+            <button onclick="navigateToAbanPage3()" class="category-button" id="btn3">습득시 안내</button>
+        </div>
     </div>
-    <div class="center">
-        <a th:href="@{/board/abandonedBoardCenter}">동물보호센터</a>
-    </div>
-    <div class="adoptInfo">
-        <a th:href="@{/board/abandonedBoardAdoptInfo}">입양안내</a>
-    </div>
-    <div class="pickupInfo" id="pickupInfo">
-        <a th:href="@{/board/abandonedBoardPickupInfo}">습득시 안내</a>
-    </div>
-</div>
 
 <div class="board-container container">
     <div class="board-content-container">
@@ -36,9 +36,9 @@
                 <span class="greenText">동물</span>을 입양한 당신이
                 <span class="blueText">자랑</span>스럽습니다!</h1>
             <img th:src="@{/images/adoptInfo-image.png}" alt="handShake-with-a-dog">
-            <h3>강아지를 키우고 싶다면 유기동물 보호시설에서 보호하고있는 유기동물을 입양하는게 어떨까요 ?<br>
+            <h5>강아지를 키우고 싶다면 유기동물 보호시설에서 보호하고있는 유기동물을 입양하는게 어떨까요 ?<br>
                 원하는 동물을 새 식구로 맞이하는 것은 물론 한 생명을 구했다는 자부심으로 가슴이 뿌듯해집니다.
-            </h3>
+            </h5>
         </div>
         <div class="board-content-2">
             <h1>입양 전 진지하게 점검해야 할 체크리스트</h1>
@@ -58,5 +58,26 @@
         </div>
     </div>
 </div>
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            const url = window.location.href;
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            if (url.includes('/abanBoardCenter')) {
+                document.getElementById('btn1').classList.add('active');
+            } else if (url.includes('/abanAdoptInfo')) {
+                document.getElementById('btn2').classList.add('active');
+            } else if (url.includes('/abanPickupInfo')) {
+                document.getElementById('btn3').classList.add('active');
+            } else {
+                document.getElementById('btn0').classList.add('active');
+            }
+        });
+    </script>
 </th:block>
 </html>

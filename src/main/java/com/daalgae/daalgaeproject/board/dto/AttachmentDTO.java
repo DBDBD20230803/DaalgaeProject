@@ -14,5 +14,4 @@ public class AttachmentDTO {
     private String attachThumbAddr;
     private String attachOriginAddr;
     private int refPostCode;
-
 }
