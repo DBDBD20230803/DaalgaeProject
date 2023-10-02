@@ -848,7 +848,6 @@ button{
     height: 250px;
     overflow: hidden;
     position: relative;
-    margin: 0 auto;
 }
 .slide ul{
     width: 10000px;

@@ -1,4 +1,38 @@
 $(document).ready( function() {
+    let w;
+    let count;
+    w = window.innerWidth;
+    if(w > 1770) {
+        $('#next').css('right', '-968px');
+        $('.slide').css('width', '1592px');
+    } else if(w > 1410) {
+        $('#next').css('right', '-570px');
+        $('.slide').css('width', '1194px');
+    } else if(w > 963) {
+        $('#next').css('right', '-172px');
+        $('.slide').css('width', '796px');
+    } else if(w <= 963) {
+        $('#next').css('right', '226px');
+        $('.slide').css('width', '398px');
+    }
+    $(window).on('resize', function() {
+        w = window.innerWidth;
+        if(w > 1770) {
+            $('#next').css('right', '-968px');
+            $('.slide').css('width', '1592px');
+        } else if(w > 1410) {
+            $('#next').css('right', '-570px');
+            $('.slide').css('width', '1194px');
+        } else if(w > 963) {
+            $('#next').css('right', '-172px');
+            $('.slide').css('width', '796px');
+        } else if(w <= 963) {
+            $('#next').css('right', '226px');
+            $('.slide').css('width', '398px');
+        }
+    });
+
+
     /* 이미지 슬라이더용 이미지 */
     $.ajax({
         type:"get",
