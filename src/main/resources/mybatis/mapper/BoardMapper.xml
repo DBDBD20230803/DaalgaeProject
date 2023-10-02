@@ -164,6 +164,7 @@
                  , A.POST_TITLE
                  , A.REF_POST_WRITER
                  , B.MEM_ID
+                 , B.MEM_CODE
                  , A.POST_CONTENT
                  , A.POST_COUNT
                  , A.POST_DATE

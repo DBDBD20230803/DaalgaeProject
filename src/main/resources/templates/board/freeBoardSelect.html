@@ -65,7 +65,8 @@
             <div class="report-button">
                 <form th:action="@{/report/reportPost}" method="post">
                     <input type="hidden" name="postCode" th:value="${board.postCode}">
-                    <input type="hidden" name="postCode" th:value="${board.refPostWriter.memId}">
+                    <input type="hidden" name="refPostWriter.memId" th:value="${board.refPostWriter.memId}">
+                    <input type="hidden" name="refPostWriter.memCode" th:value="${board.refPostWriter.memCode}">
                     <button type="submit">
                         <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                     </button>
@@ -183,7 +184,8 @@
                         <div id="comment-report-button">
                             <form th:action="@{/report/reportReply}" method="post">
                                 <input type="hidden" name="replyCode" th:value="${reply.replyCode}">
-                                <input type="hidden" name="replyCode" th:value="${reply.replyWriterDetail.memId}">
+                                <input type="hidden" name="replyWriterDetail.memId" th:value="${reply.replyWriterDetail.memId}">
+                                <input type="hidden" name="replyWriterDetail.memCode" th:value="${reply.replyWriterDetail.memCode}">
                             <button type="submit">
                                 <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                             </button>
@@ -208,7 +210,7 @@
         </th:block>
     </div>
 
-            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
+            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode}">
                 <form th:action="@{/board/deletePostFree}" id="boardDeleteForm" method="post">
                     <input type="hidden" name="postCode" th:value="${board.postCode}">
                     <div class="updatePost">
@@ -234,6 +236,7 @@
         <div class="logoInPage"></div>
     </div>
     <script>
+
         var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
 
         document.addEventListener('DOMContentLoaded', function () {

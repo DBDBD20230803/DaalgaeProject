@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.admin.service;
 
 import com.daalgae.daalgaeproject.admin.dao.AdminMapper;
+import com.daalgae.daalgaeproject.admin.dto.ReportDTO;
 import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.board.dto.ReplyDTO;
 import com.daalgae.daalgaeproject.common.exception.admin.ReportException;
@@ -19,8 +20,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public void reportPost(BoardDTO board) throws ReportException {
-        int result = mapper.reportPost(board);
+    public void reportPost(ReportDTO report) throws ReportException {
+        int result = mapper.reportPost(report);
 
         if (result > 0) {
             System.out.printf("신고 제출 성공");
@@ -30,8 +31,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public void reportReply(ReplyDTO reply) throws ReportException {
-        int result = mapper.reportReply(reply);
+    public void reportReply(ReportDTO report) throws ReportException {
+        int result = mapper.reportReply(report);
 
         if (result > 0) {
             System.out.printf("신고 제출 성공");

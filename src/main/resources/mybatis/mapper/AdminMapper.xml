@@ -52,4 +52,26 @@
         <result property="refPostCode" column="REF_POST_CODE"/>
     </resultMap>
 
+    <resultMap type="ReportDTO" id="reportResultMap">
+        <id property="reportCode" column="REPORT_CODE"/>
+        <result property="reportDate" column="REPORT_DATE"/>
+        <result property="refReportMemCode" column="REF_REPORT_MEM_CODE"/>
+        <result property="refReportDefanCode" column="REF_REPORT_DEFAN_CODE"/>
+        <result property="reportReason" column="REPORT_REASON"/>
+    </resultMap>
+
+    <insert id="reportPost">
+        INSERT
+        INTO USER_REPORT   (
+                            REF_REPORT_MEM_CODE
+                          , REF_REPORT_DEFAN_CODE
+                          , REPORT_REASON
+        )
+        VALUES  (
+                    #{refReportMemCode}
+                , #{refReportDefanCode}
+                , #{reportReason}
+                )
+    </insert>
+
 </mapper>
