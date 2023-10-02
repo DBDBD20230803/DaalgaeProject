@@ -82,13 +82,16 @@
             </div>
         </form>
     </div>
+        <div class="whiteSpace">
+            <div class="logoInPage"></div>
+        </div>
     </th:block>
     <th:block
             sec:authorize="isAuthenticated()"
             th:if="${ #authentication.getPrincipal().getMemRole() == 'ROLE_USER' }"
     >
         <div style="justify-content: center; display: flex;">
-        <h1>썪 꺼지거라!</h1>
+        <h1>잘못된 접근 입니다.</h1>
         </div>
     </th:block>
 </th:block>

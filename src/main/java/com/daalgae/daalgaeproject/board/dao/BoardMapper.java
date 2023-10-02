@@ -38,4 +38,6 @@ public interface BoardMapper {
     int incrementBoardCount(int no);
 
     BoardDTO selectThumbnailDetail(int no);
+
+    ReplyDTO selectReply(int replyCode);
 }

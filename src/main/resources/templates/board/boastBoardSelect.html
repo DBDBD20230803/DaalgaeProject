@@ -61,6 +61,7 @@
                 <h6 class="postNo" name="postCode" id="postCode" th:text="${board.postCode}"></h6>
                 <h6 class="postCategory" th:text="${board.postSort}"></h6>
                 <input class="postTitle" id="postTitle" name="postTitle" type="text" th:value="${board.postTitle}" readonly />
+                <input id="boardNo" type="hidden" th:value="${board.postCode}"/>
                 <h6 class="postUser" th:text="${board.refPostWriter.memId}"></h6>
                 <h6 class="postCount" th:text="${board.postCount}"></h6>
                 <h6 class="postDate" th:text="${board.postDate}"></h6>
@@ -163,9 +164,12 @@
                             <div id="reply-body" th:text="${ reply.replyCon}"></div>
                             <div id="reply-date" th:text="${ reply.replyDate }"></div>
                             <div id="comment-report-button">
-                                <button>
-                                    <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
-                                </button>
+                                <form th:action="@{/report/report}" method="post">
+                                    <input type="hidden" name="replyCode" th:value="${reply.replyCode}">
+                                    <button type="submit">
+                                        <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
+                                    </button>
+                                </form>
                             </div>
                             <th:block
                                     sec:authorize="isAuthenticated()"
@@ -188,7 +192,7 @@
 
             <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
                 <form th:action="@{/board/deletePostBoast}" id="boardDeleteForm" method="post">
-                    <input type="hidden" name="postCode" id="boardNo" th:value="${board.postCode}">
+                    <input type="hidden" name="postCode" th:value="${board.postCode}">
                     <div class="updatePost">
                         <button id="editButton" type="button">수정</button>
                         <button id="saveButton" type="button" style="display:none;">저장</button>
@@ -208,7 +212,9 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script>
         var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
 
@@ -230,13 +236,8 @@
                 }
                 $(this).val(x);
 
-                const searchValue = searchTextInput.val();
-                localStorage.setItem("searchValue", searchValue);
             });
 
-            if (localStorage.getItem("searchValue")) {
-                searchTextInput.val(localStorage.getItem("searchValue"));
-            }
         });
 
     </script>

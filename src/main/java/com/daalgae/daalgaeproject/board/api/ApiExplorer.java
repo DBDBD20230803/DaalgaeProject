@@ -129,12 +129,12 @@ public class ApiExplorer {
         return abanInfoList;
     }
 
-    public List<CenterDTO> centerInfo(int pageNo, String centerName) throws IOException {
+    public List<CenterDTO> centerInfoSearch(int pageNo, String centerName) throws IOException {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/animalShelterSrvc/shelterInfo"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=n2TVCKryQezP4TokLGOlzGKU7dA%2FnDt%2BclT6rTZ8mJ35FYxpzq6pFdOWfjjmdtqhu9dDX1JymgqA9emw2BwGLA%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("care_reg_no","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*보호센터등록번호*/
         urlBuilder.append("&" + URLEncoder.encode("care_nm","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*동물보호센터명*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("9", "UTF-8")); /*한 페이지 결과 수 (1,000 이하)*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8")); /*한 페이지 결과 수 (1,000 이하)*/
         urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*xml(기본값) 또는 json*/
 
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNo), "UTF-8")); /*페이지 번호*/
@@ -236,7 +236,18 @@ public class ApiExplorer {
             centerInfoDTO.setFeedCnt(feedCnt);
             centerInfoDTO.setTransCarCnt(transCarCnt);
 
-            centerInfoList.add(centerInfoDTO);
+
+
+            if (centerName == null || centerName.isEmpty()) {
+                // "centerName"이 비어있을 때는 전체 리스트 반환
+                centerInfoDTO.setTotalCount(totalCount);
+                centerInfoList.add(centerInfoDTO);
+            } else if (careNm.contains(centerName)) {
+                // "centerName"이 비어있지 않을 때는 "careNm"에 포함된 부분 문자열 검색
+                totalCount = centerInfoList.size();
+                centerInfoDTO.setTotalCount(totalCount);
+                centerInfoList.add(centerInfoDTO);
+            }
         }
 
         return centerInfoList;

@@ -55,8 +55,8 @@ public class BoardAbanController {
     public ModelAndView centerAban(HttpServletRequest request
                                     , @RequestParam(required = false) String searchCondition
                                     , @RequestParam(required = false) String searchValue
-                                    , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                     , @RequestParam(value="centerName", defaultValue = "") String centerName
+                                    , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
                                     , ModelAndView mv) throws IOException {
 
         ApiExplorer abanApi = new ApiExplorer();
@@ -70,15 +70,18 @@ public class BoardAbanController {
         int totalCount = 0;
 
         System.out.println("1. pageNo : " + pageNo);
-        System.out.println("2. centerName : " + centerName);
 
-        List<CenterDTO> centerInfoList = abanApi.centerInfo(pageNo, centerName);
+        List<CenterDTO> centerInfoList = abanApi.centerInfoSearch(pageNo, centerName);
 
         mv.addObject("centerInfoList", centerInfoList);
-        totalCount = centerInfoList.get(0).getTotalCount();
+        if (!centerInfoList.isEmpty()) {
+            totalCount = centerInfoList.get(0).getTotalCount();
+        } else {
+            totalCount = 0; // 검색 결과가 없는 경우 totalCount를 0으로 설정
+        }
         log.info("totalCount : " + totalCount);
 
-        int limit = 9;
+        int limit = 12;
 
         int buttonAmount = 5;
 
@@ -89,45 +92,19 @@ public class BoardAbanController {
         }
 
         mv.addObject("selectCriteria", selectCriteria);
-        mv.addObject("centerName", centerName);
 
         mv.setViewName("board/abanBoardCenter");
 
         return mv;
     }
 
-//    @GetMapping("/abanCenterSelect")
-//    public ModelAndView selectCenter(HttpServletRequest request
-//                                    , @RequestParam(value="currentPage", defaultValue = "1") int pageNo
-//                                    , @RequestParam(value="centerName", defaultValue = "") String centerName
-//                                    , ModelAndView mv) throws IOException {
-//
-//        centerName =request.getParameter("centerName");
-//        System.out.println("1. centerName : " + centerName);
-//
-//        ApiExplorer abanApi = new ApiExplorer();
-//
-//        System.out.println("2. pageNo : " + pageNo);
-//        List<CenterDTO> centerDTOList = abanApi.centerInfo(pageNo, centerName);
-//
-//        AbanInfo abanInfoBDN = new AbanInfo();
-//
-//        AbanInfoDTO abanInfo = abanInfoBDN.getAbanInfoByDesertionNo(centerDTOList, centerName);
-//        System.out.println("4. abanInfo : " + abanInfo);
-//
-//        mv.addObject("abanInfo" , abanInfo);
-//        mv.setViewName("board/abanCenterSelect");
-//
-//        return mv;
-//    }
-
-    @GetMapping("/abanBoardAdoptInfo")
+    @GetMapping("/abanAdoptInfo")
     public ModelAndView adoptInfoAban(ModelAndView mv) {
-        mv.setViewName("board/abanBoardAdoptInfo");
+        mv.setViewName("board/abanAdoptInfo");
         return mv;
     }
 
-    @GetMapping("/abanBoardPickupInfo")
+    @GetMapping("/abanPickupInfo")
     public ModelAndView pickupInfoAban(ModelAndView mv) {
         mv.setViewName("board/abanPickupInfo");
         return mv;

@@ -100,9 +100,19 @@
                         </div>
                     </th:block>
                 </div>
+                <th:block th:if="${ board.attachmentList.size() > 0 }">
+                    <div class="img-tip">
+                        <h6>이미지 클릭시 크게 보실 수 있습니다.</h6>
+                    </div>
+                </th:block>
                 <div class="board-textarea">
                     <textarea cols="120" rows="10" readonly id="postContentText" name="postContent" th:text="${board.postContent}" oninput="autoResizeWrite(this)"></textarea>
                 </div>
+                <th:block th:if="${ board.attachmentList.size() > 0 }">
+                    <div class="img-tip">
+                        <h6>이미지 이름 클릭시 다운 받으실 수 있습니다.</h6>
+                    </div>
+                </th:block>
                 <div class="imgDownload">
                     <th:block th:if="${ board.attachmentList.size() > 0 }">
                         <th:block th:if="${ board.attachmentList[0].attachThumbAddr != null }">
@@ -152,7 +162,9 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
-
+    <div class="whiteSpace">
+        <div class="logoInPage"></div>
+    </div>
     <script>
 
         var memCode = '[[${#authentication.getPrincipal().getMemCode()}]]'
@@ -175,13 +187,8 @@
                 }
                 $(this).val(x);
 
-                const searchValue = searchTextInput.val();
-                localStorage.setItem("searchValue", searchValue);
             });
 
-            if (localStorage.getItem("searchValue")) {
-                searchTextInput.val(localStorage.getItem("searchValue"));
-            }
         });
 
 
