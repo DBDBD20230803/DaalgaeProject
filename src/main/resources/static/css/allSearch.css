@@ -17,7 +17,6 @@ select:focus{
 @media (max-width: 1068px) {
     .tourBoard {
         align-content: center;
-        flex-direction: column;
     }
 }
 
