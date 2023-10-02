@@ -1490,3 +1490,9 @@ button[type="submit"]:hover {
   right: 0px;
   z-index: -10;
 }
+
+.reportForm {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

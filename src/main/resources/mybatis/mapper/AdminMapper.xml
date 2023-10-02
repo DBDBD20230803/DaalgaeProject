@@ -29,9 +29,9 @@
         <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
         <result property="memDogGum" column="MEM_DOG_GUM"/>
         <result property="memRole" column="MEM_ROLE"/>
-        <result property="memBanStatus" column="MEM_BAN_STATUS"/>
         <result property="mailAuth" column="MAIL_AUTH"/>
         <result property="mailKey" column="MAIL_KEY"/>
+        <result property="banPeriod" column="BAN_PERIOD"/>
     </resultMap>
 
     <resultMap type="ReplyDTO" id="replyResultMap">
