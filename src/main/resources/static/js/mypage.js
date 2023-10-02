@@ -2,13 +2,13 @@
 const dogInfo = document.querySelector(".dogInfo");
 const spreadBtn = document.querySelector(".spreadBtn");
 
-spreadBtn.addEventListener('click', function (){
+spreadBtn.addEventListener('click', function () {
 
-    if( dogInfo.style.display === 'none'){
+    if (dogInfo.style.display === 'none') {
         dogInfo.style.display = 'block';
         spreadBtn.innerHTML = "접기 <i class='xi-angle-up-thin xi-x'></i>";
 
-    }else{
+    } else {
         dogInfo.style.display = 'none';
         spreadBtn.innerHTML = "펼치기 <i class='xi-angle-down-thin xi-x'></i>";
 
@@ -18,21 +18,21 @@ spreadBtn.addEventListener('click', function (){
 
 
 (function($) {
-    $(function (){
+    $(function () {
 
         let $myInfobtn = $('#myInfoChange');
         let $changInputs = $('input[class="changeInputs"]');
         let $myId = $('#myId');
 
-        $myInfobtn.click(function (){
+        $myInfobtn.click(function () {
 
-            if($myInfobtn.text() === "수정") {
+            if ($myInfobtn.text() === "수정") {
                 $changInputs.attr('readonly', false);
                 $myId.attr('readonly', false);
                 $changInputs.css('color', '#DAECFF');
                 $myId.css('color', '#DAECFF');
                 $myInfobtn.text("완료");
-            } else if($myInfobtn.text() === "완료"){
+            } else if ($myInfobtn.text() === "완료") {
 
                 $changInputs.attr('readonly', true);
                 $myId.attr('readonly', true);
@@ -42,60 +42,22 @@ spreadBtn.addEventListener('click', function (){
 
                 $(".myPageSubmit").submit();
 
-             }
+            }
 
         });
 
     });
 
 
+    $(function () {
 
-
-    $(document).ready(function () {
-        checkFieldValues();
-
-        $("input[type='text'], input[type='date'], select").on("input change", function () {
-            checkFieldValues();
-        });
-
-
-    function checkFieldValues() {
-        let hasValue = false;
-        $("input[type='text'], input[type='date'], select").each(function () {
-            if ($(this).val()) {
-                hasValue = true;
-                return false;
-            }
-        });
-
-        let $addDoneBtn = $('#addDoneBtn');
-        if (hasValue) {
+        $("#addDoneBtn").click(function () {
             let $addDoneBtn = $('#addDoneBtn');
             let $petInfoInputsTitle = $('.petInfoInputsTitle');
             let $petInput = $('.petInput');
             let $petSelect = $('.petSelect');
 
-            $addDoneBtn.text("수정");
-            $petInfoInputsTitle.attr('readonly', true);
-            $petInput.attr('readonly', true);
-            $petInput.css('color', '#bbbbbb');
-            $petSelect.attr('disabled', true);
-            $petSelect.css('color', '#bbbbbb');
-        } else {
-            $addDoneBtn.text("완료");
-        }
-    }
-
-    $(function (){
-        let $addDoneBtn = $('#addDoneBtn');
-        let $petInfoInputsTitle = $('.petInfoInputsTitle');
-        let $petInput = $('.petInput');
-        let $petSelect = $('.petSelect');
-
-
-        $("#addDoneBtn").click(function (){
-
-            if($addDoneBtn.text() === "완료"){
+            if ($addDoneBtn.text() === "완료") {
 
                 $addDoneBtn.text("수정")
                 $petInfoInputsTitle.attr('readonly', true);
@@ -103,58 +65,68 @@ spreadBtn.addEventListener('click', function (){
                 $petSelect.attr('disabled', true);
                 $petSelect.css('color', '#222222');
 
-            let insertFormData = {
-                petNick: $("#petName").val(),
-                petKind: $("#petBreedName").val(),
-                petBirth: $("#petBirthDay").val(),
-                petGender: $("#petGenderAnswer").val(),
-                petNeutered: $("#petOperAnswer").val(),
-                petWeight: $("#petWeightAnswer").val(),
-                profileText: $(".profileText").val()
-            };
-
-
-            $.ajax({
-                type:"POST",
-                url:"/pet/insertPetInfo",
-                data: JSON.stringify(insertFormData),
-                contentType: "application/json; charset=UTF-8",
-
-                success: function (data, textStatus, xhr){
-                    alert("반려견 정보가 성공적으로 등록되었습니다🐶.!!")
-                },
-                error: function (xhr, status, error){
-                    console.log("오류가 발생했어요..다시 시도해주세요😪" + error.responseText);
-                }
-            });
-
-
-            }else if($addDoneBtn.text() === "수정"){
-              /*  $petInfoInputsTitle.attr('readonly', true);
-                $petInput.attr('readonly', true);
-                $petInput.css('color', '#bbbbbb');
-                $petSelect.attr('disabled', true);
-                $petSelect.css('color', '#bbbbbb');*/
-
-                alert("수정하시겠습니까?");
-
-                $addDoneBtn.text("수정완료");
-
-
-            }else if($addDoneBtn.text() === "수정완료"){
-                $addDoneBtn.text("완료");
-                $petInfoInputsTitle.prop('readonly', false);
-                $petInput.prop('readonly', false);
-                $petSelect.prop('disabled', false);
-
-                let updateFormData = {
+                let insertFormData = {
                     petNick: $("#petName").val(),
                     petKind: $("#petBreedName").val(),
                     petBirth: $("#petBirthDay").val(),
                     petGender: $("#petGenderAnswer").val(),
-                    petNeutered: $("#petOperAnswer").val(),
                     petWeight: $("#petWeightAnswer").val(),
-                    profileText: $(".profileText").val()
+                    petNeutered: $("#petOperAnswer").val()
+                };
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/pet/insertPetInfo",
+                    data: JSON.stringify(insertFormData),
+                    contentType: "application/json; charset=UTF-8",
+
+                    success: function (data, textStatus, xhr) {
+                        alert("반려견 정보가 성공적으로 등록되었습니다🐶.!!")
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("오류가 발생했어요..다시 시도해주세요😪" + error.responseText);
+                    }
+                });
+            };
+
+        });
+
+
+
+        $("#addDoneBtn1").click(function (){
+
+            let $addDoneBtn1 = $('#addDoneBtn1');
+            let $petInfoInputsTitle1 = $('.petInfoInputsTitle');
+            let $petInput1 = $('.petInput');
+            let $petSelect1 = $('.petSelect');
+
+            if ($addDoneBtn1.text() === "수정") {
+                $petInfoInputsTitle1.attr('readonly', true);
+                $petInput1.attr('readonly', true);
+                $petInput1.css('color', '#bbbbbb');
+                $petSelect1.attr('disabled', true);
+                $petSelect1.css('color', '#bbbbbb');
+
+                alert("수정하시겠습니까?");
+
+                $addDoneBtn1.text("수정완료");
+
+
+            } else if ($addDoneBtn1.text() === "수정완료") {
+                $addDoneBtn1.text("완료");
+                $petInfoInputsTitle1.prop('readonly', false);
+                $petInput1.prop('readonly', false);
+                $petSelect1.prop('disabled', false);
+
+                let updateFormData = {
+                    petNick: $("#petName1").val(),
+                    petKind: $("#petBreedName1").val(),
+                    petBirth: $("#petBirthDay1").val(),
+                    petGender: $("#petGenderAnswer1").val(),
+                    petWeight: $("#petWeightAnswer1").val(),
+                    petNeutered: $("#petOperAnswer1").val()
+
                 };
 
                 $.ajax({
@@ -162,20 +134,19 @@ spreadBtn.addEventListener('click', function (){
                     url: "/pet/updatePetInfo",
                     data: JSON.stringify(updateFormData),
                     contentType: "application/json; charset=UTF-8",
-                    success: function (data, textStatus, xhr){
+                    success: function (data, textStatus, xhr) {
                         alert("반려견 정보가 성공적으로 수정되었습니다!🎀");
                     },
-                    error: function (xhr, status, error){
+                    error: function (xhr, status, error) {
                         alert("오류가 발생했어요..다시 시도해주세요😪" + error.responseText);
                     }
                 });
-                $addDoneBtn.text("수정");
-            }
+                $addDoneBtn1.text("수정");
+            };
 
         });
 
 
     });
 
-    });
 })(jQuery);

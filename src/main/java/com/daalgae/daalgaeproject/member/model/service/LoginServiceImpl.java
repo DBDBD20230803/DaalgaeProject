@@ -58,16 +58,20 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(@RequestParam("username") String memId) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(@RequestParam("username") String memId){
 
         log.info("[LoginService] ========================");
         log.info("[LoginService] memId : " + memId);
 
         MemberDTO member = memberDAO.findMemberById(memId);
 
+        log.info("member : " + member);
+        log.info("member : " + member);
+
         if(member == null){
             member = new MemberDTO();
         }
+
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
@@ -78,12 +82,18 @@ public class LoginServiceImpl implements LoginService {
         }
 
         boolean mailAuth = member.getMailAuth() == 1;
-        log.info("membId : " + memId);
+        boolean banPeriod = "N".equals(member.getBanPeriod());
+        boolean memWithdrawal = member.getMemWithdrawal() == null;
 
-        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, authorities);
+        log.info("확인용 : " + banPeriod + memWithdrawal);
+
+
+        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, memWithdrawal, banPeriod, authorities);
         user.setDetails(member);
         return user;
     }
+
+
 
 
     @Transactional
@@ -208,6 +218,28 @@ public class LoginServiceImpl implements LoginService {
             throw new MemberModifyException("회원 정보 수정에 실패하셨습니다.");
         }
     }
+
+    @Transactional
+    public void modifyPwd(MemberDTO memberDTO) throws MemberModifyException{
+        System.out.printf("비밀번호 수정 : " + memberDTO);
+        int result = memberDAO.modifyPwd(memberDTO);
+
+        if(!(result > 0)){
+            throw new MemberModifyException("비밀번호 수정에 실패했습니다...");
+        }
+    }
+
+    @Transactional
+    public void memberDelete(MemberDTO memberDTO) throws MemberModifyException {
+        System.out.println("회원 탈퇴 : " + memberDTO);
+
+        int result = memberDAO.memberDelete(memberDTO);
+
+        if(!(result > 0)) {
+            throw new MemberModifyException("회원 탈퇴에 실패했습니다.");
+        }
+    }
+
 }
 
 

@@ -51,5 +51,9 @@ public interface MemberDAO {
 
     int modifyMember(MemberDTO memberDTO);
 
+    int modifyPwd(MemberDTO memberDTO);
+
+    int memberDelete(MemberDTO memberDTO);
+
 }
 

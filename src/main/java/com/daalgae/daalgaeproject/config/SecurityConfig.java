@@ -49,6 +49,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/matchginTest/*", "/webtoon/*","/daalgaeEncyclopedia/*").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/board/*").hasAnyRole("ADMIN", "USER")
                  .antMatchers("/login").hasAnyAuthority("USER")
+                 .antMatchers("/login").access("hasAnyAuthority('USER') and (memBanStatus == 'N') and memWithdrawal == null")
                  .antMatchers("/login/loginFindId", "/login/loginFindPwd").permitAll()
                  .anyRequest().permitAll()
                 .and()

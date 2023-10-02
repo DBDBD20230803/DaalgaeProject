@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class UserImpl extends User{
+public class UserImpl extends User {
     private int memCode;
     private String memId;
     private String memPwd;
@@ -24,14 +25,13 @@ public class UserImpl extends User{
     private Date memWithdrawal;
     private int memDogGum;
     private String memRole;
-    private String memBanStatus;
     private int mailAuth;
     private String mailKey;
+    private Date banPeriod;
 
-    public UserImpl(String username, String password, boolean mailAuth, Collection<? extends GrantedAuthority> authorities) {
+    public UserImpl(String username, String password, boolean mailAuth, boolean memWithdrawal, boolean banPeriod, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
-
 
 
     public void setDetails(MemberDTO member) {
@@ -46,15 +46,15 @@ public class UserImpl extends User{
         this.memWithdrawal = member.getMemWithdrawal();
         this.memDogGum = member.getMemDogGum();
         this.memRole = member.getMemRole();
-        this.memBanStatus = member.getMemBanStatus();
         this.mailAuth = member.getMailAuth();
         this.mailKey = member.getMailKey();
+        this.banPeriod = member.getBanPeriod();
     }
 
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return memWithdrawal == null;
     }
 
     @Override
@@ -69,8 +69,17 @@ public class UserImpl extends User{
 
     @Override
     public boolean isEnabled() {
-        return true;
+        Date currentDate = new Date();
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+
+        if (banPeriod == null || banPeriod.compareTo(currentDate) < 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
-
 }
-
