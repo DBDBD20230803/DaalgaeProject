@@ -166,7 +166,14 @@ function getPost(orderApply, postType) {
                     "        </div>");
             }
             for(let postInfo of data) {
-                let url = "<a class='boardLink' href=\"/board/freeBoardSelect?no=" + postInfo.post_Code + "\">";
+                let url;
+                if(postType == '자유') {
+                    url = "<a class='boardLink' href=\"/board/freeBoardSelect?no=" + postInfo.post_Code + "\">";
+                }
+                if(postType == '공지') {
+                    url = "<a class='boardLink' href=\"/board/annoBoardSelect?no=" + postInfo.post_Code + "\">";
+                }
+
                 $('.board-container').eq(orderApply).append(url);
                 $('.boardLink').last().append("<div class=\"postList\">");
                 $('.postList').last().append("<h6 class=\"testPost-postNo\">" + postInfo.post_Code +"</h6>");
