@@ -96,7 +96,9 @@
         </div>
         <div class="webtoonBox5">
             <form>
+                <div id="postInfo" data-post-code="${boardDTO.postCode}"></div>
                 <input id="memberValue2" th:value="${member}" type="hidden">
+                <input id="user" th:value="${memCode}" type="hidden">
             <button id="button3" class="webtoonText9" type="submit" >구매하기</button>
             </form>
             <form action="/payment/payments" method="post">

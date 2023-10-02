@@ -3,6 +3,7 @@ package com.daalgae.daalgaeproject.payment.controller;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
+import com.daalgae.daalgaeproject.payment.dto.UseHistory;
 import com.daalgae.daalgaeproject.payment.service.KakaoPayService;
 import com.daalgae.daalgaeproject.webtoon.service.WebtoonService;
 import lombok.Data;
@@ -13,11 +14,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("payment")
@@ -122,6 +121,7 @@ public class KakaoPayController {
             int member = webtoonService.getMemberByMemCode(memCode);
             System.out.println(member);
             List<OrderPay> orderPays = kakaoPayService.getAllPayment(memCode);
+            System.out.println("날짜 제대로 가져오냐 ?: " + orderPays);
             model.addAttribute("member", member);
             model.addAttribute("orderPays", orderPays);
 
@@ -145,6 +145,26 @@ public class KakaoPayController {
             model.addAttribute("member", member);
         }
         return "payment/useHistoryEmpty";
+    }
+
+    @GetMapping("/userDogGum")
+    public String purchaseDogGum(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication.getPrincipal() instanceof UserImpl) {
+            UserImpl user = (UserImpl) authentication.getPrincipal();
+            int memCode = user.getMemCode();
+
+            int member = webtoonService.getMemberByMemCode(memCode);
+
+            int dogGumUseCode = 0 ;
+            List<UseHistory> useDogGumList = kakaoPayService.getUserAllFind(dogGumUseCode);
+
+            model.addAttribute("member", member);
+            model.addAttribute("useDogGumList", useDogGumList);
+
+        }
+        return "payment/purchaseDogGum";
     }
 }
 

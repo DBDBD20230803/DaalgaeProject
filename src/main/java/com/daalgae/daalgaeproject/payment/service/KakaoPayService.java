@@ -2,17 +2,14 @@ package com.daalgae.daalgaeproject.payment.service;
 
 
 import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
-import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
 import com.daalgae.daalgaeproject.payment.dto.*;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import groovy.util.logging.Log4j2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -187,7 +184,13 @@ public class KakaoPayService {
 
 
     public List<OrderPay> getAllPayment(Integer memCode) {
+        System.out.println("서비스임 ... 날짜데이타ㅓ.." + memCode);
         return orderPayMapper.userSelect(memCode);
+    }
+
+    public List<UseHistory> getUserAllFind (int dogGumUseCode) {
+        System.out.println("userTable 가져오냐 ? : " + dogGumUseCode);
+        return orderPayMapper.userAllFind(dogGumUseCode);
     }
 
     }

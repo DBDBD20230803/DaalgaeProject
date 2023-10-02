@@ -3,7 +3,6 @@ package com.daalgae.daalgaeproject.member.model.dao;
 import com.daalgae.daalgaeproject.member.model.dto.MemberDTO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -35,11 +34,10 @@ public interface MemberDAO {
 
     // MemDogGum 업데이트를 위해 작성하였습니다 --선호
     List<MemberDTO> memDogGum(Map<String, List<Integer>> memCode);
+
     int updateMemDogGum(UserImpl member);
 
     int getMemberByMemCode (int memCode);
-
-    int purchaseDogGumus (@Param("memCode") int memCode, @Param("memDogGum") int memDogGum);
 
     List<MemberDTO> findId(MemberDTO memberDTO);
 
@@ -50,6 +48,8 @@ public interface MemberDAO {
     MemberDTO mypageRead(String memId);
 
     int modifyMember(MemberDTO memberDTO);
+
+    int purchaseDogGumus(int memCode);
 
 }
 

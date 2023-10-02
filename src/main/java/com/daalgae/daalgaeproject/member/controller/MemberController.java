@@ -211,7 +211,6 @@ public class MemberController {
         return "regist/emailAuthSuccess";
     }
 
-
     @GetMapping("/mypage")
     public String mypageForm(Principal principal, Model model, PetDTO petDTO){
         log.info("마이페이지로 이동!!!!!!!!!!!!!");
@@ -285,6 +284,11 @@ public class MemberController {
         return "/myPage/updateComplete";
     }
 
+    /*==================================== 선호*/
+    @GetMapping("activitys")
+    public String goActivity () {
+        return "/myPage/activitys";
+    }
 
 
 }

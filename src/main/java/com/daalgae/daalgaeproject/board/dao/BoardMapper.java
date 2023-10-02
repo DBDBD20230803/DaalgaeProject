@@ -38,4 +38,8 @@ public interface BoardMapper {
     int incrementBoardCount(int no);
 
     BoardDTO selectThumbnailDetail(int no);
+
+    int dogGumUse (int postCode);
+
+    List<BoardDTO> userDogGum(int postCode);
 }

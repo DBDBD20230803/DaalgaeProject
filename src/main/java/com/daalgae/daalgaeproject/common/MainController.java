@@ -37,5 +37,7 @@ public class MainController {
         System.out.println(category);
         return "/allSearch/allSearch";
     }
+
+
 }
 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+
+  <title>결제페이지</title>
+
+  <!--styleSheet-->
+  <link rel="stylesheet" th:href="@{/css/payment.css}">
+
+  <!--meta-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!--bootstrap-->
+  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <!--css-->
+  <!--<link rel="stylesheet" href="/css/index.css">-->
+  <link rel="stylesheet" th:href="@{/css/index.css}">
+  <!--<link rel="stylesheet" href="/css/mobile.css">-->
+  <link rel="stylesheet" th:href="@{/css/mobile.css}">
+  <!--<link rel="stylesheet" href="/css/sanitize.css">-->
+  <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <!--js-->
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script type="text/javascript" th:src="@{/js/header.js}"></script>
+
+
+  <!--favicon--->
+  <link href="favicon.ico" rel="icon">
+  <link href="favicon.ico" rel="apple-touch-icon">
+  <script type="text/javascript" th:src="@{/js/tour.js}"></script>
+
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+  <!--thymeleaf-->
+</head>
+<body>
+<div id="headers">
+  <th:block th:include="component/header.html"></th:block>
+</div>
+<div class="paymentBg">
+  <h3>오늘도 댕댕하개!</h3>
+</div>
+
+<div class="container">
+  <div class="paymentBox1">
+  </div>
+
+  <div class="payment101">
+    <img th:src="@{/images/denggum.png}" alt="개껌이미지">
+    <div class="payment102">현재 보유한 개껌</div>
+    <div class="payment103"><span th:text="${member}"></span><span class="payment103">개</span></div>
+  </div>
+</div>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>날짜</th>
+    <th>구매 웹툰</th>
+    <th>사용한 개껌</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="useDogGumList : ${useDogGumList}">
+    <td th:text="${#dates.format(useDogGumList.getDogGumUseDate,'yyyy-MM-dd')}"></td>
+    <td th:text="${useDogGumList.getRefPostCode}"></td>
+    <td th:text="${useDogGumList.getDogGumUseAmount}"></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+</body>
+</html>
