@@ -100,7 +100,7 @@ function getTour(categoreValue, orderApply) {
             if(data.length == 0) {
                 $('.tourBoard').eq(orderApply).append("<div class=\"noSearchData\">");
                 $('.noSearchData').last().append("검색 결과가 없습니다");
-                $('.isNoData').eq(0).remove();
+                $('.isNoData').eq(orderApply).prop("display", "none");
             }
             for(let tourInfo of data) {
                 $('.tourBoard').eq(orderApply).append("<div class=\"tourBoardUnit\">");
@@ -126,6 +126,9 @@ function getTour(categoreValue, orderApply) {
                 $('.telNums').last().append(tourInfo.tel);
                 $('.telNums').last().prop("title", tourInfo.tel);
             }
+            if(data.length != 0) {
+                $('.tourBoard').eq(orderApply).append("<div class=\"allSearchWhiteSpace\"></div>");
+            }
         },
         error:function() {
             // console.log("통신에러3");
@@ -147,9 +150,7 @@ function getPost(orderApply, postType) {
             if(data.length == 0) {
                 $('.postBoard').eq(orderApply).append("<div class=\"noSearchData\">");
                 $('.noSearchData').last().append("검색 결과가 없습니다");
-                $('.isNoData').eq(0).remove();
-                $('.isNoData').eq(0).remove();
-                $('.isNoData').eq(0).remove();
+                $('.isNoData').eq(orderApply).remove();
             }
             if(data.length != 0) {
                 $('.postBoard').eq(orderApply).append("<div class=\"board-container\">\n" +
