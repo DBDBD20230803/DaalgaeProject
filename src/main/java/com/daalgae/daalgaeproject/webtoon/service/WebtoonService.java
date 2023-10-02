@@ -41,12 +41,14 @@ public class WebtoonService {
     @Transactional
     public int getPostCode(Integer postCode) {
         System.out.println("서비스 로직 : " + postCode);
-        return boardMapper.dogGumUse(postCode);
+//        return boardMapper.dogGumUse(postCode);
+        return 0;
     }
 
     public List<BoardDTO> userDogGum(int postCode) {
 
-        return boardMapper.userDogGum(postCode);
+//        return boardMapper.userDogGum(postCode);
+        return null;
     }
 
        /*@Transactional(rollbackFor = Exception.class)
