@@ -82,13 +82,13 @@ public class LoginServiceImpl implements LoginService {
         }
 
         boolean mailAuth = member.getMailAuth() == 1;
-        boolean memBanStatus = "N".equals(member.getMemBanStatus());
+        boolean banPeriod = "N".equals(member.getBanPeriod());
         boolean memWithdrawal = member.getMemWithdrawal() == null;
 
-        log.info("확인용 : " + memBanStatus + memWithdrawal);
+        log.info("확인용 : " + banPeriod + memWithdrawal);
 
 
-        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, memWithdrawal, memBanStatus, authorities);
+        UserImpl user = new UserImpl(member.getMemId(), member.getMemPwd(), mailAuth, memWithdrawal, banPeriod, authorities);
         user.setDetails(member);
         return user;
     }

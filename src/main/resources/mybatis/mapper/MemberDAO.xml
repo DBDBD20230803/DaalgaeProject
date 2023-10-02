@@ -17,9 +17,9 @@
         <result property="memWithdrawal" column="MEM_WITHDRAWAL"/>
         <result property="memDogGum" column="MEM_DOG_GUM"/>
         <result property="memRole" column="MEM_ROLE"/>
-        <result property="memBanStatus" column="MEM_BAN_STATUS"/>
         <result property="mailAuth" column="MAIL_AUTH"/>
         <result property="mailKey" column="MAIL_KEY"/>
+        <result property="banPeriod" column="BAN_PERIOD"/>
     </resultMap>
 
 
@@ -98,9 +98,9 @@
              , A.MEM_ADRS_DETAIL
              , A.MEM_WITHDRAWAL
              , A.MEM_ROLE
-             , A.MEM_BAN_STATUS
              , A.MAIL_AUTH
              , A.MAIL_KEY
+             , A.BAN_PERIOD
         FROM MEM_INFO A
         WHERE A.MEM_ID = #{ memId }
     </select>

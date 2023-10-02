@@ -26,9 +26,9 @@ public class MemberDTO {
     private Date memWithdrawal;
     private int memDogGum;
     private String memRole;
-    private String memBanStatus;
     private int mailAuth;
     private String mailKey;
+    private Date banPeriod;
 
 
     public int isMailAuth() {
@@ -37,7 +37,7 @@ public class MemberDTO {
 
     public Date isMemWithDrawal () {return memWithdrawal;}
 
-    public String isMemBanStatus() {return memBanStatus;}
+    public Date isMemBanStatus() {return banPeriod;}
 
 
 }
