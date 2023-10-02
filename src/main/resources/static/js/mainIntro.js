@@ -1,6 +1,5 @@
 $(document).ready( function() {
     let w;
-    let count;
     w = window.innerWidth;
     if(w > 1770) {
         $('#next').css('right', '-968px');

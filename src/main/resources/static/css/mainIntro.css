@@ -889,6 +889,7 @@ button{
     left: 120px;
 }
 .imageSlider {
+    position: relative;
     width: 652px;
 }
 li img {
