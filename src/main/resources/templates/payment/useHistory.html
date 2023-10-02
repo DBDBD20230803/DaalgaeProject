@@ -115,15 +115,15 @@
     <tr>
         <th>결제 일자</th>
         <th>결제 금액</th>
-        <th>개껌 잔여</th>
+        <th>개껌 사용량</th>
         <th>결제 아이템</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="orderPays : ${orderPays}">
-        <td th:text="${#dates.format(orderPays.getDogGumPayDate(), 'yyyy-MM-dd')}"></td>
-        <td th:text="${orderPays.getDogGumPayMethod()}"></td>
+        <td th:text="${orderPays.getDogGumPayDate()}"></td>
         <td th:text="${orderPays.getDogGumPay()}"></td>
+        <td th:text="${orderPays.getMemDogGum()}"></td>
         <td th:text="${orderPays.getDogItemName()}"></td>
     </tr>
     </tbody>

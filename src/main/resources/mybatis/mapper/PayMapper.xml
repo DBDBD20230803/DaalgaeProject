@@ -9,17 +9,18 @@
         <id property="dogGumPayTid" column="DOG_GUM_PAY_TID"/>
         <result property="dogGumPayMethod" column="DOG_GUM_PAY_METHOD"/>
         <result property="dogGumPay" column="DOG_GUM_PAY"/>
-        <result property="DOG_GUM_PAY_DATE" column="dogGumPayDate"/>
+        <result property="dogGumPayDate" column="DOG_GUM_PAY_DATE"/>
         <result property="dogItemName" column="DOG_ITEM_NAME"/>
         <result property="refMemCode" column="REF_MEM_CODE"/>
     </resultMap>
 
-    <!--<select id="findAllPay" resultMap="approveResultMap">
-            SELECT DOG_GUM_PAY_CODE
-                    , MEM_CODE
-        FROM DOG_GUM_PAY
-
-    </select>-->
+  <resultMap id="userDogGum" type="com.daalgae.daalgaeproject.payment.dto.UseHistory">
+      <id property="dogGumUseCode" column="DOG_GUM_USE_CODE"/>
+      <result property="dogGumUseDate" column="DOG_GUM_USE_DATE"/>
+      <result property="dogGumUseAmount" column="DOG_GUM_USE_AMOUNT"/>
+      <result property="refPostCode" column="REF_POST_CODE"/>
+      <result property="refMemCode" column="REF_MEM_CODE"/>
+  </resultMap>
 
     <insert id="orderRegist" parameterType="com.daalgae.daalgaeproject.payment.dto.OrderPay">
         INSERT INTO DOG_GUM_PAY (
@@ -40,4 +41,80 @@
             )
     </insert>
 
+    <select id="userSelect" resultMap="approveResultMap">
+        SELECT
+                DOG_GUM_PAY_METHOD
+                ,DOG_GUM_PAY_DATE
+                ,DOG_GUM_PAY
+                ,DOG_ITEM_NAME
+        FROM
+            DOG_GUM_PAY
+        WHERE
+            REF_MEM_CODE = #{ refMemCode }
+    </select>
+
+
+    <insert id="insertDogGumUse" parameterType="com.daalgae.daalgaeproject.payment.dto.UseHistory">
+        INSERT INTO DOG_GUM_USE (
+                                DOG_GUM_USE_DATE
+                                ,DOG_GUM_USE_AMOUNT
+                                ,REF_MEM_CODE
+                                ,REF_POST_CODE
+                                )
+        VALUES (
+                #{ dogGumUseDate }
+                ,#{ dogGumUseAmount }
+                ,#{ refMemCode }
+        ,#{ refPostCode, jdbcType=INTEGER }
+                )
+    </insert>
+    <select id="userAllFind" resultMap="userDogGum">
+        SELECT
+                DOG_GUM_USE_CODE
+                ,DOG_GUM_USE_DATE
+                ,DOG_GUM_USE_AMOUNT
+                ,REF_POST_CODE
+                ,REF_MEM_CODE
+        FROM
+                DOG_GUM_USE
+<!--        WHERE-->
+<!--                 REF_MEM_CODE = #{ refMemCode }-->
+    </select>
+
+    <select id="purchaseGumus" resultType="Integer" parameterType="java.util.Map" >
+        SELECT REF_POST_CODE
+        FROM
+                DOG_GUM_USE
+        WHERE
+                REF_MEM_CODE = #{ refMemCode }
+        AND
+                REF_POST_CODE = #{ refPostCode }
+    </select>
+
+    <select id="checkDuplicateDogGum" resultType="boolean" parameterType="map" >
+        SELECT
+                COUNT(*) > 0
+        FROM
+                DOG_GUM_USE
+        WHERE
+                REF_MEM_CODE = #{ refMemCode }
+        AND
+                DOG_GUM_USE_DATE = #{ dogGumUseDate }
+        AND
+                REF_POST_CODE = #{ refPostCode }
+    </select>
+
+<select id="duplicateDogGum" parameterType="map" resultType="int">
+    SELECT
+            COUNT(*)
+    FROM
+            DOG_GUM_USE
+    WHERE
+            REF_MEM_CODE = #{ refMemCode }
+    AND
+            DOG_GUM_USE_DATE = #{ dogGumUseDate }
+    AND
+            REF_POST_CODE = #{ refPostCode }
+
+</select>
 </mapper>

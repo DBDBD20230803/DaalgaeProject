@@ -278,5 +278,11 @@
         WHERE A.POST_CODE = #{ no }
     </select>
 
+    <select id="dogGumUse" resultMap="boardResultMap">
+        SELECT POST_CODE
+        FROM POST_INFO
+        WHERE POST_CODE = #{ postCode }
+    </select>
+
 </mapper>
 

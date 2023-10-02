@@ -35,5 +35,7 @@ public class MainController {
     public String allSearch(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "category", required = false) String category) {
         return "/allSearch/allSearch";
     }
+
+
 }
 

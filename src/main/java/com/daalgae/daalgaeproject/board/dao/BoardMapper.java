@@ -40,4 +40,5 @@ public interface BoardMapper {
     BoardDTO selectThumbnailDetail(int no);
 
     ReplyDTO selectReply(int replyCode);
+
 }
