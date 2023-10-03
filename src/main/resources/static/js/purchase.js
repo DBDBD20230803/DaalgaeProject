@@ -7,10 +7,53 @@ $(document).ready(function () {
         let month = String(currentDate.getMonth() + 1).padStart(2, '0');
         let day = String(currentDate.getDate()).padStart(2, '0');
         let dogGumUseDate = `${year}-${month}-${day}`;
-
+        let requiredDogGum = 2;
         let memDogGum = $("#memberValue2").val();
-        let refMemCode = $("#user").val();
-        let refPostCode = $("#refPostCode")
+        if (memDogGum >= requiredDogGum) {
+            let dogGumUseAmount = requiredDogGum
+            $("#memberValue").val(memDogGum);
+            $.ajax({
+                url: "/webtoon/purchaseDogGum",
+                type: "POST",
+                data: {
+                    memDogGum : memDogGum,
+                    dogGumUseDate: dogGumUseDate,
+                    dogGumUseAmount : dogGumUseAmount,
+                },
+                success: function (data) {
+                    if (data === "success") {
+                        alert("구매하기 완료")
+                        $("#button31").text("보기")
+                        window.location.href = "/webtoon/webtoonDetail";
+                    } else if (date === "duplicate"){
+                        alert("이미 구매한 상품입니다.")
+                        $("#button31").text("보기")
+                        window.location.href = "/webtoon/webtoonDetail";
+                    }else {
+                        alert ("개껌이 부족합니다.")
+                    }
+                },
+                error: function () {
+                    alert("서버 오류 또는 요청실패");
+                }
+            });
+            return false;
+        } else {
+            alert("개껌이 부족합니다.");
+            return false;
+        }
+    });
+});
+
+$(document).ready(function () {
+    $("#button4").click(function () {
+        let currentDate = new Date();
+        let year = currentDate.getFullYear();
+        let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        let day = String(currentDate.getDate()).padStart(2, '0');
+        let dogGumUseDate = `${year}-${month}-${day}`;
+
+        let memDogGum = $("#memberValue").val();
         let requiredDogGum = 2;
         if (memDogGum >= requiredDogGum) {
             let dogGumUseAmount = requiredDogGum
@@ -22,7 +65,6 @@ $(document).ready(function () {
                     memDogGum : memDogGum,
                     dogGumUseDate: dogGumUseDate,
                     dogGumUseAmount : dogGumUseAmount,
-                    refMemCode : refMemCode,
                 },
                 success: function (data) {
                     if (data === "success") {
@@ -50,24 +92,39 @@ $(document).ready(function () {
 });
 
 
+
 $(document).ready(function () {
-    $("#button4").click(function () {
-        let memDogGum = $("#memberValue").val();
-        // let memDogGum = parseInt($("#memberValue").val(),10);
+    $("#button5").click(function () {
+        let currentDate = new Date();
+        let year = currentDate.getFullYear();
+        let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        let day = String(currentDate.getDate()).padStart(2, '0');
+        let dogGumUseDate = `${year}-${month}-${day}`;
+
+        let memDogGum = $("#memberValue1").val();
         let requiredDogGum = 2;
         if (memDogGum >= requiredDogGum) {
-            // memDogGum - requiredDogGum;
+            let dogGumUseAmount = requiredDogGum
             $("#memberValue").val(memDogGum);
             $.ajax({
                 url: "/webtoon/purchaseDogGum",
                 type: "POST",
-                data: {memDogGum},
+                data: {
+                    memDogGum : memDogGum,
+                    dogGumUseDate: dogGumUseDate,
+                    dogGumUseAmount : dogGumUseAmount,
+                },
                 success: function (data) {
                     if (data === "success") {
                         alert("구매하기 완료")
+                        $("#button31").text("보기")
                         window.location.href = "/webtoon/webtoonDetail";
-                    } else {
-                        alert("개껌이 부족합니다.")
+                    } else if (date === "duplicate"){
+                        alert("이미 구매한 상품입니다.")
+                        $("#button31").text("보기")
+                        window.location.href = "/webtoon/webtoonDetail";
+                    }else {
+                        alert ("개껌이 부족합니다.")
                     }
                 },
                 error: function () {
@@ -81,8 +138,6 @@ $(document).ready(function () {
         }
     });
 });
-
-
 
 function buyGum() {
     let memDogGum = $("#memberValue1").val();

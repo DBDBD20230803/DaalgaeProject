@@ -5,6 +5,7 @@ import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
 import com.daalgae.daalgaeproject.payment.dto.*;
+import com.daalgae.daalgaeproject.webtoon.model.dto.UseHistory;
 import groovy.util.logging.Log4j2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

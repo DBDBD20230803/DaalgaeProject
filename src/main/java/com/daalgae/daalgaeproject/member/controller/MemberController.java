@@ -311,12 +311,6 @@ public class MemberController {
         return "/myPage/updateComplete";
     }
 
-    /*==================================== 선호*/
-    @GetMapping("activitys")
-    public String goActivity () {
-        return "/myPage/activitys";
-    }
-
     @GetMapping("/pwdReset")
     public String modifyPwdForm(){
         return "myPage/pwdReset";

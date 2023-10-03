@@ -2,10 +2,8 @@ package com.daalgae.daalgaeproject.webtoon.controller;
 
 
 import com.daalgae.daalgaeproject.board.dao.BoardMapper;
-import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
-import com.daalgae.daalgaeproject.payment.dto.UseHistory;
 import com.daalgae.daalgaeproject.webtoon.service.WebtoonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -14,14 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 
 @Controller
-@RequestMapping("/webtoon")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class WebtoonController {
 
@@ -29,7 +22,7 @@ public class WebtoonController {
     private final OrderPayMapper orderPayMapper;
     private final BoardMapper boardMapper;
 
-    @GetMapping("/dengInfo")
+    @GetMapping("webtoon/dengInfo")
     public String goWebtoon(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -50,7 +43,7 @@ public class WebtoonController {
     }
 
 
-    @GetMapping("/webtoonDetail")
+    @GetMapping("webtoon/webtoonDetail")
     public String goWebtoonDetailPage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -67,7 +60,7 @@ public class WebtoonController {
         return "webtoon/webtoonDetail";
     }
 
-  /*  @PostMapping("/purchaseDogGum")
+   /* @PostMapping("/purchaseDogGum")
     @ResponseBody
     public String purchaseDogGum(@RequestParam("memDogGum") Integer memDogGum) {
         boolean success = webtoonService.purchaseDogGum(memDogGum);
@@ -115,17 +108,20 @@ public class WebtoonController {
             return "purchase failed";
         }
     }*/
-   @PostMapping("/purchaseDogGum")
+   @PostMapping("webtoon/purchaseDogGum")
    @ResponseBody
    public String purchaseDongGum(
            @RequestParam String dogGumUseDate,
            @RequestParam int dogGumUseAmount,
-           @RequestParam int refMemCode,
-           @RequestParam Integer memDogGum) {
+           @RequestParam int memDogGum) {
 
        System.out.println("컨트롤러 진입했니 ???....");
-       String result = webtoonService.purchaseDogGum(dogGumUseDate, dogGumUseAmount,refMemCode, memDogGum, refMemCode);
+       String result = webtoonService.purchaseDogGum(dogGumUseDate, dogGumUseAmount, memDogGum);
        System.out.println("컨트롤러 결과값 한번 보자 : " + result);
         return result;
+   }
+   @GetMapping("myPage/activitys")
+    public String goActivity () {
+       return "activity/activitys";
    }
 }

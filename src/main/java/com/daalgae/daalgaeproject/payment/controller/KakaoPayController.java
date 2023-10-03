@@ -3,7 +3,7 @@ package com.daalgae.daalgaeproject.payment.controller;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dto.KakaoApprove;
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
-import com.daalgae.daalgaeproject.payment.dto.UseHistory;
+import com.daalgae.daalgaeproject.webtoon.model.dto.UseHistory;
 import com.daalgae.daalgaeproject.payment.service.KakaoPayService;
 import com.daalgae.daalgaeproject.webtoon.service.WebtoonService;
 import lombok.Data;
@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
