@@ -65,7 +65,20 @@
                     AND (ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%')
                 </if>
                 <if test="country != '수도'">
-                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                    <choose>
+                        <when test = "country == '경상'">
+                            AND (ADDR like '%경상%' or ADDR like '%울산%' or ADDR like '%부산%' or ADDR like '%대구%')
+                        </when>
+                        <when test = "country == '충청'">
+                            AND (ADDR like '%충청%' or ADDR like '%대전%')
+                        </when>
+                        <when test = "country == '전라'">
+                            AND (ADDR like '%전라%' or ADDR like '%광주%')
+                        </when>
+                        <otherwise>
+                            AND ADDR LIKE CONCAT('%', '${country}', '%')
+                        </otherwise>
+                    </choose>
                 </if>
             </if>
             <if test="category != 'null' and category != '분류' and category != '전체'">
@@ -90,7 +103,20 @@
                     AND (ADDR like '%서울%' or ADDR like '%경기%' or ADDR like '%인천%')
                 </if>
                 <if test="country != '수도'">
-                    AND ADDR LIKE CONCAT('%', '${country}', '%')
+                    <choose>
+                        <when test = "country == '경상'">
+                            AND (ADDR like '%경상%' or ADDR like '%울산%' or ADDR like '%부산%' or ADDR like '%대구%')
+                        </when>
+                        <when test = "country == '충청'">
+                            AND (ADDR like '%충청%' or ADDR like '%대전%')
+                        </when>
+                        <when test = "country == '전라'">
+                            AND (ADDR like '%전라%' or ADDR like '%광주%')
+                        </when>
+                        <otherwise>
+                            AND ADDR LIKE CONCAT('%', '${country}', '%')
+                        </otherwise>
+                    </choose>
                 </if>
             </if>
             <if test="category != 'null' and category != '분류' and category != '전체'">

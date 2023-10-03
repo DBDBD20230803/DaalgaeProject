@@ -100,7 +100,6 @@ $(document).ready( function() {
             // console.log("통신에러3");
         }
     });
-    console.log(noticeData);
     let notice1 = noticeData[0].postTitle;
     let date1 = noticeData[0].postDate;
     let url1 = "/board/annoBoardSelect?no=" + noticeData[0].postCode;
