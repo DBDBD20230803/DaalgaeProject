@@ -181,7 +181,7 @@ function getPost(orderApply, postType) {
                 $('.board-container').last().append(url);
                 $('.boardLink').last().append("<div class=\"postList\">");
                 $('.postList').last().append("<h6 class=\"testPost-postNo\">" + postInfo.post_Code +"</h6>");
-                $('.postList').last().append("<h6 class=\"testPost-postCategory\">" + postInfo.post_Type +"</h6>");
+                $('.postList').last().append("<h6 class=\"testPost-postCategory\">" + postInfo.post_Sort +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postTitle\">" + postInfo.post_Title +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postUser\">" + postInfo.post_Writer +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postCount\">" + postInfo.post_Count +"</h6>");

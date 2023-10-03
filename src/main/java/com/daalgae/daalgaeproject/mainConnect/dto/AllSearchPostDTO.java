@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class AllSearchPostDTO {
     private String post_Code;
-    private String post_Type;
+    private String post_Sort;
     private String post_Title;
     private String post_Writer;
     private String post_Count;
