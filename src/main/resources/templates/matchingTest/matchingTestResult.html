@@ -10,15 +10,15 @@
             <div class="MatchingTestResultWrap container">
                 
 
-                <div class="MatchingTestResultContent" th:each="dogKind : ${selectedKind}">
+                <div class="MatchingTestResultContent" th:each="test : ${testList}">
                     <h4>추천 반려견은</h4>
-                    <h2 class="testResultDog" th:text="${selectedKind}"></h2>
+                    <h2 class="testResultDog" th:text="${test.getSelectedName()}"></h2>
                     <div class="resultImg">
-                        <img th:src="@{/images/maltese.png}" alt="maltese">
+                        <img th:src="@{/images/{imageName}.png(imageName=${test.getSelectedName()})}" alt="maltese">
                     </div>
                     <p class="resultText" >
-                        <span th:text="${selectedKind}"></span>는(은)<br>
-                        <span th:text="${testResult}"></span>
+                        <span th:text="${test.getSelectedName()}"></span>는(은)<br>
+                        <span th:text="${test.getTestResult()}"></span>
                     </p>
                 </div>
 
@@ -28,7 +28,7 @@
             </div>
 
 
-            <section id="result1">
+            <!--<section id="result1">
                 <div class="loader1">Loading...</div>
                 <div class="fin1">
                     <img id="result_img1" class="mt-4" src="" alt="">
@@ -39,7 +39,7 @@
                     <button type="button1" class="btn btn_link" onclick="copylink();">링크 복사하고 공유하기</button>
                 </div>
             </section>
-        </section>
+        </section>-->
 
 
 </th:block>
