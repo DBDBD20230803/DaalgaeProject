@@ -211,6 +211,16 @@ CREATE TABLE 'USER_PROFILE'(
     `REF_MEM_CODE`    INTEGER NOT NULL,
     PRIMARY KEY ( `PROFILE_CODE` )
 );
+
+CREATE TABLE `PET_TEST`
+(
+    `DOG_CODE`    INTEGER AUTO_INCREMENT NOT NULL,
+    `DOG_KIND`    VARCHAR(50) NOT NULL,
+    `TEST_RESULT`    VARCHAR(1000),
+    PRIMARY KEY ( `DOG_CODE` )
+);
+
+
 ALTER TABLE USER_PROFILE ADD FOREIGN KEY (REF_MEM_CODE) REFERENCES MEM_INFO(MEM_CODE);
 
 # ALTER를 이용하여 TABLE을 만든 후에 FOREIGN KEY를 부여했습니다.
@@ -543,3 +553,37 @@ INSERT INTO daalgae.encycle_info (ENCYCLE_ORDER, ENCYCLE_IMAGE, ENCYCLE_TITLE, E
 💬눈을 너무 빤히 바라보지 않아야합니다, 개들에게 눈 마주침은 도전적인 의미가 될 수 있습니다.<br>
 💬노란리본은 개에게 자신만의 공간이 필요하다는 의미입니다.<br>
 💬아이가 갑자기 다가오면 놀랄 수 있어요. 아이들에게도 강아지에게 인사하는 방법을 천천히 알려주세요..<br>');
+
+
+
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('말티즈', '말티즈는 애교가 정말 많아고 똑부러지답니다! 좋고 싫음이 명확한 성격인 \n
+                        말티즈는 다른 무엇보다도 주인이 제일 좋아요! 말티즈는 참지않죠!');
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('치와와', '작고 사랑스러운 치와와! 하지만 만만치않죠?\n
+                         대단한 성격의 소유자인 치와와이지만 그만큼 늠름하고 듬직하죠!');
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('골든 리트리버', '댕댕이의 대명사! 댕댕이 하면 골든 리트리버죠!\n
+                        천사견이라고 불리는 가장 대표적인 견종입니다. 하지만 체력은 어마무시하다는거! 언제나 주인과 놀고싶어요');
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('허스키', '이렇게 잘생긴 강아지가 있을 수 있나요?! 멋쟁이 허스키!\n
+                        허스키는 활동성이 뛰어난 강아지에요. 그리고 그들의 주특기는 노래부르기, 주인 말에 대답하기 입니다!');
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('시츄', '이보다 더 순할 수 없다! 훈련소 방문 횟수 최하위 견종!\n
+                        언제나 차분하고 의연한 모습으로 주인 곁을 지켜준답니다.');
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('믹스견', '개 중의 개는 시고르자브종!\n
+                        유전병이 낮고 견종별 장점만 모아놓은 믹스! 정말 똑똑하고 애교가 많아요');
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('진도견', '주인 바라기! IQ가 인간보다 높을지도?\n
+                        영민하고 배려심 깊은 진도. 언제나 주인만을 바라보는 멋쟁이!');
+
+
+INSERT INTO PET_TEST (DOG_KIND, TEST_RESULT) VALUES ('푸들', '푸들은 아주 영리하고 애교가 많습니다.\n
+                        강아지 중에 똑똑하기로 1,2위를 다툰다던데...?!');

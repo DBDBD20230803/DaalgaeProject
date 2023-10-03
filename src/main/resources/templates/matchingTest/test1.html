@@ -15,7 +15,7 @@
 
         gtag('config', 'G-MDFL7PME8W');
     </script>
-    <script th:src="@{/js/dist/clipboard.min.js}"></script>
+
 </head>
 
 
@@ -37,7 +37,7 @@
                 <div class="page"><span id="cnt">1</span>/8</div>
                 <h4 class="testQuestion">개의 털이 빠진다면...</h4>
                 <div class="test1Img">
-                    <img th:src="@{/images/TestImg1.png}" alt="TestImg2">
+                    <img th:src="@{/images/TestImg1.png}" alt="TestImg2" id="questionImg">
                 </div>
                 <div class="testBtn answers">
                     <a href="javascript:select();" id="A">
@@ -48,19 +48,6 @@
                     </a>
                 </div>
             </div>
-
-            <section id="result">
-                <div class="loader">Loading...</div>
-                <div class="fin">
-                    <img id="result_img" class="mt-4" src="" alt="">
-                    <div class="form">
-                        <p>👆 이미지 꾹 눌러 결과 저장하기</p>
-                    </div>
-                    <button type="button" class="btn_restart sky" onclick="retest();">테스트 다시하기</button>
-                    <button type="button" class="btn btn_link" onclick="copylink()">링크 복사하고 공유하기</button>
-                </div>
-            </section>
-
 
             <!--<script src="/js/api.js" charset="utf-8"></script>-->
 

@@ -3,10 +3,17 @@ const qna = $("#qna");
 const result = $("#result");
 
 
-const clipboard = new ClipboardJS('.btn');
-clipboard.on('success', function(e) {
-    console.log(e);
-});
+
+
+const imageSources = [
+    "/images/TestImg2.png",
+    "/images/TestImg3.png",
+    "/images/TestImg4.png",
+    "/images/TestImg5.png",
+    "/images/TestImg6.png",
+    "/images/TestImg7.png",
+    "/images/TestImg8.png"
+]
 
 function next(pageIdx) {
 
@@ -18,6 +25,7 @@ function next(pageIdx) {
     let answer_b_btn = $(".answers #B .selectBtn1");
     let page = $("input[id='page']");
     let pageCnt = $(".page #cnt");
+    let image = $("#questionImg");
 
 
     title.html(qnaList[pageIdx].q);
@@ -29,6 +37,14 @@ function next(pageIdx) {
     answer_b_btn.html(qnaList[pageIdx].a[1].answer);
     page.val(++pageIdx);
     pageCnt.text(pageIdx);
+
+    if(pageIdx >= 0 && pageIdx < imageSources.length){
+        image.attr("src", imageSources[pageIdx]);
+    }else{
+        image.attr("src", "/images/TestImg1.png")
+    }
+    console.log(`Setting image source for pageIdx ${pageIdx} to ${imageSources[pageIdx]}`);
+    console.log(imageSources);
 }
 
 
@@ -55,14 +71,20 @@ function select(type) {
 }
 
 
+
+const clipboard = new ClipboardJS('.btn');
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
 clipboard.on('error', function(e) {
     console.log(e);
 });
 
 
 function end() {
-    qna.hide();
-    result.show();
+ /*   qna.hide();
+    result.show();*/
 
     let pet = JSON.stringify({
         maltese: $("#maltese").val(),
@@ -79,13 +101,14 @@ function end() {
     $.ajax({
         type: "POST",
         url: "/matchingTest/result",
-        data: JSON.stringify(pet),
+        data: pet,
         contentType: "application/json; charset=UTF-8",
         success: function(data, textStatus, xhr) {
-            $("#result #result_img").attr("src", `./img/${data}.png`);
+/*            $("#result #result_img").attr("src", `/images/${data}.png`);*/
             $("#result .loader").hide();
             $("#result .fin").show();
             alert("매칭테스트가 성공적으로 전송되었습니다🐶.!!")
+            window.location.href = "/matchingTest/matchingTestResult";
         },
         error: function(request, status, error) {
             $("#qna").show();
@@ -100,9 +123,9 @@ function end() {
 }
 
 function retest() {
-    main.css("display", "flex");
+/*    main.css("display", "flex");
     qna.hide();
-    result.hide();
+    result.hide();*/
 }
 
 function petReset() {

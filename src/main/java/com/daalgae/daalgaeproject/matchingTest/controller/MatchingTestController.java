@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/matchingTest")
 public class MatchingTestController {
@@ -44,6 +46,28 @@ public class MatchingTestController {
             log.error("매칭 테스트 결과 저장 중 오류 발생 : " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("매칭 테스트 결과 저장 중 오류 발생했습니다.");
         }
+
+    }
+
+    @GetMapping("/matchingTestResult")
+    public String getResult(Model model, MatchingTestDTO matchingTestDTO){
+
+        int dogCode = matchingTestDTO.getDogCode();
+        String selectedKind = matchingTestDTO.getSelectedKind();
+        String dogKind = matchingTestDTO.getDogKind();
+        String testResult = matchingTestDTO.getTestResult();
+
+        matchingTestDTO.setDogCode(dogCode);
+        matchingTestDTO.setSelectedKind(selectedKind);
+        matchingTestDTO.setDogKind(dogKind);
+        matchingTestDTO.setTestResult(testResult);
+        List<MatchingTestDTO> testList = matchingTestService.getResult(selectedKind);
+
+        model.addAttribute("testList", testList);
+        log.info("matchingTestDTO: " + matchingTestDTO);
+        log.info("selectedKind: " + selectedKind);
+        log.info("testList: " + testList);
+        return "/matchingTest/matchingTestResult";
 
     }
 }
