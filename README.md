@@ -1,5 +1,27 @@
 # 세미 프로젝트 : 반려견 통합 정보 사이트 '뭐든다알개' 제작 - SPRINGBOOT + TYMELEAF
 
+<div>
+ <h1>🎈환경🎈</h1>
+
+<h2>🏓백엔드</h2>
+- SpringBoot 3.0.6
+- Java 11
+- MySQL
+- Thymeleaf
+
+<h2>🎾프론트엔드</h2>
+- Javascript
+- jQuery
+- HTML
+- CSS
+
+<h2>🏸툴</h2>
+- Gradle
+- IntelliJ
+
+</div>
+
+<hr>
 <h3>❤팀장❤ 김유빈</h3>
  <p>♦ 맡은 부분 : </br>
   - 회원 게시판
