@@ -1,4 +1,4 @@
-package com.daalgae.daalgaeproject.payment.dto;
+package com.daalgae.daalgaeproject.webtoon.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

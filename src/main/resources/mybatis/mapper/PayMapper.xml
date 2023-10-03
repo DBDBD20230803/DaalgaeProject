@@ -14,13 +14,26 @@
         <result property="refMemCode" column="REF_MEM_CODE"/>
     </resultMap>
 
-  <resultMap id="userDogGum" type="com.daalgae.daalgaeproject.payment.dto.UseHistory">
+  <resultMap id="userDogGum" type="UseHistory">
       <id property="dogGumUseCode" column="DOG_GUM_USE_CODE"/>
       <result property="dogGumUseDate" column="DOG_GUM_USE_DATE"/>
       <result property="dogGumUseAmount" column="DOG_GUM_USE_AMOUNT"/>
       <result property="refPostCode" column="REF_POST_CODE"/>
       <result property="refMemCode" column="REF_MEM_CODE"/>
   </resultMap>
+
+    <resultMap type="BoardDTO" id="boardResultMap">
+        <id property="postCode" column="POST_CODE"/>
+        <result property="postType" column="POST_TYPE"/>
+        <result property="postSort" column="POST_SORT"/>
+        <result property="postTitle" column="POST_TITLE"/>
+        <result property="postContent" column="POST_CONTENT"/>
+        <result property="postDate" column="POST_DATE"/>
+        <result property="postCount" column="POST_COUNT"/>
+        <result property="attachThumbAddr" column="ATTACH_THUMB_ADDR"/>
+        <association property="refPostWriter" resultMap="memberResultMap"/>
+        <association property="attachmentList" resultMap="attachmentFileResultMap"/>
+    </resultMap>
 
     <insert id="orderRegist" parameterType="com.daalgae.daalgaeproject.payment.dto.OrderPay">
         INSERT INTO DOG_GUM_PAY (
@@ -54,7 +67,7 @@
     </select>
 
 
-    <insert id="insertDogGumUse" parameterType="com.daalgae.daalgaeproject.payment.dto.UseHistory">
+    <insert id="insertDogGumUse" parameterType="com.daalgae.daalgaeproject.webtoon.model.dto.UseHistory">
         INSERT INTO DOG_GUM_USE (
                                 DOG_GUM_USE_DATE
                                 ,DOG_GUM_USE_AMOUNT
@@ -81,40 +94,20 @@
 <!--                 REF_MEM_CODE = #{ refMemCode }-->
     </select>
 
-    <select id="purchaseGumus" resultType="Integer" parameterType="java.util.Map" >
-        SELECT REF_POST_CODE
-        FROM
-                DOG_GUM_USE
-        WHERE
-                REF_MEM_CODE = #{ refMemCode }
-        AND
-                REF_POST_CODE = #{ refPostCode }
-    </select>
+    <update id="purchaseGumus" parameterType="com.daalgae.daalgaeproject.member.model.dto.MemberDTO">
+        UPDATE MEM_INFO
+        SET MEM_DOG_GUM = #{ memDogGum }
+        WHERE MEM_CODE = #{ memCode }
+    </update>
 
-    <select id="checkDuplicateDogGum" resultType="boolean" parameterType="map" >
-        SELECT
-                COUNT(*) > 0
-        FROM
-                DOG_GUM_USE
-        WHERE
-                REF_MEM_CODE = #{ refMemCode }
-        AND
-                DOG_GUM_USE_DATE = #{ dogGumUseDate }
-        AND
-                REF_POST_CODE = #{ refPostCode }
-    </select>
 
-<select id="duplicateDogGum" parameterType="map" resultType="int">
+<select id="duplicateDogGum" resultType="int" parameterType="int">
     SELECT
             COUNT(*)
     FROM
-            DOG_GUM_USE
+            POST_INFO
     WHERE
-            REF_MEM_CODE = #{ refMemCode }
-    AND
-            DOG_GUM_USE_DATE = #{ dogGumUseDate }
-    AND
-            REF_POST_CODE = #{ refPostCode }
+            POST_CODE = #{ refPostCode }
 
 </select>
 </mapper>

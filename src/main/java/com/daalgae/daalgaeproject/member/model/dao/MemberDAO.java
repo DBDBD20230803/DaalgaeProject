@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 
 @Mapper
@@ -33,7 +32,6 @@ public interface MemberDAO {
 
 
     // MemDogGum 업데이트를 위해 작성하였습니다 --선호
-    List<MemberDTO> memDogGum(Map<String, List<Integer>> memCode);
 
     int updateMemDogGum(UserImpl member);
 

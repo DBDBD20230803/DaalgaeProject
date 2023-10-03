@@ -1,12 +1,10 @@
 package com.daalgae.daalgaeproject.payment.dao;
 
 import com.daalgae.daalgaeproject.payment.dto.OrderPay;
-import com.daalgae.daalgaeproject.payment.dto.UseHistory;
+import com.daalgae.daalgaeproject.webtoon.model.dto.UseHistory;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface OrderPayMapper {
@@ -20,9 +18,7 @@ public interface OrderPayMapper {
 
     int insertDogGumUse(UseHistory useHistory);
 
-    int purchaseGumus(@RequestParam("memCode") int memCode , @RequestParam("refPostCode") int refPostCode);
+    int purchaseGumus(int memCode);
 
-    boolean checkDuplicateDogGum(String dogGumUseDate);
-
-    int duplicateDogGum (Map<String, Object> params);
+    int duplicateDogGum(String refPostCode);
 }

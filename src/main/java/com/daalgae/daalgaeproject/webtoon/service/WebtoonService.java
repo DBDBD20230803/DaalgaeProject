@@ -1,11 +1,10 @@
 package com.daalgae.daalgaeproject.webtoon.service;
 
 import com.daalgae.daalgaeproject.board.dao.BoardMapper;
-import com.daalgae.daalgaeproject.board.dto.BoardDTO;
 import com.daalgae.daalgaeproject.member.model.dao.MemberDAO;
 import com.daalgae.daalgaeproject.member.model.dto.UserImpl;
 import com.daalgae.daalgaeproject.payment.dao.OrderPayMapper;
-import com.daalgae.daalgaeproject.payment.dto.UseHistory;
+import com.daalgae.daalgaeproject.webtoon.model.dto.UseHistory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +17,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -28,7 +26,6 @@ public class WebtoonService {
 
     private final MemberDAO memberDAO;
     private final OrderPayMapper orderPayMapper;
-    private final BoardMapper boardMapper;
 
     @Transactional
     public int getMemberByMemCode(int memCode) {
@@ -45,13 +42,7 @@ public class WebtoonService {
         return 0;
     }
 
-    public List<BoardDTO> userDogGum(int postCode) {
-
-//        return boardMapper.userDogGum(postCode);
-        return null;
-    }
-
-       /*@Transactional(rollbackFor = Exception.class)
+    /*   @Transactional(rollbackFor = Exception.class)
         public boolean purchaseDogGum(Integer memDogGum) {
             try {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -118,26 +109,30 @@ public class WebtoonService {
         }
     }*/
 
-    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public String purchaseDogGum(String dogGumUseDate, int dogGumUseAmount,  int refPostCode, int refMemCode, Integer memDogGum) {
+/*    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public String purchaseDogGum(String dogGumUseDate, int dogGumUseAmount,  int refPostCode) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             if (authentication.getPrincipal() instanceof UserImpl) {
                 UserImpl user = (UserImpl) authentication.getPrincipal();
                 int memCode = user.getMemCode();
+                int memDogGum = user.getMemDogGum();
 
-                Map<String, Object> params = new HashMap<>();
-                params.put("dogGumUseDate", refPostCode);
-                System.out.println("postCode 로 : " + refPostCode);
-                boolean duplicateCount = orderPayMapper.duplicateDogGum(params) > 1;
-                System.out.println("파라미터값이 뭔디 : " + params);
-                System.out.println("중복 검사 하고있니 ? : " + duplicateCount);
+                System.out.println("서비스 로직 : "  + user);
+                System.out.println("서비스 memDogGum : " + memDogGum);
 
-                if (duplicateCount) {
-                    System.out.println(" 니 값이 뭔데 ? : " + duplicateCount);
+                int existingPostCode = orderPayMapper.duplicateDogGum(refPostCode);
+
+
+                if (existingPostCode > 0) {
                     return "duplicate";
                 } else {
-                    System.out.println("여기 아직 안들어옴 ? : " + duplicateCount ) ;
+                    int purchaseDogGum = memDogGum - 2;
+                    int updateRows = orderPayMapper.purchaseGumus(memCode);
+
+                    if (updateRows >= 1) {
+                        user.setMemDogGum(purchaseDogGum);
+                    }
 
                     UseHistory useHistory = new UseHistory();
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -163,8 +158,59 @@ public class WebtoonService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public String purchaseDogGum(String dogGumUseDate, int dogGumUseAmount , Integer memDogGum) {
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication.getPrincipal() instanceof UserImpl) {
+                UserImpl user = (UserImpl) authentication.getPrincipal();
+                int memCode = user.getMemCode();
+
+                if (orderPayMapper.duplicateDogGum(dogGumUseDate) > 0) {
+                    return "duplicate";
+                }
+
+                int updateRows = orderPayMapper.purchaseGumus(memCode);
+
+                System.out.println("서비스 로직 : " + user);
+                System.out.println("서비스 memDogGum : " + memDogGum);
+
+                if (updateRows >= 1) {
+                    int purchaseDogGum = memDogGum - 2;
+                    user.setMemDogGum(purchaseDogGum);
+                }
+
+                UseHistory useHistory = new UseHistory();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date parsedDate = null;
+                try {
+                    parsedDate = dateFormat.parse(dogGumUseDate);
+
+                    useHistory.setDogGumUseDate(parsedDate);
+                    useHistory.setDogGumUseAmount(dogGumUseAmount);
+                    useHistory.setRefMemCode(memCode);
+
+                    int result = orderPayMapper.insertDogGumUse(useHistory);
+
+                    System.out.println("insert 는 됐니 ? : " + result);
+
+                    if (result == 1) {
+                        return "success";
+                    } else {
+                        return "error during saving";
+                    }
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                return "user not authenticated";
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 
