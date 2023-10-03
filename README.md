@@ -1,4 +1,4 @@
-# 세미 프로젝트<br> : 반려견 통합 정보 사이트 '뭐든다알개' 제작 - SPRINGBOOT + TYMELEAF
+# 세미 프로젝트<br> : 반려견 통합 정보 사이트 '뭐든다알개' 제작 - SPRINGBOOT + THYMELEAF
 
 <div>
  <h1>🎈환경🎈</h1>
@@ -13,7 +13,7 @@
 
 <h2>🎾프론트엔드</h2>
 <ul>
-  <li>Javascript</li>
+  <li>JavaScript</li>
   <li>jQuery</li>
   <li>HTML</li>
   <li>CSS</li>
@@ -41,7 +41,7 @@
  <p>♦ <b>맡은 부분</b> : </br>
   - 자유 게시판 </br>
   - 공지사항 게시판 </br>
-  - 유기견 정보 제공 게시판(유기반려동물 api) </br>
+  - 유기견 정보 제공 게시판(유기동물정보api, 동물보호센터api) </br>
   - 관리자 페이지 
  </p>
   <hr>
