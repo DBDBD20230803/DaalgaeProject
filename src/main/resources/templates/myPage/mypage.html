@@ -320,7 +320,7 @@
 
                 <div class="goToMain goToMain1"><a th:href="@{/}">메인 페이지로 돌아가기</a></div>
                 <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal().getMemRole() == 'ROLE_ADMIN'}">
-                    <div class="goToMain"><a th:href="@{/}">제제 내역 보기</a></div>
+                    <div class="goToMain"><a th:href="@{/admin/adminMain}">제제 내역 보기</a></div>
                 </th:block>
 
             </div>

@@ -16,6 +16,38 @@ h4 {
   z-index: -1;
 }
 
+#banForm {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#banForm h6 {
+  margin: 0;
+}
+
+#banButton {
+  width: 100px;
+  height: 50px;
+  border: 1px solid #DBDBDB;
+  border-radius: 5px;
+  color: white;
+}
+
+.ban-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  border: 1px solid #dbdbdb;
+  background-color: #9dc4e7;
+  width: 30%;
+  border-radius: 5px;
+}
+
 #headers {
   z-index: 1;
 }

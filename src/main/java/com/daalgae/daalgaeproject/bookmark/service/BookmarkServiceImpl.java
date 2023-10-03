@@ -1,6 +1,7 @@
 package com.daalgae.daalgaeproject.bookmark.service;
 
 import com.daalgae.daalgaeproject.bookmark.dao.BookmarkMapper;
+import com.daalgae.daalgaeproject.bookmark.dto.PostBookmarkDTO;
 import com.daalgae.daalgaeproject.bookmark.dto.EncycleBookmarkDTO;
 import com.daalgae.daalgaeproject.bookmark.dto.TourBookmarkDTO;
 import org.springframework.stereotype.Service;
@@ -77,5 +78,38 @@ public class BookmarkServiceImpl implements BookmarkService {
         int deleteFromEncycleSort = bookmarkMapper.deleteFromEncycleSort(getEncycleSequence);
         int deleteFromBookmark = bookmarkMapper.deleteFromBookmark(getEncycleSequence);
         return deleteFromBookmark + deleteFromEncycleSort;
+    }
+
+    /* 게시판 */
+
+    @Override
+    public int postIsMarked(PostBookmarkDTO postBookmarkDTO) {
+        return bookmarkMapper.postIsMarked(postBookmarkDTO);
+    }
+
+    @Override
+    @Transactional
+    public int setPostBookmark(PostBookmarkDTO postBookmarkDTO) {
+        int result = -1;
+        System.out.println();
+        int setSequence = bookmarkMapper.setSequence(postBookmarkDTO.getMemCode());
+        if(setSequence > 0) {
+            int getSequence = bookmarkMapper.getSequence();
+            PostBookmarkDTO setPostBookmarkDTO = new PostBookmarkDTO(postBookmarkDTO.getMemCode(), getSequence, postBookmarkDTO.getPostCode());
+            int setPostMark = bookmarkMapper.setPostMark(setPostBookmarkDTO);
+            result = setPostMark;
+        }
+
+        return result;
+    }
+
+    @Override
+    @Transactional
+    public int deletePostBookmark(PostBookmarkDTO postBookmarkDTO) {
+        int result = -1;
+        int getPostSequence = bookmarkMapper.getPostSequence(postBookmarkDTO);
+        int deleteFromPostSort = bookmarkMapper.deleteFromPostSort(getPostSequence);
+        int deleteFromPostBookmark = bookmarkMapper.deleteFromPostBookmark(getPostSequence);
+        return deleteFromPostBookmark + deleteFromPostSort;
     }
 }

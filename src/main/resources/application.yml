@@ -12,7 +12,7 @@ spring:
       enabled: true
       max-file-size: 20MB
       max-request-size: 20MB
-      location: D:/thymeleaf-springboot/
+      location: C:/thymeleaf-springboot/
   web:
     resources:
       static-locations: classpath:/upload/

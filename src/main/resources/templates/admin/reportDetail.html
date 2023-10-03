@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/boardLayout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>관리자 페이지</title>
+    </head>
+
+    <th:block layout:fragment="content">
+        <div class="board-banner">
+            <h3>신고 상세 조회</h3>
+            <div>
+                <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
+            </div>
+        </div>
+        <th:block
+                sec:authorize="isAuthenticated()"
+                th:if="${ #authentication.getPrincipal().getMemRole() == 'ROLE_ADMIN' }"
+        >
+        <div class="board-container container">
+            <div class="board-content-select-container">
+                <div class="board-content-title">
+                    <h5 class="postNo">번호</h5>
+                    <h5 class="postNo">신고자</h5>
+                    <h5 class="postNo">피신고자</h5>
+                    <h5 class="postCount">게시글코드</h5>
+                    <h5 class="postCount">댓글코드</h5>
+                    <h5 class="postDate">신고일</h5>
+                </div>
+            </div>
+            <div class="board-content-select-container">
+                <div class="board-content-title" th:each="reportDetail : ${ reportDetail }">
+                    <h6 class="postNo" th:text="${reportDetail.reportCode}"></h6>
+                    <h6 class="postNo" th:text="${reportDetail.refReportMemCode}"></h6>
+                    <h6 class="postNo" th:text="${reportDetail.refReportDefanCode}"></h6>
+                    <h6 class="postCount" th:text="${reportDetail.refPostCode}"></h6>
+                    <h6 class="postCount" th:text="${reportDetail.refPostReplyCode}"></h6>
+                    <h6 class="postDate" th:text="${reportDetail.reportDate}"></h6>
+                </div>
+                <div class="board-select-content">
+                    <div class="board-textarea" th:each="reportDetail : ${ reportDetail }">
+                        <textarea cols="120" rows="10" readonly name="postContent" th:text="${reportDetail.reportReason}" oninput="autoResizeWrite(this)" ></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="ban-section">
+                <form th:action="@{/admin/banUser}" method="post" id="banForm">
+                    <input type="hidden" name="refReportDefanCode" th:value="${reportDetail.refReportDefanCode}">
+                <h6>제제기한설정</h6>
+                <select name="banPeriod">
+                    <option value="1">1일</option>
+                    <option value="3">3일</option>
+                    <option value="6">6일</option>
+                    <option value="9">9일</option>
+                    <option value="30">30일</option>
+                    <option value="180">6개월</option>
+                    <option value="365">1년</option>
+                    <option value="36500">영구</option>
+                </select>
+                <button type="submit" id="banButton">확정</button>
+                </form>
+            </div>
+
+
+            <div class="whiteSpace">
+                <div class="logoInPage"></div>
+            </div>
+        </div>
+
+            <script>
+
+            </script>
+        </th:block>
+    </th:block>
+</html>
