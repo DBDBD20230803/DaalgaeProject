@@ -186,7 +186,6 @@ function getPost(orderApply, postType) {
                 $('.postList').last().append("<h6 class=\"testPost-postUser\">" + postInfo.post_Writer +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postCount\">" + postInfo.post_Count +"</h6>");
                 $('.postList').last().append("<h6 class=\"testPost-postDate\">" + postInfo.post_Date +"</h6>");
-                console.log(111);
             }
 
 
