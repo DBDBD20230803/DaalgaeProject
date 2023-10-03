@@ -4,20 +4,26 @@
  <h1>🎈환경🎈</h1>
 
 <h2>🏓백엔드</h2>
-- SpringBoot 3.0.6
-- Java 11
-- MySQL
-- Thymeleaf
+<ul>
+ <li>SpringBoot 3.0.6</li>
+ <li>Java 11</li>
+ <li>MySQL</li>
+ <li>Thymeleaf</li>
+</ul>
 
 <h2>🎾프론트엔드</h2>
-- Javascript
-- jQuery
-- HTML
-- CSS
+<ul>
+  <li>Javascript</li>
+  <li>jQuery</li>
+  <li>HTML</li>
+  <li>CSS</li>
+</ul>
 
 <h2>🏸툴</h2>
-- Gradle
-- IntelliJ
+<ul>
+ <li>Gradle</li>
+ <li>IntelliJ</li>
+</ul>
 
 </div>
 
