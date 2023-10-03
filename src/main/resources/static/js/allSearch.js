@@ -147,7 +147,6 @@ function getPost(orderApply, postType) {
         dataType:"json",
         async: false,
         success: function(data){
-            console.log(data);
             if(data.length == 0) {
                 $('.postBoard').eq(orderApply).append("<div class=\"noSearchData\">");
                 $('.noSearchData').last().append("검색 결과가 없습니다");
@@ -168,8 +167,6 @@ function getPost(orderApply, postType) {
                     "        </div>");
             }
             for(let postInfo of data) {
-                console.log(postInfo);
-                console.log(postInfo.post_Code);
                 let url;
                 if(postType == '자유') {
                     url = "<a class='boardLink' href=\"/board/freeBoardSelect?no=" + postInfo.post_Code + "\">";

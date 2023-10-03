@@ -96,7 +96,6 @@ function likeClick(num) {
         url:toUrl,
         dataType:"json",
         success: function(data) {
-            console.log(data);
             if(data == -1) {
                 location.href='/login/login';
             }
@@ -106,7 +105,6 @@ function likeClick(num) {
                     url:toUrl1,
                     dataType:"json",
                     success: function(data) {
-                        console.log(data);
                         if(data > 0) {
                             $('.likeBtn').eq(num-1).prop('src', '/images/likeListClicked.png');
                         }
@@ -121,7 +119,6 @@ function likeClick(num) {
                     url:toUrl2,
                     dataType:"json",
                     success: function(data) {
-                        console.log(data);
                         if(data > 0) {
                             $('.likeBtn').eq(num-1).prop('src', '/images/likeList.png');
                         }
