@@ -15,7 +15,7 @@
 
         gtag('config', 'G-MDFL7PME8W');
     </script>
-    <script th:src="@{/js/dist/clipboard.min.js}"></script>
+
 </head>
 
 
@@ -37,157 +37,20 @@
                 <div class="page"><span id="cnt">1</span>/8</div>
                 <h4 class="testQuestion">개의 털이 빠진다면...</h4>
                 <div class="test1Img">
-                    <img th:src="@{/images/TestImg1.png}" alt="TestImg2">
+                    <img th:src="@{/images/TestImg1.png}" alt="TestImg2" id="questionImg">
                 </div>
                 <div class="testBtn answers">
-                    <a href="javascript:void(0);" onclick="select()" id="A">
+                    <a href="javascript:select();" id="A">
                         <div class="selectBtn1">장모</div>
                     </a>
-                    <a href="javascript:void(0);" onclick="select()" id="B">
+                    <a href="javascript:select();" id="B">
                         <div class="selectBtn1 mt-4">단모</div>
                     </a>
                 </div>
             </div>
 
-            <section id="result">
-                <div class="loader">Loading...</div>
-                <div class="fin">
-                    <img id="result_img" class="mt-4" src="" alt="">
-                    <div class="form">
-                        <p>👆 이미지 꾹 눌러 결과 저장하기</p>
-                    </div>
-                    <button type="button" class="btn_restart sky" onclick="retest();">테스트 다시하기</button>
-                    <button type="button" class="btn btn_link" onclick="copylink()">링크 복사하고 공유하기</button>
-                </div>
-            </section>
-
-
-            <script th:inline="javascript">
-                function select(type) {
-                    let petType = document.querySelectorAll(`#qna input[id=${type}]`);
-                    let pageIdx = document.querySelectorAll("input[id='page']").value;
-
-
-                    if(pageIdx){
-                        petType.value = ++petType.value;
-
-                        if (pageIdx < 8) {
-                            next(pageIdx);
-                        } else {
-                            end();
-                        }
-                    } else{
-                        console.log("해당 요소를 찾을 수 없습니다.");
-                    }
-                }
-
-                function next(pageIdx) {
-                    let title = document.querySelector(".question .testQuestion");
-                    let answer_a = document.querySelector(".answers #A");
-                    let answer_a_btn = document.querySelector(".answers #A .selectBtn1");
-                    let answer_b = document.querySelector(".answers #B");
-                    let answer_b_btn = document.querySelector(".answers #B .selectBtn1");
-                    let page = document.querySelector("input[id='page']");
-                    let pageCnt = document.querySelector(".page #cnt");
-
-                    title.innerHTML = qnaList[pageIdx].q;
-                    answer_a.href = `javascript:select('${qnaList[pageIdx].a[0].type}')`;
-                    answer_a_btn.innerHTML = qnaList[pageIdx].a[0].answer;
-                    answer_b.href = `javascript:select('${qnaList[pageIdx].a[1].type}')`;
-                    answer_b_btn.innerHTML = qnaList[pageIdx].a[1].answer;
-                    page.value = ++pageIdx;
-                    pageCnt.innerText = pageIdx;
-                }
-
-
-
-
-
-                const main = document.getElementById("#MatchingTest1");
-                const qna = document.getElementById("#qna");
-                const result = document.getElementById("#result");
-
-                const clipboard = new ClipboardJS('.btn');
-                clipboard.on('success', function(e) {
-                    console.log(e);
-                });
-                clipboard.on('error', function(e) {
-                    console.log(e);
-                });
-
-
-                function end() {
-
-                    const qna = document.getElementById("#qna");
-                    const result = document.getElementById("#result");
-
-                    qna.style.display = "none";
-                    result.style.display = "block";
-
-                    let pet = JSON.stringify({
-                        maltese : document.getElementById("maltese").value,
-                        chiwawa : document.getElementById("chiwawa").value,
-                        golden : document.getElementById("golden").value,
-                        hursky : document.getElementById("hursky").value,
-                        shihtzu : document.getElementById("shihtzu").value,
-                        mix : document.getElementById("mix").value,
-                        jindo : document.getElementById("jindo").value,
-                        poodle : document.getElementById("poodle").value
-                    });
-                    petReset();
-
-                    $.ajax({
-                        type: "POST",
-                        url : "/matchingTest/result",
-                        data : JSON.stringify(pet),
-                        contentType: "application/json; charset=UTF-8",
-
-                        success: function(data, textStatus, xhr) {
-                            document.querySelector("#result #result_img").src = `/imgages/${data}.png`;
-
-                            document.querySelector("#result .loader").style.display = "none";
-                            document.querySelector("#result .fin").style.display = "block";
-                        },
-
-                        error: function(request, status, error) {
-                            qna.style.display = "block";
-                            result.style.display = "none";
-
-                            console.log(error);
-                        }
-                    });
-                }
-
-                function retest() {
-                    main.style.display = "flex";
-                    qna.style.display = "none";
-                    result.style.display = "none";
-                }
-
-                function petReset() {
-                    document.getElementById("maltese").value = 0;
-                    document.getElementById("chiwawa").value = 0;
-                    document.getElementById("golden").value = 0;
-                    document.getElementById("hursky").value = 0;
-                    document.getElementById("shihtzu").value = 0;
-                    document.getElementById("mix").value = 0;
-                    document.getElementById("jindo").value = 0;
-                    document.getElementById("poodle").value = 0;
-                }
-
-                function copylink() {
-                    navigator.clipboard.writeText(window.location.href)
-                        .then(() => alert("링크가 복사되었습니다. 친구에게 공유해보세요!"))
-                        .catch(() => alert("다시 시도해보세요."))
-                }
-
-            </script>
-
-
             <!--<script src="/js/api.js" charset="utf-8"></script>-->
 
         </div>
     </section>
-    <script type="text/javascript" th:src="@{/js/start.js}"></script>
-    <script type="text/javascript" th:src="@{/js/data.js}"></script>
 </th:block>

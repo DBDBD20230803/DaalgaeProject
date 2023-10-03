@@ -1,3 +1,4 @@
+
 const qnaList = [
     {
         q: '개의 털이 빠진다면...',
@@ -56,3 +57,5 @@ const qnaList = [
         ]
     }
 ]
+
+

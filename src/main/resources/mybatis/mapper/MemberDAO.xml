@@ -190,7 +190,7 @@
         UPDATE
             MEM_INFO
         SET MEM_WITHDRAWAL = CURDATE()
-        WHERE MEM_ID = #{ memId }
+        WHERE MEM_CODE = #{ memCode }
     </update>
 
 
