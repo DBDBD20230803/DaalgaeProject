@@ -31,7 +31,7 @@
                         </div>
                         <div>
                             <div>게시글 코드</div>
-                            <input type="hidden" name="postCode" th:value="${boardDetail.postCode}">
+                            <input type="hidden" name="refPostCode" th:value="${boardDetail.postCode}">
                             <div th:if="${boardDetail} != null" th:text="${boardDetail.postCode}"></div>
                         </div>
                         <div>
@@ -59,12 +59,12 @@
                         </div>
                         <div>
                             <div>피신고자</div>
-                            <input type="hidden" name="refReportDefanCode" th:value="${replyDetail.replyWriterDetail.memCode}">
+                            <input type="hidden" name="refReportDefanCode" th:value="${replyDetail.refReplyWriter}">
                             <div th:if="${replyDetail} != null" th:text="${replyDetail.replyWriterDetail.memId}"></div>
                         </div>
                         <div>
                             <div>댓글 코드</div>
-                            <input type="hidden" name="replyCode" th:value="${replyDetail.replyCode}">
+                            <input type="hidden" name="refPostReplyCode" th:value="${replyDetail.replyCode}">
                             <div th:if="${replyDetail} != null" th:text="${replyDetail.replyCode}"></div>
                         </div>
                         <div>

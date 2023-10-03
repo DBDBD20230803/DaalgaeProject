@@ -14,9 +14,97 @@
                 <img th:src="@{/images/board-banner-image.png}" class="board-banner-image" alt="walking-with-a-dog-image">
             </div>
         </div>
+        <th:block
+                sec:authorize="isAuthenticated()"
+                th:if="${ #authentication.getPrincipal().getMemRole() == 'ROLE_ADMIN' }"
+        >
+        <div class="board-container container">
+            <div class="board-list-container">
+                <div class="board-postCategory">
+                    <h5 class="postNo">번호</h5>
+                    <h5 class="postNo">신고자</h5>
+                    <h5 class="postNo">피신고자</h5>
+                    <h5 class="postCount">게시글코드</h5>
+                    <h5 class="postCount">댓글코드</h5>
+                    <h5 class="postTitle">사유</h5>
+                    <h5 class="postDate">신고일</h5>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(reportList)}" class="search-empty">
+                <p>신고 내역이 없습니다.</p>
+            </div>
+            <div class="postList" th:each="report : ${ reportList }">
+                <h6 class="testPost-postNo" th:text="${report.reportCode}"></h6>
+                <h6 class="testPost-postNo" th:text="${report.refReportMemCode}"></h6>
+                <h6 class="testPost-postNo" th:text="${report.refReportDefanCode}"></h6>
+                <h6 class="testPost-postCount" th:text="${report.refPostCode}"></h6>
+                <h6 class="testPost-postCount" th:text="${report.refPostReplyCode}"></h6>
+                <h6 class="testPost-postTitle" th:text="${report.reportReason}"></h6>
+                <h6 class="testPost-postDate" th:text="${report.reportDate}"></h6>
+            </div>
 
-        <div class="whiteSpace">
-            <div class="logoInPage"></div>
+            <div class="board-paging-button">
+                <button th:if="${selectCriteria.startPage > 0}"
+                        th:onclick="'location.href=\'/admin/adminMain?currentPage=1' +'\''"
+                        th:disabled="${selectCriteria.pageNo == 1}"
+                >
+                    <<
+                </button>
+                <button
+                        th:onclick="'location.href=\'/admin/adminMain?currentPage='+ @{${selectCriteria.startPage - 1}} +'\''"
+                        th:disabled="${selectCriteria.pageNo < 6}"
+                >
+                    <
+                </button>
+                <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
+                    <button
+                            th:text="${ page }"
+                            th:onclick="'location.href=\'/admin/adminMain?currentPage=' + @{${page}} +'\''"
+                            th:disabled="${ selectCriteria.pageNo eq page }"
+                            th:classappend="${selectCriteria.pageNo == page} ? 'current-page' : ''">
+                    </button>
+                </th:block>
+                <button
+                        th:onclick="'location.href=\'/admin/adminMain?currentPage='+ @{${selectCriteria.endPage + 1}} +'\''"
+                        th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage or selectCriteria.maxPage - selectCriteria.pageNo < 4 }"
+                >
+                    >
+                </button>
+                <button
+                        th:onclick="'location.href=\'/admin/adminMain?currentPage='+ @{${selectCriteria.maxPage}} +'\''"
+                        th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}"
+                >
+                    >>
+                </button>
+            </div>
+
+
+            <div class="whiteSpace">
+                <div class="logoInPage"></div>
+            </div>
         </div>
+
+            <script>
+                if (document.querySelectorAll(".board-container .postList")) {
+                    const $tds = document.querySelectorAll(".board-container .postList");
+                    for (let i = 0; i < $tds.length; i++) {
+
+                        $tds[i].onmouseenter = function() {
+                            this.style.backgroundColor = "#A6CEF7";
+                            this.style.cursor = "pointer";
+                        }
+
+                        $tds[i].onmouseleave = function() {
+                            this.style.backgroundColor = "transparent";
+                        }
+
+                        $tds[i].onclick = function() {
+                            const no = this.children[0].innerText;
+                            location.href = "/admin/reportDetail?no=" + no;
+                        }
+                    }
+                }
+            </script>
+        </th:block>
     </th:block>
 </html>

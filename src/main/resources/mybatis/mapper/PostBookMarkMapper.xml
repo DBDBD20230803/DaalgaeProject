@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daalgae.daalgaeproject.bookmark.dao.BookmarkMapper">
+
+    <select id="postIsMarked" resultType="_int">
+        SELECT COUNT(REF_MEM_CODE)
+        FROM POST_SORT
+        WHERE REF_MEM_CODE = ${ memCode } AND REF_POST_CODE = ${ postCode }
+    </select>
+
+    <insert id="setPostMark">
+        INSERT
+        INTO POST_SORT   (
+            REF_POST_CODE, REF_MEM_BOOKMARK_SEQ, REF_MEM_CODE
+        )
+        VALUES  (
+                    ${ postCode }, ${ memSeq }, ${ memCode }
+                )
+    </insert>
+
+    <select id="getPostSequence" resultType="_int">
+        SELECT REF_MEM_BOOKMARK_SEQ
+        FROM POST_SORT
+        WHERE REF_POST_CODE = ${ postCode } AND REF_MEM_CODE = ${ memCode }
+    </select>
+
+    <delete id="deleteFromPostSort">
+        DELETE
+        FROM  POST_SORT
+        WHERE  REF_MEM_BOOKMARK_SEQ = #{ getPostSequence }
+    </delete>
+
+    <delete id="deleteFromPostBookmark">
+        DELETE
+        FROM  BOOKMARK_INFO
+        WHERE  MEM_BOOKMARK_SEQ = #{ getPostSequence }
+    </delete>
+
+</mapper>
+

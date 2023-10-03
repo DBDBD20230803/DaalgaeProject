@@ -1,5 +1,6 @@
 package com.daalgae.daalgaeproject.bookmark.dao;
 
+import com.daalgae.daalgaeproject.bookmark.dto.PostBookmarkDTO;
 import com.daalgae.daalgaeproject.bookmark.dto.EncycleBookmarkDTO;
 import com.daalgae.daalgaeproject.bookmark.dto.TourBookmarkDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -31,4 +32,15 @@ public interface BookmarkMapper {
     int getEncycleSequence(EncycleBookmarkDTO encycleBookmarkDTO);
 
     int deleteFromEncycleSort(int getEncycleSequence);
+
+    /* 게시판 북마크 */
+    int postIsMarked(PostBookmarkDTO postBookmarkDTO);
+
+    int setPostMark(PostBookmarkDTO setPostBookmarkDTO);
+
+    int getPostSequence(PostBookmarkDTO postBookmarkDTO);
+
+    int deleteFromPostBookmark(int getPostSequence);
+
+    int deleteFromPostSort(int getPostSequence);
 }

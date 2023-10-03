@@ -46,14 +46,19 @@
         </div>
         <div class="board-select-header-buttons">
             <div class="like-button">
-                <button type="button" id="like-button">
-                    <img th:src="@{/images/like-button.png}" alt="like-button">
+                <button onclick="boardLikeClick();" type="button" id="like-button">
+                    <img class="likeListImageLeft likeBtn" src="/images/likeList.png" />
                 </button>
             </div>
             <div class="report-button">
-                <button type="button" id="report-button">
-                    <img th:src="@{/images/report-button.png}" alt="report-button">
-                </button>
+                <form th:action="@{/report/reportPost}" method="post">
+                    <input type="hidden" name="postCode" th:value="${board.postCode}">
+                    <input type="hidden" name="refPostWriter.memId" th:value="${board.refPostWriter.memId}">
+                    <input type="hidden" name="refPostWriter.memCode" th:value="${board.refPostWriter.memCode}">
+                    <button type="submit">
+                        <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
+                    </button>
+                </form>
             </div>
         </div>
         <div class="board-content-select-container">
@@ -164,8 +169,10 @@
                             <div id="reply-body" th:text="${ reply.replyCon}"></div>
                             <div id="reply-date" th:text="${ reply.replyDate }"></div>
                             <div id="comment-report-button">
-                                <form th:action="@{/report/report}" method="post">
+                                <form th:action="@{/report/reportReply}" method="post">
                                     <input type="hidden" name="replyCode" th:value="${reply.replyCode}">
+                                    <input type="hidden" name="replyWriterDetail.memId" th:value="${reply.replyWriterDetail.memId}">
+                                    <input type="hidden" name="replyWriterDetail.memCode" th:value="${reply.replyWriterDetail.memCode}">
                                     <button type="submit">
                                         <img th:src="@{/images/report-comment-button.png}" alt="comment-report-button">
                                     </button>
@@ -190,7 +197,7 @@
                 </th:block>
             </div>
 
-            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode + 1}">
+            <th:block sec:authorize="isAuthenticated()" th:if="${ #authentication.getPrincipal().getMemCode() == board.refPostWriter.memCode}">
                 <form th:action="@{/board/deletePostBoast}" id="boardDeleteForm" method="post">
                     <input type="hidden" name="postCode" th:value="${board.postCode}">
                     <div class="updatePost">

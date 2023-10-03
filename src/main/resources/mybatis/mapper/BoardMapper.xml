@@ -194,6 +194,18 @@
         ORDER BY A.POST_REPLY_CODE
     </select>
 
+    <select id="selectReply" resultMap="replyResultMap">
+        SELECT A.POST_REPLY_CODE
+                , A.POST_REPLY_CONTENT
+                , A.POST_REPLY_DATE
+                , A.REF_POST_CODE
+                , A.REF_POST_REPLY_WRITER
+                , B.MEM_ID
+        FROM POST_REPLY A
+        JOIN MEM_INFO B ON (A.REF_POST_REPLY_WRITER = B.MEM_CODE)
+        WHERE POST_REPLY_CODE = #{replyCode}
+    </select>
+
     <insert id="insertReply">
         INSERT
         INTO POST_REPLY   (

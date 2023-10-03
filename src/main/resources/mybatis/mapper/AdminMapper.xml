@@ -57,8 +57,28 @@
         <result property="reportDate" column="REPORT_DATE"/>
         <result property="refReportMemCode" column="REF_REPORT_MEM_CODE"/>
         <result property="refReportDefanCode" column="REF_REPORT_DEFAN_CODE"/>
+        <result property="refPostCode" column="REF_POST_CODE"/>
+        <result property="refPostReplyCode" column="REF_POST_REPLY_CODE"/>
         <result property="reportReason" column="REPORT_REASON"/>
     </resultMap>
+
+    <select id="selectTotalCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM USER_REPORT
+    </select>
+
+    <select id="selectReportList" resultMap="reportResultMap">
+        SELECT REPORT_CODE
+                ,REPORT_DATE
+                ,REF_REPORT_MEM_CODE
+                ,REF_REPORT_DEFAN_CODE
+                ,REF_POST_CODE
+                ,REF_POST_REPLY_CODE
+                ,REPORT_REASON
+        FROM USER_REPORT
+        ORDER BY REPORT_CODE DESC
+        LIMIT #{ startRow }, 10
+    </select>
 
     <insert id="reportPost">
         INSERT
@@ -66,12 +86,47 @@
                             REF_REPORT_MEM_CODE
                           , REF_REPORT_DEFAN_CODE
                           , REPORT_REASON
+                          , REF_POST_CODE
         )
         VALUES  (
                     #{refReportMemCode}
                 , #{refReportDefanCode}
                 , #{reportReason}
+                , #{refPostCode}
                 )
     </insert>
+    <insert id="reportReply">
+        INSERT
+        INTO USER_REPORT   (
+                            REF_REPORT_MEM_CODE
+                            , REF_REPORT_DEFAN_CODE
+                            , REPORT_REASON
+                            , REF_POST_REPLY_CODE
+                        )
+        VALUES  (
+                    #{refReportMemCode}
+                    , #{refReportDefanCode}
+                    , #{reportReason}
+                    , #{refPostReplyCode}
+                )
+    </insert>
+
+    <select id="selectReportDetail" resultMap="reportResultMap">
+        SELECT REPORT_CODE
+             , REPORT_DATE
+             , REF_REPORT_MEM_CODE
+             , REF_REPORT_DEFAN_CODE
+             , REF_POST_CODE
+             , REF_POST_REPLY_CODE
+             , REPORT_REASON
+        FROM USER_REPORT
+        WHERE REPORT_CODE = #{ reportCode }
+    </select>
+
+    <update id="banUser">
+        UPDATE MEM_INFO
+        SET BAN_PERIOD = DATE_ADD(CURRENT_DATE, INTERVAL #{banPeriod} DAY)
+        WHERE MEM_CODE = #{refReportDefanCode}
+    </update>
 
 </mapper>
