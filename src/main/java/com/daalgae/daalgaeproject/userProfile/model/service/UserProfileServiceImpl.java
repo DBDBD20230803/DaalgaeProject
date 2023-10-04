@@ -25,7 +25,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Value("img")
     private String IMAGE_DIR;
 
-    @Value("D:/thymeleaf-springboot/")
+    @Value("C:/thymeleaf-springboot/")
     private String ROOT_LOCATION;
 
     private final UserProfileDAO userProfileDAO;
@@ -90,13 +90,13 @@ public class UserProfileServiceImpl implements UserProfileService {
                 if ("thumbnailImg".equals(fieldName)) {
                     fileMap.put("fileType", "TITLE");
 
-                    width = 50;
-                    height = 50;
+                    width = 400;
+                    height = 400;
                 } else {
                     fileMap.put("fileType", "BODY");
 
-                    width = 50;
-                    height = 50;
+                    width = 400;
+                    height = 400;
                 }
 
                 Thumbnails.of(fileUploadDirectory + "/" + savedFileName).size(width, height)

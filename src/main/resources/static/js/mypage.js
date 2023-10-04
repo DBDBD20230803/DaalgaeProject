@@ -102,12 +102,12 @@ spreadBtn.addEventListener('click', function () {
             let $petSelect1 = $('.petSelect');
 
             if ($addDoneBtn1.text() === "수정") {
-                $petInfoInputsTitle1.attr('readonly', true);
+            /*    $petInfoInputsTitle1.attr('readonly', true);
                 $petInput1.attr('readonly', true);
                 $petInput1.css('color', '#bbbbbb');
                 $petSelect1.attr('disabled', true);
                 $petSelect1.css('color', '#bbbbbb');
-
+*/
                 alert("수정하시겠습니까?");
 
                 $addDoneBtn1.text("수정완료");
@@ -115,9 +115,9 @@ spreadBtn.addEventListener('click', function () {
 
             } else if ($addDoneBtn1.text() === "수정완료") {
                 $addDoneBtn1.text("완료");
-                $petInfoInputsTitle1.prop('readonly', false);
+             /*   $petInfoInputsTitle1.prop('readonly', false);
                 $petInput1.prop('readonly', false);
-                $petSelect1.prop('disabled', false);
+                $petSelect1.prop('disabled', false);*/
 
                 let updateFormData = {
                     petNick: $("#petName1").val(),
