@@ -56,8 +56,6 @@ public class KakaoPayController {
         model.addAttribute("quantity", quantity);
         model.addAttribute("totalAmount", totalAmount);
 
-        System.out.println("갑자기 여기도 못오냐 ?");
-
         return "redirect:" + kakaoPayService
                 .kakaoPayReady(itemName, quantity, totalAmount)
                 .getNext_redirect_pc_url();
@@ -66,15 +64,11 @@ public class KakaoPayController {
 
     //결제완료 승인
     @GetMapping("success")
-    public String Success(KakaoApprove kakaoApprove, @RequestParam("pg_token") String pgToken, Model model) {
+    public String Success(KakaoApprove kakaoApprove
+            , @RequestParam("pg_token") String pgToken, Model model) {
 
         kakaoApprove = kakaoPayService.approve(pgToken);
 
-
-        System.out.println("값은 다 담아왔냐 ?");
-        System.out.println(kakaoApprove);
-
-//        kakaoPayService.dogGumPay(OrderPay);
 
         OrderPay orderPay = new OrderPay();
 
@@ -85,14 +79,6 @@ public class KakaoPayController {
         orderPay.setDogItemName(kakaoApprove.getItem_name());
         orderPay.setRefMemCode(Integer.parseInt(kakaoApprove.getPartner_user_id()));
         orderPay.setMemDogGum(kakaoApprove.getQuantity());
-
-
-        System.out.println("나 실행됐냐 ??");
-
-        System.out.println(orderPay);
-
-        /*res.getTid();*/
-        System.out.println("나 디비에좀 들어가자 ㅡㅡ");
 
         kakaoPayService.orderTranscation(orderPay);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -120,7 +106,6 @@ public class KakaoPayController {
             int member = webtoonService.getMemberByMemCode(memCode);
             System.out.println(member);
             List<OrderPay> orderPays = kakaoPayService.getAllPayment(memCode);
-            System.out.println("날짜 제대로 가져오냐 ?: " + orderPays);
             model.addAttribute("member", member);
             model.addAttribute("orderPays", orderPays);
 

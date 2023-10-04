@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daalgae.daalgaeproject.payment.dao.OrderPayMapper">
 
 
@@ -94,7 +94,7 @@
 <!--                 REF_MEM_CODE = #{ refMemCode }-->
     </select>
 
-    <update id="purchaseGumus" parameterType="com.daalgae.daalgaeproject.member.model.dto.MemberDTO">
+    <update id="purchaseGums" parameterType="com.daalgae.daalgaeproject.member.model.dto.MemberDTO">
         UPDATE MEM_INFO
         SET MEM_DOG_GUM = #{ memDogGum }
         WHERE MEM_CODE = #{ memCode }
@@ -102,12 +102,31 @@
 
 
 <select id="duplicateDogGum" resultType="int" parameterType="int">
-    SELECT
+    SELECT DISTINCT
             COUNT(*)
     FROM
-            POST_INFO
+            DOG_GUM_USE
     WHERE
-            POST_CODE = #{ refPostCode }
+            refMemCode = #{ memCode } AND refPostCode = #{ postCode }
 
 </select>
+
+    <select id="boardSelect" parameterType="com.daalgae.daalgaeproject.board.dto.BoardDTO">
+        SELECT DISTINCT
+            POST_CODE
+        FROM
+            POST_INFO
+        WHERE
+            POST_CODE = #{ postCode }
+    </select>
+    <select id="getPostCodeBySomeCriteria" resultType="int">
+        SELECT COALESCE(POST_CODE, 0)
+        FROM POST_INFO
+        WHERE POST_CODE = #{ postCode }
+    </select>
+    <update id="purchaseDogGumus">
+        UPDATE MEM_INFO
+        SET MEM_DOG_GUM = #{ memDogGum }
+        WHERE MEM_CODE = #{ memCode }
+    </update>
 </mapper>
