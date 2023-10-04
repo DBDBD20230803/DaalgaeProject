@@ -3,24 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daalgae.daalgaeproject.matchingTest.model.dao.MatchingTestDAO">
-        <resultMap id="matchingTestMap" type="MatchingTestDTO">
-            <id property="dogCode" column="DOG_CODE"/>
-            <result property="dogKind" column="DOT_KIND"/>
-            <result property="testResult" column="TEST_RESULT"/>
-            <result property="selectedKind" column="SELECTED_KIND"/>
-        </resultMap>
-        <update id="testResult" parameterType="MatchingTestDTO">
-            UPDATE
-                PET_TEST
-            SET
-                SELECTED_KIND = #{selectedKind}
+    <resultMap id="matchingTestMap" type="com.daalgae.daalgaeproject.matchingTest.model.dto.MatchingTestDTO">
+        <id property="dogCode" column="DOG_CODE"/>
+        <result property="dogKind" column="DOG_KIND"/>
+        <result property="selectedKind" column="SELECTED_KIND"/>
+        <result property="selectedName" column="SELECTED_NAME"/>
+        <result property="testResult" column="TEST_RESULT"/>
+    </resultMap>
+    <update id="testResult" parameterType="MatchingTestDTO">
+        UPDATE
+            PET_TEST
+        SET
+            SELECTED_NAME = #{selectedName}, SELECTED_KIND = #{selectedKind}
 
-            WHERE DOG_KIND = #{dogKind}
-        </update>
+        WHERE DOG_KIND = #{selectedName}
+    </update>
 
-        <select id="getResult" resultMap="matchingTestMap">
-            SELECT DOG_KIND, TEST_RESULT, SELECTED_KIND
-            FROM PET_TEST
-            WHERE DOG_KIND = #{selectedKind}
-        </select>
+    <select id="getResult" resultMap="matchingTestMap" parameterType="MatchingTestDTO">
+        SELECT *
+        FROM PET_TEST
+        WHERE DOG_KIND = #{selectedName} IS NULL
+        AND SELECTED_KIND >= 2
+        ORDER BY RAND()
+        LIMIT 1;
+    </select>
 </mapper>

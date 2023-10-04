@@ -52,20 +52,14 @@ public class MatchingTestController {
     @GetMapping("/matchingTestResult")
     public String getResult(Model model, MatchingTestDTO matchingTestDTO){
 
-        int dogCode = matchingTestDTO.getDogCode();
-        String selectedKind = matchingTestDTO.getSelectedKind();
-        String dogKind = matchingTestDTO.getDogKind();
-        String testResult = matchingTestDTO.getTestResult();
-
-        matchingTestDTO.setDogCode(dogCode);
-        matchingTestDTO.setSelectedKind(selectedKind);
-        matchingTestDTO.setDogKind(dogKind);
-        matchingTestDTO.setTestResult(testResult);
-        List<MatchingTestDTO> testList = matchingTestService.getResult(selectedKind);
-
+        List<MatchingTestDTO> testList = matchingTestService.getResult(matchingTestDTO);
+        if(testList != null && testList.size() > 0){
+            log.info("받아오기 성공!");
+        }else{
+            log.info("실패....왜안되냐 시발");
+        }
         model.addAttribute("testList", testList);
         log.info("matchingTestDTO: " + matchingTestDTO);
-        log.info("selectedKind: " + selectedKind);
         log.info("testList: " + testList);
         return "/matchingTest/matchingTestResult";
 

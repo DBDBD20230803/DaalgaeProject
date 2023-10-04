@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface MatchingTestDAO {
-    void testResult(String selectedKind);
+    void testResult(MatchingTestDTO matchingTestDTO);
 
-    List<MatchingTestDTO> getResult(String selectedKind);
+    List<MatchingTestDTO> getResult(MatchingTestDTO matchingTestDTO);
 }

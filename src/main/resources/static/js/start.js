@@ -119,7 +119,7 @@ function end() {
         }
     });
 
-    petReset();
+/*    petReset();*/
 }
 
 function retest() {

@@ -57,6 +57,7 @@
 
 #MatchingTestResult .MatchingTestResultWrap{
     width: 100%;
+    margin-bottom: 10%;
 }
 
 #MatchingTestResult .MatchingTestResultWrap h4{
@@ -101,7 +102,7 @@
 }
 
 #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultImg img{
-    max-width: 25%;
+    max-width: 35%;
 }
 
 #MatchingTestResult .MatchingTestResultWrap .MatchingTestResultContent .resultText{
