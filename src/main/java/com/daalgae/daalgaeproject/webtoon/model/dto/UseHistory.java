@@ -3,6 +3,7 @@ package com.daalgae.daalgaeproject.webtoon.model.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -16,4 +17,5 @@ public class UseHistory {
     private int dogGumUseAmount; // ?? 이건 사용한 개껌 수량
     private int refPostCode; // 웹툰 번호
     private int refMemCode; // 회원코드
+    private int memDogGum;
 }

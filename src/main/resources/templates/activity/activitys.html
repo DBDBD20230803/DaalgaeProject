@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>댕댕정보툰</title>
+
+    <link rel="stylesheet" th:href="@{/css/activity.css}">
+    <!--meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!--bootstrap-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--css-->
+    <!--  주석 처리 되어있는 경로는 절대 경로 이며, ../ 으로 되어있는것은 상대 경로이다.
+          절대 경로 이용할 경우 NotFound 으로 파일을 찾을수 없음 -->
+    <!--<link rel="stylesheet" href="/css/index.css">-->
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <!--<link rel="stylesheet" href="/css/mobile.css">-->
+    <link rel="stylesheet" th:href="@{/css/mobile.css}">
+    <!--<link rel="stylesheet" href="/css/sanitize.css">-->
+    <link rel="stylesheet" th:href="@{/css/sanitize.css}">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--js-->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script th:src="@{/js/purchase.js}"></script>
+
+
+    <!--favicon--->
+    <link href="favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="apple-touch-icon">
+
+</head>
+
+<body>
+<div id="headers">
+    <th:block th:include="component/header.html"></th:block>
+</div>
+<div class="webtoonBg">
+    <h3>활동내역</h3>
+</div>
+
+<div class="container">
+    <br>
+    <div class="activityBox1">
+        <div class="activityBox2">
+            <div class="activityBox3">
+                <img class="activityImg1" th:src="@{images/tabler.png}">
+                <form >
+                <input id="searchInput" type="text" class="activityText1" placeholder="검색어를 입력해 주세요.">
+                    <table id="dataTable">
+
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="activityBox4">
+        <div class="activityBox5">
+            <div class="activityBox6">
+                <div class="activityText2">통합</div>
+                <div class="activityText2">게시글</div>
+                <div class="activityText2">댓글</div>
+                <div class="activityText3">신고내역</div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="activityBox7">
+            <div class="activityBox8">신고내역(15)</div>
+            <div class="activityButton">
+                <img th:src="@{/images/plusIcon.png}">
+            </div>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>신고사유</th>
+                <th>피신고자</th>
+                <th>등록일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 테이블 데이터 추가 -->
+            <tr>
+                <td>1</td>
+                <td>사유 1</td>
+                <td>피신고자 1</td>
+                <td>2023-09-11</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>사유 2</td>
+                <td>피신고자 2</td>
+                <td>2023-09-12</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>사유 3</td>
+                <td>피신고자 3</td>
+                <td>2023-09-13</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>사유 4</td>
+                <td>피신고자 4</td>
+                <td>2023-09-14</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>사유 5</td>
+                <td>피신고자 5</td>
+                <td>2023-09-15</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>사유 6</td>
+                <td>피신고자 6</td>
+                <td>2023-09-16</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>사유 7</td>
+                <td>피신고자 7</td>
+                <td>2023-09-17</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>사유 8</td>
+                <td>피신고자 8</td>
+                <td>2023-09-18</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <div class="activityBox9">
+            <div class="prev-next">
+                <span class="sr-only">페이지 네비게이션</span>
+                <div class="page">
+                    <a class="on" href="activitys.html">1</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><Br><br><br>
+</body>
+</html>

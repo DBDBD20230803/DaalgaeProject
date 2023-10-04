@@ -14,7 +14,6 @@ public interface MemberDAO {
 
     MemberDTO findMemberById(String memberId);
 
-
     int registMember(MemberDTO member);
 
     String selectMemberById(String memId);
@@ -50,6 +49,5 @@ public interface MemberDAO {
     int modifyPwd(MemberDTO memberDTO);
 
     int memberDelete(MemberDTO memberDTO);
-
 }
 

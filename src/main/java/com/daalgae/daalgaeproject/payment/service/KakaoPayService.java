@@ -59,14 +59,7 @@ public class KakaoPayService {
         if (principal instanceof UserImpl) {
             UserImpl user = (UserImpl) principal;
             memCode = user.getMemCode();
-            System.out.println("가왓냐 ? 가왔냐 ??????" + memCode);
         }
-
-        /*Object memCode = null;
-        if (authentication != null && authentication.isAuthenticated()) {
-            memCode = authentication.getPrincipal();
-            System.out.println("드디어 가져왔냐 ?" + memCode);
-        }*/
 
         MultiValueMap<String, Object> parameters = new LinkedMultiValueMap<>();
 
@@ -113,7 +106,6 @@ public class KakaoPayService {
         if (principal instanceof UserImpl) {
             UserImpl user = (UserImpl) principal;
             memCode = user.getMemCode();
-            System.out.println("가왓냐 ? 가왔냐 ?????? : " + memCode);
         }
 
 
@@ -167,7 +159,6 @@ public class KakaoPayService {
             if (principal instanceof UserImpl) {
                 UserImpl user = (UserImpl) principal;
                 memCode = user.getMemCode();
-                System.out.println("가왓냐 ? 가왔냐 ?????? : " + memCode);
 
                 if (user != null) {
                     int currentDogGum = user.getMemDogGum();
@@ -185,12 +176,10 @@ public class KakaoPayService {
 
 
     public List<OrderPay> getAllPayment(Integer memCode) {
-        System.out.println("서비스임 ... 날짜데이타ㅓ.." + memCode);
         return orderPayMapper.userSelect(memCode);
     }
 
     public List<UseHistory> getUserAllFind (int dogGumUseCode) {
-        System.out.println("userTable 가져오냐 ? : " + dogGumUseCode);
         return orderPayMapper.userAllFind(dogGumUseCode);
     }
 

@@ -143,25 +143,27 @@
 }
 
 #detailBox {
-    border: 1px solid#000000;
-    width: 1000px;
-    height: 2030px;
-    background-color: #8a8a8a8a;
+    border: 1px solid #000000;
+    width: 360px;
+    height: 1440px;
+    background-image: url('/images/daalgaeWebtoon.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain; /* 배경 이미지가 요소를 완전히 덮도록 설정합니다. */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+
 .detailContent {
-    width: 900px;
-    height: 570px;
-    border: 1px solid #ffffff;
     text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: #ffffff;
+
+    background-size: cover;
+    background-position: center;
 }
 .detailText1 {
     text-align: center;
