@@ -132,7 +132,6 @@ $(document).ready( function() {
         url:getUrl,
         dataType:"json",
         success: function(data){
-            console.log(data);
             if(data.length == 0) {
                 $('.tourBoard').last().append("<div class=\"noSearchData\">");
                 $('.noSearchData').append("검색 결과가 없습니다");

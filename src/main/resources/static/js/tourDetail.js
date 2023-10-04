@@ -10,7 +10,6 @@ function likeClick() {
         url:toUrl,
         dataType:"json",
         success: function(data) {
-            console.log(data);
             if(data == -1) {
                 location.href='/login/login';
             }
@@ -20,7 +19,6 @@ function likeClick() {
                     url:toUrl1,
                     dataType:"json",
                     success: function(data) {
-                        console.log(data);
                         if(data > 0) {
                             $('.likeListImageLeft').prop('src', '/images/likeListClicked.png');
                         }
@@ -35,7 +33,6 @@ function likeClick() {
                     url:toUrl2,
                     dataType:"json",
                     success: function(data) {
-                        console.log(data);
                         if(data > 0) {
                             $('.likeListImageLeft').prop('src', '/images/likeList.png');
                         }
@@ -300,13 +297,11 @@ $(function () {
     const urlParam = urlObject.searchParams;
     let no = urlParam.get("no");
     let toUrl = "/tour/bookmark/getTourBookmark?no=" + no;
-    console.log(toUrl);
     $.ajax({
         type:"get",
         url:toUrl,
         dataType:"json",
         success: function(data) {
-            console.log(data);
             if(data == 1) {
                 $('.likeListImageLeft').prop('src', '/images/likeListClicked.png');
             } else {
