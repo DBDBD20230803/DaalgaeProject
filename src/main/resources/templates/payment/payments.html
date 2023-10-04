@@ -73,8 +73,8 @@
         <div class="paymentBox3">
             <form action="/payment/ready" method="post">
                 <input type="hidden" name="itemName" value="개껌10">
-                <input type="hidden" name="quantity" value=10000000>
-                <input type="hidden" name="totalAmount" value=1000000>
+                <input type="hidden" name="quantity" value=10>
+                <input type="hidden" name="totalAmount" value=1100>
                 <button class="btnwh" type="submit">1,100원</button>
             </form>
         </div>
@@ -87,9 +87,9 @@
         <div class="paymentBox3">
 
             <form id="paymentForm" action="/payment/ready" method="post">
-                <input type="hidden" name="itemName" value="개껌2222222">
+                <input type="hidden" name="itemName" value="개껌20">
                 <input type="hidden" name="quantity" value=20>
-                <input type="hidden" name="totalAmount" value=1000000>
+                <input type="hidden" name="totalAmount" value=2200>
 
                 <button class="btnwh" type="submit">2,200원</button>
             </form>
@@ -105,9 +105,9 @@
     <div class="paymentBox3">
 
         <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌555555">
+            <input type="hidden" name="itemName" value="개껌50">
             <input type="hidden" name="quantity" value=50>
-            <input type="hidden" name="totalAmount" value=1000000>
+            <input type="hidden" name="totalAmount" value=5500>
 
             <button class="btnwh" type="submit">5,500원</button>
         </form>
@@ -124,7 +124,7 @@
         <form action="/payment/ready" method="post">
             <input type="hidden" name="itemName" value="개껌100">
             <input type="hidden" name="quantity" value=100>
-            <input type="hidden" name="totalAmount" value=1000000>
+            <input type="hidden" name="totalAmount" value=11000>
 
             <button class="btnwh" type="submit">11,000원</button>
         </form>
@@ -139,9 +139,9 @@
     <div class="paymentBox3">
 
         <form action="/payment/ready" method="post">
-            <input type="hidden" name="itemName" value="개껌33333">
+            <input type="hidden" name="itemName" value="개껌300">
             <input type="hidden" name="quantity" value=300>
-            <input type="hidden" name="totalAmount" value=1000000>
+            <input type="hidden" name="totalAmount" value=33000>
 
             <button class="btnwh" type="submit">33,000원</button>
         </form>
@@ -149,7 +149,6 @@
     </div>
 </div>
 </div>
-<button onclick="location.href='/payment/list'">전체 메뉴 조회</button>
 <div id="footers"></div>
 <div>
     <th:block th:include="component/footer.html"></th:block>

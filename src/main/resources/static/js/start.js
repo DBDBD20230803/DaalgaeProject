@@ -107,7 +107,7 @@ function end() {
 /*            $("#result #result_img").attr("src", `/images/${data}.png`);*/
             $("#result .loader").hide();
             $("#result .fin").show();
-            alert("매칭테스트가 성공적으로 전송되었습니다🐶.!!")
+            alert("당신에게 맞는 반려견은...?🐶")
             window.location.href = "/matchingTest/matchingTestResult";
         },
         error: function(request, status, error) {
